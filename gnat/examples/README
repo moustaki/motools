@@ -1,0 +1,10 @@
+Examples for typical use cases
+------------------------------
+
+ trackuri.py
+   Tries to find an URI for an audio file, using metadata lookup.
+
+   WARNING: for the first track of an album, this may be a bit slow,
+   due to the algorithm used. Then, trying to identify other tracks
+   on the same album is faster.
+

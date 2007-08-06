@@ -1,0 +1,11 @@
+GNAT audio items linker
+----------------------
+
+
+This package enables to derive statements linking a set of audio items to 
+a set of dereferencable identifiers, and to store them in a RDF store
+(here, rdflib).
+
+http://zitgist.com/music/track/.... mo:availableAs file://.../music/01.mp3.
+
+
