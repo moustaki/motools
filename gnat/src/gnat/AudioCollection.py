@@ -12,6 +12,7 @@ from time import asctime
 from MbzURIConverter import *
 from MbzTrackLookup import *
 from FPTrackLookup import FPTrackLookup
+from PUIDTrackLookup import *
 from RdfHub import *
 from ExternalSources import *
 from Id3Writer import *
@@ -45,7 +46,8 @@ class AudioCollection :
 		self.fp_succeeded = 0
 
 	def batch_gnat(self) :
-		self.rdf.setContext("batch gnat")
+		MDContextName = "batch gnat"
+		self.rdf.setContext(MDContextName)
 		self.rdf.dropAllLocks()
 		for root,dirs,files in self.walk :
 			for name in files :
@@ -55,7 +57,7 @@ class AudioCollection :
 					filename = os.path.join(root,name)
 					fileURIstr = 'file://'+filename
 					debug("Considering "+filename)
-					if self.rdf.haveMD_URI(filename) == False:
+					if self.rdf.have_URI(filename, MDContextName) == False:
 						if self.rdf.lock(fileURIstr) :
 							try :
 								lookup = MbzTrackLookup(filename)
@@ -79,7 +81,8 @@ class AudioCollection :
 		
 	def batch_fp(self) :
 		lookup = FPTrackLookup()
-		self.rdf.setContext("batch fp")
+		FPContextName = "batch fp"
+		self.rdf.setContext(FPContextName)
 		self.rdf.dropAllLocks()
 		for root,dirs,files in self.walk :
 			for name in files :
@@ -88,14 +91,9 @@ class AudioCollection :
 					filename = os.path.join(root,name)
 					debug("Considering "+filename)
 					fileURIstr = "file://"+filename
-					if self.rdf.have_URI(filename, "batch_fp") == False:
+					if self.rdf.have_URI(filename, FPContextName) == False:
 						if self.rdf.lock(fileURIstr) :
 							results = lookup.fpFile(filename)
-							if results.has_key("puids"):
-								self.fp_succeeded += 1
-								self.rdf.addItemType(fileURIstr)
-								for puid in results["puids"]:
-									self.rdf.addPUID(fileURIstr, puid)
 							if results.has_key("title"):
 								self.rdf.addTitleL(fileURIstr, results["title"])
 							if results.has_key("artist"):
@@ -105,7 +103,21 @@ class AudioCollection :
 							if results.has_key("genres"):
 								for genre in results["genres"]:
 									self.rdf.addGenreL(fileURIstr, genre)
-							
+							if results.has_key("puids"):
+								self.rdf.addItemType(fileURIstr)
+								success=False
+								for puid in results["puids"]:
+									self.rdf.addPUID(fileURIstr, puid)
+									try:
+										pl = PUIDTrackLookup(filename, puid, results)
+										mbzuri = pl.getMbzTrackURI()
+										mbzconvert = MbzURIConverter(mbzuri)
+										self.rdf.addAvailableAs(mbzconvert.getURI(), fileURIstr)
+										success=True
+									except MbzLookupException, e:
+										error(" - " + e.message)
+								if success:
+									self.fp_succeeded += 1							
 							self.rdf.commit()
 							self.rdf.unlock(fileURIstr)
 					else:
