@@ -121,7 +121,7 @@ class RdfHub :
 						 if graph.identifier == URIRef(contextName) \
 				]
 		if (len(locks) == 0):
-			debug("<lock>")
+			#debug("<lock>")
 			self.addNamed((URIRef(item), self.AC['lock'], Literal("lock")), contextName)
 			self.commit()
 			return True

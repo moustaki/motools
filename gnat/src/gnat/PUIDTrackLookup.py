@@ -31,8 +31,7 @@ class PUIDTrackLookup(MbzTrackLookup):
 	def choose(self, tracks):
 		"""Choose the best match from among the given TrackResult objects."""
 		if len(tracks) == 0:
-			error("No tracks found matching PUID "+self.puid)
-			raise MbzLookupException('No tracks match PUID')
+			raise MbzLookupException("No tracks found matching PUID "+self.puid)
 			return None
 		elif len(tracks) == 1:
 			debug("Single track matching PUID found.")
@@ -41,9 +40,9 @@ class PUIDTrackLookup(MbzTrackLookup):
 		debug("Multiple tracks match PUID.")
 		tracks = self.filterByArtist(tracks)
 		if len(tracks) > 1:
-			tracks = self.filterByTitle()
+			tracks = self.filterByTitle(tracks)
 		if len(tracks) > 1:
-			tracks = self.filterByRelease()					
+			tracks = self.filterByRelease(tracks)					
 		
 		if len(tracks) == 0:
 			raise MbzLookupException('No results after filtering.')
@@ -54,15 +53,15 @@ class PUIDTrackLookup(MbzTrackLookup):
 
 	def filterByArtist(self, tracks):
 		debug("Filtering by artist...")
-		if self.md.hasKey("artist"):
-			artist = md["artist"]
+		if self.md.has_key("artist"):
+			artist = self.md["artist"]
 		else:
 			debug(" no MusicDNS metadata, using local")
 			artist = self.artist
 			
 		if artist <> None:
 			tracks = [t for t in tracks if t.getArtist().getName()==artist]
-			if len(ts) == 0:
+			if len(tracks) == 0:
 				debug("None match artist.")
 		else:
 			debug(" no local either :/ No artist filtering done.")
@@ -71,15 +70,15 @@ class PUIDTrackLookup(MbzTrackLookup):
 
 	def filterByTitle(self, tracks):
 		debug("Filtering by title...")
-		if self.md.hasKey("title"):
-			title = md["title"]
+		if self.md.has_key("title"):
+			title = self.md["title"]
 		else:
 			debug(" no MusicDNS metadata, using local")
 			title = self.title
 			
 		if title <> None:
 			tracks = [t for t in tracks if t.getTitle()==title]
-			if len(ts)==0:
+			if len(tracks)==0:
 				debug("None match title.")
 		else:
 			debug(" no local either :/ No title filtering done.")
@@ -90,12 +89,12 @@ class PUIDTrackLookup(MbzTrackLookup):
 		debug("Filtering by release...")
 		album = self.album
 		if album <> None:
-			ts = [t for t in tracks if t.getRelease().getName()==album]
+			ts = [t for t in tracks if album in map(lambda x:x.getTitle(),t.getReleases())]
 			if len(ts)==0:
 				debug("None match album, no album filtering done.")
 				return tracks
 		else:
-			debug(" no local album tag :/")
+			debug(" no local album tag :/ No album filtering done.")
 			return tracks
 		return ts
 

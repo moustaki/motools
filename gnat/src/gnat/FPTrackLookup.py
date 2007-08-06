@@ -15,7 +15,7 @@ from logging import log, error, warning, info, debug
 from time import asctime
 import re
 
-genpuidbin = "../../bin/genpuid"
+genpuidbin = "genpuid"
 MusicDNSKey = "845c6a3ae981f1450eb13730183448d8" #Chris S's key
 
 class FPTrackLookup :
@@ -27,7 +27,9 @@ class FPTrackLookup :
 		global genpuidbin, MusicDNSKey
 		
 		res_xml = os.popen(genpuidbin + " " + MusicDNSKey + " -rmd=2 -xml -noanalysis \""+filename+"\"").readlines()
-	
+		if (res_xml[0] == res_xml[1]):
+			res_xml=res_xml[1:] # oddly, we see "<genpuid songs="1">\n" twice when the file is "unanalyzable"
+		
 		# parse results
 		try:
 			clean_xml = "".join(res_xml).replace("mip:","") # strip out unknown prefix so minidom can parse
@@ -40,8 +42,8 @@ class FPTrackLookup :
 			
 			track = root.getElementsByTagName("track")[0]
 			
-			if (track.childNodes[0].nodeName=="#text") & (track.childNodes[0].data=="unavailable"):
-				info("No PUID available for track.")
+			if (track.childNodes[0].nodeName=="#text") & (track.childNodes[0].data in ["unavailable", "unanalyzable"]):
+				info("No PUID available for track : "+str(track.childNodes[0].data))
 				return {}
 			
 			titles = track.getElementsByTagName("title")
@@ -111,7 +113,7 @@ class FPTrackLookup :
 			for genre in genres:
 				results["genres"].append(genre)
 			
-		debug("results :"+str(results))
+		#debug("results :"+str(results))
 		return results
 
 

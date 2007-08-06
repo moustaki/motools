@@ -19,24 +19,13 @@ from Id3Writer import *
 from logging import log, error, warning, info, debug
 from optparse import OptionParser
 
-exclPatterns = r".*(jpg|jpeg|txt|ini|db|DS\_Store|m3u|pls|xml|log)$"
+exclPatterns = r".*(jpg|jpeg|txt|ini|db|DS\_Store|m3u|pls|xml|log|png)$"
 excludeRE = re.compile(exclPatterns, re.IGNORECASE)
 
 
 class AudioCollection :
 
-	def __init__(self,directory, extradebug=True, errorlog="error.log") :
-		self.loggingConfig = {"format":'%(asctime)s %(levelname)-8s %(message)s',
-	                     	  "datefmt":'%d.%m.%y %H:%M:%S',
-						 	  "filename":errorlog,
-	                      	  "filemode":'a'}
-		if extradebug == True:
-			self.loggingConfig["level"]=logging.DEBUG
-		else:
-			self.loggingConfig["level"]=logging.INFO
-		
-		logging.basicConfig(**self.loggingConfig)
-		
+	def __init__(self,directory) :
 		self.dir = directory
 		self.walk = os.walk(directory)
 		self.rdf = RdfHub()
@@ -87,12 +76,12 @@ class AudioCollection :
 		for root,dirs,files in self.walk :
 			for name in files :
 				if (re.match(excludeRE, name) == None):
-					self.fp_processed += 1
 					filename = os.path.join(root,name)
 					debug("Considering "+filename)
 					fileURIstr = "file://"+filename
 					if self.rdf.have_URI(filename, FPContextName) == False:
 						if self.rdf.lock(fileURIstr) :
+							self.fp_processed += 1
 							results = lookup.fpFile(filename)
 							if results.has_key("title"):
 								self.rdf.addTitleL(fileURIstr, results["title"])
@@ -120,8 +109,12 @@ class AudioCollection :
 									self.fp_succeeded += 1							
 							self.rdf.commit()
 							self.rdf.unlock(fileURIstr)
+							if self.fp_processed % 20 == 0:
+								info('Files processed : ' +str(self.fp_processed))
+								info('Successful identifications : '+str(self.fp_succeeded))
 					else:
-						debug("Found existing FP-derived URI.")
+						debug(" Found existing FP-derived URI.")
+
 		info('Files processed : ' +str(self.fp_processed))
 		info('Successful identifications : '+str(self.fp_succeeded))
 		#print self.serialize("xml")
@@ -151,14 +144,25 @@ if __name__ == '__main__':
 		   | ((len(args) in [0,2]) & (opts.dumpfilename <> None)) \
 		   ):
 		parser.error("Incorrect number of arguments given !")
+
+	loggingConfig = {"format":'%(asctime)s %(levelname)-8s %(message)s',
+                     	  "datefmt":'%d.%m.%y %H:%M:%S',
+					 	  "filename":opts.logfilename,
+                      	  "filemode":'a'}
+	if opts.extradebug == True:
+		loggingConfig["level"]=logging.DEBUG
+	else:
+		loggingConfig["level"]=logging.INFO
 	
+	logging.basicConfig(**loggingConfig)
+
 	if (len(args)==2):
 		if (args[0] not in ["batch_gnat", "batch_fp", "addExternalInfo"]):
 			parser.error("Unknown command !")
 	
 		(command, musicpath) = args
 	
-		ac = AudioCollection(musicpath, opts.extradebug, opts.logfilename)
+		ac = AudioCollection(musicpath)
 		debug("--- Starting "+ asctime()  +" ---")
 		getattr(ac, command)()
 		ac.rdf.commit()
