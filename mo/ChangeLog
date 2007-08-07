@@ -37,6 +37,8 @@ Version 1.2 (july 2007)
  * DELETED: mo:creatorOf - use foaf:made instead
  * DELETED: mo:pitch and mo:timbre - this should go to the audio features
  ontology
+ * DELETED: mo:stream_url (it should be the identifier of the resource (eg.
+ rtsp://...)
 
 =========================
 Version 1.11 (March 2007)
