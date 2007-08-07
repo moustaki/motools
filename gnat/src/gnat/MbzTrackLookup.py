@@ -49,7 +49,7 @@ class FileTypeException :
 
 class MbzTrackLookup :
 
-	def __init__(self,file,threshold=60,duration_distance_threshold=5000) :
+	def __init__(self,file,threshold=60,duration_distance_threshold=10000) :
 		self.file = file
 		self.threshold = threshold
 		self.ddt=duration_distance_threshold
