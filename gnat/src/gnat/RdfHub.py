@@ -127,6 +127,15 @@ class RdfHub :
 		"""Check if we already know a metadata-derived URI for this filename."""
 		return self.have_URI(filename,"batch_gnat")
 
+	def availableAs(self,fileURI,contextName=""):
+		"""Returns the manifestation URIs associated to a particular local file"""
+		if contextName=="":
+			contextName = self.contextName
+		uris = [s for s,p,o,graph \
+				in self.graph.quads((None,self.MO["availableAs"],URIRef(fileURI))) \
+				if contextName==None or graph.identifier == URIRef(contextName) \
+				]
+		return uris 
 
 
 	#
