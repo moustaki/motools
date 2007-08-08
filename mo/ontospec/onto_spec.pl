@@ -121,6 +121,9 @@ property_range(NS:P,Range) :-
 property_inverse(NS:P,Inverse) :-
 	rdf(Property,owl:inverseOf,Inverse),
 	rdf_global_id(NS:P,Property).
+property_subprop_of(NS:P,Super) :-
+	rdf(Property,rdfs:subPropertyOf,Super),
+	rdf_global_id(NS:P,Property).
 individual_title(NS:C,Title) :-
 	individual(I),
 	rdf(I,dc:title,literal(Title)),
@@ -267,9 +270,10 @@ prop_html_desc(NS:P,HtmlDesc) :-
 	domain_html_desc(NS:P,DomainHtmlDesc),
 	range_html_desc(NS:P,RangeHtmlDesc),
 	inverse_html_desc(NS:P,InverseHtmlDesc),
+	subprop_html_desc(NS:P,SubPropHtmlDesc),
 	sformat(StringHtmlDomainRange,
-		'<table style="th { float: top; }">\n<tr><th>Domain:</th>\n~w\n</tr>\n<tr><th>Range:</th>\n~w</tr>\n~w\n</table>\n<br/></div>',
-		[DomainHtmlDesc,RangeHtmlDesc,InverseHtmlDesc]
+		'<table style="th { float: top; }">\n<tr><th>Domain:</th>\n~w\n</tr>\n<tr><th>Range:</th>\n~w</tr>\n~w\n~w\n</table>\n<br/></div>',
+		[DomainHtmlDesc,RangeHtmlDesc,InverseHtmlDesc,SubPropHtmlDesc]
 		),
 	string_to_atom(StringHtmlDomainRange,HtmlDomainRange),
 	atom_concat(HtmlComment,HtmlDomainRange,HtmlDesc).
@@ -350,6 +354,29 @@ inverse_html_desc(NS:P,InverseHtmlDesc) :-
                         ),Htmls),
         list_to_atom(Htmls,InverseHtmlDesc2),
 	(InverseHtmlDesc2=''->InverseHtmlDesc='';(sformat(Temp,'<tr><th>Inverse-of: </th>~w</tr>',[InverseHtmlDesc2]),string_to_atom(Temp,InverseHtmlDesc))).
+
+/**
+ * HTML description of sub-property-of
+ */
+subprop_html_desc(NS:P,SubPropHtmlDesc) :-
+	property(Prop),rdf_global_id(NS:P,Prop),
+	findall(Html,(
+		property_subprop_of(NS:P,Super),
+		((property(Super),rdf_global_id(_:D,Super),
+		sformat(S,
+			'<td><a href="#term_~w">~w</a></td>\n',
+			[D,D]),
+		string_to_atom(S,Html)
+			);
+		(\+property(Super),rdf_global_id(NS2:D2,Super),sformat(S,
+			'<td><a href="~w">~w</a></td>\n',
+			[Super,NS2:D2])
+		)),
+		string_to_atom(S,Html)
+			),Htmls),
+		list_to_atom(Htmls,SubPropHtmlDesc2),
+		(SubPropHtmlDesc2=''->SubPropHtmlDesc='';(sformat(Temp,'<tr><th>Sub-property-of: </th>~w</tr>',[SubPropHtmlDesc2]),string_to_atom(Temp,SubPropHtmlDesc))).
+
 
 /**
  * HTML description of "domain of"
