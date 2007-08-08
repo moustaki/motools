@@ -35,12 +35,12 @@ load :-
 	rdf_db:rdf_load(Doc).
 
 /**
- * Extract and export the core
+ * Extract and export the core (explores up to three bnodes)
  */
 core :- 
 	primary_ns(NS),
-	findall(rdf(A,P,O),
-		(rdf_db:rdf(A,rdfs:isDefinedBy,NS),rdf_db:rdf(A,P,O)),
+	findall(rdf(S,P,O),
+		(rdf_db:rdf(A,rdfs:isDefinedBy,NS),description(A,rdf(S,P,O))),
 		TriplesCore),
 	output_core(Core),
 	open(Core,write,CoreStream),
@@ -60,5 +60,15 @@ external :-
 	rdf_write_xml(ExternalStream,TriplesExternal),
 	close(ExternalStream).
 
-		
+/**
+ * All the triples describing a given ontology term
+ * This predicates include blank-nodes closure
+ */
+description(A,rdf(A,P,O)) :-
+	rdf_db:rdf(A,P,O).
+description(A,rdf(S,P,O)) :-
+	rdf_db:rdf(A,_,BN),
+	rdf_db:rdf_is_bnode(BN),
+	description(BN,rdf(S,P,O)).
+
 
