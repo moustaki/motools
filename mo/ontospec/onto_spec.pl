@@ -161,9 +161,9 @@ rdf_list_member(Member,List) :-
  * Spec At A Glance - FOAF/SIOC style
  */
 glance_html_desc(Desc) :-
-	findall(C-CD,
-	(
-		class(Class),rdf_global_id(_:C,Class),
+	setof(C-CD,
+	Class^S1^NS^(
+		class(Class),rdf_global_id(NS:C,Class),
 		sformat(S1,
 			'<a href="#term_~w">~w</a> | ',
 			[C,C]
@@ -173,9 +173,9 @@ glance_html_desc(Desc) :-
 	ClassesL),
 	keysort(ClassesL,ClassesLSorted),reverse(ClassesLSorted,ClassesLSR),
 	list_to_atom(ClassesLSR,Classes),
-	findall(P-PD,
-        (
-                property(Property),rdf_global_id(_:P,Property),
+	setof(P-PD,
+        Property^S2^NS^(
+                property(Property),rdf_global_id(NS:P,Property),
                 sformat(S2,
                         '<a href="#term_~w">~w</a> | \n',
                         [P,P]
@@ -185,9 +185,9 @@ glance_html_desc(Desc) :-
         PropertiesL),
 	keysort(PropertiesL,PropertiesLS),reverse(PropertiesLS,PropertiesLSR),
         list_to_atom(PropertiesLSR,Properties),
-	findall(I-ID,
-	(
-		individual(Individual),rdf_global_id(_:I,Individual),
+	setof(I-ID,
+	Individual^S3^NS^(
+		individual(Individual),rdf_global_id(NS:I,Individual),
 		sformat(S3,
 			'<a href="#term_~w">~w</a> | \n',
 			[I,I]
