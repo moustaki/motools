@@ -46,24 +46,29 @@ onto_spec(Spec) :-
 	header(Header),
 	tail(Tail),
 	glance_html_desc(Glance),
-	setof(NC-Desc,NS^(class_html_desc(NS:NC,Desc)),DescsMess),
+	((setof(NC-Desc,NS^(class_html_desc(NS:NC,Desc)),DescsMess),!);DescsMess=[]),
 	keysort(DescsMess,Descs),
 	reverse(Descs,DescsR),
 	list_to_atom(DescsR,Classes),
-	setof(NP-Descp,NS^prop_html_desc(NS:NP,Descp),DescspMess),
+	((setof(NP-Descp,NS^prop_html_desc(NS:NP,Descp),DescspMess),!);DescspMess=[]),
 	keysort(DescspMess,Descsp),
 	reverse(Descsp,DescspR),
 	list_to_atom(DescspR,Properties),
-	setof(NI-Desci,NS^(ind_html_desc(NS:NI,Desci)),DescsiMess),
+	((setof(NI-Desci,NS^(ind_html_desc(NS:NI,Desci)),DescsiMess),!);DescsiMess=[]),
 	keysort(DescsiMess,Descsi),
 	reverse(Descsi,DescsiR),
 	list_to_atom(DescsiR,Individuals),
+	((setof(Dep-Descd,NS^(deprecated_html_desc(NS:Dep,Descd)),DescsdMess),!);DescsdMess=[]),
+	keysort(DescsdMess,Descsd),
+	reverse(Descsd,DescsdR),
+	list_to_atom(DescsdR,Deprecated),
 	atom_concat(Header,Glance,T0),
 	atom_concat(T0,'\n<h3>Classes and Properties (full detail)</h3>\n',T1),
 	atom_concat(T1,Classes,T2),
 	atom_concat(T2,Properties,T3),
 	atom_concat(T3,Individuals,T4),
-	atom_concat(T4,Tail,Spec).
+	atom_concat(T4,Deprecated,T5),
+	atom_concat(T5,Tail,Spec).
 
 header('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">\n<head>\n<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://moustaki.org/foaf.rdf" />\n <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />\n<meta name="author" content="Yves Raimond" />\n<meta name="robots" content="all" />\n<title>Yves Raimond</title>\n</head>\n<body>').
 
@@ -156,6 +161,10 @@ rdf_list_member(Member,List) :-
 rdf_list_member(Member,List) :-
 	rdf(List,rdf:rest,List2),
 	rdf_list_member(Member,List2).
+deprecated(Old,New) :-
+	rdf(Old,vs:term_status,literal('deprecated')),
+	rdf(Old,owl:sameAs,New).
+
 
 /**
  * Spec At A Glance - FOAF/SIOC style
@@ -428,7 +437,16 @@ subclass_of_html_desc(NS:C,SubClassDesc) :-
         list_to_atom(Htmls,SubClassDesc).
 
 
-
+/**
+ * HTML description of deprecated concepts/properties
+ */
+deprecated_html_desc(NS:T,DepDesc) :-
+	deprecated(Term,NewTerm),
+	rdf_global_id(NS:T,Term),
+	rdf_global_id(NS:NT,NewTerm),
+	format(atom(DepDesc),
+		'<div class="specterm" id="term_~w">\n<h3>Deprecated: ~w</h3>\n<em>Equivalent to</em> - <a href="#term_~w">~w</a> \n<br/></div>'
+		,[T,NS:T,NT,NS:NT]).
 
 list_to_atom([],'').
 list_to_atom([_-A],A):-!.
