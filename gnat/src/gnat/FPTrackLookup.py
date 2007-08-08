@@ -26,6 +26,8 @@ class FPTrackLookup :
 		"""Looks up the MusicDNS PUID for the given filename using fingerprinting and stores the resulting info in the given graph"""
 		global genpuidbin, MusicDNSKey
 		
+		filename = clean(filename)
+		
 		res_xml = os.popen(genpuidbin + " " + MusicDNSKey + " -rmd=2 -xml -noanalysis \""+filename+"\"").readlines()
 		if (res_xml[0] == res_xml[1]):
 			res_xml=res_xml[1:] # oddly, we see "<genpuid songs="1">\n" twice when the file is "unanalyzable"
@@ -43,7 +45,7 @@ class FPTrackLookup :
 			track = root.getElementsByTagName("track")[0]
 			
 			if (track.childNodes[0].nodeName=="#text") & (track.childNodes[0].data in ["unavailable", "unanalyzable"]):
-				info("No PUID available for track : "+str(track.childNodes[0].data))
+				info(" No PUID available for track : "+str(track.childNodes[0].data))
 				return {}
 			
 			titles = track.getElementsByTagName("title")
@@ -116,6 +118,10 @@ class FPTrackLookup :
 		#debug("results :"+str(results))
 		return results
 
+
+def clean(s):
+	s = s.replace('`','\`')
+	return s
 
 def main():
 	fp = FPTrackLookup()	

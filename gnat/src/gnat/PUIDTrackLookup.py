@@ -35,22 +35,39 @@ class PUIDTrackLookup(MbzTrackLookup):
 			return None
 		elif len(tracks) == 1:
 			debug("Single track matching PUID found.")
+			if tracks[0].getArtist().getName() <> self.md["artist"]:
+				warning("Sanity check FAILS : MBZ artist name = "+tracks[0].getArtist().getName()+\
+						" MusicDNS artist name = "+self.md["artist"]+\
+						" local artist name = "+str(self.artist))
 			return tracks[0]
 
 		debug("Multiple tracks match PUID.")
-		tracks = self.filterByArtist(tracks)
-		if len(tracks) > 1:
-			tracks = self.filterByTitle(tracks)
-		if len(tracks) > 1:
-			tracks = self.filterByRelease(tracks)					
+		
+		start_tracks = [t for t in tracks]
+		tracks = self.strongFilter(self.filterByArtist, tracks)
+		tracks = self.weakFilter(self.filterByTitle, tracks)
+		tracks = self.weakFilter(self.filterByRelease, tracks)
 		
 		if len(tracks) == 0:
+			debug("start_tracks:")
+			printTracks(start_tracks)
 			raise MbzLookupException('No results after filtering.')
 		else:
 			warning("Multiple matches after doing filtering - Just picking first result.")
+			printTracks(tracks)
 			return tracks[0]
-		
 
+	def strongFilter(self, function, tracks):
+		return function(tracks)
+	
+	def weakFilter(self, function, tracks):
+		filt_tracks = function(tracks)
+		if len(filt_tracks) > 0:
+			return filt_tracks
+		else:
+			debug("  filtering with "+function.im_func.func_name+" left no results. No filtering done.")
+			return tracks
+		
 	def filterByArtist(self, tracks):
 		debug("Filtering by artist...")
 		if self.md.has_key("artist"):
@@ -89,17 +106,28 @@ class PUIDTrackLookup(MbzTrackLookup):
 		debug("Filtering by release...")
 		album = self.album
 		if album <> None:
-			ts = [t for t in tracks if album in map(lambda x:x.getTitle(),t.getReleases())]
-			if len(ts)==0:
-				debug("None match album, no album filtering done.")
-				return tracks
+			tracks = [t for t in tracks if album in map(lambda x:x.getTitle(),t.getReleases())]
+			if len(tracks)==0:
+				debug("None match album.")
 		else:
 			debug(" no local album tag :/ No album filtering done.")
-			return tracks
-		return ts
+			
+		return tracks
 
 	def getMbzTrackURI(self):
 		return self.track.getId()
+
+def printTracks(tracks):
+	for track in tracks:
+		debug("track :")
+		printTrack(track)
+
+def printTrack(track):
+	debug("Artist : id="+track.getArtist().getId()+", name="+track.getArtist().getName())
+	debug("Title  : "+track.getTitle())
+	for r in track.getReleases():
+		debug("Release: id="+r.getId()+", name="+r.getTitle())
+
 						
 def main():
 	pass

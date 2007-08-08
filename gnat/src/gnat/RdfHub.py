@@ -19,6 +19,9 @@ class RdfHub :
 		self.OWL= Namespace("http://www.w3.org/2002/07/owl#")
 		self.AC = Namespace("http://temp.tmp/AudioCollection/")
 		self.contextName = contextName
+		
+		self.baseURI = "file://"
+		
 		idname = 'db'
 		db = 'triplestore'
 		usr = 'rdflib'
@@ -91,14 +94,31 @@ class RdfHub :
 						      & (str(s).startswith(base))\
 						      )
 				)
+	
+	def getItemURIs(self, contextName=""):
+		"""Returns the URI of each resource in store with an item type."""
+		# for now, just calling all file items streams O-O
+		if contextName=="":
+			contextName = self.contextName
+		return (str(s) for s,p,o,graph in self.graph.quads((None,None,None)) \
+						   if (((contextName==None) | (graph.identifier == URIRef(contextName)))\
+						      & (p == rdflib.RDF.type) & (o == self.MO["Stream"])\
+						      )
+				)
+				
+	
+	def getPUID(self, item):
+		puids = list(o for s,p,o,g in self.graph.quads(URIRef(item),self.AC["PUID"],None))
+		if len(puids) == 0:
+			return None
+		return puids[0]
 
-	def have_URI(self,filename,contextName=""):
+	def have_URI(self,fileURI,contextName=""):
 		"""Check if we already know about an associated URI. Pass contextName=None to check all contexts."""
 		if contextName=="":
 			contextName = self.contextName
-		fileURI = URIRef("file://"+filename)
 		quads = [(s,p,o) for s,p,o,graph \
-						in self.graph.quads((None,self.MO["availableAs"], fileURI)) \
+						in self.graph.quads((None,self.MO["availableAs"], URIRef(fileURI))) \
 						if contextName==None or graph.identifier == URIRef(contextName) \
 				]
 		return (len(quads) > 0)
@@ -179,3 +199,17 @@ class RdfHub :
 	def setContext(self, contextName):
 		self.contextName = contextName
 
+
+	
+	#
+	# Utilities
+	#
+	
+	def FilenameToURI(self, filename):
+		return self.baseURI + filename
+	
+	def URItoFilename(self, URIstr):
+		if not URIstr.startswith(self.baseURI):
+			warning("Tried to convert "+URIstr+" to a filename, but baseURI="+self.baseURI+" !")
+			return None
+		return URIstr[len(self.baseURI):]
