@@ -37,7 +37,7 @@
 
 
 /**
- * Top-level predicates:
+ * Top-level predicate:
  * generate a HTML specification of the in-store schema
  *
  * onto_spec(-Spec)
@@ -172,7 +172,7 @@ deprecated(Old,New) :-
 glance_html_desc(Desc) :-
 	setof(C-CD,
 	Class^S1^NS^(
-		class(Class),rdf_global_id(NS:C,Class),
+		class(Class),rdf_global_id(NS:C,Class),\+deprecated(Class,D),
 		sformat(S1,
 			'<a href="#term_~w">~w</a> | ',
 			[C,C]
@@ -184,7 +184,7 @@ glance_html_desc(Desc) :-
 	list_to_atom(ClassesLSR,Classes),
 	setof(P-PD,
         Property^S2^NS^(
-                property(Property),rdf_global_id(NS:P,Property),
+                property(Property),rdf_global_id(NS:P,Property),\+deprecated(Property,D),
                 sformat(S2,
                         '<a href="#term_~w">~w</a> | \n',
                         [P,P]
@@ -196,7 +196,7 @@ glance_html_desc(Desc) :-
         list_to_atom(PropertiesLSR,Properties),
 	setof(I-ID,
 	Individual^S3^NS^(
-		individual(Individual),rdf_global_id(NS:I,Individual),
+		individual(Individual),rdf_global_id(NS:I,Individual),\+deprecated(Individual,D),
 		sformat(S3,
 			'<a href="#term_~w">~w</a> | \n',
 			[I,I]
