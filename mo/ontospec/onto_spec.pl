@@ -84,7 +84,7 @@ onto_spec_to_file(File) :-
  */
 class_comment(NS:C,Comment) :-
 	class(Class),
-	rdf(Class,rdfs:comment,literal(Comment)),
+	rdf(Class,rdfs:comment,literal(Comment1)),newline_to_br(Comment1,Comment),
 	rdf_global_id(NS:C,Class).
 class_status(NS:C,Status) :-
 	class(Class),
@@ -92,7 +92,7 @@ class_status(NS:C,Status) :-
 	rdf_global_id(NS:C,Class).
 property_comment(NS:P,Comment) :-
 	property(Property),
-	rdf(Property,rdfs:comment,literal(Comment)),
+	rdf(Property,rdfs:comment,literal(Comment1)),newline_to_br(Comment1,Comment),
 	rdf_global_id(NS:P,Property).
 property_status(NS:P,Status) :-
 	property(Property),
@@ -417,8 +417,15 @@ list_to_atom([H|T],At) :-
 
 bnode(B) :- atom_concat('__',_,B).
 
-
-
+newline_to_br(Literal,LiteralBR) :-
+	atom_chars(Literal,L1),
+	newline_to_br_l(L1,L2),
+	atom_chars(LiteralBR,L2).
+newline_to_br_l([],[]).
+newline_to_br_l(['\n'|T1],['<','b','r','/','>','\n'|T2]) :-
+	!,newline_to_br_l(T1,T2).
+newline_to_br_l([H|T1],[H|T2]) :-
+	newline_to_br_l(T1,T2).
 
 :- 
 	nl,
