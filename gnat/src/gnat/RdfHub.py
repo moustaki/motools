@@ -47,7 +47,15 @@ class RdfHub :
 	#
 	# High-level mutators
 	#
-	
+
+	def load(self,uri) :
+		self.graph.parse(uri)
+
+	def crawl(self,uri,path) :
+		for property in path :
+			for s,p,o,g in self.graph.quads((URIRef(uri),URIRef(property), None)) :
+				self.load(str(o))
+
 	def addAvailableAs(self,manifestation,item) :
 		self.addNamed((URIRef(manifestation),self.MO['availableAs'],URIRef(item)))
 	
@@ -131,7 +139,7 @@ class RdfHub :
 		"""Returns the manifestation URIs associated to a particular local file"""
 		if contextName=="":
 			contextName = self.contextName
-		uris = [s for s,p,o,graph \
+		uris = [str(s) for s,p,o,graph \
 				in self.graph.quads((None,self.MO["availableAs"],URIRef(fileURI))) \
 				if contextName==None or graph.identifier == URIRef(contextName) \
 				]

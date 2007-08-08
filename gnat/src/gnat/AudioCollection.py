@@ -128,6 +128,23 @@ class AudioCollection :
 		info('Files processed : ' +str(self.fp_processed))
 		info('Successful identifications : '+str(self.fp_succeeded))
 
+	def crawl(self,path) :
+		 for itemURIstr in self.rdf.getItemURIs(contextName=None) :
+		 	filename = self.rdf.URItoFilename(itemURIstr)
+			debug("Considering "+filename)
+			manifURIs = self.rdf.availableAs(itemURIstr,contextName=None)
+			for manifURI in manifURIs :
+				#try :
+				debug("Loading "+manifURI)
+				self.rdf.load(manifURI) 
+				self.rdf.commit()
+				debug("Crawling from "+manifURI)
+				self.rdf.crawl(manifURI,path)
+				self.rdf.commit()
+				#except Exception, e:
+				#	error(" - " + str(e))
+
+
 	def addExternalInfo(self):
 		addIsophonicsTrackLinks(self.rdf)
 
@@ -150,7 +167,7 @@ if __name__ == '__main__':
 						help="use FORMAT format for the output file (default : 'xml')", metavar="FORMAT", default="xml")
 	(opts,args) = parser.parse_args()
 
-	nargs =  {"batch_gnat":0, "batch_fp":0, "addExternalInfo":0, "add":1, "dump":0}
+	nargs =  {"batch_gnat":0, "batch_fp":0, "addExternalInfo":0, "add":1, "dump":0, "crawl":4}
 	commands = nargs.keys()
 
 	if len(args) == 0:
@@ -160,7 +177,7 @@ if __name__ == '__main__':
 	if (command not in commands):
 		parser.error("Unknown command !")
 	
-	if nargs[command] <> (len(args)-1):
+	if command <> "crawl" and nargs[command] <> (len(args) - 1) :
 		parser.error("Incorrect number of arguments given ! Command \""+command+"\" expects "+str(nargs[command])+" arguments.")
 
 	loggingConfig = {"format":'%(asctime)s %(levelname)-8s %(message)s',
@@ -177,10 +194,15 @@ if __name__ == '__main__':
 
 	ac = AudioCollection()
 	debug("--- Starting "+ asctime()  +" ---")
-	if command <> "dump":
+	if command <> "dump" and command <> "crawl":
 		getattr(ac, command)(*args[1:])
 		ac.rdf.commit()
-	
+
+	if command == "crawl":
+		path = args[1:]
+		debug("Crawling using path: "+str(path))
+		ac.crawl(path)
+
 	if (command == "dump") | (opts.dumpfilename <> defaultdumpfilename):
 		debug("Dumping data to file...")
 		dumpfilename = opts.dumpfilename
