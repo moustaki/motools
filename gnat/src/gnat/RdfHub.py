@@ -110,10 +110,8 @@ class RdfHub :
 		# for now, just calling all file items mo:Streams O-O
 		if contextName=="":
 			contextName = self.contextName
-		return (str(s) for s,p,o,graph in self.graph.quads((None,None,None)) \
-						   if (((contextName==None) or (graph.identifier == URIRef(contextName)))\
-						      and (p == rdflib.RDF.type) and (o == self.MO["Stream"])\
-						      )
+		return (str(s) for s,p,o,graph in self.graph.quads((None,rdflib.RDF.type,self.MO["Stream"])) \
+						   if ((contextName==None) or (graph.identifier == URIRef(contextName)))
 				)
 				
 	
@@ -127,11 +125,15 @@ class RdfHub :
 		"""Check if we already know about an associated URI. Pass contextName=None to check all contexts."""
 		if contextName=="":
 			contextName = self.contextName
-		quads = [(s,p,o) for s,p,o,graph \
+		gen = ( (s,p,o) for s,p,o,graph \
 						in self.graph.quads((None,self.MO["availableAs"], URIRef(fileURI))) \
 						if contextName==None or graph.identifier == URIRef(contextName) \
-				]
-		return (len(quads) > 0)
+				)
+		try:
+			gen.next()
+		except:
+			return False
+		return True
 
 	def haveMD_URI(self,filename):
 		"""Check if we already know a metadata-derived URI for this filename."""
