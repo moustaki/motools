@@ -101,18 +101,18 @@ class RdfHub :
 			contextName = self.contextName
 		return (str(s) for s,p,o,graph in self.graph.quads((None,None,None)) \
 						   if ( (graph.identifier == URIRef(contextName))\
-						      & (str(s).startswith(base))\
+						      and (str(s).startswith(base))\
 						      )
 				)
 	
 	def getItemURIs(self, contextName=""):
 		"""Returns the URI of each resource in store with an item type."""
-		# for now, just calling all file items streams O-O
+		# for now, just calling all file items mo:Streams O-O
 		if contextName=="":
 			contextName = self.contextName
 		return (str(s) for s,p,o,graph in self.graph.quads((None,None,None)) \
-						   if (((contextName==None) | (graph.identifier == URIRef(contextName)))\
-						      & (p == rdflib.RDF.type) & (o == self.MO["Stream"])\
+						   if (((contextName==None) or (graph.identifier == URIRef(contextName)))\
+						      and (p == rdflib.RDF.type) and (o == self.MO["Stream"])\
 						      )
 				)
 				

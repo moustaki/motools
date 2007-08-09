@@ -23,7 +23,7 @@ from mutagen.trueaudio import TrueAudio
 from mutagen.wavpack import WavPack
 from MbzURIConverter import *
 from CachedMBZQuery import *
-from musicbrainz2.webservice import ResponseError
+from musicbrainz2.webservice import ResponseError, ConnectionError
 import musicbrainz2.webservice as ws
 import sys
 import logging
@@ -61,7 +61,7 @@ class MbzTrackLookup :
 				self.audio = FLAC(file)
 			except :
 				try :
-					self,audio = OggVorbis(file)
+					self.audio = OggVorbis(file)
 				except :
 					try :
 						self.audio = OggFLAC(file)
@@ -139,6 +139,8 @@ class MbzTrackLookup :
 
 		except ResponseError, e:
 			raise MbzLookupException('Musicbrainz response error')
+		except ConnectionError, e:
+			raise MbzLookupException('Musicbrainz connection error')
 		track_mapping.sort()
 		track_mapping.reverse()
 		self.track_mapping = track_mapping

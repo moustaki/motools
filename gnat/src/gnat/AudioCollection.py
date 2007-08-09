@@ -19,7 +19,7 @@ from Id3Writer import *
 from logging import log, error, warning, info, debug
 from optparse import OptionParser
 
-exclPatterns = r".*(jpg|jpeg|txt|ini|db|DS\_Store|m3u|pls|xml|log|png)$"
+exclPatterns = r".*(jpg|jpeg|txt|ini|db|DS\_Store|m3u|pls|xml|log|png|\.directory)$"
 excludeRE = re.compile(exclPatterns, re.IGNORECASE)
 
 
@@ -92,6 +92,7 @@ class AudioCollection :
 			self.fp_processed += 1
 			if self.rdf.have_URI(itemURIstr, FPContextName) == False:
 				if self.rdf.lock(itemURIstr) :
+					# TODO : We may have a PUID but no MBZID - If so, skip fingerprinting and just do PUIDTrackLookuplect
 					results = lookup.fpFile(filename)
 					if results.has_key("title"):
 						self.rdf.addTitleL(itemURIstr, results["title"])
@@ -103,7 +104,6 @@ class AudioCollection :
 						for genre in results["genres"]:
 							self.rdf.addGenreL(itemURIstr, genre)
 					if results.has_key("puids"):
-						#self.rdf.addItemType(itemURIstr)
 						success=False
 						for puid in results["puids"]:
 							self.rdf.addPUID(itemURIstr, puid)
@@ -203,7 +203,7 @@ if __name__ == '__main__':
 		debug("Crawling using path: "+str(path))
 		ac.crawl(path)
 
-	if (command == "dump") | (opts.dumpfilename <> defaultdumpfilename):
+	if (command == "dump") or (opts.dumpfilename <> defaultdumpfilename):
 		debug("Dumping data to file...")
 		dumpfilename = opts.dumpfilename
 		if dumpfilename==defaultdumpfilename:

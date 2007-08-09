@@ -9,6 +9,7 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 
 from MbzTrackLookup import *
 from logging import log, error, warning, info, debug
+import musicbrainz2.webservice as ws
 
 class PUIDTrackLookup(MbzTrackLookup):
 
@@ -24,7 +25,13 @@ class PUIDTrackLookup(MbzTrackLookup):
 		query = CachedMBZQuery()
 	
 		track_filter = ws.TrackFilter(puid=self.puid)
-		trackresults = query.getTracks(track_filter)
+		try:
+			trackresults = query.getTracks(track_filter)
+		except (ws.ConnectionError, ws.ResponseError):
+			try:
+				trackresults = query.getTracks(track_filter)
+			except (ws.ConnectionError, ws.ResponseError):
+				raise MbzLookupException("MBZ query failed.")
 		tracks = [tr.getTrack() for tr in trackresults]
 		self.track = self.choose(tracks)
 		
@@ -35,7 +42,7 @@ class PUIDTrackLookup(MbzTrackLookup):
 			return None
 		elif len(tracks) == 1:
 			debug("Single track matching PUID found.")
-			if tracks[0].getArtist().getName() <> self.md["artist"]:
+			if (self.md.has_key("artist")) and (tracks[0].getArtist().getName() <> self.md["artist"]):
 				warning("Sanity check FAILS : MBZ artist name = "+tracks[0].getArtist().getName()+\
 						" MusicDNS artist name = "+self.md["artist"]+\
 						" local artist name = "+str(self.artist))
@@ -123,10 +130,10 @@ def printTracks(tracks):
 		printTrack(track)
 
 def printTrack(track):
-	debug("Artist : id="+track.getArtist().getId()+", name="+track.getArtist().getName())
+	debug("Artist : name="+track.getArtist().getName()+"\t\t\t id="+track.getArtist().getId())
 	debug("Title  : "+track.getTitle())
 	for r in track.getReleases():
-		debug("Release: id="+r.getId()+", name="+r.getTitle())
+		debug("Release: name="+r.getTitle()+"\t\t\t id="+r.getId())
 
 						
 def main():

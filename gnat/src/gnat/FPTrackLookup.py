@@ -15,7 +15,8 @@ from logging import log, error, warning, info, debug
 from time import asctime
 import re
 
-genpuidbin = "genpuid"
+# NOTE : Specify an absolute or relative path here. Don't assume $PATH will do - some files will be "unanalyzable" if you do.
+genpuidbin = "./genpuid" 
 MusicDNSKey = "845c6a3ae981f1450eb13730183448d8" #Chris S's key
 
 class FPTrackLookup :
@@ -28,23 +29,32 @@ class FPTrackLookup :
 		
 		filename = clean(filename)
 		
+		# TODO : If file isn't a WAV or MP3, use suitable decoder, and then pass the resulting wav to genpuid.
+	
 		res_xml = os.popen(genpuidbin + " " + MusicDNSKey + " -rmd=2 -xml -noanalysis \""+filename+"\"").readlines()
-		if (res_xml[0] == res_xml[1]):
-			res_xml=res_xml[1:] # oddly, we see "<genpuid songs="1">\n" twice when the file is "unanalyzable"
-		
+			
+		retry_count=0
+		while ("".join(res_xml).find("unanalyzable") > 0) and (retry_count < 5):
+			warning("MusicDNS reports file is unanalyzable. Trying again...") # This can be caused by server hiccups
+			retry_count+=1
+			res_xml = os.popen(genpuidbin + " " + MusicDNSKey + " -rmd=2 -xml -noanalysis \""+filename+"\"").readlines()
+
 		# parse results
 		try:
+			if (res_xml[0] == res_xml[1]):
+				res_xml=res_xml[1:] # oddly, we see "<genpuid songs="1">\n" twice when the file is "unanalyzable"
+
 			clean_xml = "".join(res_xml).replace("mip:","") # strip out unknown prefix so minidom can parse
 			dom = xml.dom.minidom.parseString(clean_xml)
 	
 			root = dom.getElementsByTagName("genpuid")[0]
 
-			if (root.hasAttribute("songs") == False) | (int(root.getAttribute("songs")) == 0):
+			if (root.hasAttribute("songs") == False) or (int(root.getAttribute("songs")) == 0):
 				return {}
 			
 			track = root.getElementsByTagName("track")[0]
 			
-			if (track.childNodes[0].nodeName=="#text") & (track.childNodes[0].data in ["unavailable", "unanalyzable"]):
+			if (track.childNodes[0].nodeName=="#text") and (track.childNodes[0].data == ["unavailable"]):
 				info(" No PUID available for track : "+str(track.childNodes[0].data))
 				return {}
 			
