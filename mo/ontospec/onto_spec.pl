@@ -1,4 +1,14 @@
-:- module(onto_spec,[op(200,fx,gen),gen/1,onto_spec/1,onto_spec_to_file/1]).
+:- module(onto_spec,[
+		op(200,fx,gen)
+	,	gen/1
+	,	onto_spec/1
+	,	onto_spec_to_file/1
+	,	glance_html_desc/1
+	,	classes_html_desc/1
+	,	props_html_desc/1
+	,	inds_html_desc/1
+	,	deprecs_html_desc/1
+	]).
 
 
 /**
@@ -46,29 +56,36 @@ onto_spec(Spec) :-
 	header(Header),
 	tail(Tail),
 	glance_html_desc(Glance),
+	classes_html_desc(Classes),
+	props_html_desc(Properties),
+	inds_html_desc(Individuals),
+	deprecs_html_desc(Deprecated),
+	format(atom(Spec),'~w~w\n<h3>Classes and Properties (full detail)</h3>\n~w~w~w~w~w',
+		[Header,Glance,Classes,Properties,Individuals,Deprecated,Tail]).
+
+classes_html_desc(Classes) :-
 	((setof(NC-Desc,NS^(class_html_desc(NS:NC,Desc)),DescsMess),!);DescsMess=[]),
 	keysort(DescsMess,Descs),
 	reverse(Descs,DescsR),
-	list_to_atom(DescsR,Classes),
+	list_to_atom(DescsR,Classes).
+
+props_html_desc(Properties) :-
 	((setof(NP-Descp,NS^prop_html_desc(NS:NP,Descp),DescspMess),!);DescspMess=[]),
 	keysort(DescspMess,Descsp),
 	reverse(Descsp,DescspR),
-	list_to_atom(DescspR,Properties),
+	list_to_atom(DescspR,Properties).
+
+inds_html_desc(Individuals) :-
 	((setof(NI-Desci,NS^(ind_html_desc(NS:NI,Desci)),DescsiMess),!);DescsiMess=[]),
 	keysort(DescsiMess,Descsi),
 	reverse(Descsi,DescsiR),
-	list_to_atom(DescsiR,Individuals),
+	list_to_atom(DescsiR,Individuals).
+
+deprecs_html_desc(Deprecated) :-
 	((setof(Dep-Descd,NS^(deprecated_html_desc(NS:Dep,Descd)),DescsdMess),!);DescsdMess=[]),
 	keysort(DescsdMess,Descsd),
 	reverse(Descsd,DescsdR),
-	list_to_atom(DescsdR,Deprecated),
-	atom_concat(Header,Glance,T0),
-	atom_concat(T0,'\n<h3>Classes and Properties (full detail)</h3>\n',T1),
-	atom_concat(T1,Classes,T2),
-	atom_concat(T2,Properties,T3),
-	atom_concat(T3,Individuals,T4),
-	atom_concat(T4,Deprecated,T5),
-	atom_concat(T5,Tail,Spec).
+	list_to_atom(DescsdR,Deprecated).
 
 header('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">\n<head>\n<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://moustaki.org/foaf.rdf" />\n <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />\n<meta name="author" content="Yves Raimond" />\n<meta name="robots" content="all" />\n<title>Yves Raimond</title>\n</head>\n<body>').
 
