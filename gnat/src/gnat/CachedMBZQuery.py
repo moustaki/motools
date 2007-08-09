@@ -7,7 +7,7 @@ import time
 
 class CachedMBZQuery(Query) :
 
-	def __init__(self,wait=3) :
+	def __init__(self,wait=1) :
 		if not os.path.isdir('cache') :
 			os.mkdir('cache')
 			os.mkdir(os.path.join('cache','artist_q'))
