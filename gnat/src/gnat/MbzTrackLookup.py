@@ -116,7 +116,7 @@ class MbzTrackLookup :
 		release_mapping = []
 		track_mapping = []
 
-		if(self.album==None)
+		if(self.album==None):
 			debug("No release information, dropping release lookup")
 		try:
 			for artist in artists :
