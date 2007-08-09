@@ -146,6 +146,8 @@ subclassof(C,C2) :-
 	rdf(C,rdfs:subClassOf,C2).
 class(Class) :-
 	rdf(Class,rdf:type,rdfs:'Class').
+term_level(NS:T,Level) :-
+	(rdf(Term,mo:level,literal(Level1)),rdf_global_id(NS:T,Term),format(atom(Level),'level ~w',[Level1]),!);Level=''.
 %class(Class) :-
 %	rdf(Class,rdf:type,owl:'Class').
 individual(I) :-
@@ -218,10 +220,10 @@ glance_html_desc(Desc) :-
  */
 class_html_desc(NS:C,HtmlDesc) :- %domain-of AND range-of available
 	class_comment(NS:C,Comment),
-	class_status(NS:C,Status),
+	class_status(NS:C,Status),term_level(NS:C,Level),
 	sformat(StringHtml,
-		'<div class="specterm" id="term_~w"><h3>Class: ~w   -   ~w</h3>\n<em>~w</em>\n - ~w \n<br/>\n<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>\n<br/>',
-		[C,NS:C,Status,C,Comment]
+		'<div class="specterm" id="term_~w"><h3>Class: ~w   -   ~w   -   ~w</h3>\n<em>~w</em>\n - ~w \n<br/>\n<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>\n<br/>',
+		[C,NS:C,Status,Level,C,Comment]
 	),
 	string_to_atom(StringHtml,HtmlDesc1),
 	range_of_desc(NS:C,RangeOf),
@@ -270,10 +272,10 @@ subclass_of_desc(NS:C,Desc) :-
  */
 prop_html_desc(NS:P,HtmlDesc) :-
 	property_comment(NS:P,Comment),
-	property_status(NS:P,Status),
+	property_status(NS:P,Status),term_level(NS:P,Level),
 	sformat(StringHtmlComment,
-		'<div class="specterm" id="term_~w">\n<h3>Property: ~w   -   ~w</h3>\n<em>~w</em> - ~w \n<br/>',
-		[P,NS:P,Status,P,Comment]
+		'<div class="specterm" id="term_~w">\n<h3>Property: ~w   -   ~w   -   ~w</h3>\n<em>~w</em> - ~w \n<br/>',
+		[P,NS:P,Status,Level,P,Comment]
 	),
 	string_to_atom(StringHtmlComment,HtmlComment),
 	domain_html_desc(NS:P,DomainHtmlDesc),
@@ -292,11 +294,11 @@ prop_html_desc(NS:P,HtmlDesc) :-
  */
 ind_html_desc(NS:I,HtmlDesc) :-
 	individual_title(NS:I,Title),
-	individual_description(NS:I,Description),
+	individual_description(NS:I,Description),term_level(NS:I,Level),
 	individual_class(NS:I,NS2:C),
 	sformat(S,
-		'<div class="specterm" id="term_~w">\n<h3>Individual: ~w</h3>\n<em>~w</em> - ~w \n<br/><table style="th { float: top; }"><tr><th>Class:</th>\n<td><a href="#term_~w">~w</a></td>\n</tr></table></div>',
-		[I,I,Title,Description,C,NS2:C]
+		'<div class="specterm" id="term_~w">\n<h3>Individual: ~w   -   ~w</h3>\n<em>~w</em> - ~w \n<br/><table style="th { float: top; }"><tr><th>Class:</th>\n<td><a href="#term_~w">~w</a></td>\n</tr></table></div>',
+		[I,I,Level,Title,Description,C,NS2:C]
 	),
 	string_to_atom(S,HtmlDesc).
 
