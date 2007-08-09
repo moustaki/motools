@@ -55,6 +55,8 @@ class RdfHub :
 		for property in path :
 			for s,p,o,g in self.graph.quads((URIRef(uri),URIRef(property), None)) :
 				self.load(str(o))
+			for s,p,o,g in self.graph.quads((None,URIRef(property),URIRef(uri))) :
+				self.load(str(s))
 
 	def addAvailableAs(self,manifestation,item) :
 		self.addNamed((URIRef(manifestation),self.MO['availableAs'],URIRef(item)))

@@ -120,15 +120,23 @@ class MbzTrackLookup :
 			for artist in artists :
 				artist_id = (MbzURIConverter(artist.artist.id)).getId()
 				artist_mapping.append((artist.score,artist))
-				release_filter = ws.ReleaseFilter(query='(release:'+str(self.album)+') '+' AND arid:'+artist_id)
-				releases = query.getReleases(release_filter)
-				for release in releases :
-					release_id = (MbzURIConverter(release.release.id)).getId()
-					release_mapping.append(((release.score + artist.score)/2,release))
-					track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND reid:'+release_id)
+				if(self.album!=None) :
+					release_filter = ws.ReleaseFilter(query='(release:'+str(self.album)+') '+' AND arid:'+artist_id)
+					releases = query.getReleases(release_filter)
+					for release in releases :
+						release_id = (MbzURIConverter(release.release.id)).getId()
+						release_mapping.append(((release.score + artist.score)/2,release))
+						track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND reid:'+release_id)
+						tracks = query.getTracks(track_filter)
+						for track in tracks :
+							track_mapping.append(((track.score +release.score + artist.score)/3 ,track))
+				else :
+					debug("No release information, dropping release lookup")
+					track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND arid:'+artist_id)
 					tracks = query.getTracks(track_filter)
 					for track in tracks :
-						track_mapping.append(((track.score +release.score + artist.score)/3 ,track))
+						track_mapping.append(((track.score + artist.score)/2 ,track))
+
 		except ResponseError, e:
 			raise MbzLookupException('Musicbrainz response error')
 		track_mapping.sort()

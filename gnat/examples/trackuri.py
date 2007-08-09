@@ -13,17 +13,24 @@
 import sys
 import os
 import os.path
+import logging
+from logging import log, error, warning, info, debug
+
 
 sys.path.append(os.path.abspath("")+"/../src/gnat/")
 
-print sys.path
 
 from MbzURIConverter import *
 from MbzTrackLookup import *
 from RdfHub import *
 from Id3Writer import *
 
-
+loggingConfig = {"format":'%(asctime)s %(levelname)-8s %(message)s',
+                          "datefmt":'%d.%m.%y %H:%M:%S',
+                                                  "filename":"trackuri.log",
+                          "filemode":'a'}
+loggingConfig["level"]=logging.DEBUG
+logging.basicConfig(**loggingConfig)
 
 def usage() :
         print
