@@ -54,7 +54,7 @@ class FPTrackLookup :
 			
 			track = root.getElementsByTagName("track")[0]
 			
-			if (track.childNodes[0].nodeName=="#text") and (track.childNodes[0].data == ["unavailable"]):
+			if (track.childNodes[0].nodeName=="#text") and (track.childNodes[0].data == "unavailable"):
 				info(" No PUID available for track : "+str(track.childNodes[0].data))
 				return {}
 			
