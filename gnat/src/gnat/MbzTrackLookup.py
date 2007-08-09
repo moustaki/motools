@@ -116,6 +116,8 @@ class MbzTrackLookup :
 		release_mapping = []
 		track_mapping = []
 
+		if(self.album==None)
+			debug("No release information, dropping release lookup")
 		try:
 			for artist in artists :
 				artist_id = (MbzURIConverter(artist.artist.id)).getId()
@@ -131,7 +133,6 @@ class MbzTrackLookup :
 						for track in tracks :
 							track_mapping.append(((track.score +release.score + artist.score)/3 ,track))
 				else :
-					debug("No release information, dropping release lookup")
 					track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND arid:'+artist_id)
 					tracks = query.getTracks(track_filter)
 					for track in tracks :
