@@ -1,0 +1,21 @@
+Music Ontology Python interface
+-------------------------------
+
+Developers:
+
+ Christopher Sutton 
+  chris (at) chrissutton (dot) org
+ Yves Raimond
+  yves (at) dbtune (dot) org
+
+
+This package aims to provide an easy way for python
+programmers to manipulated Music Ontology data, allowing
+things such as:
+
+perf = Performance()
+perf.performer = Person('Glenn Gould')
+
+
+The code will be available under a BSD license.
+
