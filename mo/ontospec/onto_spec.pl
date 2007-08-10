@@ -189,7 +189,7 @@ deprecated(Old,New) :-
  * Spec At A Glance - FOAF/SIOC style
  */
 glance_html_desc(Desc) :-
-	setof(C-CD,
+	((setof(C-CD,
 	Class^S1^NS^(
 		class(Class),rdf_global_id(NS:C,Class),\+deprecated(Class,D),
 		sformat(S1,
@@ -198,10 +198,10 @@ glance_html_desc(Desc) :-
 			),
 		string_to_atom(S1,CD)
 	),
-	ClassesL),
+	ClassesL),!);ClassesL=[]),
 	keysort(ClassesL,ClassesLSorted),reverse(ClassesLSorted,ClassesLSR),
 	list_to_atom(ClassesLSR,Classes),
-	setof(P-PD,
+	((setof(P-PD,
         Property^S2^NS^(
                 property(Property),rdf_global_id(NS:P,Property),\+deprecated(Property,D),
                 sformat(S2,
@@ -210,10 +210,10 @@ glance_html_desc(Desc) :-
                         ),
                 string_to_atom(S2,PD)
         ),
-        PropertiesL),
+        PropertiesL),!);PropertiesL=[]),
 	keysort(PropertiesL,PropertiesLS),reverse(PropertiesLS,PropertiesLSR),
         list_to_atom(PropertiesLSR,Properties),
-	setof(I-ID,
+	((setof(I-ID,
 	Individual^S3^NS^(
 		individual(Individual),rdf_global_id(NS:I,Individual),\+deprecated(Individual,D),
 		sformat(S3,
@@ -222,7 +222,7 @@ glance_html_desc(Desc) :-
 			),
 		string_to_atom(S3,ID)
 	),
-	IndividualsL),
+	IndividualsL),!);IndividualsL=[]),
 	keysort(IndividualsL,IndividualsLS),reverse(IndividualsLS,IndividualsLSR),
 	list_to_atom(IndividualsLSR,Individuals),
 	sformat(String,
