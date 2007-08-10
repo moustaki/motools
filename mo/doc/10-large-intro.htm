@@ -52,7 +52,7 @@ workflow within two boundaries: the simplest one and the most expressive one.<br
 
 The simplest one consider the existence of 4 concepts within this workflow:
 
-MusicalWork(the <em>musical work</em> itself), Performance (the event
+MusicalWork (the <em>musical work</em> itself), Performance (the event
 
 corresponding to an actual <em>performance</em><br />
 
@@ -100,19 +100,7 @@ able to do a simple query for accessing simple information.
 
 <br />
 
-Thus, we can define three categories of users:</p>
 
-<br />
-
-<ul>
-
-	<li><strong>Level 1 users</strong>: they will not care about this workflow. They will describe musical artist and bands and records (albums).</li>
-
-	<li><strong>Level 2 users</strong>: they will use the recordedAs shortcut without caring about describing Sound and Recording.</li>
-
-	<li><strong>Level 3 users</strong>: they will use the full workflow to describes the mesical things they want to describe. As a best practice, they will also add all shorcuts of the workflow in their descriptions to be compatible with level 1 and level 2 descriptions.</li>
-
-</ul>
 
 <p>&nbsp;</p>
 
@@ -162,13 +150,21 @@ Thus, we can define three categories of users:</p>
 
 <h2><a name="sec-background" class="mozTocH2" id="sec-background"></a>Background </h2>
 
-<p>The Music Ontology is an effort of <a href="http://zitgist.com">ZitGist LLC.</a> to express musical relationships between artists, albums and tracks using <a href="http://www.w3.org/RDF/">RDF</a> and to query that same information using the <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL query language for RDF</a>.</p>
+<p>The Music Ontology is an effort led by <a href="http://zitgist.com">ZitGist LLC.</a> 
+and the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>
+to express music-related information on the <a href="http://www.w3.org/2001/sw/">Semantic Web</a>.
 
-<p>The Music Ontology is mainly influenced by the <a href="http://www.ifla.org/VII/s13/frbr/frbr.htm">FRBR Final Report</a>. This report gives the ground for the elaboration of musical entities and relations between them. The Music Ontology has also been influenced by <a href="http://musicbrainz.org">MusicBrainz community music metadatabase</a> that gives a concrete example of how this ontology can be use. </p>
+<p>The Music Ontology is mainly influenced by:
+<br/>
+<ul>
+<li><a href="http://www.ifla.org/VII/s13/frbr/frbr.htm">The FRBR Final Report</a></li> 
+<li><a href="http://purl.org/NET/c4dm/event.owl">The Event ontology</a></li>
+<li><a href="http://purl.org/NET/c4dm/timeline.owl">The Timeline ontology</a></li>
+<li><a href="http://www.metadata.net/harmony/ABCV2.htm">The ABC ontology from the Harmony project</a></li>
+<li><a href="http://www.foaf-project.org">The FOAF Project</a></li>
+</ul>
 
-<p>The specific contents of the Music Ontology are detailed in the <a href="http://purl.org/ontology/mo/">Music Ontology namespace document</a>.</p>
-
-<p><a href="http://sioc-project.org/publications/"></a></p>
+More detailed are available on the Wiki <a href="http://wiki.musicontology.com/index.php/Publications"/>publication page</a>.
 
 <p>&nbsp;</p>
 
@@ -251,22 +247,11 @@ at a later date. </p>
 Music Ontology modules may be used to extend the ontology and avoid making the base ontology too complex.
 
 
+A list of available modules is available <a href="http://wiki.musicontology.com/index.php/Extension_Modules">on the Wiki</a>.
 
 
 
 
-
-<p>&nbsp;</p>
-
-<h4><a name="sec-module-mf" class="mozTocH3" id="sec-evolution"></a>Music Features Ontology </h4>
-
-<div style="padding:10px; background-color:#A8D3FF; border: 1px solid #003399; text-align:center"> <b><a href="http://wiki.musicontology.com/index.php/Music_Features_Ontology">Information about the Music Features Ontology is available on the Music Ontology Wiki</a></b></div>
-
-<h4>&nbsp;</h4>
-
-<h4><a name="sec-module-mit" class="mozTocH3" id="sec-evolution"></a>Instrument Taxonomy</h4>
-
-<div style="padding:10px; background-color:#A8D3FF; border: 1px solid #003399; text-align:center"> <b><a href="http://wiki.musicontology.com/index.php/Instrument_Taxonomy">Information about the Instrument Taxonomy is available on the Music Ontology Wiki</a></b></div>
 
 <p>&nbsp;</p>
 
@@ -294,7 +279,8 @@ In order to express knowledge about the production process of a piece of music, 
 
 <br /><br />
 
-In the current version of the Music Ontology, the main sub-classes of Event are: Performance, Recording, Arrangement, Composition. However, given its abstract definition, we will extend the things we may describe using this class: results of feature extraction, beat tracking, segmentation of songs... Thus allowing <a href="http://en.wikipedia.org/wiki/Music_information_retrieval">Music Information Retrieval</a> results to be expressed within it!
+In the current version of the Music Ontology, the main sub-classes of Event are: Performance, Recording, Arrangement, Composition. However, given its abstract definition, we will extend the things we may describe using this class: results of feature extraction, beat tracking, segmentation of songs... 
+Thus allowing <a href="http://en.wikipedia.org/wiki/Music_information_retrieval">Music Information Retrieval</a> results to be expressed within it!
 
 
 

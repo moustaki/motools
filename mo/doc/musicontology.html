@@ -67,7 +67,7 @@
 
   <tr>
 
-    <td><h2>Specification Document - 21 March 2007</h2>
+    <td><h2>Specification Document - 10 August 2007</h2>
 
       <dl>
 
@@ -81,15 +81,17 @@
 
         <dt>Last update:</dt>
 
-        <dd>$Date: 2007/03/21 010:32:43 $</dd>
+        <dd>$Date: 2007/08/10 010:32:43 $</dd>
 
         <dt>Revision:</dt>
 
-        <dd>Revision: 1.11 </dd>
+        <dd>Revision: 1.12 </dd>
 
         <dt>Editor:</dt>
 
-        <dd><a href="http://fgiasson.com" title="Frederick Gisson">Frédérick Giasson</a> - <a href="http://www.zitgist.com" title="Digital Enterprise Research Institute">Zitgist</a></dd>
+        <dd><a href="http://fgiasson.com" title="Frederick Giasson">Frédérick Giasson</a> - <a href="http://www.zitgist.com" title="Digital Enterprise Research Institute">Zitgist</a></dd>
+
+	<dd><a href="http://moustaki.org/" title="Yves Raimond">Yves Raimond</a> - <a href="http://www.elec.qmul.ac.uk/digitalmusic/" title="Centre for Digital Music, Queen Mary, University of London">Centre for Digital Music, Queen Mary, University of London</a></dd>
 
         <dt>Authors:</dt>
 
@@ -99,7 +101,7 @@
 
       </dl>
 
-    <p class="copyright"> Copyright &copy; 2006-2007 by Zitgist LLC.</p></td>
+    <p class="copyright"> Copyright &copy; 2006-2007 by Zitgist LLC and Yves Raimond.</p></td>
 
     <td><a href="http://wiki.musicontology.com"><img src="imgs/mo-wiki-mo.png" width="388" height="210" border="0" /></a></td>
 
@@ -147,7 +149,7 @@ that can be freely used by anyone.
 
 		specification was adapted from the <a href="http://xmlns.com/foaf/0.1/">FOAF
 
-		Vocabulary Specification</a> by Dan Brickley and Libby Miller and the <a href="http://rdfs.org/sioc/spec/">SIOC Ontolofy Specification</a> by Uldis Bojar and John G. Breslin.
+		Vocabulary Specification</a> by Dan Brickley and Libby Miller and the <a href="http://rdfs.org/sioc/spec/">SIOC Ontolofy Specification</a> by Uldis Bojar and John G. Breslin. This document was automatically generated using the <a href="http://moustaki.org/ontospec/">OntoSpec</a> script.
 
 	</td>
 
@@ -203,7 +205,12 @@ that can be freely used by anyone.
 
 <h2><a name="sec-abstract" class="mozTocH2" id="sec-abstract"></a>Abstract</h2>
 
-<p> The Music Ontology Specification provides main concepts and properties fo describing music (i.e. artists, albums and tracks) on the Semantic Web. This document contains a detailed description of the Music Ontology. </p>
+<p> 
+The Music Ontology Specification provides main concepts and properties fo describing music (i.e. artists, albums, tracks, but also performances,
+arrangements, etc.) on the Semantic Web. 
+This document contains a detailed description of the Music Ontology. 
+
+</p>
 
 <p>&nbsp;</p>
 
@@ -260,7 +267,7 @@ by the authors regarding future updates.</p>
 
 
 
-  <li><a href="#sec-overview">Music OntologyOverview</a>
+  <li><a href="#sec-overview">Music Ontology Overview</a>
 
     <ul>
 
@@ -268,19 +275,9 @@ by the authors regarding future updates.</p>
 
 	  <li><a href="#sec-music-creation-workflow">Music Creation Workflow</a></li>
 
-	  <li><a href="#sec-example">RDF Document Example</a>s
+	  <li><a href="#sec-example">RDF Document Examples</a></li>
 
-	    <ul>
 
-	      <li><a href="#sec-example-level1">Level 1</a></li>
-
-          <li><a href="#sec-example-level2">Level 2</a></li>
-
-	      <li><a href="#sec-example-level3">Level 3</a></li>
-
-	    </ul>
-
-	  </li>
 
       <li><a href="#sec-sparqlexample">Examples of SPARQL queries against these RDF graphs</a></li>
 
@@ -298,17 +295,8 @@ by the authors regarding future updates.</p>
 
       <li><a href="#sec-evolution">Evolution and Extension of Music Ontology </a></li>
 
-      <li><a href="#sec-modules">Music Ontology Modules</a> 
+      <li><a href="#sec-modules">Music Ontology Modules</a></li> 
 
-        <ul>
-
-          <li><a href="#sec-module-mf">Music Features Ontology</a> </li>
-
-          <li><a href="#sec-module-mit">Instrument Taxonomy</a> </li>
-
-        </ul>
-
-      </li>
 
       <li><a href="#sec-time-event">Time, and TimeLine, Event </a></li>
 
@@ -343,11 +331,64 @@ by the authors regarding future updates.</p>
 
 <h2><a name="sec-intro" class="mozTocH2" id="sec-intro"></a>Introduction</h2>
 
-<p>Internet changed the music industry.  At first, sharing systems like <a href="http://www.napster.com">Napster</a> allowed people to share any song they had on their computer with millions other people. That new reality changed the music industry’s landscape for good, and many juridical battles followed. However, a biggest change followed a couple of years later. Communities like <a href="http://www.myspace.com">MySpace</a> started to appear. Strong of millions of regular users, such communities helped garage bands and obscure musicians to create their musical niche: the longtail of the music industry. This second change is more profound than the first one: now any musician has the possibility to reach their audience by sharing their work on the Web. In the mean time, a free database called <a href="http://musicbrainz.org">MusicBrainz</a> archiving million of between artists, albums and tracks appeared; music suggesting services like <a href="http://www.pandora.com">Pandora</a> started to appear and Apple started to sell individual tracks at 1$ with <a href="http://www.itunes.com">iTunes</a>.</p>
+<p>
+
+Internet changed the music industry.  At first, sharing systems like <a href="http://www.napster.com">Napster</a> 
+allowed people to share any song they had on their computer with millions other people. 
+That new reality changed the music industry’s landscape for good, and many juridical battles followed. 
+However, a biggest change followed a couple of years later. 
+Communities like <a href="http://www.myspace.com">MySpace</a> started to appear. 
+Strong of millions of regular users, such communities helped garage bands and obscure musicians to create 
+their musical niche: the longtail of the music industry. 
+This second change is more profound than the first one: 
+now any musician has the possibility to reach their audience by sharing their work on the Web. 
+In the mean time, a free database called <a href="http://musicbrainz.org">MusicBrainz</a> archiving 
+million of between artists, albums and tracks appeared; music suggesting services like 
+<a href="http://www.pandora.com">Pandora</a> or <a href="http://last.fm/">Last.FM</a> started to appear and Apple started 
+to sell individual tracks at 1$ with <a href="http://www.itunes.com">iTunes</a>.</p>
 
 <p>At that point, the music industry of the eighties leaded by blockbusters was completely changed.</p>
 
-<p>The Music Ontology is an attempt to link all the information about musical Artists, Albums and Tracks together: from MusicBrainz to MySpace. The goal is to express all relations between musical information to help people finding anything about music and musicians. It is based around the use of machine readable information provided by any web site or web service on the Web.<br />
+<p>
+
+The Music Ontology is an attempt to  provide a vocabulary for linking a wide range music-related information, 
+and to provide a democratic mechanism for doing so. 
+Anybody can publish Music Ontology data and link it with existing data, in order to help 
+create a music-related <i>web of data</i>.
+
+For example, John Doe may publish some information about a performance he saw last night (like the fact
+that he was there, and a review). Mary Doe may publish the fact that she attended the same performance, that
+she recorded it using her cell-phone, and that the corresponding item is available in her podcast.
+ 
+The Music Ontology provides a vocabulary to express information ranging from this example to:
+<pre>
+In this performance was interpreted a particular arrangement of the Trout Quintet by Franz Schubert.
+</pre>
+<pre>
+This work was performed ten times, but only two of these performances were recorded.
+</pre>
+<pre>
+Ten takes of this particular track have been recorded, each of which with a particular microphone location.
+</pre>
+<pre>
+"Come as You Are" by Nirvana was released on a single and the "Nevermind" album.
+</pre>
+<pre>
+During this gig, the band played ten songs. During the last one (a cover of "Eight days a week"), 
+the drummer from the support band joined them to play with them.
+</pre>
+
+
+The Music Ontology is divided in three levels of expressiveness - from the simplest one to the more complex one.
+Everything is clustered around the following categories:
+
+<ul>
+<li><strong>Level 1:</strong> aims at providing a vocabulary for simple editorial information (tracks/artists/releases, etc.)</li>
+<li><strong>Level 2:</strong> aims at providing a vocabulary for expressing the <i>music creation workflow</i> (composition, arrangement,
+performance, recording, etc.)</li>
+<li><strong>Level 3:</strong> aims at providing a vocabulary for complex event decomposition, to express, for example, what happened during
+a particular performance, what is the melody line of a particular work, etc.</li>
+</ul>
 
 </p>
 
@@ -388,7 +429,7 @@ property and by individuals. All the terms are hyperlinked to their detailed des
 <p>Properties: | <a href="#term_amazon_asin">amazon_asin</a> | 
 <a href="#term_arranged_in">arranged_in</a> | 
 <a href="#term_arrangement_of">arrangement_of</a> | 
-<a href="#term_availableAs">availableAs</a> | 
+<a href="#term_available_as">available_as</a> | 
 <a href="#term_biography">biography</a> | 
 <a href="#term_bitsPerSample">bitsPerSample</a> | 
 <a href="#term_bpm">bpm</a> | 
@@ -412,12 +453,11 @@ property and by individuals. All the terms are hyperlinked to their detailed des
 <a href="#term_encoding">encoding</a> | 
 <a href="#term_engineer">engineer</a> | 
 <a href="#term_engineered">engineered</a> | 
-<a href="#term_eventHomePage">eventHomePage</a> | 
+<a href="#term_event_homepage">event_homepage</a> | 
 <a href="#term_exchange_item">exchange_item</a> | 
 <a href="#term_fanpage">fanpage</a> | 
 <a href="#term_free_download">free_download</a> | 
 <a href="#term_genre">genre</a> | 
-<a href="#term_hasManifestation">hasManifestation</a> | 
 <a href="#term_has_movement">has_movement</a> | 
 <a href="#term_image">image</a> | 
 <a href="#term_imdb">imdb</a> | 
@@ -429,10 +469,11 @@ property and by individuals. All the terms are hyperlinked to their detailed des
 <a href="#term_listened">listened</a> | 
 <a href="#term_listener">listener</a> | 
 <a href="#term_mailorder">mailorder</a> | 
+<a href="#term_manifestation">manifestation</a> | 
 <a href="#term_mashup_of">mashup_of</a> | 
 <a href="#term_medley_of">medley_of</a> | 
 <a href="#term_member_of">member_of</a> | 
-<a href="#term_movementNum">movementNum</a> | 
+<a href="#term_movement_number">movement_number</a> | 
 <a href="#term_musicbrainz">musicbrainz</a> | 
 <a href="#term_musicmoz">musicmoz</a> | 
 <a href="#term_myspace">myspace</a> | 
@@ -454,24 +495,24 @@ property and by individuals. All the terms are hyperlinked to their detailed des
 <a href="#term_produced_sound">produced_sound</a> | 
 <a href="#term_produced_work">produced_work</a> | 
 <a href="#term_producer">producer</a> | 
-<a href="#term_publicationOf">publicationOf</a> | 
+<a href="#term_publication_of">publication_of</a> | 
 <a href="#term_published">published</a> | 
-<a href="#term_publishedAs">publishedAs</a> | 
+<a href="#term_published_as">published_as</a> | 
 <a href="#term_publisher">publisher</a> | 
-<a href="#term_publishingLocation">publishingLocation</a> | 
+<a href="#term_publishing_location">publishing_location</a> | 
 <a href="#term_puid">puid</a> | 
-<a href="#term_recordedAs">recordedAs</a> | 
+<a href="#term_recorded_as">recorded_as</a> | 
 <a href="#term_recorded_in">recorded_in</a> | 
 <a href="#term_recording_of">recording_of</a> | 
 <a href="#term_records">records</a> | 
-<a href="#term_releaseStatus">releaseStatus</a> | 
-<a href="#term_releaseType">releaseType</a> | 
+<a href="#term_release_status">release_status</a> | 
+<a href="#term_release_type">release_type</a> | 
 <a href="#term_remaster_of">remaster_of</a> | 
 <a href="#term_remix_of">remix_of</a> | 
 <a href="#term_remixed">remixed</a> | 
 <a href="#term_remixer">remixer</a> | 
 <a href="#term_review">review</a> | 
-<a href="#term_sampleRate">sampleRate</a> | 
+<a href="#term_sample_rate">sample_rate</a> | 
 <a href="#term_sampled">sampled</a> | 
 <a href="#term_sampled_version">sampled_version</a> | 
 <a href="#term_sampled_version_of">sampled_version_of</a> | 
@@ -552,7 +593,7 @@ therefore covering simple editorial information (tracks, releases, artists, grou
 <div class="glance" id="glance" style="padding: 5px; border: dotted; background-color: #ddd;">
 <p>Classes: | <a href="#term_Agent">Agent</a> | <a href="#term_AudioFile">AudioFile</a> | <a href="#term_CD">CD</a> | <a href="#term_CorporateBody">CorporateBody</a> | <a href="#term_DAT">DAT</a> | <a href="#term_DCC">DCC</a> | <a href="#term_DVDA">DVDA</a> | <a href="#term_ED2K">ED2K</a> | <a href="#term_Group">Group</a> | <a href="#term_Label">Label</a> | <a href="#term_MD">MD</a> | <a href="#term_MagneticTape">MagneticTape</a> | <a href="#term_Medium">Medium</a> | <a href="#term_MusicArtist">MusicArtist</a> | <a href="#term_MusicGroup">MusicGroup</a> | <a href="#term_MusicalExpression">MusicalExpression</a> | <a href="#term_MusicalItem">MusicalItem</a> | <a href="#term_MusicalManifestation">MusicalManifestation</a> | <a href="#term_Organization">Organization</a> | <a href="#term_Record">Record</a> | <a href="#term_ReleaseStatus">ReleaseStatus</a> | <a href="#term_ReleaseType">ReleaseType</a> | <a href="#term_SACD">SACD</a> | <a href="#term_Signal">Signal</a> | <a href="#term_SoloMusicArtist">SoloMusicArtist</a> | <a href="#term_Stream">Stream</a> | <a href="#term_Torrent">Torrent</a> | <a href="#term_Track">Track</a> | <a href="#term_Vinyl">Vinyl</a> |  </p>
 <p>Properties: | <a href="#term_amazon_asin">amazon_asin</a> | 
-<a href="#term_availableAs">availableAs</a> | 
+<a href="#term_available_as">available_as</a> | 
 <a href="#term_biography">biography</a> | 
 <a href="#term_bitsPerSample">bitsPerSample</a> | 
 <a href="#term_channels">channels</a> | 
@@ -572,7 +613,6 @@ therefore covering simple editorial information (tracks, releases, artists, grou
 <a href="#term_exchange_item">exchange_item</a> | 
 <a href="#term_fanpage">fanpage</a> | 
 <a href="#term_free_download">free_download</a> | 
-<a href="#term_hasManifestation">hasManifestation</a> | 
 <a href="#term_image">image</a> | 
 <a href="#term_imdb">imdb</a> | 
 <a href="#term_isrc">isrc</a> | 
@@ -581,6 +621,7 @@ therefore covering simple editorial information (tracks, releases, artists, grou
 <a href="#term_made">made</a> | 
 <a href="#term_mailorder">mailorder</a> | 
 <a href="#term_maker">maker</a> | 
+<a href="#term_manifestation">manifestation</a> | 
 <a href="#term_mashup_of">mashup_of</a> | 
 <a href="#term_medley_of">medley_of</a> | 
 <a href="#term_member">member</a> | 
@@ -597,20 +638,20 @@ therefore covering simple editorial information (tracks, releases, artists, grou
 <a href="#term_preview_download">preview_download</a> | 
 <a href="#term_produced">produced</a> | 
 <a href="#term_producer">producer</a> | 
-<a href="#term_publicationOf">publicationOf</a> | 
+<a href="#term_publication_of">publication_of</a> | 
 <a href="#term_published">published</a> | 
-<a href="#term_publishedAs">publishedAs</a> | 
+<a href="#term_published_as">published_as</a> | 
 <a href="#term_publisher">publisher</a> | 
-<a href="#term_publishingLocation">publishingLocation</a> | 
+<a href="#term_publishing_location">publishing_location</a> | 
 <a href="#term_puid">puid</a> | 
-<a href="#term_releaseStatus">releaseStatus</a> | 
-<a href="#term_releaseType">releaseType</a> | 
+<a href="#term_release_status">release_status</a> | 
+<a href="#term_release_type">release_type</a> | 
 <a href="#term_remaster_of">remaster_of</a> | 
 <a href="#term_remix_of">remix_of</a> | 
 <a href="#term_remixed">remixed</a> | 
 <a href="#term_remixer">remixer</a> | 
 <a href="#term_review">review</a> | 
-<a href="#term_sampleRate">sampleRate</a> | 
+<a href="#term_sample_rate">sample_rate</a> | 
 <a href="#term_sampled">sampled</a> | 
 <a href="#term_sampler">sampler</a> | 
 <a href="#term_sell_item">sell_item</a> | 
@@ -660,7 +701,7 @@ therefore covering information about the music creation workflow (Composition, P
 <a href="#term_durationXSD">durationXSD</a> | 
 <a href="#term_engineer">engineer</a> | 
 <a href="#term_engineered">engineered</a> | 
-<a href="#term_eventHomePage">eventHomePage</a> | 
+<a href="#term_event_homepage">event_homepage</a> | 
 <a href="#term_genre">genre</a> | 
 <a href="#term_hasAgent">hasAgent</a> | 
 <a href="#term_hasFactor">hasFactor</a> | 
@@ -675,7 +716,7 @@ therefore covering information about the music creation workflow (Composition, P
 <a href="#term_key">key</a> | 
 <a href="#term_listened">listened</a> | 
 <a href="#term_listener">listener</a> | 
-<a href="#term_movementNum">movementNum</a> | 
+<a href="#term_movement_number">movement_number</a> | 
 <a href="#term_opus">opus</a> | 
 <a href="#term_performance_of">performance_of</a> | 
 <a href="#term_performed">performed</a> | 
@@ -687,7 +728,7 @@ therefore covering information about the music creation workflow (Composition, P
 <a href="#term_produced_signal">produced_signal</a> | 
 <a href="#term_produced_sound">produced_sound</a> | 
 <a href="#term_produced_work">produced_work</a> | 
-<a href="#term_recordedAs">recordedAs</a> | 
+<a href="#term_recorded_as">recorded_as</a> | 
 <a href="#term_recorded_in">recorded_in</a> | 
 <a href="#term_recording_of">recording_of</a> | 
 <a href="#term_records">records</a> | 
@@ -762,6 +803,8 @@ Music Ontology documents to create a unified database of information</p>
 
       <li><a href="#term_Recording">Recording</a></li>
 
+      <li><a href="#term_Arrangement">Arrangement</a></li>
+
       <li><a href="#term_MusicArtist">MusicArtist</a></li>
 
       <li><a href="#term_SoloMusicArtist">SoloMusicArtist</a></li>
@@ -772,7 +815,6 @@ Music Ontology documents to create a unified database of information</p>
 
       <li><a href="#term_Label">Label</a></li>
 
-      <li><a href="#term_similar_to">similar_to</a></li>
 
 </ul>
 
@@ -790,7 +832,7 @@ Music Ontology documents to create a unified database of information</p>
 
 	  <li><a href="#term_ReleaseType">ReleaseType</a></li>
 
-	  <li><a href="#term_releaseType">releaseType</a></li>
+	  <li><a href="#term_release_type">release_type</a></li>
 
 	  <li><a href="#term_album">album</a></li>
 
@@ -828,7 +870,7 @@ Music Ontology documents to create a unified database of information</p>
 
 	  <li><a href="#term_ReleaseStatus">ReleaseStatus</a></li>
 
-	  <li><a href="#term_releaseStatus">releaseStatus</a><a href="#term_ReleaseStatus"></a></li>
+	  <li><a href="#term_release_status">release_status</a><a href="#term_ReleaseStatus"></a></li>
 
 	  <li><a href="#term_bootleg">bootleg</a><a href="#term_Bootleg"></a></li>
 
@@ -842,77 +884,11 @@ Music Ontology documents to create a unified database of information</p>
 
   
 
-   <div class="rdf-proplist">
-
-	<h3>MO Genres </h3>
-
-	<ul>
-
-
-
-	  <li><a href="#term_Genre">Genre</a></li>
-
-	  <li><a href="#term_Blues">Blues</a></li>
-
-	  <li><a href="#term_Classical">Classical</a></li>
-
-	  <li><a href="#term_Country">Country</a></li>
-
-	  <li><a href="#term_Electronica">Electronica</a></li>
-
-	  <li><a href="#term_Funk">Funk</a></li>
-
-	  <li><a href="#term_Gospel">Gospel</a></li>
-
-	  <li><a href="#term_Hiphop">Hiphop</a></li>
-
-	  <li><a href="#term_Jazz">Jazz</a></li>
-
-	  <li><a href="#term_Melodic">Melodic</a></li>
-
-	  <li><a href="#term_Pop">Pop</a></li>
-
-	  <li><a href="#term_Reggae">Reggae</a></li>
-
-	  <li><a href="#term_Rock">Rock</a></li>
-
-	  <li><a href="#term_World">World</a></li>
-
-	</ul>
-
-  </div>
-
-  
 
     <div style="clear: left;"><br /></div>  
 
   
 
-   <div class="rdf-proplist">
-
-	<h3>MO Intruments </h3>
-
-	<ul>
-
-
-
-	  <li><a href="#term_Instrument">Instrument</a></li>
-
-	  <li><a href="#term_Brass">Brass</a></li>
-
-	  <li><a href="#term_Digital">Digital</a></li>
-
-	  <li><a href="#term_Keyboard">Keyboard</a></li>
-
-	  <li><a href="#term_Percussion">Percussion</a></li>
-
-	  <li><a href="#term_String">String</a></li>
-
-	  <li><a href="#term_Woodwind">Woodwind</a></li>
-
-     </ul>
-
-  </div>      
 
   
 
@@ -928,19 +904,19 @@ Music Ontology documents to create a unified database of information</p>
 
 	  <li><a href="#term_Medium">Medium</a></li>
 
-	  <li><a href="#term_Cd">Cd</a></li>
+	  <li><a href="#term_CD">Cd</a></li>
 
-	  <li><a href="#term_Dat">Dat</a></li>
+	  <li><a href="#term_DAT">Dat</a></li>
 
-	  <li><a href="#term_Dcc">Dcc</a></li>
+	  <li><a href="#term_DCC">Dcc</a></li>
 
-	  <li><a href="#term_Dvda">Dvda</a></li>
+	  <li><a href="#term_DVDA">Dvda</a></li>
 
-	  <li><a href="#term_Magnetictape">Magnetictape</a></li>
+	  <li><a href="#term_MagneticTape">Magnetictape</a></li>
 
-	  <li><a href="#term_Md">Md</a></li>
+	  <li><a href="#term_MD">Md</a></li>
 
-	  <li><a href="#term_Sacd">Sacd</a></li>
+	  <li><a href="#term_SACD">Sacd</a></li>
 
 	  <li><a href="#term_Stream">Stream</a></li>
 
@@ -948,7 +924,6 @@ Music Ontology documents to create a unified database of information</p>
 
 	  <li><a href="#term_Vinyl">Vinyl</a></li>
 
-      <li><a href="#term_stream_url">stream_url</a></li>
 
 	</ul>
 
@@ -980,6 +955,9 @@ Music Ontology documents to create a unified database of information</p>
 
 	  <li><a href="#term_tempo">tempo</a></li>
 
+	  <li><a href="#term_listened">listened</a></li>
+
+	  <li><a href="#term_recorded_as">recorded_as</a></li>
 	</ul>
 
   </div> 
@@ -1008,11 +986,11 @@ Music Ontology documents to create a unified database of information</p>
 
 	  <li><a href="#term_puid">puid</a></li>
 
-	  <li><a href="#term_sampleRate">sampleRate</a></li>
+	  <li><a href="#term_sample_rate">sampleRate</a></li>
 
-	  <li><a href="#term_sampledVersionOf">sampledVersionOf</a></li>
+	  <li><a href="#term_sampled_version_of">sampled_version_of</a></li>
 
-	  <li><a href="#term_trmid"></a><a href="#term_signalTime">signalTime</a></li>
+	  <li><a href="#term_trmid"></a><a href="#term_ime">signal time</a></li>
 
 	  <li><a href="#term_trmid">trmid</a></li>
 
@@ -1036,6 +1014,12 @@ Music Ontology documents to create a unified database of information</p>
 
 	<ul><li><a href="#term_opus">opus</a></li>
 
+	<li><a href="#term_movement">movement</a></li>
+
+	<li><a href="#term_Movement">Movement</a></li>
+
+	<li><a href="#term_movemen_number">movement_number</a></li>
+
     </ul>
 
   </div>
@@ -1056,6 +1040,7 @@ Music Ontology documents to create a unified database of information</p>
 
 	  <li><a href="#term_Sound">Sound</a></li>
 
+	  <li><a href="#term_Signal">Signal</a></li>
 	</ul>
 
 </div>
@@ -1098,37 +1083,6 @@ Music Ontology documents to create a unified database of information</p>
 
   
 
-  <div class="rdf-proplist">
-
-	<h3>MO Movement <br />Relationships </h3>
-
-	<ul><li><a href="#term_Movement">Movement</a></li>
-
-	  <li><a href="#term_movementNum">movementNum</a></li>
-
-	  <li><a href="#term_has_movement">has_movement</a></li>
-
-	</ul>
-
-  </div>
-
-
-
-   <div class="rdf-proplist">
-
-	<h3>MO Sound <br />
-
-	  Relationships</h3>
-
-	<ul><li><a href="#term_timber">timber</a></li>
-
-	  <li><a href="#term_pitch">pitch</a></li>
-
-	</ul>
-
-  </div>       
-
-  
 
 <div class="rdf-proplist">
 
@@ -1140,9 +1094,9 @@ Music Ontology documents to create a unified database of information</p>
 
       <li><a href="#term_Track">Track</a></li>
 
-	  <li><a href="#term_has_track">has_track</a></li>
+	  <li><a href="#term_track">track</a></li>
 
-	  <li><a href="#term_trackNum">trackNum</a></li>
+	  <li><a href="#term_track_number">track_number</a></li>
 
     </ul>
 
@@ -1180,7 +1134,7 @@ Music Ontology documents to create a unified database of information</p>
 
 	  Relationships </h3>
 
-	<ul><li><a href="#term_hasManifestation">hasManifestation</a></li>
+	<ul><li><a href="#term_has_manifestation">has_manifestation</a></li>
 
 	</ul>
 
@@ -1194,39 +1148,13 @@ Music Ontology documents to create a unified database of information</p>
 
 
 
-	<ul><li><a href="#term_availableAs">availableAs</a></li>
+	<ul><li><a href="#term_available_as">available_as</a></li>
 
 	</ul>
 
   </div>  
 
   
-
-  <div class="rdf-proplist">
-
-	<h3>MO Agent/Performance <br />Relationships </h3>
-
-
-
-	<ul>
-
-	  <li><a href="#term_listened">listened</a></li>
-
-	  <li><a href="#term_availableAs"></a><a href="#term_listener">listener</a></li>
-
-	  <li><a href="#term_publishedAs">publishedAs</a></li>
-
-	</ul>
-
-  </div>   
-
-  
-
-  
-
-  
-
-
 
   
 
@@ -1278,7 +1206,7 @@ Music Ontology documents to create a unified database of information</p>
 
 
 
-	<ul><li><a href="#term_publishedAs">publishedAs</a></li>
+	<ul><li><a href="#term_published_as">published_as</a></li>
 
 	  <li><a href="#term_PublishedLyrics">PublishedLyrics</a></li>
 
@@ -1326,32 +1254,6 @@ Music Ontology documents to create a unified database of information</p>
 
   
 
-   <div class="rdf-proplist">
-
-	<h3>MO Remixe <br />Relationships</h3>
-
-	<ul><li><a href="#term_djmixed">djmixed</a></li>
-
-      <li><a href="#term_djmix_of">djmix_of</a></li>
-
-      <li><a href="#term_remaster_of">remaster_of</a></li>
-
-	  <li><a href="#term_remix_of">remix_of</a></li>
-
-	  <li><a href="#term_remixer">remixer</a></li>
-
-	  <li><a href="#term_remixed">remixed</a></li>
-
-	  <li><a href="#term_sampler">sampler</a></li>
-
-	  <li><a href="#term_sampled">sampled</a></li>
-
-	</ul>
-
-  </div>       
-
-
-
 
 
 
@@ -1360,23 +1262,23 @@ Music Ontology documents to create a unified database of information</p>
 
 	<h3>MO workflow properties</h3>
 
-	<ul><li><a href="#term_producesWork">producesWork</a></li>
+	<ul><li><a href="#term_produced_work">produced_work</a></li>
 
-      <li><a href="#term_usedInPerformance">usedInPerformance</a></li>
+      <li><a href="#term_performed_in">performed_in</a></li>
 
-      <li><a href="#term_productOfComposition">productOfComposition</a></li>
+      <li><a href="#term_composed_in">composed_in</a></li>
 
-	  <li><a href="#term_usesWork">usesWork</a></li>
+	  <li><a href="#term_performance_of">performance_of</a></li>
 
-	  <li><a href="#term_producesSound">producesSound</a></li>
+	  <li><a href="#term_produced_sound">produced_sound</a></li>
 
-	  <li><a href="#term_usedInRecording">usedInRecording</a></li>
+	  <li><a href="#term_recorded_in">recorded_in</a></li>
 
-	  <li><a href="#term_usesSound">usesSound</a></li>
+	  <li><a href="#term_recording_of">recording_of</a></li>
 
-	  <li><a href="#term_producesSignal">producesSignal</a></li>
+	  <li><a href="#term_produced_signal">produced_signal</a></li>
 
-	  <li><a href="#term_recordedAs">recordedAs</a></li>
+	  <li><a href="#term_recorded_as">recorded_as</a></li>
 
 	</ul>
 
@@ -1412,7 +1314,7 @@ Music Ontology documents to create a unified database of information</p>
 
 	  <li><a href="#term_published">published</a></li>
 
-	  <li><a href="#term_publicationLocation">publicationLocation</a></li>
+	  <li><a href="#term_publication_location">publication_location</a></li>
 
 	  <li><a href="#term_producer">producer</a></li>
 
@@ -1466,7 +1368,7 @@ Music Ontology documents to create a unified database of information</p>
 
    <div class="rdf-proplist">
 
-	<h3>MO Discography <br />Relationships</h3>
+	<h3>MO External web document links <br />Relationships</h3>
 
 	<ul>
 
@@ -1512,7 +1414,7 @@ Music Ontology documents to create a unified database of information</p>
 
    <div class="rdf-proplist">
 
-	<h3>MO Music Community <br />Relationships</h3>
+	<h3>MO Music Communities <br />Relationships</h3>
 
 	<ul>
 
@@ -1554,7 +1456,7 @@ Music Ontology documents to create a unified database of information</p>
 
 	  <li><a href="#term_Show">Show</a></li>
 
-      <li><a href="#term_eventHomePage">eventHomePage</a></li>
+      <li><a href="#term_event_homepage">event_homepage</a></li>
 
 	</ul>
 
@@ -1627,7 +1529,7 @@ workflow within two boundaries: the simplest one and the most expressive one.<br
 
 The simplest one consider the existence of 4 concepts within this workflow:
 
-MusicalWork(the <em>musical work</em> itself), Performance (the event
+MusicalWork (the <em>musical work</em> itself), Performance (the event
 
 corresponding to an actual <em>performance</em><br />
 
@@ -1675,19 +1577,7 @@ able to do a simple query for accessing simple information.
 
 <br />
 
-Thus, we can define three categories of users:</p>
 
-<br />
-
-<ul>
-
-	<li><strong>Level 1 users</strong>: they will not care about this workflow. They will describe musical artist and bands and records (albums).</li>
-
-	<li><strong>Level 2 users</strong>: they will use the recordedAs shortcut without caring about describing Sound and Recording.</li>
-
-	<li><strong>Level 3 users</strong>: they will use the full workflow to describes the mesical things they want to describe. As a best practice, they will also add all shorcuts of the workflow in their descriptions to be compatible with level 1 and level 2 descriptions.</li>
-
-</ul>
 
 <p>&nbsp;</p>
 
@@ -1737,13 +1627,21 @@ Thus, we can define three categories of users:</p>
 
 <h2><a name="sec-background" class="mozTocH2" id="sec-background"></a>Background </h2>
 
-<p>The Music Ontology is an effort of <a href="http://zitgist.com">ZitGist LLC.</a> to express musical relationships between artists, albums and tracks using <a href="http://www.w3.org/RDF/">RDF</a> and to query that same information using the <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL query language for RDF</a>.</p>
+<p>The Music Ontology is an effort led by <a href="http://zitgist.com">ZitGist LLC.</a> 
+and the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>
+to express music-related information on the <a href="http://www.w3.org/2001/sw/">Semantic Web</a>.
 
-<p>The Music Ontology is mainly influenced by the <a href="http://www.ifla.org/VII/s13/frbr/frbr.htm">FRBR Final Report</a>. This report gives the ground for the elaboration of musical entities and relations between them. The Music Ontology has also been influenced by <a href="http://musicbrainz.org">MusicBrainz community music metadatabase</a> that gives a concrete example of how this ontology can be use. </p>
+<p>The Music Ontology is mainly influenced by:
+<br/>
+<ul>
+<li><a href="http://www.ifla.org/VII/s13/frbr/frbr.htm">The FRBR Final Report</a></li> 
+<li><a href="http://purl.org/NET/c4dm/event.owl">The Event ontology</a></li>
+<li><a href="http://purl.org/NET/c4dm/timeline.owl">The Timeline ontology</a></li>
+<li><a href="http://www.metadata.net/harmony/ABCV2.htm">The ABC ontology from the Harmony project</a></li>
+<li><a href="http://www.foaf-project.org">The FOAF Project</a></li>
+</ul>
 
-<p>The specific contents of the Music Ontology are detailed in the <a href="http://purl.org/ontology/mo/">Music Ontology namespace document</a>.</p>
-
-<p><a href="http://sioc-project.org/publications/"></a></p>
+More detailed are available on the Wiki <a href="http://wiki.musicontology.com/index.php/Publications"/>publication page</a>.
 
 <p>&nbsp;</p>
 
@@ -1826,22 +1724,11 @@ at a later date. </p>
 Music Ontology modules may be used to extend the ontology and avoid making the base ontology too complex.
 
 
+A list of available modules is available <a href="http://wiki.musicontology.com/index.php/Extension_Modules">on the Wiki</a>.
 
 
 
 
-
-<p>&nbsp;</p>
-
-<h4><a name="sec-module-mf" class="mozTocH3" id="sec-evolution"></a>Music Features Ontology </h4>
-
-<div style="padding:10px; background-color:#A8D3FF; border: 1px solid #003399; text-align:center"> <b><a href="http://wiki.musicontology.com/index.php/Music_Features_Ontology">Information about the Music Features Ontology is available on the Music Ontology Wiki</a></b></div>
-
-<h4>&nbsp;</h4>
-
-<h4><a name="sec-module-mit" class="mozTocH3" id="sec-evolution"></a>Instrument Taxonomy</h4>
-
-<div style="padding:10px; background-color:#A8D3FF; border: 1px solid #003399; text-align:center"> <b><a href="http://wiki.musicontology.com/index.php/Instrument_Taxonomy">Information about the Instrument Taxonomy is available on the Music Ontology Wiki</a></b></div>
 
 <p>&nbsp;</p>
 
@@ -1869,7 +1756,8 @@ In order to express knowledge about the production process of a piece of music, 
 
 <br /><br />
 
-In the current version of the Music Ontology, the main sub-classes of Event are: Performance, Recording, Arrangement, Composition. However, given its abstract definition, we will extend the things we may describe using this class: results of feature extraction, beat tracking, segmentation of songs... Thus allowing <a href="http://en.wikipedia.org/wiki/Music_information_retrieval">Music Information Retrieval</a> results to be expressed within it!
+In the current version of the Music Ontology, the main sub-classes of Event are: Performance, Recording, Arrangement, Composition. However, given its abstract definition, we will extend the things we may describe using this class: results of feature extraction, beat tracking, segmentation of songs... 
+Thus allowing <a href="http://en.wikipedia.org/wiki/Music_information_retrieval">Music Information Retrieval</a> results to be expressed within it!
 
 
 
@@ -1926,7 +1814,7 @@ grounded definition for the rules that underpin the RDF design.</p>
 
 <p>This is for that reason that the RDF document examples at the beginning of this document suggested to use the <a href="http://xmlns.com/foaf/0.1/">FOAF</a> ontology to describe the Person, and its relations with other Person (artist or non-artist), and to use the Music Ontology to specify that that Person is also an Artist. That way, we can re-use other ontologies such as the <a href="http://vocab.org/relationship/">Relationship ontology</a>, in conjunction with the FOAF ontology, to describe different relationship between Artists.</p>
 
-<p>The Music Ontology as an ontology cannot incorporate everything we might want to talk about that is related to music: artists (people), albums and tracks. Instead of covering all topics within the Music Ongoloty itself, we describe the basic topics and build into a larger framework - RDF - that allows us to take advantage of work elsewhere on more specific description vocabularies.</p>
+<p>The Music Ontology as an ontology cannot incorporate everything we might want to talk about that is related to music: artists (people), albums and tracks. Instead of covering all topics within the Music Ontology itself, we describe the basic topics and build into a larger framework - RDF - that allows us to take advantage of work elsewhere on more specific description vocabularies.</p>
 
 <p>RDF provides the Music Ontology with a way to mix together different descriptive vocabularies in a consistent way. Vocabularies can be created by different communities and groups as appropriate and mixed together as required, without needing any centralized agreement on how terms from different vocabularies can be written down in XML or N3.</p>
 
@@ -1946,7 +1834,6 @@ grounded definition for the rules that underpin the RDF design.</p>
 
 <p>&nbsp;</p>
 
-<h2><a name="sec-xref" class="mozTocH2" id="sec-xref"></a>The Music Ontology  cross-reference: Classes, Properties and Individuals</h2>
 
 
 
@@ -2200,7 +2087,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 </tr>
 
 <tr><th>in-domain-of:</th><td><a href="#term_bitsPerSample">bitsPerSample</a></td>
-<td><a href="#term_sampleRate">sampleRate</a></td>
+<td><a href="#term_sample_rate">sample_rate</a></td>
 <td><a href="#term_sampled_version_of">sampled_version_of</a></td>
 </tr>
 
@@ -2240,7 +2127,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 <td><a href="#term_hasSubEvent">hasSubEvent</a></td>
 </tr>
 
-<tr><th>in-domain-of:</th><td><a href="#term_eventHomePage">eventHomePage</a></td>
+<tr><th>in-domain-of:</th><td><a href="#term_event_homepage">event_homepage</a></td>
 <td><a href="#term_hasProduct">hasProduct</a></td>
 <td><a href="#term_hasFactor">hasFactor</a></td>
 <td><a href="#term_hasAgent">hasAgent</a></td>
@@ -2393,10 +2280,10 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publicationOf">publicationOf</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publication_of">publication_of</a></td>
 </tr>
 
-<tr><th>in-domain-of:</th><td><a href="#term_publishedAs">publishedAs</a></td>
+<tr><th>in-domain-of:</th><td><a href="#term_published_as">published_as</a></td>
 </tr>
 
 <tr><th>sub-class-of:</th><td><a href="#term_MusicalExpression">MusicalExpression</a></td>
@@ -2410,10 +2297,10 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publicationOf">publicationOf</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publication_of">publication_of</a></td>
 </tr>
 
-<tr><th>in-domain-of:</th><td><a href="#term_publishedAs">publishedAs</a></td>
+<tr><th>in-domain-of:</th><td><a href="#term_published_as">published_as</a></td>
 </tr>
 
 <tr><th>sub-class-of:</th><td><a href="#term_MusicalExpression">MusicalExpression</a></td>
@@ -2470,7 +2357,7 @@ pause between them.<br/>
 <table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_has_movement">has_movement</a></td>
 </tr>
 
-<tr><th>in-domain-of:</th><td><a href="#term_movementNum">movementNum</a></td>
+<tr><th>in-domain-of:</th><td><a href="#term_movement_number">movement_number</a></td>
 </tr>
 
 <tr><th>sub-class-of:</th><td><a href="#term_MusicalWork">MusicalWork</a></td>
@@ -2554,7 +2441,7 @@ particular time').<br/>
 <td><a href="#term_discogs">discogs</a></td>
 <td><a href="#term_musicmoz">musicmoz</a></td>
 <td><a href="#term_image">image</a></td>
-<td><a href="#term_hasManifestation">hasManifestation</a></td>
+<td><a href="#term_manifestation">manifestation</a></td>
 </tr>
 
 <tr><th>sub-class-of:</th><td><a href="http://purl.org/vocab/frbr/core#Expression">frbr:Expression</a></td>
@@ -2576,7 +2463,7 @@ In terms of intellectual content and physical form, an item exemplifying a manif
 <br/>
 <table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_preview">preview</a></td>
 <td><a href="#term_item">item</a></td>
-<td><a href="#term_availableAs">availableAs</a></td>
+<td><a href="#term_available_as">available_as</a></td>
 </tr>
 
 <tr><th>in-domain-of:</th><td><a href="#term_image">image</a></td>
@@ -2618,7 +2505,7 @@ Defining manifestation as an entity also enables us to draw relationships betwee
 <td><a href="#term_other_release_of">other_release_of</a></td>
 <td><a href="#term_compiled">compiled</a></td>
 <td><a href="#term_produced">produced</a></td>
-<td><a href="#term_hasManifestation">hasManifestation</a></td>
+<td><a href="#term_manifestation">manifestation</a></td>
 </tr>
 
 <tr><th>in-domain-of:</th><td><a href="#term_imdb">imdb</a></td>
@@ -2629,13 +2516,13 @@ Defining manifestation as an entity also enables us to draw relationships betwee
 <td><a href="#term_maker">maker</a></td>
 <td><a href="#term_preview">preview</a></td>
 <td><a href="#term_item">item</a></td>
-<td><a href="#term_availableAs">availableAs</a></td>
-<td><a href="#term_releaseStatus">releaseStatus</a></td>
-<td><a href="#term_releaseType">releaseType</a></td>
+<td><a href="#term_available_as">available_as</a></td>
+<td><a href="#term_release_status">release_status</a></td>
+<td><a href="#term_release_type">release_type</a></td>
 <td><a href="#term_tribute_to">tribute_to</a></td>
 <td><a href="#term_other_release_of">other_release_of</a></td>
 <td><a href="#term_compilation_of">compilation_of</a></td>
-<td><a href="#term_publishingLocation">publishingLocation</a></td>
+<td><a href="#term_publishing_location">publishing_location</a></td>
 <td><a href="#term_compiler">compiler</a></td>
 <td><a href="#term_producer">producer</a></td>
 </tr>
@@ -2754,7 +2641,7 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <td><a href="#term_listener">listener</a></td>
 <td><a href="#term_conductor">conductor</a></td>
 <td><a href="#term_performer">performer</a></td>
-<td><a href="#term_recordedAs">recordedAs</a></td>
+<td><a href="#term_recorded_as">recorded_as</a></td>
 <td><a href="#term_produced_sound">produced_sound</a></td>
 <td><a href="#term_performance_of">performance_of</a></td>
 </tr>
@@ -2796,10 +2683,10 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publishedAs">publishedAs</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_published_as">published_as</a></td>
 </tr>
 
-<tr><th>in-domain-of:</th><td><a href="#term_publicationOf">publicationOf</a></td>
+<tr><th>in-domain-of:</th><td><a href="#term_publication_of">publication_of</a></td>
 </tr>
 
 <tr><th>sub-class-of:</th><td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
@@ -2812,10 +2699,10 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publishedAs">publishedAs</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_published_as">published_as</a></td>
 </tr>
 
-<tr><th>in-domain-of:</th><td><a href="#term_publicationOf">publicationOf</a></td>
+<tr><th>in-domain-of:</th><td><a href="#term_publication_of">publication_of</a></td>
 </tr>
 
 <tr><th>sub-class-of:</th><td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
@@ -2828,10 +2715,10 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publishedAs">publishedAs</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_published_as">published_as</a></td>
 </tr>
 
-<tr><th>in-domain-of:</th><td><a href="#term_publicationOf">publicationOf</a></td>
+<tr><th>in-domain-of:</th><td><a href="#term_publication_of">publication_of</a></td>
 </tr>
 
 <tr><th>sub-class-of:</th><td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
@@ -2844,11 +2731,11 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publishedAs">publishedAs</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_published_as">published_as</a></td>
 <td><a href="#term_made">made</a></td>
 </tr>
 
-<tr><th>in-domain-of:</th><td><a href="#term_publicationOf">publicationOf</a></td>
+<tr><th>in-domain-of:</th><td><a href="#term_publication_of">publication_of</a></td>
 <td><a href="#term_maker">maker</a></td>
 <td><a href="#term_track">track</a></td>
 </tr>
@@ -2902,7 +2789,7 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_releaseStatus">releaseStatus</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_release_status">release_status</a></td>
 </tr>
 
 
@@ -2915,7 +2802,7 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_releaseType">releaseType</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_release_type">release_type</a></td>
 </tr>
 
 
@@ -2941,12 +2828,12 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publicationOf">publicationOf</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publication_of">publication_of</a></td>
 <td><a href="#term_performance_of">performance_of</a></td>
 <td><a href="#term_produced_score">produced_score</a></td>
 </tr>
 
-<tr><th>in-domain-of:</th><td><a href="#term_publishedAs">publishedAs</a></td>
+<tr><th>in-domain-of:</th><td><a href="#term_published_as">published_as</a></td>
 <td><a href="#term_performed_in">performed_in</a></td>
 </tr>
 
@@ -2976,7 +2863,7 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
 <table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_similar_to">similar_to</a></td>
-<td><a href="#term_publicationOf">publicationOf</a></td>
+<td><a href="#term_publication_of">publication_of</a></td>
 <td><a href="#term_mashup_of">mashup_of</a></td>
 <td><a href="#term_remaster_of">remaster_of</a></td>
 <td><a href="#term_djmix_of">djmix_of</a></td>
@@ -2988,13 +2875,13 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <td><a href="#term_sampled">sampled</a></td>
 <td><a href="#term_remixed">remixed</a></td>
 <td><a href="#term_encodes">encodes</a></td>
-<td><a href="#term_recordedAs">recordedAs</a></td>
+<td><a href="#term_recorded_as">recorded_as</a></td>
 <td><a href="#term_produced_signal">produced_signal</a></td>
 </tr>
 
 <tr><th>in-domain-of:</th><td><a href="#term_musicbrainz">musicbrainz</a></td>
 <td><a href="#term_similar_to">similar_to</a></td>
-<td><a href="#term_publishedAs">publishedAs</a></td>
+<td><a href="#term_published_as">published_as</a></td>
 <td><a href="#term_mashup_of">mashup_of</a></td>
 <td><a href="#term_remaster_of">remaster_of</a></td>
 <td><a href="#term_djmix_of">djmix_of</a></td>
@@ -3228,9 +3115,9 @@ work #1 J. S. Bach's The art of the fugue<br/>
 
 
 </table>
-<br/></div><div class="specterm" id="term_availableAs">
-<h3>Property: mo:availableAs   -   stable   -   level 1</h3>
-<em>availableAs</em> - 		Relates a musical manifestation to a musical item (this album, and my particular cd). By using<br/>
+<br/></div><div class="specterm" id="term_available_as">
+<h3>Property: mo:available_as   -   stable   -   level 1</h3>
+<em>available_as</em> - 		Relates a musical manifestation to a musical item (this album, and my particular cd). By using<br/>
 		this property, there is no assumption on wether the full content is available on the linked item.<br/>
 		To be explicit about this, you can use a sub-property, such as mo:item (the full manifestation<br/>
 		is available on that item) or mo:preview (only a part of the manifestation is available on<br/>
@@ -3702,9 +3589,9 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <td><a href="#term_isAgentIn">isAgentIn</a></td>
 </tr>
 </table>
-<br/></div><div class="specterm" id="term_eventHomePage">
-<h3>Property: mo:eventHomePage   -   stable   -   level 2</h3>
-<em>eventHomePage</em> - Links a particular event to a web page 
+<br/></div><div class="specterm" id="term_event_homepage">
+<h3>Property: mo:event_homepage   -   stable   -   level 2</h3>
+<em>event_homepage</em> - Links a particular event to a web page 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Event">Event</a></td>
@@ -3714,7 +3601,8 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <td><a href="http://xmlns.com/foaf/0.1/Document">foaf:Document</a></td>
 </tr>
 
-
+<tr><th>Sub-property-of: </th><td><a href="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">foaf:isPrimaryTopicOf</a></td>
+</tr>
 </table>
 <br/></div><div class="specterm" id="term_exchange_item">
 <h3>Property: mo:exchange_item   -   stable   -   level 1</h3>
@@ -3826,21 +3714,6 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#isFactorOf">event:isFactorOf</a></td>
 </tr>
 
-</table>
-<br/></div><div class="specterm" id="term_hasManifestation">
-<h3>Property: mo:hasManifestation   -   unstable   -   level 1</h3>
-<em>hasManifestation</em> - Links a MusicalExpression to its manifestations, subproperty of frbr:embodiment 
-<br/><table style="th { float: top; }">
-<tr><th>Domain:</th>
-<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
-
-</tr>
-<tr><th>Range:</th>
-<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
-</tr>
-
-<tr><th>Sub-property-of: </th><td><a href="http://purl.org/vocab/frbr/core#embodiment">frbr:embodiment</a></td>
-</tr>
 </table>
 <br/></div><div class="specterm" id="term_hasProduct">
 <h3>Property: event:hasProduct   -   stable   -   level 2</h3>
@@ -4184,6 +4057,21 @@ This is usually used to link to a Creative Commons licence.
 </tr>
 
 </table>
+<br/></div><div class="specterm" id="term_manifestation">
+<h3>Property: mo:manifestation   -   unstable   -   level 1</h3>
+<em>manifestation</em> - Links a MusicalExpression to its manifestations, subproperty of frbr:embodiment 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+</tr>
+
+<tr><th>Sub-property-of: </th><td><a href="http://purl.org/vocab/frbr/core#embodiment">frbr:embodiment</a></td>
+</tr>
+</table>
 <br/></div><div class="specterm" id="term_mashup_of">
 <h3>Property: mo:mashup_of   -   unstable   -   level 1</h3>
 <em>mashup_of</em> - Indicates that musical works or the expressions of a musical work were mashed up on this album or track. <br/>
@@ -4246,9 +4134,9 @@ This means that the orignial musical expression were rearranged to create a new 
 </tr>
 
 </table>
-<br/></div><div class="specterm" id="term_movementNum">
-<h3>Property: mo:movementNum   -   unstable   -   level 2</h3>
-<em>movementNum</em> - Indicates the position of a movement in a musical work. 
+<br/></div><div class="specterm" id="term_movement_number">
+<h3>Property: mo:movement_number   -   unstable   -   level 2</h3>
+<em>movement_number</em> - Indicates the position of a movement in a musical work. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Movement">Movement</a></td>
@@ -4699,9 +4587,9 @@ This means that the orignial musical expression were rearranged to create a new 
 </tr>
 
 </table>
-<br/></div><div class="specterm" id="term_publicationOf">
-<h3>Property: mo:publicationOf   -   unstable   -   level 1</h3>
-<em>publicationOf</em> - Link a particular manifestation to the related signal, score, libretto, or lyrics 
+<br/></div><div class="specterm" id="term_publication_of">
+<h3>Property: mo:publication_of   -   unstable   -   level 1</h3>
+<em>publication_of</em> - Link a particular manifestation to the related signal, score, libretto, or lyrics 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_PublishedLyrics">PublishedLyrics</a></td>
@@ -4735,9 +4623,9 @@ This means that the orignial musical expression were rearranged to create a new 
 </tr>
 
 </table>
-<br/></div><div class="specterm" id="term_publishedAs">
-<h3>Property: mo:publishedAs   -   stable   -   level 1</h3>
-<em>publishedAs</em> - 		Links a signal or a score to its manifestations - this is a subproperty of frbr:embodiment (linking<br/>
+<br/></div><div class="specterm" id="term_published_as">
+<h3>Property: mo:published_as   -   stable   -   level 1</h3>
+<em>published_as</em> - 		Links a signal or a score to its manifestations - this is a subproperty of frbr:embodiment (linking<br/>
 		an Expression to a Manifestation)<br/>
 	 
 <br/><table style="th { float: top; }">
@@ -4773,9 +4661,9 @@ This means that the orignial musical expression were rearranged to create a new 
 </tr>
 
 </table>
-<br/></div><div class="specterm" id="term_publishingLocation">
-<h3>Property: mo:publishingLocation   -   stable   -   level 1</h3>
-<em>publishingLocation</em> - 		Relates a musical manifestation to its publication location.<br/>
+<br/></div><div class="specterm" id="term_publishing_location">
+<h3>Property: mo:publishing_location   -   stable   -   level 1</h3>
+<em>publishing_location</em> - 		Relates a musical manifestation to its publication location.<br/>
          
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -4826,9 +4714,9 @@ This means that the orignial musical expression were rearranged to create a new 
 
 
 </table>
-<br/></div><div class="specterm" id="term_recordedAs">
-<h3>Property: mo:recordedAs   -   stable   -   level 2</h3>
-<em>recordedAs</em> - 		This is a shortcut property, allowing to bypass all the Sound/Recording steps. This property<br/>
+<br/></div><div class="specterm" id="term_recorded_as">
+<h3>Property: mo:recorded_as   -   stable   -   level 2</h3>
+<em>recorded_as</em> - 		This is a shortcut property, allowing to bypass all the Sound/Recording steps. This property<br/>
 		allows to directly link a Performance to the recorded Signal. This is recommended for "normal"<br/>
 		users. However, advanced users wanting to express things such as the location of the microphone will<br/>
 		have to create this shortcut as well as the whole workflow, in order to let the "normal" users access<br/>
@@ -4905,9 +4793,9 @@ This means that the orignial musical expression were rearranged to create a new 
 </tr>
 
 </table>
-<br/></div><div class="specterm" id="term_releaseStatus">
-<h3>Property: mo:releaseStatus   -   stable   -   level 1</h3>
-<em>releaseStatus</em> -                 Relates a musical manifestation to its release status (bootleg, ...)<br/>
+<br/></div><div class="specterm" id="term_release_status">
+<h3>Property: mo:release_status   -   stable   -   level 1</h3>
+<em>release_status</em> -                 Relates a musical manifestation to its release status (bootleg, ...)<br/>
          
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -4920,9 +4808,9 @@ This means that the orignial musical expression were rearranged to create a new 
 
 
 </table>
-<br/></div><div class="specterm" id="term_releaseType">
-<h3>Property: mo:releaseType   -   stable   -   level 1</h3>
-<em>releaseType</em> - 		Relates a musical manifestation to its release type (interview, spoken word, album, ...)<br/>
+<br/></div><div class="specterm" id="term_release_type">
+<h3>Property: mo:release_type   -   stable   -   level 1</h3>
+<em>release_type</em> - 		Relates a musical manifestation to its release type (interview, spoken word, album, ...)<br/>
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -5018,9 +4906,9 @@ The review does not have to be open content, as long as it is accessible to the 
 <tr><th>Sub-property-of: </th><td><a href="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">foaf:isPrimaryTopicOf</a></td>
 </tr>
 </table>
-<br/></div><div class="specterm" id="term_sampleRate">
-<h3>Property: mo:sampleRate   -   stable   -   level 1</h3>
-<em>sampleRate</em> - 		Associates a digital signal to its sample rate. It might be easier to express it this way instead of<br/>
+<br/></div><div class="specterm" id="term_sample_rate">
+<h3>Property: mo:sample_rate   -   stable   -   level 1</h3>
+<em>sample_rate</em> - 		Associates a digital signal to its sample rate. It might be easier to express it this way instead of<br/>
 		defining a timeline map:-) Range is xsd:float.<br/>
 	 
 <br/><table style="th { float: top; }">
@@ -5403,9 +5291,18 @@ The review does not have to be open content, as long as it is accessible to the 
 	 
 <br/><table style="th { float: top; }"><tr><th>Class:</th>
 <td><a href="#term_PhysicalTimeLine">timeline:PhysicalTimeLine</a></td>
-</tr></table></div><div class="specterm" id="term_freedownload">
+</tr></table></div><div class="specterm" id="term_availableAs">
+<h3>Deprecated: mo:availableAs</h3>
+<em>Equivalent to</em> - <a href="#term_available_as">mo:available_as</a> 
+<br/></div><div class="specterm" id="term_eventHomePage">
+<h3>Deprecated: mo:eventHomePage</h3>
+<em>Equivalent to</em> - <a href="#term_event_homepage">mo:event_homepage</a> 
+<br/></div><div class="specterm" id="term_freedownload">
 <h3>Deprecated: mo:freedownload</h3>
 <em>Equivalent to</em> - <a href="#term_free_download">mo:free_download</a> 
+<br/></div><div class="specterm" id="term_hasManifestation">
+<h3>Deprecated: mo:hasManifestation</h3>
+<em>Equivalent to</em> - <a href="#term_manifestation">mo:manifestation</a> 
 <br/></div><div class="specterm" id="term_has_track">
 <h3>Deprecated: mo:has_track</h3>
 <em>Equivalent to</em> - <a href="#term_track">mo:track</a> 
@@ -5421,6 +5318,24 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/></div><div class="specterm" id="term_productOfComposition">
 <h3>Deprecated: mo:productOfComposition</h3>
 <em>Equivalent to</em> - <a href="#term_composed_in">mo:composed_in</a> 
+<br/></div><div class="specterm" id="term_publicationOf">
+<h3>Deprecated: mo:publicationOf</h3>
+<em>Equivalent to</em> - <a href="#term_publication_of">mo:publication_of</a> 
+<br/></div><div class="specterm" id="term_publishedAs">
+<h3>Deprecated: mo:publishedAs</h3>
+<em>Equivalent to</em> - <a href="#term_published_as">mo:published_as</a> 
+<br/></div><div class="specterm" id="term_publishingLocation">
+<h3>Deprecated: mo:publishingLocation</h3>
+<em>Equivalent to</em> - <a href="#term_publishing_location">mo:publishing_location</a> 
+<br/></div><div class="specterm" id="term_releaseStatus">
+<h3>Deprecated: mo:releaseStatus</h3>
+<em>Equivalent to</em> - <a href="#term_release_status">mo:release_status</a> 
+<br/></div><div class="specterm" id="term_releaseType">
+<h3>Deprecated: mo:releaseType</h3>
+<em>Equivalent to</em> - <a href="#term_release_type">mo:release_type</a> 
+<br/></div><div class="specterm" id="term_sampleRate">
+<h3>Deprecated: mo:sampleRate</h3>
+<em>Equivalent to</em> - <a href="#term_sample_rate">mo:sample_rate</a> 
 <br/></div><div class="specterm" id="term_sampledVersionOf">
 <h3>Deprecated: mo:sampledVersionOf</h3>
 <em>Equivalent to</em> - <a href="#term_sampled_version_of">mo:sampled_version_of</a> 
@@ -5592,8 +5507,71 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 <ul>
 
 
+</ul>
 
-  <li>2007-03-21: <strong>Revision 1.11</strong> of the Music Ontology Specification
+
+<ul>
+
+<li>2007-08-10: <strong>Revision 1.12</strong> of the Music Ontology Specification
+<ul>
+
+<li>ADDED: mo:availableAs subPropertyOf frbr:examplar<li>
+<li>ADDED: mo:Torrent as medium (bittorrent items)<li>
+<li>ADDED: mo:ED2K as medium (edonkey items)<li>
+<li>ADDED: mo:usesScore (Performance --> Score (particular arrangement of a work))<li>
+<li>ADDED: mo:preview_download (Agent or Manifestation to Document<li>
+<li>ADDED: mo:download, super-property of mo:previewdonwload, mo:paiddownload and mo:freedownload<li>
+<li>ADDED: mo:AudioFile (as a medium)<li>
+<li>ADDED: two sub-properties of mo:availableAs -- mo:item (full manifestation available) and mo:preview (only a part of the manifestation is available)<li>
+<li>ADDED: wrapper for foaf:maker, foaf:made, foaf:Agent, foaf:Person, foaf:Group, foaf:member<li>
+<li>ADDED: mo:isrc (international standard recording code)<li>
+<li>ADDED: mo:encodes (musical item --> signal), allowing to associate, for example, an item to a lower-resolution version of the master signal (issued from a Recording event)<li>
+<li>ADDED: mo:genre, subproperty of event:hasFactor<li>
+<li>ADDED: mo:level, an annotation property to specify wether a term belongs to level 1, 2 or 3<li>
+<li>ADDED: mo:sampled_version, inverse of sampled_version_of<li>
+<li>ADDED: produced_score (Arrangement --> Score)<li>
+<li>MODIFIED: mo:usesSound to mo:recording_of (still a owl:sameAs statement between these two for backward compatibility sake)<li>
+<li>MODIFIED: mo:usedInRecording to mo:recorded_in (same)<li>
+<li>MODIFIED: mo:producesSignal to mo:produced_signal (same)<li>
+<li>MODIFIED: mo:producesSound to mo:produced_sound (same)<li>
+<li>MODIFIED: mo:usesWork to mo:performance_of (same)<li>
+<li>MODIFIED: mo:productOfComposition to mo:composed_in (same)<li>
+<li>MODIFIED: mo:usedInPerformance to mo:performed_in (same)<li>
+<li>MODIFIED: mo:producesWork to mo:produced_work (same)<li>
+<li>MODIFIED: mo:paiddownload to mo:paid_download (same)<li>
+<li>MODIFIED: mo:freedownload to mo:free_download (same)<li>
+<li>MODIFIED: mo:signalTime to mo:time (same)<li>
+<li>MODIFIED: mo:sampledVersionOf to mo:sampled_version_of (same)<li>
+<li>MODIFIED: mo:has_track to mo:track (same)<li>
+<li>MODIFIED: mo:trackNum to  mo:track_number (same)<li>
+<li>MODIFIED: mo:releaseType to mo:release_type (same)<li>
+<li>MODIFIED: mo:releaseStatus to mo:release_status (same)<li>
+<li>MODIFIED: mo:eventHomePage to mo:event_homepage (same)<li>
+<li>MODIFIED: mo:hasManifestation to mo:manifestation (same)<li>
+<li>MODIFIED: mo:publishedAs to mo:published_as (same)<li>
+<li>MODIFIED: mo:movementNum to mo:movement_number (same)<li>
+<li>MODIFIED: mo:publicationOf to mo:publication_of (same)<li>
+<li>MODIFIED: mo:publishingLocation to mo:publishing_location (same)<li>
+<li>MODIFIED: mo:sampleRate to mo:sample_rate (same)<li>
+<li>MODIFIED: mo:recordedAs to mo:recorded_as (same)<li>
+<li>MODIFIED: mo:image subproperty of foaf:depiction<li>
+<li>MODIFIED: changed comments and domain of freedownload and paiddownload<li>
+<li>MODIFIED: changed comments on mo:MusicalWork<li>
+<li>MODIFIED: changed comments on availableAs<li>
+<li>MODIFIED: mo:encoding has MusicalItem as a domain<li>
+<li>DELETED: mo:creatorOf - use foaf:made instead<li>
+<li>DELETED: mo:pitch and mo:timbre - this should go to the audio features ontology<li>
+<li>DELETED: mo:stream_url (it should be the identifier of the resource (eg. rtsp://...)<li>
+<li>DELETED: sub concepts of mo:Instrument - instead, a link to Ivan Herman musical instrument SKOS taxonomy<li>
+<li>DELETED: sub concepts of mo:Genre - instead a more proper documentation of this concept<li>
+
+</ul>
+
+</li>  
+
+
+
+<li>2007-03-21: <strong>Revision 1.11</strong> of the Music Ontology Specification
 
     <ul>
 
@@ -5981,7 +5959,6 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
 
 
-<img src="http://fgiasson.com/blog/skins/Kubrick2evo/img/fredatfgiassonemail.jpg" alt="Frederick Giasson's email" />
 
 
 
