@@ -87,7 +87,7 @@ class MbzTrackLookup :
 												try : 
 													self.audio = WavPack(file)
 												except :
-													raise FileTypeException('Wrong file type')
+													raise FileTypeException('Unknown file type, no metadata, or file not found.')
 		try :
 			[title] = self.audio['title']
 			self.title = self.__clean_literal(str(title))
@@ -111,14 +111,16 @@ class MbzTrackLookup :
 		debug(' - Trying to guess an ID for track \"'+str(self.title)+'\", artist \"'+str(self.artist)+'\", release \"'+str(self.album)+'\"')
 		
 		artist_filter = ws.ArtistFilter(name=str(self.artist))
-		artists = query.getArtists(filter=artist_filter)
-		artist_mapping = []
-		release_mapping = []
-		track_mapping = []
-
-		if(self.album==None):
-			debug("No release information, dropping release lookup")
 		try:
+			artists = query.getArtists(filter=artist_filter)
+
+			artist_mapping = []
+			release_mapping = []
+			track_mapping = []
+
+			if(self.album==None):
+				debug("No release information, dropping release lookup")
+
 			for artist in artists :
 				artist_id = (MbzURIConverter(artist.artist.id)).getId()
 				artist_mapping.append((artist.score,artist))
@@ -137,11 +139,11 @@ class MbzTrackLookup :
 					tracks = query.getTracks(track_filter)
 					for track in tracks :
 						track_mapping.append(((track.score + artist.score)/2 ,track))
-
 		except ResponseError, e:
 			raise MbzLookupException('Musicbrainz response error')
 		except ConnectionError, e:
 			raise MbzLookupException('Musicbrainz connection error')
+
 		track_mapping.sort()
 		track_mapping.reverse()
 		self.track_mapping = track_mapping

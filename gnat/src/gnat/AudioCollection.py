@@ -115,6 +115,8 @@ class AudioCollection :
 								success=True
 							except MbzLookupException, e:
 								error(" - " + e.message)
+							except FileTypeException, e:
+								error(" - " + e.message)
 						if success:
 							self.fp_succeeded += 1							
 					self.rdf.commit()
