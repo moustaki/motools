@@ -16,6 +16,8 @@ from os import mkdir
 import rdflib; from rdflib import RDF, RDFS, BNode
 from rdflib.Collection import Collection
 
+OWL = rdflib.Namespace("http://www.w3.org/2002/07/owl#")
+
 class Generator:
 	def __init__(self, graph, target_class):
 		self.graph = graph
@@ -90,7 +92,6 @@ class Generator:
 		self.props+="\tclassURI = \""+str(self.c)+"\"\n"
 		if self.haveProperties:
 			self.props+="\n\n\t# Python class properties to wrap the PropertySet objects\n"
-		OWL=rdflib.Namespace((n[1] for n in self.graph.namespaces() if n[0]=="owl").next())
 		for prop in self.properties:
 				propname = PropQNameToPyName(self.graph.qname(prop))
 				URIstr = str(prop)
@@ -137,7 +138,6 @@ class Generator:
 	
 	def getProperties(self):
 		props=[]
-		OWL=rdflib.Namespace((n[1] for n in self.graph.namespaces() if n[0]=="owl").next())
 		for prop in self.graph.subjects(RDF.type, RDF.Property):
 			# Simple case : Named explicitly in property's domain
 			if len(list(self.graph.triples((prop,RDFS.domain,self.c)))) > 0:
@@ -158,8 +158,11 @@ class Generator:
 
 	def getParents(self):
 		p = list(self.graph.objects(self.c, RDFS.subClassOf))
-		if (self.c != RDFS.Resource) and (len(p) == 0):
-			p.append(RDFS.Resource)
+		if (self.c != OWL.Thing) and (len(p) == 0):
+			if self.c == RDFS.Resource:
+				p.append(OWL.Thing)
+			else:
+				p.append(RDFS.Resource)
 		p.sort()
 		return p
 
@@ -187,7 +190,7 @@ def main():
 # ===================================================================\n\n\n""")
 
 	model.write("from PropertySet import PropertySet, protector\n\n")
-	classes = list(spec_g.subjects(RDF.type, RDFS.Class))
+	classes = list(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode) # rdflib says rdfs:Class is a subClass of owl:Class - check !
 	classtxt = {}
 	parents = {}
 	

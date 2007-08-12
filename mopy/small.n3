@@ -7,7 +7,7 @@
 # Description of the music group "ALL"
 all:all a mo:MusicGroup;
 	foaf:name "ALL";
-#	foaf:homepage <http://www.allcentral.com/>; # FIXME !
+	foaf:homepage <http://www.allcentral.com/>;
 	mo:wikipedia <http://en.wikipedia.org/wiki/ALL_%28band%29>;
  	foaf:member all:karlalvarez;
  	.
@@ -15,6 +15,7 @@ all:all a mo:MusicGroup;
  	foaf:name "Karl Alvarez";
  	.
 <http://en.wikipedia.org/wiki/ALL_%28band%29> a foaf:Document .
+<http://www.allcentral.com/> a foaf:Document .
 
  # Description of the "Mass Nerder" album, from ALL
  all:massnerder a mo:Record;
