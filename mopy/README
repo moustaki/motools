@@ -10,7 +10,7 @@ Developers:
 
 
 This package aims to provide an easy way for python
-programmers to manipulated Music Ontology data, allowing
+programmers to manipulate Music Ontology data, allowing
 things such as:
 
 perf = Performance()

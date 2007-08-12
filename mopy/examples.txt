@@ -1,0 +1,64 @@
+from model import *
+
+# http://wiki.musicontology.com/index.php/Here_is_a_basic_document_describing_an_Artist
+#     @prefix mo: <http://purl.org/ontology/mo/> .
+#     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+#     @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+#
+#     <http://zitgist.com/music/artist/2f58d07c-4ed6-4f29-8b10-95266e16fe1b> rdf:type mo:MusicArtist ;
+#         foaf:name "Dave Mustaine" ;
+#         foaf:member <http://zitgist.com/music/artist/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab> ;
+#         mo:wikipedia <http://en.wikipedia.org/wiki/Dave_Mustaine> .
+
+dm = SoloMusicArtist(URI="http://zitgist.com/music/artist/2f58d07c-4ed6-4f29-8b10-95266e16fe1b")
+dm.name = "Dave Mustaine"
+dm.member_of = Group("http://zitgist.com/music/artist/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab")
+dm.wikipedia = Document("http://en.wikipedia.org/wiki/Dave_Mustaine")
+
+
+# http://wiki.musicontology.com/index.php/Here_is_a_basic_document_describing_an_Album_that_is_a_Sample_and_another_Album_that_is_a_tribute_to_another_Album
+# @prefix sim: <http://purl.org/ontology/sim/> .
+#    @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+#    @prefix mo: <http://purl.org/ontology/mo/> .
+#    @prefix dcterms: <http://purl.org/dc/terms/> .
+#    @prefix rel: <http://purl.org/vocab/relationship/> .
+#    @prefix time: <http://www.w3.org/TR/owl-time/> .
+#    @prefix dc: <http://purl.org/dc/elements/1.1/> .
+#    @prefix timeline: <http://purl.org/NET/c4dm/timeline.owl#> .
+#    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+#
+#    <http://zitgist.com/music/record/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab> rdf:type mo:Record ;
+#    	dc:title "Harvester of Sorrow" ;
+#    	dc:creator <http://zitgist.com/music/artist/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab> ;
+#    	dcterms:created "1988-01-01T00:00:00Z" ;
+#    	mo:releaseType mo:single ;
+#    	mo:releaseStatus mo:official .
+#    <http://zitgist.com/music/track/833bcfc4-8c89-49d8-be52-4eb926b48ab0> mo:trackNum "10" .
+#    <http://zitgist.com/music/record/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab> mo:has_track <http://zitgist.com/music/track/833bcfc4-8c89-49d8-be52-4eb926b48ab0> .
+#    <http://zitgist.com/music/record/89ad4ac3-39f7-470e-963a-56509c546377> rdf:type mo:Record ;
+#    	mo:title "A Metal Tribute to Metallica" ;
+#    	dc:creator <http://zitgist.com/music/artist/89ad4ac3-39f7-470e-963a-56509c546377> ;
+#    	mo:tribute_to <http://zitgist.com/music/artist/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab> .
+#    <http://zitgist.com/music/track/1f2fdcc9-f825-4dea-82ba-86356bb7d3ec> mo:trackNum "1" .
+#    <http://zitgist.com/music/record/89ad4ac3-39f7-470e-963a-56509c546377> mo:has_track <http://zitgist.com/music/track/1f2fdcc9-f825-4dea-82ba-86356bb7d3ec> .
+#    <http://zitgist.com/music/track/833bcfc4-8c89-49d8-be52-4eb926b48ab0> mo:trackNum "10" .
+#    <http://zitgist.com/music/record/89ad4ac3-39f7-470e-963a-56509c546377> mo:has_track <http://zitgist.com/music/track/833bcfc4-8c89-49d8-be52-4eb926b48ab0> .
+
+HarvesterOfSorrow = Record("http://zitgist.com/music/record/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab")
+HarvesterOfSorrow.title = "Harvester of Sorrow"
+Metallica = Group("http://zitgist.com/music/artist/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab")
+HarvesterOfSorrow.creator = Metallica
+#    	dcterms:created "1988-01-01T00:00:00Z" ;
+HarvesterOfSorrow.releaseType = Resource("http://purl.org/ontology/mo/single") # FIXME
+HarvesterOfSorrow.releaseStatus = Resource("http://purl.org/ontology/mo/official") # FIXME
+track = Track("http://zitgist.com/music/track/833bcfc4-8c89-49d8-be52-4eb926b48ab0")
+track.trackNum = 10
+HarvesterOfSorrow.has_track track
+tributeRecord = Record("http://zitgist.com/music/record/89ad4ac3-39f7-470e-963a-56509c546377")
+tributeRecord.title = "A Metal Tribute to Metallica"
+tributeRecord.creator = MusicArtist("http://zitgist.com/music/artist/89ad4ac3-39f7-470e-963a-56509c546377")
+tributeRecord.tribute_to = Metallica
+#    <http://zitgist.com/music/track/1f2fdcc9-f825-4dea-82ba-86356bb7d3ec> mo:trackNum "1" .
+#    <http://zitgist.com/music/record/89ad4ac3-39f7-470e-963a-56509c546377> mo:has_track <http://zitgist.com/music/track/1f2fdcc9-f825-4dea-82ba-86356bb7d3ec> .
+#    <http://zitgist.com/music/track/833bcfc4-8c89-49d8-be52-4eb926b48ab0> mo:trackNum "10" .
+#    <http://zitgist.com/music/record/89ad4ac3-39f7-470e-963a-56509c546377> mo:has_track <http://zitgist.com/music/track/833bcfc4-8c89-49d8-be52-4eb926b48ab0> .
