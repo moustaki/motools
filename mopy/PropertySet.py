@@ -29,7 +29,7 @@ class PropertySet(set):
 		set.add(self,o)
 	
 	def get(self):
-		print "in custom get()"
+		#print "in custom get()"
 		return self
 
 	def set(self, v):

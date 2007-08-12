@@ -57,7 +57,7 @@ def importRDF(filename, format="xml", strict=True):
 		
 		objs[str(s)] = knownTypes[str(s_type)](URI=str(s))
 	
-	print "objs:"+str(objs)
+	#print "objs:"+str(objs)
 	
 	for s in objs.keys():
 		for (p, o) in g.predicate_objects(URIRef(s)):
@@ -67,7 +67,7 @@ def importRDF(filename, format="xml", strict=True):
 			s_propURIs = [objs[s]._props[s_propname].propertyURI for s_propname in s_propnames]
 			s_propdict = dict(zip(s_propURIs, s_propnames))
 			
-			print "Trying to find "+str(p)+" amongst : "+str(s_propURIs)
+			#print "Trying to find "+str(p)+" amongst : "+str(s_propURIs)
 			
 			if str(p) in s_propURIs:
 				# find object
@@ -88,7 +88,15 @@ def importRDF(filename, format="xml", strict=True):
 						continue
 						
 				# set object for property :
-				getattr(objs[s], s_propdict[str(p)]).add(obj)
+				try:
+					getattr(objs[s], s_propdict[str(p)]).add(obj)
+				except TypeError, e:
+					if strict:
+						raise ImportException("Exception when adding "+str(o)+" type "+str(type(obj))+" to "+str(s)+" type "+str(type(objs[s]))+" for property "+str(s_propdict[str(p)])+" : \n" + str(e))
+					else:
+						print "Exception when adding "+str(o)+" type "+str(type(obj))+" to "+str(s)+" type "+str(type(objs[s]))+" for property "+str(s_propdict[str(p)])+"...\n" + str(e) +"\nIgnoring...\n"
+						continue
+					
 			else:
 				if strict:
 					raise ImportException("NO PROPERTY TO MODEL "+str(p)+" in class "+str(type(objs[s])))
