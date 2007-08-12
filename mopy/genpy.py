@@ -87,6 +87,7 @@ class Generator:
 
 			
 	def addProperties(self):
+		self.props+="\tclassURI = \""+str(self.c)+"\"\n"
 		if self.haveProperties:
 			self.props+="\n\n\t# Python class properties to wrap the PropertySet objects\n"
 		OWL=rdflib.Namespace((n[1] for n in self.graph.namespaces() if n[0]=="owl").next())
