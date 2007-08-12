@@ -19,9 +19,9 @@ class PropertySet(set):
 	#	
 	def add(self, o):
 		# type check :
-		print "type checking against : "+str(self.validTypes)
-		if self.allowLits:
-			print "(lits allowed)"
+		#print "type checking against : "+str(self.validTypes)
+		#if self.allowLits:
+		#	print "(lits allowed)"
 		if not ((self.allowLits and isinstance(o, self.Lits))\
 				or isinstance(o, self.validTypes)\
 				):

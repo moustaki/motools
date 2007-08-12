@@ -22,8 +22,8 @@ all:all a mo:MusicGroup;
  	dc:title "Mass Nerder";
  	dc:creator all:all;
  	mo:available_as all:mycd;
-# 	mo:releaseType mo:album; # FIXME !
-# 	mo:releaseStatus mo:official; # FIXME !
+ 	mo:release_type mo:album; 
+ 	mo:release_status mo:official;
  	mo:track all:mnworldsonheroin;
  	mo:track all:mnillgetthere;
  	mo:track all:mnlifeontheroad;

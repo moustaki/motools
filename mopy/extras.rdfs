@@ -86,4 +86,17 @@
 		<dc:type rdf:resource="http://dublincore.org/usage/documents/principles/#element"/>
 	</rdf:Property>
 	
+	<rdf:Property rdf:about="http://purl.org/dc/elements/1.1/description">
+	<rdfs:label xml:lang="en-US">Description</rdfs:label>
+	<rdfs:comment xml:lang="en-US">An account of the resource.</rdfs:comment>
+	<dc:description xml:lang="en-US">Description may include but is not limited to:
+	        an abstract, a table of contents, a graphical
+	        representation, or a free-text account of
+	        the resource.</dc:description>
+	<rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/> <!-- CHEAT ! -->
+	<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/> <!-- CHEAT ! -->
+	<dc:type rdf:resource="http://dublincore.org/usage/documents/principles/#element"/>
+	</rdf:Property>
+	
 </rdf:RDF>

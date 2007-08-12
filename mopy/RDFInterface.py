@@ -35,6 +35,7 @@ def importRDF(filename, format="xml", strict=True):
 	objs = {}
 	modelAttrs = [model.__dict__[c] for c in model.__dict__.keys()]
 	knownTypes = dict([(c.classURI, c) for c in modelAttrs if hasattr(c, "classURI")])
+	knownInstances = dict([(i.URI, i) for i in modelAttrs if hasattr(i, "URI")])
 	
 	for s in set(g.subjects()):
 		try:
@@ -74,6 +75,8 @@ def importRDF(filename, format="xml", strict=True):
 				if type(o) == URIRef:
 					if str(o) in objs.keys():
 						obj = objs[str(o)]
+					elif str(o) in knownInstances.keys():
+						obj = knownInstances[str(o)]
 					else:
 						print "Unknown URI "+str(o)+" as object of "+str(s)+", using a Resource to model."
 						obj = model.Resource(str(o))

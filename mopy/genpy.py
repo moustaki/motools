@@ -13,10 +13,11 @@ import sys
 import time
 import os
 from os import mkdir
-import rdflib; from rdflib import RDF, RDFS, BNode
+import rdflib; from rdflib import RDF, RDFS, BNode, URIRef
 from rdflib.Collection import Collection
 
 OWL = rdflib.Namespace("http://www.w3.org/2002/07/owl#")
+DC = rdflib.Namespace("http://purl.org/dc/elements/1.1/")
 
 class Generator:
 	def __init__(self, graph, target_class):
@@ -191,6 +192,7 @@ def main():
 
 	model.write("from PropertySet import PropertySet, protector\n\n")
 	classes = list(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode) # rdflib says rdfs:Class is a subClass of owl:Class - check !
+	classes.sort() # Ensure serialisation order is reasonably consistent across runs
 	classtxt = {}
 	parents = {}
 	
@@ -238,25 +240,44 @@ def objToStr(c):
 	#
 	# Serialise classes in an appropriate order
 	#
-	classes = [str(c) for c in classes]
-	classes.sort() # Ensure serialisation order is reasonably consistent across runs
-	n=1; lastlen = len(classes)+1
-	while (len(classes) > 0) and len(classes) < lastlen:
-		lastlen = len(classes)
+	remclasses = [str(c) for c in classes]
+	n=1; lastlen = len(remclasses)+1
+	while (len(remclasses) > 0) and len(remclasses) < lastlen:
+		lastlen = len(remclasses)
 		print("pass "+ str(n))
-		for c in classes:
+		for c in remclasses:
 			if len(parents[c]) == 0: # Write out orphans immediately
 				model.write(classtxt[c])
 				print(" wrote "+c)
-				classes.remove(c)
-				for k in classes:    # And abandon any classes who were waiting for us
+				remclasses.remove(c)
+				for k in remclasses:    # And abandon any classes who were waiting for us
 					if c in parents[k]:
 						parents[k].remove(c)
 		n+=1
 
-	if len(classes) > 0:
-		print "Couldn't find a serialisation order ! Remaining classes : " + "\n".join(classes)
+	if len(remclasses) > 0:
+		print "Couldn't find a serialisation order ! Remaining classes : " + "\n".join(remclasses)
 
+	#
+	# Ontology-defined Instances
+	#
+	model.write("\n\n# ======================= Instance Definitions ======================= \n")
+	for c in classes:
+		instances = list(spec_g.subjects(RDF.type, c))
+		if len(instances)>0:
+			classname= ClassQNameToPyClassName(spec_g.qname(c))
+			model.write("\n")
+			for i in instances:
+				print "Instance of "+classname+" : "+str(i)
+				instancename = ClassQNameToPyClassName(spec_g.qname(i))
+				model.write(instancename+" = "+ classname+"(\""+str(i)+"\")\n")
+				descrip="\n".join([d.strip() for d in spec_g.objects(i, DC.description)])
+				if len(descrip)>0:
+					model.write(instancename+".description = \\\n\"\"\""+descrip+"\"\"\"\n")
+	
+	model.write("\n\n# =======================       Clean Up       ======================= \n")
+	model.write("del objToStr, propDocs\n")
+	
 	model.close()
 
 if __name__ == '__main__':

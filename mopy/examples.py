@@ -43,7 +43,7 @@ allNs = "http://music.org/all#"
 
 allgroup = MusicGroup(allNs+"all")
 allgroup.name = "ALL"
-# allgroup.homepage = Document("http://www.allcentral.com/") # FIXME
+allgroup.homepage = Document("http://www.allcentral.com/")
 allgroup.wikipedia = Document("http://en.wikipedia.org/wiki/ALL_%28band%29")
 
 #  # Description of the "Mass Nerder" album, from ALL
@@ -66,8 +66,8 @@ massnerder.creator = allgroup
 #  all:mycd a mo:Cd .
 
 massnerder.available_as = mycd = CD(allNs+"mycd")
-# massnerder.releaseType = FIXME
-# massnerder.releaseStatus = FIXME
+massnerder.release_type = album
+massnerder.release_status = official
 
 #  # Description of tracks of the Mass Nerder album
 #  all:mnworldsonheroin a mo:Track;
