@@ -2,6 +2,7 @@
 <rdf:RDF 
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/" 
 	xmlns:frbr="http://purl.org/vocab/frbr/core#"
 	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
 
@@ -38,10 +39,36 @@
 	    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
 	    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
 	  </rdf:Property>
+	
 	  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/member" rdfs:label="member" rdfs:comment="Indicates a member of a Group">
 	    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
 	    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Group"/>
 	    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
 	    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
 	  </rdf:Property>
+	
+	<rdf:Property rdf:about="http://purl.org/dc/elements/1.1/title">
+		<rdfs:label xml:lang="en-US">Title</rdfs:label>
+		<rdfs:comment xml:lang="en-US">A name given to the resource.</rdfs:comment>
+		<dc:description xml:lang="en-US">Typically, a Title will be a name by which 
+		        the resource is formally known.</dc:description>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+	    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/> <!-- CHEAT ! -->
+		<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/> <!-- CHEAT ! -->
+		<dc:type rdf:resource="http://dublincore.org/usage/documents/principles/#element"/>
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://purl.org/dc/elements/1.1/creator">
+		<rdfs:label xml:lang="en-US">Creator</rdfs:label>
+		<rdfs:comment xml:lang="en-US">An entity primarily responsible for making 
+		        the resource.</rdfs:comment>
+		<dc:description xml:lang="en-US">Examples of a Creator include a person, an
+		        organization, or a service. Typically, the name
+		        of a Creator should be used to indicate the entity.</dc:description>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+	    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/> <!-- CHEAT ! -->
+		<rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/> <!-- CHEAT ! -->
+		<dc:type rdf:resource="http://dublincore.org/usage/documents/principles/#element"/>
+	</rdf:Property>
+	
 </rdf:RDF>

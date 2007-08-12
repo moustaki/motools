@@ -7,9 +7,9 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 
 class PropertySet(set):
 
-	def __init__(self, propertyURI, validTypes, allowLits):
-#		self.s = set()
+	def __init__(self, shortname, propertyURI, validTypes, allowLits):
 		set.__init__(self)
+		self.shortname = shortname
 		self.propertyURI = propertyURI
 		self.validTypes = validTypes
 		self.allowLits = allowLits

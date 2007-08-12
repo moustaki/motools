@@ -80,9 +80,10 @@ class Generator:
 			self.init+="\t\t"+p+".__init__(self)\n"
 		
 		self.init+="\t\tself._initialised = False\n"
+		self.init+="\t\tself.shortname = \""+self.name+"\"\n"
 		self.init+="\t\tself.URI = URI\n"
 		if self.haveProperties:
-			self.init+="\t\tself.props = getattr(self,\"props\",{}) # Initialise if a parent class hasn't already\n"
+			self.init+="\t\tself._props = getattr(self,\"_props\",{}) # Initialise if a parent class hasn't already\n"
 
 			
 	def addProperties(self):
@@ -119,17 +120,18 @@ class Generator:
 				else:
 					validTypes="None"
 
-				self.init+="\t\tself.props[\""+propname+"\"] = PropertySet(\""+URIstr+"\", "+validTypes
+				self.init+="\t\tself._props[\""+propname+"\"] = PropertySet(\""+propname+"\",\""+URIstr+"\", "+validTypes
 				self.init+=", "+str(allowLits)+")\n"
 				# Wrap the PropertySet up to be usable and protected :
-				self.props+="\t" + propname + " = property(fget=lambda x: x.props[\"" + propname + "\"].get()"\
-														", fset=lambda x,y : x.props[\"" + propname + "\"].set(y)"\
+				self.props+="\t" + propname + " = property(fget=lambda x: x._props[\"" + propname + "\"].get()"\
+														", fset=lambda x,y : x._props[\"" + propname + "\"].set(y)"\
 														", fdel=None, doc=propDocs[\""+propname+"\"])\n"
 		self.init+="\t\tself._initialised = True\n"
 		
 	def addUtils(self):
 		self.utils+="\n\t# Utility methods\n" # TODO : serialisation routine here ?
 		self.utils+="\t__setattr__ = protector\n"
+		self.utils+="\t__str__ = objToStr\n"
 #		self.utils+="\tpass\n\n"
 	
 	def getProperties(self):
@@ -191,6 +193,26 @@ def main():
 	#
 	# Generate text
 	#
+
+	objToStr = """
+def objToStr(c):
+	s = "-- "+c.shortname
+	if c.URI != None :
+		s+=" @ "+str(c.URI)
+	s+=" --\\n"
+	for p in c._props.keys():
+		for v in c._props[p]:
+			s+=c._props[p].shortname + " : "
+			if isinstance(v, c._props[p].Lits):
+				s+=str(v)
+			else:
+				s+=str(type(v))
+				if hasattr(v,"URI"):
+					s+=" @ "+v.URI
+			s +="\\n"
+	return s
+"""
+	model.write(objToStr)
 	model.write("\n# ======================== Property Docstrings ====================== \n\n")
 	model.write("propDocs = {}\n")
 	props = list(spec_g.subjects(RDF.type, RDF.Property))
@@ -227,10 +249,10 @@ def main():
 					if c in parents[k]:
 						parents[k].remove(c)
 		n+=1
-	
+
 	if len(classes) > 0:
 		print "Couldn't find a serialisation order ! Remaining classes : " + "\n".join(classes)
-			
+
 	model.close()
 
 if __name__ == '__main__':
