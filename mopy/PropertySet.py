@@ -35,3 +35,11 @@ class PropertySet(set):
 	def set(self, v):
 		self.clear()
 		self.add(v)
+
+def protector(self, item, value):
+	if (not self.__dict__.has_key("_initialised"))\
+		   or self._initialised == False \
+	       or hasattr(self,item):
+		object.__setattr__(self,item,value)
+	else:
+		raise AttributeError("Not allowed add new attributes to classes ! Typo ?")

@@ -79,9 +79,11 @@ class Generator:
 		for p in parentpynames:
 			self.init+="\t\t"+p+".__init__(self)\n"
 		
+		self.init+="\t\tself._initialised = False\n"
+		self.init+="\t\tself.URI = URI\n"
 		if self.haveProperties:
 			self.init+="\t\tself.props = getattr(self,\"props\",{}) # Initialise if a parent class hasn't already\n"
-		self.init+="\t\tself.URI = URI\n"
+
 			
 	def addProperties(self):
 		if self.haveProperties:
@@ -123,9 +125,12 @@ class Generator:
 				self.props+="\t" + propname + " = property(fget=lambda x: x.props[\"" + propname + "\"].get()"\
 														", fset=lambda x,y : x.props[\"" + propname + "\"].set(y)"\
 														", fdel=None, doc=propDocs[\""+propname+"\"])\n"
+		self.init+="\t\tself._initialised = True\n"
+		
 	def addUtils(self):
 		self.utils+="\n\t# Utility methods\n" # TODO : serialisation routine here ?
-		self.utils+="\tpass\n\n"
+		self.utils+="\t__setattr__ = protector\n"
+#		self.utils+="\tpass\n\n"
 	
 	def getProperties(self):
 		props=[]
@@ -178,7 +183,7 @@ def main():
 # =            Generated automatically on """+time.asctime()+"""
 # ===================================================================\n\n\n""")
 
-	model.write("from PropertySet import PropertySet\n\n")
+	model.write("from PropertySet import PropertySet, protector\n\n")
 	classes = list(spec_g.subjects(RDF.type, RDFS.Class))
 	classtxt = {}
 	parents = {}
