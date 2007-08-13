@@ -11,7 +11,7 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 # [GCC 4.0.1 (Apple Computer, Inc. build 5341)] on darwin
 # Type "help", "copyright", "credits" or "license" for more information.
 # >>> from RDFInterface import *
-# >>> mi = importRDFFile("tiny.n3","n3")
+# >>> mi = importRDFFile("L1 tiny.n3","n3")
 # >>> for sma in mi.SoloMusicArtistIdx.values():
 # ...     print sma
 # ... 
@@ -23,7 +23,7 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 
 import model
 from MusicInfo import MusicInfo
-import rdflib; from rdflib import URIRef, Literal, RDF, RDFS, ConjunctiveGraph
+import rdflib; from rdflib import URIRef, Literal, BNode, RDF, RDFS, ConjunctiveGraph
 
 class ImportException(Exception):
 	def __init__(self, message) :
@@ -40,15 +40,31 @@ class ExportException(Exception):
 def importRDFFile(filename, format="xml", strict=True):
 	g = ConjunctiveGraph()
 	g.load(filename, format=format)
-	return importRDFGraph(g)
+	return importRDFGraph(g, strict)
 
-def importRDFGraph(g):
+def importRDFGraph(g, strict=True):
 	objs = {}
 	modelAttrs = [model.__dict__[c] for c in model.__dict__.keys()]
 	knownTypes = dict([(c.classURI, c) for c in modelAttrs if hasattr(c, "classURI")])
 	knownInstances = dict([(i.URI, i) for i in modelAttrs if hasattr(i, "URI")])
 	
+	#
+	# Replace blind nodes with local names
+	#
+	for bn in [s for s,p,o in set(g.triples((None,None,None))) if type(s) == BNode]:
+		for p,o in set(g.predicate_objects(bn)):
+			g.remove((bn, p, o))
+			g.add((URIRef(bn), p, o))
+	for bn in [o for s,p,o in set(g.triples((None,None,None))) if type(o) == BNode]:
+		for s,p in set(g.subject_predicates(bn)):
+			g.remove((s,p,bn))
+			g.add((s, p, URIRef(bn)))
+	
+	#
+	# Create Python objects to model triple subjects
+	#
 	for s in set(g.subjects()):
+		s_type = None
 		try:
 			s_type = g.objects(s, RDF.type).next()
 		except StopIteration, e:
@@ -57,7 +73,7 @@ def importRDFGraph(g):
 			else:
 				print "NO TYPE SPECIFIED for "+ str(s)+" ! Ignoring..."
 				continue
-			# FIXME : Maybe use a Resource ?
+		# FIXME : Definately want some type inference here
 	
 		if str(s_type) not in knownTypes.keys():
 			if strict:
@@ -69,8 +85,9 @@ def importRDFGraph(g):
 		
 		objs[str(s)] = knownTypes[str(s_type)](URI=str(s))
 	
-	#print "objs:"+str(objs)
-	
+	#
+	# Set object properties to model RDF properties
+	#
 	for s in objs.keys():
 		for (p, o) in g.predicate_objects(URIRef(s)):
 			if p == RDF.type:
@@ -117,12 +134,13 @@ def importRDFGraph(g):
 					
 			else:
 				if strict:
-					raise ImportException("NO PROPERTY TO MODEL "+str(p)+" in class "+str(type(objs[s])))
+					raise ImportException("NO PROPERTY TO MODEL "+str(p)+" in class "+str(type(objs[s]))+"\nKnown properties : "+str(s_propURIs))
 				else:
 					print "NO PROPERTY TO MODEL "+str(p)+" in class "+str(type(objs[s]))
 					continue
 	
 	mi = MusicInfo(objs.values())
+	# Add any namespaces mentioned in the file which we didn't already know :
 	mi.namespaceBindings.update(dict([(NSName, str(NSURI)) for NSName, NSURI in g.namespaces()]))
 	return mi
 
@@ -131,7 +149,7 @@ def importRDFGraph(g):
 # [GCC 4.0.1 (Apple Computer, Inc. build 5341)] on darwin
 # Type "help", "copyright", "credits" or "license" for more information.
 # >>> from RDFInterface import *
-# >>> mi = importRDFFile("tiny.n3","n3")
+# >>> mi = importRDFFile("L1 tiny.n3","n3")
 # >>> mi.SoloMusicArtistIdx.values()[0].name
 # PropertySet(['Dave Mustaine'])
 # >>> mi.SoloMusicArtistIdx.values()[0].name = "Davy Crockett"
