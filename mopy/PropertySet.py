@@ -13,7 +13,7 @@ class PropertySet(set):
 		self.propertyURI = propertyURI
 		self.validTypes = validTypes
 		self.allowLits = allowLits
-		self.Lits = (str, int, list, float) # Any more ?
+		self.Lits = (str, int, float) # Any more ? 
 	#
 	# Set functions :
 	#	

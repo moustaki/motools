@@ -275,6 +275,8 @@ def objToStr(c):
 				if len(descrip)>0:
 					model.write(instancename+".description = \\\n\"\"\""+descrip+"\"\"\"\n")
 	
+	NamespaceBindings = ",".join(["\"" + NSName + "\":\"" + str(NSURI) + "\"" for NSName, NSURI in spec_g.namespaces()])
+	model.write("\nnamespaceBindings = {" + NamespaceBindings + "}\n\n")
 	model.write("\n\n# =======================       Clean Up       ======================= \n")
 	model.write("del objToStr, propDocs\n")
 	

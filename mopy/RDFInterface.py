@@ -31,6 +31,12 @@ class ImportException(Exception):
 	def __str__(self) :
 		return self.message
 
+class ExportException(Exception):
+	def __init__(self, message) :
+		self.message = message
+	def __str__(self) :
+		return self.message
+
 def importRDFFile(filename, format="xml", strict=True):
 	g = ConjunctiveGraph()
 	g.load(filename, format=format)
@@ -100,9 +106,13 @@ def importRDFGraph(g):
 					getattr(objs[s], s_propdict[str(p)]).add(obj)
 				except TypeError, e:
 					if strict:
-						raise ImportException("Exception when adding "+str(o)+" type "+str(type(obj))+" to "+str(s)+" type "+str(type(objs[s]))+" for property "+str(s_propdict[str(p)])+" : \n" + str(e))
+						raise ImportException("Exception when adding "+str(o)+" type "+str(type(obj))\
+						+" to "+str(s)+" type "+str(type(objs[s]))\
+						+" for property "+str(s_propdict[str(p)])+" : \n" + str(e))
 					else:
-						print "Exception when adding "+str(o)+" type "+str(type(obj))+" to "+str(s)+" type "+str(type(objs[s]))+" for property "+str(s_propdict[str(p)])+"...\n" + str(e) +"\nIgnoring...\n"
+						print "Exception when adding "+str(o)+" type "+str(type(obj))\
+						+" to "+str(s)+" type "+str(type(objs[s]))\
+						+" for property "+str(s_propdict[str(p)])+"...\n" + str(e) +"\nIgnoring...\n"
 						continue
 					
 			else:
@@ -112,4 +122,75 @@ def importRDFGraph(g):
 					print "NO PROPERTY TO MODEL "+str(p)+" in class "+str(type(objs[s]))
 					continue
 	
-	return MusicInfo(objs.values())
+	mi = MusicInfo(objs.values())
+	mi.namespaceBindings.update(dict([(NSName, str(NSURI)) for NSName, NSURI in g.namespaces()]))
+	return mi
+
+ 
+# Python 2.4.4 (#1, Oct 18 2006, 10:34:39) 
+# [GCC 4.0.1 (Apple Computer, Inc. build 5341)] on darwin
+# Type "help", "copyright", "credits" or "license" for more information.
+# >>> from RDFInterface import *
+# >>> mi = importRDFFile("tiny.n3","n3")
+# >>> mi.SoloMusicArtistIdx.values()[0].name
+# PropertySet(['Dave Mustaine'])
+# >>> mi.SoloMusicArtistIdx.values()[0].name = "Davy Crockett"
+# >>> mi.SoloMusicArtistIdx.values()[0].name
+# PropertySet(['Davy Crockett'])
+# >>> exportRDFFile(mi, "out_tiny.n3", "n3")
+# Constructing graph...
+# Added <class 'model.SoloMusicArtist'> @ http://zitgist.com/music/artist/2f58d07c-4ed6-4f29-8b10-95266e16fe1b
+# Added <class 'model.Document'> @ http://en.wikipedia.org/wiki/Dave_Mustaine
+# Added <class 'model.MusicGroup'> @ http://zitgist.com/music/artist/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab
+# Writing to file...
+# >>> mi = importRDFFile("out_tiny.n3","n3")
+# >>> mi.SoloMusicArtistIdx.values()[0].name
+# PropertySet(['Davy Crockett'])
+
+
+def exportRDFGraph(mi):
+	g = ConjunctiveGraph()
+	for NSName, NSuriStr in mi.namespaceBindings.iteritems():
+		g.namespace_manager.bind(NSName, URIRef(NSuriStr))
+
+	modelAttrs = [model.__dict__[c] for c in model.__dict__.keys()]
+	knownTypes = dict([(c.classURI, c) for c in modelAttrs if hasattr(c, "classURI")])
+	knownInstances = dict([(i.URI, i) for i in modelAttrs if hasattr(i, "URI")])
+
+	for s in mi.MainIdx.values():
+		if not hasattr(s, "classURI") or s.classURI not in knownTypes.keys():
+			raise ExportException("Object "+str(s)+" has no classURI, or classURI is not known in the MO model.")
+			# FIXME : Maybe use a Resource ?
+		
+		if s.URI == None:
+			raise ExportException("Object "+str(s)+" has no URI !")
+			# FIXME : Maybe assign a local id ?
+
+		g.add((URIRef(s.URI), RDF.type, URIRef(s.classURI)))
+
+		for propName, propSet in s._props.iteritems():
+			for v in propSet:
+				if not hasattr(propSet, "propertyURI"):
+					raise ExportException("Property "+str(propName)+" on object "+str(s)+" has no propertyURI !")
+				
+				if type(v) not in propSet.Lits:
+					if not hasattr(v, "URI"):
+						raise ExportException("Property value "+str(v)+" is not a Literal, but has no URI !")
+					g.add((URIRef(s.URI), URIRef(propSet.propertyURI), URIRef(v.URI)))
+				else:
+					g.add((URIRef(s.URI), URIRef(propSet.propertyURI), Literal(v)))
+		
+		print "Added "+str(type(s))+" @ "+s.URI
+		
+	return g
+
+def exportRDFFile(mi, filename, format="xml"):
+	print "Constructing graph..."
+	g = exportRDFGraph(mi)
+	print "Writing to file..."
+	out = open(filename,'w')
+	out.write(g.serialize(format=format))
+	out.close()
+
+		
+		

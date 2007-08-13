@@ -16,10 +16,11 @@ class MusicInfoException(Exception):
 		return self.message
 
 class MusicInfo(object):
-	def __init__(self, objects):
+	def __init__(self, objects, namespaceBindings = model.namespaceBindings):
 		self.MainIdx = {}
 		for obj in objects:
 			self.__addObject(obj)
+		self.namespaceBindings = namespaceBindings
 
 	def __addObject(self, obj, URI=None):
 		if URI == None:
