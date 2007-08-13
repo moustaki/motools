@@ -182,7 +182,8 @@ def main():
 	print "Loading ontology documents..."
 	spec_g.load("../mo/rdf/musicontology.rdfs")
 	spec_g.load("extras.rdfs")
-
+	spec_g.load("foaf.rdfs")
+	
 	model = open("model.py", "w")
 	model.write("""
 # ===================================================================
@@ -191,7 +192,7 @@ def main():
 # ===================================================================\n\n\n""")
 
 	model.write("from PropertySet import PropertySet, protector\n\n")
-	classes = list(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode) # rdflib says rdfs:Class is a subClass of owl:Class - check !
+	classes = list(set(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode)) # rdflib says rdfs:Class is a subClass of owl:Class - check !
 	classes.sort() # Ensure serialisation order is reasonably consistent across runs
 	classtxt = {}
 	parents = {}
@@ -263,6 +264,8 @@ def objToStr(c):
 	#
 	model.write("\n\n# ======================= Instance Definitions ======================= \n")
 	for c in classes:
+		if c == RDFS.Class:
+			continue
 		instances = list(spec_g.subjects(RDF.type, c))
 		if len(instances)>0:
 			classname= ClassQNameToPyClassName(spec_g.qname(c))
