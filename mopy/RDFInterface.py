@@ -11,8 +11,10 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 # [GCC 4.0.1 (Apple Computer, Inc. build 5341)] on darwin
 # Type "help", "copyright", "credits" or "license" for more information.
 # >>> from RDFInterface import *
-# >>> objs = importRDF("tiny.n3","n3")
-# >>> print(objs.values()[0])
+# >>> mi = importRDFFile("tiny.n3","n3")
+# >>> for sma in mi.SoloMusicArtistIdx.values():
+# ...     print sma
+# ... 
 # -- SoloMusicArtist @ http://zitgist.com/music/artist/2f58d07c-4ed6-4f29-8b10-95266e16fe1b --
 # wikipedia : <class 'model.Document'> @ http://en.wikipedia.org/wiki/Dave_Mustaine
 # name : Dave Mustaine
@@ -20,6 +22,7 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 
 
 import model
+from MusicInfo import MusicInfo
 import rdflib; from rdflib import URIRef, Literal, RDF, RDFS, ConjunctiveGraph
 
 class ImportException(Exception):
@@ -28,10 +31,12 @@ class ImportException(Exception):
 	def __str__(self) :
 		return self.message
 
-def importRDF(filename, format="xml", strict=True):
+def importRDFFile(filename, format="xml", strict=True):
 	g = ConjunctiveGraph()
 	g.load(filename, format=format)
-	
+	return importRDFGraph(g)
+
+def importRDFGraph(g):
 	objs = {}
 	modelAttrs = [model.__dict__[c] for c in model.__dict__.keys()]
 	knownTypes = dict([(c.classURI, c) for c in modelAttrs if hasattr(c, "classURI")])
@@ -106,4 +111,5 @@ def importRDF(filename, format="xml", strict=True):
 				else:
 					print "NO PROPERTY TO MODEL "+str(p)+" in class "+str(type(objs[s]))
 					continue
-	return objs
+	
+	return MusicInfo(objs.values())
