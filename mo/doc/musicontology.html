@@ -2503,6 +2503,7 @@ Defining manifestation as an entity also enables us to draw relationships betwee
 <br/>
 <table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_made">made</a></td>
 <td><a href="#term_other_release_of">other_release_of</a></td>
+<td><a href="#term_published">published</a></td>
 <td><a href="#term_compiled">compiled</a></td>
 <td><a href="#term_produced">produced</a></td>
 <td><a href="#term_manifestation">manifestation</a></td>
@@ -2523,6 +2524,7 @@ Defining manifestation as an entity also enables us to draw relationships betwee
 <td><a href="#term_other_release_of">other_release_of</a></td>
 <td><a href="#term_compilation_of">compilation_of</a></td>
 <td><a href="#term_publishing_location">publishing_location</a></td>
+<td><a href="#term_publisher">publisher</a></td>
 <td><a href="#term_compiler">compiler</a></td>
 <td><a href="#term_producer">producer</a></td>
 </tr>
@@ -2661,6 +2663,9 @@ work #1 J. S. Bach's The art of the fugue<br/>
 <tr><th>in-domain-of:</th><td><a href="#term_member_of">member_of</a></td>
 </tr>
 
+<tr><th>sub-class-of:</th><td><a href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing">geo:SpatialThing</a></td>
+<td><a href="#term_Agent">Agent</a></td>
+</tr>
 </table>
 
 </div><div class="specterm" id="term_PhysicalTimeLine"><h3>Class: timeline:PhysicalTimeLine   -   stable   -   level 3</h3>
@@ -4617,7 +4622,7 @@ This means that the orignial musical expression were rearranged to create a new 
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/mo/MusicManifestation">mo:MusicManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/publisher">mo:publisher</a></td>
 </tr>
@@ -4651,7 +4656,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <em>publisher</em> - Used to relate a musical manifestation to a person or a group of person who published it. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/mo/MusicManifestation">mo:MusicManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
