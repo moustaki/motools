@@ -21,8 +21,8 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 # member_of : <class 'model.MusicGroup'> @ http://zitgist.com/music/artist/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab
 
 
-import model
-from MusicInfo import MusicInfo
+from mopy import model
+from mopy.MusicInfo import MusicInfo
 import rdflib; from rdflib import URIRef, Literal, BNode, RDF, RDFS, ConjunctiveGraph
 
 class ImportException(Exception):

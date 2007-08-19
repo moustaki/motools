@@ -9,12 +9,59 @@ Developers:
   yves (at) dbtune (dot) org
 
 
+About
+-----
+
 This package aims to provide an easy way for python
 programmers to manipulate Music Ontology data, allowing
 things such as:
 
-perf = Performance()
-perf.performer = Person('Glenn Gould')
+perf = mo.Performance()
+perf.performer = GlennGould = foaf.Person("http://zitgist.com/music/artist/7002bf88-1269-4965-a772-4ba1e7a91eaa")
+GlennGould.name = "Glenn Gould"
+
+
+
+Usage
+-----
+
+The package is automatically derived from the ontology
+specification, so before use you must run genpy.py :
+
+$ python genpy.py
+Loading ontology documents...
+processing http://purl.org/NET/c4dm/event.owl#Event
+processing http://purl.org/NET/c4dm/keys.owl#Key
+...
+...
+Instance of ReleaseType : http://purl.org/ontology/mo/interview
+Instance of ReleaseType : http://purl.org/ontology/mo/ep
+$
+
+This produces the mopy package which you may then import in python.
+Classes are arranged by their ontology, so you will find the core
+Music Ontology classes in the mopy.mo module.
+
+Further example code can be found in examples.py and the
+example N3 files can be imported using the importRDFFile 
+function to produce a python model of the data.
+For example :
+
+Python 2.4.4 (#1, Oct 18 2006, 10:34:39) 
+>>> import mopy
+>>> mi = mopy.importRDFFile("L1 tiny.n3", "n3")
+>>> for o in mi.MainIdx.values():
+...     print o
+-- SoloMusicArtist @ http://zitgist.com/music/artist/2f58d07c-4ed6-4f29-8b10-95266e16fe1b --
+wikipedia : <class 'mopy.model.Document'> @ http://en.wikipedia.org/wiki/Dave_Mustaine
+name : Dave Mustaine
+member_of : <class 'mopy.model.MusicGroup'> @ http://zitgist.com/music/artist/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab
+
+-- Document @ http://en.wikipedia.org/wiki/Dave_Mustaine --
+
+-- MusicGroup @ http://zitgist.com/music/artist/65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab --
+
+>>>
 
 
 The code will be available under a BSD license.

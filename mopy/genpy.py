@@ -167,6 +167,11 @@ class Generator:
 		p.sort()
 		return p
 
+	def addImportForClass(self):
+		nsInit = open(os.path.join("mopy",self.ns,"__init__.py"), 'a')
+		nsInit.write("from model import "+self.name+"\n")
+		nsInit.close()
+			
 def PropQNameToPyName(qname):
 #	return qname.replace(":","_") # Probably don't need namespace in property names
 	return qname.split(":")[1]
@@ -176,7 +181,21 @@ def ClassQNameToPyModuleName(qname):
 def ClassQNameToPyClassName(qname):
 	return qname.split(":")[1]
 
+def setupNamespace(ns):
+	if not os.path.exists(os.path.join("mopy",ns)):
+		mkdir(os.path.join("mopy",ns))
+	nsInit = open(os.path.join("mopy",ns,"__init__.py"), 'w')
+	nsInit.write("import mopy.model\n\n")
+	nsInit.close()
+	packageInit = open(os.path.join("mopy","__init__.py"),'a')
+	packageInit.write("import "+ns+"\n")
+	packageInit.close()
 
+def addImportForInstance(ns, i):
+	nsInit = open(os.path.join("mopy",ns,"__init__.py"), 'a')
+	nsInit.write("from model import "+i+"\n")
+	nsInit.close()
+	
 def main():
 	spec_g = rdflib.ConjunctiveGraph()
 	print "Loading ontology documents..."
@@ -184,6 +203,20 @@ def main():
 	spec_g.load("extras.rdfs")
 	spec_g.load("foaf.rdfs")
 	
+	classes = list(set(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode)) # rdflib says rdfs:Class is a subClass of owl:Class - check !
+	classes.sort() # Ensure serialisation order is reasonably consistent across runs
+	classtxt = {}
+	parents = {}
+	
+	packageInit = open(os.path.join("mopy","__init__.py"),'w')
+	packageInit.write("import model\n")
+	packageInit.write("from MusicInfo import MusicInfo\n")
+	packageInit.write("from RDFInterface import importRDFGraph, importRDFFile, exportRDFGraph, exportRDFFile\n\n")
+	packageInit.close()
+	
+	for ns in set([spec_g.qname(c).split(":")[0] for c in classes]):
+		setupNamespace(ns)
+		
 	model = open("model.py", "w")
 	model.write("""
 # ===================================================================
@@ -191,16 +224,8 @@ def main():
 # =            Generated automatically on """+time.asctime()+"""
 # ===================================================================\n\n\n""")
 
-	model.write("from PropertySet import PropertySet, protector\n\n")
-	classes = list(set(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode)) # rdflib says rdfs:Class is a subClass of owl:Class - check !
-	classes.sort() # Ensure serialisation order is reasonably consistent across runs
-	classtxt = {}
-	parents = {}
+	model.write("from mopy.PropertySet import PropertySet, protector\n\n")
 	
-	#
-	# Generate text
-	#
-
 	objToStr = """
 def objToStr(c):
 	s = "-- "+c.shortname
@@ -231,12 +256,14 @@ def objToStr(c):
 			model.write("propDocs[\""+PropQNameToPyName(spec_g.qname(p))+"\"]=\"\"\n")
 		
 	model.write("\n\n\n\n# ========================  Class Definitions  ====================== \n")
+
 	for c in classes:
 		print "processing " + str(c)
 		g = Generator(spec_g, c)
 		g.printAll()
 		classtxt[str(c)] = g.out
 		parents[str(c)] = [str(p) for p in g.getParents()]
+		g.addImportForClass() # Add the class to the right namespace
 
 	#
 	# Serialise classes in an appropriate order
@@ -277,6 +304,7 @@ def objToStr(c):
 				descrip="\n".join([d.strip() for d in spec_g.objects(i, DC.description)])
 				if len(descrip)>0:
 					model.write(instancename+".description = \\\n\"\"\""+descrip+"\"\"\"\n")
+				addImportForInstance(spec_g.qname(c).split(":")[0], instancename)
 	
 	NamespaceBindings = ",".join(["\"" + NSName + "\":\"" + str(NSURI) + "\"" for NSName, NSURI in spec_g.namespaces()])
 	model.write("\nnamespaceBindings = {" + NamespaceBindings + "}\n\n")

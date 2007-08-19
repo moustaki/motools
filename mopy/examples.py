@@ -1,4 +1,4 @@
-from model import *
+from mopy.model import *
 
 # http://wiki.musicontology.com/index.php/Here_is_a_basic_document_describing_an_Artist
 #     @prefix mo: <http://purl.org/ontology/mo/> .

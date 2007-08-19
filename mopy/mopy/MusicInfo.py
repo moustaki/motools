@@ -7,7 +7,7 @@ Created by Chris Sutton on 2007-08-13.
 Copyright (c) 2007 Chris Sutton. All rights reserved.
 """
 
-import model
+from mopy import model
 
 class MusicInfoException(Exception):
 	def __init__(self, message) :
