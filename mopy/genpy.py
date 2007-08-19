@@ -217,7 +217,7 @@ def main():
 	for ns in set([spec_g.qname(c).split(":")[0] for c in classes]):
 		setupNamespace(ns)
 		
-	model = open("model.py", "w")
+	model = open(os.path.join("mopy","model.py"), "w")
 	model.write("""
 # ===================================================================
 # = model.py - Core and External Classes of the Music Ontology 
