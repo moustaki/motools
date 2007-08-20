@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns="http://usefulinc.com/ns/doap#" 
+	xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	xmlns:admin="http://webns.net/mvcb/" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#">
+	
+<foaf:Person rdf:about="http://moustaki.org/foaf.rdf">
+   <foaf:name>Yves Raimond</foaf:name>
+   <foaf:homepage rdf:resource="http://www.moustaki.org"/>
+   <foaf:mbox_sha1sum>ae7e4772abe0f02b2e9af97b0a8e591c7da24e82</foaf:mbox_sha1sum>
+</foaf:Person>
+
+<foaf:Person rdf:about="http://chrissutton.org/me">
+   <foaf:name>Chris Sutton</foaf:name>
+   <foaf:homepage rdf:resource="http://www.sonictruths.net"/>
+   <foaf:mbox_sha1sum>5a9d18450dc9b37b3827baeacb87808b3a080dd5</foaf:mbox_sha1sum>
+</foaf:Person>
+
+
+<Project rdf:ID="mopy">
+ <name>mopy</name>
+ <shortname>mopy</shortname>
+ <shortdesc>The Music Ontology PYthon interface.</shortdesc>
+ <description>The Music Ontology PYthon interface. Provides an easy-to-use library for creating and manipulating Music Ontology data.</description>
+ <homepage rdf:resource="http://sourceforge.net/projects/motools/" />
+ <programming-language>python</programming-language>
+
+ <license rdf:resource="http://usefulinc.com/doap/licenses/bsd" />
+
+ <developer rdf:resource="http://chrissutton.org/me"/>
+ <developer rdf:resource="http://moustaki.org/foaf.rdf"/>
+ <maintainer rdf:resource="http://chrissutton.org/me"/>
+ <maintainer rdf:resource="http://moustaki.org/foaf.rdf"/>
+
+ <repository>
+   <SVNRepository>
+     <browse rdf:resource='http://motools.svn.sourceforge.net/viewvc/motools/mopy/' />
+     <location rdf:resource='https://motools.svn.sourceforge.net/svnroot/motools/mopy/' />
+   </SVNRepository>
+ </repository> 
+</Project>
+
+
+<Project rdf:ID="gnat">
+ <name>gnat</name>
+ <shortname>gnat</shortname>
+ <shortdesc>A set of tools for gathering and using semantic information about an audio collection.</shortdesc>
+ <description></description>
+ <homepage rdf:resource="http://sourceforge.net/projects/motools/" />
+ <programming-language>python</programming-language>
+
+ <license rdf:resource="http://usefulinc.com/doap/licenses/bsd" />
+
+ <developer rdf:resource="http://chrissutton.org/me"/>
+ <developer rdf:resource="http://moustaki.org/foaf.rdf"/>
+ <maintainer rdf:resource="http://chrissutton.org/me"/>
+ <maintainer rdf:resource="http://moustaki.org/foaf.rdf"/>
+
+ <repository>
+   <SVNRepository>
+     <browse rdf:resource='http://motools.svn.sourceforge.net/viewvc/motools/gnat/' />
+     <location rdf:resource='https://motools.svn.sourceforge.net/svnroot/motools/gnat/' />
+   </SVNRepository>
+ </repository> 
+</Project>
+
+
+</rdf:RDF>
