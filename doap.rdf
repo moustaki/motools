@@ -30,9 +30,9 @@
  <license rdf:resource="http://usefulinc.com/doap/licenses/bsd" />
 
  <developer rdf:resource="http://chrissutton.org/me"/>
- <developer rdf:resource="http://moustaki.org/foaf.rdf"/>
+ <developer rdf:resource="http://moustaki.org/foaf.rdf#me"/>
  <maintainer rdf:resource="http://chrissutton.org/me"/>
- <maintainer rdf:resource="http://moustaki.org/foaf.rdf"/>
+ <maintainer rdf:resource="http://moustaki.org/foaf.rdf#me"/>
 
  <repository>
    <SVNRepository>
@@ -54,9 +54,9 @@
  <license rdf:resource="http://usefulinc.com/doap/licenses/bsd" />
 
  <developer rdf:resource="http://chrissutton.org/me"/>
- <developer rdf:resource="http://moustaki.org/foaf.rdf"/>
+ <developer rdf:resource="http://moustaki.org/foaf.rdf#me"/>
  <maintainer rdf:resource="http://chrissutton.org/me"/>
- <maintainer rdf:resource="http://moustaki.org/foaf.rdf"/>
+ <maintainer rdf:resource="http://moustaki.org/foaf.rdf#me"/>
 
  <repository>
    <SVNRepository>
