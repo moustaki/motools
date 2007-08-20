@@ -6,7 +6,7 @@
 	xmlns:admin="http://webns.net/mvcb/" 
 	xmlns:owl="http://www.w3.org/2002/07/owl#">
 	
-<foaf:Person rdf:about="http://moustaki.org/foaf.rdf">
+<foaf:Person rdf:about="http://moustaki.org/foaf.rdf#me">
    <foaf:name>Yves Raimond</foaf:name>
    <foaf:homepage rdf:resource="http://www.moustaki.org"/>
    <foaf:mbox_sha1sum>ae7e4772abe0f02b2e9af97b0a8e591c7da24e82</foaf:mbox_sha1sum>
