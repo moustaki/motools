@@ -37,14 +37,17 @@ class AudioCollection :
 			count=0
 			for root,dirs,files in os.walk(filepath) :
 				for name in files :
-					if (re.match(excludeRE, name) == None):
-						filename = os.path.join(root,name)
+					filename = os.path.join(root,name)
+					if (re.match(excludeRE, name) == None) and ("%" not in filename): # rdflib's MySQL store has issues with %s
 						self.addFile(filename)
 						count+=1
 			info("Added %d files.", count)
 		else:
-			self.addFile(filepath)
-			info("Added 1 file.")
+			if "%" not in filepath:
+				self.addFile(filepath)
+				info("Added 1 file.")
+			else:
+				error("Bad characters in filename "+filepath+" : Ignoring file.")
 				
 	def addFile(self, filename):
 		FilesContextName = "files"
