@@ -24,6 +24,7 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 from mopy import model
 from mopy.MusicInfo import MusicInfo, getBlindURI, isBlind
 import rdflib; from rdflib import URIRef, Literal, BNode, RDF, RDFS, ConjunctiveGraph
+from logging import log, error, warning, info, debug
 
 class ImportException(Exception):
 	def __init__(self, message) :
@@ -71,7 +72,7 @@ def importRDFGraph(g, strict=True):
 			if strict:
 				raise ImportException("NO TYPE SPECIFIED for "+ str(s)+" !")
 			else:
-				print "NO TYPE SPECIFIED for "+ str(s)+" ! Ignoring..."
+				error("NO TYPE SPECIFIED for "+ str(s)+" ! Ignoring...")
 				continue
 		# FIXME : Definately want some type inference here
 	
@@ -79,7 +80,7 @@ def importRDFGraph(g, strict=True):
 			if strict:
 				raise ImportException("NO CLASS TO MODEL TYPE : "+str(s_type)+" OF URI "+str(s)+" !")
 			else:
-				print "NO CLASS TO MODEL TYPE : "+str(s_type)+" OF URI "+str(s)+" ! Ignoring..."
+				error("NO CLASS TO MODEL TYPE : "+str(s_type)+" OF URI "+str(s)+" ! Ignoring...")
 				continue
 			# FIXME : Maybe use a Resource ?
 		
@@ -106,7 +107,7 @@ def importRDFGraph(g, strict=True):
 					elif str(o) in knownInstances.keys():
 						obj = knownInstances[str(o)]
 					else:
-						print "Unknown URI "+str(o)+" as object of "+str(s)+", using a Resource to model."
+						warning("Unknown URI "+str(o)+" as object of "+str(s)+", using a Resource to model.")
 						obj = model.Resource(str(o))
 						objs[str(o)] = obj
 				elif type(o) == Literal:
@@ -115,7 +116,7 @@ def importRDFGraph(g, strict=True):
 					if strict:
 						raise ImportException("Found object "+str(o)+" of "+str(s)+" whose type isn't URIRef or Literal ! What to do ?")
 					else:
-						print "Found object "+str(o)+" of "+str(s)+" whose type isn't URIRef or Literal ! What to do ?"
+						error("Found object "+str(o)+" of "+str(s)+" whose type isn't URIRef or Literal ! What to do ?")
 						continue
 						
 				# set object for property :
@@ -127,16 +128,16 @@ def importRDFGraph(g, strict=True):
 						+" to "+str(s)+" type "+str(type(objs[s]))\
 						+" for property "+str(s_propdict[str(p)])+" : \n" + str(e))
 					else:
-						print "Exception when adding "+str(o)+" type "+str(type(obj))\
+						warning("Exception when adding "+str(o)+" type "+str(type(obj))\
 						+" to "+str(s)+" type "+str(type(objs[s]))\
-						+" for property "+str(s_propdict[str(p)])+"...\n" + str(e) +"\nIgnoring...\n"
+						+" for property "+str(s_propdict[str(p)])+"...\n" + str(e) +"\nIgnoring...\n")
 						continue
 					
 			else:
 				if strict:
 					raise ImportException("NO PROPERTY TO MODEL "+str(p)+" in class "+str(type(objs[s]))+"\nKnown properties : "+str(s_propURIs))
 				else:
-					print "NO PROPERTY TO MODEL "+str(p)+" in class "+str(type(objs[s]))
+					error("NO PROPERTY TO MODEL "+str(p)+" in class "+str(type(objs[s])))
 					continue
 	
 	mi = MusicInfo(objs.values())
@@ -216,14 +217,14 @@ def exportRDFGraph(mi):
 				else:
 					g.add((snode, URIRef(propSet.propertyURI), Literal(v)))
 		
-		print "Added "+str(type(s))+" @ "+str(snode)
+		info("Added "+str(type(s))+" @ "+str(snode))
 		
 	return g
 
 def exportRDFFile(mi, filename, format="xml"):
-	print "Constructing graph..."
+	info("Constructing graph...")
 	g = exportRDFGraph(mi)
-	print "Writing to file..."
+	info("Writing to file...")
 	out = open(filename,'w')
 	out.write(g.serialize(format=format))
 	out.close()
