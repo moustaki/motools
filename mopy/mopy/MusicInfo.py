@@ -52,8 +52,38 @@ class MusicInfo(object):
 				setattr(self, obj.shortname+"Idx", {})
 			getattr(self, obj.shortname+"Idx")[URI] = obj
 		else:
-			raise MusicInfoException("Tried to add two objects for the same URI ! "+str(URI))
-			# TODO : Actually handle this, merging with existing objects & interlinking as appropriate
+			existing = self.MainIdx[URI]
+			if isinstance(obj, type(existing)):
+				keep = obj # The (possibly) more specific subclass
+				add = existing
+			elif isinstance(existing, type(obj)):
+				keep = existing
+				add = obj
+			else:
+				raise MusicInfoException("Tried to add two objects for the same URI and classes are a mismatch !"\
+										 +"\n Existing : "+str(existing)+"\nAdding : "+str(obj))
+			debug("Merging Existing : "+str(existing)+"\nAdding : "+str(obj))
+			for propName in keep._props.keys():
+				 if add._props.has_key(propName):
+					for v in add._props[propName]:
+						debug("Adding "+str(v).replace("\n","|")+" to "+str(keep).replace("\n","|")+" as "+propName)
+						keep._props[propName].add(v)
+
+			# Update references
+			self.MainIdx[URI] = keep
+			if not hasattr(self, keep.shortname+"Idx"):
+				setattr(self, keep.shortname+"Idx", {})
+			getattr(self, keep.shortname+"Idx")[URI] = keep
+			
+			if keep != existing:
+				del getattr(self, existing.shortname+"Idx")[URI]
+				for obj in self.MainIdx.values():
+					for propSet in obj._props.values():
+						for v in propSet:
+							if v == existing:
+								debug("Updating reference in "+str(obj).replace("\n","|"))
+								propSet.remove(v)
+								propSet.add(keep)
 	
 	def haveURI(self, uri):
 		return self.MainIdx.has_key(uri)
@@ -78,7 +108,7 @@ class MusicInfo(object):
 					match = False
 					
 				if match == True:
-					print("Found object "+str(obj).replace("\n","|")+" to match "+str(o).replace("\n","|"))
+					info("Found object "+str(obj).replace("\n","|")+" to match "+str(o).replace("\n","|"))
 					return obj
 					
 		return None
