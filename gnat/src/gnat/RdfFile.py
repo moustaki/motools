@@ -37,7 +37,7 @@ class RdfFile(object):
 			# Don't leave empty files around :
 			os.remove(self.filename)
 		else:
-			exportRDFFile(self.mi, self.filename, format="n3")
+			exportRDFFile(self.mi, self.filename, format="xml")
 				
 	def clear(self):
 		self.mi = None
