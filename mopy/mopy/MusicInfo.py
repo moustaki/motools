@@ -31,13 +31,14 @@ class MusicInfo(object):
 			# See if we have an existing blind node object :
 			if hasattr(obj, "URI") == False or obj.URI == None or isBlind(obj):
 				#raise MusicInfoException("Tried to add object "+str(obj)+" with no URI !")
-				info("Tried to add object "+str(obj).replace("\n","|")+" with no URI or blind URI !")
-				if self.findExistingBlindObj(obj) == None:
+				found = self.findExistingBlindObj(obj)
+				if found == None:
 					if not isBlind(obj):
-						info(" Assigning a blind URI.")
+						info(" Assigning a blind URI for "+str(obj).replace("\n","|"))
 						obj.URI = getBlindURI()
 				else:
-					info("Already know this blind obj.")
+					info("Already know blind obj "+str(obj).replace("\n","|"))
+					obj.URI = found.URI # Update other references to this blind node
 					return
 					
 			URI = obj.URI
@@ -77,7 +78,7 @@ class MusicInfo(object):
 					match = False
 					
 				if match == True:
-					print("Found object "+str(obj)+" to match "+str(o)+"\n")
+					print("Found object "+str(obj).replace("\n","|")+" to match "+str(o).replace("\n","|"))
 					return obj
 					
 		return None
