@@ -15,6 +15,9 @@ from logging import log, error, warning, info, debug
 from time import asctime
 import re
 
+from PUIDTrackLookup import *
+import mopy; from mopy import MusicInfo; from mopy.model import Stream, MusicArtist, Track, Signal
+
 # NOTE : Specify an absolute or relative path here. Don't assume $PATH will do - some files will be "unanalyzable" if you do.
 genpuidbin = "./genpuid" 
 MusicDNSKey = "845c6a3ae981f1450eb13730183448d8" #Chris S's key
@@ -24,13 +27,19 @@ class FPTrackLookup :
 		pass
 
 	def fpFile(self, filename):
-		"""Looks up the MusicDNS PUID for the given filename using fingerprinting and stores the resulting info in the given graph"""
+		"""Looks up the MusicDNS PUID for the given filename using fingerprinting
+		   and stores the resulting info in the given graph"""
 		global genpuidbin, MusicDNSKey
 		
-		filename = clean(filename)
+		track = Track()
+		stream = Stream(os.path.basename(filename))
+		track.available_as = stream
+		signal = Signal()
+		signal.published_as = track
+		mi = MusicInfo([track, stream, signal])
 		
+		filename = clean(filename)
 		# TODO : If file isn't a WAV or MP3, use suitable decoder, and then pass the resulting wav to genpuid.
-	
 		res_xml = os.popen(genpuidbin + " " + MusicDNSKey + " -rmd=2 -xml -noanalysis \""+filename+"\"").readlines()
 			
 		retry_count=0
@@ -50,83 +59,85 @@ class FPTrackLookup :
 			root = dom.getElementsByTagName("genpuid")[0]
 
 			if (root.hasAttribute("songs") == False) or (int(root.getAttribute("songs")) == 0):
-				return {}
+				return MusicInfo()
 			
-			track = root.getElementsByTagName("track")[0]
+			trackelem = root.getElementsByTagName("track")[0]
 			
-			if (track.childNodes[0].nodeName=="#text") and (track.childNodes[0].data == "unavailable"):
-				info(" No PUID available for track : "+str(track.childNodes[0].data))
-				return {}
+			if (trackelem.childNodes[0].nodeName=="#text") and (trackelem.childNodes[0].data == "unavailable"):
+				info(" No PUID available for track : "+str(trackelem.childNodes[0].data))
+				return MusicInfo()
 			
-			titles = track.getElementsByTagName("title")
+			titles = trackelem.getElementsByTagName("title")
 			if len(titles)>0:
-				title = titles[0].childNodes[0].wholeText
-			else:
-				title = None
+				track.title = titles[0].childNodes[0].wholeText
 			
-			artists = track.getElementsByTagName("artist")
+			artists = trackelem.getElementsByTagName("artist")
 			if len(artists)>0:
-				artist = artists[0].getElementsByTagName("name")[0].childNodes[0].wholeText
-			else:
-				artist = None
-
-			years = track.getElementsByTagName("first-release-date")
-			if len(years)>0:
-				year = years[0].childNodes[0].wholeText
-			else:
-				year = None
+				artistobj=MusicArtist()
+				artistobj.name = artists[0].getElementsByTagName("name")[0].childNodes[0].wholeText
+				mi.add(artistobj)
+				track.creator = artistobj
 			
-			puid_list = track.getElementsByTagName("puid-list")
+			puid_list = trackelem.getElementsByTagName("puid-list")
 			puid_nodes = puid_list[0].getElementsByTagName("puid")
 			puids = []
+			
 			for puid_node in puid_nodes:
 				puids.append(puid_node.getAttribute("id"))
+			if len(puids) == 0:
+				info(" No PUID available for track : "+str(trackelem.childNodes[0].data))
+				return MusicInfo()
+		 	elif len(puids) > 1:
+				warning("Multiple PUIDs returned for track !")
+				
+			puid = puids[0]
+			signal.puid = puid
+			
+
+			# FIXME
+			# years = trackelem.getElementsByTagName("first-release-date")
+			# if len(years)>0:
+			# 	year = years[0].childNodes[0].wholeText
+			# else:
+			# 	year = None
+
+			# FIXME
+			# release_dates = trackelem.getElementsByTagName("first-release_date")
+			# if len(release_dates)>0:
+			# 	release_date = release_dates[0]
+			# else:
+			# 	release_date = None
 		
-			release_dates = track.getElementsByTagName("first-release_date")
-			if len(release_dates)>0:
-				release_date = release_dates[0]
-			else:
-				release_date = None
-		
-			genres = []
-			genre_lists = track.getElementsByTagName("genre-list")
-			if len(genre_lists)>0:
-				for genre_list in genre_lists:
-					genre_nodes = genre_list.getElementsByTagName("genre")
-					for genre_node in genre_nodes:
-						genres.append(genre_node.getElementsByTagName("name")[0].childNodes[0].wholeText)
+			# FIXME
+			# genres = []
+			# genre_lists = trackelem.getElementsByTagName("genre-list")
+			# if len(genre_lists)>0:
+			# 	for genre_list in genre_lists:
+			# 		genre_nodes = genre_list.getElementsByTagName("genre")
+			# 		for genre_node in genre_nodes:
+			# 			genres.append(genre_node.getElementsByTagName("name")[0].childNodes[0].wholeText)
 				
 		except Exception, e:
 			error("Failure while parsing results !")
 			debug("xml :\n"+"".join(res_xml))
 			error(str(e))
-			return {}
+			return MusicInfo()
+			 
+		# Look up in MBZ using PUID and metadata :
+		try:
+			pl = PUIDTrackLookup(filename, puid, mi)
+			mbzuri = pl.getMbzTrackURI()
+			mbzconvert = MbzURIConverter(mbzuri)
+			track.URI = mbzconvert.getURI()
+			if (mbzconvert.getURI().find("track") == -1):
+				error("Incomprehensible URI for track !")
+			signal.URI = mbzconvert.getURI().replace("track","signal")
+		except MbzLookupException, e:
+			error(" - " + e.message)
+		except FileTypeException, e:
+			error(" - " + e.message)
 	
-	
-		results = {}
-
-		if title:
-			info("title : "+title)
-			results["title"] = title
-		if artist:
-			info("artist : "+artist)
-			results["artist"] = artist
-		if year:
-			info("year : "+year)
-			results["year"] = year
-		if len(puids)>0:
-			info("puids : "+",".join(puids))
-			results["puids"]=[]
-			for puid in puids:
-				results["puids"].append(puid)
-		if len(genres)>0:
-			info("genres : "+",".join(genres))
-			results["genres"]=[]
-			for genre in genres:
-				results["genres"].append(genre)
-			
-		#debug("results :"+str(results))
-		return results
+		return mi
 
 
 def clean(s):

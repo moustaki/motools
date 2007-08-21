@@ -13,10 +13,22 @@ import musicbrainz2.webservice as ws
 
 class PUIDTrackLookup(MbzTrackLookup):
 
-	def __init__(self,file,puid,metadata=None):
-		if metadata==None:
-			metadata={}
-		self.md=metadata
+	def __init__(self,file,puid,mi=None):
+		
+		self.md={}
+		
+		# Extract metadata from MusicInfo obj
+		if mi!=None:
+			if hasattr(mi, "TrackIdx"):
+				track = mi.TrackIdx.values()[0]
+				if len(track.title) > 0:
+					self.md["title"] = list(track.title)[0]
+				if len(track.creator) > 0:
+					artist = list(track.creator)[0]
+					if len(artist.name) > 0:
+						self.md["artist"] = list(artist.name)[0]
+					
+			
 		self.puid = puid
 		MbzTrackLookup.__init__(self,file=file)
 	
