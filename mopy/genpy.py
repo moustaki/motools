@@ -169,7 +169,7 @@ class Generator:
 
 	def addImportForClass(self):
 		nsInit = open(os.path.join("mopy",self.ns,"__init__.py"), 'a')
-		nsInit.write("from model import "+self.name+"\n")
+		nsInit.write("from mopy.model import "+self.name+"\n")
 		nsInit.close()
 			
 def PropQNameToPyName(qname):
@@ -193,7 +193,7 @@ def setupNamespace(ns):
 
 def addImportForInstance(ns, i):
 	nsInit = open(os.path.join("mopy",ns,"__init__.py"), 'a')
-	nsInit.write("from model import "+i+"\n")
+	nsInit.write("from mopy.model import "+i+"\n")
 	nsInit.close()
 	
 def main():

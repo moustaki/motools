@@ -4,6 +4,7 @@ PropertySet.py
 Created by Chris Sutton on 2007-08-11.
 Copyright (c) 2007 Chris Sutton. All rights reserved.
 """
+from logging import log, error, warning, info, debug
 
 class PropertySet(set):
 
@@ -13,7 +14,7 @@ class PropertySet(set):
 		self.propertyURI = propertyURI
 		self.validTypes = validTypes
 		self.allowLits = allowLits
-		self.Lits = (str, int, float) # Any more ? 
+		self.Lits = (str, unicode, int, float) # Any more ? 
 	#
 	# Set functions :
 	#	
@@ -23,9 +24,12 @@ class PropertySet(set):
 		#if self.allowLits:
 		#	print "(lits allowed)"
 		if not ((self.allowLits and isinstance(o, self.Lits))\
-				or isinstance(o, self.validTypes)\
+				or (self.validTypes != None and isinstance(o, self.validTypes))\
 				):
-			raise TypeError("Invalid type ! Expected one of : "+str(self.validTypes))
+			msg = "Invalid type ! Got "+str(type(o))+" but expected one of : "+str(self.validTypes)
+			if self.allowLits:
+				msg+= " (or a literal)"
+			raise TypeError(msg)
 		set.add(self,o)
 	
 	def get(self):

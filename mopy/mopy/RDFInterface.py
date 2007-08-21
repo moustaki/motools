@@ -22,7 +22,7 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 
 
 from mopy import model
-from mopy.MusicInfo import MusicInfo
+from mopy.MusicInfo import MusicInfo, getBlindURI, isBlind
 import rdflib; from rdflib import URIRef, Literal, BNode, RDF, RDFS, ConjunctiveGraph
 
 class ImportException(Exception):
@@ -54,11 +54,11 @@ def importRDFGraph(g, strict=True):
 	for bn in [s for s,p,o in set(g.triples((None,None,None))) if type(s) == BNode]:
 		for p,o in set(g.predicate_objects(bn)):
 			g.remove((bn, p, o))
-			g.add((URIRef(bn), p, o))
+			g.add((URIRef(getBlindURI(bn)), p, o))
 	for bn in [o for s,p,o in set(g.triples((None,None,None))) if type(o) == BNode]:
 		for s,p in set(g.subject_predicates(bn)):
 			g.remove((s,p,bn))
-			g.add((s, p, URIRef(bn)))
+			g.add((s, p, URIRef(getBlindURI(bn))))
 	
 	#
 	# Create Python objects to model triple subjects
@@ -168,6 +168,7 @@ def importRDFGraph(g, strict=True):
 
 def exportRDFGraph(mi):
 	g = ConjunctiveGraph()
+	bnodes = {}
 	for NSName, NSuriStr in mi.namespaceBindings.iteritems():
 		g.namespace_manager.bind(NSName, URIRef(NSuriStr))
 
@@ -175,16 +176,30 @@ def exportRDFGraph(mi):
 	knownTypes = dict([(c.classURI, c) for c in modelAttrs if hasattr(c, "classURI")])
 	knownInstances = dict([(i.URI, i) for i in modelAttrs if hasattr(i, "URI")])
 
+	# Assign blind nodes :
+	for s in mi.MainIdx.values():
+		if s.URI == None or isBlind(s):
+			snode = BNode()
+			bnodes[s.URI] = snode
+		for propName, propSet in s._props.iteritems():
+			for v in propSet:
+				if type(v) not in propSet.Lits and isBlind(v):
+					if not bnodes.has_key(v.URI):
+						vnode = BNode()
+						bnodes[v.URI] = vnode
+					
+
 	for s in mi.MainIdx.values():
 		if not hasattr(s, "classURI") or s.classURI not in knownTypes.keys():
 			raise ExportException("Object "+str(s)+" has no classURI, or classURI is not known in the MO model.")
 			# FIXME : Maybe use a Resource ?
 		
-		if s.URI == None:
-			raise ExportException("Object "+str(s)+" has no URI !")
-			# FIXME : Maybe assign a local id ?
+		if s.URI == None or isBlind(s):
+			snode = bnodes[s.URI]
+		else:
+			snode = URIRef(s.URI)
 
-		g.add((URIRef(s.URI), RDF.type, URIRef(s.classURI)))
+		g.add((snode, RDF.type, URIRef(s.classURI)))
 
 		for propName, propSet in s._props.iteritems():
 			for v in propSet:
@@ -194,11 +209,14 @@ def exportRDFGraph(mi):
 				if type(v) not in propSet.Lits:
 					if not hasattr(v, "URI"):
 						raise ExportException("Property value "+str(v)+" is not a Literal, but has no URI !")
-					g.add((URIRef(s.URI), URIRef(propSet.propertyURI), URIRef(v.URI)))
+					if isBlind(v):
+						g.add((snode, URIRef(propSet.propertyURI), bnodes[v.URI]))
+					else:
+						g.add((snode, URIRef(propSet.propertyURI), URIRef(v.URI)))
 				else:
-					g.add((URIRef(s.URI), URIRef(propSet.propertyURI), Literal(v)))
+					g.add((snode, URIRef(propSet.propertyURI), Literal(v)))
 		
-		print "Added "+str(type(s))+" @ "+s.URI
+		print "Added "+str(type(s))+" @ "+str(snode)
 		
 	return g
 
