@@ -14,6 +14,7 @@ import logging
 from logging import log, error, warning, info, debug
 from time import asctime
 import re
+from urllib import quote as urlencode
 
 from PUIDTrackLookup import *
 import mopy; from mopy import MusicInfo; from mopy.model import Stream, MusicArtist, Track, Signal
@@ -32,7 +33,7 @@ class FPTrackLookup :
 		global genpuidbin, MusicDNSKey
 		
 		track = Track()
-		stream = Stream(os.path.basename(filename))
+		stream = Stream(urlencode(os.path.basename(filename)))
 		track.available_as = stream
 		signal = Signal()
 		signal.published_as = track
@@ -141,7 +142,7 @@ class FPTrackLookup :
 
 
 def clean(s):
-	s = s.replace('`','\`')
+	s = s.replace('`','\`') # FIXME : other shell-unfriendly characters should be handled too
 	return s
 
 def main():

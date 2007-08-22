@@ -18,6 +18,7 @@ from ExternalSources import *
 from Id3Writer import *
 from logging import log, error, warning, info, debug
 from optparse import OptionParser
+from urllib import quote as urlencode
 
 from mopy.MusicInfo import MusicInfo, isBlind
 from mopy.model import Stream, Track
@@ -75,7 +76,7 @@ class AudioCollection :
 			lookup = MbzTrackLookup(filename)
 			mbzuri = lookup.getMbzTrackURI()
 			mbzconvert = MbzURIConverter(mbzuri)
-			sig = Stream(os.path.basename(filename))
+			sig = Stream(urlencode(os.path.basename(filename)))
 			mbz = Track(mbzconvert.getURI())
 			mbz.available_as = sig
 			mi.add(sig); mi.add(mbz)
