@@ -17,7 +17,7 @@ import re
 from urllib import quote as urlencode
 
 from PUIDTrackLookup import *
-import mopy; from mopy import MusicInfo; from mopy.model import Stream, MusicArtist, Track, Signal
+import mopy; from mopy import MusicInfo; from mopy.model import AudioFile, MusicArtist, Track, Signal
 
 # NOTE : Specify an absolute or relative path here. Don't assume $PATH will do - some files will be "unanalyzable" if you do.
 genpuidbin = "./genpuid" 
@@ -33,11 +33,11 @@ class FPTrackLookup :
 		global genpuidbin, MusicDNSKey
 		
 		track = Track()
-		stream = Stream(urlencode(os.path.basename(filename)))
-		track.available_as = stream
+		audiofile = AudioFile(urlencode(os.path.basename(filename)))
+		track.available_as = audiofile
 		signal = Signal()
 		signal.published_as = track
-		mi = MusicInfo([track, stream, signal])
+		mi = MusicInfo([track, audiofile, signal])
 		
 		filename = clean(filename)
 		# TODO : If file isn't a WAV or MP3, use suitable decoder, and then pass the resulting wav to genpuid.
@@ -77,7 +77,7 @@ class FPTrackLookup :
 				artistobj=MusicArtist()
 				artistobj.name = artists[0].getElementsByTagName("name")[0].childNodes[0].wholeText
 				mi.add(artistobj)
-				track.creator = artistobj
+				track.maker = artistobj
 			
 			puid_list = trackelem.getElementsByTagName("puid-list")
 			puid_nodes = puid_list[0].getElementsByTagName("puid")

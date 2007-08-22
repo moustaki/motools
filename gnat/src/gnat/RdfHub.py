@@ -18,6 +18,7 @@ class RdfHub :
 		self.DC = Namespace("http://purl.org/dc/elements/1.1/")
 		self.OWL= Namespace("http://www.w3.org/2002/07/owl#")
 		self.AC = Namespace("http://temp.tmp/AudioCollection/")
+		self.FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 		self.contextName = contextName
 		
 		self.baseURI = "file://"
@@ -65,7 +66,7 @@ class RdfHub :
 		self.addNamed((URIRef(thing_one), self.OWL['sameAs'], URIRef(thing_two)))
 
 	def addItemType(self, item):
-		self.addNamed((URIRef(item),rdflib.RDF.type, self.MO['Stream']))
+		self.addNamed((URIRef(item),rdflib.RDF.type, self.MO['AudioFile']))
 	
 	def addTrackType(self, manifestation):
 		self.addNamed((URIRef(manifestation), rdflib.RDF.type, self.MO['Track']))
@@ -78,7 +79,7 @@ class RdfHub :
 		self.addNamed((URIRef(item), self.DC['title'], Literal(title)))
 		
 	def addArtistL(self, item, artist):
-		self.addNamed((URIRef(item), self.DC['creator'], Literal(artist)))
+		self.addNamed((URIRef(item), self.FOAF['maker'], Literal(artist)))
 		
 	def addGenreL(self, item, genre):
 		self.addNamed((URIRef(item), self.MO['Genre'], Literal(genre)))
@@ -107,10 +108,9 @@ class RdfHub :
 	
 	def getItemURIs(self, contextName=""):
 		"""Returns the URI of each resource in store with an item type."""
-		# for now, just calling all file items mo:Streams O-O
 		if contextName=="":
 			contextName = self.contextName
-		return (str(s) for s,p,o,graph in self.graph.quads((None,rdflib.RDF.type,self.MO["Stream"])) \
+		return (str(s) for s,p,o,graph in self.graph.quads((None,rdflib.RDF.type,self.MO["AudioFile"])) \
 						   if ((contextName==None) or (graph.identifier == URIRef(contextName)))
 				)
 				

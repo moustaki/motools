@@ -21,7 +21,7 @@ from optparse import OptionParser
 from urllib import quote as urlencode
 
 from mopy.MusicInfo import MusicInfo, isBlind
-from mopy.model import Stream, Track
+from mopy.model import AudioFile, Track
 
 exclPatterns = r".*(jpg|jpeg|txt|ini|db|DS\_Store|m3u|pls|xml|log|png|\.directory)$"
 excludeRE = re.compile(exclPatterns, re.IGNORECASE)
@@ -76,10 +76,10 @@ class AudioCollection :
 			lookup = MbzTrackLookup(filename)
 			mbzuri = lookup.getMbzTrackURI()
 			mbzconvert = MbzURIConverter(mbzuri)
-			sig = Stream(urlencode(os.path.basename(filename)))
+			af = AudioFile(urlencode(os.path.basename(filename)))
 			mbz = Track(mbzconvert.getURI())
-			mbz.available_as = sig
-			mi.add(sig); mi.add(mbz)
+			mbz.available_as = af
+			mi.add(af); mi.add(mbz)
 			self.succeeded+=1
 		except MbzLookupException, e:
 			error(" - " + e.message)
