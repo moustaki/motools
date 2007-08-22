@@ -18,9 +18,27 @@ load(Dir) :-
 		  format(atom(Wildcard),'~w/~w',[Walk,'*.rdf']),
 		  expand_file_name(Wildcard,Files),
 		  member(File,Files),
-		  nl,format(' - Loading ~w\n',File)
+		  nl,format(' - Loading ~w\n',File),
+		  convert_path(Walk,WalkWWW),
+		  atom_concat('file://',WalkWWW,BaseURI)
 		  ),
-		  rdf_load(File)
+		  rdf_load(File,[base_uri(BaseURI)])
 		).
 
+
+
+convert_path(Path,C) :-
+	atom_chars(Path,Chars),
+	replace(Chars,Chars2),
+	atom_chars(C,Chars2).
+
+replace([],[]).
+replace([H1|T1],L2) :-
+	r(H1,H2),append(H2,T2,L2),!,
+	replace(T1,T2).
+replace([H|T1],[H|T2]) :-
+	replace(T1,T2).
+
+
+r(' ',['%','2','0']).
 
