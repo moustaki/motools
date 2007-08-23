@@ -5,7 +5,7 @@
 
 :- use_module(namespaces).
 
-sbsimilarity :- findall(Signal, rdf_db:rdf(A, rdf:type, 'http://purl.org/ontology/mo/Signal'), Signals), 
+sbsimilarity :- findall(Signal, rdf_db:rdf(Signal, rdf:type, 'http://purl.org/ontology/mo/Signal'), Signals), 
    forall(
       ( member(Signal,Signals),
         atom_concat('http://zitgist.com/music/signal/',_,Signal),
