@@ -21,6 +21,7 @@ server :-
 server(Port) :-
         serql_server([port(Port)]).
 
+:- use_module(namespaces).
 :- use_module(load).
 :- use_module(library('semweb/rdf_persistency')).
 :- consult(config).
