@@ -9,8 +9,8 @@ sbsimilarity :- findall(Signal, rdf_db:rdf(Signal, rdf:type, 'http://purl.org/on
    forall(
       ( member(Signal,Signals),
         atom_concat('http://zitgist.com/music/signal/',_,Signal),
-	mbz_url_to_id(Signal, MbzID),
-	atom_concat('http://isophonics.net/music/signal/', MbzID, IPURI)
+		mbz_url_to_id(Signal, MbzID),
+		atom_concat('http://isophonics.net/music/signal/', MbzID, IPURI)
       ),
-      rdf_assert(A, owl:sameAs, IPURI)
+      rdf_assert(Signal, owl:sameAs, IPURI)
       ).
