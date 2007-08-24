@@ -1,4 +1,4 @@
-:- module(crawl,[crawl/1]).
+:- module(crawl,[crawl/1, crawl_from_local/0]).
 
 :- prolog_load_context(directory, Dir),
    atom_concat(Dir,'/swic',SWICDir),
@@ -15,3 +15,13 @@ crawl(URI) :- findall((P,O,G), <?> [rdf(URI, P,O,G)], Triples),
 	length(Triples, N),
 	format('Imported ~w triples from ~w', [N, URI]) .
 
+crawl_from_local :- 
+	music_path(Path),
+	atom_concat('file://',Path,PathURI),
+	findall((S,P,O,Filename:LineNum),
+	 		(
+				rdf_db:rdf(S,P,O,Filename:LineNum),
+				atom_concat(PathURI,_,Filename)
+			),
+ 			Quads),
+	forall((member((S,P,O,G), Quads),atom_concat('http://',_,S)), (format(' File : ~w : Gonna crawl ~w and ~w',[G,S,O]),nl,crawl(S))).
