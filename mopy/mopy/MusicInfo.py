@@ -79,11 +79,11 @@ class MusicInfo(object):
 				del getattr(self, existing.shortname+"Idx")[URI]
 				for obj in self.MainIdx.values():
 					for propSet in obj._props.values():
-						for v in propSet:
-							if v == existing:
-								debug("Updating reference in "+str(obj).replace("\n","|"))
-								propSet.remove(v)
-								propSet.add(keep)
+						outdatedRefs = [v for v in propSet if v==existing]
+						for v in outdatedRefs:
+							debug("Updating reference in "+str(obj).replace("\n","|"))
+							propSet.remove(v)
+							propSet.add(keep)
 	
 	def haveURI(self, uri):
 		return self.MainIdx.has_key(uri)
