@@ -7,7 +7,7 @@
 :- use_module(library('semweb/rdf_db')) .
 :- use_module('rdf_http_plugin').
 
-:- use_module(config).
+:- use_module('config').
 %:- use_module('swic/swic').
 %:- use_module('swic/query').
 %:- use_module('swic/sparql').
@@ -16,6 +16,10 @@
 crawl(URI) :-
 	rdf_load(URI).
 %or load swic, and <?> [rdf(URI,_,_,_)].
+
+should_investigate(literal(_)) :- !, fail.
+should_investigate(X) :- atom_concat('http://',_,X) .
+
 
 crawl_from_local :- 
 	music_path(Path),
@@ -26,9 +30,9 @@ crawl_from_local :-
 				atom_concat(PathURI,_,Filename)
 			),
  			Quads),
-	(forall((member((S,P,O,G), Quads),atom_concat('http://',_,S)),
+	(forall((member((S,P,O,G), Quads),should_investigate(S)),
 		   (format(' File : ~w : Gonna crawl ~w',[G,S]),nl,crawl(S))
 		  ); true),
-	forall((member((S,P,O,G), Quads),atom_concat('http://',_,O)),
+	forall((member((S,P,O,G), Quads),should_investigate(O)),
 		   (format(' File : ~w : Gonna crawl ~w',[G,O]),nl,crawl(O))
 		  ) .
