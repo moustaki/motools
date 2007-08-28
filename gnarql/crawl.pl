@@ -13,7 +13,7 @@
 crawl(URI) :- findall((P,O,G), <?> [rdf(URI, P,O,G)], Triples),
 	forall(member((P,O,G), Triples), rdf_assert(URI,P,O,G)),
 	length(Triples, N),
-	format('Imported ~w triples from ~w', [N, URI]) .
+	format('Imported ~w triples from ~w', [N, URI]), nl .
 
 crawl_from_local :- 
 	music_path(Path),
@@ -24,4 +24,9 @@ crawl_from_local :-
 				atom_concat(PathURI,_,Filename)
 			),
  			Quads),
-	forall((member((S,P,O,G), Quads),atom_concat('http://',_,S)), (format(' File : ~w : Gonna crawl ~w and ~w',[G,S,O]),nl,crawl(S))).
+	(forall((member((S,P,O,G), Quads),atom_concat('http://',_,S)),
+		   (format(' File : ~w : Gonna crawl ~w',[G,S]),nl,crawl(S))
+		  ); true),
+	forall((member((S,P,O,G), Quads),atom_concat('http://',_,O)),
+		   (format(' File : ~w : Gonna crawl ~w',[G,O]),nl,crawl(O))
+		  ) .
