@@ -5,6 +5,7 @@
    asserta(user:file_search_path(swic, SWICDir)).
 
 :- use_module(library('semweb/rdf_db')) .
+:- use_module('rdf_http_plugin').
 %:- use_module('swic/swic').
 %:- use_module('swic/query').
 %:- use_module('swic/sparql').
