@@ -5,15 +5,14 @@
    asserta(user:file_search_path(swic, SWICDir)).
 
 :- use_module(library('semweb/rdf_db')) .
-:- use_module('swic/swic').
-:- use_module('swic/query').
+%:- use_module('swic/swic').
+%:- use_module('swic/query').
 %:- use_module('swic/sparql').
 %:- use_module('swic/namespaces').
 
-crawl(URI) :- findall((P,O,G), <?> [rdf(URI, P,O,G)], Triples),
-	forall(member((P,O,G), Triples), rdf_assert(URI,P,O,G)),
-	length(Triples, N),
-	format('Imported ~w triples from ~w', [N, URI]), nl .
+crawl(URI) :-
+	rdf_load(URI).
+%or load swic, and <?> [rdf(URI,_,_,_)].
 
 crawl_from_local :- 
 	music_path(Path),
