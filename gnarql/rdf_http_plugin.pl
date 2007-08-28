@@ -3,7 +3,8 @@
 
 :- use_module(library(date)).
 :- use_module(library('http/http_open')).
-:- consult(config).
+
+:- use_module(config).
 
 
 /**
