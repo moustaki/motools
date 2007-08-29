@@ -20,7 +20,7 @@ load(Dir) :-
 		  member(File,Files),
 		  nl,format(' - Loading ~w\n',File),
 		  convert_path(Walk,WalkWWW),
-		  atom_concat('file://',WalkWWW,BaseURI)
+		  format(atom(BaseURI),'file://~w/',[WalkWWW])
 		  ),
 		  rdf_load(File,[base_uri(BaseURI)])
 		).
