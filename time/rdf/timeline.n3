@@ -4,7 +4,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> . 
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix time: <http://www.w3.org/2006/time>.
@@ -24,38 +24,26 @@
     foaf:maker <http://moustaki.org/foaf.rdf#moustaki>;
     owl:imports <http://www.w3.org/2006/time-entry>, <http://www.w3.org/2006/time> . # Some things for OWL geeks, although I think this is completely useless
 
-:AbstractInterval
-    a owl:Class;
-    rdfs:label "abstract interval";
-    rdfs:comment """
-	An interval defined on an abstract time-line.
-    """;
-    owl:equivalentClass [
-        a owl:Restriction;
-        owl:someValuesFrom :AbstractTimeLine;
-        owl:onProperty :onTimeLine
-    ];
-    rdfs:subClassOf <http://www.w3.org/2006/time#ProperInterval> .
+###############################################
+# Part 1: Core terms defined by this ontology #
+###############################################
 
-:AbstractTimeLine
+:TimeLine
     a owl:Class;
-    rdfs:label "abstract timeline";
-    rdfs:comment """
-    	Abstract time lines may be used as a backbone for Score, Works, ... 
-	This allows for TimeLine maps to relate works to a given 
-	performance (this part was played at this time)."""^^xsd:string;
-    rdfs:subClassOf :TimeLine .
+    rdfs:label "timeline";
+    rdfs:comment """Represents a linear and coherent piece of time -- can be either abstract (such as the one behind a score) or concrete (such as the universal time line).
+Two timelines can be mapped using timeline maps."""^^xsd:string .
 
-tl:Instant a owl:Class;
+:Instant a owl:Class;
 	rdfs:label "instant";
 	rdfs:comment "An instant (same as in OWL-Time)";
 	owl:sameAs time:Instant;
 	.
 
-tl:Interval a owl:Class;
+:Interval a owl:Class;
 	rdfs:label "interval";
-	rdfs:comment "An interval (same as in OWL-Time)";
-	owl:sameAs time:Interval;
+	rdfs:comment "An interval (same as in OWL-Time). Allen's relationships are defined in OWL-Time.";
+	owl:sameAs time:ProperInterval;
 	.
 
 :onTimeLine
@@ -77,6 +65,66 @@ tl:Interval a owl:Class;
         )
     ] .
 
+:at
+    a owl:FunctionalProperty;
+    rdfs:label "at";
+    rdfs:comment "refers to a point or an interval on the time line, through an explicit datatype"^^xsd:string;
+    rdfs:domain [
+        a owl:Class;
+        owl:unionOf (
+            :Interval
+            :Instant
+	)
+    ];
+    a owl:DatatypeProperty .
+
+:duration
+    rdfs:label "duration";
+    rdfs:comment "the duration of a time interval";
+    a owl:DatatypeProperty;
+    rdfs:domain :Interval .
+
+:endsAt
+    rdfs:label "ends at";
+    rdfs:comment "refers to the end of a time interval, through an explicit datatype. time:hasEnd can be used as well, if you want to associate the end of the interval to an explicit time point resource";
+    a owl:DatatypeProperty;
+    rdfs:domain :Interval .
+
+:beginsAt
+    rdfs:label "begins at";
+    rdfs:comment "refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource";
+    a owl:DatatypeProperty;
+    rdfs:domain :Interval .
+
+
+############################################################################
+# Part 2: Extra DL stuff, timeline taxonomies, coordinate systems handling #
+#   - This section is not compulsory and should be avoided for simple use  #
+############################################################################
+
+
+:AbstractInterval
+    a owl:Class;
+    rdfs:label "abstract interval";
+    rdfs:comment """
+	An interval defined on an abstract time-line.
+    """;
+    owl:equivalentClass [
+        a owl:Restriction;
+        owl:someValuesFrom :AbstractTimeLine;
+        owl:onProperty :onTimeLine
+    ];
+    rdfs:subClassOf :Interval .
+
+:AbstractTimeLine
+    a owl:Class;
+    rdfs:label "abstract timeline";
+    rdfs:comment """
+    	Abstract time lines may be used as a backbone for Score, Works, ... 
+	This allows for TimeLine maps to relate works to a given 
+	performance (this part was played at this time)."""^^xsd:string;
+    rdfs:subClassOf :TimeLine .
+
 :UTInstant
     a owl:Class;
     rdfs:label "instant on the universal timeline";
@@ -94,7 +142,7 @@ tl:Interval a owl:Class;
                 owl:hasValue :universaltimeline;
                 owl:onProperty :onTimeLine
             ]
-            <http://www.w3.org/2006/time#Instant>
+            :Instant
         )
     ] .
 
@@ -165,8 +213,7 @@ tl:Interval a owl:Class;
     rdfs:label "relative timeline";
     a owl:Class;
     rdfs:subClassOf :ContinuousTimeLine;
-    rdfs:comment """Semi infinite time line...
-canonical coordinate system --> adressed through xsd:duration since the instant 0."""^^xsd:string;
+    rdfs:comment "Semi infinite time line...canonical coordinate system --> adressed through xsd:duration since the instant 0."^^xsd:string;
     owl:disjointWith :PhysicalTimeLine .
 
 :TimeLineMap
@@ -209,7 +256,7 @@ canonical coordinate system --> adressed through xsd:duration since the instant 
                 owl:onProperty :onTimeLine;
                 owl:someValuesFrom :DiscreteTimeLine
             ]
-            <http://www.w3.org/2006/time#Instant>
+	    :Instant
         )
     ];
     rdfs:subClassOf [
@@ -225,15 +272,9 @@ canonical coordinate system --> adressed through xsd:duration since the instant 
     rdfs:range xsd:int;
     rdfs:subPropertyOf :at .
 
-:TimeLine
-    a owl:Class;
-    rdfs:label "timeline";
-    rdfs:comment """Represents a linear and coherent piece of time -- can be either abstract (such as the one behind a score) or concrete (such as the universal time line).
-Two timelines can be mapped using timeline maps."""^^xsd:string .
-
 :ContinuousTimeLine
     a owl:Class;
-    rdfs:label "continuous timeline":
+    rdfs:label "continuous timeline";
     rdfs:comment "A continuous timeline, like the universal one, or the one backing an analog signal";
     rdfs:subClassOf :TimeLine;
     owl:disjointWith :DiscreteTimeLine;
@@ -328,7 +369,7 @@ Two timelines can be mapped using timeline maps."""^^xsd:string .
                 owl:someValuesFrom :DiscreteTimeLine;
                 owl:onProperty :onTimeLine
             ]
-            <http://www.w3.org/2006/time#ProperInterval>
+            :Interval
         )
     ] .
 
@@ -415,7 +456,7 @@ Two timelines can be mapped using timeline maps."""^^xsd:string .
                 owl:someValuesFrom :RelativeTimeLine;
                 owl:onProperty :onTimeLine
             ]
-            <http://www.w3.org/2006/time#ProperInterval>
+            :Interval
         )
     ] .
 
@@ -458,7 +499,7 @@ Two timelines can be mapped using timeline maps."""^^xsd:string .
                 owl:onProperty :onTimeLine;
                 owl:hasValue :universaltimeline
             ]
-            <http://www.w3.org/2006/time#ProperInterval>
+            :Interval
         )
     ];
     rdfs:subClassOf [
@@ -593,7 +634,7 @@ Two timelines can be mapped using timeline maps."""^^xsd:string .
                 owl:someValuesFrom :RelativeTimeLine;
                 owl:onProperty :onTimeLine
             ]
-            <http://www.w3.org/2006/time#Instant>
+            :Instant
         )
     ] .
 
@@ -608,7 +649,7 @@ Two timelines can be mapped using timeline maps."""^^xsd:string .
     rdfs:label "abstract instant";
     rdfs:comment "An instant defined on an abstract timeline";
     a owl:Class;
-    rdfs:subClassOf <http://www.w3.org/2006/time#Instant>;
+    rdfs:subClassOf :Instant;
     owl:equivalentClass [
         a owl:Restriction;
         owl:someValuesFrom :AbstractTimeLine;
@@ -622,36 +663,6 @@ Two timelines can be mapped using timeline maps."""^^xsd:string .
     rdfs:range xsd:float;
     rdfs:subPropertyOf :at .
 
-:at
-    a owl:FunctionalProperty;
-    rdfs:label "at";
-    rdfs:comment "refers to a point or an interval on the time line, through an explicit datatype"^^xsd:string;
-    rdfs:domain [
-        a owl:Class;
-        owl:unionOf (
-            :Interval
-            :Instant
-	)
-    ];
-    a owl:DatatypeProperty .
-
-:endsAt
-    rdfs:label "ends at";
-    rdfs:comment "refers to the end of a time interval, through an explicit datatype";
-    a owl:DatatypeProperty;
-    rdfs:domain <http://www.w3.org/2006/time#Interval> .
-
-:beginsAt
-    rdfs:label "begins at";
-    rdfs:comment "refers to the beginning of a time interval, through an explicit datatype";
-    a owl:DatatypeProperty;
-    rdfs:domain <http://www.w3.org/2006/time#Interval> .
-
-:duration
-    rdfs:label "duration";
-    rdfs:comment "the duration of a time interval";
-    a owl:DatatypeProperty;
-    rdfs:domain <http://www.w3.org/2006/time#Interval> .
 
 :delay
     rdfs:label "delay";
