@@ -14,6 +14,17 @@ Gnat creates small RDF files in the folders of your music collection, such as :
 
 These can then be used by a tool such as gnarql[1] to expose this information through a SPARQL endpoint and allow futher information to be gathered about your collection.
 
+REQUIREMENTS
+------------
+
+- Written and tested on python 2.4 but may work fine on 2.3 or 2.5 - let us know if you try :)
+- Python libraries :
+  - rdflib v2.4.0 [2] (easy_install)
+  - mutagen v1.11 [3] (easy_install)
+  - musicbrainz2 SVN later than 02/08/2007 (sorry) [4]
+
+- genpuid [5] (included)
+- mopy [1] (included)
 
 USAGE
 -----
@@ -26,6 +37,15 @@ USAGE
 - Clean all .rdf files :
 ./AudioCollection.py clean /path/to/music
 
+AUTHORS
+-------
+
+- Yves Raimond <yves at dbtune dot org>
+- Christopher Sutton <chris at chrissutton dot org>
 
 
 [1] http://sourceforge.net/projects/motools/
+[2] http://rdflib.net/
+[3] http://www.sacredchao.net/quodlibet/wiki/Development/Mutagen
+[4] http://musicbrainz.org/doc/PythonMusicBrainz2Download
+[5] http://www.musicip.com/dns/downloads.jsp
