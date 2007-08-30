@@ -1,0 +1,31 @@
+gnat v0.1
+---------
+
+A small audio collection tool to associate local audio files with semantic web URIs.
+
+Gnat creates small RDF files in the folders of your music collection, such as :
+
+/music
+/music/Artist1
+/music/Artist1/AlbumA/info_metadata.rdf
+/music/Artist1/AlbumA/info_fingerprint.rdf
+/music/Artist1/AlbumB/info_metadata.rdf
+/music/Artist1/AlbumB/info_fingerprint.rdf
+
+These can then be used by a tool such as gnarql[1] to expose this information through a SPARQL endpoint and allow futher information to be gathered about your collection.
+
+
+USAGE
+-----
+- Track lookup based on local metadata :
+./AudioCollection.py metadata /path/to/music
+
+- Track lookup based on MusicDNS fingerprinting :
+./AudioCollection.py fingerprint /path/to/music
+
+- Clean all .rdf files :
+./AudioCollection.py clean /path/to/music
+
+
+
+[1] http://sourceforge.net/projects/motools/
