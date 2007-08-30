@@ -37,6 +37,8 @@ USAGE
 - Clean all .rdf files :
 ./AudioCollection.py clean /path/to/music
 
+Note : the metadata and fingerprinting lookups may safely be run in parallel.
+
 AUTHORS
 -------
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.4
+#!/usr/bin/python
 #
 # Abstraction of an audio collection, living in a top-directory
 #
@@ -123,7 +123,7 @@ if __name__ == '__main__':
 
 	usage = "%prog [options] command filepath"
 	parser = OptionParser(usage=usage)
-	parser.add_option("-D", "--debug", action="store_true", dest="extradebug", default="false", \
+	parser.add_option("-D", "--debug", action="store_true", dest="extradebug", default=True, \
 						help="output extra debug messages")
 	parser.add_option("-f", "--debug-file", action="store", type="string", dest="logfilename", \
 						help="write messages to LOGFILE", metavar="LOGFILE", default="error.log")
