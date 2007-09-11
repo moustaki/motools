@@ -33,12 +33,12 @@ node -->
 	modifier.
 
 optdegreelist -->
-	degreelist,!.
-optdegreelist.
+	['('],degreelist,[')'],!.
+optdegreelist --> [].
 
 optdegree -->
-	degree,!.
-optdegree.
+	['/'],degree,!.
+optdegree --> [].
 
 natural --> ['A'].
 natural --> ['B'].
