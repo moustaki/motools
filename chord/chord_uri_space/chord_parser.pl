@@ -58,7 +58,7 @@ degreelist -->
 degreelist --> 
 	degree,!,
 	degreelist.
-degreelist.
+degreelist --> [].
 
 degree -->
 	interval.
@@ -68,10 +68,10 @@ degree -->
 
 interval --> 
 	[N], 
-	{atom_to_term(N,Num,[]),member(Num,[1,2,3,4,5,6,7,8,9,10,11,12])}.
+	{member(N,['1','2','3','4','5','6','7','8','9','10','11','12'])}.
 
 shorthand --> 
-	['mag'].
+	['maj'].
 shorthand --> 
 	['min'].
 shorthand --> 
