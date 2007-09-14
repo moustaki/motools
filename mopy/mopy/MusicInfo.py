@@ -34,10 +34,10 @@ class MusicInfo(object):
 				found = self.findExistingBlindObj(obj)
 				if found == None:
 					if not isBlind(obj):
-						info(" Assigning a blind URI for "+str(obj).replace("\n","|"))
+						debug(" Assigning a blind URI for "+str(obj).replace("\n","|"))
 						obj.URI = getBlindURI()
 				else:
-					info("Already know blind obj "+str(obj).replace("\n","|"))
+					debug("Already know blind obj "+str(obj).replace("\n","|"))
 					obj.URI = found.URI # Update other references to this blind node
 					return
 					

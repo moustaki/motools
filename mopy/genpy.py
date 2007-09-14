@@ -20,10 +20,11 @@ OWL = rdflib.Namespace("http://www.w3.org/2002/07/owl#")
 DC = rdflib.Namespace("http://purl.org/dc/elements/1.1/")
 
 class Generator:
-	def __init__(self, graph, target_class):
+	def __init__(self, graph, target_class, excludeClasses = None):
 		self.graph = graph
 		self.c = target_class
 		[self.ns, self.name] = self.graph.qname(self.c).split(":")
+		self.pyname = ClassQNameToPyClassName(self.graph.qname(self.c))
 		self.filename = "model.py"
 		self.out = []
 		self.write = self.out.append
@@ -32,6 +33,7 @@ class Generator:
 		self.init ="\tdef __init__(self,URI=None):\n"
 		self.props = ""
 		self.utils = ""
+		self.excludeClasses = excludeClasses or []
 
 		# Do we have any non-inherited properties ?
 		self.properties = self.getProperties()
@@ -64,7 +66,7 @@ class Generator:
 		parentqnames = [self.graph.qname(p) for p in parentURIs]
 		parentpynames = [ClassQNameToPyClassName(q) for q in parentqnames]
 		parentpynames.sort() # For consistency across runs
-		self.classDef+="\nclass "+self.name+"("
+		self.classDef+="\nclass "+self.pyname+"("
 		if len(parentpynames)==0:
 			cd+="object"
 		else:
@@ -97,7 +99,13 @@ class Generator:
 				propname = PropQNameToPyName(self.graph.qname(prop))
 				URIstr = str(prop)
 				validTypes = ""
-				rTypes = self.graph.objects(prop, RDFS.range)
+				rTypes = list(self.graph.objects(prop, RDFS.range))
+				
+				# Add the range types of any parent properties
+				for parent in self.graph.objects(prop,RDFS.subPropertyOf):
+					#print "Added range types from parent property "+str(parent)+" to subproperty "+str(prop)
+					rTypes.extend(self.graph.objects(parent, RDFS.range))
+				
 				rTypeNames = []
 				allowLits=False
 				for rT in rTypes:
@@ -106,16 +114,18 @@ class Generator:
 							un = (self.graph.objects(rT,OWL["unionOf"])).next()
 							col = Collection(self.graph, un)
 							for c in col:
-								rTypeNames.append(ClassQNameToPyClassName(self.graph.qname(c)))
+								rTypeNames.append(self.TypeToPyTypeName(c))
 						except StopIteration:
 							print "Unhandled Blind Node in addProperties ! No unionOf found. Triples :"
 							print "\n".join(list(self.graph.triples(rT,None,None)))
 							raise Exception("Unhandled Blind Node in addProperties !")
 					else:
-						rTypeNames.append(ClassQNameToPyClassName(self.graph.qname(rT)))
-				if "Literal" in rTypeNames:
+						rTypeNames.append(self.TypeToPyTypeName(rT))
+				
+				rTypeNames = list(set(rTypeNames)) # remove dupes
+				if "rdfs___Literal" in rTypeNames:
 					allowLits=True
-					rTypeNames.remove("Literal")
+					rTypeNames.remove("rdfs___Literal")
 				if len(rTypeNames) > 1:
 					validTypes="("+",".join(rTypeNames)+")"
 				elif len(rTypeNames) == 1:
@@ -135,11 +145,14 @@ class Generator:
 		self.utils+="\n\t# Utility methods\n" # TODO : serialisation routine here ?
 		self.utils+="\t__setattr__ = protector\n"
 		self.utils+="\t__str__ = objToStr\n"
-#		self.utils+="\tpass\n\n"
 	
 	def getProperties(self):
 		props=[]
-		for prop in self.graph.subjects(RDF.type, RDF.Property):
+		graph_props = list(self.graph.subjects(RDF.type, RDF.Property))
+		for subType in self.graph.subjects(RDFS.subClassOf, RDF.Property):
+			graph_props.extend(list(self.graph.subjects(RDF.type, subType)))
+			
+		for prop in graph_props:
 			# Simple case : Named explicitly in property's domain
 			if len(list(self.graph.triples((prop,RDFS.domain,self.c)))) > 0:
 				props.append(prop)
@@ -154,23 +167,91 @@ class Generator:
 					print "Unhandled Blind Node in getProperties ! No unionOf found. Triples :"
 					print "\n".join(list(self.graph.triples(bn,None,None)))
 					raise Exception("Unhandled Blind Node in getProperties")
+		
+		# Then need to add the known subproperties for properties we've found
+		for prop in props:
+			for child in self.graph.subjects(RDFS.subPropertyOf, prop):
+				#print "Adding child property "+str(child)+" because we have the parent property "+str(prop)
+				props.append(child)
+		
+		# Handle owl:sameAs links
+		for x in set(list(self.graph.objects(self.c, OWL.sameAs)) + list(self.graph.subjects(OWL.sameAs, self.c))):
+			if x not in self.excludeClasses:
+				#print "Adding properties from "+str(x)+" sameAs "+str(self.c)
+				#print " exclude classes : "+str(self.excludeClasses)
+				g = Generator(self.graph, x, excludeClasses = self.excludeClasses + [self.c])
+				props.extend(g.getProperties())
+		
+		props = list(set(props)) # Remove duplicates
 		props.sort() # Aid consistency of generated code
+		#print str(self.c)+" has properties : "+str(props)
 		return props
 
 	def getParents(self):
-		p = list(self.graph.objects(self.c, RDFS.subClassOf))
+		p = []
+		for parent in self.graph.objects(self.c, RDFS.subClassOf):
+			if not isinstance(parent, BNode):
+				p.append(parent)
+			else:
+				try:
+					un = (self.graph.objects(parent,OWL["unionOf"])).next()
+					parents = Collection(self.graph, un)
+					print "WARNING : Ignoring union of parents !" # FIXME
+					#p.extend(parents) # FIXME : If the union'd nodes are themselves complicated, we will fail
+				except StopIteration:
+					parentTypeList = list(self.graph.objects(parent, RDF.type))
+					if len(parentTypeList) > 0 and parentTypeList[0] == OWL.Restriction:
+						print "WARNING : Ignoring owl:Restriction on parents of "+str(self.c)
+					else:
+						print "Unhandled Blind Node in getParents ! No unionOf found. Triples :"
+						print "\n".join(list(str(trip) for trip in self.graph.triples((parent,None,None))))
+						raise Exception("Unhandled Blind Node in getParents")
+				
+		print str(self.c)+" parents 1 : "+str(p)
+		
+		# Handle owl:sameAs links
+		for x in set(list(self.graph.objects(self.c, OWL.sameAs)) + list(self.graph.subjects(OWL.sameAs, self.c))):
+			if x not in self.excludeClasses:
+				#print "Adding parents from "+str(x)+" sameAs "+str(self.c)
+				g = Generator(self.graph, x, excludeClasses=self.excludeClasses + [self.c])
+				their_parents = g.getParents()
+				if their_parents != [RDFS.Resource]:
+					p.extend(their_parents)
+		print str(self.c)+" parents 2 : "+str(p)
+		
+		# Handle orphan classes
 		if (self.c != OWL.Thing) and (len(p) == 0):
 			if self.c == RDFS.Resource:
 				p.append(OWL.Thing)
 			else:
 				p.append(RDFS.Resource)
+		
+		p = list(set(p)) # Remove duplicates
 		p.sort()
+		print str(self.c)+" parents 3 : "+str(p)
 		return p
 
 	def addImportForClass(self):
 		nsInit = open(os.path.join("mopy",self.ns,"__init__.py"), 'a')
-		nsInit.write("from mopy.model import "+self.name+"\n")
+#		nsInit.write("from mopy.model import "+self.name+"\n")
+		nsInit.write("from mopy.model import "+ClassQNameToPyClassName(self.graph.qname(self.c))+" as "+self.name+"\n")
 		nsInit.close()
+
+	def TypeToPyTypeName(self, t):
+		typeMapping = {"http://www.w3.org/2001/XMLSchema#integer" : "int",\
+					   "http://www.w3.org/2001/XMLSchema#int" : "int",\
+					   "http://www.w3.org/2001/XMLSchema#float" : "float",\
+					   "http://www.w3.org/2001/XMLSchema#duration": "str",\
+					   "http://www.w3.org/2001/XMLSchema#date" : "str",\
+					   "http://www.w3.org/2001/XMLSchema#dateTime" : "str",\
+				   	   "http://www.w3.org/2001/XMLSchema#gYear" : "str",\
+					   "http://www.w3.org/2001/XMLSchema#gYearMonth" : "str"}
+		if not str(t).startswith("http://www.w3.org/2001/XMLSchema#"):
+			return (ClassQNameToPyClassName(self.graph.qname(t)))
+		elif str(t) in typeMapping.keys(): #FIXME handle others
+			return typeMapping[str(t)]
+		else:
+			raise Exception("Got an unknown xmls type : " + t)
 			
 def PropQNameToPyName(qname):
 #	return qname.replace(":","_") # Probably don't need namespace in property names
@@ -179,30 +260,42 @@ def PropQNameToPyName(qname):
 def ClassQNameToPyModuleName(qname):
 	return qname.replace(":",".")
 def ClassQNameToPyClassName(qname):
-	return qname.split(":")[1]
+#	return qname.split(":")[1]
+	return qname.replace(":", "___")
+def PyClassNameToClassQName(pyname):
+	return pyname.replace("___",":")
 
-def setupNamespace(ns):
+def setupNamespace(ns, fromScratch=True):
 	if not os.path.exists(os.path.join("mopy",ns)):
 		mkdir(os.path.join("mopy",ns))
-	nsInit = open(os.path.join("mopy",ns,"__init__.py"), 'w')
-	nsInit.write("import mopy.model\n\n")
-	nsInit.close()
-	packageInit = open(os.path.join("mopy","__init__.py"),'a')
-	packageInit.write("import "+ns+"\n")
-	packageInit.close()
+		fromScratch = True # If we've had to create the directory, we better start from scratch
+	if fromScratch:
+		nsInit = open(os.path.join("mopy",ns,"__init__.py"), 'w')
+		nsInit.write("import mopy.model\n\n")
+		nsInit.close()
+		packageInit = open(os.path.join("mopy","__init__.py"),'a')
+		packageInit.write("import "+ns+"\n")
+		packageInit.close()
 
 def addImportForInstance(ns, i):
 	nsInit = open(os.path.join("mopy",ns,"__init__.py"), 'a')
-	nsInit.write("from mopy.model import "+i+"\n")
+	nsInit.write("from mopy.model import "+i+" as " + PyClassNameToClassQName(i).split(":")[1] + "\n")
 	nsInit.close()
 	
 def main():
 	spec_g = rdflib.ConjunctiveGraph()
 	print "Loading ontology documents..."
+	spec_g.load("owl.rdfs")
 	spec_g.load("../mo/rdf/musicontology.rdfs")
 	spec_g.load("extras.rdfs")
 	spec_g.load("foaf.rdfs")
-	
+	spec_g.load("../chord/chordontology.rdfs")
+	spec_g.load("../time/rdf/timeline.rdf")
+
+	# FIXME : Why do these get lost in loading ?
+	spec_g.namespace_manager.bind("owl",rdflib.URIRef('http://www.w3.org/2002/07/owl#'))
+	spec_g.namespace_manager.bind("timeline",rdflib.URIRef('http://purl.org/NET/c4dm/timeline.owl#'))
+
 	classes = list(set(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode)) # rdflib says rdfs:Class is a subClass of owl:Class - check !
 	classes.sort() # Ensure serialisation order is reasonably consistent across runs
 	classtxt = {}
@@ -216,7 +309,7 @@ def main():
 	
 	for ns in set([spec_g.qname(c).split(":")[0] for c in classes]):
 		setupNamespace(ns)
-		
+					
 	model = open(os.path.join("mopy","model.py"), "w")
 	model.write("""
 # ===================================================================
@@ -239,7 +332,7 @@ def objToStr(c):
 				s+=str(v)
 			else:
 				s+=str(type(v))
-				if hasattr(v,"URI"):
+				if hasattr(v,"URI") and v.URI != None:
 					s+=" @ "+v.URI
 			s +="\\n"
 	return s
@@ -247,10 +340,14 @@ def objToStr(c):
 	model.write(objToStr)
 	model.write("\n# ======================== Property Docstrings ====================== \n\n")
 	model.write("propDocs = {}\n")
-	props = list(spec_g.subjects(RDF.type, RDF.Property))
-	for p in props:
-		doc = "".join(spec_g.objects(p, RDFS.comment))
+	graph_props = list(spec_g.subjects(RDF.type, RDF.Property))
+	for subType in spec_g.subjects(RDFS.subClassOf, RDF.Property):
+		graph_props.extend(list(spec_g.subjects(RDF.type, subType)))
+	for p in graph_props:
+		doc = "\n".join(spec_g.objects(p, RDFS.comment))
 		if len(doc) > 0:
+			if doc[-1] == '"':
+				doc = doc+" " # or python gets confused.
 			model.write("propDocs[\""+PropQNameToPyName(spec_g.qname(p))+"\"]=\\\n\"\"\""+doc.strip()+"\"\"\"\n")
 		else:
 			model.write("propDocs[\""+PropQNameToPyName(spec_g.qname(p))+"\"]=\"\"\n")
@@ -284,16 +381,21 @@ def objToStr(c):
 		n+=1
 
 	if len(remclasses) > 0:
-		print "Couldn't find a serialisation order ! Remaining classes : " + "\n".join(remclasses)
+		raise Exception("Couldn't find a serialisation order ! Remaining classes : " + "\n".join(remclasses))
+		
 
 	#
 	# Ontology-defined Instances
 	#
+	# FIXME : Properties aren't handled !
 	model.write("\n\n# ======================= Instance Definitions ======================= \n")
 	for c in classes:
 		if c == RDFS.Class:
 			continue
-		instances = list(spec_g.subjects(RDF.type, c))
+		instances = [s for s in spec_g.subjects(RDF.type, c) if type(s) != BNode]
+		instances.sort()
+		for ns in set([spec_g.qname(i).split(":")[0] for i in instances]):
+			setupNamespace(ns, False)
 		if len(instances)>0:
 			classname= ClassQNameToPyClassName(spec_g.qname(c))
 			model.write("\n")
@@ -304,7 +406,7 @@ def objToStr(c):
 				descrip="\n".join([d.strip() for d in spec_g.objects(i, DC.description)])
 				if len(descrip)>0:
 					model.write(instancename+".description = \\\n\"\"\""+descrip+"\"\"\"\n")
-				addImportForInstance(spec_g.qname(c).split(":")[0], instancename)
+				addImportForInstance(spec_g.qname(i).split(":")[0], instancename)
 	
 	NamespaceBindings = ",".join(["\"" + NSName + "\":\"" + str(NSURI) + "\"" for NSName, NSURI in spec_g.namespaces()])
 	model.write("\nnamespaceBindings = {" + NamespaceBindings + "}\n\n")
