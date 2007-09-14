@@ -207,8 +207,6 @@ class Generator:
 						print "\n".join(list(str(trip) for trip in self.graph.triples((parent,None,None))))
 						raise Exception("Unhandled Blind Node in getParents")
 				
-		print str(self.c)+" parents 1 : "+str(p)
-		
 		# Handle owl:sameAs links
 		for x in set(list(self.graph.objects(self.c, OWL.sameAs)) + list(self.graph.subjects(OWL.sameAs, self.c))):
 			if x not in self.excludeClasses:
@@ -217,8 +215,7 @@ class Generator:
 				their_parents = g.getParents()
 				if their_parents != [RDFS.Resource]:
 					p.extend(their_parents)
-		print str(self.c)+" parents 2 : "+str(p)
-		
+
 		# Handle orphan classes
 		if (self.c != OWL.Thing) and (len(p) == 0):
 			if self.c == RDFS.Resource:
@@ -228,7 +225,6 @@ class Generator:
 		
 		p = list(set(p)) # Remove duplicates
 		p.sort()
-		print str(self.c)+" parents 3 : "+str(p)
 		return p
 
 	def addImportForClass(self):
@@ -291,6 +287,7 @@ def main():
 	spec_g.load("foaf.rdfs")
 	spec_g.load("../chord/chordontology.rdfs")
 	spec_g.load("../time/rdf/timeline.rdf")
+	spec_g.load("../event/rdf/event.rdf")
 
 	# FIXME : Why do these get lost in loading ?
 	spec_g.namespace_manager.bind("owl",rdflib.URIRef('http://www.w3.org/2002/07/owl#'))
@@ -347,7 +344,7 @@ def objToStr(c):
 		doc = "\n".join(spec_g.objects(p, RDFS.comment))
 		if len(doc) > 0:
 			if doc[-1] == '"':
-				doc = doc+" " # or python gets confused.
+				doc = doc+"." # or python gets confused.
 			model.write("propDocs[\""+PropQNameToPyName(spec_g.qname(p))+"\"]=\\\n\"\"\""+doc.strip()+"\"\"\"\n")
 		else:
 			model.write("propDocs[\""+PropQNameToPyName(spec_g.qname(p))+"\"]=\"\"\n")
@@ -405,6 +402,8 @@ def objToStr(c):
 				model.write(instancename+" = "+ classname+"(\""+str(i)+"\")\n")
 				descrip="\n".join([d.strip() for d in spec_g.objects(i, DC.description)])
 				if len(descrip)>0:
+					if descrip[-1] == '"':
+						descrip = descrip+"." # or python gets confused.
 					model.write(instancename+".description = \\\n\"\"\""+descrip+"\"\"\"\n")
 				addImportForInstance(spec_g.qname(i).split(":")[0], instancename)
 	
