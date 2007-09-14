@@ -5,7 +5,8 @@
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
 	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:foaf="http://xmlns.com/foaf/0.1/"
-	xmlns:ch="http://purl.org/ontology/chord/">
+	xmlns:note="http://purl.org/ontology/chord/note/"
+	xmlns:chord="http://purl.org/ontology/chord/">
 
 	<!-- ONTOLOGY DEFINITION -->
 
@@ -73,7 +74,7 @@
 	
 	<rdf:Property rdf:about="http://purl.org/ontology/chord/base_chord" rdfs:label="base_chord">
 		<rdfs:comment>The chord on which this one is based. 
-			For example, a C7 chord might have ch:Cmaj as its base chord.</rdfs:comment>
+			For example, a C7 chord might have chord:Cmaj as its base chord.</rdfs:comment>
 		<rdfs:domain rdf:resource="http://purl.org/ontology/chord/Chord" />
 		<rdfs:range rdf:resource="http://purl.org/ontology/chord/Chord" />
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
@@ -147,317 +148,317 @@
 	<!-- Instances -->
 	
 	<!-- Chord types -->
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/noChord" rdfs:label="noChord">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/noChord" rdfs:label="noChord">
 		<rdfs:comment>Indicates that no chord is played.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Chord>
+	</chord:Chord>
 
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/maj" rdfs:label="maj">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/maj" rdfs:label="maj">
 		<rdfs:comment>A major chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>3</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>3</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>
 	
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/min" rdfs:label="min">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/min" rdfs:label="min">
 		<rdfs:comment>A minor chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>3</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>	
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>3</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>	
 
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/dim" rdfs:label="dim">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/dim" rdfs:label="dim">
 		<rdfs:comment>A diminished chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>3</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>5</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-	</ch:Chord>	
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>3</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>5</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+	</chord:Chord>	
 
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/aug" rdfs:label="aug">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/aug" rdfs:label="aug">
 		<rdfs:comment>An augmented chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>3</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>5</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
-		</ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>3</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>5</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
+		</chord:Degree></chord:degree>
+	</chord:Chord>
 
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/maj7" rdfs:label="maj7">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/maj7" rdfs:label="maj7">
 		<rdfs:comment>A major seventh chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>3</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>7</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>3</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>7</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>
 	
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/7" rdfs:label="7">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/seventh" rdfs:label="7">
 		<rdfs:comment>A seventh chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>3</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>7</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>3</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>7</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+	</chord:Chord>
 
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/min7" rdfs:label="min7">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/min7" rdfs:label="min7">
 		<rdfs:comment>A minor seventh chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>3</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>7</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>3</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>7</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+	</chord:Chord>
 		
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/dim7" rdfs:label="dim7">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/dim7" rdfs:label="dim7">
 		<rdfs:comment>A diminished seventh chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>3</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>5</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>7</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/doubleflat"/>
-		</ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>3</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>5</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>7</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/doubleflat"/>
+		</chord:Degree></chord:degree>
+	</chord:Chord>
 
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/hdim7" rdfs:label="hdim7">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/hdim7" rdfs:label="hdim7">
 		<rdfs:comment>A half-diminished seventh chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>3</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>5</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>7</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>3</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>5</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>7</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+	</chord:Chord>
 	
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/minmaj7" rdfs:label="minmaj7">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/minmaj7" rdfs:label="minmaj7">
 		<rdfs:comment>A minor (major 7th) chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>3</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>7</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>3</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>7</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>
 	
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/maj6" rdfs:label="maj6">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/maj6" rdfs:label="maj6">
 		<rdfs:comment>A major sixth chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>3</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>6</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>3</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>6</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>
 	
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/min7" rdfs:label="min7">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/min7" rdfs:label="min7">
 		<rdfs:comment>A minor sixth chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>3</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>6</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>3</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>6</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>
 	
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/9" rdfs:label="9">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/ninth" rdfs:label="9">
 		<rdfs:comment>A ninth chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>3</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>7</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>9</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>3</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>7</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>9</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>
 	
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/maj9" rdfs:label="maj9">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/maj9" rdfs:label="maj9">
 		<rdfs:comment>A major ninth chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>3</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>7</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>9</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>	
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>3</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>7</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>9</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>	
 	
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/min9" rdfs:label="min9">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/min9" rdfs:label="min9">
 		<rdfs:comment>A minor ninth chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>3</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree>
-			<ch:scale_interval>7</ch:scale_interval>
-			<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
-		</ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>9</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>3</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree>
+			<chord:scale_interval>7</chord:scale_interval>
+			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+		</chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>9</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>
 	
-	<ch:Chord rdf:about="http://purl.org/ontology/chord/sus4" rdfs:label="sus4">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/sus4" rdfs:label="sus4">
 		<rdfs:comment>A suspended fourth chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-		<ch:degree><ch:Degree><ch:scale_interval>1</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>4</ch:scale_interval></ch:Degree></ch:degree>
-		<ch:degree><ch:Degree><ch:scale_interval>5</ch:scale_interval></ch:Degree></ch:degree>
-	</ch:Chord>
+		<chord:degree><chord:Degree><chord:scale_interval>1</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>4</chord:scale_interval></chord:Degree></chord:degree>
+		<chord:degree><chord:Degree><chord:scale_interval>5</chord:scale_interval></chord:Degree></chord:degree>
+	</chord:Chord>
 	
 	<!-- Naturals -->
-	<ch:Natural rdf:about="http://purl.org/ontology/chord/note/A" rdfs:label="A">
+	<chord:Natural rdf:about="http://purl.org/ontology/chord/note/A" rdfs:label="A">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Natural>
-	<ch:Natural rdf:about="http://purl.org/ontology/chord/note/B" rdfs:label="B">
+	</chord:Natural>
+	<chord:Natural rdf:about="http://purl.org/ontology/chord/note/B" rdfs:label="B">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Natural>
-	<ch:Natural rdf:about="http://purl.org/ontology/chord/note/C" rdfs:label="C">
+	</chord:Natural>
+	<chord:Natural rdf:about="http://purl.org/ontology/chord/note/C" rdfs:label="C">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Natural>
-	<ch:Natural rdf:about="http://purl.org/ontology/chord/note/D" rdfs:label="D">
+	</chord:Natural>
+	<chord:Natural rdf:about="http://purl.org/ontology/chord/note/D" rdfs:label="D">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Natural>
-	<ch:Natural rdf:about="http://purl.org/ontology/chord/note/E" rdfs:label="E">
+	</chord:Natural>
+	<chord:Natural rdf:about="http://purl.org/ontology/chord/note/E" rdfs:label="E">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Natural>
-	<ch:Natural rdf:about="http://purl.org/ontology/chord/note/F" rdfs:label="F">
+	</chord:Natural>
+	<chord:Natural rdf:about="http://purl.org/ontology/chord/note/F" rdfs:label="F">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Natural>
-	<ch:Natural rdf:about="http://purl.org/ontology/chord/note/G" rdfs:label="G">
+	</chord:Natural>
+	<chord:Natural rdf:about="http://purl.org/ontology/chord/note/G" rdfs:label="G">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Natural>
+	</chord:Natural>
 	
 	<!-- Other useful notes -->
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Aflat" rdfs:label="Ab">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/A"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Aflat" rdfs:label="Ab">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/A"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Bflat" rdfs:label="Bb">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/B"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Bflat" rdfs:label="Bb">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/B"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Cflat" rdfs:label="Cb">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/C"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Cflat" rdfs:label="Cb">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/C"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Dflat" rdfs:label="Db">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/D"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Dflat" rdfs:label="Db">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/D"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Eflat" rdfs:label="Eb">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/E"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Eflat" rdfs:label="Eb">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/E"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Fflat" rdfs:label="Fb">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/F"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Fflat" rdfs:label="Fb">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/F"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Gflat" rdfs:label="Gb">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/G"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Gflat" rdfs:label="Gb">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/G"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
+	</chord:Note>
 
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Asharp" rdfs:label="A#">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/A"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Asharp" rdfs:label="A#">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/A"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Bsharp" rdfs:label="B#">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/B"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Bsharp" rdfs:label="B#">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/B"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Csharp" rdfs:label="C#">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/C"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Csharp" rdfs:label="C#">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/C"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Dsharp" rdfs:label="D#">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/D"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Dsharp" rdfs:label="D#">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/D"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Esharp" rdfs:label="E#">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/E"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Esharp" rdfs:label="E#">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/E"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Fsharp" rdfs:label="F#">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/F"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Fsharp" rdfs:label="F#">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/F"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
-	<ch:Note rdf:about="http://purl.org/ontology/chord/note/Gsharp" rdfs:label="G#">
-		<ch:natural rdf:resource="http://purl.org/ontology/chord/note/G"/>
-		<ch:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
+	</chord:Note>
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Gsharp" rdfs:label="G#">
+		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/G"/>
+		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Note>
+	</chord:Note>
 
 	<!-- FIXME : Probly want a few double flats/sharps here too -->
 
-	<ch:Modifier rdf:about="http://purl.org/ontology/chord/doubleflat" rdfs:label="double flat">
+	<chord:Modifier rdf:about="http://purl.org/ontology/chord/doubleflat" rdfs:label="double flat">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Modifier>
-	<ch:Modifier rdf:about="http://purl.org/ontology/chord/flat" rdfs:label="flat">
+	</chord:Modifier>
+	<chord:Modifier rdf:about="http://purl.org/ontology/chord/flat" rdfs:label="flat">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Modifier>
+	</chord:Modifier>
 	
-	<ch:Modifier rdf:about="http://purl.org/ontology/chord/sharp" rdfs:label="sharp">
+	<chord:Modifier rdf:about="http://purl.org/ontology/chord/sharp" rdfs:label="sharp">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Modifier>
-	<ch:Modifier rdf:about="http://purl.org/ontology/chord/doublesharp" rdfs:label="double sharp">
+	</chord:Modifier>
+	<chord:Modifier rdf:about="http://purl.org/ontology/chord/doublesharp" rdfs:label="double sharp">
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
-	</ch:Modifier>
+	</chord:Modifier>
 
 </rdf:RDF>
