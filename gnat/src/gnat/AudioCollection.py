@@ -21,7 +21,7 @@ from optparse import OptionParser
 from urllib import quote as urlencode
 
 from mopy.MusicInfo import MusicInfo, isBlind
-from mopy.model import AudioFile, Track
+from mopy.mo import AudioFile, Track
 
 exclPatterns = r".*(jpg|jpeg|txt|ini|db|DS\_Store|m3u|pls|xml|log|png|\.directory)$"
 excludeRE = re.compile(exclPatterns, re.IGNORECASE)

@@ -17,7 +17,7 @@ import re
 from urllib import quote as urlencode
 
 from PUIDTrackLookup import *
-import mopy; from mopy import MusicInfo; from mopy.model import AudioFile, MusicArtist, Track, Signal
+import mopy; from mopy import MusicInfo; from mopy.mo import AudioFile, MusicArtist, Track, Signal
 
 # NOTE : Specify an absolute or relative path here. Don't assume $PATH will do - some files will be "unanalyzable" if you do.
 genpuidbin = "./genpuid" 

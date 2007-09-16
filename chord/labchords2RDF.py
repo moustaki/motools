@@ -10,15 +10,17 @@ Created by Chris Sutton on 2007-09-14.
 Copyright (c) 2007 Chris Sutton. All rights reserved.
 """
 
+import os
 import mopy
 from mopy.timeline import Interval, RelativeTimeLine
 from mopy.chord import Chord
+from mopy.MusicInfo import MusicInfo, isBlind
 import rdflib
 from urllib import quote as urlencode
 
 from optparse import OptionParser
 
-def labchords2RDF(infilename, outfilename, format="xml"):
+def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None):
 	infile = open(infilename, 'r')
 	lines = infile.readlines()
 
@@ -60,7 +62,37 @@ def labchords2RDF(infilename, outfilename, format="xml"):
 		mi.add(c)
 		mi.add(c_event)
 		intervalNum+=1
-			
+	
+	# Extract extra info from audio file :
+	if audiofilename != None:
+		ac_module = __import__("gnat.AudioCollection",[],[],["AudioCollection"])
+		ac = ac_module.AudioCollection()
+		cwd = os.getcwd()
+		os.chdir("./gnat") # so we can find genpuid etc.
+		fp_mi = ac.fingerprint(audiofilename)
+		if hasattr(fp_mi, "TrackIdx") and len(fp_mi.TrackIdx) > 0 and not isBlind(fp_mi.TrackIdx.values()[0]):
+			print "Adding info from audiofile fingerprinting."
+			for o in fp_mi.MainIdx.values():
+				mi.add(o)
+			if hasattr(fp_mi, "SignalIdx") and len(fp_mi.SignalIdx) > 0:
+				fp_mi.SignalIdx.values()[0].time = sig_int = Interval()
+				sig_int.onTimeLine = tl
+				mi.add(sig_int)
+		else:
+			print "Fingerprinting failed, trying metadata lookup..."
+			md_mi = ac.metadata(audiofilename)
+			if hasattr(md_mi, "TrackIdx") and len(md_mi.TrackIdx) > 0 and not isBlind(md_mi.TrackIdx.values()[0]):
+				print "Adding info from audiofile metadata lookup."
+				for o in md_mi.MainIdx.values():
+					mi.add(o)
+				signal = Signal()
+				signal.published_as = md_mi.TrackIdx.values()[0]
+				signal.time = sig_int = Interval()
+				sig_int.onTimeLine = tl
+				mi.add(sig_int)
+				mi.add(signal)
+		os.chdir(cwd)
+	
 	mopy.exportRDFFile(mi, outfilename, format)
 
 def parseLabLine(line):
@@ -83,6 +115,8 @@ if __name__ == '__main__':
 	parser = OptionParser(usage=usage)
 	parser.add_option("--format", action="store", type="string", dest="format", \
 						help="format for output (xml or n3)", metavar="FORMAT", default="xml")
+	parser.add_option("-f", "--audiofile", action="store", type="string", dest="audiofilename",\
+						help="audio file to analyse for extra info", metavar="FILENAME", default=None)
 	(opts,args) = parser.parse_args()
 	
 	if len(args) < 1 or len(args) > 2:
@@ -103,4 +137,4 @@ if __name__ == '__main__':
 	if opts.format not in validFormats:
 		parser.error("Invalid format specified ! Must be one of : "+", ".join(validFormats))
 
-	labchords2RDF(infilename, outfilename, opts.format)
+	labchords2RDF(infilename, outfilename, opts.format, opts.audiofilename)
