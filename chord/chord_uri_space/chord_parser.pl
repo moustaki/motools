@@ -174,4 +174,69 @@ shorthand('http://purl.org/ontology/chord/min9') -->
 shorthand('http://purl.org/ontology/chord/sus4') -->
 	['sus4'].
 
+%tokeniser
+
+token(maj).
+token(min).
+token(dim).
+token(aug).
+token(maj7).
+token(min7).
+token('7').
+token(dim7).
+token(hdim7).
+token(minmaj7).
+token(maj6).
+token(min6).
+token('9').
+token(maj9).
+token(min9).
+token(sus4).
+
+token('A').
+token('B').
+token('C').
+token('D').
+token('E').
+token('F').
+token('G').
+
+token('10').
+token('11').
+token('12').
+token('1').
+token('2').
+token('3').
+token('4').
+token('5').
+token('6').
+token('7').
+token('8').
+token('9').
+
+token('#').
+token(':').
+token('b').
+token('/').
+token('(').
+token(')').
+token(',').
+
+tokenise(Atom,Tokens) :-
+	atom_chars(Atom,Chars),
+	tokenise_l(Chars,Tokens),!.
+tokenise_l([],[]) :- !.
+tokenise_l(Chars,[Token|Tail]) :-
+	grab_token(Chars,Token,CharRest),
+	tokenise_l(CharRest,Tail).
+
+grab_token([H|T1],Atom,CharRest) :-
+	token(Token),atom_chars(Token,[H|T2]),
+	grab_token2(T1,T2,H,Atom,CharRest).
+grab_token2(Tail,[],Atom,Atom,Tail) :- !.
+grab_token2([H|T1],[H|T2],At,Atom,CharRest) :-
+	atom_concat(At,H,NewAt),
+	grab_token2(T1,T2,NewAt,Atom,CharRest).
+
+
 
