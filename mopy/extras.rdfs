@@ -38,22 +38,6 @@
 	</rdf:Property>
 	
 
-	<owl:Class rdf:about="http://www.w3.org/2006/time#Instant">
-		 <rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/> 
-	</owl:Class> 
-	<owl:Class rdf:about="http://www.w3.org/2006/time#Interval"> 
-		<rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
-	</owl:Class>
-	<rdfs:Class rdf:about="http://www.w3.org/2006/time#TemporalEntity">
-		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-	</rdfs:Class>
-	<owl:Class rdf:about="http://www.w3.org/2006/time#ProperInterval"> 
-    	<rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#Interval"/>
-    </owl:Class>
-    <owl:Class rdf:about="http://www.w3.org/2006/time#DateTimeInterval"> 
-    	<rdfs:subClassOf rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
-    </owl:Class>
-
 	<rdfs:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing" rdfs:label="SpatialThing">
 		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
 	</rdfs:Class>
@@ -89,21 +73,6 @@
 		<rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/> <!-- CHEAT ! -->
 		<dc:type rdf:resource="http://dublincore.org/usage/documents/principles/#element"/>
 	</rdf:Property>
-	
-	<owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalStarts">
-	    <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval" />
-	    <rdfs:range  rdf:resource="http://www.w3.org/2006/time#ProperInterval" />
-    </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalDuring">
-    <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval" />
-    <rdfs:range  rdf:resource="http://www.w3.org/2006/time#ProperInterval" />
-  </owl:ObjectProperty>
-
-  <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#intervalFinishes">
-    <rdfs:domain rdf:resource="http://www.w3.org/2006/time#ProperInterval" />
-    <rdfs:range  rdf:resource="http://www.w3.org/2006/time#ProperInterval" />
-  </owl:ObjectProperty>
 	
 	<rdf:Property rdf:about="http://purl.org/dc/elements/1.1/description">
 	<rdfs:label xml:lang="en-US">Description</rdfs:label>

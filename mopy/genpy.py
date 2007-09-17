@@ -156,6 +156,11 @@ class Generator:
 			# Simple case : Named explicitly in property's domain
 			if len(list(self.graph.triples((prop,RDFS.domain,self.c)))) > 0:
 				props.append(prop)
+			# Harder case : Named in a property's range and we know of an inverseProperty
+			if len(list(self.graph.triples((prop,RDFS.range,self.c)))) > 0:
+				inverses = list(self.graph.objects(prop,OWL.inverseOf)) + list(self.graph.subjects(OWL.inverseOf,prop))
+				props.extend(inverses)
+			 
 			# Harder case : Named in a collection in property's domain
 			for bn in (o for (s,p,o) in self.graph.triples((prop,RDFS.domain,None)) if isinstance(o, BNode)):
 				try:
@@ -234,14 +239,19 @@ class Generator:
 		nsInit.close()
 
 	def TypeToPyTypeName(self, t):
+		# FIXME : One day it might be nice to actually model these and restrict as appropriate O_o
 		typeMapping = {"http://www.w3.org/2001/XMLSchema#integer" : "int",\
 					   "http://www.w3.org/2001/XMLSchema#int" : "int",\
+					   "http://www.w3.org/2001/XMLSchema#decimal" : "float",\
 					   "http://www.w3.org/2001/XMLSchema#float" : "float",\
+					   "http://www.w3.org/2001/XMLSchema#nonNegativeInteger" : "int",\
 					   "http://www.w3.org/2001/XMLSchema#duration": "str",\
 					   "http://www.w3.org/2001/XMLSchema#date" : "str",\
 					   "http://www.w3.org/2001/XMLSchema#dateTime" : "str",\
-				   	   "http://www.w3.org/2001/XMLSchema#gYear" : "str",\
-					   "http://www.w3.org/2001/XMLSchema#gYearMonth" : "str"}
+				   	   "http://www.w3.org/2001/XMLSchema#gYear" : "int",\
+					   "http://www.w3.org/2001/XMLSchema#gYearMonth" : "str",\
+					   "http://www.w3.org/2001/XMLSchema#gMonth" : "int",\
+					   "http://www.w3.org/2001/XMLSchema#gDay" : "int"}
 		if not str(t).startswith("http://www.w3.org/2001/XMLSchema#"):
 			return (ClassQNameToPyClassName(self.graph.qname(t)))
 		elif str(t) in typeMapping.keys(): #FIXME handle others
@@ -282,6 +292,7 @@ def main():
 	spec_g = rdflib.ConjunctiveGraph()
 	print "Loading ontology documents..."
 	spec_g.load("owl.rdfs")
+	spec_g.load("time.owl")
 	spec_g.load("../mo/rdf/musicontology.rdfs")
 	spec_g.load("extras.rdfs")
 	spec_g.load("foaf.rdfs")
@@ -292,6 +303,7 @@ def main():
 	# FIXME : Why do these get lost in loading ?
 	spec_g.namespace_manager.bind("owl",rdflib.URIRef('http://www.w3.org/2002/07/owl#'))
 	spec_g.namespace_manager.bind("timeline",rdflib.URIRef('http://purl.org/NET/c4dm/timeline.owl#'))
+	spec_g.namespace_manager.bind("time", rdflib.URIRef("http://www.w3.org/2006/time#"))
 
 	classes = list(set(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode)) # rdflib says rdfs:Class is a subClass of owl:Class - check !
 	classes.sort() # Ensure serialisation order is reasonably consistent across runs
