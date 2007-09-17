@@ -1,4 +1,4 @@
-:- module(chord_parser,[chord/3,tokenise/2,parse/2]).
+:- module(chord_parser,[chord/4,tokenise/2,parse/2]).
 
 /**
  * A SWI DCG for parsing chord textual representation
@@ -12,20 +12,23 @@
 
 parse(ChordSymbol,RDF) :-
 	tokenise(ChordSymbol,Tokens),
-	phrase(chord(RDF),Tokens).
+	phrase(chord(ChordSymbol,RDF),Tokens).
 
 
 % DCG
 
-chord(
+namespace('http://purl.org/ontology/chord/symbol/').
+
+
+chord(Symbol,
 	[
 		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Chord')
 	,	rdf(ID,'http://purl.org/ontology/chord/root',NoteURI)
-	,	rdf(ID,'http://purl.org/ontology/chord/shorthand',ShorthandURI)
+	,	rdf(ID,'http://purl.org/ontology/chord/baseChord',ShorthandURI)
 	|	Tail
 	]
 	) --> 
-	{ID=''},
+	{namespace(NS),atom_concat(NS,Symbol,ID)},
 	note(NoteURI,T1), 
 	[':'],
 	shorthand(ShorthandURI),
@@ -33,14 +36,14 @@ chord(
 	optdegree(ID,T3),
 	!,
 	{flatten([T1,T2,T3],Tail)}.
-chord(
+chord(Symbol,
 	[
 		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Chord')
 	,	rdf(ID,'http://purl.org/ontology/chord/root',NoteURI)
 	|	Tail
 	]
 	) -->
-	{rdf_bnode(ID)},
+	{namespace(NS),atom_concat(NS,Symbol,ID)},
 	note(NoteURI,T1),
 	[':'],
 	['('],
@@ -48,14 +51,14 @@ chord(
 	[')'],
 	optdegree(ID,T3),!,
 	{flatten([T1,T2,T3],Tail)}.
-chord(
+chord(Symbol,
 	[
 		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Chord')
 	,	rdf(ID,'http://purl.org/ontology/chord/root',NoteURI)
 	|	Tail
 	]
 	) -->
-	{rdf_bnode(ID)},
+	{namespace(NS),atom_concat(NS,Symbol,ID)},
 	note(NoteURI,T1),
 	optdegree(ID,T2),!,
 	{append(T1,T2,Tail)}.
@@ -132,13 +135,13 @@ degreelist(URI,[
 	degree(Interval,Tail).
 
 
-degree(IntervalURI,[rdf(IntervalURI,'http://purl.org/ontology/chord/degree',literal(type(Interval,'http://www.w3.org/2001/XMLSchema#int')))]) -->
+degree(IntervalURI,[rdf(IntervalURI,'http://purl.org/ontology/chord/degree',literal(type('http://www.w3.org/2001/XMLSchema#int',Interval)))]) -->
 	interval(Interval).
 %No more than two modifiers - hardcoded
 degree(IntervalURI,
 	[
 		rdf(IntervalURI,'http://purl.org/ontology/chord/modifier',ModifierURI)
-	,	rdf(IntervalURI,'http://purl.org/ontology/chord/degree',literal(type(Interval,'http://www.w3.org/2001/XMLSchema#int')))
+	,	rdf(IntervalURI,'http://purl.org/ontology/chord/degree',literal(type('http://www.w3.org/2001/XMLSchema#int',Interval)))
 	]) --> 
 	modifier(ModifierURI),
 	interval(Interval).
