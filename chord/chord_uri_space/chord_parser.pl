@@ -18,7 +18,6 @@ chord(
 	]
 	) --> 
 	{rdf_bnode(ID)},
-	{writeln(coucou)},
 	note(NoteURI,T1), 
 	[':'],
 	shorthand(ShorthandURI),
@@ -174,23 +173,25 @@ shorthand('http://purl.org/ontology/chord/min9') -->
 shorthand('http://purl.org/ontology/chord/sus4') -->
 	['sus4'].
 
-%tokeniser
+%tokeniser 
 
+%tokens - the order is actually important (longer first)
+
+token(minmaj7).
+token(maj9).
+token(maj7).
+token(maj6).
 token(maj).
+token(min9).
+token(min7).
+token(min6).
 token(min).
+token(dim7).
 token(dim).
 token(aug).
-token(maj7).
-token(min7).
 token('7').
-token(dim7).
 token(hdim7).
-token(minmaj7).
-token(maj6).
-token(min6).
 token('9').
-token(maj9).
-token(min9).
 token(sus4).
 
 token('A').
@@ -221,6 +222,7 @@ token('/').
 token('(').
 token(')').
 token(',').
+token('*').
 
 tokenise(Atom,Tokens) :-
 	atom_chars(Atom,Chars),
