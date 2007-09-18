@@ -33,10 +33,14 @@ reply(Request) :-
 	atom_concat(SymbolT,'.rdf',Path),
 	atom_concat('/',Symbol,SymbolT),
 	!,
-	parse(Symbol,RDF),
-	format('Content-type: application/rdf+xml~n~n', []),
-	current_output(S),
-	rdf_write_xml(S,RDF).
+	(parse(Symbol,RDF) ->
+		(format('Content-type: application/rdf+xml~n~n', []),
+		current_output(S),
+		rdf_write_xml(S,RDF));
+		(
+		format('Content-type: text/html~n~n', []),
+		format('The specified chord symbol is not valid~n~n')
+		)).
 
 /**
  * Sends back 303 to RDF document describing the resource

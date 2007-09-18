@@ -19,7 +19,14 @@ parse(ChordSymbol,RDF) :-
 
 namespace('http://purl.org/ontology/chord/symbol/').
 
-
+chord(Symbol,
+	[
+		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Chord')
+	,	rdf(ID,'http://www.w3.org/2002/07/owl#sameAs','http://purl.org/ontology/chord/noChord')
+	]
+	) -->
+	{namespace(NS),atom_concat(NS,Symbol,ID)},
+	['N'].
 chord(Symbol,
 	[
 		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Chord')
@@ -55,6 +62,7 @@ chord(Symbol,
 	[
 		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Chord')
 	,	rdf(ID,'http://purl.org/ontology/chord/root',NoteURI)
+	,	rdf(ID,'http://purl.org/ontology/chord/baseChord','http://purl.org/ontology/chord/maj')
 	|	Tail
 	]
 	) -->
@@ -237,6 +245,8 @@ token('(').
 token(')').
 token(',').
 token('*').
+token('N').
+
 
 tokenise(Atom,Tokens) :-
 	atom_chars(Atom,Chars),
