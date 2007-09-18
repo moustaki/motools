@@ -13,7 +13,7 @@ import sys
 import time
 import os
 from os import mkdir
-import rdflib; from rdflib import RDF, RDFS, BNode, URIRef
+import rdflib; from rdflib import RDF, RDFS, BNode, URIRef, Literal
 from rdflib.Collection import Collection
 
 OWL = rdflib.Namespace("http://www.w3.org/2002/07/owl#")
@@ -187,6 +187,7 @@ class Generator:
 				g = Generator(self.graph, x, excludeClasses = self.excludeClasses + [self.c])
 				props.extend(g.getProperties())
 		
+		removeDeprecated(self.graph, props)
 		props = list(set(props)) # Remove duplicates
 		props.sort() # Aid consistency of generated code
 		#print str(self.c)+" has properties : "+str(props)
@@ -227,7 +228,8 @@ class Generator:
 				p.append(OWL.Thing)
 			else:
 				p.append(RDFS.Resource)
-		
+				
+		removeDeprecated(self.graph, p)
 		p = list(set(p)) # Remove duplicates
 		p.sort()
 		return p
@@ -288,6 +290,13 @@ def addImportForInstance(ns, i):
 	nsInit.write("from mopy.model import "+i+" as " + PyClassNameToClassQName(i).split(":")[1] + "\n")
 	nsInit.close()
 	
+def removeDeprecated(g, xs):
+	for x in xs:
+		status = list(g.objects(x, URIRef("http://www.w3.org/2003/06/sw-vocab-status/ns#term_status")))
+		if Literal("deprecated") in status:
+			print "DEPRECATED : "+str(x)
+			xs.remove(x)
+			
 def main():
 	spec_g = rdflib.ConjunctiveGraph()
 	print "Loading ontology documents..."
@@ -306,6 +315,7 @@ def main():
 	spec_g.namespace_manager.bind("time", rdflib.URIRef("http://www.w3.org/2006/time#"))
 
 	classes = list(set(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode)) # rdflib says rdfs:Class is a subClass of owl:Class - check !
+	removeDeprecated(spec_g, classes)
 	classes.sort() # Ensure serialisation order is reasonably consistent across runs
 	classtxt = {}
 	parents = {}
@@ -352,6 +362,9 @@ def objToStr(c):
 	graph_props = list(spec_g.subjects(RDF.type, RDF.Property))
 	for subType in spec_g.subjects(RDFS.subClassOf, RDF.Property):
 		graph_props.extend(list(spec_g.subjects(RDF.type, subType)))
+	removeDeprecated(spec_g, graph_props)
+	graph_props.sort()
+	print "properties : " + str(graph_props)
 	for p in graph_props:
 		doc = "\n".join(spec_g.objects(p, RDFS.comment))
 		if len(doc) > 0:
@@ -402,6 +415,7 @@ def objToStr(c):
 		if c == RDFS.Class:
 			continue
 		instances = [s for s in spec_g.subjects(RDF.type, c) if type(s) != BNode]
+		removeDeprecated(spec_g, instances)
 		instances.sort()
 		for ns in set([spec_g.qname(i).split(":")[0] for i in instances]):
 			setupNamespace(ns, False)
