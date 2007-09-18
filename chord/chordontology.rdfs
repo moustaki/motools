@@ -174,6 +174,7 @@
 		<chord:interval><chord:ScaleInterval><chord:degree>1</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>3</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>5</chord:degree></chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Major_chord" />
 	</chord:Chord>
 	
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/min" rdfs:label="min">
@@ -185,6 +186,7 @@
 			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		</chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>5</chord:degree></chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Minor_chord"/>
 	</chord:Chord>	
 
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/dim" rdfs:label="dim">
@@ -199,6 +201,7 @@
 			<chord:degree>5</chord:degree>
 			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		</chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Diminished_chord"/>
 	</chord:Chord>	
 
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/aug" rdfs:label="aug">
@@ -210,6 +213,7 @@
 			<chord:degree>5</chord:degree>
 			<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		</chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Augmented_chord"/>
 	</chord:Chord>
 
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/maj7" rdfs:label="maj7">
@@ -219,6 +223,7 @@
 		<chord:interval><chord:ScaleInterval><chord:degree>3</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>5</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>7</chord:degree></chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Major_seventh_chord"/>
 	</chord:Chord>
 	
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/seventh" rdfs:label="7">
@@ -231,6 +236,7 @@
 			<chord:degree>7</chord:degree>
 			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		</chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Seventh_chord"/>
 	</chord:Chord>
 
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/min7" rdfs:label="min7">
@@ -246,6 +252,7 @@
 			<chord:degree>7</chord:degree>
 			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		</chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Minor_seventh_chord"/>
 	</chord:Chord>
 		
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/dim7" rdfs:label="dim7">
@@ -294,6 +301,7 @@
 		</chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>5</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>7</chord:degree></chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Minor_major_seventh_chord"/>
 	</chord:Chord>
 	
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/maj6" rdfs:label="maj6">
@@ -303,9 +311,11 @@
 		<chord:interval><chord:ScaleInterval><chord:degree>3</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>5</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>6</chord:degree></chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Major_chord"/>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Sixth_chord"/>
 	</chord:Chord>
 	
-	<chord:Chord rdf:about="http://purl.org/ontology/chord/min7" rdfs:label="min7">
+	<chord:Chord rdf:about="http://purl.org/ontology/chord/min6" rdfs:label="min6">
 		<rdfs:comment>A minor sixth chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 		<chord:interval><chord:ScaleInterval><chord:degree>1</chord:degree></chord:ScaleInterval></chord:interval>
@@ -315,6 +325,8 @@
 		</chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>5</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>6</chord:degree></chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Minor_chord"/>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Sixth_chord"/>
 	</chord:Chord>
 	
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/ninth" rdfs:label="9">
@@ -338,6 +350,7 @@
 		<chord:interval><chord:ScaleInterval><chord:degree>5</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>7</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>9</chord:degree></chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Major_chord"/>
 	</chord:Chord>	
 	
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/min9" rdfs:label="min9">
@@ -353,7 +366,8 @@
 			<chord:degree>7</chord:degree>
 			<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		</chord:ScaleInterval></chord:interval>
-		<chord:interval><chord:ScaleInterval><chord:degree>9</chord:degree></chord:ScaleInterval></chord:interval>
+		<chord:interval><chord:ScaleInterval><chord:degree>9</chord:degree></chord:ScaleInterval></chord:interval>	
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Minor_chord"/>
 	</chord:Chord>
 	
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/sus4" rdfs:label="sus4">
@@ -362,6 +376,7 @@
 		<chord:interval><chord:ScaleInterval><chord:degree>1</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>4</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>5</chord:degree></chord:ScaleInterval></chord:interval>
+		<rdfs:seeAlso rdf:resource="http://dbpedia.org/resource/Suspended_chord"/>
 	</chord:Chord>
 	
 	<!-- Naturals -->
