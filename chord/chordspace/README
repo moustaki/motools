@@ -1,0 +1,58 @@
+ChordSpace
+==========
+
+Author: Yves Raimond
+Email: yves@dbtune.org
+
+Centre for Digital Music, Queen Mary University of London
+
+=========
+
+This program allows the creation of a service delivering RDF (designed
+according to the chord ontology available at http://purl.org/ontology/chord/)
+description of chord symbols, formatted using Christopher Harte's notation
+(Harte, 2004, ISMIR).
+
+Then, for example (if the service is available at http://purl.org/ontology/chord/symbol/, which 
+is the case):
+
+$ curl -L -H "Accept: application/rdf+xml"  "http://purl.org/ontology/chord/symbol/G:min(9)/b3"
+
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY ns1 'http://purl.org/ontology/chord/'>
+    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+    <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+]>
+
+<rdf:RDF
+    xmlns:ns1="&ns1;"
+    xmlns:rdf="&rdf;"
+    xmlns:xsd="&xsd;"
+>
+<ns1:Chord rdf:about="&ns1;symbol/G:min(9)/b3">
+  <ns1:baseChord rdf:resource="&ns1;min"/>
+  <ns1:bass>
+    <ns1:ScaleInterval>
+      <ns1:degree rdf:datatype="&xsd;int">3</ns1:degree>
+      <ns1:modifier rdf:resource="&ns1;note/flat"/>
+    </ns1:ScaleInterval>
+  </ns1:bass>
+  <ns1:root rdf:resource="&ns1;note/G"/>
+  <ns1:with_interval>
+    <ns1:ScaleInterval>
+      <ns1:degree rdf:datatype="&xsd;int">9</ns1:degree>
+    </ns1:ScaleInterval>
+  </ns1:with_interval>
+</ns1:Chord>
+
+</rdf:RDF>
+
+
+=========
+
+Dependencies:
+ * SWI-Prolog and its semweb library 
+   http://www.swi-prolog.org
+

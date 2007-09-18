@@ -79,8 +79,9 @@ optdegreelist(ID,Triples) -->
 	['('],degreelist(ID,Triples),[')'],!.
 optdegreelist(_,[]) --> [].
 
-optdegree(ID,Triples) -->
-	['/'],degree(ID,Triples),!.
+optdegree(ID,[rdf(ID,'http://purl.org/ontology/chord/bass',BassNode),rdf(BassNode,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/ScaleInterval')|Triples]) -->
+	{rdf_bnode(BassNode)},
+	['/'],degree(BassNode,Triples),!.
 optdegree(_,[]) --> [].
 
 natural('http://purl.org/ontology/chord/note/A') --> ['A'].
