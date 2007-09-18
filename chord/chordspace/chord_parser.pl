@@ -65,11 +65,12 @@ chord(Symbol,
 chord([]) --> [].
 	
 
-note(NoteURI,[
-		rdf(NoteURI,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Note')
-	,	rdf(NoteURI,'http://purl.org/ontology/chord/modifier',Modifier)
-	,	rdf(NoteURI,'http://purl.org/ontology/chord/natural',NoteURI)	
+note(ID,[
+		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Note')
+	,	rdf(ID,'http://purl.org/ontology/chord/modifier',Modifier)
+	,	rdf(ID,'http://purl.org/ontology/chord/natural',NoteURI)	
 	]) -->
+	{rdf_bnode(ID)},
 	natural(NoteURI),
 	modifier(Modifier),!.
 note(NoteURI,[]) -->
@@ -93,9 +94,9 @@ natural('http://purl.org/ontology/chord/note/F') --> ['F'].
 natural('http://purl.org/ontology/chord/note/G') --> ['G'].
 
 modifier('http://purl.org/ontology/chord/note/flat') --> ['b'].
-modifier('http://purl.org/ontology/chord/note/sharp') --> ['#']. %will perhaps have to change it
+modifier('http://purl.org/ontology/chord/note/sharp') --> ['s']. %will perhaps have to change it
 modifier('http://purl.org/ontology/chord/doubleflat') --> ['b','b'].
-modifier('http://purl.org/ontology/chord/doublesharp') --> ['#','#'].
+modifier('http://purl.org/ontology/chord/doublesharp') --> ['s','s'].
 
 
 degreelist(URI,[
@@ -227,7 +228,8 @@ token('7').
 token('8').
 token('9').
 
-token('#').
+%token('#').
+token(s).
 token(':').
 token('b').
 token('/').
