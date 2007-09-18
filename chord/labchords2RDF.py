@@ -34,26 +34,26 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None):
 	mi.add(program)
 
 	
-	tl = RelativeTimeLine("tl")
+	tl = RelativeTimeLine("#tl")
 	tl.label = "Timeline derived from "+infilename
 	tl.maker = program
 	mi.add(tl)
 	
 	intervalNum = 0
 	for line in lines:
-		i = Interval("i"+str(intervalNum))
+		i = Interval("#i"+str(intervalNum))
 		try:
 			[start_s, end_s, label] = parseLabLine(line)
 			i.beginsAtDuration = secondsToXSDDuration(start_s)
 			i.endsAtDuration = secondsToXSDDuration(end_s)
-			i.label = label
+			i.label = "Interval containing "+label+" chord."
 			i.onTimeLine = tl
 			
 			# Produce chord object for the label :
-			chordURI = "http://purl.org/ontology/chord/symbol/"+urlencode(label)
+			chordURI = "http://purl.org/ontology/chord/symbol/"+label.replace("#","s")
 			# FIXME : maybe deref to check it's a valid URI ?
 			c = mopy.chord.Chord(chordURI)
-			c_event = mopy.chord.ChordEvent("ce"+str(intervalNum))
+			c_event = mopy.chord.ChordEvent("#ce"+str(intervalNum))
 			c_event.chord = c
 			c_event.time = i
 		except Exception, e:
