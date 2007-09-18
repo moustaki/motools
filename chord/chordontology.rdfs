@@ -388,73 +388,73 @@
 	</chord:Natural>
 	
 	<!-- Other useful notes -->
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Aflat" rdfs:label="Ab">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Ab" rdfs:label="Ab">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/A"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Bflat" rdfs:label="Bb">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Bb" rdfs:label="Bb">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/B"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Cflat" rdfs:label="Cb">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Cb" rdfs:label="Cb">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/C"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Dflat" rdfs:label="Db">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Db" rdfs:label="Db">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/D"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Eflat" rdfs:label="Eb">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Eb" rdfs:label="Eb">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/E"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Fflat" rdfs:label="Fb">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Fb" rdfs:label="Fb">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/F"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Gflat" rdfs:label="Gb">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Gb" rdfs:label="Gb">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/G"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/flat"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
 
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Asharp" rdfs:label="A#">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/As" rdfs:label="A#">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/A"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Bsharp" rdfs:label="B#">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Bs" rdfs:label="B#">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/B"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Csharp" rdfs:label="C#">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Cs" rdfs:label="C#">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/C"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Dsharp" rdfs:label="D#">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Ds" rdfs:label="D#">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/D"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Esharp" rdfs:label="E#">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Es" rdfs:label="E#">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/E"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Fsharp" rdfs:label="F#">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Fs" rdfs:label="F#">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/F"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Note>
-	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Gsharp" rdfs:label="G#">
+	<chord:Note rdf:about="http://purl.org/ontology/chord/note/Gs" rdfs:label="G#">
 		<chord:natural rdf:resource="http://purl.org/ontology/chord/note/G"/>
 		<chord:modifier rdf:resource="http://purl.org/ontology/chord/sharp"/>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
