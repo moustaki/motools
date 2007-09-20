@@ -1,6 +1,18 @@
 Mopy Readme
 =============
 
+Contents
+--------
+1. [Introduction](#introduction)
+2. [Interactive Session Example (a.k.a. "why use `mopy` ?")](#interactivesessionexamplea.k.a.whyusemopy)
+3. [Requirements](#requirements)
+4. [Installation](#installation)
+5. [Mopy classes](#mopyclasses)
+6. [Mopy properties](#mopyproperties)
+7. [Examples of mopy in use](#examplesofmopyinuse)
+8. [Developers](#developers)
+
+
 Introduction
 ------------
 
