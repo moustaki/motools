@@ -1,0 +1,402 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix tl: <http://purl.org/NET/c4dm/timeline.owl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix af: <http://purl.org/ontology/af/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+# Ontology header
+<> a owl:Ontology;
+	dc:title "The Audio Features ontology";
+	owl:versionInfo "Revision: 1.01";
+	rdfs:label "The Audio Features ontology";
+	dc:description """
+		This ontology expresses some common concepts
+		to represent automatically extracted features
+		from audio signals. Therefore, it mainly relies 
+		on the Event ontology, in order to classify particular
+		parts of the timeline backing an audio signal. 
+		
+		Programs outputting RDF according to this ontology should 
+		also describe the ouputted document to express some information
+		about itself (estimated confidence, maintainer of the program, etc.)
+		""";
+	dc:creator <http://moustaki.org/foaf.rdf#moustaki>;
+	foaf:maker <http://moustaki.org/foaf.rdf#moustaki>;
+	dc:date "$Date: 2007/07/03 10:24:13 $";
+	.
+
+# Status of terms
+vs:term_status a owl:AnnotationProperty.
+
+
+#
+# PART 1
+#
+# - This part of the ontology deals with classification of time intervals occuring on a timeline
+#
+
+af:Segment a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Segment";
+	rdfs:subClassOf event:Event;
+	rdfs:comment """
+		A classifier for a temporal region corresponding to the output
+		of an automatic process---an artificial cognitive agent.
+		""";
+	.
+af:FeatureSegment a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:comment """
+		A segment holding the output of feature extraction algorithms
+		""";
+	rdfs:label "Feature segment";
+	rdfs:subClassOf af:Segment;
+	.
+af:StructuralSegment a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Structural Segment";
+	rdfs:subClassOf af:Segment;
+	rdfs:comment """
+		A classifier trying to capture the notion of structure in an audio piece.
+		This classifier should be subsumed by more specific classifiers: speech/music
+		segmentation, structural music segmmentation (intro, verse, chorus, etc.).
+		""";
+	.
+af:Point a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Point";
+	rdfs:subClassOf event:Event;
+	rdfs:comment """
+		A classifier for instants corresponding to the output of an automatic process---an
+		artificial cognitive agent (should be associated to a time:Instant---DL version).
+		""";
+	.
+
+# Speech-related part
+
+af:SpeechSegment a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Speech";
+	rdfs:subClassOf af:StructuralSegment;
+	rdfs:comment """
+		A classifier capturing the notion of an audio segment holding speech
+		content
+		""";
+	.
+af:Laugh a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Laugh";
+	rdfs:subClassOf af:SpeechSegment;
+	rdfs:comment """
+		A classifier for laugh content
+		""";
+	.
+af:Text a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Text";
+	rdfs:subClassOf af:SpeechSegment;
+	rdfs:comment """
+		A classifier allowing to associate some text to a segment
+		""";
+	.
+af:EmotionSegment a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Emotion segment";
+	rdfs:subClassOf af:SpeechSegment;
+	rdfs:comment """
+		A classifier for emotional content
+		""";
+	.
+af:IdiomSegment a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Idiom segment";
+	rdfs:subClassOf af:SpeechSegment;
+	rdfs:comment """
+		A classifier for recognized idiom (English with Irish accent, etc.)
+		""";
+	.
+af:PersonSpeaking a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Person speaking";
+	rdfs:comment """
+			A classifier associating a FOAF description to a particular segment 
+			(to classify genre, recognized speaker, etc.)
+			""";
+	rdfs:subClassOf af:SpeechSegment;
+	.
+
+# Music-related part
+
+af:MusicSegment a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Music";
+	rdfs:subClassOf af:StructuralSegment;
+	rdfs:comment """
+		A classifier capturing the notion of an audio segment holding music.
+		This classifier can be subsumed with less generic classifiers (corresponding
+		to \"musically meaningful\" segments).
+		""";
+	.
+af:MusicStructuralSegment a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Music structural segment";
+	rdfs:subClassOf af:MusicSegment;
+	rdfs:comment """
+		Classifier capturing the notion of chorus, verse, intro, bridge, phrase, etc.
+		""";
+	.
+af:KeySegment a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:comment """
+		A classifier capturing the notion of key.
+		In case of a \"clean cut\", instances of such events
+		should have one factor: the detected key (perhaps using the
+		key ontology at http://purl.org/NET/c4dm/keys.owl).
+		In other cases, we can put several keys as a factor, maybe with different confidence
+		factors, using event decomposition.
+		""";
+	rdfs:subClassOf af:MusicSegment;
+	rdfs:label "Key segment";
+	.
+af:Onset a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Onset";
+	rdfs:subClassOf af:Instant;
+	rdfs:comment """
+		A classifier corresponding to the output of an onset detection process.
+		""";
+	.
+af:TonalOnset a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Tonal onset";
+	rdfs:subClassOf af:Onset;
+	rdfs:comment "A tonal onset";
+	owl:disjointWith af:NonTonalOnset;
+	.
+af:NonTonalOnset a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Non-tonal onset";
+	rdfs:subClassOf af:Onset;
+	rdfs:comment "A non-tonal onset";
+	owl:disjointWith af:TonalOnset;
+	.
+af:Beat a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Beat event";
+	rdfs:comment "A beat event (instantaneous)";
+	rdfs:subClassOf af:Instant;
+	.
+af:Loudness a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:comment "Event holding a loudness value";
+	rdfs:subClassOf af:MusicSegment; #or instant? or both?
+	rdfs:label "Loudness event";
+	.
+af:Pitch a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:comment "Event holding a pitch value (for example coming from a monophonic transcription process)";
+	rdfs:subClassOf af:MusicSegment;
+	rdfs:label "Pitch event";
+	.
+af:Tempo a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:comment "Event holding a tempo value (120bpm...)";
+	rdfs:subClassOf af:MusicSegment;
+	rdfs:label "Tempo event";
+	.
+af:Ornament a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:subClassOf af:MusicSegment;
+	rdfs:label "Ornament event";
+	rdfs:comment "Classifying a temporal region holding a musical ornament";
+	.
+af:TimeSignature a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:subClassOf af:MusicSegment;
+	rdfs:label "Time signature";
+	rdfs:comment "Classifying a temporal region with a particular time signature (what? there is something else than 4/4?? :-)";
+	.
+
+#
+# PART 2
+#
+# - This part of the ontology defines some segment-specific concepts
+#
+
+# Custom concepts
+
+# Speech-related
+
+af:Idiom a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Idiom";
+	rdfs:comment """
+		Idiom (English with Irish accent, Austrian German, etc.)
+		""";
+	.
+af:EnglishIdiom a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "English idiom";
+	rdfs:comment """
+		English idiom
+		""";
+	.
+af:standard_british_english a af:EnglishIdiom;
+	vs:term_status "testing";
+	dc:title "Standard British English";
+	.
+af:standard_us_english a af:EnglishIdiom;
+	vs:term_status "testing";
+	dc:title "Standard US English";
+	.
+af:english_irish_accent a af:EnglishIdiom;
+	vs:term_status "testing";
+	dc:title "English with an Irish accent";
+	.
+af:english_scottish_accent a af:EnglishIdiom;
+	vs:term_status "testing";
+	dc:title "English with a Scottish accent";
+	.
+af:GermanIdiom a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "German idiom";
+	rdfs:comment """
+		German idiom
+		""";
+	.
+af:austrian_german a af:GermanIdiom;
+	vs:term_status "testing";
+	dc:title "Austrian German";
+	.
+af:swiss_german a af:GermanIdiom;
+	vs:term_status "testing";
+	dc:title "Swiss German";
+	.
+af:standard_german a af:GermanIdiom;
+	vs:term_status "testing";
+	dc:title "Standard German";
+	.
+af:HungarianIdiom a rdfs:Class;
+	vs:term_status "testing";
+	a owl:Class;
+	rdfs:label "Hungarian idiom";
+	rdfs:comment "Hungarian idiom";
+	.
+af:standard_hungarian a af:HungarianIdiom;
+	vs:term_status "testing";
+	dc:title "Standard Hungarian";
+	.
+
+# Predicates
+
+af:text a owl:DatatypeProperty;
+	vs:term_status "testing";
+	a rdf:Property;
+	rdfs:comment """
+		Relates a Text segment (classifying a time interval that can 
+		be associated to some text) to a text string or other literals (number, etc.)
+		""";
+	rdfs:subPropertyOf event:hasLiteralFactor;
+	rdfs:domain af:Text;
+	rdfs:range rdfs:Literal;
+	.
+af:idiom a owl:DatatypeProperty;
+	vs:term_status "testing";
+	a rdf:Property;
+	rdfs:comment """
+		Associates a segment which classify an idiom (English with Irish accent, etc.) to an actual idiom
+		""";
+	rdfs:subPropertyOf event:hasLiteralFactor;
+	rdfs:domain af:IdiomSegment;
+	rdfs:range af:Idiom;
+	.
+af:person a owl:ObjectProperty;
+	vs:term_status "testing";
+	a rdf:Property;
+	rdfs:comment """
+		Associates a segment classified as holding speech content to a FOAF
+		profile (maybe holding information about genre, recognized speaker URI, etc.)
+		""";
+	rdfs:label "person";
+	rdfs:domain af:PersonSegment;
+	rdfs:range foaf:Person;
+	.
+af:emotional_intensity a owl:ObjectProperty;
+	vs:term_status "testing";
+	a rdf:Property;
+	rdfs:comment """
+		Associates an \"emotional intensity\" value to a 
+		segment detected as being \"emotional\"
+		""";
+	rdfs:label "emotional intensity";
+	rdfs:domain af:EmotionSegment;
+	rdfs:range rdfs:Literal;
+	.
+
+# Feature-related
+
+af:feature a owl:DatatypeProperty;
+	vs:term_status "testing";
+	a rdf:Property;
+	rdfs:comment """
+		Associates a segment classifying a feature to the actual feature---we should use mpeg7 sort-of datatypes here
+		""";
+	rdfs:label "feature";
+	rdfs:subPropertyOf event:hasLiteralFactor;
+	rdfs:domain af:Segment;
+	rdfs:range rdfs:Literal;
+	.
+
+#af:mfcc_2_10 (mean/variance) should go there, as well as af:chroma ...
+
+
+
+#
+# Part III
+# 
+# Generic things, related to outputs of automatic processes
+#
+# Most of these things should be elsewhere
+#
+
+af:confidence a owl:DatatypeProperty;
+	vs:term_status "testing";
+	a rdf:Property;
+	rdfs:comment """
+		A really generic property, allowing to associate a confidence to a document or to a particular
+		resource (such as an automatically detected segment)
+		""";
+	rdfs:label "confidence";
+	rdfs:range rdfs:Literal;
+	.
+
