@@ -287,7 +287,7 @@ eg. from `labchords2RDF.py` :
 		mi.add(c_event)
 		intervalNum+=1
 	
-* The [MoPySpace](FIXME) project is using `mopy` to model FOAF relationships between MySpace users.
+* The [MyPySpace](http://sourceforge.net/projects/mypyspace/) project is using `mopy` to model FOAF relationships between MySpace users.
 
 
 Developers

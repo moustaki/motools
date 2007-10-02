@@ -335,26 +335,26 @@ def main():
 # = model.py - Core and External Classes of the Music Ontology 
 # =            Generated automatically on """+time.asctime()+"""
 # ===================================================================\n\n\n""")
-
+	model.write("import sys\n")
 	model.write("from mopy.PropertySet import PropertySet, protector\n\n")
 	
 	objToStr = """
 def objToStr(c):
 	s = "-- "+c.shortname
 	if c.URI != None :
-		s+=" @ "+str(c.URI)
+		s+=" @ "+unicode(c.URI)
 	s+=" --\\n"
 	for p in c._props.keys():
 		for v in c._props[p]:
 			s+=c._props[p].shortname + " : "
 			if isinstance(v, c._props[p].Lits):
-				s+=str(v)
+				s+=unicode(v)
 			else:
 				s+=str(type(v))
 				if hasattr(v,"URI") and v.URI != None:
 					s+=" @ "+v.URI
 			s +="\\n"
-	return s
+	return s.encode(sys.getdefaultencoding(), 'replace')
 """
 	model.write(objToStr)
 	model.write("\n# ======================== Property Docstrings ====================== \n\n")
