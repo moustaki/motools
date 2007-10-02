@@ -25,9 +25,10 @@ server(Port) :-
 :- use_module(load).
 :- use_module(library('semweb/rdf_persistency')).
 :- consult(config).
+:- use_module(control).
 
 :-
-	server.
+	server,admin_interface.
 :- 
 	rdf_db:rdf_attach_db('db',[]).
 
