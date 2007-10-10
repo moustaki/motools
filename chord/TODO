@@ -1,0 +1,5 @@
+chord_uri_space :
+* Uses chord:baseChord, should be chord:base_chord
+* Uses chord:with_interval, should be chord:interval
+* Uses chord:note/flat etc. instead of chord:flat etc. for modifier URIs
+* Doesn't use URIs for modified root notes (all single sharps and flats have URIs in the ontology)
