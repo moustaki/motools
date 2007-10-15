@@ -289,7 +289,6 @@ eg. from `labchords2RDF.py` :
 	
 * The [MyPySpace](http://sourceforge.net/projects/mypyspace/) project is using `mopy` to model FOAF relationships between MySpace users.
 
-
 Developers
 ----------
   

@@ -46,7 +46,7 @@ def importRDFFile(filename, format="xml", strict=True):
 def importRDFGraph(g, strict=True):
 	objs = {}
 	modelAttrs = [model.__dict__[c] for c in model.__dict__.keys()]
-	knownTypes = dict([(c.classURI, c) for c in modelAttrs if hasattr(c, "classURI")])
+	knownTypes = dict([(c.classURI, c) for c in modelAttrs if hasattr(c, "classURI") and type(c) == type])
 	knownInstances = dict([(i.URI, i) for i in modelAttrs if hasattr(i, "URI")])
 	
 	#
@@ -111,7 +111,24 @@ def importRDFGraph(g, strict=True):
 						obj = model.Resource(str(o))
 						objs[str(o)] = obj
 				elif type(o) == Literal:
-					obj = str(o)
+					# FIXME : this needs some more careful thought.
+					typeMapping = {"http://www.w3.org/2001/XMLSchema#integer" : int,\
+								   "http://www.w3.org/2001/XMLSchema#int" : int,\
+								   "http://www.w3.org/2001/XMLSchema#decimal" : float,\
+								   "http://www.w3.org/2001/XMLSchema#float" : float,\
+								   "http://www.w3.org/2001/XMLSchema#nonNegativeInteger" : int,\
+								   "http://www.w3.org/2001/XMLSchema#duration": str,\
+								   "http://www.w3.org/2001/XMLSchema#date" : str,\
+								   "http://www.w3.org/2001/XMLSchema#dateTime" : str,\
+							   	   "http://www.w3.org/2001/XMLSchema#gYear" : int,\
+								   "http://www.w3.org/2001/XMLSchema#gYearMonth" : str,\
+								   "http://www.w3.org/2001/XMLSchema#gMonth" : int,\
+								   "http://www.w3.org/2001/XMLSchema#gDay" : int}
+					if (o.datatype in typeMapping.keys()):
+						obj = typeMapping[o.datatype](o)
+					else:
+						obj = str(o)
+					
 				else:
 					if strict:
 						raise ImportException("Found object "+str(o)+" of "+str(s)+" whose type isn't URIRef or Literal ! What to do ?")
