@@ -15,12 +15,17 @@ import mopy
 from mopy.timeline import Interval, RelativeTimeLine
 from mopy.chord import Chord
 from mopy.MusicInfo import MusicInfo, isBlind
-import rdflib
+import rdflib; from rdflib import ConjunctiveGraph, URIRef
 from urllib import quote as urlencode
 
 from optparse import OptionParser
 
-def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None):
+def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None, withdescriptions=False):
+	if withdescriptions:
+		commonchords = ConjunctiveGraph()
+		commonchords.load("CommonChords.rdf")
+		extrachords = ConjunctiveGraph()
+	
 	infile = open(infilename, 'r')
 	lines = infile.readlines()
 
@@ -51,7 +56,14 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None):
 			
 			# Produce chord object for the label :
 			chordURI = "http://purl.org/ontology/chord/symbol/"+label.replace("#","s")
-			# FIXME : maybe deref to check it's a valid URI ?
+
+			if withdescriptions and \
+			   len(list(commonchords.predicate_objects(URIRef(chordURI)))) == 0 and \
+			   len(list(extrachords.predicate_objects(URIRef(chordURI)))) == 0:
+				# Deref to grab chord info
+				print "loading "+chordURI+"..."
+				extrachords.load(chordURI)
+				
 			c = mopy.chord.Chord(chordURI)
 			c_event = mopy.chord.ChordEvent("#ce"+str(intervalNum))
 			c_event.chord = c
@@ -76,6 +88,8 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None):
 				mi.add(o)
 			if hasattr(fp_mi, "SignalIdx") and len(fp_mi.SignalIdx) > 0:
 				fp_mi.SignalIdx.values()[0].time = sig_int = Interval()
+				sig_int.label="Whole signal interval";
+				sig_int.beginsAtDuration = secondsToXSDDuration(0);
 				sig_int.onTimeLine = tl
 				mi.add(sig_int)
 		else:
@@ -88,12 +102,25 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None):
 				signal = Signal()
 				signal.published_as = md_mi.TrackIdx.values()[0]
 				signal.time = sig_int = Interval()
+				sig_int.label="Whole signal interval";
+				sig_int.beginsAtDuration = secondsToXSDDuration(0);
 				sig_int.onTimeLine = tl
 				mi.add(sig_int)
 				mi.add(signal)
 		os.chdir(cwd)
+
+# FIXME Should do it this way (once chord URI service gets fixed and so works with mopy)	
+	# print "Adding extra chord descriptions to model..."
+	# chordmi = mopy.importRDFGraph(extrachords)
+	# for o in chordmi.MainIdx.values():
+	# 	mi.add(o)
 	
 	mopy.exportRDFFile(mi, outfilename, format)
+
+# Until we can do it the mopy way, this'll do :
+	if withdescriptions:
+		extrachords.load(outfilename,format=format)
+		extrachords.serialize(outfilename, format=format)
 
 def parseLabLine(line):
 	"""Split a line from a .lab file into start time, end time and the label."""
@@ -117,6 +144,8 @@ if __name__ == '__main__':
 						help="format for output (xml or n3)", metavar="FORMAT", default="xml")
 	parser.add_option("-f", "--audiofile", action="store", type="string", dest="audiofilename",\
 						help="audio file to analyse for extra info", metavar="FILENAME", default=None)
+	parser.add_option("-d", "--descriptions", action="store_true", dest="descriptions",\
+						help="include descriptions of uncommon chords", default=False)
 	(opts,args) = parser.parse_args()
 	
 	if len(args) < 1 or len(args) > 2:
@@ -137,4 +166,4 @@ if __name__ == '__main__':
 	if opts.format not in validFormats:
 		parser.error("Invalid format specified ! Must be one of : "+", ".join(validFormats))
 
-	labchords2RDF(infilename, outfilename, opts.format, opts.audiofilename)
+	labchords2RDF(infilename, outfilename, opts.format, opts.audiofilename, opts.descriptions)
