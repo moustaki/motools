@@ -138,7 +138,7 @@
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
 					<owl:Class rdf:about="http://purl.org/ontology/chord/Note"/>
-					<owl:Class rdf:about="http://purl.org/ontology/chord/Degree"/>
+					<owl:Class rdf:about="http://purl.org/ontology/chord/ScaleInterval"/>
 				</owl:unionOf>
 			</owl:Class>
 		</rdfs:domain>

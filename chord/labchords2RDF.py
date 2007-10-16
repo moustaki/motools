@@ -109,18 +109,13 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None, wit
 				mi.add(signal)
 		os.chdir(cwd)
 
-# FIXME Should do it this way (once chord URI service gets fixed and so works with mopy)	
-	# print "Adding extra chord descriptions to model..."
-	# chordmi = mopy.importRDFGraph(extrachords)
-	# for o in chordmi.MainIdx.values():
-	# 	mi.add(o)
+	print "Adding extra chord descriptions to model..."
+	chordmi = mopy.importRDFGraph(extrachords)
+	for o in chordmi.MainIdx.values():
+		mi.add(o)
 	
 	mopy.exportRDFFile(mi, outfilename, format)
 
-# Until we can do it the mopy way, this'll do :
-	if withdescriptions:
-		extrachords.load(outfilename,format=format)
-		extrachords.serialize(outfilename, format=format)
 
 def parseLabLine(line):
 	"""Split a line from a .lab file into start time, end time and the label."""
