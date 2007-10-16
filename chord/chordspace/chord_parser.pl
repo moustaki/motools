@@ -31,7 +31,7 @@ chord(Symbol,
 	[
 		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Chord')
 	,	rdf(ID,'http://purl.org/ontology/chord/root',NoteURI)
-	,	rdf(ID,'http://purl.org/ontology/chord/baseChord',ShorthandURI)
+	,	rdf(ID,'http://purl.org/ontology/chord/base_chord',ShorthandURI)
 	|	Tail
 	]
 	) --> 
@@ -62,7 +62,7 @@ chord(Symbol,
 	[
 		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Chord')
 	,	rdf(ID,'http://purl.org/ontology/chord/root',NoteURI)
-	,	rdf(ID,'http://purl.org/ontology/chord/baseChord','http://purl.org/ontology/chord/maj')
+	,	rdf(ID,'http://purl.org/ontology/chord/base_chord','http://purl.org/ontology/chord/maj')
 	|	Tail
 	]
 	) -->
@@ -101,8 +101,8 @@ natural('http://purl.org/ontology/chord/note/E') --> ['E'].
 natural('http://purl.org/ontology/chord/note/F') --> ['F'].
 natural('http://purl.org/ontology/chord/note/G') --> ['G'].
 
-modifier('http://purl.org/ontology/chord/note/flat') --> ['b'].
-modifier('http://purl.org/ontology/chord/note/sharp') --> ['s']. %will perhaps have to change it
+modifier('http://purl.org/ontology/chord/flat') --> ['b'].
+modifier('http://purl.org/ontology/chord/sharp') --> ['s']. %will perhaps have to change it
 modifier('http://purl.org/ontology/chord/doubleflat') --> ['b','b'].
 modifier('http://purl.org/ontology/chord/doublesharp') --> ['s','s'].
 
@@ -127,7 +127,7 @@ degreelist(URI,[
 	{rdf_bnode(Interval)},
 	degree(Interval,Tail).
 degreelist(URI,[
-		rdf(URI,'http://purl.org/ontology/chord/with_interval',Interval)
+		rdf(URI,'http://purl.org/ontology/chord/interval',Interval)
 	,	rdf(Interval,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/ScaleInterval')
 	|	Tail
 	]) -->
@@ -137,7 +137,7 @@ degreelist(URI,[
 	degreelist(URI,T2),
 	{append(T1,T2,Tail)}.
 degreelist(URI,[
-		rdf(URI,'http://purl.org/ontology/chord/with_interval',Interval)
+		rdf(URI,'http://purl.org/ontology/chord/interval',Interval)
 	,	rdf(Interval,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/ScaleInterval')
 	|	Tail
 	]) -->
