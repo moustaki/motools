@@ -23,6 +23,7 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 
 from mopy import model
 from mopy.MusicInfo import MusicInfo, getBlindURI, isBlind
+from mopy.rdfs import Resource
 import rdflib; from rdflib import URIRef, Literal, BNode, RDF, RDFS, ConjunctiveGraph
 from logging import log, error, warning, info, debug
 
@@ -108,7 +109,7 @@ def importRDFGraph(g, strict=True):
 						obj = knownInstances[str(o)]
 					else:
 						warning("Unknown URI "+str(o)+" as object of "+str(s)+", using a Resource to model.")
-						obj = model.Resource(str(o))
+						obj = Resource(str(o))
 						objs[str(o)] = obj
 				elif type(o) == Literal:
 					# FIXME : this needs some more careful thought.
@@ -124,8 +125,8 @@ def importRDFGraph(g, strict=True):
 								   "http://www.w3.org/2001/XMLSchema#gYearMonth" : str,\
 								   "http://www.w3.org/2001/XMLSchema#gMonth" : int,\
 								   "http://www.w3.org/2001/XMLSchema#gDay" : int}
-					if (o.datatype in typeMapping.keys()):
-						obj = typeMapping[o.datatype](o)
+					if (str(o.datatype) in typeMapping.keys()):
+						obj = typeMapping[str(o.datatype)](o)
 					else:
 						obj = str(o)
 					
