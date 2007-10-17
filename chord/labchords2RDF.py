@@ -55,7 +55,7 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None, wit
 			i.onTimeLine = tl
 			
 			# Produce chord object for the label :
-			chordURI = urlencode("http://purl.org/ontology/chord/symbol/"+label.replace("#","s"))
+			chordURI = "http://purl.org/ontology/chord/symbol/"+label.replace("#","s").replace(",","%2C")
 
 			if withdescriptions and \
 			   len(list(commonchords.predicate_objects(URIRef(chordURI)))) == 0 and \
@@ -77,11 +77,12 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None, wit
 	
 	# Extract extra info from audio file :
 	if audiofilename != None:
+		absaudiofilename = os.path.abspath(audiofilename)
 		ac_module = __import__("gnat.AudioCollection",[],[],["AudioCollection"])
 		ac = ac_module.AudioCollection()
 		cwd = os.getcwd()
 		os.chdir("./gnat") # so we can find genpuid etc.
-		fp_mi = ac.fingerprint(audiofilename)
+		fp_mi = ac.fingerprint(absaudiofilename)
 		if hasattr(fp_mi, "TrackIdx") and len(fp_mi.TrackIdx) > 0 and not isBlind(fp_mi.TrackIdx.values()[0]):
 			print "Adding info from audiofile fingerprinting."
 			for o in fp_mi.MainIdx.values():
@@ -94,7 +95,7 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None, wit
 				mi.add(sig_int)
 		else:
 			print "Fingerprinting failed, trying metadata lookup..."
-			md_mi = ac.metadata(audiofilename)
+			md_mi = ac.metadata(absaudiofilename)
 			if hasattr(md_mi, "TrackIdx") and len(md_mi.TrackIdx) > 0 and not isBlind(md_mi.TrackIdx.values()[0]):
 				print "Adding info from audiofile metadata lookup."
 				for o in md_mi.MainIdx.values():
