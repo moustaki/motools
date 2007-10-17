@@ -193,7 +193,9 @@ shorthand('http://purl.org/ontology/chord/min9') -->
 	['min9'].
 shorthand('http://purl.org/ontology/chord/sus4') -->
 	['sus4'].
-
+shorthand('http://purl.org/ontology/chord/sus2') -->
+	['sus2'].
+	
 %tokeniser 
 
 %tokens - the order is actually important (longer first)
@@ -214,6 +216,7 @@ token('7').
 token(hdim7).
 token('9').
 token(sus4).
+token(sus2).
 
 token('A').
 token('B').

@@ -55,7 +55,7 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None, wit
 			i.onTimeLine = tl
 			
 			# Produce chord object for the label :
-			chordURI = "http://purl.org/ontology/chord/symbol/"+label.replace("#","s")
+			chordURI = urlencode("http://purl.org/ontology/chord/symbol/"+label.replace("#","s"))
 
 			if withdescriptions and \
 			   len(list(commonchords.predicate_objects(URIRef(chordURI)))) == 0 and \
