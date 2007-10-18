@@ -19,7 +19,7 @@ def main():
 	notes = ['C','D','E','F','G','A','B']
 	mods = ['b','','s']
 	bases = ['', ':maj', ':min', ':dim', ':aug', ':maj7', ':min7', ':7', ':dim7', \
-			':hdim7', ':minmaj7', ':maj6', ':min6', ':9', ':maj9', ':min9', ':sus4']
+			':hdim7', ':minmaj7', ':maj6', ':min6', ':9', ':maj9', ':min9', ':sus4', ':sus2']
 
 	chordURI = prefix+'N'
 	print "loading "+chordURI
