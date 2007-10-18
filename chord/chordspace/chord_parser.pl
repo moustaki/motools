@@ -159,7 +159,7 @@ degree(IntervalURI,
 
 interval(N) --> 
 	[N], 
-	{member(N,['1','2','3','4','5','6','7','8','9','10','11','12'])}.
+	{member(N,['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24'])}.
 
 shorthand('http://purl.org/ontology/chord/maj') --> 
 	['maj'].
@@ -229,7 +229,19 @@ token('G').
 token('10').
 token('11').
 token('12').
+token('13').
+token('14').
+token('15').
+token('16').
+token('17').
+token('18').
+token('19').
 token('1').
+token('20').
+token('21').
+token('22').
+token('23').
+token('24').
 token('2').
 token('3').
 token('4').
