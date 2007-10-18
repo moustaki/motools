@@ -380,7 +380,7 @@
 	</chord:Chord>
 	
 	<chord:Chord rdf:about="http://purl.org/ontology/chord/sus2" rdfs:label="sus2">
-		<rdfs:comment>A suspended fourth chord.</rdfs:comment>
+		<rdfs:comment>A suspended second chord.</rdfs:comment>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 		<chord:interval><chord:ScaleInterval><chord:degree>1</chord:degree></chord:ScaleInterval></chord:interval>
 		<chord:interval><chord:ScaleInterval><chord:degree>2</chord:degree></chord:ScaleInterval></chord:interval>
