@@ -67,6 +67,7 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None, wit
 			c = mopy.chord.Chord(chordURI)
 			c_event = mopy.chord.ChordEvent("#ce"+str(intervalNum))
 			c_event.chord = c
+			c_event.label = label
 			c_event.time = i
 		except Exception, e:
 			raise Exception("Problem parsing input file at line "+str(intervalNum+1)+" !\n"+str(e))
@@ -110,10 +111,11 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None, wit
 				mi.add(signal)
 		os.chdir(cwd)
 
-	print "Adding extra chord descriptions to model..."
-	chordmi = mopy.importRDFGraph(extrachords)
-	for o in chordmi.MainIdx.values():
-		mi.add(o)
+	if (withdescriptions):
+		print "Adding extra chord descriptions to model..."
+		chordmi = mopy.importRDFGraph(extrachords)
+		for o in chordmi.MainIdx.values():
+			mi.add(o)
 	
 	mopy.exportRDFFile(mi, outfilename, format)
 
