@@ -51,7 +51,7 @@ def labchords2RDF(infilename, outfilename, format="xml", audiofilename=None, wit
 			[start_s, end_s, label] = parseLabLine(line)
 			i.beginsAtDuration = secondsToXSDDuration(start_s)
 			i.endsAtDuration = secondsToXSDDuration(end_s)
-			i.label = "Interval containing "+label+" chord."
+			#i.label = "Interval containing "+label+" chord."
 			i.onTimeLine = tl
 			
 			# Produce chord object for the label :
