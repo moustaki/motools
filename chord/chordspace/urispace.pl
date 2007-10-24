@@ -38,8 +38,7 @@ reply(Request) :-
 		current_output(S),
 		rdf_write_xml(S,RDF));
 		(
-		format('Content-type: text/html~n~n', []),
-		format('The specified chord symbol is not valid~n~n')
+		throw(http_reply(server_error('The specified chord symbol is not valid~n~n')))
 		)).
 
 /**
@@ -86,7 +85,7 @@ init :-
 
 :-
  nl,writeln('----------------'),nl,
- writeln(' - Launch the server by running ?-init.'),
- writeln(' - To change the port, change config.pl'),nl,writeln('----------------'),nl.
+ writeln(' - Launch the server on port 1111 by running ?-init.'),
+ nl,writeln('----------------'),nl.
 
 
