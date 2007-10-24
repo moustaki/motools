@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://chrissutton.org/me" />
+ <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="author" content="Christopher Sutton" />
+<link href="style.css" rel="stylesheet" type="text/css" /><meta name="robots" content="all" />
+<title>Chord Ontology Specification</title>
+</head>
+<body><h2>Introduction</h2>
+Here is the introduction<br>
+
+<h3>Namespaces</h3>
+<h2>The chord model</h2>
+
+<p>The ontology uses a model originally based on Christopher Harte's chord notation [FIXME ref] with some modifications to better suit the domain, and allow more flexibility in the chords which may be described.</p>
+
+<div style="text-align: center"><img src="model1.png" alt="Chord model"><br>Figure 1 - The chord model</div><br>
+<p>Figure 1 shows the model of a chord used by the ontology (represented by the <a href="#term_Chord">chord:Chord</a> class). All properties are optional, such that one may use a bare Chord resource to indicate simply that some unknown chord is played.</p>
+
+<p>More commonly, a chord will be specified using a root note and some constituent intervals. These are attached using the <a href="#term_interval">chord:interval</a> property. The chord inversion may be indicated by specifying which interval is the bass (using the <a href="#term_bass">chord:bass</a> property). <i>Currently no further voicing information may be expressed with the ontology</i>.</p>
+    
+    
+    
+    If the type of chord is known (eg. "these four notes in fact form a minor seventh chord") this information may be indicated by assigning a base_chord. Intervals present in the base chord but not in this particular chord may be indicated using the <a href="#term_without_interval">chord:without_interval</a> property.</p>
+    
+<p>It is expected that the intervals specified for a chord are exactly the same as the set of intervals present in the given base_chord, minus any which are specified using <a href="#term_without_interval">chord:without_interval</a> properties.</p>
+
+        
+<div style="text-align: center; float: left; margin-top: 50px"><img src="model2.png" alt="Note model"><br>Figure 2 - The note model</div><br>
+<div style="text-align: center; float: right"><img src="model3.png" alt="Interval model"><br>Figure 3 - The interval model</div><br><div style="clear: both"/>
+<br>
+<p>Figure 2 shows the note model for the ontology, where a note is either a natural, or a modified version of a natural. The ontology includes individuals for the seven natural notes and all single sharp and flat modifications.</p>
+<p>Figure 3 shows the interval model for the ontology. If note names are known, the <a href="#term_ScaleInterval">ScaleInterval</a> class should be used. Otherwise the <a href="#term_ScaleInterval">SemitoneInterval</a> class can be used to indicate pitch without assigning note names. <i>Currently one must still name the root note - this needs fixing.</i></p>
+<br>
+
+
+
+
+<h3>Example chord description</h3>
+<p>Figure 4 shows an example chord description : A D# minor chord with added ninth and missing flat third, over the fifth.</p>
+<div style="text-align: center"><img src="exampleDsmin-b3+9over5.png" alt="Example of a chord description"><br>Figure 4 - Example of a chord description</div><br>
+<p>The corresponding RDF/N3 description is as follows :</p>
+<div style="border: solid; border-width: 2px; border-color: grey; padding: 0 0 0 5px">
+<pre>
+&lt;http://purl.org/ontology/chord/symbol/Ds:min7(*b3,9)/5&gt;
+    a chord:Chord;
+    chord:root [ a chord:Note;
+                 chord:modifier chord:sharp;
+                 chord:natural &lt;http://purl.org/ontology/chord/note/D&gt; ];
+
+    chord:bass [ a chord:ScaleInterval;
+                 chord:degree 5 ];
+
+    chord:base_chord chord:min7;
+
+    chord:without_interval [ a chord:ScaleInterval;
+                             chord:degree 3
+                             chord:modifier chord:flat ];
+
+    chord:interval [ a chord:ScaleInterval;
+                     chord:degree 1    ],
+                   [ a chord:ScaleInterval;
+                     chord:degree 5 ],
+                   [ a chord:ScaleInterval;
+                     chord:degree 7;
+                     chord:modifier chord:flat ],
+                   [ a chord:ScaleInterval;
+                     chord:degree 9 ].
+</pre>
+</div>
+
+<h3>Chord symbol service</h3>
+<p>As part of the chord ontology, there is a service to provide RDF descriptions from more compact chord labels. The base URI of the service is <tt>&lt;http://purl.org/ontology/chord/symbol/&gt;</tt> and chord symbols as defined in [FIXME ref] may be appended to this base URI to form valid chord URIs, with the one required change that a 's' character is used in place of the '#' character.</p>
+	
+<p>So for example the URI <tt>&lt;http://purl.org/ontology/chord/symbol/D:min7&gt;</tt> can be retrieved using a HTTP GET with the "Accept" header set to "application/rdf+xml" to retrieve an RDF description of D minor 7 (Figure 5).</p>
+<i>Some further discussion of the semantics of using such shortcuts is required, and the shorthand used by the service may be changed in future, subject to community discussion.</i>
+
+<div style="text-align: center"><img src="exampleusage.png" alt="Example usage of the symbol service"><br>Figure 5 - Illustration of using the symbol service</div><br>
+
+<h3>Timeline annotation</h3>
+<p>The ontology is designed for use in conjunction with the <a href="FIXME">OWL-Time</a>, <a href="FIXME">TimeLine</a> and <a href="FIXME">Event<a> ontologies and so provides a <a href="#term_ChordEvent">ChordEvent</a> class which can be used to attach chords to a timeline. This timeline may be associated with an audio signal, a musical score, a symbolic music file, etc. using terms from the <a href="http://www.musicontology.com">Music Ontology</a>. An overview of the structures involved is given in Figure 6.</p>
+<div style="text-align: center"><img src="exampletimeline.png" alt="Example of annotating a timeline"><br>Figure 6 - Example of annotating a timeline</div><br><div class="glance" id="glance" style="padding: 5px; border: dotted; background-color: #ddd;">
+<p>Classes: | <a href="#term_Chord">Chord</a> | <a href="#term_ChordEvent">ChordEvent</a> | <a href="#term_Interval">Interval</a> | <a href="#term_Modifier">Modifier</a> | <a href="#term_Natural">Natural</a> | <a href="#term_Note">Note</a> | <a href="#term_ScaleInterval">ScaleInterval</a> | <a href="#term_SemitoneInterval">SemitoneInterval</a> |  </p>
+<p>Properties: | <a href="#term_base_chord">base_chord</a> | 
+<a href="#term_bass">bass</a> | 
+<a href="#term_chord">chord</a> | 
+<a href="#term_degree">degree</a> | 
+<a href="#term_interval">interval</a> | 
+<a href="#term_modifier">modifier</a> | 
+<a href="#term_natural">natural</a> | 
+<a href="#term_root">root</a> | 
+<a href="#term_semitone_interval">semitone_interval</a> | 
+<a href="#term_without_interval">without_interval</a> | 
+</p>
+<p>Individuals: | <a href="#term_aug">aug</a> | 
+<a href="#term_dim">dim</a> | 
+<a href="#term_dim7">dim7</a> | 
+<a href="#term_doubleflat">doubleflat</a> | 
+<a href="#term_doublesharp">doublesharp</a> | 
+<a href="#term_flat">flat</a> | 
+<a href="#term_hdim7">hdim7</a> | 
+<a href="#term_maj">maj</a> | 
+<a href="#term_maj6">maj6</a> | 
+<a href="#term_maj7">maj7</a> | 
+<a href="#term_maj9">maj9</a> | 
+<a href="#term_min">min</a> | 
+<a href="#term_min6">min6</a> | 
+<a href="#term_min7">min7</a> | 
+<a href="#term_min9">min9</a> | 
+<a href="#term_minmaj7">minmaj7</a> | 
+<a href="#term_ninth">ninth</a> | 
+<a href="#term_noChord">noChord</a> | 
+<a href="#term_note/A">note/A</a> | 
+<a href="#term_note/Ab">note/Ab</a> | 
+<a href="#term_note/As">note/As</a> | 
+<a href="#term_note/B">note/B</a> | 
+<a href="#term_note/Bb">note/Bb</a> | 
+<a href="#term_note/Bs">note/Bs</a> | 
+<a href="#term_note/C">note/C</a> | 
+<a href="#term_note/Cb">note/Cb</a> | 
+<a href="#term_note/Cs">note/Cs</a> | 
+<a href="#term_note/D">note/D</a> | 
+<a href="#term_note/Db">note/Db</a> | 
+<a href="#term_note/Ds">note/Ds</a> | 
+<a href="#term_note/E">note/E</a> | 
+<a href="#term_note/Eb">note/Eb</a> | 
+<a href="#term_note/Es">note/Es</a> | 
+<a href="#term_note/F">note/F</a> | 
+<a href="#term_note/Fb">note/Fb</a> | 
+<a href="#term_note/Fs">note/Fs</a> | 
+<a href="#term_note/G">note/G</a> | 
+<a href="#term_note/Gb">note/Gb</a> | 
+<a href="#term_note/Gs">note/Gs</a> | 
+<a href="#term_seventh">seventh</a> | 
+<a href="#term_sharp">sharp</a> | 
+<a href="#term_sus2">sus2</a> | 
+<a href="#term_sus4">sus4</a> | 
+ </p></div><div class="specterm" id="term_Chord"><h3>Class: chord:Chord   -   unstable   -   </h3>
+<em>Chord</em>
+ - A representation of two or more notes played together. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_base_chord">base_chord</a></td>
+<td><a href="#term_chord">chord</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_without_interval">without_interval</a></td>
+<td><a href="#term_interval">interval</a></td>
+<td><a href="#term_bass">bass</a></td>
+<td><a href="#term_root">root</a></td>
+<td><a href="#term_base_chord">base_chord</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_ChordEvent"><h3>Class: chord:ChordEvent   -   unstable   -   </h3>
+<em>ChordEvent</em>
+ - An event signifying that a chord is played. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_chord">chord</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="http://purl.org/NET/c4dm/event.owl#Event">event:Event</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Interval"><h3>Class: chord:Interval   -   unstable   -   </h3>
+<em>Interval</em>
+ - An interval above the root of a chord. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_interval">interval</a></td>
+<td><a href="#term_bass">bass</a></td>
+</tr>
+
+
+</table>
+
+</div><div class="specterm" id="term_Modifier"><h3>Class: chord:Modifier   -   unstable   -   </h3>
+<em>Modifier</em>
+ - A modifier applied to a note to change its pitch. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_modifier">modifier</a></td>
+</tr>
+
+
+</table>
+
+</div><div class="specterm" id="term_Natural"><h3>Class: chord:Natural   -   unstable   -   </h3>
+<em>Natural</em>
+ - One of the seven natural notes of the Western music system. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_natural">natural</a></td>
+</tr>
+
+
+<tr><th>sub-class-of:</th><td><a href="#term_Note">Note</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Note"><h3>Class: chord:Note   -   unstable   -   </h3>
+<em>Note</em>
+ - A musical note which can be one of the seven natural notes or a modified version thereof. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_root">root</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_modifier">modifier</a></td>
+<td><a href="#term_natural">natural</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_ScaleInterval"><h3>Class: chord:ScaleInterval   -   unstable   -   </h3>
+<em>ScaleInterval</em>
+ - An interval measured in the root scale, made up of the degree of the scale and optional modifier. For use when note names are known.  
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_without_interval">without_interval</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_modifier">modifier</a></td>
+<td><a href="#term_degree">degree</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Interval">Interval</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_SemitoneInterval"><h3>Class: chord:SemitoneInterval   -   unstable   -   </h3>
+<em>SemitoneInterval</em>
+ - An interval measured in semitones. For use when note names are not definitively known. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_semitone_interval">semitone_interval</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Interval">Interval</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_base_chord">
+<h3>Property: chord:base_chord   -   unstable   -   </h3>
+<em>base_chord</em> - The chord on which this one is based. <br/>
+For example, a C7 chord might have chord:Cmaj as its base chord. <br/>
+All intervals of the base chord are expected to be present in this chord, except when explicitly removed using a without_interval statement. 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Chord">Chord</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Chord">Chord</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_bass">
+<h3>Property: chord:bass   -   unstable   -   </h3>
+<em>bass</em> - The bass note of the chord (thus indicating the inversion). 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Chord">Chord</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Interval">Interval</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_chord">
+<h3>Property: chord:chord   -   unstable   -   </h3>
+<em>chord</em> - Used to attach the Chord played to a ChordEvent. 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_ChordEvent">ChordEvent</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Chord">Chord</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_degree">
+<h3>Property: chord:degree   -   unstable   -   </h3>
+<em>degree</em> - The degree of an interval based on the root of a chord. 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_ScaleInterval">ScaleInterval</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_interval">
+<h3>Property: chord:interval   -   unstable   -   </h3>
+<em>interval</em> - Associates the Intervals making up a chord with the Chord resource itself. 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Chord">Chord</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Interval">Interval</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_modifier">
+<h3>Property: chord:modifier   -   unstable   -   </h3>
+<em>modifier</em> - A modification to a note's pitch. 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_ScaleInterval">ScaleInterval</a></td>
+<td><a href="#term_Note">Note</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Modifier">Modifier</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_natural">
+<h3>Property: chord:natural   -   unstable   -   </h3>
+<em>natural</em> - The natural note from which this note is derived. 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Note">Note</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Natural">Natural</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_root">
+<h3>Property: chord:root   -   unstable   -   </h3>
+<em>root</em> - The root note of the chord. 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Chord">Chord</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Note">Note</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_semitone_interval">
+<h3>Property: chord:semitone_interval   -   unstable   -   </h3>
+<em>semitone_interval</em> - The size of a SemitoneInterval, measured in semitones. 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_SemitoneInterval">SemitoneInterval</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_without_interval">
+<h3>Property: chord:without_interval   -   unstable   -   </h3>
+<em>without_interval</em> - A degree of the scale expected in the chord but not actually present here.<br/>
+This is intended for the case when a Chord does not include an interval indicated by its base_chord. 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Chord">Chord</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_ScaleInterval">ScaleInterval</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_noChord">
+<h3>Individual: noChord   -   </h3>
+<em>noChord</em> - Indicates that no chord is played. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div>

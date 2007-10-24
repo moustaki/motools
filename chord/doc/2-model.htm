@@ -1,0 +1,70 @@
+<h2>The chord model</h2>
+
+<p>The ontology uses a model originally based on Christopher Harte's chord notation [FIXME ref] with some modifications to better suit the domain, and allow more flexibility in the chords which may be described.</p>
+
+<div style="text-align: center"><img src="model1.png" alt="Chord model"><br>Figure 1 - The chord model</div><br>
+<p>Figure 1 shows the model of a chord used by the ontology (represented by the <a href="#term_Chord">chord:Chord</a> class). All properties are optional, such that one may use a bare Chord resource to indicate simply that some unknown chord is played.</p>
+
+<p>More commonly, a chord will be specified using a root note and some constituent intervals. These are attached using the <a href="#term_interval">chord:interval</a> property. The chord inversion may be indicated by specifying which interval is the bass (using the <a href="#term_bass">chord:bass</a> property). <i>Currently no further voicing information may be expressed with the ontology</i>.</p>
+    
+    
+    
+    If the type of chord is known (eg. "these four notes in fact form a minor seventh chord") this information may be indicated by assigning a base_chord. Intervals present in the base chord but not in this particular chord may be indicated using the <a href="#term_without_interval">chord:without_interval</a> property.</p>
+    
+<p>It is expected that the intervals specified for a chord are exactly the same as the set of intervals present in the given base_chord, minus any which are specified using <a href="#term_without_interval">chord:without_interval</a> properties.</p>
+
+        
+<div style="text-align: center; float: left; margin-top: 50px"><img src="model2.png" alt="Note model"><br>Figure 2 - The note model</div><br>
+<div style="text-align: center; float: right"><img src="model3.png" alt="Interval model"><br>Figure 3 - The interval model</div><br><div style="clear: both"/>
+<br>
+<p>Figure 2 shows the note model for the ontology, where a note is either a natural, or a modified version of a natural. The ontology includes individuals for the seven natural notes and all single sharp and flat modifications.</p>
+<p>Figure 3 shows the interval model for the ontology. If note names are known, the <a href="#term_ScaleInterval">ScaleInterval</a> class should be used. Otherwise the <a href="#term_ScaleInterval">SemitoneInterval</a> class can be used to indicate pitch without assigning note names. <i>Currently one must still name the root note - this needs fixing.</i></p>
+<br>
+
+
+
+
+<h3>Example chord description</h3>
+<p>Figure 4 shows an example chord description : A D# minor chord with added ninth and missing flat third, over the fifth.</p>
+<div style="text-align: center"><img src="exampleDsmin-b3+9over5.png" alt="Example of a chord description"><br>Figure 4 - Example of a chord description</div><br>
+<p>The corresponding RDF/N3 description is as follows :</p>
+<div style="border: solid; border-width: 2px; border-color: grey; padding: 0 0 0 5px">
+<pre>
+&lt;http://purl.org/ontology/chord/symbol/Ds:min7(*b3,9)/5&gt;
+    a chord:Chord;
+    chord:root [ a chord:Note;
+                 chord:modifier chord:sharp;
+                 chord:natural &lt;http://purl.org/ontology/chord/note/D&gt; ];
+
+    chord:bass [ a chord:ScaleInterval;
+                 chord:degree 5 ];
+
+    chord:base_chord chord:min7;
+
+    chord:without_interval [ a chord:ScaleInterval;
+                             chord:degree 3
+                             chord:modifier chord:flat ];
+
+    chord:interval [ a chord:ScaleInterval;
+                     chord:degree 1    ],
+                   [ a chord:ScaleInterval;
+                     chord:degree 5 ],
+                   [ a chord:ScaleInterval;
+                     chord:degree 7;
+                     chord:modifier chord:flat ],
+                   [ a chord:ScaleInterval;
+                     chord:degree 9 ].
+</pre>
+</div>
+
+<h3>Chord symbol service</h3>
+<p>As part of the chord ontology, there is a service to provide RDF descriptions from more compact chord labels. The base URI of the service is <tt>&lt;http://purl.org/ontology/chord/symbol/&gt;</tt> and chord symbols as defined in [FIXME ref] may be appended to this base URI to form valid chord URIs, with the one required change that a 's' character is used in place of the '#' character.</p>
+	
+<p>So for example the URI <tt>&lt;http://purl.org/ontology/chord/symbol/D:min7&gt;</tt> can be retrieved using a HTTP GET with the "Accept" header set to "application/rdf+xml" to retrieve an RDF description of D minor 7 (Figure 5).</p>
+<i>Some further discussion of the semantics of using such shortcuts is required, and the shorthand used by the service may be changed in future, subject to community discussion.</i>
+
+<div style="text-align: center"><img src="exampleusage.png" alt="Example usage of the symbol service"><br>Figure 5 - Illustration of using the symbol service</div><br>
+
+<h3>Timeline annotation</h3>
+<p>The ontology is designed for use in conjunction with the <a href="FIXME">OWL-Time</a>, <a href="FIXME">TimeLine</a> and <a href="FIXME">Event<a> ontologies and so provides a <a href="#term_ChordEvent">ChordEvent</a> class which can be used to attach chords to a timeline. This timeline may be associated with an audio signal, a musical score, a symbolic music file, etc. using terms from the <a href="http://www.musicontology.com">Music Ontology</a>. An overview of the structures involved is given in Figure 6.</p>
+<div style="text-align: center"><img src="exampletimeline.png" alt="Example of annotating a timeline"><br>Figure 6 - Example of annotating a timeline</div><br>

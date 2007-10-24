@@ -1,0 +1,10 @@
+div.specterm {
+	padding: 10px;
+	border: 1px solid black;
+}
+
+body {
+	min-width: 750px;
+	padding: 0 25px 50px 50px;
+}
+
