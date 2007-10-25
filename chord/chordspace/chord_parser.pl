@@ -19,11 +19,18 @@ parse(ChordSymbol,RDF) :-
 clean(Description,Rest) :-
 	member(rdf(A,'http://purl.org/ontology/chord/without_interval',I1),Description),
 	member(rdf(I1,'http://purl.org/ontology/chord/degree',D),Description),
-	member(rdf(I1,'http://purl.org/ontology/chord/modifier',M),Description),writeln(aaa),
+	member(rdf(I1,'http://purl.org/ontology/chord/modifier',M),Description),
 	select(rdf(A,'http://purl.org/ontology/chord/interval',I2),Description,R1),
-	select(rdf(I2,'http://purl.org/ontology/chord/degree',D),R1,R2),writeln(bbb),
-	select(rdf(I2,'http://purl.org/ontology/chord/modifier',M),R2,Rest),writeln(youpi),!.
+	select(rdf(I2,'http://purl.org/ontology/chord/degree',D),R1,R2),
+	select(rdf(I2,'http://purl.org/ontology/chord/modifier',M),R2,Rest),!.
+clean(Description,Rest) :-
+	member(rdf(A,'http://purl.org/ontology/chord/without_interval',I1),Description),
+	member(rdf(I1,'http://purl.org/ontology/chord/degree',D),Description),
+	select(rdf(A,'http://purl.org/ontology/chord/interval',I2),Description,R1),
+	select(rdf(I2,'http://purl.org/ontology/chord/degree',D),R1,Rest),!.
 clean(Description,Description).
+
+
 
 % DCG
 
