@@ -3,6 +3,7 @@
 	,	gen/1
 	,	onto_spec/1
 	,	onto_spec_to_file/1
+	,	header/1
 	,	glance_html_desc/1
 	,	classes_html_desc/1
 	,	props_html_desc/1
@@ -44,7 +45,7 @@
 :- rdf_db:rdf_register_ns(vs,'http://www.w3.org/2003/06/sw-vocab-status/ns#').
 :- rdf_db:rdf_register_ns(geo,'http://www.w3.org/2003/01/geo/wgs84_pos#').
 :- rdf_db:rdf_register_ns(af,'http://purl.org/ontology/af/').
-
+:- rdf_db:rdf_register_ns(chord,'http://purl.org/ontology/chord/').
 
 /**
  * Top-level predicate:
@@ -87,7 +88,11 @@ deprecs_html_desc(Deprecated) :-
 	reverse(Descsd,DescsdR),
 	list_to_atom(DescsdR,Deprecated).
 
-header('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">\n<head>\n<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://moustaki.org/foaf.rdf" />\n <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />\n<meta name="author" content="Yves Raimond" />\n<meta name="robots" content="all" />\n<title>Yves Raimond</title>\n</head>\n<body>').
+
+header(H) :- author_name(Name), author_foaf(FOAF), page_title(Title),
+			 sformat(H,
+				'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">\n<head>\n<link rel="meta" type="application/rdf+xml" title="FOAF" href="~w" />\n <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />\n<meta name="author" content="~w" />\n<link href="style.css" rel="stylesheet" type="text/css" /><meta name="robots" content="all" />\n<title>~w</title>\n</head>\n<body>',
+					[FOAF,Name,Title]).
 
 tail('</body></html>').
 
@@ -146,14 +151,55 @@ property_inverse(NS:P,Inverse) :-
 property_subprop_of(NS:P,Super) :-
 	rdf(Property,rdfs:subPropertyOf,Super),
 	rdf_global_id(NS:P,Property).
+
+/* dc:title */
 individual_title(NS:C,Title) :-
-	individual(I),
-	rdf(I,dc:title,literal(Title)),
-	rdf_global_id(NS:C,I).
+		individual(I),
+		rdf(I,dc:title,literal(Title)),
+		rdf_global_id(NS:C,I) .
+/* rdfs:label */		
+individual_title(NS:C,Title) :-
+		\+((individual(I),
+		rdf(I,dc:title,literal(Title)),
+		rdf_global_id(NS:C,I))),
+		
+		individual(I),
+		rdf(I,rdfs:label,literal(Title)),
+		rdf_global_id(NS:C,I) .
+/* default : blank */
+individual_title(NS:C,Title) :-
+		\+((individual(I),
+		rdf(I,dc:title,literal(Title)),
+		rdf_global_id(NS:C,I))),
+		\+((individual(I),
+		rdf(I,rdfs:label,literal(Title)),
+		rdf_global_id(NS:C,I))),
+		Title=''.
+
+/* dc:description */
 individual_description(NS:C,Desc) :-
-        individual(I),
-        rdf(I,dc:description,literal(Desc)),
-        rdf_global_id(NS:C,I).
+		individual(I),
+       	rdf(I,dc:description,literal(Desc)),
+        rdf_global_id(NS:C,I) .
+/* rdfs:comment */
+individual_description(NS:C,Desc) :-
+		\+((individual(I),
+       	rdf(I,dc:description,literal(Desc)),
+        rdf_global_id(NS:C,I))),
+
+		individual(I),
+        rdf(I,rdfs:comment,literal(Desc)),
+        rdf_global_id(NS:C,I) .
+/* default : blank */
+individual_description(NS:C,Desc) :-
+		\+((individual(I),
+       	rdf(I,dc:description,literal(Desc)),
+        rdf_global_id(NS:C,I))),
+		\+((individual(I),
+        rdf(I,rdfs:comment,literal(Desc)),
+        rdf_global_id(NS:C,I))),
+		Desc = ''.
+
 individual_class(NS:I,NS2:C) :-
 	individual(In),
 	class(Cl),
@@ -495,6 +541,7 @@ newline_to_br_l([H|T1],[H|T2]) :-
 	nl,
 	writeln(' Usage:'),
 	writeln(' - Load a RDF file using rdf_load/1'),
+	writeln(' - Specify author_name/1, author_foaf/1 and page_title/1'),
 	writeln(' - Generate the spec using ''gen ''spec.html'''''),
 	nl,nl.
 
