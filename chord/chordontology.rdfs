@@ -13,12 +13,12 @@
 	<!-- ONTOLOGY DEFINITION -->
 
 	<owl:Ontology rdf:about="">
-		<dc:title>The Chord Ontology</dc:title>
-		<owl:versionInfo>Revision: 0.1</owl:versionInfo>
-		<dc:description>FIXME
+		<dc:title>The OMRAS2 Chord Ontology</dc:title>
+		<owl:versionInfo>Revision: Draft 1</owl:versionInfo>
+		<dc:description>
 		</dc:description>
 		<foaf:maker rdf:resource="http://chrissutton.org/me"/>
-		<dc:date>2007-09-11</dc:date>
+		<dc:date>2007-10-25</dc:date>
 	</owl:Ontology>
 
     <!-- Status of terms -->
@@ -92,7 +92,7 @@
 	
 	<rdf:Property rdf:about="http://purl.org/ontology/chord/base_chord" rdfs:label="base_chord" vs:term_status="unstable">
 		<rdfs:comment>The chord on which this one is based. 
-For example, a C7 chord might have chord:Cmaj as its base chord. 
+For example, a C7 chord might have chord:symbol/C:maj as its base chord. 
 All intervals of the base chord are expected to be present in this chord, except when explicitly removed using a without_interval statement.</rdfs:comment>
 		<rdfs:domain rdf:resource="http://purl.org/ontology/chord/Chord" />
 		<rdfs:range rdf:resource="http://purl.org/ontology/chord/Chord" />
