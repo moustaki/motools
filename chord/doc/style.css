@@ -4,7 +4,6 @@ div.specterm {
 }
 
 body {
-	min-width: 750px;
 	padding: 0 25px 50px 50px;
 	background-color: #E7F5F2;
 }
@@ -27,6 +26,7 @@ p.copyright {
 }
 
 div.page {
+	min-width: 750px;
 	width: 90%;
 	padding: 30px 20px 30px 20px;
 	margin-top: 5px;

@@ -708,10 +708,36 @@ This is intended for the case when a Chord does not include an interval indicate
 <br/><table style="th { float: top; }"><tr><th>Class:</th>
 <td><a href="#term_Chord">chord:Chord</a></td>
 </tr></table></div><h2 id="future">Future Work and Likely Revisions</h2>
+In no particular order, here are some things which might be incorporated in future versions. We are grateful to John Ibbotson of IBM and Tillman Weyde and Jens Wissmann of City University, London for their advice and suggestions. We hope to discuss these more fully via the mailing list - please feel free to give your input on these or other issues <a href="http://groups.google.com/group/music-ontology-specification-group">there</a>.
+<ul>
+	<li>Allow absolute pitch specification - by MIDI note number ?</li>
+	<li>Explicitly specify whether chords are descriptive or prescriptive (ie. transcription vs. score)</li>
+	<li>Specify voicing</li>
+	<ul>
+		<li> Fully ? (eg. intervals are ordered and include octave information)</li>
+		<li> Just whether a chord is played in open, closed or mixed position ?</li>
+	</ul>
+	<li>Representation of metrical time. Currently the TimeLine ontology doesn't cover this case, but it would be useful (eg. for translating from MMA chord files or scores)</li>
+	<li>Fix the requirement to specify a named root note. This would be partly solved by allowing Notes to be specified by absolute pitch.</li>
+	<li>Chord shorthands (eg. 'maj', 'min7')</li>
+	<ul>
+		<li>Do they attach semantics or simply act as a syntactic aid ?</li>
+		<li>Should 'jazz' shorthands be used instead of those from [Harte05] ? (can they co-exist without confusion ?)</li>
+	</ul>
+</ul>
+		
+		
+		
+		
+		
 <h2 id="references">References</h2>
 
 <ol>
-	<li> Some W3C semweb refs </li>
+	<li> Semantic Web information </li>
+	<ul>
+		<li> <a href="http://www.w3.org/2001/sw/">W3C Semantic Web Activity</a></li>
+		<li> <a href="http://www.w3.org/2000/10/swap/Primer.html">Primer: Getting into RDF &amp; Semantic Web using N3</li>
+	</ul>
 	<li> <a href="http://ismir2005.ismir.net/proceedings/1080.pdf">[Harte05]</a> : Christopher Harte et al. - Symbolic Representation of Musical Chords: A Proposed Syntax for Text Annotations</li>
 </ol>
 
