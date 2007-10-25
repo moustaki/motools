@@ -1,0 +1,3 @@
+assert(user(admin, [realname('Administrator'), password(id39668b19819cb03ad74522df39f7fc37), allow([read(_, _), write(_, _), admin(_)])])).
+assert(user(anonymous, [realname('Define rights for not-logged in users'), allow([read(_, _)])])).
+assert(grant_openid_server('http://www.myopenid.com/server', [])).
