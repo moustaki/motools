@@ -7,13 +7,104 @@
 <link href="style.css" rel="stylesheet" type="text/css" /><meta name="robots" content="all" />
 <title>Chord Ontology Specification</title>
 </head>
-<body><h2>Introduction</h2>
-Here is the introduction<br>
+<body><div class="page">
+<h1>The OMRAS2 Chord Ontology</h1>
+<span style="font-size: large; "> 
+<table width="100%" border="0">
+ <tr>
+  <td>
+	<dt><strong>Version :</strong></dt>
+		<dd>Draft 1, <a href="http://purl.org/ontology/chord/draft1.html">http://purl.org/ontology/chord/draft1.html</a>  (<a href="http://purl.org/ontology/chord/draft1.rdf">rdf</a>)</dd>
+	<dt><strong>Latest Version :</strong></dt>
+		<dd><a href="http://purl.org/ontology/chord/index.html">http://purl.org/ontology/chord/</a>  (<a href="http://purl.org/ontology/chord/index.rdf">rdf</a>)</dd>
+	<dt><strong>Published :</strong></dt>
+		<dd>25th October 2007 </dd>
+	<dt><strong>Authors :</dt>
+		<dd></strong> <a href="mailto: chris.sutton@elec.qmul.ac.uk">Christopher Sutton</a>, <a href="mailto: yves.raimond@elec.qmul.ac.uk">Yves Raimond<a>, <a href="mailto: matthias.mauch@elec.qmul.ac.uk">Matthias Mauch</a></dd>
+  </td>
+  <td>
+	<a href="http://www.omras2.com"><img src="O2textsmi2.png" alt="OMRAS2 Project Logo" border="0"/></a>
+  </td>
+ </tr>
+</table>
+</span>
+<br>
+Copyright &copy; 2007 the authors above.
+<!-- Creative Commons License (taken from FOAF spec) -->
+<a href="http://creativecommons.org/licenses/by/3.0/">
+	<img alt= "Creative Commons License" style="border: 0; float: right; padding: 10px;" src= "http://i.creativecommons.org/l/by/3.0/88x31.png" />
+</a> 
+<p class="copyright">This work is licensed under a <a href= "http://creativecommons.org/licenses/by/1.0/">Creative Commons Attribution License</a>. 
+This copyright applies to the <em>OMRAS2 Chord Ontology Specification</em> and accompanying documentation in RDF.
+Regarding underlying technology, FOAF uses W3C's <a href="http://www.w3.org/RDF/">RDF</a> technology, an open Web standard that can be freely used by anyone.</p>
 
-<h3>Namespaces</h3>
-<h2>The chord model</h2>
+<hr/>
 
-<p>The ontology uses a model originally based on Christopher Harte's chord notation [FIXME ref] with some modifications to better suit the domain, and allow more flexibility in the chords which may be described.</p>
+<h2>Table of Contents</h2>
+<ol>
+	<li><a href="#introduction">Introduction</a></li>
+	<ol>
+		<li><a href="#acknowledgements">Acknowledgements</a></li>
+		<li><a href="#namespaces">Namespaces</a></li>
+	</ol>
+	<li><a href="#chordmodel">The Chord Model</a></li>
+	<ol>
+		<li><a href="#chordexample">An example chord description</a></li>
+		<li><a href="#symbolservice">Chord symbol service</a></li>
+		<li><a href="#timeline_annotation">Timeline annotation</a></li>
+	</ol>
+	<li><a href="#overview">Overview of Terms</a></li>
+	<li><a href="#terms">Ontology Terms</a></li>
+	<ol>
+		<li><a href="#terms_classes">Classes</a></li>
+		<li><a href="#terms_props">Properties</a></li>
+		<li><a href="#terms_inds">Individuals</a></li>
+	</ol>
+	<li><a href="#future">Future Work and Likely Revisions</a></li>
+	<li><a href="#references">References</a></li>	
+</ol>
+	
+	
+<h2 id="introduction">Introduction</h2>
+
+<p>This document describes the first draft of a chord ontology based on work from the Centre for Digital Music, Queen Mary, University of London. It has been created as part of the <a href="http://www.omras2.com/">OMRAS2</a> project and is intended to provide a common, versatile vocabulary for describing chords and chord sequences in RDF. For more information on RDF and the W3C semantic web technologies on which this work is founded, please see the <a href="#references">References section</a>.</p>
+<p>The ontology is complete enough to be usable and useful now - some tools for manipulating data from this ontology can be found in the <a href="http://www.sourceforge.net/projects/motools/"><tt>motools</tt> project on Sourceforge</a>. However, it is only a first draft and discussions have already brought to light several issues which must be addressed in future versions of the ontology. Some information on likely future revisions, and topics for discussion can be found in the <a href="#future">future work</a> section.</p>
+<p>All feedback is welcome and if you would like to propose changes or additions to the ontology, the best place to do so is on the <a href="http://groups.google.com/group/music-ontology-specification-group">Music Ontology mailing list</a>. If you prefer, please feel free to contact any of the authors listed at the top of this document.</p>
+
+<h3 id="acknowledgements">Acknowledgements</h3>
+<p>The authors would like to thank our colleagues in the digital music research community for some very interesting discussions about useful revisions to this ontology. We are keen to make this ontology as widely useful as possible, and future revisions will incorporate input from these discussions and input from the wider community.</p>
+<p>The design and layout of this ontology document is based on the <a href="http://www.musicontology.com/">Music Ontology</a> and <a href="http://xmlns.com/foaf/spec/">FOAF Vocabulary</a> specification documents.</p>
+
+
+<h3 id="namespaces">Namespaces</h3>
+<p>Several namespaces will be assumed to have been defined for the remainder of this document. These are as follows :</p>
+<table width="75%">
+  <tr style="text-align: left"><th>Prefix</th><th>XML Namespace</th><th>Description</th></tr>
+  <tr>
+    <td width="15%">chord</td>
+    <td width="30%">http://purl.org/ontology/chord/</td>
+    <td width="30%"><a href="http://purl.org/ontology/chord/">The OMRAS2 Chord Ontology</a></td>
+  </tr>
+  <tr>
+    <td width="15%">timeline</td>
+    <td width="30%">http://purl.org/NET/c4dm/timeline.owl#</td>
+    <td width="30%"><a href="http://purl.org/NET/c4dm/timeline.owl#">The TimeLine ontology</a></td>
+  </tr>  
+  <tr>
+    <td width="15%">event</td>
+    <td width="30%">http://purl.org/NET/c4dm/event.owl#</td>
+    <td width="30%"><a href="http://purl.org/NET/c4dm/event.owl#">The Event ontology</a></td>
+  </tr>  
+  <tr>
+    <td width="15%">mo</td>
+    <td width="30%">http://purl.org/ontology/mo/</td>
+    <td width="30%"><a href="http://www.musicontology.com">The Music Ontology</a></td>
+  </tr>  
+</table>
+
+<hr/><h2 id="chordmodel">The Chord Model</h2>
+
+<p>The ontology uses a model originally based on <a href="#references">Christopher Harte's chord notation</a> with some modifications to better suit the domain, and allow more flexibility in the chords which may be described.</p>
 
 <div style="text-align: center"><img src="model1.png" alt="Chord model"><br>Figure 1 - The chord model</div><br>
 <p>Figure 1 shows the model of a chord used by the ontology (represented by the <a href="#term_Chord">chord:Chord</a> class). All properties are optional, such that one may use a bare Chord resource to indicate simply that some unknown chord is played.</p>
@@ -37,8 +128,8 @@ Here is the introduction<br>
 
 
 
-<h3>Example chord description</h3>
-<p>Figure 4 shows an example chord description : A D# minor chord with added ninth and missing flat third, over the fifth.</p>
+<h3 id="chordexample">Example chord description</h3>
+<p>Figure 4 shows an example chord description : D# minor with added ninth and missing flat third, over the fifth.</p>
 <div style="text-align: center"><img src="exampleDsmin-b3+9over5.png" alt="Example of a chord description"><br>Figure 4 - Example of a chord description</div><br>
 <p>The corresponding RDF/N3 description is as follows :</p>
 <div style="border: solid; border-width: 2px; border-color: grey; padding: 0 0 0 5px">
@@ -70,17 +161,20 @@ Here is the introduction<br>
 </pre>
 </div>
 
-<h3>Chord symbol service</h3>
-<p>As part of the chord ontology, there is a service to provide RDF descriptions from more compact chord labels. The base URI of the service is <tt>&lt;http://purl.org/ontology/chord/symbol/&gt;</tt> and chord symbols as defined in [FIXME ref] may be appended to this base URI to form valid chord URIs, with the one required change that a 's' character is used in place of the '#' character.</p>
+<h3 id="symbolservice">Chord symbol service</h3>
+<p>As part of the chord ontology, there is a service to provide RDF descriptions from more compact chord labels. The base URI of the service is <tt>&lt;http://purl.org/ontology/chord/symbol/&gt;</tt> and chord symbols as defined in <a href="#references">[Harte05]</a> may be appended to this base URI to form valid chord URIs, with the one required change that an <tt>s</tt> character is used in place of the <tt>#</tt> character.</p>
 	
 <p>So for example the URI <tt>&lt;http://purl.org/ontology/chord/symbol/D:min7&gt;</tt> can be retrieved using a HTTP GET with the "Accept" header set to "application/rdf+xml" to retrieve an RDF description of D minor 7 (Figure 5).</p>
 <i>Some further discussion of the semantics of using such shortcuts is required, and the shorthand used by the service may be changed in future, subject to community discussion.</i>
+<br><br>
+<div style="text-align: center"><img src="exampleusage.png" alt="Example of using the symbol service"><br>Figure 5 - Illustration of using the symbol service</div><br>
 
-<div style="text-align: center"><img src="exampleusage.png" alt="Example usage of the symbol service"><br>Figure 5 - Illustration of using the symbol service</div><br>
+<h3 id="timeline_annotation">Timeline annotation</h3>
+<p>The ontology is designed for use in conjunction with the <a href="http://www.w3.org/TR/owl-time/">OWL-Time</a>, <a href="http://purl.org/NET/c4dm/timeline.owl#">TimeLine</a> and <a href="http://purl.org/NET/c4dm/event.owl#">Event<a> ontologies and so provides a <a href="#term_ChordEvent">ChordEvent</a> class which can be used to attach chords to a timeline. This timeline may be associated with an audio signal, a musical score, a symbolic music file, etc. using terms from the <a href="http://www.musicontology.com">Music Ontology</a>. An overview of the structures involved is given in Figure 6.</p>
+<div style="text-align: center"><img src="exampletimeline.png" alt="Example of annotating a timeline"><br>Figure 6 - Example of annotating a timeline</div><br>
 
-<h3>Timeline annotation</h3>
-<p>The ontology is designed for use in conjunction with the <a href="FIXME">OWL-Time</a>, <a href="FIXME">TimeLine</a> and <a href="FIXME">Event<a> ontologies and so provides a <a href="#term_ChordEvent">ChordEvent</a> class which can be used to attach chords to a timeline. This timeline may be associated with an audio signal, a musical score, a symbolic music file, etc. using terms from the <a href="http://www.musicontology.com">Music Ontology</a>. An overview of the structures involved is given in Figure 6.</p>
-<div style="text-align: center"><img src="exampletimeline.png" alt="Example of annotating a timeline"><br>Figure 6 - Example of annotating a timeline</div><br><div class="glance" id="glance" style="padding: 5px; border: dotted; background-color: #ddd;">
+<hr/><h2 id="overview">Overview of Terms</h2>
+<p>An alphabetical index of the ontology terms, divided into classes, properties and individuals. All the terms are hyperlinked to their detailed description for quick reference.</p><div class="glance" id="glance">
 <p>Classes: | <a href="#term_Chord">Chord</a> | <a href="#term_ChordEvent">ChordEvent</a> | <a href="#term_Interval">Interval</a> | <a href="#term_Modifier">Modifier</a> | <a href="#term_Natural">Natural</a> | <a href="#term_Note">Note</a> | <a href="#term_ScaleInterval">ScaleInterval</a> | <a href="#term_SemitoneInterval">SemitoneInterval</a> |  </p>
 <p>Properties: | <a href="#term_base_chord">base_chord</a> | 
 <a href="#term_bass">bass</a> | 
@@ -136,7 +230,7 @@ Here is the introduction<br>
 <a href="#term_sharp">sharp</a> | 
 <a href="#term_sus2">sus2</a> | 
 <a href="#term_sus4">sus4</a> | 
- </p></div><div class="specterm" id="term_Chord"><h3>Class: chord:Chord   -   unstable   -   </h3>
+ </p></div><h2 id="terms">Ontology Terms</h2><h2 id="terms_classes">Classes</h2><div class="specterm" id="term_Chord"><h3>Class: chord:Chord   -   unstable   -   </h3>
 <em>Chord</em>
  - A representation of two or more notes played together. 
 <br/>
@@ -254,7 +348,7 @@ Here is the introduction<br>
 </tr>
 </table>
 
-</div><div class="specterm" id="term_base_chord">
+</div><h2 id="terms_props">Properties</h2><div class="specterm" id="term_base_chord">
 <h3>Property: chord:base_chord   -   unstable   -   </h3>
 <em>base_chord</em> - The chord on which this one is based. <br/>
 For example, a C7 chord might have chord:Cmaj as its base chord. <br/>
@@ -398,9 +492,227 @@ This is intended for the case when a Chord does not include an interval indicate
 
 
 </table>
-<br/></div><div class="specterm" id="term_noChord">
+<br/></div><h2 id="terms_inds">Individuals</h2><div class="specterm" id="term_aug">
+<h3>Individual: aug   -   </h3>
+<em>aug</em> - An augmented chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_dim">
+<h3>Individual: dim   -   </h3>
+<em>dim</em> - A diminished chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_dim7">
+<h3>Individual: dim7   -   </h3>
+<em>dim7</em> - A diminished seventh chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_doubleflat">
+<h3>Individual: doubleflat   -   </h3>
+<em>double flat</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Modifier">chord:Modifier</a></td>
+</tr></table></div><div class="specterm" id="term_doublesharp">
+<h3>Individual: doublesharp   -   </h3>
+<em>double sharp</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Modifier">chord:Modifier</a></td>
+</tr></table></div><div class="specterm" id="term_flat">
+<h3>Individual: flat   -   </h3>
+<em>flat</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Modifier">chord:Modifier</a></td>
+</tr></table></div><div class="specterm" id="term_hdim7">
+<h3>Individual: hdim7   -   </h3>
+<em>hdim7</em> - A half-diminished seventh chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_maj">
+<h3>Individual: maj   -   </h3>
+<em>maj</em> - A major chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_maj6">
+<h3>Individual: maj6   -   </h3>
+<em>maj6</em> - A major sixth chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_maj7">
+<h3>Individual: maj7   -   </h3>
+<em>maj7</em> - A major seventh chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_maj9">
+<h3>Individual: maj9   -   </h3>
+<em>maj9</em> - A major ninth chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_min">
+<h3>Individual: min   -   </h3>
+<em>min</em> - A minor chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_min6">
+<h3>Individual: min6   -   </h3>
+<em>min6</em> - A minor sixth chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_min7">
+<h3>Individual: min7   -   </h3>
+<em>min7</em> - A minor seventh chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_min9">
+<h3>Individual: min9   -   </h3>
+<em>min9</em> - A minor ninth chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_minmaj7">
+<h3>Individual: minmaj7   -   </h3>
+<em>minmaj7</em> - A minor (major 7th) chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_ninth">
+<h3>Individual: ninth   -   </h3>
+<em>9</em> - A ninth chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_noChord">
 <h3>Individual: noChord   -   </h3>
 <em>noChord</em> - Indicates that no chord is played. 
 <br/><table style="th { float: top; }"><tr><th>Class:</th>
 <td><a href="#term_Chord">chord:Chord</a></td>
-</tr></table></div>
+</tr></table></div><div class="specterm" id="term_note/A">
+<h3>Individual: note/A   -   </h3>
+<em>A</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Natural">chord:Natural</a></td>
+</tr></table></div><div class="specterm" id="term_note/Ab">
+<h3>Individual: note/Ab   -   </h3>
+<em>Ab</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/As">
+<h3>Individual: note/As   -   </h3>
+<em>A#</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/B">
+<h3>Individual: note/B   -   </h3>
+<em>B</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Natural">chord:Natural</a></td>
+</tr></table></div><div class="specterm" id="term_note/Bb">
+<h3>Individual: note/Bb   -   </h3>
+<em>Bb</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/Bs">
+<h3>Individual: note/Bs   -   </h3>
+<em>B#</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/C">
+<h3>Individual: note/C   -   </h3>
+<em>C</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Natural">chord:Natural</a></td>
+</tr></table></div><div class="specterm" id="term_note/Cb">
+<h3>Individual: note/Cb   -   </h3>
+<em>Cb</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/Cs">
+<h3>Individual: note/Cs   -   </h3>
+<em>C#</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/D">
+<h3>Individual: note/D   -   </h3>
+<em>D</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Natural">chord:Natural</a></td>
+</tr></table></div><div class="specterm" id="term_note/Db">
+<h3>Individual: note/Db   -   </h3>
+<em>Db</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/Ds">
+<h3>Individual: note/Ds   -   </h3>
+<em>D#</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/E">
+<h3>Individual: note/E   -   </h3>
+<em>E</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Natural">chord:Natural</a></td>
+</tr></table></div><div class="specterm" id="term_note/Eb">
+<h3>Individual: note/Eb   -   </h3>
+<em>Eb</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/Es">
+<h3>Individual: note/Es   -   </h3>
+<em>E#</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/F">
+<h3>Individual: note/F   -   </h3>
+<em>F</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Natural">chord:Natural</a></td>
+</tr></table></div><div class="specterm" id="term_note/Fb">
+<h3>Individual: note/Fb   -   </h3>
+<em>Fb</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/Fs">
+<h3>Individual: note/Fs   -   </h3>
+<em>F#</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/G">
+<h3>Individual: note/G   -   </h3>
+<em>G</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Natural">chord:Natural</a></td>
+</tr></table></div><div class="specterm" id="term_note/Gb">
+<h3>Individual: note/Gb   -   </h3>
+<em>Gb</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_note/Gs">
+<h3>Individual: note/Gs   -   </h3>
+<em>G#</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Note">chord:Note</a></td>
+</tr></table></div><div class="specterm" id="term_seventh">
+<h3>Individual: seventh   -   </h3>
+<em>7</em> - A seventh chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_sharp">
+<h3>Individual: sharp   -   </h3>
+<em>sharp</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Modifier">chord:Modifier</a></td>
+</tr></table></div><div class="specterm" id="term_sus2">
+<h3>Individual: sus2   -   </h3>
+<em>sus2</em> - A suspended second chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><div class="specterm" id="term_sus4">
+<h3>Individual: sus4   -   </h3>
+<em>sus4</em> - A suspended fourth chord. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Chord">chord:Chord</a></td>
+</tr></table></div><h2 id="future">Future Work and Likely Revisions</h2>
+<h2 id="references">References</h2>
+
+<ol>
+	<li> Some W3C semweb refs </li>
+	<li> <a href="http://ismir2005.ismir.net/proceedings/1080.pdf">[Harte05]</a> : Christopher Harte et al. - Symbolic Representation of Musical Chords: A Proposed Syntax for Text Annotations</li>
+</ol>
+
+</div>

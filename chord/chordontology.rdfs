@@ -395,7 +395,6 @@ This is intended for the case when a Chord does not include an interval indicate
 	
 	<!-- Naturals -->
 	<chord:Natural rdf:about="http://purl.org/ontology/chord/note/A" rdfs:label="A">
-	    <dc:description>blerg</dc:description>
 		<rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/chord/" />
 	</chord:Natural>
 	<chord:Natural rdf:about="http://purl.org/ontology/chord/note/B" rdfs:label="B">

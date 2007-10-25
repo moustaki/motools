@@ -1,6 +1,6 @@
-<h2>The chord model</h2>
+<h2 id="chordmodel">The Chord Model</h2>
 
-<p>The ontology uses a model originally based on Christopher Harte's chord notation [FIXME ref] with some modifications to better suit the domain, and allow more flexibility in the chords which may be described.</p>
+<p>The ontology uses a model originally based on <a href="#references">Christopher Harte's chord notation</a> with some modifications to better suit the domain, and allow more flexibility in the chords which may be described.</p>
 
 <div style="text-align: center"><img src="model1.png" alt="Chord model"><br>Figure 1 - The chord model</div><br>
 <p>Figure 1 shows the model of a chord used by the ontology (represented by the <a href="#term_Chord">chord:Chord</a> class). All properties are optional, such that one may use a bare Chord resource to indicate simply that some unknown chord is played.</p>
@@ -24,8 +24,8 @@
 
 
 
-<h3>Example chord description</h3>
-<p>Figure 4 shows an example chord description : A D# minor chord with added ninth and missing flat third, over the fifth.</p>
+<h3 id="chordexample">Example chord description</h3>
+<p>Figure 4 shows an example chord description : D# minor with added ninth and missing flat third, over the fifth.</p>
 <div style="text-align: center"><img src="exampleDsmin-b3+9over5.png" alt="Example of a chord description"><br>Figure 4 - Example of a chord description</div><br>
 <p>The corresponding RDF/N3 description is as follows :</p>
 <div style="border: solid; border-width: 2px; border-color: grey; padding: 0 0 0 5px">
@@ -57,14 +57,16 @@
 </pre>
 </div>
 
-<h3>Chord symbol service</h3>
-<p>As part of the chord ontology, there is a service to provide RDF descriptions from more compact chord labels. The base URI of the service is <tt>&lt;http://purl.org/ontology/chord/symbol/&gt;</tt> and chord symbols as defined in [FIXME ref] may be appended to this base URI to form valid chord URIs, with the one required change that a 's' character is used in place of the '#' character.</p>
+<h3 id="symbolservice">Chord symbol service</h3>
+<p>As part of the chord ontology, there is a service to provide RDF descriptions from more compact chord labels. The base URI of the service is <tt>&lt;http://purl.org/ontology/chord/symbol/&gt;</tt> and chord symbols as defined in <a href="#references">[Harte05]</a> may be appended to this base URI to form valid chord URIs, with the one required change that an <tt>s</tt> character is used in place of the <tt>#</tt> character.</p>
 	
 <p>So for example the URI <tt>&lt;http://purl.org/ontology/chord/symbol/D:min7&gt;</tt> can be retrieved using a HTTP GET with the "Accept" header set to "application/rdf+xml" to retrieve an RDF description of D minor 7 (Figure 5).</p>
 <i>Some further discussion of the semantics of using such shortcuts is required, and the shorthand used by the service may be changed in future, subject to community discussion.</i>
+<br><br>
+<div style="text-align: center"><img src="exampleusage.png" alt="Example of using the symbol service"><br>Figure 5 - Illustration of using the symbol service</div><br>
 
-<div style="text-align: center"><img src="exampleusage.png" alt="Example usage of the symbol service"><br>Figure 5 - Illustration of using the symbol service</div><br>
-
-<h3>Timeline annotation</h3>
-<p>The ontology is designed for use in conjunction with the <a href="FIXME">OWL-Time</a>, <a href="FIXME">TimeLine</a> and <a href="FIXME">Event<a> ontologies and so provides a <a href="#term_ChordEvent">ChordEvent</a> class which can be used to attach chords to a timeline. This timeline may be associated with an audio signal, a musical score, a symbolic music file, etc. using terms from the <a href="http://www.musicontology.com">Music Ontology</a>. An overview of the structures involved is given in Figure 6.</p>
+<h3 id="timeline_annotation">Timeline annotation</h3>
+<p>The ontology is designed for use in conjunction with the <a href="http://www.w3.org/TR/owl-time/">OWL-Time</a>, <a href="http://purl.org/NET/c4dm/timeline.owl#">TimeLine</a> and <a href="http://purl.org/NET/c4dm/event.owl#">Event<a> ontologies and so provides a <a href="#term_ChordEvent">ChordEvent</a> class which can be used to attach chords to a timeline. This timeline may be associated with an audio signal, a musical score, a symbolic music file, etc. using terms from the <a href="http://www.musicontology.com">Music Ontology</a>. An overview of the structures involved is given in Figure 6.</p>
 <div style="text-align: center"><img src="exampletimeline.png" alt="Example of annotating a timeline"><br>Figure 6 - Example of annotating a timeline</div><br>
+
+<hr/>
