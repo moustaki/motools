@@ -6,6 +6,10 @@
 
 :- rdf_load('../rdf/audio_features.n3').
 
+author_name('Yves Raimond').
+author_foaf('http://moustaki.org/foaf.rdf').
+page_title('Ontology Specification').
+
 :- gen('../doc/audio_features.html').
 
 
