@@ -272,7 +272,7 @@ glance_html_desc(Desc) :-
 	keysort(IndividualsL,IndividualsLS),reverse(IndividualsLS,IndividualsLSR),
 	list_to_atom(IndividualsLSR,Individuals),
 	sformat(String,
-		'<div class="glance" id="glance" style="padding: 5px; border: dotted; background-color: #ddd;">\n<p>Classes: | ~w </p>\n<p>Properties: | ~w</p>\n<p>Individuals: | ~w </p></div>',
+		'<div class="glance" id="glance">\n<p>Classes: | ~w </p>\n<p>Properties: | ~w</p>\n<p>Individuals: | ~w </p></div>',
 		[Classes,Properties,Individuals]
 		),
 	string_to_atom(String,Desc).
