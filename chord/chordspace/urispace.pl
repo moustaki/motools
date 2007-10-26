@@ -13,16 +13,6 @@ server(Port, Options) :-
 
 
 
-/**
-  * Closes the servlet
-  */
-reply(Request) :-
-        log:log(Request),
-        member(path('/quit'), Request), !,
-        format('Connection: close~n', []),
-        format('Content-type: text/html~n~n', []),
-        format('Bye Bye~n').
-
 namespace('http://purl.org/ontology/chord/symbol').
 
 /**
@@ -30,9 +20,13 @@ namespace('http://purl.org/ontology/chord/symbol').
  */
 reply(Request) :-
 	member(path(Path),Request),
-	atom_concat(SymbolT,'.rdf',Path),
-	atom_concat('/',Symbol,SymbolT),
+	%atom_concat(SymbolT,'.rdf',Path),
+	%atom_concat('/',Symbol,SymbolT),
+	atom_concat('/',Symbol,Path),
 	!,
+	process(Symbol).
+
+process(Symbol) :-
 	(parse(Symbol,RDF) ->
 		(format('Content-type: application/rdf+xml~n~n', []),
 		current_output(S),
@@ -44,16 +38,16 @@ reply(Request) :-
 /**
  * Sends back 303 to RDF document describing the resource
  */
-reply(Request) :-
-	member(path(Path),Request),
-	member(accept(AcceptHeader),Request),
-	log:log('Accept header: ~w ',[AcceptHeader]),
-	accept_rdf(AcceptHeader),
-	!,
-	namespace(NS),
-	format(atom(Redirect),'~w~w.rdf',[NS,Path]),
-	log:log('Sending a 303 towards ~w',Redirect),
-	throw(http_reply(see_other(Redirect),[])).
+%reply(Request) :-
+%	member(path(Path),Request),
+%	member(accept(AcceptHeader),Request),
+%	log:log('Accept header: ~w ',[AcceptHeader]),
+%	accept_rdf(AcceptHeader),
+%	!,
+%	namespace(NS),
+%	format(atom(Redirect),'~w~w.rdf',[NS,Path]),
+%	log:log('Sending a 303 towards ~w',Redirect),
+%	throw(http_reply(see_other(Redirect),[])).
 
 accept_rdf('application/rdf+xml').
 accept_rdf('text/xml').

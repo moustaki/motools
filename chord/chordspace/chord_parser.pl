@@ -12,7 +12,8 @@
 
 parse(ChordSymbol,RDF) :-
 	tokenise(ChordSymbol,Tokens),
-	phrase(chord(ChordSymbol,RDF2),Tokens),
+	atom_concat(ChordSymbol,'#chord',URI),
+	phrase(chord(URI,RDF2),Tokens),
 	clean(RDF2,RDF).
 
 
