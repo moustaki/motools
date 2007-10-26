@@ -26,8 +26,10 @@ clean(Description,Rest) :-
 clean(Description,Rest) :-
 	member(rdf(A,'http://purl.org/ontology/chord/without_interval',I1),Description),
 	member(rdf(I1,'http://purl.org/ontology/chord/degree',D),Description),
+	\+member(rdf(I1,'http://purl.org/ontology/chord/modifier',M),Description),
 	select(rdf(A,'http://purl.org/ontology/chord/interval',I2),Description,R1),
-	select(rdf(I2,'http://purl.org/ontology/chord/degree',D),R1,Rest),!.
+	select(rdf(I2,'http://purl.org/ontology/chord/degree',D),R1,Rest),
+	\+member(rdf(I2,'http://purl.org/ontology/chord/modifier',M),Rest),!.
 clean(Description,Description).
 
 
