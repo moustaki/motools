@@ -19,6 +19,7 @@ namespace('http://purl.org/ontology/chord/symbol').
  * Handles documents
  */
 reply(Request) :-
+	log:log(Request),
 	member(path(Path),Request),
 	%atom_concat(SymbolT,'.rdf',Path),
 	%atom_concat('/',Symbol,SymbolT),
