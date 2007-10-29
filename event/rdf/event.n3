@@ -120,7 +120,7 @@ event:product a owl:ObjectProperty;
 	.
 
 event:sub_event a owl:ObjectProperty;
-	vs:term_Status "stable";
+	vs:term_status "stable";
 	rdfs:label "sub-event";
 	rdfs:comment """
 		This property provides a way to split a complex event (for example, a performance involving several 
@@ -133,6 +133,7 @@ event:sub_event a owl:ObjectProperty;
 
 event:time a owl:FunctionalProperty;
 	a owl:ObjectProperty;
+	vs:term_status "stable";
 	rdfs:domain event:Event;
 	rdfs:range time:TemporalEntity;
 	rdfs:label "time";
@@ -145,6 +146,7 @@ event:time a owl:FunctionalProperty;
 
 event:place a owl:FunctionalProperty;
 	a owl:ObjectProperty;
+	vs:term_status "stable";
 	rdfs:domain event:Event;
 	rdfs:range geo:SpatialThing;
 	rdfs:label "place";

@@ -14,9 +14,9 @@
 <tr>
 <td>
         <dt><strong>Version :</strong></dt>
-                <dd>1.0, <a href="http://purl.org/NET/c4dm/event10.html">http://purl.org/NET/c4dm/event10.html</a>  (<a href="http://purl.org/NET/c4dm/event10.n3">rdf</a>)</dd>
+                <dd>1.0, <a href="http://motools.sf.net/event/event.122.html">http://motools.sf.net/event/event.122.html</a>  (<a href="http://motools.sf.net/event/event.122.n3">rdf</a>)</dd>
         <dt><strong>Latest Version :</strong></dt>
-                <dd><a href="http://purl.org/NET/c4dm/event.html">http://purl.org/NET/c4dm/event.html</a>  (<a href="http://purl.org/NET/c4dm/event.n3">rdf</a>)</dd>
+                <dd><a href="http://motools.sf.net/event/event.html">http://motools.sf.net/event/event.html</a>  (<a href="http://motools.sf.net/event/event.n3">rdf</a>)</dd>
         <dt><strong>Published :</strong></dt>
                 <dd>25th October 2007 </dd>
         <dt><strong>Authors :</strong></dt>
@@ -70,9 +70,10 @@ as a way to classify arbitrary time/space regions.
 <p>
 This ontology has already been proven useful in a wide range of context,
 due to its simplicity and usability: from talks in a conference, to 
-annotations of a concert, or 
+description of a concert, or 
 <a href="http://purl.org/ontology/chord/">chords</a> being 
-played in a Jazz piece, <a href="http://musicontology.com">festivals</a>, etc.
+played in a Jazz piece (when used with the <a href="http://purl.org/NET/c4dm/timeline.owl">Timeline ontology</a>), 
+<a href="http://musicontology.com">festivals</a>, etc.
 Relevant references are given in the <a href="#ref">reference section</a>.
 Some tools to manipulate data from this ontology can be found in the 
 <a href="http://www.sourceforge.net/projects/motools/"><tt>motools</tt> project
@@ -248,6 +249,21 @@ that ever person involved in an event is an <b>Agent</b>.
 
 
 </table>
+<br/></div><div class="specterm" id="term_place">
+<h3>Property: event:place   -   stable   -   </h3>
+<em>place</em> - 		Relates an event to a spatial object.<br/>
+		 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Event">Event</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing">geo:SpatialThing</a></td>
+</tr>
+
+
+</table>
 <br/></div><div class="specterm" id="term_product">
 <h3>Property: event:product   -   stable   -   </h3>
 <em>product</em> - 		Relates an event to something produced during the event---a sound, a pie, whatever...<br/>
@@ -261,6 +277,39 @@ that ever person involved in an event is an <b>Agent</b>.
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#producedIn">event:producedIn</a></td>
 </tr>
+
+</table>
+<br/></div><div class="specterm" id="term_sub_event">
+<h3>Property: event:sub_event   -   stable   -   </h3>
+<em>sub_event</em> - 		This property provides a way to split a complex event (for example, a performance involving several <br/>
+		musicians) into simpler ones (one event per musician).<br/>
+		 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Event">Event</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Event">Event</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_time">
+<h3>Property: event:time   -   stable   -   </h3>
+<em>time</em> - 		Relates an event to a time object, classifying a time region (either instantaneous or having an extent).<br/>
+		By using the Timeline ontology here, you can define event happening on a recorded track or on any <br/>
+		media with a temporal extent.<br/>
+		 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Event">Event</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2006/time#TemporalEntity">time:TemporalEntity</a></td>
+</tr>
+
 
 </table>
 <br/></div><h2 id="ref">References</h2>
