@@ -115,7 +115,7 @@ Regarding underlying technology, FOAF uses W3C's <a href="http://www.w3.org/RDF/
     
     If the type of chord is known (eg. "these four notes in fact form a minor seventh chord") this information may be indicated by assigning a base_chord. Intervals present in the base chord but not in this particular chord may be indicated using the <a href="#term_without_interval">chord:without_interval</a> property.</p>
     
-<p>It is expected that the intervals specified for a chord are exactly the same as the set of intervals present in the given base_chord, minus any which are specified using <a href="#term_without_interval">chord:without_interval</a> properties.</p>
+<p>If a base_chord is specified, it is expected that all the intervals of the base_chord are specified for this chord also, each with either a <a href="#term_interval">chord:interval</a> or a <a href="#term_without_interval">chord:without_interval</a> property.</p>
 
         
 <div style="text-align: center; float: left; margin-top: 50px"><img src="model2.png" alt="Note model"><br>Figure 2 - The note model</div><br>
@@ -724,6 +724,7 @@ In no particular order, here are some things which might be incorporated in futu
 		<li>Do they attach semantics or simply act as a syntactic aid ?</li>
 		<li>Should 'jazz' shorthands be used instead of those from <a href="#references">[Harte05]</a> ? (can they co-exist without confusion ?)</li>
 	</ul>
+	<li>Do we need more formal specification of the requirements on chord descriptions ? (eg. the interplay between listed intervals and a base_chord)</li>
 </ul>
 		
 		

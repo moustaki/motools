@@ -14,6 +14,7 @@ import os
 import mopy
 from mopy.timeline import Interval, RelativeTimeLine
 from mopy.chord import Chord
+from mopy.mo import Signal
 from mopy.MusicInfo import MusicInfo, isBlind
 import rdflib; from rdflib import ConjunctiveGraph, URIRef
 from urllib import quote as urlencode
