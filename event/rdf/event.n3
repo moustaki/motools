@@ -6,6 +6,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix event: <http://purl.org/NET/c4dm/event.owl#> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 # Ontology header
 
@@ -23,8 +24,8 @@
 		Regarding the ontological status of event tokens, they are seen
 		as the way cognitive agents classify space/time regions
 	""";
-	dc:creator <http://moustaki.org/foaf.rdf#moustaki>
-	foaf:maker <http://moustaki.org/foaf.rdf#moustaki>
+	dc:creator <http://moustaki.org/foaf.rdf#moustaki> ;
+	foaf:maker <http://moustaki.org/foaf.rdf#moustaki> ;
 	dc:date "$Date: 2007/06/29 15:25:11 $";
 	.
 
@@ -72,7 +73,7 @@ event:Factor a owl:Class;
 
 # Properties
 
-event:hasAgent a owl:ObjectProperty;
+event:agent a owl:ObjectProperty;
 	vs:term_status "stable";
 	rdfs:label "agent";
 	rdfs:comment """
@@ -80,22 +81,22 @@ event:hasAgent a owl:ObjectProperty;
 		""";
 	rdfs:range foaf:Agent;
 	rdfs:domain event:Event;
-	owl:sameAs event:agent; #see verbs vs nouns discussion
+	owl:sameAs event:hasAgent; #see verbs vs nouns discussion
 	owl:inverseOf event:isAgentIn;
 	.
 
-event:hasFactor a owl:ObjectProperty;
+event:factor a owl:ObjectProperty;
 	vs:term_status "stable";
 	rdfs:label "factor";
 	rdfs:comment """
 		Relates an event to a passive factor (a tool, an instrument, an abstract cause...)
 		""";
 	rdfs:domain event:Event;
-	owl:sameAs event:factor;
+	owl:sameAs event:hasFactor;
 	owl:inverseOf event:isFactorOf;
 	.
 
-event:hasLiteralFactor a owl:DatatypeProperty;
+event:literal_factor a owl:DatatypeProperty;
 	vs:term_status "stable";
 	rdfs:label "literal factor";
 	rdfs:comment """
@@ -104,21 +105,21 @@ event:hasLiteralFactor a owl:DatatypeProperty;
 		(like an hypothetic :weatherCelsius, linking an event to a temperature).
 		""";
 	rdfs:domain event:Event;
-	owl:sameAs event:literal_factor;
+	owl:sameAs event:hasLiteralFactor;
 	.
 
-event:hasProduct a owl:ObjectProperty;
+event:product a owl:ObjectProperty;
 	vs:term_status "stable";
 	rdfs:label "product";
 	rdfs:comment """
 		Relates an event to something produced during the event---a sound, a pie, whatever...
 		""";
 	rdfs:domain event:Event;
-	owl:sameAs event:product;
+	owl:sameAs event:hasProduct;
 	owl:inverseOf event:producedIn;
 	.
 
-event:hasSubEvent a owl:ObjectProperty;
+event:sub_event a owl:ObjectProperty;
 	vs:term_Status "stable";
 	rdfs:label "sub-event";
 	rdfs:comment """
@@ -127,7 +128,7 @@ event:hasSubEvent a owl:ObjectProperty;
 		""";
 	rdfs:domain event:Event;
 	rdfs:range event:Event;
-	owl:sameAs event:sub_event;
+	owl:sameAs event:hasSubEvent;
 	.
 
 event:time a owl:FunctionalProperty;
@@ -166,11 +167,11 @@ event:producedIn rdfs:label "produced in";
 	owl:sameAs event:produced_in;
 	.
 
-event:factor vs:term_status "testing".
-event:agent vs:term_status "testing".
-event:product vs:term_status "testing".
-event:literal_factor vs:term_status "testing".
-event:agent_in vs:term_status "testing".
-event:factor_of vs:term_status "testing".
-event:produced_in vs:term_status "testing".
+event:hasFactor vs:term_status "stable".
+event:hasAgent vs:term_status "stable".
+event:hasProduct vs:term_status "stable".
+event:hasLiteralFactor vs:term_status "stable".
+event:agent_in vs:term_status "stable".
+event:factor_of vs:term_status "stable".
+event:produced_in vs:term_status "stable".
 
