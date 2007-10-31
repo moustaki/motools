@@ -14,7 +14,7 @@ server(Port, Options) :-
 
 
 
-namespace('http://purl.org/ontology/chord/symbol').
+namespace('http://moustaki.org:1111/').
 
 /**
  * Handles documents
