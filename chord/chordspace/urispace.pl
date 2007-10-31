@@ -14,7 +14,7 @@ server(Port, Options) :-
 
 
 
-namespace('http://moustaki.org:1111/').
+namespace('http://moustaki.org:1111').
 
 /**
  * Handles documents
