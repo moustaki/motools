@@ -12,8 +12,7 @@
 
 parse(ChordSymbol,RDF) :-
 	tokenise(ChordSymbol,Tokens),
-	atom_concat(ChordSymbol,'#chord',URI),
-	phrase(chord(URI,RDF2),Tokens),
+	phrase(chord(ChordSymbol,RDF2),Tokens),
 	clean(RDF2,RDF).
 
 
@@ -89,9 +88,8 @@ chord(Symbol,
 	{namespace(NS),atom_concat(NS,Symbol,ID)},
 	note(NoteURI,T1),
 	optdegree(ID,T2),!,
-	{append(T1,T2,Tail)}.
+	{shorthand_rdf(ID,'http://purl.org/ontology/chord/maj',ShorthandRDF),flatten([T1,T2,ShorthandRDF],Tail)}.
 chord([]) --> [].
-	
 
 note(ID,[
 		rdf(ID,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/Note')
