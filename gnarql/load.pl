@@ -1,4 +1,4 @@
-:- module(load,[load/1]).
+:- module(load,[load/1,load/2]).
 
 /**
  * Just a small util to load every rdf file
@@ -12,17 +12,24 @@
 :- use_module(library('semweb/rdf_db')).
 :- use_module(walk).
 
+
 load(Dir) :-
+	atom_concat('file://',Dir,Base),
+	load(Dir,Base).
+load(Dir,BaseURI) :-
 	forall(
 		( walk(Dir,Walk),
+		  atom_concat(Dir,Relative,Walk),
+		  atom_concat(BaseURI,Relative,URI),
 		  format(atom(Wildcard),'~w/~w',[Walk,'*.rdf']),
 		  expand_file_name(Wildcard,Files),
 		  member(File,Files),
 		  nl,format(' - Loading ~w\n',File),
-		  convert_path(Walk,WalkWWW),
-		  format(atom(BaseURI),'file://~w/',[WalkWWW])
+		  %convert_path(Walk,WalkWWW),
+		  convert_path(URI,URI2)
+		  %format(atom(BaseURI),'file://~w/',[WalkWWW])
 		  ),
-		  catch(rdf_load(File,[base_uri(BaseURI)]), _, print('caught exception while loading !'))
+		  catch(rdf_load(File,[base_uri(BaseURI2)]), _, print('caught exception while loading !'))
 		).
 
 
@@ -40,4 +47,4 @@ replace([H|T1],[H|T2]) :-
 	replace(T1,T2).
 
 
-r(' ',['%','2','0']).
+r(' ',['+']).

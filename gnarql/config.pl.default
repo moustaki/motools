@@ -4,3 +4,9 @@
 
 music_path('/Users/chris/Projects/OMRAS2/motools/svn/motools/gnat/src/gnat/data').
 
+/**
+ * If your collection is available at another base uri than the trivial
+ * one (file:// uris), uncomment and set this parameter
+ */
+% base_uri('http://dsp-cluster/music/').
+

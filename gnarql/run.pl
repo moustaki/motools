@@ -5,6 +5,9 @@
         user:file_search_path/2.
 :- multifile
         user:file_search_path/2.
+:- multifile base_uri/1.
+:- multifile music_path/1.
+:- multifile timeout/1.
 
 :- prolog_load_context(directory, Dir),
    atom_concat(Dir,'/SeRQL',SeRQLDir),
@@ -33,6 +36,13 @@ server(Port) :-
 	rdf_db:rdf_attach_db('db',[]).
 
 load :- 
+	\+base_uri(_),
 	music_path(Path),
 	load(Path).
+load :- 
+	base_uri(Uri),
+	music_path(Path),
+	load(Path,Uri).
+
+%:- user_db:openid_add_server('http://www.myopenid.com/server',[]).
 
