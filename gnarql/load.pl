@@ -22,7 +22,7 @@ load(Dir) :-
 		  convert_path(Walk,WalkWWW),
 		  format(atom(BaseURI),'file://~w/',[WalkWWW])
 		  ),
-		  rdf_load(File,[base_uri(BaseURI)])
+		  catch(rdf_load(File,[base_uri(BaseURI)]), _, print('caught exception while loading !'))
 		).
 
 

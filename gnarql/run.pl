@@ -1,4 +1,4 @@
-#!/usr/local/bin/pl -g serql_welcome -L0 -G0 -T0 -s
+#!/usr/local/bin/pl -g serql_welcome -L1G -G1G -T1G -s
 
 
 :- dynamic

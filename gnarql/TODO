@@ -1,3 +1,7 @@
 * BUG : Currently expand_file_path in load.pl falls over when WildCard (eg. a folder path) contains a $ sign.
 * BUG : Bad handling of UTF-8. Falls over if env var $LANG is blank (as it is on the cluster by default). Setting LANG="en_GB.UTF-8" lets it continue through, but there are encoding errors :/
+	* This then causes failures in answering HTTP SPARQL requests -_-
+	* Reverted to blank LANG variable & Added a catchall during file loading to avoid loading files containing problem characters
 * WTF : For some reason, loading in previously parsed RDF files takes significantly (~50x) longer than parsing them for the first time :/
+[FIXED by JW] * Spaces get converted to + signs in URLs
+* BUG (?) : Chord transcription RDFs contain a relative URI of #tl. if there are several in the same directory they map to the same absolute URI in gnarql :/  Nice for building filename URIs, but bites us in the ass here :/
