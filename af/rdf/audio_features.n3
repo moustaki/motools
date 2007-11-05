@@ -176,11 +176,13 @@ af:KeySegment a rdfs:Class;
 	rdfs:subClassOf af:MusicSegment;
 	rdfs:label "Key segment";
 	.
+# An onset is the start of a musical event:
+# {:evt a :Onset;event:time ?t1} => {_:me a :MusicalEvent; event:time ?t2. ?t2 tl:begins ?t1}
 af:Onset a rdfs:Class;
 	vs:term_status "testing";
 	a owl:Class;
 	rdfs:label "Onset";
-	rdfs:subClassOf af:Instant;
+	rdfs:subClassOf event:Event;
 	rdfs:comment """
 		A classifier corresponding to the output of an onset detection process.
 		""";
