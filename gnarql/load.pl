@@ -20,31 +20,28 @@ load(Dir,BaseURI) :-
 	forall(
 		( walk(Dir,Walk),
 		  atom_concat(Dir,Relative,Walk),
-		  atom_concat(BaseURI,Relative,URI),
+		  encode(Relative,RelativeWWW),
+		  format(atom(URI),'~w~w/',[BaseURI,RelativeWWW]),
 		  format(atom(Wildcard),'~w/~w',[Walk,'*.rdf']),
 		  expand_file_name(Wildcard,Files),
 		  member(File,Files),
-		  nl,format(' - Loading ~w\n',File),
+		  nl,format(' - Loading ~w\n',File)
 		  %convert_path(Walk,WalkWWW),
-		  convert_path(URI,URI2)
+		  %convert_path(URI,URI2)
 		  %format(atom(BaseURI),'file://~w/',[WalkWWW])
 		  ),
-		  catch(rdf_load(File,[base_uri(URI2)]), _, print('caught exception while loading !'))
+		  catch(rdf_load(File,[base_uri(URI)]), _, print('caught exception while loading !'))
 		).
 
 
-
-convert_path(Path,C) :-
-	atom_chars(Path,Chars),
-	replace(Chars,Chars2),
-	atom_chars(C,Chars2).
-
-replace([],[]).
-replace([H1|T1],L2) :-
-	r(H1,H2),append(H2,T2,L2),!,
-	replace(T1,T2).
-replace([H|T1],[H|T2]) :-
-	replace(T1,T2).
+% in case there are weird character in the relative path
+encode(Relative,WWWRelative) :-
+	concat_atom(List,'/',Relative),
+	encode_all(List,WWWList),
+	concat_atom(WWWList,'/',WWWRelative).
+encode_all([],[]).
+encode_all([H|T],[WH|WT]) :-
+	www_form_encode(H,WH),
+	encode_all(T,WT).
 
 
-r(' ',['+']).
