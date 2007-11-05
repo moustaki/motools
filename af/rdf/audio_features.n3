@@ -182,7 +182,7 @@ af:Onset a rdfs:Class;
 	vs:term_status "testing";
 	a owl:Class;
 	rdfs:label "Onset";
-	rdfs:subClassOf event:Event;
+	rdfs:subClassOf af:Point;
 	rdfs:comment """
 		A classifier corresponding to the output of an onset detection process.
 		""";
@@ -208,7 +208,7 @@ af:Beat a rdfs:Class;
 	a owl:Class;
 	rdfs:label "Beat event";
 	rdfs:comment "A beat event (instantaneous)";
-	rdfs:subClassOf af:Instant;
+	rdfs:subClassOf af:Point;
 	.
 af:Loudness a rdfs:Class;
 	vs:term_status "testing";
