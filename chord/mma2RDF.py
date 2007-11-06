@@ -226,16 +226,40 @@ def mmaSymbolToChordSymbol(symbol):
 	basspos = symbol.rfind('/')
 	if basspos == -1:
 		basspos = len(symbol)
-	print "basspos="+str(basspos)
+    
 	res = symbol[0:shpos] + ":" + chordmap[symbol[shpos:basspos]]
 	if basspos < len(symbol):
-		return res + "/" + symbol[basspos+1:]
+		return res + "/" + str(scaleIntervalFromNoteNames(symbol[:shpos], symbol[basspos+1:]))
 	return res
 	
 def secondsToXSDDuration(s):
 	"""Return an xsd:duration string for the given number of seconds."""
 	return "P"+str(float(s))+"S"
-	
+
+def scaleIntervalFromNoteNames(n1, n2):
+	kNoteNames = ['C','D','E','F','G','A','B'] * 2
+	kNoteDists =    [2,  2,  1,  2,  2,  2,  1] * 2	
+
+	n1idx = kNoteNames.index(n1.upper()[0])
+	n2idx = kNoteNames.index(n2.upper()[0], n1idx)
+	if (n1idx < 0 or n2idx < 0):
+		return -1
+	base_interval = 1 + n2idx - n1idx
+
+	st_dist = sum(kNoteDists[n1idx:n2idx])
+	expected_dist = sum(kNoteDists[0:base_interval-1])
+
+	mod_dist = n1.count('b') - n1.count('#') \
+             + n2.count('#') - n2.count('b') \
+             + st_dist - expected_dist
+	if abs(mod_dist) > 2:
+		return -1
+
+	mods = ['bb','b','','#','##'][2 + mod_dist]
+
+	si = str(base_interval) + mods
+
+	return si
 
 #
 # Chord map
