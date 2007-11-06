@@ -114,7 +114,7 @@ def mma2RDF(infilename, outfilename, format="xml", audiofilename=None, withdescr
 					c_event.label = mmaSymbolToChordSymbol(chordMMASymbol)
 					
 					mi.add(c); mi.add(c_event); mi.add(i)
-					print " added new chord event"
+					print " added new chord event for "+chordURI
 				else:
 					if beatNum==1: # Need to continue the last seen chord
 						print " continuing last bar's chord"
@@ -211,14 +211,26 @@ def getChordSymbols(line):
 
 def mmaSymbolToChordSymbol(symbol):
 	"""Return the Chord Ontology symbol corresponding to the given MMA chord symbol"""
+	if symbol == 'z':
+		return chordmap[symbol]
 	symbol = symbol.replace('&','b')
 	notes = ['A','B','C','D','E','F','G']
 	modifiers = ['#','b']
-	pos = 0
-	while (symbol[pos].upper() in notes or symbol[pos] in modifiers):
-		pos+=1
 	
-	return symbol[0:pos] + ":" + chordmap[symbol[pos:]]
+	# Find start of shorthand
+	shpos = 0
+	while (symbol[shpos].upper() in notes or symbol[shpos] in modifiers):
+		shpos+=1
+	
+	# Find start of bass note
+	basspos = symbol.rfind('/')
+	if basspos == -1:
+		basspos = len(symbol)
+	print "basspos="+str(basspos)
+	res = symbol[0:shpos] + ":" + chordmap[symbol[shpos:basspos]]
+	if basspos < len(symbol):
+		return res + "/" + symbol[basspos+1:]
+	return res
 	
 def secondsToXSDDuration(s):
 	"""Return an xsd:duration string for the given number of seconds."""
