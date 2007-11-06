@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - Music-Related RDF</title>
+
+<style type="text/css" media="all">
+        @import url(style.css);
+</style>
+
+</head>
+
+<body>
+
+
+<h1 style="font-size: 250%;">DBTune.org</h1>
+
+<div id="tagline">DBTune - <i>Serving music-related RDF since 2007</i></div>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
+
+<p>
+<a href="http://dbtune.org/">DBTune</a> hosts a number of servers, providing access to 
+music-related structured data, in a <a href="http://linkeddata.org/">Linked Data</a> fashion.
+All the services hosted here are based on open Web standards such as <a href="http://www.w3.org/RDF/">RDF</a>
+and candidate recommendations such as <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a>
+</p>
+<p>
+This effort is part of the <a href="http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/LinkingOpenData">Linking
+Open Data on the Semantic Web</a> community project, hosted by the <a href="http://www.w3.org/2001/sw/sweo/">Semantic
+Web Education and Outreach</a> interest group.
+</p>
+
+
+<h2><a name="concept" id="concept"></a>2. Quick overview of underlying concepts (or the Semantic Web in 10 lines... Don't throw a rock at me, please)</h2>
+<p>
+Resources on the Web can be far more than web pages. They can identify anything: <a href="http://moustaki.org/foaf.rdf#moustaki">me</a>,
+<a href="http://dbtune.org/jamendo/artist/5">a French band</a>, <a href="http://zitgist.com/music/signal/6da76448-982a-4a01-b65b-9a710301c9c9">an audio
+signal</a>, etc.
+</p>
+<p>
+Such resources have associated <i>representations</i> (accessed, in our case, through <a href="http://en.wikipedia.org/wiki/HTTP">HTTP</a>), 
+which may be either human-readable (an <a href="http://www.w3.org/TR/xhtml1/">XHTML document</a>,
+for example) or machine-processable (<a href="http://microformats.org/">Microformats</a> or <a href="http://www.w3.org/RDF/">RDF</a>).
+These representations may hold links to further resources, allowing to jump from one resource to another, which may be actually hosted
+in different places. This is were the <i>Web</i> aspect comes into place.
+</p>
+<p>
+Let's take an example. The resource <a href="http://dbtune.org/jamendo/artist/5">http://dbtune.org/jamendo/artist/5</a> identifies a French band, called
+<i>Both</i>. Asking for a RDF representation of this resource gives us back the following statement:
+<pre>
+&lt;http://dbtune.org/jamendo/artist/5&gt; &lt;http://xmlns.com/foaf/0.1/based_near&gt; &lt;http://sws.geonames.org/2991627/&gt;
+</pre>
+We can then follow this link to get to a resource identifying a geographic location, located within the <a href="http://geonames.org/">dataset</a>.
+</p>
+
+
+<h2><a name="query" id="query"></a>3. Querying the dataset</h2>
+<p>
+The service also exposes a <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> end-point, available
+at <a href="http://dbtune.org:2105/sparql/">http://dbtune.org:2105/sparql/</a>. There is also a small
+web interface available at <a href="http://dbtune.org/jamendo/wsparql/">http://dbtune.org:2105/</a>.
+</p>
+
+<h2><a name="dump" id="dump"></a>4. RDF dump</h2>
+<p>
+The RDF dump is <a href="http://moustaki.org/resources/jamendo-rdf.tar.gz">available for download</a>. 
+The package holds the raw Jamendo data converted to RDF (available under the same license than the raw Jamendo
+data itself), as well as the links towards Geonames and the links towards Musicbrainz. These links are available
+under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 License</a> (subject to
+change, ask me).
+</p>
+
+<h2><a name="tools" id="tools"></a>5. Tools</h2>
+<p>
+The code needed to make this service run takes less than 900 lines of code! This, I guess, demonstrates the
+power of <a href="http://www.swi-prolog.org">SWI Prolog</a> and its <i>SeRQL</i>, <i>semweb</i> and <i>http</i> packages.
+</p>
+<p>
+The code is split in two parts, and is available under a copyleft license - feel free to use it!
+</p>
+<p>
+The first part is available <a href="http://moustaki.org/urispace/">here</a>. It is a small HTTP server implementing content
+negotiation. The behavior of the server is specified by a declarative mapping from resource identifiers to the location of
+their representation.
+</p>
+
+<p>
+The second part is available <a href="http://moustaki.org/p2r/">here</a>. It is an equivalent of 
+<a href="http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/">D2R Server</a>, but for Prolog knowledge base.
+It allows to translate dynamically RDF queries to Prolog queries - which may wrap XML parsing (as it is done in
+the Jamendo RDF dump), calls to web services, databases, etc. 
+</p>
+<p>
+The behavior of this component is also specified through a declarative mapping (the package ships with some mapping 
+examples) between prolog predicates and a set of RDF predicates.
+</p>
+
+<h2><a name="todo" id="todo"></a>4. TODO</h2>
+
+<ul>
+<li>Links to Musicbrainz - <a href="http://blog.dbtune.org/post/2007/06/11/Linking-open-data%3A-interlinking-the-Jamendo-and-the-Musicbrainz-datasets">DONE</a></li>
+
+</ul>
+
+</body>
+
+</html>
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - John Peel sessions</title>
+
+<style type="text/css" media="all">
+        @import url(style.css);
+</style>
+
+</head>
+
+<body>
+
+
+<h1 style="font-size: 250%;">DBTune.org</h1>
+
+<div id="tagline">John Peel sessions RDF server</div>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
+
+<p>
+
+<a href="http://moustaki.org/dbtune/">DBTune</a> aims at publishing and interlinking such music-related repositories
+on the Semantic Web, using <a href="http://www.w3.org/RDF/">RDF</a> and the <a href="http://musicontology.com">Music
+Ontology</a>. 
+For the <a href="http://www.hackday.org/">hackday</a>, the <a href="http://www.bbc.co.uk">BBC</a> released <a href="http://bbc-hackday.dyndns.org/">
+some data</a>, and among them, metadata about the <a href="http://en.wikipedia.org/wiki/John_Peel">John Peel</a> sessions.
+
+</p>
+<p>
+This effort is part of the <a href="http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/LinkingOpenData">Linking
+Open Data on the Semantic Web</a> community project, hosted by the <a href="http://www.w3.org/2001/sw/sweo/">Semantic
+Web Education and Outreach</a> interest group.
+</p>
+
+
+<p>
+This service aims at publishing and interlinking with relevant data sources the John Peel data set.
+</p>
+
+
+<h2><a name="browse" id="browse"></a>2. Browsing the dataset</h2>
+<p>
+All resource identifiers defined by this RDF dump are dereferencable, and support content negotiation. 
+Using the <i>Accept: application/rdf+xml</i> header field, a RDF/XML representation of the resource is sent back.
+Otherwise, a HTML representation, done using the <a href="http://browser.zitgist.com:8890/">Zitgist browser</a>,
+is sent back.
+</p>
+<p>
+Here are some entry points to the dataset:
+</p>
+
+<ul>
+
+<li><a href="http://dbtune.org/bbc/peel/producer/e5826379ace5151894a6456d69fd1e41">Tony Wilson</a> (producer)</li>
+<li><a href="http://dbtune.org/bbc/peel/artist/1036">King Crimson</a> (artist)</li>
+<li><a href="http://dbtune.org/bbc/peel/artist/1049">L7</a> (artist)</li>
+<li><a href="http://dbtune.org/bbc/peel/session/1071">A session involving Elvis Costello</a> (bittorrent item)</li>
+<li><a href="http://dbtune.org/bbc/peel/perf_ins/d858e0f361eeb01e3c843deae4d3f3e1">Malcolm Young (AC/DC) playing bass guitar in a John Peel session</a></li>
+</ul>
+
+<p>
+The dump also exposes some informational RDF documents (directories of all artists, all sessions, all signals, etc.)
+</p>
+
+<p>
+Such documents are:
+</p>
+
+<ul>
+
+<li><a href="http://dbtune.org/bbc/peel/all/artist">All artists</a></li>
+<li><a href="http://dbtune.org/bbc/peel/all/track">All tracks</a></li>
+<li><a href="http://dbtune.org/bbc/peel/all/record">All records</a></li>
+<li><a href="http://dbtune.org/bbc/peel/all/performance">All performances</a></li>
+<li><a href="http://dbtune.org/bbc/peel/all/signal">All signals</a></li>
+<li><a href="http://dbtune.org/bbc/peel/all/timeline">All timelines</a></li>
+
+</ul>
+
+<p>
+To test them using a Semantic Web browser, load one of them into the Tabulator (eg. 
+<a href="http://dbtune.org/bbc/peel/all/artist">http://dbtune.org/jamendo/all/artist</a>)
+and then look for <a href="http://purl.org/ontology/mo/MusicArtist">http://purl.org/ontology/mo/MusicArtist</a>. You will then see
+the list of all John Peel sessions' MusicArtist instances.
+</p>
+
+<h2><a name="query" id="query"></a>3. Querying the dataset</h2>
+<p>
+The service also exposes a <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> end-point, available
+at <a href="http://dbtune.org:3030/sparql/">http://dbtune.org:3030/sparql/</a>. There is also a small
+web interface available at <a href="http://dbtune.org:3030/sparql/">http://dbtune.org:3030/</a>.
+</p>
+
+<h2><a name="tools" id="tools"></a>4. Tools</h2>
+<p>
+The code is split in two parts, and is available under a copyleft license - feel free to use it!
+</p>
+<p>
+The first part is available <a href="http://moustaki.org/urispace/">here</a>. It is a small HTTP server implementing content
+negotiation. The behavior of the server is specified by a declarative mapping from resource identifiers to the location of
+their representation.
+</p>
+
+<p>
+The second part is available <a href="http://moustaki.org/p2r/">here</a>. It is an equivalent of 
+<a href="http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/">D2R Server</a>, but for Prolog knowledge base.
+It allows to translate dynamically RDF queries to Prolog queries - which may wrap XML parsing (as it is done in
+the Jamendo RDF dump), calls to web services, databases, etc. 
+</p>
+<p>
+The behavior of this component is also specified through a declarative mapping (the package ships with some mapping 
+examples) between prolog predicates and a set of RDF predicates.
+</p>
+<p>
+For this dataset, the P2R mapping is available <a href="http://moustaki.org/bbc/johnpeel/peel_match.pl">here</a>.
+It uses a Prolog representation of the John Peel data, available <a href="http://moustaki.org/bbc/johnpeel/swipeel.tar.gz">here</a>.
+</p>
+
+<h2><a name="dump" id="dump"></a>4. RDF Dump</h2>
+<p>
+A complete RDF dump of the data is available <a href="http://moustaki.org/bbc/johnpeel/rdf_dump.rdf.tar.gz">here</a> 
+(the data may be a bit outdated some times though).
+</p>
+<h2><a name="todo" id="todo"></a>5. TODO</h2>
+
+<ul>
+<li>Links to external datasets (musicbrainz, last.fm snippets, geonames, etc.)</li>
+<li>Fix the clashing IDS (eg. http://dbtune.org/bbc/peel/perf_ins/d858e0f361eeb01e3c843deae4d3f3e1)</li>
+<li>Add mo:produced (zitgist compatibility)</li>
+<li>Type currently untyped events</li>
+</ul>
+
+</body>
+
+</html>
+

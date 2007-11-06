@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - Jamendo RDF dump</title>
+
+<style type="text/css" media="all">
+        @import url(style.css);
+</style>
+
+</head>
+
+<body>
+
+
+<h1 style="font-size: 250%;">DBTune.org</h1>
+
+<div id="tagline">Jamendo RDF server</div>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
+
+<p>
+
+<a href="http://jamendo.com/">Jamendo</a> is a large repository of Creative Commons licensed music, based in France.
+<a href="http://moustaki.org/dbtune/">DBTune</a> aims at publishing and interlinking such music-related repositories
+on the Semantic Web, using <a href="http://www.w3.org/RDF/">RDF</a> and the <a href="http://musicontology.com">Music
+Ontology</a>. 
+
+</p>
+<p>
+This effort is part of the <a href="http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/LinkingOpenData">Linking
+Open Data on the Semantic Web</a> community project, hosted by the <a href="http://www.w3.org/2001/sw/sweo/">Semantic
+Web Education and Outreach</a> interest group.
+</p>
+
+<p>
+The first published data set was the <a href="http://magnatune.com/">Magnatune</a> one, and is 
+already interlinked with the <a href="http://dbpedia.org">dbpedia</a> data set.
+</p>
+
+<p>
+This service aims at publishing and interlinking with relevant data sources the Jamendo data set.
+</p>
+
+
+<h2><a name="browse" id="browse"></a>2. Browsing the dataset</h2>
+<p>
+All resource identifiers defined by this RDF dump are dereferencable, and support content negotiation. 
+Using the <i>Accept: application/rdf+xml</i> header field, a RDF/XML representation of the resource is sent back.
+Otherwise, a HTML representation, done using <a href="http://sites.wiwiss.fu-berlin.de/suhl/bizer/ng4j/disco/">Disco</a>,
+is sent back.
+</p>
+<p>
+Here are some entry points to the dataset:
+</p>
+
+<ul>
+
+<li><a href="http://dbtune.org/jamendo/artist/1005">Vincent J.</a> (artist)</li>
+<li><a href="http://dbtune.org/jamendo/artist/1023">Carter Hotel</a> (artist)</li>
+<li><a href="http://dbtune.org/jamendo/record/2931">First Dub</a> (album)</li>
+<li><a href="http://dbtune.org/jamendo/item/bittorrent/ogg3/2832">Where's the station</a> (bittorrent item)</li>
+
+</ul>
+
+<p>
+The dump also exposes some informational RDF documents. However, they do not load properly into DISCO (due to the small
+time out value on the server side). It works fine using the <a href="http://dig.csail.mit.edu/2005/ajar/ajaw/tab.html">Tabulator</a> though.
+</p>
+
+<p>
+Such documents are:
+</p>
+
+<ul>
+
+<li><a href="http://dbtune.org/jamendo/all/artist">All artists</a></li>
+<li><a href="http://dbtune.org/jamendo/all/track">All tracks</a></li>
+<li><a href="http://dbtune.org/jamendo/all/record">All records</a></li>
+<li><a href="http://dbtune.org/jamendo/all/performance">All performances</a></li>
+<li><a href="http://dbtune.org/jamendo/all/signal">All signals</a></li>
+<li><a href="http://dbtune.org/jamendo/all/timeline">All timelines</a></li>
+
+</ul>
+
+<p>
+To test them using a Semantic Web browser, load one of them into the Tabulator (eg. 
+<a href="http://dbtune.org/jamendo/all/artist">http://dbtune.org/jamendo/all/artist</a>)
+and then look for <a href="http://purl.org/ontology/mo/MusicArtist">http://purl.org/ontology/mo/MusicArtist</a>. You will then see
+the list of all Jamendo MusicArtist instances.
+</p>
+
+<h2><a name="query" id="query"></a>3. Querying the dataset</h2>
+<p>
+The service also exposes a <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> end-point, available
+at <a href="http://dbtune.org:2105/sparql/">http://dbtune.org:2105/sparql/</a>. There is also a small
+web interface available at <a href="http://dbtune.org/jamendo/wsparql/">http://dbtune.org:2105/</a>.
+</p>
+
+<h2><a name="dump" id="dump"></a>4. RDF dump</h2>
+<p>
+The RDF dump is <a href="http://moustaki.org/resources/jamendo-rdf.tar.gz">available for download</a>. 
+The package holds the raw Jamendo data converted to RDF (available under the same license than the raw Jamendo
+data itself), as well as the links towards Geonames and the links towards Musicbrainz. These links are available
+under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 License</a> (subject to
+change, ask me).
+</p>
+
+<h2><a name="tools" id="tools"></a>5. Tools</h2>
+<p>
+The code needed to make this service run takes less than 900 lines of code! This, I guess, demonstrates the
+power of <a href="http://www.swi-prolog.org">SWI Prolog</a> and its <i>SeRQL</i>, <i>semweb</i> and <i>http</i> packages.
+</p>
+<p>
+The code is split in two parts, and is available under a copyleft license - feel free to use it!
+</p>
+<p>
+The first part is available <a href="http://moustaki.org/urispace/">here</a>. It is a small HTTP server implementing content
+negotiation. The behavior of the server is specified by a declarative mapping from resource identifiers to the location of
+their representation.
+</p>
+
+<p>
+The second part is available <a href="http://moustaki.org/p2r/">here</a>. It is an equivalent of 
+<a href="http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/">D2R Server</a>, but for Prolog knowledge base.
+It allows to translate dynamically RDF queries to Prolog queries - which may wrap XML parsing (as it is done in
+the Jamendo RDF dump), calls to web services, databases, etc. 
+</p>
+<p>
+The behavior of this component is also specified through a declarative mapping (the package ships with some mapping 
+examples) between prolog predicates and a set of RDF predicates.
+</p>
+
+<h2><a name="todo" id="todo"></a>4. TODO</h2>
+
+<ul>
+<li>Links to Musicbrainz - <a href="http://blog.dbtune.org/post/2007/06/11/Linking-open-data%3A-interlinking-the-Jamendo-and-the-Musicbrainz-datasets">DONE</a></li>
+
+</ul>
+
+</body>
+
+</html>
+
