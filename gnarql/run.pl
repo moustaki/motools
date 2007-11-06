@@ -29,6 +29,7 @@ server(Port) :-
 :- use_module(library('semweb/rdf_persistency')).
 :- consult(config).
 :- use_module(control).
+:- use_module(crowl).
 
 :-
 	server,admin_interface.
@@ -43,6 +44,8 @@ load :-
 	base_uri(Uri),
 	music_path(Path),
 	load(Path,Uri).
+
+:- crowl:init.
 
 %:- user_db:openid_add_server('http://www.myopenid.com/server',[]).
 

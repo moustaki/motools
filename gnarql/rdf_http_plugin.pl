@@ -4,7 +4,7 @@
 :- use_module(library(date)).
 :- use_module(library('http/http_open')).
 
-:- use_module(config).
+:- consult(config).
 
 
 /**

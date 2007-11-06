@@ -1,0 +1,45 @@
+:- module(crowl,[init/0,crawl_track/0,crawl_type/1]).
+
+:- use_module(library('semweb/rdf_db')).
+:- use_module(rdf_http_plugin).
+
+
+init :-
+	crawlers(N),
+	create_crawlers_pool(N).
+
+crawl_track :-
+	crawl_type('http://purl.org/ontology/mo/Track').
+crawl_type(Type) :-
+	forall(rdf_db:rdf(A,rdf:type,Type),thread_send_message(jobs,A)).
+
+
+/**
+ * Crawler pool
+ */
+
+:- consult(config).
+
+create_crawlers_pool(N) :-
+	message_queue_create(jobs),
+	forall(between(1,N,_),thread_create(crawler(jobs),_,[detached(true)])).
+
+crawler(Queue) :-
+	repeat,
+	thread_get_message(Queue,URI),
+	uri_url(URI,URL),
+	load(URL),fail.
+
+load(URL) :-
+	catch((rdf_load(URL), format(' - Loaded ~w\n',[URL])),_,
+		(
+		format(' - Failed to load ~w\n',[URL]),
+		assert(failed(URL))
+		)
+	).
+
+uri_url(URI,URL) :-
+        parse_url(URI,List),
+	select(fragment(_),List,Rest),!,
+	parse_url(URL,Rest). 
+uri_url(URI,URI).
