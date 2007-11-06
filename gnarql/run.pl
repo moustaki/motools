@@ -27,15 +27,15 @@ server(Port) :-
 :- use_module(namespaces).
 :- use_module(load).
 :- use_module(library('semweb/rdf_persistency')).
-:- consult(config).
 :- use_module(control).
 :- use_module(crowl).
 
 :-
 	server,admin_interface.
 :- 
-	rdf_db:rdf_attach_db('db',[]).
+	rdf_db:rdf_attach_db('db',[concurrency(8)]).
 
+:- [config].
 load :- 
 	\+base_uri(_),
 	music_path(Path),
