@@ -211,8 +211,10 @@ def getChordSymbols(line):
 
 def mmaSymbolToChordSymbol(symbol):
 	"""Return the Chord Ontology symbol corresponding to the given MMA chord symbol"""
-	if symbol == 'z':
-		return chordmap[symbol]
+	if symbol.startswith('z'):
+		return chordmap['z']
+	if 'z' in symbol:
+	    symbol = symbol[0:symbol.find('z')] # strip off silence controls
 	symbol = symbol.replace('&','b')
 	notes = ['A','B','C','D','E','F','G']
 	modifiers = ['#','b']
