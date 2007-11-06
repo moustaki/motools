@@ -219,8 +219,10 @@ def mmaSymbolToChordSymbol(symbol):
 	
 	# Find start of shorthand
 	shpos = 0
-	while (symbol[shpos].upper() in notes or symbol[shpos] in modifiers):
+	while (symbol[shpos].upper() in notes):
 		shpos+=1
+	while (symbol[shpos] in modifiers):
+	    shpos+=1
 	
 	# Find start of bass note
 	basspos = symbol.rfind('/')
