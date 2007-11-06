@@ -26,7 +26,7 @@ class PropertySet(set):
 		if not ((self.allowLits and isinstance(o, self.Lits))\
 				or (self.validTypes != None and isinstance(o, self.validTypes))\
 				):
-			msg = "Invalid type ! Got "+str(type(o))+" but expected one of : "+str(self.validTypes)
+			msg = "Invalid type for "+self.shortname+" property ! Got "+str(type(o))+" but expected one of : "+str(self.validTypes)
 			if self.allowLits:
 				msg+= " (or a literal)"
 			raise TypeError(msg)

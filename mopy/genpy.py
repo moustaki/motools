@@ -106,6 +106,11 @@ class Generator:
 					#print "Added range types from parent property "+str(parent)+" to subproperty "+str(prop)
 					rTypes.extend(self.graph.objects(parent, RDFS.range))
 				
+				# Add the domain types of any inverse properties
+				for invProp in self.graph.objects(prop, OWL.inverseOf):
+					print "Adding domain types of "+str(invProp)+" inverse of "+str(prop)
+					rTypes.extend(self.graph.objects(invProp, RDFS.range))
+				
 				rTypeNames = []
 				allowLits=False
 				for rT in rTypes:
