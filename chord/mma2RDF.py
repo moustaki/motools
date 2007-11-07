@@ -211,20 +211,23 @@ def getChordSymbols(line):
 
 def mmaSymbolToChordSymbol(symbol):
 	"""Return the Chord Ontology symbol corresponding to the given MMA chord symbol"""
+	notes = ['A','B','C','D','E','F','G']
+	modifiers = ['#','b']
+	
 	if symbol.startswith('z'):
 		return chordmap['z']
 	if 'z' in symbol:
 	    symbol = symbol[0:symbol.find('z')] # strip off silence controls
+	if symbol[0] in ['-','+']:
+		symbol = symbol[1:] #strip off octave shifts
 	symbol = symbol.replace('&','b')
-	notes = ['A','B','C','D','E','F','G']
-	modifiers = ['#','b']
-	
+
 	# Find start of shorthand
 	shpos = 0
 	if (symbol[shpos].upper() in notes):
 		shpos+=1
 	while (shpos < len(symbol) and symbol[shpos] in modifiers):
-	    shpos+=1
+		shpos+=1
 	
 	# Find start of bass note
 	basspos = symbol.rfind('/')
