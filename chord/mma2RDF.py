@@ -10,6 +10,7 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 
 TODO :
 - Add bar and beat events
+- Handle inversions properly ?? We do slash bass notation, but currently ignore >-type inversions
 
 """
 
@@ -216,6 +217,8 @@ def mmaSymbolToChordSymbol(symbol):
 	
 	if symbol.startswith('z'):
 		return chordmap['z']
+	if '>' in symbol:
+		symbol = symbol[0:symbol.find('>')] # strip off > inversions
 	if 'z' in symbol:
 	    symbol = symbol[0:symbol.find('z')] # strip off silence controls
 	if symbol[0] in ['-','+']:
