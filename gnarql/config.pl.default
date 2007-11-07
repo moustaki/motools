@@ -10,3 +10,8 @@ music_path('/Users/chris/Projects/OMRAS2/motools/svn/motools/gnat/src/gnat/data'
  */
 % base_uri('http://dsp-cluster/music/').
 
+/**
+ * Number of crawlers to use
+ */
+crawlers(10).
+
