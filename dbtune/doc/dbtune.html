@@ -33,7 +33,7 @@ Web Education and Outreach</a> interest group.
 </p>
 
 
-<h2><a name="concept" id="concept"></a>2. Quick overview of underlying concepts (or the Semantic Web in 10 lines... Don't throw a rock at me, please)</h2>
+<h2><a name="concept" id="concept"></a>2. Quick overview of underlying concepts (or the "Semantic Web" in 10 lines... Don't throw a rock at me, please)</h2>
 <p>
 Resources on the Web can be far more than web pages. They can identify anything: <a href="http://moustaki.org/foaf.rdf#moustaki">me</a>,
 <a href="http://dbtune.org/jamendo/artist/5">a French band</a>, <a href="http://zitgist.com/music/signal/6da76448-982a-4a01-b65b-9a710301c9c9">an audio
@@ -52,57 +52,53 @@ Let's take an example. The resource <a href="http://dbtune.org/jamendo/artist/5"
 <pre>
 &lt;http://dbtune.org/jamendo/artist/5&gt; &lt;http://xmlns.com/foaf/0.1/based_near&gt; &lt;http://sws.geonames.org/2991627/&gt;
 </pre>
-We can then follow this link to get to a resource identifying a geographic location, located within the <a href="http://geonames.org/">dataset</a>.
+We can then follow this <i>link</i> to get to a resource identifying a geographic location, located within the <a href="http://geonames.org/">dataset</a>.
+Moreover, this <i>link</i> is also a resource identifier! So if we don't know what it means to be <i>based_near</i> something, we can
+still access a representation of it, which would give us statements such as "<i>based_near</i> is a property, and it relates a person or a group
+of person to a geographical location".
 </p>
 
 
-<h2><a name="query" id="query"></a>3. Querying the dataset</h2>
+<h2><a name="datasets" id="datasets"></a>3. Available datasets</h2>
 <p>
-The service also exposes a <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> end-point, available
-at <a href="http://dbtune.org:2105/sparql/">http://dbtune.org:2105/sparql/</a>. There is also a small
-web interface available at <a href="http://dbtune.org/jamendo/wsparql/">http://dbtune.org:2105/</a>.
+The following datasets are available on this server:
+
+<ol>
+<li><a href="http://dbtune.org/jamendo/">Jamendo</a>, holding data from the <a href="http://jamendo.org/">Jamendo website</a> (SPARQL end-point
+available, as well as browsable URIs, <a href="http://dbtune.org/jamendo/#dump">RDF dump available</a>) ;</li>
+<li><a href="http://dbtune.org/magnatune/">Magnatune</a>, holding data from the <a href="http://magnatune.com/">Magnatune label</a> (SPARQL end-point
+and browsable URIs, RDF dump available) ;</li>
+<li><a href="http://dbtune.org/bbc/johnpeel/">BBC John Peel session</a>, holding <a href="http://bbc-hackday.dyndns.org/">data released during the Hackday, 2007</a> (SPARQL end-point and browsable URIs, RDF dump available) ;</li>
+</ol>
 </p>
 
-<h2><a name="dump" id="dump"></a>4. RDF dump</h2>
+<h2><a name="links" id="links"></a>4. Links to external datasets</a></h2>
 <p>
-The RDF dump is <a href="http://moustaki.org/resources/jamendo-rdf.tar.gz">available for download</a>. 
-The package holds the raw Jamendo data converted to RDF (available under the same license than the raw Jamendo
-data itself), as well as the links towards Geonames and the links towards Musicbrainz. These links are available
-under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 License</a> (subject to
-change, ask me).
+The following dataset interlinking have been achieved:
+
+<ol>
+<li><a href="http://dbtune.org/jamendo/">Jamendo</a> to <a href="http://zitgist.com/music/">Musicbrainz</a> (using some kind of <a href="http://blog.dbtune.org/post/2007/06/11/Linking-open-data%3A-interlinking-the-Jamendo-and-the-Musicbrainz-datasets">record linkage technique</a>)</li>
+<li><a href="http://dbtune.org/jamendo/">Jamendo</a> to <a href="http://geonames.org/">Geonames</a></li>
+<li><a href="http://dbtune.org/magnatune/">Magnatune</a> to <a href="http://dbpedia.org/">DBPedia</a></li>
+</ol>
+
 </p>
 
-<h2><a name="tools" id="tools"></a>5. Tools</h2>
+<h2><a name="ack" id="ack"></a>5. Acknowledgements</h2>
 <p>
-The code needed to make this service run takes less than 900 lines of code! This, I guess, demonstrates the
-power of <a href="http://www.swi-prolog.org">SWI Prolog</a> and its <i>SeRQL</i>, <i>semweb</i> and <i>http</i> packages.
-</p>
-<p>
-The code is split in two parts, and is available under a copyleft license - feel free to use it!
-</p>
-<p>
-The first part is available <a href="http://moustaki.org/urispace/">here</a>. It is a small HTTP server implementing content
-negotiation. The behavior of the server is specified by a declarative mapping from resource identifiers to the location of
-their representation.
-</p>
-
-<p>
-The second part is available <a href="http://moustaki.org/p2r/">here</a>. It is an equivalent of 
-<a href="http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/">D2R Server</a>, but for Prolog knowledge base.
-It allows to translate dynamically RDF queries to Prolog queries - which may wrap XML parsing (as it is done in
-the Jamendo RDF dump), calls to web services, databases, etc. 
-</p>
-<p>
-The behavior of this component is also specified through a declarative mapping (the package ships with some mapping 
-examples) between prolog predicates and a set of RDF predicates.
+All the things provided by this server relies on the work of many people. Let's try to mention a few:
+<ol>
+<li>The <a href="http://musicontology.com">Music ontology</a> community</li>
+<li>Everybody in the <a href="http://linkeddata.org">The Linking Open Data on the Semantic Web SWEO project</a></li>
+<li>The <a href="http://www.bbc.co.uk/radio/">BBC audio and music interactive</a> folks</li>
+<li>The <a href="http://jamendo.org/">Jamendo</a> and the <a href="http://magnatune.com">Magnatune</a> teams</li>
+<li><a href="http://www.swi-prolog.org/">SWI-Prolog</a> developers, especially <a href="http://www.science.uva.nl/~wielemak/">Jan Wielemaker</a>, for all
+his really fast replies to our really annoying emails :-)</li>
+<li>The <a href="http://www.okfn.org/">Open Knowledge Foundation</a></li>
+<li>And everybody in the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>!</li>
+</ol>
 </p>
 
-<h2><a name="todo" id="todo"></a>4. TODO</h2>
-
-<ul>
-<li>Links to Musicbrainz - <a href="http://blog.dbtune.org/post/2007/06/11/Linking-open-data%3A-interlinking-the-Jamendo-and-the-Musicbrainz-datasets">DONE</a></li>
-
-</ul>
 
 </body>
 
