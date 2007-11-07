@@ -229,7 +229,10 @@ def mmaSymbolToChordSymbol(symbol):
 	shpos = 0
 	if (symbol[shpos].upper() in notes):
 		shpos+=1
-	while (shpos < len(symbol) and symbol[shpos] in modifiers):
+	# Have to do these separately so they can't be mixed, eg "Gb#5" => "Gb with shorthand '#5'"
+	while (shpos < len(symbol) and symbol[shpos] == '#'):
+		shpos+=1
+	while (shpos < len(symbol) and symbol[shpos] == 'b'):
 		shpos+=1
 	
 	# Find start of bass note
