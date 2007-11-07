@@ -61,7 +61,7 @@ def mma2RDF(infilename, outfilename, format="xml", audiofilename=None, withdescr
 	mmafile = open(infilename,'r')
 	for line in mmafile:
 		if line.startswith("Tempo "):
-			tempo = int(line[len("Tempo "):])
+			tempo = int(line[len("Tempo "):].strip().split()[0])
 			print "Found tempo = "+str(tempo)
 			break
 	
@@ -221,9 +221,9 @@ def mmaSymbolToChordSymbol(symbol):
 	
 	# Find start of shorthand
 	shpos = 0
-	while (symbol[shpos].upper() in notes):
+	if (symbol[shpos].upper() in notes):
 		shpos+=1
-	while (symbol[shpos] in modifiers):
+	while (shpos < len(symbol) and symbol[shpos] in modifiers):
 	    shpos+=1
 	
 	# Find start of bass note
@@ -260,11 +260,11 @@ def scaleIntervalFromNoteNames(n1, n2):
 		return -1
 
 	mods = ['bb','b','','#','##'][2 + mod_dist]
-    if mod_dist < 0:
-        si = mods + str(base_interval)
-    else:
-    	si = str(base_interval) + mods
-
+	if mod_dist < 0:
+		si = mods + str(base_interval)
+	else:
+		si = str(base_interval) + mods
+	
 	return si
 
 #
