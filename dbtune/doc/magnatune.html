@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - Magnatune RDF dump</title>
+
+<style type="text/css" media="all">
+        @import url(style.css);
+</style>
+
+</head>
+
+<body>
+
+
+<h1 style="font-size: 250%;">DBTune.org</h1>
+
+<div id="tagline">Magnatune RDF server</div>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
+
+<p>
+
+<a href="http://magnatune.com/">Magnatune</a> is an independent music label, allowing people to buy records for as much as they want.
+<a href="http://moustaki.org/dbtune/">DBTune</a> aims at publishing and interlinking such music-related repositories
+on the Semantic Web, using <a href="http://www.w3.org/RDF/">RDF</a> and the <a href="http://musicontology.com">Music
+Ontology</a>. 
+
+</p>
+<p>
+This effort is part of the <a href="http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/LinkingOpenData">Linking
+Open Data on the Semantic Web</a> community project, hosted by the <a href="http://www.w3.org/2001/sw/sweo/">Semantic
+Web Education and Outreach</a> interest group.
+</p>
+
+
+<p>
+This service aims at publishing and interlinking with relevant data sources the Magnatune data set.
+</p>
+
+
+<h2><a name="browse" id="browse"></a>2. Browsing the dataset</h2>
+<p>
+All resource identifiers defined by this RDF dump are dereferencable, and support content negotiation. 
+Using the <i>Accept: application/rdf+xml</i> header field, a RDF/XML representation of the resource is sent back.
+Otherwise, a HTML representation, done using <a href="http://zitgist.com/">Zitgist</a>,
+is sent back.
+</p>
+<p>
+Here are some entry points to the dataset:
+</p>
+
+<ul>
+
+<li><a href="http://dbtune.org/magnatune/artist/american_baroque">American Baroque</a> (artist)</li>
+<li><a href="http://dbtune.org/magnatune/artist/antiguru">Antiguru</a> (artist)</li>
+<li><a href="http://dbtune.org/magnatune/album/curtis-calliope1">Calliope</a> (album)</li>
+<li><a href="http://dbtune.org/magnatune/track/130">The Early Horn</a> (track)</li>
+
+</ul>
+
+<p>
+The dump also exposes some informational RDF documents. However, they do not load properly into DISCO (due to the small
+time out value on the server side). It works fine using the <a href="http://dig.csail.mit.edu/2005/ajar/ajaw/tab.html">Tabulator</a> though.
+</p>
+
+<p>
+Such documents are:
+</p>
+
+<ul>
+
+<li><a href="http://dbtune.org/magnatune/all/artist">All artists</a></li>
+<li><a href="http://dbtune.org/magnatune/all/track">All tracks</a></li>
+<li><a href="http://dbtune.org/magnatune/all/record">All records</a></li>
+<li><a href="http://dbtune.org/magnatune/all/performance">All performances</a></li>
+<li><a href="http://dbtune.org/magnatune/all/signal">All signals</a></li>
+<li><a href="http://dbtune.org/magnatune/all/timeline">All timelines</a></li>
+
+</ul>
+
+<p>
+To test them using a Semantic Web browser, load one of them into the Tabulator (eg. 
+<a href="http://dbtune.org/magnatune/all/artist">http://dbtune.org/magnatune/all/artist</a>)
+and then look for <a href="http://purl.org/ontology/mo/MusicArtist">http://purl.org/ontology/mo/MusicArtist</a>. You will then see
+the list of all Jamendo MusicArtist instances.
+</p>
+
+<h2><a name="query" id="query"></a>3. Querying the dataset</h2>
+<p>
+The service also exposes a <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> end-point, available
+at <a href="http://dbtune.org:2020/sparql/">http://dbtune.org:2020/sparql/</a>. There is also a small
+web interface available at <a href="http://dbtune.org:2020/">http://dbtune.org:2020/</a>.
+</p>
+
+<h2><a name="dump" id="dump"></a>4. RDF dump</h2>
+<p>
+The RDF dump is <a href="http://moustaki.org/resources/magnatune_main.rdf">available for download</a>. 
+The package holds the raw Jamendo data converted to RDF (available under the same license than the raw Jamendo
+data itself), as well as the links towards Geonames and the links towards Musicbrainz. These links are available
+under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 License</a> (subject to
+change, ask me).
+</p>
+
+<h2><a name="tools" id="tools"></a>5. Tools</h2>
+<p>
+The RDF dump was created using <a href="http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/">D2R server</a>.
+</p>
+
+<p>
+The tool handling dereferencable identifiers is available <a href="http://moustaki.org/urispace/">here</a>. It is a small HTTP server implementing content
+negotiation. The behavior of the server is specified by a declarative mapping from resource identifiers to the location of
+their representation.
+</p>
+
+
+
+</body>
+
+</html>
+
