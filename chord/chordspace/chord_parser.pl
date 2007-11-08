@@ -153,10 +153,10 @@ natural('http://purl.org/ontology/chord/note/E') --> ['E'].
 natural('http://purl.org/ontology/chord/note/F') --> ['F'].
 natural('http://purl.org/ontology/chord/note/G') --> ['G'].
 
-modifier('http://purl.org/ontology/chord/flat') --> ['b'].
-modifier('http://purl.org/ontology/chord/sharp') --> ['s']. %will perhaps have to change it
 modifier('http://purl.org/ontology/chord/doubleflat') --> ['b','b'].
 modifier('http://purl.org/ontology/chord/doublesharp') --> ['s','s'].
+modifier('http://purl.org/ontology/chord/flat') --> ['b'].
+modifier('http://purl.org/ontology/chord/sharp') --> ['s']. %will perhaps have to change it
 
 degreelist(URI,[
 		rdf(URI,'http://purl.org/ontology/chord/without_interval',Interval)
