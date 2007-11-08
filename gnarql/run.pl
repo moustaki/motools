@@ -32,8 +32,8 @@ server(Port) :-
 
 :-
 	server,admin_interface.
-:- 
-	rdf_db:rdf_attach_db('db',[concurrency(8)]).
+attach :- 
+	rdf_db:rdf_attach_db('db',[concurrency(1)]).
 
 :- [config].
 load :- 

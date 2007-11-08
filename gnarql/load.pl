@@ -12,6 +12,8 @@
 :- use_module(library('semweb/rdf_db')).
 :- use_module(walk).
 
+:- multifile failed_dir/1.
+:- dynamic failed_dir/1.
 
 load(Dir) :-
 	atom_concat('file://',Dir,Base),
@@ -19,13 +21,15 @@ load(Dir) :-
 load(Dir,BaseURI) :-
 	forall(
 		( walk(Dir,Walk),
-		  atom_concat(Dir,Relative,Walk),
-		  encode(Relative,RelativeWWW),
-		  format(atom(URI),'~w~w/',[BaseURI,RelativeWWW]),
-		  format(atom(Wildcard),'~w/~w',[Walk,'*.rdf']),
-		  expand_file_name(Wildcard,Files),
-		  member(File,Files),
-		  nl,format(' - Loading ~w\n',File)
+		  catch((
+		   atom_concat(Dir,Relative,Walk),
+		   encode(Relative,RelativeWWW),
+		   format(atom(URI),'~w~w/',[BaseURI,RelativeWWW]),
+		   format(atom(Wildcard),'~w/~w',[Walk,'*.rdf']),
+		   expand_file_name(Wildcard,Files),
+		   member(File,Files),
+		   nl,format(' - Loading ~w\n',File)
+		   ),_,(assert(failed_dir(Walk)),fail))
 		  %convert_path(Walk,WalkWWW),
 		  %convert_path(URI,URI2)
 		  %format(atom(BaseURI),'file://~w/',[WalkWWW])
