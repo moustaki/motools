@@ -14,7 +14,7 @@ kill :-
 crawl_track :-
 	crawl_type('http://purl.org/ontology/mo/Track').
 crawl_type(Type) :-
-	forall(rdf_db:rdf(A,rdf:type,Type),thread_send_message(jobs,A)).
+	forall((rdf_db:rdf(A,rdf:type,Type),atom_concat('http://zitgist.com/',_,A)),thread_send_message(jobs,A)).
 
 
 /**
@@ -29,7 +29,7 @@ create_crawlers_pool(N) :-
 
 crawler(Queue) :-
 	repeat,
-	thread_get_message(Queue,URI),
+	thread_get_message(Queue,URI),format(' - Received ~w\n',[URI]),
 	(URI=stop -> (format(' - Exiting...\n'),thread_exit(true));(
 		uri_url(URI,URL),
 		load(URL),fail)).
