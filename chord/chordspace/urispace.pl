@@ -52,7 +52,7 @@ accept_rdf(AcceptHeader) :-
 	sub_atom(AcceptHeader,_,_,_,'application/rdf+xml').
 accept_rdf(AcceptHeader) :-
         sub_atom(AcceptHeader,_,_,_,'text/xml').
-
+accept_rdf(_).
 /**
  * Sends back towards the default representation of the resource
  * (usually html)
