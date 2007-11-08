@@ -13,7 +13,8 @@
 parse(ChordSymbol,RDF) :-
 	tokenise(ChordSymbol,Tokens),
 	phrase(chord(ChordSymbol,RDF2),Tokens),
-	clean(RDF2,RDF).
+	clean(RDF2,RDF3),
+	add_image_link(RDF3,RDF,[],_).
 
 
 clean(Description,Rest) :-
@@ -33,6 +34,21 @@ clean(Description,Rest) :-
 clean(Description,Description).
 
 
+add_image_link(DescIn, DescOut, IntsIn, IntsOut) :-
+	member(rdf(_, 'http://purl.org/ontology/chord/interval', I), DescIn),
+	member(rdf(I,'http://purl.org/ontology/chord/degree',literal(type(_,D))),DescIn),
+	\+member(D, IntsIn),
+	append([D], IntsIn, I2),
+	add_image_link(DescIn, DescOut, I2, IntsOut).
+	
+add_image_link(DescIn, DescOut, IntsIn, IntsIn) :-
+	member(rdf(C,'http://purl.org/ontology/chord/interval',_), DescIn),
+	sort(IntsIn, SortedInts),
+	concat_atom(SortedInts,',',Ints),
+	atom_concat('http://doc.gold.ac.uk/isms/tmp/chords/png/C:(',Ints,Image1),
+	atom_concat(Image1,')',Image),
+	append([rdf(C,'http://xmlns.com/foaf/0.1/depiction', Image)],DescIn, DescOut),
+	!.
 
 % DCG
 
@@ -123,7 +139,6 @@ modifier('http://purl.org/ontology/chord/flat') --> ['b'].
 modifier('http://purl.org/ontology/chord/sharp') --> ['s']. %will perhaps have to change it
 modifier('http://purl.org/ontology/chord/doubleflat') --> ['b','b'].
 modifier('http://purl.org/ontology/chord/doublesharp') --> ['s','s'].
-
 
 degreelist(URI,[
 		rdf(URI,'http://purl.org/ontology/chord/without_interval',Interval)
@@ -236,21 +251,27 @@ shorthand_intervals('http://purl.org/ontology/chord/sus2',['1','2','5']).
 shorthand_rdf(Chord,Shorthand,RDF) :-
 	shorthand_intervals(Shorthand,Intervals),
 	intervals_to_rdf(Chord,Intervals,RDF).
+	
 intervals_to_rdf(Chord,[flat(H)|T],[rdf(Chord,'http://purl.org/ontology/chord/interval',SI),rdf(SI,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/ScaleInterval'),rdf(SI,'http://purl.org/ontology/chord/degree',literal(type('http://www.w3.org/2001/XMLSchema#int',H))),rdf(SI,'http://purl.org/ontology/chord/modifier','http://purl.org/ontology/chord/flat')|T2]) :-
 	!,rdf_bnode(SI),
 	intervals_to_rdf(Chord,T,T2).
+	
 intervals_to_rdf(Chord,[doubleflat(H)|T],[rdf(Chord,'http://purl.org/ontology/chord/interval',SI),rdf(SI,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/ScaleInterval'),rdf(SI,'http://purl.org/ontology/chord/degree',literal(type('http://www.w3.org/2001/XMLSchema#int',H))),rdf(SI,'http://purl.org/ontology/chord/modifier','http://purl.org/ontology/chord/doubleflat')|T2]) :-
         !,rdf_bnode(SI),
         intervals_to_rdf(Chord,T,T2).
+
 intervals_to_rdf(Chord,[sharp(H)|T],[rdf(Chord,'http://purl.org/ontology/chord/interval',SI),rdf(SI,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/ScaleInterval'),rdf(SI,'http://purl.org/ontology/chord/degree',literal(type('http://www.w3.org/2001/XMLSchema#int',H))),rdf(SI,'http://purl.org/ontology/chord/modifier','http://purl.org/ontology/chord/sharp')|T2]) :-
         !,rdf_bnode(SI),
         intervals_to_rdf(Chord,T,T2).
+
 intervals_to_rdf(Chord,[doublesharp(H)|T],[rdf(Chord,'http://purl.org/ontology/chord/interval',SI),rdf(SI,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/ScaleInterval'),rdf(SI,'http://purl.org/ontology/chord/degree',literal(type('http://www.w3.org/2001/XMLSchema#int',H))),rdf(SI,'http://purl.org/ontology/chord/modifier','http://purl.org/ontology/chord/doublesharp')|T2]) :-
         !,rdf_bnode(SI),
         intervals_to_rdf(Chord,T,T2).
+
 intervals_to_rdf(Chord,[H|T],[rdf(Chord,'http://purl.org/ontology/chord/interval',SI),rdf(SI,'http://www.w3.org/1999/02/22-rdf-syntax-ns#type','http://purl.org/ontology/chord/ScaleInterval'),rdf(SI,'http://purl.org/ontology/chord/degree',literal(type('http://www.w3.org/2001/XMLSchema#int',H)))|T2]) :-
         rdf_bnode(SI),
         intervals_to_rdf(Chord,T,T2).
+
 intervals_to_rdf(_,[],[]).
 
 
