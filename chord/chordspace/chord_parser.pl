@@ -14,7 +14,7 @@ parse(ChordSymbol,RDF) :-
 	tokenise(ChordSymbol,Tokens),
 	phrase(chord(ChordSymbol,RDF2),Tokens),
 	clean(RDF2,RDF3),
-	add_image_link(RDF3,RDF,[],_).
+	add_image_link(RDF3,RDF,[],_, '').
 
 
 clean(Description,Rest) :-
@@ -34,22 +34,40 @@ clean(Description,Rest) :-
 clean(Description,Description).
 
 
-add_image_link(DescIn, DescOut, IntsIn, IntsOut) :-
+add_image_link(DescIn, DescOut, IntsIn, IntsOut, _) :-
 	member(rdf(_, 'http://purl.org/ontology/chord/interval', I), DescIn),
 	member(rdf(I,'http://purl.org/ontology/chord/degree',literal(type(_,D))),DescIn),
 	\+member(D, IntsIn),
 	append([D], IntsIn, I2),
-	add_image_link(DescIn, DescOut, I2, IntsOut).
-	
-add_image_link(DescIn, DescOut, IntsIn, IntsIn) :-
+	add_image_link(DescIn, DescOut, I2, IntsOut, _).
+
+add_image_link(DescIn, DescOut, IntsIn, IntsIn, Root) :-
 	member(rdf(C,'http://purl.org/ontology/chord/interval',_), DescIn),
+	root_for_chord(DescIn,C,Root),
 	sort(IntsIn, SortedInts),
 	concat_atom(SortedInts,',',Ints),
-	atom_concat('http://doc.gold.ac.uk/isms/tmp/chords/png/C:(',Ints,Image1),
-	atom_concat(Image1,')',Image),
-	append([rdf(C,'http://xmlns.com/foaf/0.1/depiction', Image)],DescIn, DescOut),
-	!.
+	format(atom(Image),'http://doc.gold.ac.uk/isms/tmp/chords/png/~w:(~w)',[Root,Ints]),
+	append([rdf(C,'http://xmlns.com/foaf/0.1/depiction', Image)],DescIn, DescOut).
+	
 
+root_for_chord(RDF, C, Root) :-
+	member(rdf(C,'http://purl.org/ontology/chord/root',RNote), RDF),
+	atom_concat('http://purl.org/ontology/chord/note/',Root,RNote).
+
+root_for_chord(RDF, C, Root) :-
+	member(rdf(C,'http://purl.org/ontology/chord/root',RNote), RDF),
+	member(rdf(RNote,'http://purl.org/ontology/chord/natural',Natural), RDF),
+	atom_concat('http://purl.org/ontology/chord/note/',RootNat,Natural),
+	member(rdf(RNote,'http://purl.org/ontology/chord/modifier', M), RDF),
+	modifier(M,MText),
+	atom_concat(RootNat,MText,Root).
+
+modifier('http://purl.org/ontology/chord/flat', T) :- T='b'.
+modifier('http://purl.org/ontology/chord/sharp', T) :- T='s'.
+modifier('http://purl.org/ontology/chord/doubleflat', T) :- T='bb'.
+modifier('http://purl.org/ontology/chord/doublesharp', T) :- T='ss'.
+	
+	
 % DCG
 
 namespace('http://purl.org/ontology/chord/symbol/').
