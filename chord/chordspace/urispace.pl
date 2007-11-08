@@ -33,12 +33,32 @@ reply(Request) :-
 		)).
 
 /**
- * Sends back 303 to RDF document describing the resource
+ * Sends back towards a png representation of the chord
  */
 reply(Request) :-
 	member(path(Path),Request),
 	member(accept(AcceptHeader),Request),
 	log:log('Accept header: ~w ',[AcceptHeader]),
+	accept_png(AcceptHeader),
+	!,
+	atom_concat('/',Symbol,Path),
+	(parse(Symbol,RDF) ->
+		(
+		member(rdf(_,'http://xmlns.com/foaf/0.1/depiction',Pic),RDF),
+		throw(http_reply(see_other(Pic),[])));
+		(
+		throw(http_reply(server_error('The specified chord symbol is not valid~n~n')))
+		)).
+accept_png('image/png').
+
+
+
+/**
+ * Sends back 303 to RDF document describing the resource
+ */
+reply(Request) :-
+	member(path(Path),Request),
+	member(accept(AcceptHeader),Request),
 	accept_rdf(AcceptHeader),
 	!,
 	namespace(NS),
@@ -53,6 +73,9 @@ accept_rdf(AcceptHeader) :-
 accept_rdf(AcceptHeader) :-
         sub_atom(AcceptHeader,_,_,_,'text/xml').
 accept_rdf(_).
+
+
+
 /**
  * Sends back towards the default representation of the resource
  * (usually html)
