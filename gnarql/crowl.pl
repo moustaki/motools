@@ -1,7 +1,7 @@
 :- module(crowl,[init/0,crawl_track/0,crawl_type/1,kill/0]).
 
 :- use_module(library('semweb/rdf_db')).
-:- use_module(rdf_http_plugin).
+:- use_module('rdf_http_plugin').
 
 
 init :-
