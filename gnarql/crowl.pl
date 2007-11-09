@@ -11,12 +11,21 @@ kill :-
 	crawlers(N),
 	stop_crawlers(N).
 
+
+crawl_zg :-
+	forall(
+		( (rdf_db:rdf_subject(A) ; (rdf_db:rdf(_,_,A,_),atomic(A))),
+		  atom_concat('http://zitgist.com/',_,A)
+		),
+		thread_send_message(jobs,A)
+		).
+
 crawl_track :-
 	crawl_type('http://purl.org/ontology/mo/Track').
 crawl_record :-
 	crawl_type('http://purl.org/ontology/mo/Record').
 crawl_artist :-
-	crawl_artist('http://purl.org/ontology/mo/Artist').
+	crawl_type('http://purl.org/ontology/mo/Artist').
 crawl_type(Type) :-
 	forall((rdf_db:rdf(A,rdf:type,Type),atom_concat('http://zitgist.com/',_,A)),thread_send_message(jobs,A)).
 
