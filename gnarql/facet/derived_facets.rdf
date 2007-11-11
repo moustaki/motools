@@ -1,0 +1,3570 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY event 'http://purl.org/NET/c4dm/event.owl#'>
+    <!ENTITY tl 'http://purl.org/NET/c4dm/timeline.owl#'>
+    <!ENTITY dc 'http://purl.org/dc/elements/1.1/'>
+    <!ENTITY mo 'http://purl.org/ontology/mo/'>
+    <!ENTITY tags 'http://www.holygoat.co.uk/owl/redwood/0.1/tags/'>
+    <!ENTITY iface 'http://www.multimedian.nl/projects/n9c/interface#'>
+    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+    <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+    <!ENTITY owl 'http://www.w3.org/2002/07/owl#'>
+    <!ENTITY time 'http://www.w3.org/2006/time#'>
+    <!ENTITY foaf 'http://xmlns.com/foaf/0.1/'>
+]>
+
+<rdf:RDF
+    xmlns:event="&event;"
+    xmlns:tl="&tl;"
+    xmlns:dc="&dc;"
+    xmlns:mo="&mo;"
+    xmlns:tags="&tags;"
+    xmlns:iface="&iface;"
+    xmlns:rdf="&rdf;"
+    xmlns:rdfs="&rdfs;"
+    xmlns:owl="&owl;"
+    xmlns:time="&time;"
+    xmlns:foaf="&foaf;"
+>
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#PhysicalTimeLinehttp://purl.org/dc/elements/1.1/description">
+  <iface:resourceProperty rdf:resource="&dc;description"/>
+  <iface:resourceType rdf:resource="&tl;PhysicalTimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="description"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#PhysicalTimeLinehttp://purl.org/dc/elements/1.1/title">
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="&tl;PhysicalTimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#PhysicalTimeLinehttp://purl.org/ontology/mo/level">
+  <iface:resourceProperty rdf:resource="&mo;level"/>
+  <iface:resourceType rdf:resource="&tl;PhysicalTimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="level"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#PhysicalTimeLinehttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&tl;PhysicalTimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#PhysicalTimeLinehttp://www.w3.org/2000/01/rdf-schema#isDefinedBy">
+  <iface:resourceProperty rdf:resource="&rdfs;isDefinedBy"/>
+  <iface:resourceType rdf:resource="&tl;PhysicalTimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isDefinedBy"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#RelativeTimeLinehttp://purl.org/NET/c4dm/event.owl#time">
+  <iface:valueType rdf:resource="&tl;Interval"/>
+  <iface:valueType rdf:resource="&tl;RelativeTimeLine"/>
+  <iface:valueType rdf:resource="http://purl.org/ontology/chord/ChordEvent"/>
+  <iface:resourceProperty rdf:resource="&event;time"/>
+  <iface:resourceType rdf:resource="&tl;RelativeTimeLine"/>
+  <rdfs:label rdf:resource="time"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#RelativeTimeLinehttp://purl.org/NET/c4dm/timeline.owl#beginsAtDuration">
+  <iface:resourceProperty rdf:resource="&tl;beginsAtDuration"/>
+  <iface:resourceType rdf:resource="&tl;RelativeTimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="beginsAtDuration"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#RelativeTimeLinehttp://purl.org/NET/c4dm/timeline.owl#endsAtDuration">
+  <iface:resourceProperty rdf:resource="&tl;endsAtDuration"/>
+  <iface:resourceType rdf:resource="&tl;RelativeTimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="endsAtDuration"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#RelativeTimeLinehttp://purl.org/NET/c4dm/timeline.owl#onTimeLine">
+  <iface:valueType rdf:resource="&tl;Interval"/>
+  <iface:valueType rdf:resource="&tl;RelativeTimeLine"/>
+  <iface:valueType rdf:resource="http://purl.org/ontology/chord/ChordEvent"/>
+  <iface:resourceProperty rdf:resource="&tl;onTimeLine"/>
+  <iface:resourceType rdf:resource="&tl;RelativeTimeLine"/>
+  <rdfs:label rdf:resource="onTimeLine"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#RelativeTimeLinehttp://purl.org/ontology/chord/chord">
+  <iface:resourceProperty rdf:resource="http://purl.org/ontology/chord/chord"/>
+  <iface:resourceType rdf:resource="&tl;RelativeTimeLine"/>
+  <iface:valueType rdf:resource="http://purl.org/ontology/chord/Chord"/>
+  <rdfs:label rdf:resource="chord"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#RelativeTimeLinehttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&tl;RelativeTimeLine"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#RelativeTimeLinehttp://www.w3.org/2000/01/rdf-schema#label">
+  <iface:resourceProperty rdf:resource="&rdfs;label"/>
+  <iface:resourceType rdf:resource="&tl;RelativeTimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="label"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#RelativeTimeLinehttp://xmlns.com/foaf/0.1/maker">
+  <iface:resourceProperty rdf:resource="&foaf;maker"/>
+  <iface:resourceType rdf:resource="&tl;RelativeTimeLine"/>
+  <iface:valueType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="maker"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://purl.org/NET/c4dm/event.owl#time">
+  <iface:valueType rdf:resource="&tl;Interval"/>
+  <iface:valueType rdf:resource="&tl;RelativeTimeLine"/>
+  <iface:valueType rdf:resource="http://purl.org/ontology/chord/ChordEvent"/>
+  <iface:resourceProperty rdf:resource="&event;time"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <rdfs:label rdf:resource="time"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://purl.org/NET/c4dm/timeline.owl#beginsAtDuration">
+  <iface:resourceProperty rdf:resource="&tl;beginsAtDuration"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="beginsAtDuration"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://purl.org/NET/c4dm/timeline.owl#endsAtDuration">
+  <iface:resourceProperty rdf:resource="&tl;endsAtDuration"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="endsAtDuration"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://purl.org/NET/c4dm/timeline.owl#onTimeLine">
+  <iface:valueType rdf:resource="&tl;Interval"/>
+  <iface:valueType rdf:resource="&tl;RelativeTimeLine"/>
+  <iface:valueType rdf:resource="http://purl.org/ontology/chord/ChordEvent"/>
+  <iface:resourceProperty rdf:resource="&tl;onTimeLine"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <rdfs:label rdf:resource="onTimeLine"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://purl.org/dc/elements/1.1/description">
+  <iface:resourceProperty rdf:resource="&dc;description"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="description"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://purl.org/dc/elements/1.1/title">
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://purl.org/ontology/chord/chord">
+  <iface:resourceProperty rdf:resource="http://purl.org/ontology/chord/chord"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <iface:valueType rdf:resource="http://purl.org/ontology/chord/Chord"/>
+  <rdfs:label rdf:resource="chord"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://purl.org/ontology/mo/level">
+  <iface:resourceProperty rdf:resource="&mo;level"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="level"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://www.w3.org/2000/01/rdf-schema#isDefinedBy">
+  <iface:resourceProperty rdf:resource="&rdfs;isDefinedBy"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isDefinedBy"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://www.w3.org/2000/01/rdf-schema#label">
+  <iface:resourceProperty rdf:resource="&rdfs;label"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="label"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/NET/c4dm/timeline.owl#TimeLinehttp://xmlns.com/foaf/0.1/maker">
+  <iface:resourceProperty rdf:resource="&foaf;maker"/>
+  <iface:resourceType rdf:resource="&tl;TimeLine"/>
+  <iface:valueType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="maker"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/AudioFilehttp://www.w3.org/1999/02/22-rdf-syntax-ns#about">
+  <iface:resourceProperty rdf:resource="&rdf;about"/>
+  <iface:resourceType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="about"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/AudioFilehttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Genrehttp://www.w3.org/1999/02/22-rdf-syntax-ns#about">
+  <iface:resourceProperty rdf:resource="&rdf;about"/>
+  <iface:resourceType rdf:resource="&mo;Genre"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="about"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Genrehttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;Genre"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Mediumhttp://www.w3.org/1999/02/22-rdf-syntax-ns#about">
+  <iface:resourceProperty rdf:resource="&rdf;about"/>
+  <iface:resourceType rdf:resource="&mo;Medium"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="about"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Mediumhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;Medium"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/NET/c4dm/event.owl#isAgentIn">
+  <iface:resourceProperty rdf:resource="&event;isAgentIn"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isAgentIn"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/biography">
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;biography"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="biography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/compiled">
+  <iface:resourceProperty rdf:resource="&mo;compiled"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="compiled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/conducted">
+  <iface:resourceProperty rdf:resource="&mo;conducted"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="conducted"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/discography">
+  <iface:resourceProperty rdf:resource="&mo;discography"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/discogs">
+  <iface:resourceProperty rdf:resource="&mo;discogs"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discogs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/djmixed">
+  <iface:resourceProperty rdf:resource="&mo;djmixed"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="djmixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/engineered">
+  <iface:resourceProperty rdf:resource="&mo;engineered"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineered"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/fanpage">
+  <iface:resourceProperty rdf:resource="&mo;fanpage"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="fanpage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/freedownload">
+  <iface:resourceProperty rdf:resource="&mo;freedownload"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="freedownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/imdb">
+  <iface:resourceProperty rdf:resource="&mo;imdb"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="imdb"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/mailorder">
+  <iface:resourceProperty rdf:resource="&mo;mailorder"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mailorder"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/member_of">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:resourceProperty rdf:resource="&mo;member_of"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="member_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/musicmoz">
+  <iface:resourceProperty rdf:resource="&mo;musicmoz"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicmoz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/myspace">
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/paiddownload">
+  <iface:resourceProperty rdf:resource="&mo;paiddownload"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="paiddownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/performed">
+  <iface:resourceProperty rdf:resource="&mo;performed"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="performed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/produced">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;produced"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="produced"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/remixed">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixed"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="remixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/sampled">
+  <iface:resourceProperty rdf:resource="&mo;sampled"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="sampled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/similar_to">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&mo;similar_to"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="similar_to"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/supporting_musician">
+  <iface:resourceProperty rdf:resource="&mo;supporting_musician"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="supporting_musician"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/ontology/mo/wikipedia">
+  <iface:resourceProperty rdf:resource="&mo;wikipedia"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="wikipedia"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://purl.org/vocab/bio/0.1/event">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/bio/0.1/event"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://vocab.org/bio/0.1/#event">
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Birth"/>
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Death"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/bio/0.1/#event"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://vocab.org/relationship/#collaborated_with">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#collaborated_with"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="collaborated_with"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://vocab.org/relationship/#engagedTo">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#engagedTo"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="engagedTo"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://vocab.org/relationship/#parentOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#parentOf"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="parentOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://vocab.org/relationship/#siblingOf">
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#siblingOf"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="siblingOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://vocab.org/relationship/#spouseOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#spouseOf"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="spouseOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://xmlns.com/foaf/0.1/based_near">
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;based_near"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="based_near"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://xmlns.com/foaf/0.1/depiction">
+  <iface:resourceProperty rdf:resource="&foaf;depiction"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="depiction"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://xmlns.com/foaf/0.1/homepage">
+  <iface:resourceProperty rdf:resource="&foaf;homepage"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="homepage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://xmlns.com/foaf/0.1/img">
+  <iface:resourceProperty rdf:resource="&foaf;img"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="img"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://xmlns.com/foaf/0.1/made">
+  <iface:valueType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;made"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="made"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://xmlns.com/foaf/0.1/member">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&foaf;member"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="member"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://xmlns.com/foaf/0.1/name">
+  <iface:resourceProperty rdf:resource="&foaf;name"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://xmlns.com/foaf/0.1/nick">
+  <iface:resourceProperty rdf:resource="&foaf;nick"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="nick"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/NET/c4dm/event.owl#isAgentIn">
+  <iface:resourceProperty rdf:resource="&event;isAgentIn"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isAgentIn"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/biography">
+  <iface:resourceProperty rdf:resource="&mo;biography"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="biography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/compiled">
+  <iface:resourceProperty rdf:resource="&mo;compiled"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="compiled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/discography">
+  <iface:resourceProperty rdf:resource="&mo;discography"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/discogs">
+  <iface:resourceProperty rdf:resource="&mo;discogs"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discogs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/djmixed">
+  <iface:resourceProperty rdf:resource="&mo;djmixed"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="djmixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/engineered">
+  <iface:resourceProperty rdf:resource="&mo;engineered"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineered"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/fanpage">
+  <iface:resourceProperty rdf:resource="&mo;fanpage"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="fanpage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/freedownload">
+  <iface:resourceProperty rdf:resource="&mo;freedownload"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="freedownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/imdb">
+  <iface:resourceProperty rdf:resource="&mo;imdb"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="imdb"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/mailorder">
+  <iface:resourceProperty rdf:resource="&mo;mailorder"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mailorder"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/musicmoz">
+  <iface:resourceProperty rdf:resource="&mo;musicmoz"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicmoz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/myspace">
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/paiddownload">
+  <iface:resourceProperty rdf:resource="&mo;paiddownload"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="paiddownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/performed">
+  <iface:resourceProperty rdf:resource="&mo;performed"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="performed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/produced">
+  <iface:resourceProperty rdf:resource="&mo;produced"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="produced"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/remixed">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixed"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <rdfs:label rdf:resource="remixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/sampled">
+  <iface:resourceProperty rdf:resource="&mo;sampled"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="sampled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/similar_to">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&mo;similar_to"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <rdfs:label rdf:resource="similar_to"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/ontology/mo/wikipedia">
+  <iface:resourceProperty rdf:resource="&mo;wikipedia"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="wikipedia"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://purl.org/vocab/bio/0.1/event">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/bio/0.1/event"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://vocab.org/bio/0.1/#event">
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Birth"/>
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Death"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/bio/0.1/#event"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://xmlns.com/foaf/0.1/homepage">
+  <iface:resourceProperty rdf:resource="&foaf;homepage"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="homepage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://xmlns.com/foaf/0.1/made">
+  <iface:resourceProperty rdf:resource="&foaf;made"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="made"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://xmlns.com/foaf/0.1/member">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&foaf;member"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <rdfs:label rdf:resource="member"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://xmlns.com/foaf/0.1/name">
+  <iface:resourceProperty rdf:resource="&foaf;name"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicGrouphttp://xmlns.com/foaf/0.1/nick">
+  <iface:resourceProperty rdf:resource="&foaf;nick"/>
+  <iface:resourceType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="nick"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalItemhttp://www.w3.org/1999/02/22-rdf-syntax-ns#about">
+  <iface:resourceProperty rdf:resource="&rdf;about"/>
+  <iface:resourceType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="about"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalItemhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseStatushttp://purl.org/dc/elements/1.1/description">
+  <iface:resourceProperty rdf:resource="&dc;description"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseStatus"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="description"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseStatushttp://purl.org/dc/elements/1.1/title">
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseStatus"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseStatushttp://purl.org/ontology/mo/level">
+  <iface:resourceProperty rdf:resource="&mo;level"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseStatus"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="level"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseStatushttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseStatus"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseStatushttp://www.w3.org/2000/01/rdf-schema#isDefinedBy">
+  <iface:resourceProperty rdf:resource="&rdfs;isDefinedBy"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseStatus"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isDefinedBy"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseTypehttp://purl.org/dc/elements/1.1/description">
+  <iface:resourceProperty rdf:resource="&dc;description"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseType"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="description"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseTypehttp://purl.org/dc/elements/1.1/title">
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseType"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseTypehttp://purl.org/ontology/mo/level">
+  <iface:resourceProperty rdf:resource="&mo;level"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseType"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="level"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseTypehttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseType"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/ReleaseTypehttp://www.w3.org/2000/01/rdf-schema#isDefinedBy">
+  <iface:resourceProperty rdf:resource="&rdfs;isDefinedBy"/>
+  <iface:resourceType rdf:resource="&mo;ReleaseType"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isDefinedBy"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/NET/c4dm/event.owl#isAgentIn">
+  <iface:resourceProperty rdf:resource="&event;isAgentIn"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isAgentIn"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/biography">
+  <iface:resourceProperty rdf:resource="&mo;biography"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="biography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/compiled">
+  <iface:resourceProperty rdf:resource="&mo;compiled"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="compiled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/conducted">
+  <iface:resourceProperty rdf:resource="&mo;conducted"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="conducted"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/discography">
+  <iface:resourceProperty rdf:resource="&mo;discography"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/discogs">
+  <iface:resourceProperty rdf:resource="&mo;discogs"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discogs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/djmixed">
+  <iface:resourceProperty rdf:resource="&mo;djmixed"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="djmixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/engineered">
+  <iface:resourceProperty rdf:resource="&mo;engineered"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineered"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/fanpage">
+  <iface:resourceProperty rdf:resource="&mo;fanpage"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="fanpage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/imdb">
+  <iface:resourceProperty rdf:resource="&mo;imdb"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="imdb"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/mailorder">
+  <iface:resourceProperty rdf:resource="&mo;mailorder"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mailorder"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/member_of">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:resourceProperty rdf:resource="&mo;member_of"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <rdfs:label rdf:resource="member_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/musicmoz">
+  <iface:resourceProperty rdf:resource="&mo;musicmoz"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicmoz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/myspace">
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/performed">
+  <iface:resourceProperty rdf:resource="&mo;performed"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="performed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/produced">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;produced"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <rdfs:label rdf:resource="produced"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/remixed">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixed"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <rdfs:label rdf:resource="remixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/sampled">
+  <iface:resourceProperty rdf:resource="&mo;sampled"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="sampled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/similar_to">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&mo;similar_to"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <rdfs:label rdf:resource="similar_to"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/supporting_musician">
+  <iface:resourceProperty rdf:resource="&mo;supporting_musician"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="supporting_musician"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/ontology/mo/wikipedia">
+  <iface:resourceProperty rdf:resource="&mo;wikipedia"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="wikipedia"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://purl.org/vocab/bio/0.1/event">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/bio/0.1/event"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://vocab.org/bio/0.1/#event">
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Birth"/>
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Death"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/bio/0.1/#event"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://vocab.org/relationship/#collaborated_with">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#collaborated_with"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <rdfs:label rdf:resource="collaborated_with"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://vocab.org/relationship/#engagedTo">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#engagedTo"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <rdfs:label rdf:resource="engagedTo"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://vocab.org/relationship/#parentOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#parentOf"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <rdfs:label rdf:resource="parentOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://vocab.org/relationship/#siblingOf">
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#siblingOf"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="siblingOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://vocab.org/relationship/#spouseOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#spouseOf"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <rdfs:label rdf:resource="spouseOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://xmlns.com/foaf/0.1/depiction">
+  <iface:resourceProperty rdf:resource="&foaf;depiction"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="depiction"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://xmlns.com/foaf/0.1/homepage">
+  <iface:resourceProperty rdf:resource="&foaf;homepage"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="homepage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://xmlns.com/foaf/0.1/made">
+  <iface:resourceProperty rdf:resource="&foaf;made"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="made"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://xmlns.com/foaf/0.1/name">
+  <iface:resourceProperty rdf:resource="&foaf;name"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/SoloMusicArtisthttp://xmlns.com/foaf/0.1/nick">
+  <iface:resourceProperty rdf:resource="&foaf;nick"/>
+  <iface:resourceType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="nick"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Streamhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;Stream"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2006/time#Intervalhttp://purl.org/NET/c4dm/timeline.owl#onTimeLine">
+  <iface:resourceProperty rdf:resource="&tl;onTimeLine"/>
+  <iface:resourceType rdf:resource="&time;Interval"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="onTimeLine"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2006/time#Intervalhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&time;Interval"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/NET/c4dm/event.owl#isAgentIn">
+  <iface:resourceProperty rdf:resource="&event;isAgentIn"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isAgentIn"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/biography">
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;biography"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="biography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/compiled">
+  <iface:resourceProperty rdf:resource="&mo;compiled"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="compiled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/conducted">
+  <iface:resourceProperty rdf:resource="&mo;conducted"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="conducted"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/discography">
+  <iface:resourceProperty rdf:resource="&mo;discography"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/discogs">
+  <iface:resourceProperty rdf:resource="&mo;discogs"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discogs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/djmixed">
+  <iface:resourceProperty rdf:resource="&mo;djmixed"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="djmixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/engineered">
+  <iface:resourceProperty rdf:resource="&mo;engineered"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineered"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/fanpage">
+  <iface:resourceProperty rdf:resource="&mo;fanpage"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="fanpage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/freedownload">
+  <iface:resourceProperty rdf:resource="&mo;freedownload"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="freedownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/imdb">
+  <iface:resourceProperty rdf:resource="&mo;imdb"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="imdb"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/mailorder">
+  <iface:resourceProperty rdf:resource="&mo;mailorder"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mailorder"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/member_of">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:resourceProperty rdf:resource="&mo;member_of"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="member_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/musicmoz">
+  <iface:resourceProperty rdf:resource="&mo;musicmoz"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicmoz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/myspace">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/paiddownload">
+  <iface:resourceProperty rdf:resource="&mo;paiddownload"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="paiddownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/performed">
+  <iface:resourceProperty rdf:resource="&mo;performed"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="performed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/produced">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;produced"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="produced"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/remixed">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixed"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="remixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/sampled">
+  <iface:resourceProperty rdf:resource="&mo;sampled"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="sampled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/similar_to">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&mo;similar_to"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="similar_to"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/supporting_musician">
+  <iface:resourceProperty rdf:resource="&mo;supporting_musician"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="supporting_musician"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/ontology/mo/wikipedia">
+  <iface:resourceProperty rdf:resource="&mo;wikipedia"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="wikipedia"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://purl.org/vocab/bio/0.1/event">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/bio/0.1/event"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://vocab.org/bio/0.1/#event">
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Birth"/>
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Death"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/bio/0.1/#event"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://vocab.org/relationship/#collaborated_with">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#collaborated_with"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="collaborated_with"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://vocab.org/relationship/#engagedTo">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#engagedTo"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="engagedTo"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://vocab.org/relationship/#parentOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#parentOf"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="parentOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://vocab.org/relationship/#siblingOf">
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#siblingOf"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="siblingOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://vocab.org/relationship/#spouseOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#spouseOf"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="spouseOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/based_near">
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;based_near"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="based_near"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/depiction">
+  <iface:resourceProperty rdf:resource="&foaf;depiction"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="depiction"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/homepage">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&foaf;homepage"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="homepage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/img">
+  <iface:resourceProperty rdf:resource="&foaf;img"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="img"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/knows">
+  <iface:resourceProperty rdf:resource="&foaf;knows"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="knows"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/made">
+  <iface:valueType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;made"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="made"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/member">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&foaf;member"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="member"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/name">
+  <iface:resourceProperty rdf:resource="&foaf;name"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/nick">
+  <iface:resourceProperty rdf:resource="&foaf;nick"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="nick"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/theme">
+  <iface:valueType rdf:resource="&mo;Genre"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;theme"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <rdfs:label rdf:resource="theme"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://xmlns.com/foaf/0.1/tipjar">
+  <iface:resourceProperty rdf:resource="&foaf;tipjar"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="tipjar"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/NET/c4dm/event.owl#isAgentIn">
+  <iface:resourceProperty rdf:resource="&event;isAgentIn"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isAgentIn"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/biography">
+  <iface:resourceProperty rdf:resource="&mo;biography"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="biography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/compiled">
+  <iface:resourceProperty rdf:resource="&mo;compiled"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="compiled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/discography">
+  <iface:resourceProperty rdf:resource="&mo;discography"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/discogs">
+  <iface:resourceProperty rdf:resource="&mo;discogs"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discogs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/djmixed">
+  <iface:resourceProperty rdf:resource="&mo;djmixed"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="djmixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/engineered">
+  <iface:resourceProperty rdf:resource="&mo;engineered"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineered"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/fanpage">
+  <iface:resourceProperty rdf:resource="&mo;fanpage"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="fanpage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/freedownload">
+  <iface:resourceProperty rdf:resource="&mo;freedownload"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="freedownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/imdb">
+  <iface:resourceProperty rdf:resource="&mo;imdb"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="imdb"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/mailorder">
+  <iface:resourceProperty rdf:resource="&mo;mailorder"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mailorder"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/musicmoz">
+  <iface:resourceProperty rdf:resource="&mo;musicmoz"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicmoz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/myspace">
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/paiddownload">
+  <iface:resourceProperty rdf:resource="&mo;paiddownload"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="paiddownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/performed">
+  <iface:resourceProperty rdf:resource="&mo;performed"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="performed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/produced">
+  <iface:resourceProperty rdf:resource="&mo;produced"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="produced"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/remixed">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixed"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <rdfs:label rdf:resource="remixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/sampled">
+  <iface:resourceProperty rdf:resource="&mo;sampled"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="sampled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/similar_to">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&mo;similar_to"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <rdfs:label rdf:resource="similar_to"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/ontology/mo/wikipedia">
+  <iface:resourceProperty rdf:resource="&mo;wikipedia"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="wikipedia"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://purl.org/vocab/bio/0.1/event">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/bio/0.1/event"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://vocab.org/bio/0.1/#event">
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Birth"/>
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Death"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/bio/0.1/#event"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://xmlns.com/foaf/0.1/homepage">
+  <iface:resourceProperty rdf:resource="&foaf;homepage"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="homepage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://xmlns.com/foaf/0.1/made">
+  <iface:resourceProperty rdf:resource="&foaf;made"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="made"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://xmlns.com/foaf/0.1/member">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&foaf;member"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <rdfs:label rdf:resource="member"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://xmlns.com/foaf/0.1/name">
+  <iface:resourceProperty rdf:resource="&foaf;name"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Grouphttp://xmlns.com/foaf/0.1/nick">
+  <iface:resourceProperty rdf:resource="&foaf;nick"/>
+  <iface:resourceType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="nick"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/NET/c4dm/event.owl#isAgentIn">
+  <iface:resourceProperty rdf:resource="&event;isAgentIn"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isAgentIn"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/biography">
+  <iface:resourceProperty rdf:resource="&mo;biography"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="biography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/compiled">
+  <iface:resourceProperty rdf:resource="&mo;compiled"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="compiled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/conducted">
+  <iface:resourceProperty rdf:resource="&mo;conducted"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="conducted"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/discography">
+  <iface:resourceProperty rdf:resource="&mo;discography"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/discogs">
+  <iface:resourceProperty rdf:resource="&mo;discogs"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discogs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/djmixed">
+  <iface:resourceProperty rdf:resource="&mo;djmixed"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="djmixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/engineered">
+  <iface:resourceProperty rdf:resource="&mo;engineered"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineered"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/fanpage">
+  <iface:resourceProperty rdf:resource="&mo;fanpage"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="fanpage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/imdb">
+  <iface:resourceProperty rdf:resource="&mo;imdb"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="imdb"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/mailorder">
+  <iface:resourceProperty rdf:resource="&mo;mailorder"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mailorder"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/member_of">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:resourceProperty rdf:resource="&mo;member_of"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="member_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/musicmoz">
+  <iface:resourceProperty rdf:resource="&mo;musicmoz"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicmoz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/myspace">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/performed">
+  <iface:resourceProperty rdf:resource="&mo;performed"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="performed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/produced">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;produced"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="produced"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/remixed">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixed"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="remixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/sampled">
+  <iface:resourceProperty rdf:resource="&mo;sampled"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="sampled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/similar_to">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&mo;similar_to"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="similar_to"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/supporting_musician">
+  <iface:resourceProperty rdf:resource="&mo;supporting_musician"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="supporting_musician"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/ontology/mo/wikipedia">
+  <iface:resourceProperty rdf:resource="&mo;wikipedia"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="wikipedia"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://purl.org/vocab/bio/0.1/event">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/bio/0.1/event"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://vocab.org/bio/0.1/#event">
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Birth"/>
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Death"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/bio/0.1/#event"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://vocab.org/relationship/#collaborated_with">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#collaborated_with"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="collaborated_with"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://vocab.org/relationship/#engagedTo">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#engagedTo"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="engagedTo"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://vocab.org/relationship/#parentOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#parentOf"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="parentOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://vocab.org/relationship/#siblingOf">
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#siblingOf"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="siblingOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://vocab.org/relationship/#spouseOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#spouseOf"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="spouseOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://xmlns.com/foaf/0.1/depiction">
+  <iface:resourceProperty rdf:resource="&foaf;depiction"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="depiction"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://xmlns.com/foaf/0.1/homepage">
+  <iface:resourceProperty rdf:resource="&foaf;homepage"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="homepage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://xmlns.com/foaf/0.1/knows">
+  <iface:resourceProperty rdf:resource="&foaf;knows"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="knows"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://xmlns.com/foaf/0.1/made">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;made"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="made"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://xmlns.com/foaf/0.1/name">
+  <iface:resourceProperty rdf:resource="&foaf;name"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://xmlns.com/foaf/0.1/nick">
+  <iface:resourceProperty rdf:resource="&foaf;nick"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="nick"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://xmlns.com/foaf/0.1/theme">
+  <iface:valueType rdf:resource="&mo;Genre"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;theme"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="theme"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Personhttp://xmlns.com/foaf/0.1/tipjar">
+  <iface:resourceProperty rdf:resource="&foaf;tipjar"/>
+  <iface:resourceType rdf:resource="&foaf;Person"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="tipjar"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicArtisthttp://www.multimedian.nl/projects/n9c/interface#activity">
+  <iface:resourceProperty rdf:resource="&iface;activity"/>
+  <iface:resourceType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="activity"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Agenthttp://www.multimedian.nl/projects/n9c/interface#activity">
+  <iface:resourceProperty rdf:resource="&iface;activity"/>
+  <iface:resourceType rdf:resource="&foaf;Agent"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="activity"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#alternateName">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#alternateName"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="alternate%20name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#childrenFeatures">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#childrenFeatures"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="children%20features"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#featureClass">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#featureClass"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Class"/>
+  <rdfs:label rdf:resource="feature%20class"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#featureCode">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#featureCode"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <rdfs:label rdf:resource="feature%20code"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#inCountry">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#inCountry"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="country"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#locationMap">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#locationMap"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="map"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#name">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#name"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#neighbouringFeatures">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#neighbouringFeatures"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="neighbouring%20features"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#parentFeature">
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#parentFeature"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <rdfs:label rdf:resource="parent%20feature"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#population">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#population"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="population"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.geonames.org/ontology#wikipediaArticle">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#wikipediaArticle"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="wikipedia%20article"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&owl;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.w3.org/2002/07/owl#sameAs">
+  <iface:resourceProperty rdf:resource="&owl;sameAs"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="sameAs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.w3.org/2003/01/geo/wgs84_pos#lat">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#lat"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="lat"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.w3.org/2003/01/geo/wgs84_pos#long">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#long"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="long"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.w3.org/2000/01/rdf-schema#label">
+  <iface:resourceProperty rdf:resource="&rdfs;label"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="label"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Featurehttp://www.w3.org/2004/02/skos/core#subject">
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Class"/>
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2004/02/skos/core#subject"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <rdfs:label rdf:resource="subject"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/NET/c4dm/event.owl#isAgentIn">
+  <iface:resourceProperty rdf:resource="&event;isAgentIn"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="isAgentIn"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/biography">
+  <iface:resourceProperty rdf:resource="&mo;biography"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="biography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/compiled">
+  <iface:resourceProperty rdf:resource="&mo;compiled"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="compiled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/conducted">
+  <iface:resourceProperty rdf:resource="&mo;conducted"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="conducted"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/discography">
+  <iface:resourceProperty rdf:resource="&mo;discography"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discography"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/discogs">
+  <iface:resourceProperty rdf:resource="&mo;discogs"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="discogs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/djmixed">
+  <iface:resourceProperty rdf:resource="&mo;djmixed"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="djmixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/engineered">
+  <iface:resourceProperty rdf:resource="&mo;engineered"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineered"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/fanpage">
+  <iface:resourceProperty rdf:resource="&mo;fanpage"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="fanpage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/imdb">
+  <iface:resourceProperty rdf:resource="&mo;imdb"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="imdb"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/mailorder">
+  <iface:resourceProperty rdf:resource="&mo;mailorder"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mailorder"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/member_of">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:resourceProperty rdf:resource="&mo;member_of"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="member_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/musicmoz">
+  <iface:resourceProperty rdf:resource="&mo;musicmoz"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicmoz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/myspace">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/performed">
+  <iface:resourceProperty rdf:resource="&mo;performed"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="performed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/produced">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;produced"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="produced"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/remixed">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixed"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="remixed"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/sampled">
+  <iface:resourceProperty rdf:resource="&mo;sampled"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="sampled"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/similar_to">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&mo;similar_to"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="similar_to"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/supporting_musician">
+  <iface:resourceProperty rdf:resource="&mo;supporting_musician"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <rdfs:label rdf:resource="supporting_musician"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/ontology/mo/wikipedia">
+  <iface:resourceProperty rdf:resource="&mo;wikipedia"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="wikipedia"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://purl.org/vocab/bio/0.1/event">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/bio/0.1/event"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://vocab.org/bio/0.1/#event">
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Birth"/>
+  <iface:valueType rdf:resource="http://vocab.org/bio/0.1/#Death"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/bio/0.1/#event"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="event"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://vocab.org/relationship/#collaborated_with">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#collaborated_with"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="collaborated_with"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://vocab.org/relationship/#engagedTo">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#engagedTo"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="engagedTo"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://vocab.org/relationship/#parentOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#parentOf"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="parentOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://vocab.org/relationship/#siblingOf">
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#siblingOf"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="siblingOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://vocab.org/relationship/#spouseOf">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="http://vocab.org/relationship/#spouseOf"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="spouseOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#alternateName">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#alternateName"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="alternate%20name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#childrenFeatures">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#childrenFeatures"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="children%20features"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#featureClass">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#featureClass"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Class"/>
+  <rdfs:label rdf:resource="feature%20class"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#featureCode">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#featureCode"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <rdfs:label rdf:resource="feature%20code"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#inCountry">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#inCountry"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="country"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#locationMap">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#locationMap"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="map"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#name">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#name"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#neighbouringFeatures">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#neighbouringFeatures"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="neighbouring%20features"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#parentFeature">
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Feature"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#parentFeature"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="parent%20feature"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#population">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#population"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="population"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.geonames.org/ontology#wikipediaArticle">
+  <iface:resourceProperty rdf:resource="http://www.geonames.org/ontology#wikipediaArticle"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="wikipedia%20article"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <iface:valueType rdf:resource="&owl;Class"/>
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.w3.org/2000/01/rdf-schema#label">
+  <iface:resourceProperty rdf:resource="&rdfs;label"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="label"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.w3.org/2002/07/owl#sameAs">
+  <iface:resourceProperty rdf:resource="&owl;sameAs"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="sameAs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.w3.org/2003/01/geo/wgs84_pos#lat">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#lat"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="lat"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.w3.org/2003/01/geo/wgs84_pos#long">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#long"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="long"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://www.w3.org/2004/02/skos/core#subject">
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Class"/>
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2004/02/skos/core#subject"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="subject"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://xmlns.com/foaf/0.1/depiction">
+  <iface:resourceProperty rdf:resource="&foaf;depiction"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="depiction"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://xmlns.com/foaf/0.1/homepage">
+  <iface:resourceProperty rdf:resource="&foaf;homepage"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="homepage"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://xmlns.com/foaf/0.1/knows">
+  <iface:resourceProperty rdf:resource="&foaf;knows"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <rdfs:label rdf:resource="knows"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://xmlns.com/foaf/0.1/made">
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;made"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="made"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://xmlns.com/foaf/0.1/name">
+  <iface:resourceProperty rdf:resource="&foaf;name"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="name"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://xmlns.com/foaf/0.1/nick">
+  <iface:resourceProperty rdf:resource="&foaf;nick"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="nick"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://xmlns.com/foaf/0.1/theme">
+  <iface:valueType rdf:resource="&mo;Genre"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&foaf;theme"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <rdfs:label rdf:resource="theme"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2003/01/geo/wgs84_pos#SpatialThinghttp://xmlns.com/foaf/0.1/tipjar">
+  <iface:resourceProperty rdf:resource="&foaf;tipjar"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="tipjar"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://purl.org/dc/elements/1.1/title">
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://purl.org/ontology/mo/mashup_of">
+  <iface:resourceProperty rdf:resource="&mo;mashup_of"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mashup_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://purl.org/ontology/mo/published_as">
+  <iface:resourceProperty rdf:resource="&mo;published_as"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="published%20as"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://purl.org/ontology/mo/puid">
+  <iface:resourceProperty rdf:resource="&mo;puid"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="puid"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://purl.org/ontology/mo/remix_of">
+  <iface:resourceProperty rdf:resource="&mo;remix_of"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="remix_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://purl.org/ontology/mo/remixer">
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixer"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <rdfs:label rdf:resource="remixer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://purl.org/ontology/mo/time">
+  <iface:valueType rdf:resource="&tl;Interval"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&time;Interval"/>
+  <iface:resourceProperty rdf:resource="&mo;time"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <rdfs:label rdf:resource="time"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://purl.org/ontology/mo/manifestation">
+  <iface:resourceProperty rdf:resource="&mo;manifestation"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="manifestation"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Signalhttp://purl.org/vocab/frbr/core#embodiment">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/frbr/core#embodiment"/>
+  <iface:resourceType rdf:resource="&mo;Signal"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="embodiment"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Lyricshttp://purl.org/ontology/mo/text">
+  <iface:resourceProperty rdf:resource="&mo;text"/>
+  <iface:resourceType rdf:resource="&mo;Lyrics"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="text"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Lyricshttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;Lyrics"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/dc/elements/1.1/title">
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/ontology/mo/manifestation">
+  <iface:resourceProperty rdf:resource="&mo;manifestation"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="manifestation"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/ontology/mo/mashup_of">
+  <iface:resourceProperty rdf:resource="&mo;mashup_of"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mashup_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/ontology/mo/published_as">
+  <iface:resourceProperty rdf:resource="&mo;published_as"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="published%20as"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/ontology/mo/puid">
+  <iface:resourceProperty rdf:resource="&mo;puid"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="puid"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/ontology/mo/remix_of">
+  <iface:resourceProperty rdf:resource="&mo;remix_of"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="remix_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/ontology/mo/remixer">
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixer"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <rdfs:label rdf:resource="remixer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/ontology/mo/text">
+  <iface:resourceProperty rdf:resource="&mo;text"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="text"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/ontology/mo/time">
+  <iface:valueType rdf:resource="&tl;Interval"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&time;Interval"/>
+  <iface:resourceProperty rdf:resource="&mo;time"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <rdfs:label rdf:resource="time"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://purl.org/vocab/frbr/core#embodiment">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/frbr/core#embodiment"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="embodiment"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalExpressionhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;MusicalExpression"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/dc/elements/1.1/title">
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/ontology/mo/manifestation">
+  <iface:resourceProperty rdf:resource="&mo;manifestation"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="manifestation"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/ontology/mo/mashup_of">
+  <iface:resourceProperty rdf:resource="&mo;mashup_of"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="mashup_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/ontology/mo/published_as">
+  <iface:resourceProperty rdf:resource="&mo;published_as"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="published%20as"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/ontology/mo/puid">
+  <iface:resourceProperty rdf:resource="&mo;puid"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="puid"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/ontology/mo/remix_of">
+  <iface:resourceProperty rdf:resource="&mo;remix_of"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="remix_of"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/ontology/mo/remixer">
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;remixer"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <rdfs:label rdf:resource="remixer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/ontology/mo/text">
+  <iface:resourceProperty rdf:resource="&mo;text"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="text"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/ontology/mo/time">
+  <iface:valueType rdf:resource="&tl;Interval"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&time;Interval"/>
+  <iface:resourceProperty rdf:resource="&mo;time"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <rdfs:label rdf:resource="time"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://purl.org/vocab/frbr/core#embodiment">
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/frbr/core#embodiment"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="embodiment"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Expressionhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Expression"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/dc/elements/1.1/title">
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/ontology/mo/available_as">
+  <iface:valueType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&mo;Stream"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;available_as"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="available_as"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/ontology/mo/duration">
+  <iface:resourceProperty rdf:resource="&mo;duration"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="duration"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/ontology/mo/engineer">
+  <iface:resourceProperty rdf:resource="&mo;engineer"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/ontology/mo/freedownload">
+  <iface:resourceProperty rdf:resource="&mo;freedownload"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="freedownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/ontology/mo/license">
+  <iface:resourceProperty rdf:resource="&mo;license"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="license"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/ontology/mo/myspace">
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/ontology/mo/producer">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;producer"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="producer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/ontology/mo/track_number">
+  <iface:resourceProperty rdf:resource="&mo;track_number"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="track%20number"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://www.w3.org/1999/02/22-rdf-syntax-ns#about">
+  <iface:resourceProperty rdf:resource="&rdf;about"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="about"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://xmlns.com/foaf/0.1/maker">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&foaf;maker"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="maker"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/NET/c4dm/event.owl#agent">
+  <iface:resourceProperty rdf:resource="&event;agent"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="agent"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://purl.org/vocab/frbr/core#exemplar">
+  <iface:valueType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&mo;Stream"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/frbr/core#exemplar"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="exemplar"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Trackhttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/dc/elements/1.1/date">
+  <iface:resourceProperty rdf:resource="&dc;date"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="date"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/dc/elements/1.1/description">
+  <iface:resourceProperty rdf:resource="&dc;description"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="description"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/dc/elements/1.1/title">
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/available_as">
+  <iface:valueType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&mo;BittorrentItem"/>
+  <iface:valueType rdf:resource="&mo;Ed2kItem"/>
+  <iface:valueType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&mo;Stream"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;available_as"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <rdfs:label rdf:resource="available_as"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/image">
+  <iface:resourceProperty rdf:resource="&mo;image"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="image"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/track">
+  <iface:resourceProperty rdf:resource="&mo;track"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="track"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag">
+  <iface:resourceProperty rdf:resource="&tags;taggedWithTag"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&tags;Tag"/>
+  <rdfs:label rdf:resource="taggedWithTag"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://xmlns.com/foaf/0.1/maker">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&foaf;maker"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <rdfs:label rdf:resource="maker"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/vocab/frbr/core#exemplar">
+  <iface:valueType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&mo;BittorrentItem"/>
+  <iface:valueType rdf:resource="&mo;Ed2kItem"/>
+  <iface:valueType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&mo;Stream"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/frbr/core#exemplar"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <rdfs:label rdf:resource="exemplar"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://xmlns.com/foaf/0.1/depiction">
+  <iface:resourceProperty rdf:resource="&foaf;depiction"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="depiction"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/NET/c4dm/event.owl#agent">
+  <iface:resourceProperty rdf:resource="&event;agent"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="agent"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/duration">
+  <iface:resourceProperty rdf:resource="&mo;duration"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="duration"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/engineer">
+  <iface:resourceProperty rdf:resource="&mo;engineer"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/freedownload">
+  <iface:resourceProperty rdf:resource="&mo;freedownload"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="freedownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/license">
+  <iface:resourceProperty rdf:resource="&mo;license"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="license"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/myspace">
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/producer">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;producer"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <rdfs:label rdf:resource="producer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://purl.org/ontology/mo/track_number">
+  <iface:resourceProperty rdf:resource="&mo;track_number"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="track%20number"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://www.w3.org/1999/02/22-rdf-syntax-ns#about">
+  <iface:resourceProperty rdf:resource="&rdf;about"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="about"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/Recordhttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="&mo;Record"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/NET/c4dm/event.owl#agent">
+  <iface:resourceProperty rdf:resource="&event;agent"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="agent"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/dc/elements/1.1/date">
+  <iface:resourceProperty rdf:resource="&dc;date"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="date"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/dc/elements/1.1/description">
+  <iface:resourceProperty rdf:resource="&dc;description"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="description"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/dc/elements/1.1/title">
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/available_as">
+  <iface:valueType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&mo;BittorrentItem"/>
+  <iface:valueType rdf:resource="&mo;Ed2kItem"/>
+  <iface:valueType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&mo;Stream"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;available_as"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <rdfs:label rdf:resource="available_as"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/duration">
+  <iface:resourceProperty rdf:resource="&mo;duration"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="duration"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/engineer">
+  <iface:resourceProperty rdf:resource="&mo;engineer"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/freedownload">
+  <iface:resourceProperty rdf:resource="&mo;freedownload"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="freedownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/image">
+  <iface:resourceProperty rdf:resource="&mo;image"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="image"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/license">
+  <iface:resourceProperty rdf:resource="&mo;license"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="license"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/myspace">
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/producer">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;producer"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <rdfs:label rdf:resource="producer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/track">
+  <iface:resourceProperty rdf:resource="&mo;track"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="track"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/ontology/mo/track_number">
+  <iface:resourceProperty rdf:resource="&mo;track_number"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="track%20number"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://purl.org/vocab/frbr/core#exemplar">
+  <iface:valueType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&mo;BittorrentItem"/>
+  <iface:valueType rdf:resource="&mo;Ed2kItem"/>
+  <iface:valueType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&mo;Stream"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/frbr/core#exemplar"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <rdfs:label rdf:resource="exemplar"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag">
+  <iface:resourceProperty rdf:resource="&tags;taggedWithTag"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&tags;Tag"/>
+  <rdfs:label rdf:resource="taggedWithTag"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://www.w3.org/1999/02/22-rdf-syntax-ns#about">
+  <iface:resourceProperty rdf:resource="&rdf;about"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="about"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://xmlns.com/foaf/0.1/depiction">
+  <iface:resourceProperty rdf:resource="&foaf;depiction"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="depiction"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/ontology/mo/MusicalManifestationhttp://xmlns.com/foaf/0.1/maker">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&foaf;maker"/>
+  <iface:resourceType rdf:resource="&mo;MusicalManifestation"/>
+  <rdfs:label rdf:resource="maker"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/NET/c4dm/event.owl#agent">
+  <iface:resourceProperty rdf:resource="&event;agent"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="agent"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/dc/elements/1.1/date">
+  <iface:resourceProperty rdf:resource="&dc;date"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="date"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/dc/elements/1.1/description">
+  <iface:resourceProperty rdf:resource="&dc;description"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="description"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/dc/elements/1.1/title">
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&dc;title"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <rdfs:label rdf:resource="title"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/available_as">
+  <iface:valueType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&mo;BittorrentItem"/>
+  <iface:valueType rdf:resource="&mo;Ed2kItem"/>
+  <iface:valueType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&mo;Stream"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;available_as"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <rdfs:label rdf:resource="available_as"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/duration">
+  <iface:resourceProperty rdf:resource="&mo;duration"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="duration"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/engineer">
+  <iface:resourceProperty rdf:resource="&mo;engineer"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="engineer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/freedownload">
+  <iface:resourceProperty rdf:resource="&mo;freedownload"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="freedownload"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/image">
+  <iface:resourceProperty rdf:resource="&mo;image"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="image"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/license">
+  <iface:resourceProperty rdf:resource="&mo;license"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="license"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/musicbrainz">
+  <iface:resourceProperty rdf:resource="&mo;musicbrainz"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="musicbrainz"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/myspace">
+  <iface:resourceProperty rdf:resource="&mo;myspace"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <rdfs:label rdf:resource="myspace"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/producer">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="&mo;producer"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <rdfs:label rdf:resource="producer"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/track">
+  <iface:resourceProperty rdf:resource="&mo;track"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&mo;Track"/>
+  <rdfs:label rdf:resource="track"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/ontology/mo/track_number">
+  <iface:resourceProperty rdf:resource="&mo;track_number"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="track%20number"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://purl.org/vocab/frbr/core#exemplar">
+  <iface:valueType rdf:resource="&mo;AudioFile"/>
+  <iface:valueType rdf:resource="&mo;BittorrentItem"/>
+  <iface:valueType rdf:resource="&mo;Ed2kItem"/>
+  <iface:valueType rdf:resource="&mo;MusicalItem"/>
+  <iface:valueType rdf:resource="&mo;Stream"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:resourceProperty rdf:resource="http://purl.org/vocab/frbr/core#exemplar"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <rdfs:label rdf:resource="exemplar"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag">
+  <iface:resourceProperty rdf:resource="&tags;taggedWithTag"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&tags;Tag"/>
+  <rdfs:label rdf:resource="taggedWithTag"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://www.w3.org/1999/02/22-rdf-syntax-ns#about">
+  <iface:resourceProperty rdf:resource="&rdf;about"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="about"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://xmlns.com/foaf/0.1/depiction">
+  <iface:resourceProperty rdf:resource="&foaf;depiction"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <rdfs:label rdf:resource="depiction"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Document"/>
+  <iface:resourceProperty rdf:resource="&foaf;isPrimaryTopicOf"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <rdfs:label rdf:resource="isPrimaryTopicOf"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://purl.org/vocab/frbr/core#Manifestationhttp://xmlns.com/foaf/0.1/maker">
+  <iface:valueType rdf:resource="&mo;MusicArtist"/>
+  <iface:valueType rdf:resource="&mo;MusicGroup"/>
+  <iface:valueType rdf:resource="&mo;SoloMusicArtist"/>
+  <iface:valueType rdf:resource="&rdfs;Resource"/>
+  <iface:valueType rdf:resource="&foaf;Group"/>
+  <iface:valueType rdf:resource="&foaf;Person"/>
+  <iface:resourceProperty rdf:resource="&foaf;maker"/>
+  <iface:resourceType rdf:resource="http://purl.org/vocab/frbr/core#Manifestation"/>
+  <rdfs:label rdf:resource="maker"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Codehttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <iface:valueType rdf:resource="&owl;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Codehttp://www.w3.org/2002/07/owl#sameAs">
+  <iface:resourceProperty rdf:resource="&owl;sameAs"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <iface:valueType rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  <rdfs:label rdf:resource="sameAs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Codehttp://www.w3.org/2004/02/skos/core#definition">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="definition"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Codehttp://www.w3.org/2004/02/skos/core#inScheme">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Class"/>
+  <rdfs:label rdf:resource="inScheme"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Codehttp://www.w3.org/2004/02/skos/core#prefLabel">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="prefLabel"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2004/02/skos/core#Concepthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  <iface:valueType rdf:resource="&owl;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2004/02/skos/core#Concepthttp://www.w3.org/2002/07/owl#sameAs">
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Code"/>
+  <iface:valueType rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  <iface:resourceProperty rdf:resource="&owl;sameAs"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  <rdfs:label rdf:resource="sameAs"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2004/02/skos/core#Concepthttp://www.w3.org/2004/02/skos/core#definition">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="definition"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2004/02/skos/core#Concepthttp://www.w3.org/2004/02/skos/core#inScheme">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  <iface:valueType rdf:resource="http://www.geonames.org/ontology#Class"/>
+  <rdfs:label rdf:resource="inScheme"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2004/02/skos/core#Concepthttp://www.w3.org/2004/02/skos/core#prefLabel">
+  <iface:resourceProperty rdf:resource="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="prefLabel"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Classhttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Class"/>
+  <iface:valueType rdf:resource="&owl;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.geonames.org/ontology#Classhttp://www.w3.org/2000/01/rdf-schema#comment">
+  <iface:resourceProperty rdf:resource="&rdfs;comment"/>
+  <iface:resourceType rdf:resource="http://www.geonames.org/ontology#Class"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="comment"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2004/02/skos/core#ConceptSchemehttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+  <iface:valueType rdf:resource="&owl;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://www.w3.org/2004/02/skos/core#ConceptSchemehttp://www.w3.org/2000/01/rdf-schema#comment">
+  <iface:resourceProperty rdf:resource="&rdfs;comment"/>
+  <iface:resourceType rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+  <iface:valueType rdf:resource="&rdfs;Literal"/>
+  <rdfs:label rdf:resource="comment"/>
+</iface:ObjectFacet>
+
+<iface:ObjectFacet rdf:about="&iface;facethttp://xmlns.com/foaf/0.1/Documenthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+  <iface:resourceProperty rdf:resource="&rdf;type"/>
+  <iface:resourceType rdf:resource="&foaf;Document"/>
+  <iface:valueType rdf:resource="&owl;Class"/>
+  <rdfs:label rdf:resource="type"/>
+</iface:ObjectFacet>
+
+</rdf:RDF>
