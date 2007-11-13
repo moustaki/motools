@@ -1,7 +1,8 @@
 #!/bin/bash
 
-wget http://moustaki.org/resources/SeRQL.tar.gz
-tar zxvf SeRQL.tar.gz
+# Get the ClioPatria GIT repository - make sure you have GIT in your path
+# http://e-culture.multimedian.nl/software/ClioPatria.shtml
 
-wget http://moustaki.org/resources/swic.tar.gz
-tar xvzf swic.tar.gz
+git clone git://gollem.science.uva.nl/home/git/ClioPatria.git
+
+

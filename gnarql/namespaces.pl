@@ -1,4 +1,4 @@
-:- module(namespaces,[]).
+%:- module(namespaces,[]).
 
 /**
  * Some common namespaces GNARQL might need
