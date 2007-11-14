@@ -20,6 +20,8 @@
 
 # Concepts
 
+# Basic ones
+
 :NoteEvent 
 	a owl:Class;
 	rdfs:subClassOf event:Event;
@@ -46,6 +48,20 @@
 		The pitch of a note. Either A, B, C, D, E, F or G.
 	"""@en;
 	.
+
+:RestEvent
+	a owl:Class;
+	rdfs:subClassOf event:Event;
+	rdfs:label "rest event"@en;
+	rdfs:comment """
+		Classifying a particular region as holding a rest (an interval of silence).
+		Subclasses of this event are restriced to a particular length, as note events.
+	"""@en;
+	.
+
+# Key signature - should I get into that?
+
+# Time signature
 
 # Now, a bunch of specification of the previous concepts
 
@@ -220,6 +236,101 @@
 	];
 	.
 
+:Longa
+	a owl:Class;
+	rdfs:subClassOf :RestEvent;
+	rdfs:label "longa"@en;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :longa;
+	];
+	.
+
+:DoubleWholeRest
+	a owl:Class;
+	rdfs:subClassOf :RestEvent;
+	rdfs:label "double whole rest"@en-US;
+	rdfs:label "breve rest"@en-UK;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :double_whole;
+	]; # do i have to specify the subclassing here?
+	.
+
+:WholeRest
+	a owl:Class;
+	rdfs:subClassOf :RestEvent;
+	rdfs:label "whole rest"@en-US;
+	rdfs:label "semibreve rest"@en-UK;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :whole;
+	];
+	.
+
+:HalfRest
+	a owl:Class;
+	rdfs:subClassOf :RestEvent;
+	rdfs:label "half rest"@en-US;
+	rdfs:label "minim rest"@en-UK;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :half;
+	];
+	.
+
+:QuarterRest
+	a owl:Class;
+	rdfs:subClassOf :RestEvent;
+	rdfs:label "quarter rest"@en-US;
+	rdfs:label "crotchet rest"@en-UK;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :quarter;
+	];
+	.
+
+:EighthRest
+	a owl:Class;
+	rdfs:subClassOf :RestEvent;
+	rdfs:label "eighth rest"@en-US;
+	rdfs:label "quaver rest"@en-UK;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :eighth;
+	];
+	.
+
+:SixteenthRest
+	a owl:Class;
+	rdfs:subClassOf :RestEvent;
+	rdfs:label "sixteenth rest"@en-US;
+	rdfs:label "semiquaver rest"@en-UK;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :sixteenth;
+	];
+	.
+
+:ThirtySecondRest
+	a owl:Class;
+	rdfs:subClassOf :RestEvent;
+	rdfs:label "thirtysecond rest"@en-US;
+	rdfs:label "demisemiquaver rest"@en-UK;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :thirtysecond;
+	];
+	.
+
 # Grouping of events
 
 :Bar
@@ -232,12 +343,16 @@
 	"""@en
 	.
 
-:Tied
+:Tie
 	a owl:Class;
 	rdfs:subClassOf event:Event;
-	rdfs:label "tied notes"@en-UK;
-	rdfs:label "slurred notes (different pitches (articulation))"@en-UK; # Should be two different things - cannam
-	rdfs:label "notes liees (same pitch, adjacent notes)"@fr;
+	rdfs:label "tie"@en-UK;
+	.
+
+:Slur
+	a owl:Class;
+	rdfs:subClassOf event:Event;
+	rdfs:label "slur"@en-UK;
 	.
 
 :Voice
