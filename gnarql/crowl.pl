@@ -1,4 +1,4 @@
-:- module(crowl,[init/0,crawl_track/0,crawl_type/1,kill/0,crawl_forall/2]).
+:- module(crowl,[init/0,crawl_track/0,crawl_type/1,kill/0,crawl_forall/2,crawl_all/0]).
 
 :- use_module(library('semweb/rdf_db')).
 :- use_module('rdf_http_plugin').
@@ -11,6 +11,15 @@ kill :-
 	crawlers(N),
 	stop_crawlers(N),sleep(1),
 	message_queue_destroy(jobs).
+
+crawl_all :-
+	forall(
+                ( (rdf_db:rdf_subject(A) ; (rdf_db:rdf(_,_,A,_),atomic(A))),
+                  atom_concat('http://',T,A),\+atom_concat('dsp-cluster',_,T)
+                ),
+                thread_send_message(jobs,A)
+                ).
+
 
 crawl_forall(Goal,URI) :-
 	forall(Goal,thread_send_message(jobs,URI)).
