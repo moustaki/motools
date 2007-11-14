@@ -1,6 +1,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 @prefix tl: <http://purl.org/NET/c4dm/timeline.owl#>.
 @prefix event: <http://purl.org/NET/c4dm/event.owl#>.
@@ -13,7 +14,7 @@
 	a owl:Ontology;
 	rdfs:comment """
 		Symbolic notation ontology
-	""";
+	"""@en;
 	foaf:maker <http://moustaki.org/foaf.rdf#moustaki>;
 	.
 
@@ -22,29 +23,41 @@
 :NoteEvent 
 	a owl:Class;
 	rdfs:subClassOf event:Event;
-	rdfs:label "note event";
+	rdfs:label "note event"@en;
 	rdfs:comment """
 		Classifying a particular region of a score' timeline (or another concept,
-		depending on the context), as holding a note. 
-	"""
+		depending on the context), as holding a note. Several subclasses are defined,
+		implicitly specifying (through a DL restriction) the duration of the event.
+	"""@en;
 	.
 
 :Pitch
 	a owl:Class;
-	rdfs:label "pitch";
+	rdfs:label "pitch"@en;
+	rdfs:comment """
+		The pitch of a note. A pitch holds information about the modifiers (sharp, flat, natural), the note, and the octave.
+	"""@en;
 	.
 
 :Note 
 	a owl:Class;
-	rdfs:label "note";
+	rdfs:label "note"@en;
+	rdfs:comment """
+		The pitch of a note. Either A, B, C, D, E, F or G.
+	"""@en;
 	.
+
+# Now, a bunch of specification of the previous concepts
+
+# Here, we consider as subclasses of NoteEvent a bunch of
+# concepts holding restrictions about their respective durations
 
 :DoubleWholeNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "double whole";
-	rdfs:label "breve";
-	rdfs:label "double ronde";
+	rdfs:label "double whole"@en-US;
+	rdfs:label "breve"@en-UK;
+	rdfs:label "double ronde"@fr;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -55,9 +68,9 @@
 :WholeNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "whole note";
-	rdfs:label "semibreve";
-	rdfs:label "ronde";
+	rdfs:label "whole note"@en-US;
+	rdfs:label "semibreve"@en-UK;
+	rdfs:label "ronde"@fr;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -68,9 +81,9 @@
 :HalfNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "half note";
-	rdfs:label "minim";
-	rdfs:label "blanche";
+	rdfs:label "half note"@en-US;
+	rdfs:label "minim"@en-UK;
+	rdfs:label "blanche"@fr;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -81,9 +94,9 @@
 :QuarterNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "quarter note";
-	rdfs:label "crotchet";
-	rdfs:label "noire";
+	rdfs:label "quarter note"@en-US;
+	rdfs:label "crotchet"@en-UK;
+	rdfs:label "noire"@fr;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -94,9 +107,9 @@
 :EighthNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "eighth note";
-	rdfs:label "quaver";
-	rdfs:label "croche";
+	rdfs:label "eighth note"@en-US;
+	rdfs:label "quaver"@en-UK;
+	rdfs:label "croche"@fr;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -107,9 +120,9 @@
 :SixteenthNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "sixteenth note";
-	rdfs:label "semiquaver";
-	rdfs:label "double croche";
+	rdfs:label "sixteenth note"@en-US;
+	rdfs:label "semiquaver"@en-UK;
+	rdfs:label "double croche"@fr;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -120,9 +133,9 @@
 :ThirtySecondNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "thirtysecond note";
-	rdfs:label "demisemiquaver";
-	rdfs:label "triple croche";
+	rdfs:label "thirtysecond note"@en-US;
+	rdfs:label "demisemiquaver"@en-UK;
+	rdfs:label "triple croche"@fr;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -133,7 +146,7 @@
 :DottedDoubleWholeNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "dotted double whole note";
+	rdfs:label "dotted double whole note"@en-US;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -144,7 +157,7 @@
 :DottedWholeNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "dotted whole note";
+	rdfs:label "dotted whole note"@en-US;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -155,7 +168,7 @@
 :DottedHalfNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "dotted half note";
+	rdfs:label "dotted half note"@en-US;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -166,7 +179,7 @@
 :DottedQuarterNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "dotted quarter note";
+	rdfs:label "dotted quarter note"@en-US;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -177,7 +190,7 @@
 :DottedEighthNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "dotted eighth note";
+	rdfs:label "dotted eighth note"@en-US;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -188,7 +201,7 @@
 :DottedSixteenthNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "dotted sixteenth note";
+	rdfs:label "dotted sixteenth note"@en-US;
 	owl:equivalentlass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -199,7 +212,7 @@
 :DottedThirtySecondNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
-	rdfs:label "dotted thirty second note";
+	rdfs:label "dotted thirty second note"@en-US;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
@@ -212,21 +225,39 @@
 :Bar
 	a owl:Class;
 	rdfs:subClassOf event:Event;
-	rdfs:label "bar";
+	rdfs:label "bar"@en;
+	rdfs:comment """
+		A bar is an event, grouping a bunch of sub_event - eg. note events.
+		Relationships such as Allen's meets hold for two consecutive bars.
+	"""@en
 	.
 
 :Tied
 	a owl:Class;
 	rdfs:subClassOf event:Event;
-	rdfs:label "tied notes";
-	rdfs:label "slurred notes (different pitches (articulation))"; # Should be two different things - cannam
-	rdfs:label "notes liees (same pitch, adjacent notes)";
+	rdfs:label "tied notes"@en-UK;
+	rdfs:label "slurred notes (different pitches (articulation))"@en-UK; # Should be two different things - cannam
+	rdfs:label "notes liees (same pitch, adjacent notes)"@fr;
+	.
+
+:Voice
+	a owl:Class;
+	rdfs:subClassOf event:Event;
+	rdfs:label "voice"@en;
+	rdfs:comment """
+		This is stolen from Christophe Rhodes' GSharp.
+		A grouping of events forming a `voice'.
+	""";
 	.
 
 :Motif
 	a owl:Class;
 	rdfs:subClassOf event:Event;
-	rdfs:label "motif";
+	rdfs:label "motif"@en;
+	rdfs:comment """
+		A classification of a set of events forming a motif.
+		It can either be several note events, a set of bars, etc.
+	""";
 	.
 
 :Octave
@@ -241,6 +272,10 @@
 
 :Accidental
 	a owl:Class;
+	rdfs:label "accidental"@en;
+	rdfs:comment """
+		An accidental - eg. flat, sharp, natural
+	""";
 	.
 
 # Properties
@@ -251,7 +286,7 @@
 	a owl:ObjectProperty;
 	a owl:FunctionalProperty;
 	rdfs:subPropertyOf event:factor;
-	rdfs:label "pitch";
+	rdfs:label "pitch"@en;
 	rdfs:domain :NoteEvent;
 	rdfs:range :Pitch;
 	.
@@ -259,7 +294,7 @@
 :timbre
 	a owl:ObjectProperty;
 	rdfs:subPropertyOf event:factor;
-	rdfs:label "timbre";
+	rdfs:label "timbre"@en;
 	rdfs:domain :NoteEvent;
 	rdfs:range :Timbre;
 	.
@@ -267,7 +302,7 @@
 :note 
 	a owl:ObjectProperty;
 	a owl:FunctionalProperty;
-	rdfs:label "note";
+	rdfs:label "note"@en;
 	rdfs:domain :Pitch;
 	rdfs:range :Note;
 	.
@@ -275,14 +310,14 @@
 :accidental 
 	a owl:ObjectProperty;
 	a owl:FunctionalProperty;
-	rdfs:label "accidental";
+	rdfs:label "accidental"@en;
 	rdfs:domain :Note;
 	rdfs:range :Accidental;
 	.
 
 :octave
 	a owl:ObjectProperty;
-	rdfs:label "octave";
+	rdfs:label "octave"@en;
 	rdfs:domain :Note;
 	rdfs:range :Octave;
 	.
