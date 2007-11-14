@@ -71,6 +71,11 @@
 	rdfs:label "half note";
 	rdfs:label "minim";
 	rdfs:label "blanche";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :half;
+	];
 	.
 
 :QuarterNote
@@ -79,6 +84,11 @@
 	rdfs:label "quarter note";
 	rdfs:label "crotchet";
 	rdfs:label "noire";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :quarter;
+	];
 	.
 
 :EighthNote
@@ -87,6 +97,11 @@
 	rdfs:label "eighth note";
 	rdfs:label "quaver";
 	rdfs:label "croche";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :eighth;
+	];
 	.
 
 :SixteenthNote
@@ -95,6 +110,11 @@
 	rdfs:label "sixteenth note";
 	rdfs:label "semiquaver";
 	rdfs:label "double croche";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :sixteenth;
+	];
 	.
 
 :ThirtySecondNote
@@ -103,49 +123,91 @@
 	rdfs:label "thirtysecond note";
 	rdfs:label "demisemiquaver";
 	rdfs:label "triple croche";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :thirtysecond;
+	];
 	.
 
 :DottedDoubleWholeNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
 	rdfs:label "dotted double whole note";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :dotted_double_whole;
+	];
 	.
 
 :DottedWholeNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
 	rdfs:label "dotted whole note";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :dotted_whole;
+	];
 	.
 
 :DottedHalfNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
 	rdfs:label "dotted half note";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :dotted_half;
+	];
 	.
 
 :DottedQuarterNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
 	rdfs:label "dotted quarter note";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :dotted_quarter;
+	];
 	.
 
 :DottedEighthNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
 	rdfs:label "dotted eighth note";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :dotted_eighth;
+	];
 	.
 
 :DottedSixteenthNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
 	rdfs:label "dotted sixteenth note";
+	owl:equivalentlass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :dotted_sixteenth;
+	];
 	.
 
 :DottedThirtySecondNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
 	rdfs:label "dotted thirty second note";
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:hasValue :dotted_thirtysecond;
+	];
 	.
+
+# Grouping of events
 
 :Bar
 	a owl:Class;
