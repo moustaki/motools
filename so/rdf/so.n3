@@ -15,6 +15,10 @@
 	a owl:Ontology;
 	rdfs:comment """
 		Symbolic notation ontology
+		TODO:
+			* Time signature;
+			* Key signature?
+			* Repetitions
 	"""@en;
 	foaf:maker <http://moustaki.org/foaf.rdf#moustaki>;
 	.
@@ -47,7 +51,7 @@
 	a owl:Class;
 	rdfs:label "note"@en;
 	rdfs:comment """
-		The pitch of a note. Either A, B, C, D, E, F or G.
+		A note. Either A, B, C, D, E, F or G.
 	"""@en;
 	.
 
@@ -553,10 +557,10 @@
 	.
 
 :octave
-	a owl:ObjectProperty;
+	a owl:DatatypeProperty;
 	rdfs:label "octave"@en;
 	rdfs:domain :Note;
-	rdfs:range :Octave;
+	rdfs:range xsd:int;
 	.
 
 
