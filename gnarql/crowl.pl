@@ -1,7 +1,8 @@
 :- module(crowl,[init/0,crawl_track/0,crawl_type/1,kill/0,crawl_forall/2,crawl_all/0]).
 
 :- use_module(library('semweb/rdf_db')).
-:- use_module('rdf_http_plugin').
+:- use_module(library('semweb/rdf_http_plugin')).
+:- use_module('log').
 
 
 init :-
@@ -54,15 +55,15 @@ create_crawlers_pool(N) :-
 
 crawler(Queue) :-
 	repeat,
-	thread_get_message(Queue,URI),format(' - Received ~w\n',[URI]),
-	(URI=stop -> (format(' - Exiting...\n'),thread_exit(true));(
+	thread_get_message(Queue,URI),log(' - Received ~w\n',[URI]),
+	(URI=stop -> (log(' - Exiting...\n'),thread_exit(true));(
 		uri_url(URI,URL),
 		load(URL),fail)).
 
 load(URL) :-
-	catch((rdf_load(URL), format(' - Loaded ~w\n',[URL])),_,
+	catch((rdf_load(URL), log(' - Loaded ~w\n',[URL])),_,
 		(
-		format(' - Failed to load ~w\n',[URL])%,
+		log(' - Failed to load ~w\n',[URL])%,
 		%assert(failed(URL))
 		)
 	).
