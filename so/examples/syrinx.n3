@@ -1,0 +1,198 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix so: <http://purl.org/ontology/so/>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix tl: <http://purl.org/NET/c4dm/timeline.owl#>.
+@prefix : <>.
+
+
+
+<>
+	rdfs:comment "The first bar of Debussy's core of Syrinx";
+	rdfs:label "syrinx";
+	foaf:maker <http://moustaki.org/foaf.rdf#moustaki>;
+	.
+
+:compo
+	a mo:Composition;
+	event:product :syrinx_w;
+	event:product :syrinx_s;
+	.
+:syrinx 
+	a mo:MusicalWork;
+	owl:sameAs <http://dbpedia.org/resource/Syrinx_%28Debussy%29>;
+	.
+:syrinx_s 
+	a mo:Score;
+	so:score_time :tl;
+	.
+
+
+# Main timeline
+
+:tl a so:ScoreTimeLine.
+
+
+
+# Events
+
+:e000
+	a so:DottedEighthNote;
+	so:pitch :b_flat;
+	event:time [
+		tl:onTimeLine :tl;
+		tl:meets :e001;
+	];
+	.
+:e001
+	a so:ThirtysecondNote;
+	so:pitch :a;
+	event:time [
+		tl:onTimeLine :tl;
+		tl:meets :e002;
+	];
+	.
+:e002
+	a so:ThirtysecondNote;
+	so:pitch :b;
+	event:time [
+		tl:onTimeLine :tl;
+		tl:meets :e003;
+	];
+	.
+:e003
+	a so:DottedEighthNote;
+	so:pitch :a_flat;
+	event:time [
+		tl:onTimeLine :tl;
+		tl:meets :e004;
+	];
+	.
+:e004
+	a so:ThirtySecondNote;
+	so:pitch :g;
+	event:time [
+		tl:onTimeLine :tl;
+		tl:meets :e004;
+	];
+	.
+:e005
+	a so:ThirtySecondNote;
+	so:pitch :a;
+	event:time [
+		tl:onTimeLine :tl;
+		tl:meets :e006;
+	];
+	.
+:e006
+	a so:SixteenthNote;
+	so:pitch :g_flat;
+	event:time [
+		tl:onTimeLine :tl;
+		tl:meets :e007;
+	];
+	.
+:e007
+	a so:SixteenthNote;
+	so:pitch :f;
+	event:time [
+		tl:onTimeLine :tl;
+		tl:meets :e008;
+	];
+	.
+:e008
+	a so:SixteenthNote;
+	so:pitch :e;
+	event:time [
+		tl:onTimeLine :tl;
+		tl:meets :e009;
+	];
+	.
+:e009
+	a so:SixteenthNote;
+	so:pitch :d_flat;
+	event:time [
+		tl:onTimeLine :tl;
+	];
+	.
+
+# Articulations
+
+:s001
+	a so:Slur;
+	event:sub_event :e000;
+	event:sub_event :e001;
+	event:sub_event :e002;
+	.
+:s002
+	a so:Slur;
+	event:sub_event :e003;
+	event:sub_event :e004;
+	event:sub_event :e005;
+	.
+:s003
+	a so:Slur;
+	event:sub_event :e006;
+	event:sub_event :e007;
+	event:sub_event :e008;
+	event:sub_event :e009;
+	.
+
+
+# Pitches (this could be automated by the use of
+# a pitch web service, such as the chord one, where
+# descriptions could be generated on-the-fly)
+
+:b_flat	
+	a so:Pitch;
+	so:note so:b;
+	so:accidental so:flat;
+	so:octave "1";
+	.
+:a
+	a so:Pitch;
+	so:note so:a;
+	so:accidental so:natural;
+	so:octave "1";
+	.
+:a_flat
+	a so:Pitch;
+	so:note so:a;
+	so:accidental so:flat;
+	so:octave "1";
+	.
+:g
+	a so:Pitch;
+	so:note so:g;
+	so:accidental so:natural;
+	so:octave "1";
+	.
+:g_flat
+	a so:Pitch;
+	so:note so:g;
+	so:accidental so:flat;
+	so:octave "1";
+	.
+:f
+	a so:Pitch;
+	so:note so:f;
+	so:accidental so:natural;
+	so:octave "1";
+	.
+:e
+	a so:Pitch;
+	so:note so:e;
+	so:accidental so:natural;
+	so:octave "1";
+	.
+:d_flat
+	a so:Pitch;
+	so:note so:d;
+	so:accidental so:flat;
+	so:octave "1";
+	.
+
