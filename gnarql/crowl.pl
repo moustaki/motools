@@ -61,7 +61,7 @@ crawler(Queue) :-
 		load(URL),fail)).
 
 load(URL) :-
-        rdf(_,_,_,URL:_),format(' - ~w already loaded\n',[URL]),!.
+        rdf(_,_,_,URL:_),log(' - ~w already loaded\n',[URL]),!.
 load(URL) :-
 	catch((rdf_load(URL), log(' - Loaded ~w\n',[URL])),_,
 		(
