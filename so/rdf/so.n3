@@ -1,6 +1,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
 @prefix tl: <http://purl.org/NET/c4dm/timeline.owl#>.
@@ -26,6 +27,7 @@
 	a owl:Class;
 	rdfs:subClassOf event:Event;
 	rdfs:label "note event"@en;
+	owl:disjointWith :RestEvent;
 	rdfs:comment """
 		Classifying a particular region of a score' timeline (or another concept,
 		depending on the context), as holding a note. Several subclasses are defined,
@@ -53,6 +55,7 @@
 	a owl:Class;
 	rdfs:subClassOf event:Event;
 	rdfs:label "rest event"@en;
+	owl:disjointWith :NoteEvent;
 	rdfs:comment """
 		Classifying a particular region as holding a rest (an interval of silence).
 		Subclasses of this event are restriced to a particular length, as note events.
@@ -68,6 +71,8 @@
 # Here, we consider as subclasses of NoteEvent a bunch of
 # concepts holding restrictions about their respective durations
 
+# All these concepts should be mutually disjoint
+
 :DoubleWholeNote
 	a owl:Class;
 	rdfs:subClassOf :NoteEvent;
@@ -77,7 +82,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :double_whole;
+		owl:allValuesFrom :DoubleWhole;
 	];
 	.
 
@@ -90,7 +95,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :whole;
+		owl:allValuesFrom :Whole;
 	];
 	.
 
@@ -103,7 +108,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :half;
+		owl:allValuesFrom :Half;
 	];
 	.
 
@@ -116,7 +121,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :quarter;
+		owl:allValuesFrom :Quarter;
 	];
 	.
 
@@ -129,7 +134,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :eighth;
+		owl:allValuesFrom :Eighth;
 	];
 	.
 
@@ -142,7 +147,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :sixteenth;
+		owl:allValuesFrom :Sixteenth;
 	];
 	.
 
@@ -155,7 +160,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :thirtysecond;
+		owl:allValuesFrom :Thirtysecond;
 	];
 	.
 
@@ -166,7 +171,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :dotted_double_whole;
+		owl:allValuesFrom :DottedDoubleWhole;
 	];
 	.
 
@@ -177,7 +182,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :dotted_whole;
+		owl:allValuesFrom :DottedWhole;
 	];
 	.
 
@@ -188,7 +193,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :dotted_half;
+		owl:allValuesFrom :DottedHalf;
 	];
 	.
 
@@ -199,7 +204,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :dotted_quarter;
+		owl:allValuesFrom :DottedQuarter;
 	];
 	.
 
@@ -210,7 +215,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :dotted_eighth;
+		owl:allValuesFrom :DottedEighth;
 	];
 	.
 
@@ -221,7 +226,7 @@
 	owl:equivalentlass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :dotted_sixteenth;
+		owl:allValuesFrom :DottedSixteenth;
 	];
 	.
 
@@ -232,18 +237,18 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :dotted_thirtysecond;
+		owl:allValuesFrom :DottedThirtysecond;
 	];
 	.
 
-:Longa
+:LongaRest
 	a owl:Class;
 	rdfs:subClassOf :RestEvent;
 	rdfs:label "longa"@en;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :longa;
+		owl:allValuesFrom :Longa;
 	];
 	.
 
@@ -255,7 +260,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :double_whole;
+		owl:allValuesFrom :DoubleWhole;
 	]; # do i have to specify the subclassing here?
 	.
 
@@ -267,7 +272,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :whole;
+		owl:allValuesFrom :Whole;
 	];
 	.
 
@@ -279,7 +284,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :half;
+		owl:allValuesFrom :Half;
 	];
 	.
 
@@ -291,7 +296,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :quarter;
+		owl:allValuesFrom :Quarter;
 	];
 	.
 
@@ -303,7 +308,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :eighth;
+		owl:allValuesFrom :Eighth;
 	];
 	.
 
@@ -315,7 +320,7 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :sixteenth;
+		owl:allValuesFrom :Sixteenth;
 	];
 	.
 
@@ -327,9 +332,126 @@
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:onProperty event:time;
-		owl:hasValue :thirtysecond;
+		owl:allValuesFrom :Thirtysecond;
 	];
 	.
+
+# I could partition the note event space 
+# in the pitch domain as well, using a similar
+# set of restrictions
+
+# Timelines
+
+:ScoreTimeLine
+	a owl:Class;
+	rdfs:subClassOf tl:AbstractTimeLine;
+	rdfs:label "score timeline"@en;
+	rdfs:comment """
+		A class of timelines backing scores, or other symbolic
+		representations. 
+	"""@en;
+	.
+
+# Time intervals
+
+:ScoreInterval
+	a owl:Class;
+	rdfs:subClassOf tl:AbstractInterval;
+	rdfs:label "score interval"@en;
+	rdfs:comment """
+		An interval defined on a score time line (defined 
+		canonically in number of beats).
+	"""@en;
+	.
+
+:Longa
+	a owl:Class;
+	rdfs:subClassOf :ScoreInterval;
+	rdfs:label "longa"@en;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty tl:duration;
+		owl:hasValue "4"^^xsd:float; 
+	];
+	.
+
+:DoubleWhole
+	a owl:Class;
+	rdfs:subClassOf :ScoreInterval;
+	rdfs:label "double whole"@en;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty tl:duration;
+		owl:hasValue "2"^^xsd:float;
+	];
+	.
+
+:Whole
+	a owl:Class;
+	rdfs:subClassOf :ScoreInterval;
+	rdfs:label "whole"@en;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty tl:duration;
+		owl:hasValue "1"^^xsd:float;
+	];
+	.
+
+:Half
+	a owl:Class;
+	rdfs:subClassOf :ScoreInterval;
+	rdfs:label "half"@en;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty tl:duration;
+		owl:hasValue "0.5"^^xsd:float;
+	];
+	.
+
+:Quarter
+	a owl:Class;
+	rdfs:subClassOf :ScoreInterval;
+	rdfs:label "quarter"@en;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty tl:duration;
+		owl:hasValue "0.25"^^xsd:float;
+	];
+	.
+
+:Eighth
+	a owl:Class;
+	rdfs:subClassOf :ScoreInterval;
+	rdfs:label "eighth"@en;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty tl:duration;
+		owl:hasValue "0.125"^^xsd:float;
+	];
+	.
+
+:Sixteenth
+	a owl:Class;
+	rdfs:subClassOf :ScoreInterval;
+	rdfs:label "sixteenth"@en;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty tl:duration;
+		owl:hasValue "0.0625"^^xsd:float;
+	];
+	.
+
+:Thirtysecond
+	a owl:Class;
+	rdfs:subClassOf :ScoreInterval;
+	rdfs:label "thirtysecond"@en;
+	owl:equivalentClass [
+		a owl:Restriction;
+		owl:onProperty tl:duration;
+		owl:hasValue "0.03125"^^xsd:float;
+	];
+	.
+
 
 # Grouping of events
 
@@ -454,5 +576,7 @@
 :double_sharp a :Accidental.
 :double_flat a :Accidental.
 :double_natural a :Accidental. # This is just a joke :-)
+
+
 
 
