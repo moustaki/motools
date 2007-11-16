@@ -2,7 +2,6 @@
 
 :- use_module(library('semweb/rdf_db')).
 :- use_module(library('semweb/rdf_http_plugin')).
-:- use_module('log').
 
 
 init :-
