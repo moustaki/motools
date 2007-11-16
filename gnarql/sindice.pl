@@ -35,11 +35,14 @@ sindice_q(uri(URI)) :-
  * What was retrieved from Sindice,
  * and what results did it give?
  */
-sindice_r(QueryURI,URI) :-
+sindice_r(uri(K),URI) :-
 	rdf_db:rdf(QueryURI,rdfs:seeAlso,URI),
 	sindice_host(H),
-	parse_url(T,[protocol(http),host(H)]),
-	atom_concat(T,_,QueryURI).
+	parse_url(QueryURI,[protocol(http),host(H),path('/query/lookup'),search([uri=K])]).
+sindice_r(keyword(K),URI) :-
+	rdf_db:rdf(QueryURI,rdfs:seeAlso,URI),
+	sindice_host(H),
+	parse_url(QueryURI,[protocol(http),host(H),path('/query/lookup'),search([keyword=K])]).
 
 
 /**
