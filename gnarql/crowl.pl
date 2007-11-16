@@ -55,17 +55,18 @@ create_crawlers_pool(N) :-
 
 crawler(Queue) :-
 	repeat,
-	thread_get_message(Queue,URI),log(' - Received ~w\n',[URI]),
-	(URI=stop -> (log(' - Exiting...\n'),thread_exit(true));(
+	thread_get_message(Queue,URI),%log(' - Received ~w\n',[URI]),
+	(URI=stop -> (thread_exit(true));(
 		uri_url(URI,URL),
 		load(URL),fail)).
 
 load(URL) :-
-        rdf(_,_,_,URL:_),log(' - ~w already loaded\n',[URL]),!.
+        rdf(_,_,_,URL:_),!.
 load(URL) :-
-	catch((rdf_load(URL), log(' - Loaded ~w\n',[URL])),_,
+	catch((rdf_load(URL)),_,
 		(
-		log(' - Failed to load ~w\n',[URL])%,
+		true
+		%log(' - Failed to load ~w\n',[URL])%,
 		%assert(failed(URL))
 		)
 	).
