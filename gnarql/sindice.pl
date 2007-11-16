@@ -15,12 +15,20 @@
 :- use_module(library('semweb/rdf_http_plugin')).
 
 
+
+/**
+ * Queries Sindice for a keyword
+ * Store results within the local RDF KB
+ */
+sindice_q(keyword(K)) :-
+	sindice_query_url(keyword(K),Query),
+	rdf_load(Query).
 /**
  * Queries Sindice for an URI
  * Store results within the local RDF KB
  */
-sindice_q(URI) :-
-	sindice_query_url(URI,Query),
+sindice_q(uri(URI)) :-
+	sindice_query_url(uri(URI),Query),
 	rdf_load(Query).
 
 /**
@@ -44,13 +52,19 @@ sindice_host('sindice.com').
  * Creates a Query URI
  * from an URI to look-up
  */
-sindice_query_url(URI,QueryURL) :-
+sindice_query_url(uri(URI),QueryURL) :-
 	sindice_host(DN),
 	www_form_encode(DN,DNe),
 	parse_url(QueryURL,[protocol(http),host(DNe),path('/query/lookup'),search([uri=URI])]).
 	
-
-
+/**
+ * Creates a Query URI
+ * from a keyword to look-up
+ */
+sindice_query_url(keyword(K),QueryURL) :-
+	sindice_host(DN),
+	www_form_encode(DN,DNe),
+	 parse_url(QueryURL,[protocol(http),host(DNe),path('/query/lookup'),search([keyword=K])]).
 
 
 
