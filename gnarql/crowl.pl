@@ -42,6 +42,18 @@ crawl_type(Type) :-
 	forall((rdf_db:rdf(A,rdf:type,Type),atom_concat('http://zitgist.com/',_,A)),thread_send_message(jobs,A)).
 
 
+crawl(N) :-
+	(rdf_db:rdf(A,rdf:type,mo:'AudioFile');rdf_db:rdf(A,rdf:type,mo:'Stream')),
+	crawl(N,A).
+crawl(0,_) :- !.
+crawl(N,A) :-
+	forall((rdf_db:rdf(A,_,URI);rdf_db:rdf(A,_,URI)),thread_send_message(jobs,URI)),
+	no_more_message,
+	M is N - 1,
+	crawl(M,URI).
+
+
+
 /**
  * Crawler pool
  */
@@ -69,6 +81,10 @@ load(URL) :-
 		%assert(failed(URL))
 		)
 	).
+
+
+no_more_message :-
+	(\+thread_peek_message(jobs,_);(sleep(10),no_more_message)).
 
 /**
  * Dismiss crawlers
