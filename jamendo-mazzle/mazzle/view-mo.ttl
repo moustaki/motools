@@ -1,0 +1,27 @@
+### faceted views used in mazzle
+### a view is defined for a viewClass
+### and has one or more viewProperties
+
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix iface:  <http://www.multimedian.nl/projects/n9c/interface#> .
+@prefix dc:     <http://purl.org/dc/elements/1.1/> .
+@prefix ec: 	<http://www.multimedian.nl/projects/n9c/eculture#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+### generic artefact view
+ec:ArtefactView
+    rdf:type iface:View ;
+    rdfs:label "Overview" ;
+    rdfs:comment "Generic view on artefacts" ;
+    iface:viewClass ec:Artefact ;
+    iface:viewProperty
+    (   dc:creator
+        dc:title
+        foaf:name
+	foaf:based_near
+	foaf:img
+    ) .
+
+
+

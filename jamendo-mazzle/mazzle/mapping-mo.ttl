@@ -1,0 +1,140 @@
+### Mapping from properties used in 
+### ontologies and datacollections to 
+### domain indepedent properties that are used in the interface
+### src code.
+
+### Default interface property mappings
+### for the commen schemas 
+### skos, dc, foaf, wordnet, geo, vra and vp
+
+# rdf/rdfs/owl tool specific ns (iface).
+@prefix     owl: <http://www.w3.org/2002/07/owl#> .
+@prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix   iface: <http://www.multimedian.nl/projects/n9c/interface#> .
+
+# project namespaces
+@prefix dc:     <http://purl.org/dc/elements/1.1/> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix vra:    <http://www.vraweb.org/vracore/vracore3#> .
+@prefix vp:     <http://e-culture.multimedian.nl/ns/getty/vp#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix wn20schema: <http://www.w3.org/2006/03/wn/wn20/schema/> .
+
+# mo ns
+@prefix mo: <http://purl.org/ontology/mo/> .
+
+
+### -------------------------- Targets ----------------------------- ###
+###
+### Define the classes that are used as target resources in mazzle
+### The default target class can be defined in the settings file
+
+#iface:Artefact rdfs:subClassOf iface:Target .
+#iface:Person rdfs:subClassOf iface:Target .
+foaf:Person rdfs:subClassOf iface:Target .
+mo:MusicArtist rdfs:subClassOf iface:Target .
+mo:Track rdfs:subClassOf iface:Target .
+mo:Record rdfs:subClassOf iface:Target .
+mo:AudioFile rdfs:subClassOf iface:Target .
+mo:BittorrentItem rdfs:subClassOf iface:Target .
+
+### iface:Artefact
+### Domain independent superclass for objects
+### This is the default target for basic and advanced search
+
+
+### iface:Person
+### Domain indepedent superclass of persons
+
+#foaf:Person rdfs:subClassOf iface:Person .
+#foaf:Person rdfs:subClassOf iface:Person .
+#mo:MusicArtist rdfs:subClassOf iface:Person .
+#mo:MusicGroup rdfs:subClassOf iface:Person .
+
+
+### ----------------------- Labels --------------------------------- ###
+
+# subproperties of iface:label
+# values from iface:label are used for display in the interface and 
+# instance search by label
+# (iface:label is itself a subproperty of rdfs:label which 
+# is used in the code)
+# this property is merely here for consistency in the iface namespace
+dc:title rdfs:subPropertyOf iface:label .
+foaf:name rdfs:subPropertyOf iface:label .
+wn20schema:senseLabel rdfs:subPropertyOf iface:label .
+rdfs:label rdfs:subPropertyOf iface:Label .
+
+# iface:prefLabel 
+# (preferred labels if available are used for displaying)
+#skos:prefLabel rdfs:subPropertyOf iface:prefLabel .
+rdfs:label rdfs:subPropertyOf iface:prefLabel .
+
+# iface:altLabel
+#skos:altLabel rdfs:subPropertyOf iface:altLabel .
+dc:title rdfs:subPropertyOf iface:altLabel .
+
+# iface:note
+dc:description rdfs:subPropertyOf iface:note .
+skos:note rdfs:subPropertyOf iface:note .
+rdfs:comment rdfs:subPropertyOf iface:note .
+vra:description rdfs:subPropertyOf iface:note .
+
+vp:descriptiveNote rdfs:subPropertyOf skos:note .
+wn20schema:gloss rdfs:subPropertyOf skos:note .
+
+
+### ----------------------- Image depiction ------------------------ ###
+
+# iface:depicts
+<http://www.vraweb.org/vracore/vracore3#relation.depicts> rdfs:subPropertyOf iface:depicts .
+<http://www.vraweb.org/vracore/vracore3#relation.depictedBy> rdfs:subPropertyOf iface:depictedBy .
+
+# iface:depictedBy
+foaf:depiction rdfs:subPropertyOf iface:depictedBy .
+mo:image rdfs:subPropertyOf iface:depictedBy .
+foaf:img rdfs:subPropertyOf iface:depictedBy .
+skos:symbol rdfs:subPropertyOf iface:depictedBy .
+skos:prefSymbol rdfs:subPropertyOf iface:prefDepictedBy .
+skos:altSymbol rdfs:subPropertyOf iface:altDepictedBy .
+dc:image rdfs:subPropertyOf iface:depictedBy .
+
+
+### ------------ geographical coordinates -------------------------- ###
+
+# iface:latitude and iface:longitude
+geo:lat rdfs:subPropertyOf iface:latitude .
+geo:long rdfs:subPropertyOf iface:longitude .
+
+
+
+# iface:geopoint
+# (groups latidude and longitude)
+foaf:based_near rdfs:subPropertyOf iface:geopoint .
+geo:Point rdfs:subPropertyOf iface:geopoint .
+<http://www.geonames.org/ontology#Feature> rdfs:subPropertyOf iface:geopoint .
+
+
+### ------------------------ dates --------------------------------- ###
+<http://vocab.org/bio/0.1/#date> rdfs:subPropertyOf iface:date .
+dc:date rdfs:subPropertyOf iface:date .
+
+### ---------------------broader / narrower ------------------------ ###
+
+# iface:narrower
+skos:narrower rdfs:subPropertyOf iface:narrower .
+
+# iface:broader
+skos:broader rdfs:subPropertyOf iface:broader .
+
+
+### --------------------preferred / alternative -------------------- ###
+
+# iface:preferred
+vp:parentPreferred rdfs:subPropertyOf iface:preferred .
+
+# iface:alternative
+vp:parentNonPreferred rdfs:subPropertyOf iface:alternative .
+

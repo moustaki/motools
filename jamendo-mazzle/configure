@@ -1,0 +1,38 @@
+#! /usr/local/bin/pl -s
+
+:- use_module(library('semweb/rdf_persistency')).
+:- use_module(library('semweb/rdf_db')).
+:- use_module(library('semweb/rdf_turtle')).
+:- rdf_attach_db(db,[]).
+
+
+:- rdf_load('../mo/rdf/musicontology.rdfs').
+:- rdf_load('../mo/rdf/event.rdf').
+:- rdf_load('../mo/rdf/geonames.owl').
+:- rdf_load('../mo/rdf/geonames_main.rdf').
+:- rdf_load('../mo/rdf/dces.rdf').
+:- rdf_load('../mo/rdf/bio-vocab-20040305.rdf').
+:- rdf_load('../mo/rdf/timeline.rdf').
+
+:- rdf_load('ClioPatria/ontologies/tool/fbrowse/opening.rdf').
+:- rdf_load('ClioPatria/ontologies/tool/fbrowse/ecfacet.rdf').
+:- rdf_load('ClioPatria/ontologies/tool/interface_classes.ttl').
+:- rdf_load('ClioPatria/ontologies/tool/interface_properties.ttl').
+:- rdf_load('ClioPatria/ontologies/tool/provenance.ttl').
+:- rdf_load('ClioPatria/ontologies/tool/user_profile.ttl').
+:- rdf_load('ClioPatria/ontologies/tool/rdfbrowsing/iface_browser.rdf').
+:- rdf_load('ClioPatria/ontologies/tool/rdfbrowsing/iface_localview.rdf').
+:- rdf_load('ClioPatria/ontologies/tool/annotate/annotationScheme.rdfs').
+:- rdf_load('ClioPatria/ontologies/tool/annotate/conversionOntology.rdfs').
+:- rdf_load('ClioPatria/ontologies/tool/annotate/picture_point.rdfs').
+:- rdf_load('ClioPatria/ontologies/tool/timespace/ectime.owl').
+:- rdf_load('ClioPatria/ontologies/tool/timespace/time-entry.owl').
+:- rdf_load('ClioPatria/ontologies/tool/timespace/timemodel.owl').
+
+:- rdf_load('mazzle/mapping-mo.ttl').
+:- rdf_load('mazzle/view-mo.ttl').
+
+:- rdf_load('jamendo-rdf/jamendo.rdf').
+:- rdf_load('jamendo-rdf/mbz_jamendo.rdf').
+
+:- halt.
