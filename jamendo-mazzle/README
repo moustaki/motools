@@ -1,0 +1,14 @@
+
+README
+======
+
+
+ * Check out ClioPatria
+   http://e-culture.multimedian.nl/software/ClioPatria.shtml
+ * Check out up-to-date Jamendo RDF dump
+   http://dbtune.org/jamendo/#dump
+ * Run ./configure
+ * Run ./run.pl
+ * Go to http://localhost:3020/mazzle/
+
+

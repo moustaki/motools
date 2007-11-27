@@ -16,7 +16,7 @@ ec:ArtefactView
     rdfs:comment "Generic view on artefacts" ;
     iface:viewClass ec:Artefact ;
     iface:viewProperty
-    (   dc:creator
+    (   
         dc:title
         foaf:name
 	foaf:based_near
