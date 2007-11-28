@@ -91,14 +91,27 @@ and then look for <a href="http://purl.org/ontology/mo/MusicArtist">http://purl.
 the list of all Jamendo MusicArtist instances.
 </p>
 
-<h2><a name="query" id="query"></a>3. Querying the dataset</h2>
+<h2><a name="query" id="query"></a>3. Links</h2>
+<p>
+This dataset is interlinked with the <a href="http://geonames.org/">Geonames</a>
+and the <a href="http://musicbrainz.org/">Musicbrainz</a> datasets.
+</p>
+<p>
+For an example of a resource which description holds one <i>owl:sameAs</i> link to 
+a Musicbrainz resource, and one <i>foaf:based_near</i> link to a Geonames resource, try
+<a href="http://dbtune.org/jamendo/artist/5">this one (a French band called <i>Both</i>)</a>.
+The <a href="http://dig.csail.mit.edu/2005/ajar/ajaw/tab?uri=http://dbtune.org/jamendo/artist/5">same resource,
+displayed in the Tabulator</a>.
+</p>
+
+<h2><a name="query" id="query"></a>4. Querying the dataset</h2>
 <p>
 The service also exposes a <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> end-point, available
 at <a href="http://dbtune.org:2105/sparql/">http://dbtune.org:2105/sparql/</a>. There is also a small
 web interface available at <a href="http://dbtune.org/jamendo/wsparql/">http://dbtune.org:2105/</a>.
 </p>
 
-<h2><a name="dump" id="dump"></a>4. RDF dump</h2>
+<h2><a name="dump" id="dump"></a>5. RDF dump</h2>
 <p>
 The RDF dump is <a href="http://moustaki.org/resources/jamendo-rdf.tar.gz">available for download</a>. 
 The package holds the raw Jamendo data converted to RDF (available under the same license than the raw Jamendo
@@ -107,7 +120,7 @@ under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Com
 change, ask me).
 </p>
 
-<h2><a name="tools" id="tools"></a>5. Tools</h2>
+<h2><a name="tools" id="tools"></a>6. Tools</h2>
 <p>
 The code needed to make this service run takes less than 900 lines of code! This, I guess, demonstrates the
 power of <a href="http://www.swi-prolog.org">SWI Prolog</a> and its <i>SeRQL</i>, <i>semweb</i> and <i>http</i> packages.
@@ -132,7 +145,7 @@ The behavior of this component is also specified through a declarative mapping (
 examples) between prolog predicates and a set of RDF predicates.
 </p>
 
-<h2><a name="todo" id="todo"></a>4. TODO</h2>
+<h2><a name="todo" id="todo"></a>7. TODO</h2>
 
 <ul>
 <li>Links to Musicbrainz - <a href="http://blog.dbtune.org/post/2007/06/11/Linking-open-data%3A-interlinking-the-Jamendo-and-the-Musicbrainz-datasets">DONE</a></li>

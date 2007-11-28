@@ -87,14 +87,25 @@ and then look for <a href="http://purl.org/ontology/mo/MusicArtist">http://purl.
 the list of all John Peel sessions' MusicArtist instances.
 </p>
 
-<h2><a name="query" id="query"></a>3. Querying the dataset</h2>
+<h2><a name="query" id="query"></a>3. Links</h2>
+<p>
+This dataset is interlinked with <a href="http://dbpedia.org/">DBPedia</a>. The corresponding
+links are available in <a href="http://moustaki.org/resources/dbpedia-johnpeel.tar.gz">a separate RDF dump</a>.
+</p>
+<p>
+Both works and agents (musicians, bands, engineers, producers) are linked towards corresponding
+resources in the DBPedia dataset.
+</p>
+
+
+<h2><a name="query" id="query"></a>4. Querying the dataset</h2>
 <p>
 The service also exposes a <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> end-point, available
 at <a href="http://dbtune.org:3030/sparql/">http://dbtune.org:3030/sparql/</a>. There is also a small
 web interface available at <a href="http://dbtune.org:3030/sparql/">http://dbtune.org:3030/</a>.
 </p>
 
-<h2><a name="tools" id="tools"></a>4. Tools</h2>
+<h2><a name="tools" id="tools"></a>5. Tools</h2>
 <p>
 The code is split in two parts, and is available under a copyleft license - feel free to use it!
 </p>
@@ -119,15 +130,15 @@ For this dataset, the P2R mapping is available <a href="http://moustaki.org/bbc/
 It uses a Prolog representation of the John Peel data, available <a href="http://moustaki.org/bbc/johnpeel/swipeel.tar.gz">here</a>.
 </p>
 
-<h2><a name="dump" id="dump"></a>4. RDF Dump</h2>
+<h2><a name="dump" id="dump"></a>6. RDF Dump</h2>
 <p>
 A complete RDF dump of the data is available <a href="http://moustaki.org/bbc/johnpeel/rdf_dump.rdf.tar.gz">here</a> 
 (the data may be a bit outdated some times though).
 </p>
-<h2><a name="todo" id="todo"></a>5. TODO</h2>
+<h2><a name="todo" id="todo"></a>7. TODO</h2>
 
 <ul>
-<li>Links to external datasets (musicbrainz, last.fm snippets, geonames, etc.)</li>
+<li>Links to more external datasets (musicbrainz, last.fm snippets, geonames, etc.)</li>
 <li>Fix the clashing IDS (eg. http://dbtune.org/bbc/peel/perf_ins/d858e0f361eeb01e3c843deae4d3f3e1)</li>
 <li>Add mo:produced (zitgist compatibility)</li>
 <li>Type currently untyped events</li>
