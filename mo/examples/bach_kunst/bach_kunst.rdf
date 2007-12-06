@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bach="http://music.org/bach#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:event="http://purl.org/NET/c4dm/event.owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:instrument="http://instrument.org/" xmlns:mo="http://purl.org/ontology/mo/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:timeline="http://purl.org/NET/c4dm/timeline.owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<rdf:RDF 
+	xmlns:bach="http://music.org/bach#" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	xmlns:event="http://purl.org/NET/c4dm/event.owl#" 
+	xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	xmlns:instrument="http://instrument.org/" 
+	xmlns:mo="http://purl.org/ontology/mo/" 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:timeline="http://purl.org/NET/c4dm/timeline.owl#" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
   <foaf:Person rdf:about="http://music.org/bach#bach">
     <foaf:name>Johann Sebastian Bach</foaf:name>
     <mo:wikipedia rdf:resource="http://en.wikipedia.org/wiki/Johann_Sebastian_Bach"/>
