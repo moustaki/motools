@@ -61,8 +61,10 @@
 :- http_handler('/user/removeStatements', remove_statements_form,  []).
 
 :- http_handler('/style.css',             style,                   []).
+:- http_handler('/rdf_style.css',             style,                   []).
 
 :- http_handler('/gnarql_load.html', gnarql_load_page, []).
+:- http_handler('/gnarql_crawl.html', gnarql_crawl_page, []).
 
 :- http_handler('/documentation.html',
 		http_reply_file(serql('serql.html'), []), []).
@@ -174,17 +176,17 @@ welcome(Request) :-
 	).
 
 
-style(Request) :-
+serveuphtml(Request, Page) :-
         (   current_user(_)
-        ->  http_reply_file(serql('style.css'), [cache(false)], Request)
+        ->  http_reply_file(serql(Page), [cache(false)], Request)
         ;   throw(http_reply(moved_temporary('admin/form/createAdmin')))
         ).
 
-gnarql_load_page(Request) :-
-       (   current_user(_)
-       ->  http_reply_file(serql('gnarql_load.html'), [cache(false)], Request)
-       ;   throw(http_reply(moved_temporary('admin/form/createAdmin')))
-       ).
+style(Request) :- serveuphtml(Request, 'style.css').
+rdf_style(Request) :- serveuphtml(Request, 'rdf_style.css').
+gnarql_load_page(Request) :- serveuphtml(Request, 'gnarql_load.html').
+gnarql_crawl_page(Request) :- serveuphtml(Request, 'gnarql_crawl.html').
+
 
 		 /*******************************
 		 *	    STATISTICS		*

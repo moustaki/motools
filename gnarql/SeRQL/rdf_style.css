@@ -1,20 +1,4 @@
-body{
-/*	background-color: #3059A3;*/
-/*	background-color: #9abfe1;*/
-	background-color: #E2F0F6;
-	color: black;
-}
 
-a{
-	color: #0000AA;;
-}
-
-a:hover{
-	color: black;
-}
-
-/* Moved to rdf_style.css */	
-/* 
 table{
 	background-color: white;
 	color: black;
@@ -43,4 +27,3 @@ table td{
 	border-bottom: 1px grey dotted;
 }
 
-*/

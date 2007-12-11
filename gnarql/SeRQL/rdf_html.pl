@@ -59,7 +59,8 @@ with emitting RDF related material in HTML human-readable format.
 rdf_io:write_table(html, _Serialization, Rows, Options) :- !,
 	length(Rows, Count),
 	phrase(page([title('Query result'),
-link([type('text/css'), rel('stylesheet'), href('style.css')])],
+			link([type('text/css'), rel('stylesheet'), href('style.css')])],
+			link([type('text/css'), rel('stylesheet'), href('rdf_style.css')])],
 		    [ \query_statistics([count(Count)|Options], rows),
 		      table([ align(center),
 			      border(0)
@@ -104,7 +105,8 @@ cells([H|T], Options) -->
 rdf_io:write_graph(html, _Serialization, Triples, Options) :-
 	length(Triples, Count),
 	phrase(page([title('Query result'),
-link([type('text/css'), rel('stylesheet'), href('style.css')])],
+			link([type('text/css'), rel('stylesheet'), href('style.css')])],
+			link([type('text/css'), rel('stylesheet'), href('rdf_style.css')])],
 		    [ \query_statistics([count(Count)|Options], triples),
 		      table([ align(center),
 			      border(0)

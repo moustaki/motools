@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>GNARQL</title>
+	<link type="text/css" rel="stylesheet" href="style.css"/>
+
+</head>
+
+<body>
+
+<h2>Crawl from music collection</h2>
+<p>To let you explore your music collection, gnarql must first aggregate some information about it.</p>
+<p>(If you haven't already done so, see the <a href="/gnarql_load.html">loading page</a> to load up the basic information about your collection)</p>
+<p>To begin crawling, hit Initialise, and then Start.</p>
+<form method = "get" action = "/crawl/init">
+<table border="0" style="text-align:center">
+<tr><td>Number of crawlers : </td><td><input size = "3" type = "text" name = "n" value="10"/></td></tr>
+</table>
+<p><span style="text-align:center"><input type = "submit" value = "Initialise"/></span></p>
+</form>
+<form method = "get" action = "/crawl/start">
+<p><input type="submit" value="Start"/></p>
+</form>
+
+</body>
+</html>
