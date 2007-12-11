@@ -15,3 +15,11 @@
 :- rdf_register_ns(tl,'http://purl.org/NET/c4dm/timeline.owl#').
 :- rdf_register_ns(event,'http://purl.org/NET/c4dm/event.owl#').
 :- rdf_register_ns(tags,'http://www.holygoat.co.uk/owl/redwood/0.1/tags/').
+:- rdf_register_ns(gnarql,'http://purl.org/NET/c4dm/gnarql/').
+
+
+%Just for ClioPatria to not give errors:
+
+:- rdf_register_ns(rijks,'http://www.chip-project.org/Rijksmuseum#').
+:- rdf_register_ns(glink,'http://www.multimedian.nl/projects/n9c/glink#').
+

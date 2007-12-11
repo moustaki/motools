@@ -12,31 +12,25 @@
 :- use_module(library('semweb/rdf_db')).
 :- use_module(walk).
 
-:- multifile failed_dir/1.
-:- dynamic failed_dir/1.
+
 
 load(Dir) :-
 	atom_concat('file://',Dir,Base),
 	load(Dir,Base).
 load(Dir,BaseURI) :-
-	forall(
-		( walk(Dir,Walk),
-		  catch((
-		   atom_concat(Dir,Relative,Walk),
-		   encode(Relative,RelativeWWW),
-		   format(atom(URI),'~w~w/',[BaseURI,RelativeWWW]),
-		   format(atom(Wildcard),'~w/~w',[Walk,'*.rdf']),
-		   expand_file_name(Wildcard,Files),
-		   member(File,Files),
-		   nl,format(' - Loading ~w\n',File)
-		   ),_,(assert(failed_dir(Walk)),fail))
-		  %convert_path(Walk,WalkWWW),
-		  %convert_path(URI,URI2)
-		  %format(atom(BaseURI),'file://~w/',[WalkWWW])
-		  ),
-		  catch(rdf_load(File,[base_uri(URI)]), _, print('caught exception while loading !'))
+	forall( file(Dir,BaseURI,File,URI),
+		  rdf_load(File,[base_uri(URI)])
 		).
 
+
+file(Dir,BaseURI,File,URI) :-
+	walk(Dir,Walk),format(user_error,'Checking ~w \n',[Walk]),
+	atom_concat(Dir,Relative,Walk),
+	encode(Relative,RelativeWWW),
+	format(atom(URI),'~w~w/',[BaseURI,RelativeWWW]),
+	format(atom(Wildcard),'~w/~w',[Walk,'*.rdf']),
+	expand_file_name(Wildcard,Files),
+	member(File,Files).
 
 % in case there are weird character in the relative path
 encode(Relative,WWWRelative) :-
