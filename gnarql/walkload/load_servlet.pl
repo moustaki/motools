@@ -1,5 +1,17 @@
 :- module(load_servlet,[]).
 
+/**
+ *
+ * Some HTTP handlers wrapping diverse
+ * RDF loading operations
+ *
+ *
+ * Yves Raimond (c) 2007
+ * Centre for Digital Music
+ * Queen Mary University of London
+ */
+
+
 :- use_module(library('http/http_session')).
 :- use_module(library('http/http_parameters')).
 :- use_module(library('http/http_dispatch')).

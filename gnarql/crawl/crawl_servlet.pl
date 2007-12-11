@@ -1,8 +1,9 @@
 :- module(crawl_servlet,[]).
 
 /**
- * A module handling crawling
- * from a local SWI RDF store
+ * A module defining some http wrappers
+ * for some crawling operation (mainly init
+ * the crawler pool and init the crawling).
  *
  * Yves Raimond (c) 2007
  * Queen Mary, University of London

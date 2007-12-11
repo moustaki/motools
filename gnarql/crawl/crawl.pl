@@ -1,5 +1,21 @@
 :- module(crawl,[crawl/0]).
 
+/**
+ * Crawling for GNARQL.
+ * This is basically done in two steps:
+ *  * We first dereference the entry points given by GNAT
+ *    (or another tool which results have been ingested by 
+ *    GNARQL)
+ *  * We then crawl normally, breadth first.
+ *
+ *  This uses the crawler pool defined in crawler_pool
+ *
+ * Yves Raimond (c) 2007
+ * Centre for Digital Music
+ * Queen Mary, University of London
+ */
+
+
 
 :- use_module(library('semweb/rdf_db')).
 :- consult('../namespaces').

@@ -1,5 +1,14 @@
 :- module(pool,[create_crawlers_pool/1]).
 
+/**
+ * This handles a pool of Semantic Web crawlers, 
+ * peeking jobs from the `jobs' message queue.
+ *
+ * Yves Raimond (c) 2007
+ * Centre for Digital Music
+ * Queen Mary, University of London
+ */
+
 
 :- use_module(library('semweb/rdf_db')).
 :- consult('../namespaces').
