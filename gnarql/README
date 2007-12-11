@@ -1,0 +1,78 @@
+GNARQL Audio Collection Aggregator
+----------------------------------
+
+
+INSTALL:
+
+ * Make sure you have SWI-Prolog installed
+   
+   http://www.swi-prolog.org
+
+   Make sure you have the SemWeb package
+   installed
+
+   http://www.swi-prolog.org/packages/semweb.html
+
+ * That's it!
+
+
+RUN:
+
+ * Launch start.pl (modify the header of the script
+   if your prolog install is elsewhere than in /usr/local)
+ * That's it!
+
+USE:
+
+Now, here are the things that you can do. GNARQL exposes 
+a set of URI, that can be used to drive it.
+
+First, you'll need to load a GNAT'ed audio collection (GNAT
+is a tool that drops some little RDF files throughout 
+your music collection, linking its items towards corresponding
+identifiers out there on the Web, you can download it at
+http://sourceforge.net/projects/motools/).
+
+ * http://localhost:3021/load?path=/path/to/your/collection&base=http://base_uri/
+
+   The "path" parameter holds the path to your audio collection, and the
+   optional "base" parameter holds a base_uri (in case your collection is also served
+   through HTTP, and you want HTTP identifiers to be in use, for example)
+
+ * http://localhost:3021/reload
+
+   If your collection has been modified, or if you just GNAT'ed some 
+   new items, this will get through previously loaded collections
+   and look for modifications.
+
+ * http://localhost:3021/make
+
+   This will reload every previously loaded/crawled changed RDF files.
+
+Now we ingested some raw information about our audio collection, let's aggregate
+some data about it!
+
+ * http://localhost:3021/crawl/init?n=10
+
+   This will init 10 crawlers. The "n" parameter is the number of crawlers to be
+   instantiated.
+
+ * http://localhost:3021/crawl/start
+
+   This will launch the crawling process. Note that it should resume
+   fine (if you stop your GNARQL or in case of crash).
+
+
+========================================
+
+
+At any time, you can query the GNARQL instance through the SPARQL end-point at:
+
+ * http://localhost:3021/sparql/
+
+There is also a Web interface available at:
+
+ * http://localhost:3021/
+
+
+

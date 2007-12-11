@@ -15,7 +15,6 @@
 
 :- http_handler(prefix('/make'), make, []).
 
-:- http_handler(prefix('/echo'), echo, []).
 
 
 
@@ -66,8 +65,4 @@ reloaded(Base) :-
 	format('Reloading RDF files under ~w~n',[Base]).
 
 
-echo(R) :-
-	format('Content-type: text/html~n~n'),
-	term_to_atom(R,Ra),
-	format(Ra),format('~n').
 

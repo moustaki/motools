@@ -8,4 +8,5 @@
 
 :- ['ClioPatria/server/server.pl'].
 
+:- server.
 
