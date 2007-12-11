@@ -23,19 +23,23 @@ identifiers out there on the Web. You can download it at
 
 <p>If your collection is available over HTTP, enter the base address below. Otherwise leave that field blank.</p>
 <form method = "get" action = "/load">
-<table border="0" align="center">
+<table border="0" style="text-align:center">
 <tr><td>Path to your collection : </td><td><input size = "50" type = "text" name = "path" value="/home/me/music"/></td></tr>
 <tr><td>Base URI : </td><td><input size = "50" type = "text" name = "base"/></td></tr>
 </table>
-<span style="text-align:center"><p><input type = "submit" value = "Load"/></p></span>
+<p><span style="text-align:center"><input type = "submit" value = "Load"/></span></p>
+</form>
+
+<h2>Update music collection data</h2>
+<p>If your collection has been modified or added to recently, update the data : </p>
+<form method = "get" action = "/reload">
+<p><input type="submit" value="Reload"/></p>
 </form>
 
 <h2>Reload music collection data</h2>
-<p>If your collection has been modified or added to recently, use the button below to reload its information :</p>
-<form method = "get" action = "/reload">
-<span style="text-align:center"><p><input type="submit" value="Reload"/></p></span>
+<p>To forcibly reload all current data : </p>
+<form method = "get" action = "/make">
+<p><input type="submit" value="Reload"/></p>
 </form>
-
-
 </body>
 </html>
