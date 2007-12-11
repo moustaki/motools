@@ -1,0 +1,44 @@
+body{
+/*	background-color: #3059A3;*/
+/*	background-color: #9abfe1;*/
+	background-color: #E2F0F6;
+	color: black;
+}
+
+a{
+	color: #0000AA;;
+}
+
+a:hover{
+	color: black;
+}
+	
+
+table{
+	background-color: white;
+	color: black;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table th{
+	border-style: none solid solid solid;
+	border-width: 1px;
+	border-color: black;
+	border-bottom: 2px black solid;
+}
+
+table tr{
+	border-style: none;
+}
+
+table td{
+	border-style: none solid none solid;
+	border-width: 1px;
+	border-color: black;
+	border-bottom: 1px grey dotted;
+}
+
