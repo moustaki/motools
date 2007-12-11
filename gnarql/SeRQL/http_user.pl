@@ -62,6 +62,8 @@
 
 :- http_handler('/style.css',             style,                   []).
 
+:- http_handler('/gnarql_load.html', gnarql_load_page, []).
+
 :- http_handler('/documentation.html',
 		http_reply_file(serql('serql.html'), []), []).
 :- http_handler('/rdfql.css',
@@ -177,6 +179,12 @@ style(Request) :-
         ->  http_reply_file(serql('style.css'), [cache(false)], Request)
         ;   throw(http_reply(moved_temporary('admin/form/createAdmin')))
         ).
+
+gnarql_load_page(Request) :-
+       (   current_user(_)
+       ->  http_reply_file(serql('gnarql_load.html'), [cache(false)], Request)
+       ;   throw(http_reply(moved_temporary('admin/form/createAdmin')))
+       ).
 
 		 /*******************************
 		 *	    STATISTICS		*
