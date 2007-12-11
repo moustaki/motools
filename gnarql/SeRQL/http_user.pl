@@ -61,7 +61,7 @@
 :- http_handler('/user/removeStatements', remove_statements_form,  []).
 
 :- http_handler('/style.css',             style,                   []).
-:- http_handler('/rdf_style.css',             style,                   []).
+:- http_handler('/rdf_style.css',             rdf_style,                   []).
 
 :- http_handler('/gnarql_load.html', gnarql_load_page, []).
 :- http_handler('/gnarql_crawl.html', gnarql_crawl_page, []).
