@@ -31,9 +31,14 @@ crawler(Queue) :-
 load(URL) :-
         catch(
 	(
-		rdf_load(URL),xsd_time(Time),
+		statistics(real_time,_),rdf_load(URL),statistics(real_time,[_,Dur]),
+		xsd_time(Time),
 		rdf_assert(URL,rdf:type,gnarql:'CrawledSource'),
-		rdf_assert(URL,dc:date,literal(type('http://www.w3.org/2001/XMLSchema#dateTime',Time)))
+		rdf_bnode(Crawl),
+		rdf_assert(URL,gnarql:crawl,Crawl),
+		rdf_assert(Crawl,rdf:type,gnarql:'Crawl'),
+		rdf_assert(Crawl,gnarql:loading_time,literal(type('http://www.w3.org/2001/XMLSchema#int',Dur))),
+		rdf_assert(Crawl,dc:date,literal(type('http://www.w3.org/2001/XMLSchema#dateTime',Time)))
 	),_,
                 (
                 true
@@ -53,4 +58,6 @@ xsd_time(Date) :-
         get_time(S),
         format_time(atom(Date),'%Y-%m-%dT%H:%M:%S',S).
 
+
+	
 

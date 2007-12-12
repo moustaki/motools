@@ -25,8 +25,8 @@ crawl :-
         repeat,
         sleep(5),
         \+thread_peek_message(jobs,_),
-        findall(R,
-                (
+        setof(R,
+                G^(
                         rdf(G,rdf:type,gnarql:'CrawledSource'),
                         resource_in_graph(R,G),
                         uncrawled_uri(R)
@@ -37,8 +37,8 @@ crawl :-
 
 
 start_crawl :-
-        findall(R,(start_graph(G),resource_in_graph(R,G),uncrawled_uri(R)),Bag),
-        forall(member(R,Bag),thread_send_message(jobs,R)).
+        setof(R,G^(start_graph(G),resource_in_graph(R,G),uncrawled_uri(R)),Bag),
+	forall(member(R,Bag),thread_send_message(jobs,R)).
 
 
 
