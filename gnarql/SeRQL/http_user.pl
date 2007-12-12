@@ -46,6 +46,7 @@
 :- use_module(http_admin).
 :- use_module(library('semweb/rdf_db')).
 :- use_module(library(url)).
+:- use_module(collection_stats).
 
 :- http_handler('/',			  home,			   []).
 :- http_handler('/sidebar.html',	  sidebar,		   []).
@@ -132,6 +133,7 @@ action('user/statistics',	'Statistics').
 action('admin/listUsers',	'Users ...').
 action('admin/settings',	'Settings ...').
 action('documentation.html',	'Documentation').
+action(-,X) :- stats(X).
 action(Path, Label) :-
 	serql_http:sidebar_menu(Path, Label).
 

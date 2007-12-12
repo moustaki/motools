@@ -37,7 +37,7 @@
 walkload(Request) :-
 	member(search(Search),Request),
 	member(path=Path,Search),
-	member(base=Base,Search),
+	member(base=Base,Search),Base\='',
 	!,
 	rdf_assert(Base,gnarql:path,literal(Path)),
 	rdf_assert(Base,rdf:type,gnarql:'MusicCollection'),

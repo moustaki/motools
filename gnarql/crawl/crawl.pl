@@ -55,6 +55,6 @@ resource_in_graph(R,G) :-
 
 uncrawled_uri(A) :-
         atom_concat('http://',_,A),
-        \+((rdf(C,rdf:type,gnarql:'MusicCollection'),sub_atom(A,_,_,_,C))),
+        \+((C\='',rdf(C,rdf:type,gnarql:'MusicCollection'),sub_atom(A,_,_,_,C))),
         \+rdf(A,rdf:type,gnarql:'CrawledSource').
 
