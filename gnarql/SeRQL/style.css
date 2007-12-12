@@ -13,6 +13,15 @@ a:hover{
 	color: black;
 }
 
+pre{
+	background-color: white;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	border-spacing: 0;
+	padding: 0.5em;
+}
+
 /* Moved to rdf_style.css */	
 /* 
 table{

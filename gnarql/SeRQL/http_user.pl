@@ -65,6 +65,7 @@
 
 :- http_handler('/gnarql_load.html', gnarql_load_page, []).
 :- http_handler('/gnarql_crawl.html', gnarql_crawl_page, []).
+:- http_handler('/gnarql_example_queries.html', gnarql_example_queries, []).
 
 :- http_handler('/documentation.html',
 		http_reply_file(serql('serql.html'), []), []).
@@ -116,6 +117,8 @@ sidebar(_Request) :-
 :- multifile
 	serql_http:sidebar_menu/2.
 
+action('gnarql_load.html', 'Load music data').
+action('gnarql_crawl.html', 'Crawl for more').
 action('user/query',		'Query database').
 action(-,-).
 action('user/loadFile',	 	'Upload a file').
@@ -186,7 +189,7 @@ style(Request) :- serveuphtml(Request, 'style.css').
 rdf_style(Request) :- serveuphtml(Request, 'rdf_style.css').
 gnarql_load_page(Request) :- serveuphtml(Request, 'gnarql_load.html').
 gnarql_crawl_page(Request) :- serveuphtml(Request, 'gnarql_crawl.html').
-
+gnarql_example_queries(Request) :- serveuphtml(Request, 'gnarql_example_queries.html').
 
 		 /*******************************
 		 *	    STATISTICS		*
@@ -583,7 +586,10 @@ query_form(_Request) :-
 				       ])
 				  ])
 			  ]),
-		     \script
+		     \script,
+		     br([]),
+			 'Confused ? ',
+			 a([href('/gnarql_example_queries.html')], 'See some example queries')
 		   ]).
 
 

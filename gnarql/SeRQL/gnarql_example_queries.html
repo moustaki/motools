@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>GNARQL</title>
+	<link type="text/css" rel="stylesheet" href="style.css"/>
+
+</head>
+
+<body>
+
+<h2>Examples of SPARQL queries:</h2>
+
+<h3> Query for all known concepts:</h3>
+<pre> select distinct ?t
+ where
+ {
+ ?a rdf:type ?t
+ }
+</pre>
+
+<h3> Query for all known properties of track instances</h3>
+<pre> select distinct ?p
+ where
+ {
+ ?a 
+   a mo:Track; 
+   ?p ?o
+ }
+</pre>
+
+<h3> Query for all distinct chords known by the aggregation</h3>
+<pre> PREFIX co: &lt;http://purl.org/ontology/chord/&gt;
+ select distinct ?chord
+ where
+ {
+ ?e 
+    a co:ChordEvent;
+    co:chord ?chord
+ }
+</pre>
+
+<h3> All pairs of tracks that have the same title</h3>
+<pre> select distinct ?an ?tn ?an2
+ where
+ {
+ ?track foaf:maker ?artist.
+ ?track dc:title ?tn.
+ ?track2 dc:title ?tn.
+ ?artist foaf:name ?an.
+ ?track2 foaf:maker ?artist2.
+ ?artist2 foaf:name ?an2.
+ FILTER (?track!=?track2)
+ }
+</pre>
+
+<h3> All pairs of tracks that were produced by the same person</h3>
+<pre> select distinct ?track1_n ?track2_n ?artist1_n ?artist2_n
+ where
+ {
+ ?track1 
+    mo:producer ?p;
+    dc:title ?track1_n;
+    foaf:maker ?artist1.
+ ?track2 
+    mo:producer ?p;
+    dc:title ?track2_n;
+    foaf:maker ?artist2.
+ ?artist1 foaf:name ?artist1_n.
+ ?artist2 foaf:name ?artist2_n.
+ FILTER (?track1 != ?track2)
+ }
+</pre>
+
+<h3> All pairs of ''collaborating'' artists/groups</h3>
+<pre> select ?an ?bn
+ where
+ {
+ ?a
+    a mo:MusicArtist;
+    foaf:name ?an;
+    &lt;http://vocab.org/relationship/#collaborated_with&gt; ?b.
+ ?b foaf:name ?bn
+ }
+</pre>
+
+<h3> All married persons (one of them being related to at least one of the track we have)</h3>
+<pre> PREFIX rl: &lt;http://vocab.org/relationship/#&gt;
+ select ?an ?bn
+ where
+ {
+ ?a 
+    a mo:MusicArtist;
+    rl:spouseOf ?b;
+    foaf:name ?an.
+ ?b foaf:name ?bn
+ }
+</pre>
+
+<h3> All engaged persons</h3>
+<pre> PREFIX rl: &lt;http://vocab.org/relationship/#&gt;
+ select ?an ?bn
+ where
+ {
+ ?a 
+    a mo:MusicArtist;
+    rl:engagedTo ?b;
+    foaf:name ?an.
+ ?b foaf:name ?bn
+ }
+</pre>
+
+<h3> Give me artist names and associated latitudes, longitudes, population and name of the place they are based near, ordered by population</h3>
+<pre> PREFIX geo: &lt;http://www.geonames.org/ontology#&gt;
+ PREFIX wgs: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;
+ select ?an ?lat ?long ?name ?population
+ where
+ {
+ ?a 
+    a mo:MusicArtist; 
+    foaf:based_near ?place; 
+    foaf:name ?an.
+ ?place 
+    geo:name ?name; 
+    geo:population ?population; 
+    wgs:lat ?lat; 
+    wgs:long ?long
+ }
+ ORDER BY ?population
+</pre>
+</body>
+</html>
