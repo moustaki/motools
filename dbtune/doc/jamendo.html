@@ -48,7 +48,7 @@ This service aims at publishing and interlinking with relevant data sources the 
 <p>
 All resource identifiers defined by this RDF dump are dereferencable, and support content negotiation. 
 Using the <i>Accept: application/rdf+xml</i> header field, a RDF/XML representation of the resource is sent back.
-Otherwise, a HTML representation, done using <a href="http://sites.wiwiss.fu-berlin.de/suhl/bizer/ng4j/disco/">Disco</a>,
+Otherwise, a HTML representation, done using <a href="http://www.w3.org/2005/ajar/tab">the Tabulator Data browser</a>,
 is sent back.
 </p>
 <p>
@@ -65,11 +65,7 @@ Here are some entry points to the dataset:
 </ul>
 
 <p>
-The service also exposes some informational RDF documents. However, they do not load properly into DISCO (due to the small
-time out value on the server side). It works fine using the <a href="http://dig.csail.mit.edu/2005/ajar/ajaw/tab.html">Tabulator</a> though.
-</p>
-
-<p>
+The service also exposes some informational RDF documents. 
 Such documents are:
 </p>
 
@@ -137,8 +133,10 @@ their representation.
 <p>
 The second part is available <a href="http://moustaki.org/p2r/">here</a>. It is an equivalent of 
 <a href="http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/">D2R Server</a>, but for Prolog knowledge base.
-It allows to translate dynamically RDF queries to Prolog queries - which may wrap XML parsing (as it is done in
-the Jamendo RDF dump), calls to web services, databases, etc. 
+It allows to translate dynamically RDF queries to Prolog queries - which may wrap XML parsing,
+<!--(as it is done in
+the Jamendo RDF dump), -->
+calls to web services, databases, etc. 
 </p>
 <p>
 The behavior of this component is also specified through a declarative mapping (the package ships with some mapping 
