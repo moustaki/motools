@@ -7,7 +7,7 @@ A small script to generate timeline/chord ontology RDF corresponding to a .csv f
 
 Takes CSV files of the form :
 
-crotchetnumber, rootnotenumber, chordtype
+crotchetnumber, timestamp (ms), rootnotenumber, chordtype
 
 Where root notes are numbered from 0=C to 11=B and chordtype may be one of :
 
@@ -22,7 +22,7 @@ import os
 import mopy
 from mopy.timeline import Interval, TimeLine
 from mopy.chord import Chord, ChordEvent
-from mopy.mo import Signal
+from mopy.mo import Signal, Track, MusicArtist
 from mopy.MusicInfo import MusicInfo, isBlind
 import rdflib; from rdflib import ConjunctiveGraph, URIRef
 from urllib import quote as urlencode
@@ -50,14 +50,30 @@ def GScsv2RDF(infilename, outfilename, format="xml", withdescriptions=False):
 	program.homepage = homepage
 	mi.add(program)
 
-	
 	tl = TimeLine("#tl")
 	tl.label = "Timeline derived from "+infilename
 	tl.maker = program
 	mi.add(tl)
-		
-	# FIXME set tempo
-	tempo = 60
+
+	[artistStr, titleStr] = [f.strip() for f in lines[0].split("\t")]
+	# Add artist & title metadata
+	signal = Signal()
+	signal.time = sig_int = Interval()
+	sig_int.label="Whole signal interval";
+	sig_int.beginsAtDuration = secondsToXSDDuration(0);
+	sig_int.onTimeLine = tl
+	signal.published_as = track = Track()
+	artist = MusicArtist()
+	artist.made = track
+	artist.name = artistStr
+	track.title = titleStr
+	mi.add(sig_int)
+	mi.add(signal)
+	mi.add(track)
+	mi.add(artist)
+	
+	
+	
 	
 	lineNum = 1
 	segmentNum = 0
@@ -65,11 +81,12 @@ def GScsv2RDF(infilename, outfilename, format="xml", withdescriptions=False):
 	chordSymbol=''
 
 	t_secs = 0.0
-	for line in lines:
+	
+	for line in lines[1:]:
 #		print "parsing line "+str(lineNum)
 		try:
 			lastChordSymbol = chordSymbol
-		
+			t_secs = getTimestamp(line)
 			chordSymbol = getChordSymbol(line)
 			if chordSymbol != lastChordSymbol:
 #				print " handling new chord symbol"
@@ -104,7 +121,6 @@ def GScsv2RDF(infilename, outfilename, format="xml", withdescriptions=False):
 				mi.add(c); mi.add(c_event);
 #				print " added new chord event for "+chordURI
 							
-			t_secs += 60.0/tempo
 		except Exception, e:
 			print("ERROR : Problem parsing input file at line "+str(lineNum)+" !\n")
 			raise
@@ -122,6 +138,14 @@ def GScsv2RDF(infilename, outfilename, format="xml", withdescriptions=False):
 	
 	mopy.exportRDFFile(mi, outfilename, format)
 
+def getTimestamp(line):
+	"""Pull out the millisecond timestamp from a line of CSV"""
+	try:
+		[crotchetnum, timestamp, rootnum, ctype] = line.split(',')
+	except Exception,e :
+		print "Exception ! Trying to split line : "+line
+		raise
+	return float(timestamp)/1000
 
 def getChordSymbol(line):
 	"""Pull out a chord symbols from a line of CSV."""
@@ -130,7 +154,7 @@ def getChordSymbol(line):
 	notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']
 	
 	try:
-		[timestamp, rootnum, ctype] = line.split(',')
+		[crotchetnum, timestamp, rootnum, ctype] = line.split(',')
 	except Exception,e :
 		print "Exception ! Trying to split line : "+line
 		raise
