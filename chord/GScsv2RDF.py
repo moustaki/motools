@@ -173,7 +173,7 @@ def secondsToXSDDuration(s):
 
 if __name__ == '__main__':
 
-	usage = "%prog [options] infile.csv [outfile.rdf]"
+	usage = "%prog [options] (infile.csv | dirname) [outfile.rdf]"
 	parser = OptionParser(usage=usage)
 	parser.add_option("--format", action="store", type="string", dest="format", \
 						help="format for output (xml or n3)", metavar="FORMAT", default="xml")
@@ -187,16 +187,31 @@ if __name__ == '__main__':
 		infilename = args[0]
 
 	if len(args) == 1:
-		dotpos=infilename.rfind(".")
-		if dotpos == -1:
-			outfilename = infilename+".rdf"
-		else:
-			outfilename = infilename[:dotpos]+".rdf"
+		if os.path.isfile(infilename):
+			dotpos=infilename.rfind(".")
+			if dotpos == -1:
+				outfilename = infilename+".rdf"
+			else:
+				outfilename = infilename[:dotpos]+".rdf"
 	else:
 		outfilename = args[1]
 
 	validFormats=["xml", "n3"]
 	if opts.format not in validFormats:
 		parser.error("Invalid format specified ! Must be one of : "+", ".join(validFormats))
-
-	GScsv2RDF(infilename, outfilename, opts.format, opts.descriptions)
+	
+	if os.path.isfile(infilename):
+		GScsv2RDF(infilename, outfilename, opts.format, opts.descriptions)
+	else:
+		for f in os.listdir(infilename):
+			if not f.endswith(".csv"):
+				continue
+			print f
+			fullname=os.path.join(infilename,f)
+			if os.path.isfile(fullname):
+				dotpos=f.rfind(".")
+				if dotpos == -1:
+					outfilename = fullname+".rdf"
+				else:
+					outfilename = os.path.join(infilename,f[:dotpos]+".rdf")
+				GScsv2RDF(fullname, outfilename, opts.format, opts.descriptions)			
