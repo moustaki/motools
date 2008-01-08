@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dc 'http://purl.org/dc/elements/1.1/'>
+    <!ENTITY mo 'http://purl.org/ontology/mo/'>
+    <!ENTITY ns1 'http://www.w3.org/2003/06/sw-vocab-status/ns#'>
+    <!ENTITY owl 'http://www.w3.org/2002/07/owl#'>
+    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+    <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+    <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+]>
+
+<rdf:RDF
+    xmlns:dc="&dc;"
+    xmlns:mo="&mo;"
+    xmlns:ns1="&ns1;"
+    xmlns:owl="&owl;"
+    xmlns:rdf="&rdf;"
+    xmlns:rdfs="&rdfs;"
+    xmlns:xsd="&xsd;"
+>
+<rdf:Property rdf:about="http://purl.org/NET/c4dm/event.owl#sub_event"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;ObjectProperty"/>
+  <rdfs:comment>		Allows to link an event to a sub-event. A sub-event might be an event split by time,
+		space, agents, factors... This property can be used to express things such as "during
+		this performance, this person was playing this instrument at this particular time", through 
+		the creation of a sub-event, occuring at this given time, and having as agent the person and
+		as factor the instrument
+	</rdfs:comment>
+  <rdfs:domain rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/event.owl"/>
+  <rdfs:range rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+</rdf:Property>
+
+<rdfs:Class rdf:about="http://purl.org/NET/c4dm/timeline.owl#AbstractTimeLine"
+    mo:level="3"
+    ns1:term_status="unstable">
+  <rdf:type rdf:resource="&owl;Class"/>
+  <rdfs:comment>		Abstract time lines may be used as a backbone for Score, Works, ... 
+		This allows for TimeLine maps to relate works to a given performance (this note was played at this time).
+		No coordinate systems are defined for these timelines. Their structure is implicitly defined
+		by the relations between time objects defined on them (eg. this note is before this note, which is
+		before this silent, which is at the same time as this note).
+	</rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/timeline.owl#TimeLine"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="http://purl.org/NET/c4dm/timeline.owl#OriginMap"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;Class"/>
+  <rdfs:comment>		This time line map represents the relation between the physical timeline and a
+		continuous time line where the origin is at a given point on the physical timeline
+		(eg. "the timeline backing this signal corresponds
+		to the physical timeline: point 0 on this timeline corresponds to the
+		20th of december at 5pm").
+	</rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/timeline.owl#TimeLineMap"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="http://purl.org/NET/c4dm/timeline.owl#PhysicalTimeLine"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;Class"/>
+  <rdfs:comment>		Well, the actual physical time as we know it. I may want to address "yesterday" on instances
+		of this class, or "the year 1789"...
+	</rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/timeline.owl#TimeLine"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="http://purl.org/NET/c4dm/timeline.owl#RelativeTimeLine"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;Class"/>
+  <rdfs:comment>		A semi-infinite continuous timeline. Instances of RelativeTimeLine can
+		back audio/video signals, sounds. Such timelines can
+		be linked to a physical time line using the OriginMap.
+	</rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/timeline.owl#TimeLine"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="http://purl.org/NET/c4dm/timeline.owl#TimeLine"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;Class"/>
+  <rdfs:comment> 
+		A time line -- a coherent "backbone" for addressing points and intervals.
+		We can consider the timeline backing an audio/video signal, the one
+		corresponding to the "physical" time, or even the one backing a score.
+		Here, we consider that the timeline is *also* its coordinate system, for
+		simplification purposes. In the DL version of the timeline ontology,
+		coordinate systems are defined through restrictions on the way to 
+		address time points/intervals on a timeline.
+	</rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="http://purl.org/NET/c4dm/timeline.owl#TimeLineMap"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;Class"/>
+  <rdfs:comment>		Two time lines can be related, such as the one backing a continuous signal and
+		the one backing the digitized signal. This sort of relation is expressed through an instance
+		of a TimeLine map (eg. "the timeline backing this signal corresponds
+		to the physical timeline: point 0 on this timeline corresponds to the
+		20th of december at 5pm").
+	</rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="http://purl.org/NET/c4dm/timeline.owl#atDuration"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;DatatypeProperty"/>
+  <rdfs:comment>		Place a time point on an abstract time line by expressing its distance to
+		the point 0, through xsd:duration (example: this instant is at 2s after 0 --&gt; T2S)
+	</rdfs:comment>
+  <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Instant"/>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:range rdf:resource="&xsd;duration"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="http://purl.org/NET/c4dm/timeline.owl#beginsAtDateTime"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;DatatypeProperty"/>
+  <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  <rdfs:comment>		Links an interval on a physical timeline to its actual start point,
+		expressed using xsd:dateTime
+	</rdfs:comment>
+  <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Interval"/>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:range rdf:resource="&xsd;dateTime"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="http://purl.org/NET/c4dm/timeline.owl#beginsAtDuration"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;DatatypeProperty"/>
+  <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  <rdfs:comment>		Links an interval on a semi-infinite continuous time line to its
+		start point, addressed using xsd:duration (duration between 0 and the
+		start point)
+	</rdfs:comment>
+  <rdfs:domain rdf:resource="http://www.w3.org/2006/time#Interval"/>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:range rdf:resource="&xsd;duration"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="http://purl.org/NET/c4dm/timeline.owl#domainTimeLine"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  <rdf:type rdf:resource="&owl;ObjectProperty"/>
+  <rdfs:comment>		This property allows to associate a TimeLineMap with the first TimeLine it maps
+	</rdfs:comment>
+  <rdfs:domain rdf:resource="http://purl.org/NET/c4dm/timeline.owl#TimeLineMap"/>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:range rdf:resource="http://purl.org/NET/c4dm/timeline.owl#TimeLine"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="http://purl.org/NET/c4dm/timeline.owl#onTimeLine"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  <rdf:type rdf:resource="&owl;ObjectProperty"/>
+  <rdfs:comment>		Links an instant or an interval to the timeline it is defined on (eg. "1970 is defined on the
+		time line universaltimeline", or "the interval between 0 and 2 minutes is defined on the time
+		line backing this sound and this signal").
+	</rdfs:comment>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description about="http://www.w3.org/2006/time#Interval"/>
+        <rdf:Description about="http://www.w3.org/2006/time#Instant"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:range rdf:resource="http://purl.org/NET/c4dm/timeline.owl#TimeLine"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="http://purl.org/NET/c4dm/timeline.owl#originAt"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;DatatypeProperty"/>
+  <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  <rdfs:comment>		This property specifies, for an OriginMap, the time point on the physical time line
+		0 on a RelativeTimeLine is equivalent to.
+	</rdfs:comment>
+  <rdfs:domain rdf:resource="http://purl.org/NET/c4dm/timeline.owl#OriginMap"/>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="http://purl.org/NET/c4dm/timeline.owl#rangeTimeLine"
+    mo:level="3"
+    ns1:term_status="stable">
+  <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+  <rdf:type rdf:resource="&owl;ObjectProperty"/>
+  <rdfs:comment>                This property allows to associate a TimeLineMap with the second TimeLine it maps
+        </rdfs:comment>
+  <rdfs:domain rdf:resource="http://purl.org/NET/c4dm/timeline.owl#TimeLineMap"/>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+  <rdfs:range rdf:resource="http://purl.org/NET/c4dm/timeline.owl#TimeLine"/>
+</rdf:Property>
+
+<rdf:Description rdf:about="http://purl.org/NET/c4dm/timeline.owl#universaltimeline"
+    dc:title="universal time line"
+    mo:level="3">
+  <dc:description>		The "canonical" physical time-line, on which points/intervals are addressed through UTC.
+		(Remember: we do here the amalgam between timelines and coordinate systems, as we 
+		choose one canonical one per timeline).
+	</dc:description>
+  <rdf:type rdf:resource="http://purl.org/NET/c4dm/timeline.owl#PhysicalTimeLine"/>
+  <rdfs:isDefinedBy rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+</rdf:Description>
+
+</rdf:RDF>
