@@ -1,7 +1,15 @@
-:- module(lastfm,[]).
+:- module(lastfm,[scroble_rdf/2,host/1]).
 
 :- use_module(library('http/http_open')).
 :- use_module(library('semweb/rdf_db')).
+
+:- consult(namespaces).
+:- consult(config).
+
+
+scroble_rdf(User,RDF2) :-
+	tracks_rdf(User,RDF),
+	rdf_global_term(RDF,RDF2).
 
 
 /**
@@ -63,15 +71,18 @@ url_info(User,Track,[rdf(Track,foaf:primaryTopicOf,URL)|Triples]) -->
 	newline,
 	[element(url,[],[URL])],
 	date_info(User,Track,Triples).
-date_info(User,Track,[rdf(Evt,rdf:type,lfm:'BroadcastEvent'),rdf(Evt,lfm:track_played,Track),rdf(Evt,dc:date,literal(Date)),rdf(Evt,lfm:listener,Uri)]) -->
+date_info(User,Track,[rdf(Evt,rdf:type,lfm:'ScrobleEvent'),rdf(Evt,lfm:track_played,Track),rdf(Evt,dc:date,literal(Date)),rdf(Evt,lfm:user,Uri)]) -->
 	newline,
 	[element(date,[uts=UTS],_)],
 	{
+	rdf_bnode(Evt),
 	atom_to_term(UTS,Time,[]),
 	stamp_date_time(Time,date(Year,Month,Day,Hour,Minute,Seconds,_,_,_),'UTC'),
 	term_to_atom(Year,Y),term_to_atom(Month,Mo),term_to_atom(Day,D),term_to_atom(Hour,H),term_to_atom(Minute,Mi),term_to_atom(Seconds,S),
 	format(atom(Date),'~w-~w-~wT~w:~w:~w',[Y,Mo,D,H,Mi,S]),
-	format(atom(Uri),'http://ws.audioscrobbler.com/1.0/user/~w',[User])
+	host(Host),
+	format(atom(Uri),'~w/~w',[Host,User])
+	%format(atom(Uri),'http://ws.audioscrobbler.com/1.0/user/~w',[User])
 	},done.
 done --> [_|_].
 done --> [].
