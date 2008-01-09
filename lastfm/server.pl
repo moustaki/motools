@@ -31,7 +31,7 @@ reply(Request) :-
 
 
 server :- 
-	server(2020,[]),nl,
+	server(3060,[]),nl,
 	writeln(' - Server launched'),nl. 
         
 
