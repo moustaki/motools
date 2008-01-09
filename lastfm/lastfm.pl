@@ -71,7 +71,7 @@ url_info(User,Track,[rdf(Track,foaf:primaryTopicOf,URL)|Triples]) -->
 	newline,
 	[element(url,[],[URL])],
 	date_info(User,Track,Triples).
-date_info(User,Track,[rdf(Evt,rdf:type,lfm:'ScrobleEvent'),rdf(Evt,lfm:track_played,Track),rdf(Evt,dc:date,literal(Date)),rdf(Evt,lfm:user,Uri)]) -->
+date_info(User,Track,[rdf(Evt,rdf:type,lfm:'ScrobbleEvent'),rdf(Evt,lfm:track_played,Track),rdf(Evt,dc:date,literal(Date)),rdf(Evt,lfm:user,Uri)]) -->
 	newline,
 	[element(date,[uts=UTS],_)],
 	{

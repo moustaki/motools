@@ -1,6 +1,6 @@
 
 
 
-host('http://localhost:2020').
+host('http://dbtune.org/last-fm/').
 
 
