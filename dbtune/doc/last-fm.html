@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - AudioScrobbler RDF Service</title>
+
+<style type="text/css" media="all">
+        @import url(style.css);
+</style>
+
+</head>
+
+<body>
+
+
+<a href="http://dbtune.org/"><h1 style="font-size: 250%;">DBTune.org</h1></a>
+
+<div id="tagline">AudioScrobbler RDF Service</div>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
+
+<p>
+
+This service provides a live <a href="http://www.w3.org/RDF/">RDF</a>
+representation of your last 40 tracks submitted to 
+<a href="http://www.audioscrobbler.net/">AudioScrobbler</a> (you might
+want to check <a href="http://last.fm/">Last.fm</a>, also).
+There are
+many AudioScrobbler clients for a wide range of media players.
+</p>
+
+
+<p>
+This representations is designed using the <a href="http://musicontology.com/">
+Music Ontology</a>, <a href="http://xmlns.com/foaf/0.1/">FOAF</a> and
+a small <a href="#scrobbleonto">AudioScrobble ontology</a>. Moreover,
+it is interlinked with corresponding dereferencable <a href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URIs</a> 
+in the <a href="http://musicbrainz.org/">Musicbrainz repository</a> (see
+<a href="http://dbtune.org/#concept">this quick explanation of why this
+is important</a>).
+</p>
+
+<p>
+This effort is part of the <a href="http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/LinkingOpenData">Linking
+Open Data on the Semantic Web</a> community project, hosted by the <a href="http://www.w3.org/2001/sw/sweo/">Semantic
+Web Education and Outreach</a> interest group.
+</p>
+
+
+
+<h2><a name="use" id="use"></a>2. Using this service</h2>
+<p>
+Just get the following URI:
+<pre>
+http://dbtune.org/last-fm/&lt;username&gt;
+</pre>
+Where &lt;username&gt; is your <a href="http://last.fm/">Last.fm</a> username.
+</p>
+<p>
+Try to load this URI in the <a href="http://www.w3.org/2005/ajar/tab">Tabulator</a>
+to jump to the Musicbrainz 
+description of the artists, tracks, albums you listened to, to plot your last
+scrobble on the <a href="http://simile.mit.edu/timeline/">Simile Timeline</a>, etc.
+</p>
+<p>
+You can also add this information to your <a href="http://xmlns.com/foaf/0.1/">FOAF profile</a> by adding the following line in it:
+<pre>
+&lt;my URI&gt; owl:sameAs &lt;http://dbtune.org/last-fm/&lt;username&gt;
+</pre>
+</p>
+
+<h2><a name="scrobbleonto" id="scrobbleonto"></a>3. AudioScrobble ontology</h2>
+<p>
+For the purpose of representing AudioScrobble events in RDF, we designed
+a really small <a href="http://purl.org/ontology/last-fm/">Scrobble
+ontology</a>, heavily based on the <a href="http://purl.org/NET/c4dm/event.owl#">Event ontology</a>. Basically, it just defines a 
+<a href="http://purl.org/ontology/last-fm/ScrobbleEvent"><b>Scrobble</b> event</a> 
+as being a sub-concept of the <a href="http://purl.org/NET/c4dm/event.owl#Event"><b>Event</b> one</a>, and a <a href="http://purl.org/ontology/last-fm/user"><b>user</b>
+property</a> as being a sub-property of the <a href="http://purl.org/NET/c4dm/event.owl#agent"><b>agent</b> one</a>
+</p>
+
+<h2><a name="code" id="code"></a>4. Code</h2>
+<p>
+As usual, <a href="http://motools.svn.sourceforge.net/viewvc/motools/lastfm/">all the code running this service</a>
+is open source and based
+on <a href="http://www.swi-prolog.org">SW-Prolog</a>
+</p>
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3327144-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+
+</body>
+
+</html>
+
