@@ -1,6 +1,6 @@
 
 
 
-host('http://dbtune.org/last-fm/').
+host('http://dbtune.org/last-fm').
 
 
