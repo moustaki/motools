@@ -1,4 +1,4 @@
-:- module(lastfm,[scroble_rdf/2,host/1]).
+:- module(lastfm,[scrobble_rdf/2,host/1]).
 
 :- use_module(library('http/http_open')).
 :- use_module(library('semweb/rdf_db')).
@@ -7,7 +7,7 @@
 :- consult(config).
 
 
-scroble_rdf(User,RDF2) :-
+scrobble_rdf(User,RDF2) :-
 	tracks_rdf(User,RDF),
 	rdf_global_term(RDF,RDF2).
 
@@ -32,46 +32,51 @@ artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'Mus
 	[element(artist,[mbid=ID],[Name])],
 	{
 	rdf_bnode(Artist),
-	format(atom(URI),'http://zitgist.com/music/artist/~w',[ID])
+	format(atom(URI),'http://zitgist.com/music/artist/~w',[ID]),
+	format(atom(ScrobbleDesc),'Listened to "~w"',[Name])
 	},
-	track_info(User,Track,Triples).
-track_info(User,Track,[rdf(Track,dc:title,literal(Title)),rdf(Track,rdf:type,mo:'Track'),rdf(Track,owl:sameAs,URI)|Triples]) -->
+	track_info(User,Track,ScrobbleDesc,Triples).
+track_info(User,Track,ScrobbleDesc,[rdf(Track,dc:title,literal(Title)),rdf(Track,rdf:type,mo:'Track'),rdf(Track,owl:sameAs,URI)|Triples]) -->
 	newline,
 	[element(name,_,[Title])],newline,
 	[element(mbid,_,[ID])],!,
 	{
 	rdf_bnode(Track),
-	format(atom(URI),'http://zitgist.com/music/track/~w',[ID])
+	format(atom(URI),'http://zitgist.com/music/track/~w',[ID]),
+	format(atom(NewScrobbleDesc),'~w, track "~w"',[ScrobbleDesc,Title])
 	},
-	album_info(User,Track,Triples).
-track_info(User,Track,[rdf(Track,dc:title,literal(Title)),rdf(Track,rdf:type,mo:'Track')|Triples]) -->
+	album_info(User,Track,NewScrobbleDesc,Triples).
+track_info(User,Track,ScrobbleDesc,[rdf(Track,dc:title,literal(Title)),rdf(Track,rdfs:label,literal(Title)),rdf(Track,rdf:type,mo:'Track')|Triples]) -->
 	newline,
 	[element(name,_,[Title])],newline,
 	[element(mbid,_,_)],
 	{
-	rdf_bnode(Track)
+	rdf_bnode(Track),
+	format(atom(NewScrobbleDesc),'~w, track "~w"',[ScrobbleDesc,Title])
 	},
-	album_info(User,Track,Triples).
-album_info(User,Track,[rdf(Album,mo:track,Track),rdf(Album,rdf:type,mo:'Record'),rdf(Album,owl:sameAs,URI),rdf(Album,foaf:name,literal(Title))|Triples]) -->
+	album_info(User,Track,NewScrobbleDesc,Triples).
+album_info(User,Track,ScrobbleDesc,[rdf(Album,mo:track,Track),rdf(Album,rdf:type,mo:'Record'),rdf(Album,owl:sameAs,URI),rdf(Album,rdfs:label,literal(Title)),rdf(Album,foaf:name,literal(Title))|Triples]) -->
 	newline,
 	[element(album,[mbid=ID],[Title])],!,
 	{
 	rdf_bnode(Album),
-	format(atom(URI),'http://zitgist.com/music/record/~w',[ID])
+	format(atom(URI),'http://zitgist.com/music/record/~w',[ID]),
+	format(atom(NewScrobbleDesc),'~w, record "~w"',[ScrobbleDesc,Title])
 	},
-	url_info(User,Track,Triples).
-album_info(User,Track,[rdf(Album,mo:track,Track),rdf(Album,rdf:type,mo:'Record'),rdf(Album,foaf:name,literal(Title))|Triples]) -->
+	url_info(User,Track,NewScrobbleDesc,Triples).
+album_info(User,Track,ScrobbleDesc,[rdf(Album,mo:track,Track),rdf(Album,rdf:type,mo:'Record'),rdf(Album,rdfs:label,literal(Title)),rdf(Album,foaf:name,literal(Title))|Triples]) -->
         newline,
 	[element(album,_,[Title])],
         {
-        rdf_bnode(Album)
+        rdf_bnode(Album),
+	format(atom(NewScrobbleDesc),'~w, record "~w"',[ScrobbleDesc,Title])
         },
-        url_info(User,Track,Triples).
-url_info(User,Track,[rdf(Track,foaf:primaryTopicOf,URL)|Triples]) -->
+        url_info(User,Track,NewScrobbleDesc,Triples).
+url_info(User,Track,ScrobbleDesc,[rdf(Track,foaf:primaryTopicOf,URL)|Triples]) -->
 	newline,
 	[element(url,[],[URL])],
-	date_info(User,Track,Triples).
-date_info(User,Track,[rdf(Evt,rdf:type,lfm:'ScrobbleEvent'),rdf(Evt,lfm:track_played,Track),rdf(Evt,dc:date,literal(Date)),rdf(Evt,lfm:user,Uri)]) -->
+	date_info(User,Track,ScrobbleDesc,Triples).
+date_info(User,Track,ScrobbleDesc,[rdf(Evt,rdf:type,lfm:'ScrobbleEvent'),rdf(Evt,rdfs:label,literal(ScrobbleDesc)),rdf(Evt,lfm:track_played,Track),rdf(Evt,dc:date,literal(Date)),rdf(Evt,lfm:user,Uri)]) -->
 	newline,
 	[element(date,[uts=UTS],_)],
 	{

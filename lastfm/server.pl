@@ -18,7 +18,7 @@ reply(Request) :-
 	format('Content-type: application/rdf+xml~n~n', []),
 	current_output(S),
 	log:log('Generating RDF scrobble for ~w',[User]),
-	scroble_rdf(User,Triples),rdf_write_xml(S,Triples).
+	scrobble_rdf(User,Triples),rdf_write_xml(S,Triples).
 
 reply(Request) :-
 	member(path(Path),Request),
