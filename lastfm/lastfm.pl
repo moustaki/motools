@@ -84,7 +84,8 @@ date_info(User,Track,ScrobbleDesc,[rdf(Evt,rdf:type,lfm:'ScrobbleEvent'),rdf(Evt
 	atom_to_term(UTS,Time,[]),
 	stamp_date_time(Time,date(Year,Month,Day,Hour,Minute,Seconds,_,_,_),'UTC'),
 	term_to_atom(Year,Y),term_to_atom(Month,Mo),term_to_atom(Day,D),term_to_atom(Hour,H),term_to_atom(Minute,Mi),term_to_atom(Seconds,S),
-	format(atom(Date),'~w-~w-~wT~w:~w:~w',[Y,Mo,D,H,Mi,S]),
+	(atom_chars(Mo,MoC),length(MoC,1)->atom_chars(Mo2,[0|MoC]);Mo2=Mo),
+	format(atom(Date),'~w-~w-~wT~w:~w:~w',[Y,Mo2,D,H,Mi,S]),
 	host(Host),
 	format(atom(Uri),'~w/~w',[Host,User])
 	%format(atom(Uri),'http://ws.audioscrobbler.com/1.0/user/~w',[User])
