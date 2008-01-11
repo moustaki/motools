@@ -65,7 +65,7 @@ track_info(User,Track,ScrobbleDesc,[rdf(Track,dc:title,literal(Title)),rdf(Track
 	album_info(User,Track,NewScrobbleDesc,Triples).
 album_info(User,Track,ScrobbleDesc,[rdf(Album,mo:track,Track),rdf(Album,rdf:type,mo:'Record'),rdf(Album,owl:sameAs,URI),rdf(Album,rdfs:label,literal(Title)),rdf(Album,foaf:name,literal(Title))|Triples]) -->
 	newline,
-	[element(album,[mbid=ID],[Title])],!,
+	[element(album,[mbid=ID],[Title])],{ID\=''},!,
 	{
 	rdf_bnode(Album),
 	format(atom(URI),'http://zitgist.com/music/record/~w',[ID]),
