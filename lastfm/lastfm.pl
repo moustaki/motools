@@ -29,13 +29,21 @@ tracks_rdf(User,Triples) :-
 
 artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'MusicalArtist'),rdf(Artist,foaf:name,literal(Name)),rdf(Artist,owl:sameAs,URI)|Triples]) -->
 	newline,
-	[element(artist,[mbid=ID],[Name])],
+	[element(artist,[mbid=ID],[Name])],!,
 	{
 	rdf_bnode(Artist),
 	format(atom(URI),'http://zitgist.com/music/artist/~w',[ID]),
 	format(atom(ScrobbleDesc),'Listened to "~w"',[Name])
 	},
 	track_info(User,Track,ScrobbleDesc,Triples).
+artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'MusicalArtist'),rdf(Artist,foaf:name,literal(Name))|Triples]) -->
+        newline,
+        [element(artist,_,[Name])],
+        {
+        rdf_bnode(Artist),
+        format(atom(ScrobbleDesc),'Listened to "~w"',[Name])
+        },
+        track_info(User,Track,ScrobbleDesc,Triples).
 track_info(User,Track,ScrobbleDesc,[rdf(Track,dc:title,literal(Title)),rdf(Track,rdf:type,mo:'Track'),rdf(Track,owl:sameAs,URI)|Triples]) -->
 	newline,
 	[element(name,_,[Title])],newline,
