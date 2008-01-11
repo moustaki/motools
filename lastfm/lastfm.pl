@@ -85,7 +85,11 @@ date_info(User,Track,ScrobbleDesc,[rdf(Evt,rdf:type,lfm:'ScrobbleEvent'),rdf(Evt
 	stamp_date_time(Time,date(Year,Month,Day,Hour,Minute,Seconds,_,_,_),'UTC'),
 	term_to_atom(Year,Y),term_to_atom(Month,Mo),term_to_atom(Day,D),term_to_atom(Hour,H),term_to_atom(Minute,Mi),term_to_atom(Seconds,S),
 	((atom_chars(Mo,MoC),length(MoC,1))->atom_chars(Mo2,['0'|MoC]);Mo2=Mo),
-	format(atom(Date),'~w-~w-~wT~w:~w:~w',[Y,Mo2,D,H,Mi,S]),
+	((atom_chars(D,DC),length(DC,1))->atom_chars(D2,['0'|DC]);D2=D),
+	((atom_chars(H,HC),length(HC,1))->atom_chars(H2,['0'|HC]);H2=H),
+	((atom_chars(Mi,MiC),length(MiC,1))->atom_chars(Mi2,['0'|MiC]);Mi2=Mi),
+	((atom_chars(S,SC),length(SC,1))->atom_chars(S2,['0'|SC]);S2=S),
+	format(atom(Date),'~w-~w-~wT~w:~w:~w',[Y,Mo2,D2,H2,Mi2,S2]),
 	host(Host),
 	format(atom(Uri),'~w/~w',[Host,User])
 	%format(atom(Uri),'http://ws.audioscrobbler.com/1.0/user/~w',[User])
