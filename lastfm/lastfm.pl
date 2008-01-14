@@ -29,7 +29,7 @@ tracks_rdf(User,Triples) :-
 
 artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'MusicalArtist'),rdf(Artist,foaf:name,literal(Name)),rdf(Artist,owl:sameAs,URI)|Triples]) -->
 	newline,
-	[element(artist,[mbid=ID],[Name])],!,
+	[element(artist,[mbid=ID],[Name])],{ID\=''},!,
 	{
 	rdf_bnode(Artist),
 	format(atom(URI),'http://zitgist.com/music/artist/~w',[ID]),
@@ -47,7 +47,7 @@ artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'Mus
 track_info(User,Track,ScrobbleDesc,[rdf(Track,dc:title,literal(Title)),rdf(Track,rdf:type,mo:'Track'),rdf(Track,owl:sameAs,URI)|Triples]) -->
 	newline,
 	[element(name,_,[Title])],newline,
-	[element(mbid,_,[ID])],!,
+	[element(mbid,_,[ID])],{ID\=''},!,
 	{
 	rdf_bnode(Track),
 	format(atom(URI),'http://zitgist.com/music/track/~w',[ID]),
