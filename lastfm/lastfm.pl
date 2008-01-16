@@ -8,7 +8,7 @@
 
 
 scrobble_rdf(User,RDF2) :-
-	tracks_rdf(User,RDF),
+	tracks_rdf(User,RDF),!,
 	rdf_global_term(RDF,RDF2).
 
 
