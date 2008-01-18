@@ -258,7 +258,8 @@ class Generator:
 				   	   "http://www.w3.org/2001/XMLSchema#gYear" : "int",\
 					   "http://www.w3.org/2001/XMLSchema#gYearMonth" : "str",\
 					   "http://www.w3.org/2001/XMLSchema#gMonth" : "int",\
-					   "http://www.w3.org/2001/XMLSchema#gDay" : "int"}
+					   "http://www.w3.org/2001/XMLSchema#gDay" : "int",
+					   "http://www.w3.org/2001/XMLSchema#string" : "str"}
 		if not str(t).startswith("http://www.w3.org/2001/XMLSchema#"):
 			return (ClassQNameToPyClassName(self.graph.qname(t)))
 		elif str(t) in typeMapping.keys(): #FIXME handle others
