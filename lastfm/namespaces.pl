@@ -1,3 +1,5 @@
+:- module(namespaces,[]).
+
 :- use_module(library('semweb/rdf_db')).
 
 

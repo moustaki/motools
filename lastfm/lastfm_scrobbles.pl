@@ -3,8 +3,8 @@
 :- use_module(library('http/http_open')).
 :- use_module(library('semweb/rdf_db')).
 
-:- consult(namespaces).
-:- consult(config).
+:- use_module(namespaces).
+:- use_module(config).
 
 
 scrobble_rdf(User,RDF2) :-
@@ -22,7 +22,7 @@ tracks_rdf(User,Triples) :-
 	recent_tracks_xml(User,Xml),
 	Xml = [element(recenttracks,_,Xml2)],
 	findall(Triples,
-		(member(element(track,_,Track),Xml2),phrase(lastfm:artist_info(User,_,Triples),Track)),
+		(member(element(track,_,Track),Xml2),phrase(lastfm_scrobbles:artist_info(User,_,Triples),Track)),
 		BT),
 	flatten(BT,Triples).
 
@@ -114,7 +114,7 @@ newline --> [].
 recent_tracks_xml(User,Xml) :-
 	format(atom(Url),'http://ws.audioscrobbler.com/1.0/user/~w/recenttracks.xml',[User]),
 	http_open(Url,Stream,[]),
-	load_xml_file(Stream,Xml).
+	load_xml_file(Stream,Xml),close(Stream).
 
 
 

@@ -1,3 +1,4 @@
+:- module(config,[host/1]).
 
 
 

@@ -3,6 +3,7 @@
 :- use_module(library('http/thread_httpd')).
 :- use_module(log).
 :- use_module(lastfm_scrobbles).
+:- use_module(lastfm_friends).
 :- use_module(library('semweb/rdf_db')).
 
 
@@ -18,7 +19,10 @@ reply(Request) :-
 	format('Content-type: application/rdf+xml~n~n', []),
 	current_output(S),
 	log:log('Generating RDF scrobble for ~w',[User]),
-	scrobble_rdf(User,Triples),rdf_write_xml(S,Triples).
+	scrobble_rdf(User,Triples1),
+	friends_rdf(User,Triples2),
+	append(Triples1,Triples2,Triples),
+	rdf_write_xml(S,Triples).
 
 reply(Request) :-
 	member(path(Path),Request),
