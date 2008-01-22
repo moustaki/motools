@@ -1,4 +1,4 @@
-:- module(lastfm_friends,[]).
+:- module(lastfm_friends,[friends_rdf/2]).
 
 :- use_module(library('http/http_open')).
 :- use_module(library('semweb/rdf_db')).
