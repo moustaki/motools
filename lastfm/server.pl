@@ -2,7 +2,7 @@
 
 :- use_module(library('http/thread_httpd')).
 :- use_module(log).
-:- use_module(lastfm).
+:- use_module(lastfm_scrobbles).
 :- use_module(library('semweb/rdf_db')).
 
 

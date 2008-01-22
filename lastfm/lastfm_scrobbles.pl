@@ -1,4 +1,4 @@
-:- module(lastfm,[scrobble_rdf/2,host/1]).
+:- module(lastfm_scrobbles,[scrobble_rdf/2,host/1]).
 
 :- use_module(library('http/http_open')).
 :- use_module(library('semweb/rdf_db')).
