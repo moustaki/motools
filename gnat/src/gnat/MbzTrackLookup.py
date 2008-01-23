@@ -103,12 +103,17 @@ class MbzTrackLookup :
 			self.album = self.__clean_literal(str(album))
 		except :
 			self.album = None
+		try :
+			[tracknumber] = self.audio['tracknumber']
+			self.tracknumber = int(self.__clean_literal(str(tracknumber)))
+		except :
+			self.tracknumber = None
 		self.mbzQuery()
 
 	def mbzQuery(self) :
 		self.query = CachedMBZQuery()
 		
-		debug(' - Trying to guess an ID for track \"'+str(self.title)+'\", artist \"'+str(self.artist)+'\", release \"'+str(self.album)+'\"')
+		debug(' - Trying to guess an ID for track \"'+str(self.title)+'\", artist \"'+str(self.artist)+'\", release \"'+str(self.album)+'\", track number '+str(self.tracknumber))
 		
 		try:
 			artists = self.getArtists()
@@ -184,10 +189,12 @@ class MbzTrackLookup :
 			return artists
 
 	def getTracks(self,artist_id=None,release_id=None) :
-		if self.title == None :
+		if self.title == None  or (self.tracknumber == None and release_id == None):
 			return []
 		else :
-			if artist_id==None and release_id==None :
+			if not(self.tracknumber == None) and not(release_id == None) :
+				track_filter = ws.TrackFilter(query='tnum:'+str(self.tracknumber)+ ' AND reid:'+release_id)
+			elif artist_id==None and release_id==None :
 				track_filter = ws.TrackFilter(query='(track:'+str(self.title)+')')
 			elif release_id==None :
 				track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND arid:'+artist_id)
