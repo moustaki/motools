@@ -127,6 +127,11 @@ class MbzTrackLookup :
 				if(self.album!=None) :
 					release_filter = ws.ReleaseFilter(query='(release:'+str(self.album)+') '+' AND arid:'+artist_id)
 					releases = query.getReleases(release_filter)
+					if releases == [] :
+						track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND arid:'+artist_id)
+						tracks = query.getTracks(track_filter)
+						for track in tracks :
+							track_mapping.append(((track.score + artist.score)/2 ,track))
 					for release in releases :
 						release_id = (MbzURIConverter(release.release.id)).getId()
 						release_mapping.append(((release.score + artist.score)/2,release))
