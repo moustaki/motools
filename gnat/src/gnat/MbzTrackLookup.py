@@ -110,9 +110,8 @@ class MbzTrackLookup :
 		
 		debug(' - Trying to guess an ID for track \"'+str(self.title)+'\", artist \"'+str(self.artist)+'\", release \"'+str(self.album)+'\"')
 		
-		artist_filter = ws.ArtistFilter(name=str(self.artist))
 		try:
-			artists = self.query.getArtists(filter=artist_filter)
+			artists = self.getArtists()
 
 			artist_mapping = []
 			release_mapping = []
