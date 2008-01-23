@@ -139,6 +139,20 @@ class MbzTrackLookup :
 					tracks = self.getTracks(artist_id)
 					for track in tracks :
 						track_mapping.append(((track.score + artist.score)/2 ,track))
+			if artists==[] :
+				if(self.album!=None) :
+					releases = self.getReleases()
+					if releases == [] :
+						tracks = self.getTracks()
+						for track in tracks :
+							track_mapping.append((track.score ,track))
+					for release in releases :
+						release_id = (MbzURIConverter(release.release.id)).getId()
+						release_mapping.append((release.score,release))
+						tracks = self.getTracks('',release_id)
+						for track in tracks :
+							track_mapping.append(((track.score +release.score)/2 ,track))
+						
 		except ResponseError, e:
 			raise MbzLookupException('Musicbrainz response error')
 		except ConnectionError, e:
@@ -166,9 +180,13 @@ class MbzTrackLookup :
 		artists = self.query.getArtists(filter=artist_filter)
 		return artists
 
-	def getTracks(self,artist_id,release_id='') :
-		if release_id=='' :
+	def getTracks(self,artist_id='',release_id='') :
+		if artist_id=='' and release_id=='' :
+			track_filter = ws.TrackFilter(query='(track:'+str(self.title)+')')
+		elif release_id=='' :
 			track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND arid:'+artist_id)
+		elif artist_id=='' :
+			track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND reid:'+release_id)
 		else :
 			track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND reid:'+release_id+' AND arid:'+artist_id)
 		tracks = self.query.getTracks(track_filter)
