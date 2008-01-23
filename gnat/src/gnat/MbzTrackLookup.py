@@ -106,13 +106,13 @@ class MbzTrackLookup :
 		self.mbzQuery()
 
 	def mbzQuery(self) :
-		query = CachedMBZQuery()
+		self.query = CachedMBZQuery()
 		
 		debug(' - Trying to guess an ID for track \"'+str(self.title)+'\", artist \"'+str(self.artist)+'\", release \"'+str(self.album)+'\"')
 		
 		artist_filter = ws.ArtistFilter(name=str(self.artist))
 		try:
-			artists = query.getArtists(filter=artist_filter)
+			artists = self.query.getArtists(filter=artist_filter)
 
 			artist_mapping = []
 			release_mapping = []
@@ -120,28 +120,24 @@ class MbzTrackLookup :
 
 			if(self.album==None):
 				debug("No release information, dropping release lookup")
-
+			
 			for artist in artists :
 				artist_id = (MbzURIConverter(artist.artist.id)).getId()
 				artist_mapping.append((artist.score,artist))
 				if(self.album!=None) :
-					release_filter = ws.ReleaseFilter(query='(release:'+str(self.album)+') '+' AND arid:'+artist_id)
-					releases = query.getReleases(release_filter)
+					releases = self.getReleases(artist_id)
 					if releases == [] :
-						track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND arid:'+artist_id)
-						tracks = query.getTracks(track_filter)
+						tracks = self.getTracks(artist_id)
 						for track in tracks :
 							track_mapping.append(((track.score + artist.score)/2 ,track))
 					for release in releases :
 						release_id = (MbzURIConverter(release.release.id)).getId()
 						release_mapping.append(((release.score + artist.score)/2,release))
-						track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND reid:'+release_id)
-						tracks = query.getTracks(track_filter)
+						tracks = self.getTracks(artist_id,release_id)
 						for track in tracks :
 							track_mapping.append(((track.score +release.score + artist.score)/3 ,track))
 				else :
-					track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND arid:'+artist_id)
-					tracks = query.getTracks(track_filter)
+					tracks = self.getTracks(artist_id)
 					for track in tracks :
 						track_mapping.append(((track.score + artist.score)/2 ,track))
 		except ResponseError, e:
@@ -165,6 +161,28 @@ class MbzTrackLookup :
 		if self.empty_results() :
 			raise MbzLookupException('No results')
 		debug('ID Found : '+self.track_mapping[0][1].track.getId())
+	
+	def getArtists(self) :
+		artist_filter = ws.ArtistFilter(name=str(self.artist))
+		artists = self.query.getArtists(filter=artist_filter)
+		return artists
+
+	def getTracks(self,artist_id,release_id='') :
+		if release_id=='' :
+			track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND arid:'+artist_id)
+		else :
+			track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND reid:'+release_id+' AND arid:'+artist_id)
+		tracks = self.query.getTracks(track_filter)
+		return tracks
+
+	def getReleases(self,artist_id='') :
+		if artist_id=='':
+			release_filter = ws.ReleaseFilter(query='(release:'+str(self.album)+')')
+		else :
+			release_filter = ws.ReleaseFilter(query='(release:'+str(self.album)+') '+' AND arid:'+artist_id)
+		releases = self.query.getReleases(release_filter)
+		return releases
+
 
 	def getMbzTrackURI(self) :
 		return self.track_mapping[0][1].track.getId()
