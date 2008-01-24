@@ -192,7 +192,7 @@ class MbzTrackLookup :
 		if self.title == None  or (self.tracknumber == None and release_id == None) or (self.tracknumber==None and artist_id==None):
 			return []
 		else :
-			if self.title==None and not(self.tracknumber == None) and not(release_id == None) :
+			if not(self.tracknumber == None) and not(release_id == None) :
 				track_filter = ws.TrackFilter(query='tnum:'+str(self.tracknumber)+ ' AND reid:'+release_id)
 			elif release_id==None and not(self.tracknumber == None) and not(self.title == None) and not(artist_id==None):
 				track_filter = ws.TrackFilter(query='(track:"'+str(self.title)+'" AND tnum:'+str(self.tracknumber)+' )'+' AND arid:'+artist_id)
