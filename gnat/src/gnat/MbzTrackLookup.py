@@ -164,10 +164,13 @@ class MbzTrackLookup :
 			raise MbzLookupException('Musicbrainz connection error')
 		except WebServiceError, e:
 			raise MbzLookupException('Musicbrainz webservice error')
-			
+		
 		track_mapping.sort()
 		track_mapping.reverse()
 		self.track_mapping = track_mapping
+		print str(track_mapping[0][1].track.getId())
+		print str(track_mapping[1][1].track.getId())
+		print str(track_mapping[2][1].track.getId())
 		if self.empty_results() : 
 			raise MbzLookupException('No results')
 		if not self.confident() :
@@ -189,19 +192,21 @@ class MbzTrackLookup :
 			return artists
 
 	def getTracks(self,artist_id=None,release_id=None) :
-		if self.title == None  or (self.tracknumber == None and release_id == None):
+		if self.title == None  or (self.tracknumber == None and release_id == None) or (self.tracknumber==None and artist_id==None):
 			return []
 		else :
-			if not(self.tracknumber == None) and not(release_id == None) :
+			if self.title==None and not(self.tracknumber == None) and not(release_id == None) :
 				track_filter = ws.TrackFilter(query='tnum:'+str(self.tracknumber)+ ' AND reid:'+release_id)
+			elif release_id==None and not(self.tracknumber == None) and not(self.title == None) and not(artist_id==None):
+				track_filter = ws.TrackFilter(query='(track:"'+str(self.title)+'" AND tnum:'+str(self.tracknumber)+' )'+' AND arid:'+artist_id)
 			elif artist_id==None and release_id==None :
-				track_filter = ws.TrackFilter(query='(track:'+str(self.title)+')')
+				track_filter = ws.TrackFilter(query='(track:"'+str(self.title)+'")')
 			elif release_id==None :
-				track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND arid:'+artist_id)
+				track_filter = ws.TrackFilter(query='(track:"'+str(self.title)+'") '+' AND arid:'+artist_id)
 			elif artist_id==None :
-				track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND reid:'+release_id)
+				track_filter = ws.TrackFilter(query='(track:"'+str(self.title)+'") '+' AND reid:'+release_id)
 			else :
-				track_filter = ws.TrackFilter(query='(track:'+str(self.title)+') '+' AND reid:'+release_id+' AND arid:'+artist_id)
+				track_filter = ws.TrackFilter(query='(track:"'+str(self.title)+'") '+' AND reid:'+release_id+' AND arid:'+artist_id)
 			tracks = self.query.getTracks(track_filter)
 			return tracks
 
@@ -212,7 +217,7 @@ class MbzTrackLookup :
 			if artist_id==None:
 				release_filter = ws.ReleaseFilter(query='(release:'+str(self.album)+')')
 			else :
-				release_filter = ws.ReleaseFilter(query='(release:'+str(self.album)+') '+' AND arid:'+artist_id)
+				release_filter = ws.ReleaseFilter(query='(release:"'+str(self.album)+'") '+' AND arid:'+artist_id)
 			releases = self.query.getReleases(release_filter)
 			return releases
 
