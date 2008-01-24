@@ -168,9 +168,6 @@ class MbzTrackLookup :
 		track_mapping.sort()
 		track_mapping.reverse()
 		self.track_mapping = track_mapping
-		print str(track_mapping[0][1].track.getId())
-		print str(track_mapping[1][1].track.getId())
-		print str(track_mapping[2][1].track.getId())
 		if self.empty_results() : 
 			raise MbzLookupException('No results')
 		if not self.confident() :
