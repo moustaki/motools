@@ -1,0 +1,17 @@
+
+FILES:
+
+ * jamendo_xml.pl - Parses Jamendo XML dump
+ * jamendo.pl - Provides a Prolog representation of the Jamendo XML data
+ * jamendo_match.pl - Provides a RDF mapping of the predicates available throughjamendo.pl - Also provides interlinking to Geonames 
+ * jamendo_sparql.pl - Main script, providing a SPARQL end point on top of the previous mapping
+
+
+NOTES:
+
+In order to use the jamendo_sparql.pl script, you need P2R
+http://code.google.com/p/km-rdf/
+in this directory, and SeRQL, part of the ClioPatria project
+http://e-culture.multimedian.nl/software/ClioPatria.shtml
+
+
