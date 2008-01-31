@@ -14,7 +14,7 @@ parse(ChordSymbol,RDF) :-
 	tokenise(ChordSymbol,Tokens),
 	phrase(chord(ChordSymbol,RDF2),Tokens),
 	clean(RDF2,RDF3),
-	add_image_link(RDF3,RDF,[],_, '').
+	((add_image_link(RDF3,RDF,[],_, ''),!);(RDF3=RDF)).
 
 
 clean(Description,Rest) :-
