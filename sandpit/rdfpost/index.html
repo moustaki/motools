@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - Music-Related RDF</title>
+
+<style type="text/css" media="all">
+        @import url(style.css);
+</style>
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://moustaki.org/foaf.rdf" />
+</head>
+
+<body>
+
+<h1 style="font-size: 250%;">RDF posting service</h1>
+
+<h2>Description</h2>
+<p>This service is just a small hack, allowing to post RDF and serve
+it from this server. This is just intended for tutorial purposes.
+</p>
+<p>
+To use it, you can can fill in the form below, or use <b>curl</b>
+at <b>http://dbtune.org:1112</b>, posting two fields: <b>name</b>
+and <b>turtle</b>.
+</p>
+
+<h2>Post it!</h2>
+<form method="POST" action="http://localhost:1112/">
+<p>
+Nickname: <input type="text" name="name"/>
+</p>
+<p>
+<textarea name="turtle" rows="30" cols="80"></textarea>
+</p>
+<p>
+<input type="submit" name="press" value=" OK "/>
+</p>
+</form>
+
+</body>
+
+</html>
+
