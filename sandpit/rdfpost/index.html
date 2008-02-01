@@ -28,10 +28,24 @@ and <b>turtle</b>.
 <h2>Post it!</h2>
 <form method="POST" action="http://dbtune.org:1112/">
 <p>
-Nickname: <input type="text" name="name"/>
+Nickname: <input type="text" name="name" value="kurtjx"/>
 </p>
 <p>
-<textarea name="turtle" rows="30" cols="80"></textarea>
+<textarea name="turtle" rows="30" cols="80">
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt;.
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;.
+@prefix : &lt;#&gt;.
+
+# Basic description of me
+:me a foaf:Person.
+:me foaf:name "Kurt".
+
+# Where am I? Use sindice.com, type "london geonames"
+:me foaf:based_near &lt;http://sws.geonames.org/6058560/&gt;.
+
+# Other identities
+:me owl:sameAs &lt;http://dbtune.org/last-fm/kurtjx&gt;.
+</textarea>
 </p>
 <p>
 <input type="submit" name="press" value=" OK "/>
