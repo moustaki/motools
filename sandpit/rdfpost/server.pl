@@ -15,6 +15,7 @@ server(Port, Options) :-
 reply(Request) :-
 	member(method(post), Request), !,
 	http_read_data(Request,Data,[]),
+	format(user_output,'~w\n',[Data]),
 	member((turtle=Turtle),Data),
 	member((name=Name),Data),
 	((exists_directory(Name),!);(make_directory(Name))),
