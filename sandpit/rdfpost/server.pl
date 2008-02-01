@@ -20,7 +20,7 @@ reply(Request) :-
 	((exists_directory(Name),!);(make_directory(Name))),
 	ns(NS),
 	format(atom(File),'~w/content.ttl',[Name]),
-	format(user_output,[' - Dumping ~w\n',[File]),
+	format(user_output,' - Dumping ~w\n',[File]),
 	open(File,write,S),
 	write(S,Turtle),
 	close(S),
