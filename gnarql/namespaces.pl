@@ -16,7 +16,7 @@
 :- rdf_register_ns(event,'http://purl.org/NET/c4dm/event.owl#').
 :- rdf_register_ns(tags,'http://www.holygoat.co.uk/owl/redwood/0.1/tags/').
 :- rdf_register_ns(gnarql,'http://purl.org/NET/c4dm/gnarql/').
-
+:- rdf_register_ns(chord,'http://purl.org/ontology/chord/').
 
 %Just for ClioPatria to not give errors:
 
