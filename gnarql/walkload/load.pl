@@ -25,12 +25,12 @@ load(Dir,BaseURI) :-
 
 file(Dir,BaseURI,File,URI) :-
 	walk(Dir,Walk),format(user_error,'Checking ~w \n',[Walk]),
-	atom_concat(Dir,Relative,Walk),
-	encode(Relative,RelativeWWW),
-	format(atom(URI),'~w~w/',[BaseURI,RelativeWWW]),
 	format(atom(Wildcard),'~w/~w',[Walk,'*.rdf']),
 	expand_file_name(Wildcard,Files),
-	member(File,Files).
+	member(File,Files),
+	atom_concat(Dir,Relative,File),
+	encode(Relative,RelativeWWW),
+	format(atom(URI),'~w~w',[BaseURI,RelativeWWW]).
 
 % in case there are weird character in the relative path
 encode(Relative,WWWRelative) :-
