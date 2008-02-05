@@ -39,6 +39,34 @@ USAGE
 
 Note : the metadata and fingerprinting lookups may safely be run in parallel.
 
+
+CSV INPUT/OUTPUT
+----------------
+
+If you do not have filesystem access to the audio collection you wish to identify,
+or wish to override the local metadata available in tags, you may run GNAT in
+metadata mode using a CSV file as input, with lines of the form :
+
+URI, Artist Name, Album Name, Track Name
+or
+URI, Artist Name, Album Name, Track Name, Track Number
+
+The URI may be any unique identifier you wish, but for the generated RDF to be useful,
+we suggest using identifiers from a HTTP namespace you control, or local file:// URIs
+eg. http://www.mydomain.org/experiment381/track001
+    file:///music/TestCollection/track001.mp3
+
+If you prefer simple CSV output, use the -c command line switch, and an info_metadata.csv
+file will be created with lines of the form :
+
+local URI, Semantic Web URI
+
+For example :
+./AudioCollection.py -c metadata test.csv
+will run GNAT on each file described in test.csv, outputting the resulting URIs to the
+file info_metadata.csv.
+
+
 AUTHORS
 -------
 

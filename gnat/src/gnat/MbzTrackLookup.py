@@ -49,45 +49,27 @@ class FileTypeException :
 
 class MbzTrackLookup :
 
-	def __init__(self,file,threshold=60,duration_distance_threshold=10000) :
+	def __init__(self,file,metadata=None,threshold=60,duration_distance_threshold=10000) :
 		self.file = file
 		self.threshold = threshold
 		self.ddt=duration_distance_threshold
 		self.cleaner = re.compile(r"[^A-Za-z0-9 ]").sub
-		try :
-			self.audio = MP3(file,ID3=EasyID3)
-		except : 
-			try :
-				self.audio = FLAC(file)
-			except :
-				try :
-					self.audio = OggVorbis(file)
-				except :
-					try :
-						self.audio = OggFLAC(file)
-					except :
-						try : 
-							self.audio = OggTheora(file)
-						except : 
-							try :
-								self.audio = APEv2(file)
-							except :
-								try :
-									self.audio = ASF(file)
-								except :
-									try :
-										self.audio = MP4(file)
-									except : 
-										try : 
-											self.audio = Musepack(file)
-										except :
-											try :
-												self.audio = TrueAudio(file)
-											except :
-												try : 
-													self.audio = WavPack(file)
-												except :
-													raise FileTypeException('Unknown file type, no metadata, or file not found.')
+		self.audio = None
+		
+		if metadata is not None: # We trust provided metadata over local tags
+			self.audio = metadata
+		else:
+			# Try MP3 last cause it doesn't seem to throw an exception on wrong filetypes...
+			handlers = [FLAC,OggVorbis,OggFLAC,OggTheora,APEv2,ASF,MP4,Musepack,TrueAudio,WavPack,lambda x: MP3(x,ID3=EasyID3)]
+			for handler in handlers:
+				if self.audio is None:
+					try:
+						self.audio = handler(file)
+					except:
+						pass
+			if self.audio is None:
+				raise FileTypeException('Unknown file type, no metadata, or file not found.')
+			
 		try :
 			[title] = self.audio['title']
 			self.title = self.__clean_literal(str(title))
@@ -104,10 +86,17 @@ class MbzTrackLookup :
 		except :
 			self.album = None
 		try :
+			# Note : I think we're too sensitive to track number
+			# Before adding this check for track numbers of the form 'x/y' mapping would fail when it should probably have succeeded
 			[tracknumber] = self.audio['tracknumber']
-			self.tracknumber = int(self.__clean_literal(str(tracknumber)))
+			if tracknumber.find('/') > 0:
+				self.tracknumber = int(self.__clean_literal(str(tracknumber[0:tracknumber.find("/")])))
+			else:
+				self.tracknumber = int(self.__clean_literal(str(tracknumber)))
 		except :
 			self.tracknumber = None
+		
+		
 		self.mbzQuery()
 
 	def mbzQuery(self) :
@@ -253,6 +242,10 @@ class MbzTrackLookup :
 			return True
 
 	def disambiguate_through_duration(self) :
+		if not hasattr(self.audio,"info"): # no duration info available (eg. with CSV input)
+			self.track_mapping = []
+			return
+			
 		duration = self.audio.info.length * 1000
 		debug('Duration of the audio file (ms):' + str(duration))
 		closest = self.ddt
