@@ -322,7 +322,7 @@
 		line backing this sound and this signal").
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description8">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://www.w3.org/2006/time#Interval"/>
         <rdf:Description about="http://www.w3.org/2006/time#Instant"/>
@@ -465,7 +465,7 @@
   <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
   <rdfs:range>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description7">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalManifestation"/>
         <rdf:Description about="&mo;Record"/>
@@ -487,7 +487,7 @@
 		particular agent took part in the actual workflow.
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description7">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalManifestation"/>
         <rdf:Description about="&mo;Record"/>

@@ -344,7 +344,7 @@ Defining manifestation as an entity also enables us to draw relationships betwee
   <rdf:type rdf:resource="&owl;ObjectProperty"/>
   <rdfs:comment>Used to link a work or the expression of a work to its corresponding Amazon ASINs page.</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description23">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://purl.org/vocab/frbr/core#Work"/>
         <rdf:Description about="http://purl.org/vocab/frbr/core#Expression"/>
@@ -515,7 +515,7 @@ Defining manifestation as an entity also enables us to draw relationships betwee
   <rdf:type rdf:resource="&owl;ObjectProperty"/>
   <rdfs:comment>Used to link a musical work or the expression of a musical work, an artist or a corporate body to to its corresponding Discogs page.</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description19">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalWork"/>
         <rdf:Description about="&mo;MusicalExpression"/>
@@ -590,7 +590,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
                 less to rip streams from Flash applications can still access the audio content.
         </rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description20">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://purl.org/vocab/frbr/core#Manifestation"/>
         <rdf:Description about="http://xmlns.com/foaf/0.1/Agent"/>
@@ -676,7 +676,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 		less to rip streams from Flash applications can still access the audio content.
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description20">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://purl.org/vocab/frbr/core#Manifestation"/>
         <rdf:Description about="http://xmlns.com/foaf/0.1/Agent"/>
@@ -695,7 +695,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
   <rdf:type rdf:resource="&owl;ObjectProperty"/>
   <rdfs:comment>Indicates a pictorial image (JPEG, GIF, PNG, Etc.) of a musical work, the expression of a musical work, the manifestation of a work or the examplar of a manifestation.</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description11">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalWork"/>
         <rdf:Description about="&mo;MusicalExpression"/>
@@ -716,7 +716,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
   <rdf:type rdf:resource="&owl;ObjectProperty"/>
   <rdfs:comment>Used to link an artist, a musical work or the expression of a musical work to their equivalent page on IMDb, the InternetMovieDatabase.</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description19">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalWork"/>
         <rdf:Description about="&mo;MusicalExpression"/>
@@ -776,7 +776,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
     
 This is usually used to link to a Creative Commons licence.</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description22">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://purl.org/vocab/frbr/core#Work"/>
         <rdf:Description about="http://purl.org/vocab/frbr/core#Expression"/>
@@ -805,7 +805,7 @@ This is usually used to link to a Creative Commons licence.</rdfs:comment>
   <rdf:type rdf:resource="&owl;ObjectProperty"/>
   <rdfs:comment>Used to link a musical work or the expression of a musical work to a website where people can buy a copy of the musical manifestation.</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description21">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://purl.org/vocab/frbr/core#Manifestation"/>
         <rdf:Description about="&mo;MusicArtist"/>
@@ -876,7 +876,7 @@ This means that the orignial musical expression were rearranged to create a new 
   <rdfs:comment>		Linking an agent, a track or a record to its corresponding Musicbrainz page.
         </rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description18">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalWork"/>
         <rdf:Description about="&mo;MusicalManifestation"/>
@@ -897,7 +897,7 @@ This means that the orignial musical expression were rearranged to create a new 
   <rdf:type rdf:resource="&owl;ObjectProperty"/>
   <rdfs:comment>Used to link an artist, a musical work or the expression of a musical work to its corresponding MusicMoz page.</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description17">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicArtist"/>
         <rdf:Description about="&mo;MusicalWork"/>
@@ -977,7 +977,7 @@ This means that the orignial musical expression were rearranged to create a new 
                 or a link from a manifestation (record/track, for example) to a web page providing a paid access to this manifestation.
         </rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description21">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://purl.org/vocab/frbr/core#Manifestation"/>
         <rdf:Description about="&mo;MusicArtist"/>
@@ -1029,7 +1029,7 @@ This means that the orignial musical expression were rearranged to create a new 
                 less to rip streams from Flash applications can still access the audio content.
         </rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description20">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://purl.org/vocab/frbr/core#Manifestation"/>
         <rdf:Description about="http://xmlns.com/foaf/0.1/Agent"/>
@@ -1079,7 +1079,7 @@ This means that the orignial musical expression were rearranged to create a new 
   <rdf:type rdf:resource="&owl;ObjectProperty"/>
   <rdfs:comment>Link a particular manifestation to the related signal, score, libretto, or lyrics</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description13">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;Record"/>
         <rdf:Description about="&mo;PublishedScore"/>
@@ -1090,7 +1090,7 @@ This means that the orignial musical expression were rearranged to create a new 
   </rdfs:domain>
   <rdfs:isDefinedBy rdf:resource="&mo;"/>
   <rdfs:range>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description12">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;Signal"/>
         <rdf:Description about="&mo;Score"/>
@@ -1125,7 +1125,7 @@ This means that the orignial musical expression were rearranged to create a new 
 		an Expression to a Manifestation)
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description12">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;Signal"/>
         <rdf:Description about="&mo;Score"/>
@@ -1136,7 +1136,7 @@ This means that the orignial musical expression were rearranged to create a new 
   </rdfs:domain>
   <rdfs:isDefinedBy rdf:resource="&mo;"/>
   <rdfs:range>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description13">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;Record"/>
         <rdf:Description about="&mo;PublishedScore"/>
@@ -1284,7 +1284,7 @@ This involves taking just one other musical work and using audio editing to make
     
 The review does not have to be open content, as long as it is accessible to the general internet population.</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description22">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://purl.org/vocab/frbr/core#Work"/>
         <rdf:Description about="http://purl.org/vocab/frbr/core#Expression"/>
@@ -1360,7 +1360,7 @@ The review does not have to be open content, as long as it is accessible to the 
 		documents providing such statements should attach some metadata to themselves (confidence of the claim, etc.).
         </rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description15">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://xmlns.com/foaf/0.1/Agent"/>
         <rdf:Description about="&mo;Signal"/>
@@ -1370,7 +1370,7 @@ The review does not have to be open content, as long as it is accessible to the 
   </rdfs:domain>
   <rdfs:isDefinedBy rdf:resource="&mo;"/>
   <rdfs:range>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description15">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://xmlns.com/foaf/0.1/Agent"/>
         <rdf:Description about="&mo;Signal"/>
@@ -1503,7 +1503,7 @@ The review does not have to be open content, as long as it is accessible to the 
 		The full URL should be used, not just the WikiName.
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description16">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://purl.org/vocab/frbr/core#Work"/>
         <rdf:Description about="http://purl.org/vocab/frbr/core#Expression"/>
@@ -1556,7 +1556,7 @@ The review does not have to be open content, as long as it is accessible to the 
   <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
   <rdfs:range>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description7">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalManifestation"/>
         <rdf:Description about="&mo;Record"/>
@@ -1578,7 +1578,7 @@ The review does not have to be open content, as long as it is accessible to the 
 		particular agent took part in the actual workflow.
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description7">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalManifestation"/>
         <rdf:Description about="&mo;Record"/>

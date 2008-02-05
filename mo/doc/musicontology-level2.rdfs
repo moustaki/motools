@@ -191,7 +191,7 @@
     ns1:term_status="unstable">
   <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   <owl:equivalentClass>
-    <owl:Restriction>
+    <owl:Restriction rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description6">
       <owl:onProperty rdf:resource="http://purl.org/NET/c4dm/event.owl#isAgentIn"/>
       <owl:someValuesFrom rdf:resource="&mo;Arrangement"/>
     </owl:Restriction>
@@ -203,7 +203,7 @@
     ns1:term_status="unstable">
   <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   <owl:equivalentClass>
-    <owl:Restriction>
+    <owl:Restriction rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description5">
       <owl:onProperty rdf:resource="http://purl.org/NET/c4dm/event.owl#isAgentIn"/>
       <owl:someValuesFrom rdf:resource="&mo;Composition"/>
     </owl:Restriction>
@@ -227,7 +227,7 @@
     ns1:term_status="unstable">
   <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   <owl:equivalentClass>
-    <owl:Restriction>
+    <owl:Restriction rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description4">
       <owl:onProperty rdf:resource="&mo;conducted"/>
       <owl:someValuesFrom rdf:resource="&mo;Performance"/>
     </owl:Restriction>
@@ -316,7 +316,7 @@
     ns1:term_status="unstable">
   <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   <owl:equivalentClass>
-    <owl:Restriction>
+    <owl:Restriction rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description3">
       <owl:onProperty rdf:resource="&mo;listened"/>
       <owl:someValuesFrom rdf:resource="&mo;Performance"/>
     </owl:Restriction>
@@ -396,7 +396,7 @@ work #1 J. S. Bach's The art of the fugue
     ns1:term_status="unstable">
   <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   <owl:equivalentClass>
-    <owl:Restriction>
+    <owl:Restriction rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description1">
       <owl:onProperty rdf:resource="&mo;performed"/>
       <owl:someValuesFrom rdf:resource="&mo;Performance"/>
     </owl:Restriction>
@@ -485,7 +485,7 @@ work #1 J. S. Bach's The art of the fugue
     ns1:term_status="unstable">
   <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   <owl:equivalentClass>
-    <owl:Restriction>
+    <owl:Restriction rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description2">
       <owl:onProperty rdf:resource="&mo;engineered"/>
       <owl:someValuesFrom rdf:resource="&mo;Performance"/>
     </owl:Restriction>
@@ -529,7 +529,7 @@ work #1 J. S. Bach's The art of the fugue
 		Beats per minute: the pace of music measured by the number of beats occurring in 60 seconds.
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description14">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalWork"/>
         <rdf:Description about="&mo;Performance"/>
@@ -603,7 +603,7 @@ work #1 J. S. Bach's The art of the fugue
   <rdf:type rdf:resource="&owl;ObjectProperty"/>
   <rdfs:comment>Relates a performance or a recording to the engineer involved</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description24">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;Performance"/>
         <rdf:Description about="&mo;Recording"/>
@@ -626,7 +626,7 @@ work #1 J. S. Bach's The art of the fugue
   <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   <rdfs:isDefinedBy rdf:resource="&mo;"/>
   <rdfs:range>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description24">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;Performance"/>
         <rdf:Description about="&mo;Recording"/>
@@ -657,7 +657,7 @@ work #1 J. S. Bach's The art of the fugue
 		Further version of this property may also include works and scores in the domain.
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description10">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;Performance"/>
         <rdf:Description about="&mo;Arrangement"/>
@@ -691,7 +691,7 @@ work #1 J. S. Bach's The art of the fugue
 		Any of 24 major or minor diatonic scales that provide the tonal framework for a piece of music.
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description14">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalWork"/>
         <rdf:Description about="&mo;Performance"/>
@@ -774,7 +774,7 @@ work #1 J. S. Bach's The art of the fugue
   <rdfs:domain rdf:resource="&mo;Performance"/>
   <rdfs:isDefinedBy rdf:resource="&mo;"/>
   <rdfs:range>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description9">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;Score"/>
         <rdf:Description about="&mo;MusicalWork"/>
@@ -809,7 +809,7 @@ work #1 J. S. Bach's The art of the fugue
 		Bastille last year.
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description9">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;Score"/>
         <rdf:Description about="&mo;MusicalWork"/>
@@ -995,7 +995,7 @@ work #1 J. S. Bach's The art of the fugue
 		and a tempo (in time; returning to the original pace).
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description14">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="&mo;MusicalWork"/>
         <rdf:Description about="&mo;Performance"/>

@@ -174,7 +174,7 @@
 		line backing this sound and this signal").
 	</rdfs:comment>
   <rdfs:domain>
-    <owl:Class>
+    <owl:Class rdf:nodeID="file:///home/moustaki/work/workspace/motools/mo/doc/musicontology.rdfs#__Description8">
       <owl:unionOf rdf:parseType="Collection">
         <rdf:Description about="http://www.w3.org/2006/time#Interval"/>
         <rdf:Description about="http://www.w3.org/2006/time#Instant"/>
