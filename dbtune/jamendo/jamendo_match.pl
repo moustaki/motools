@@ -67,7 +67,7 @@ match:
 	].
 
 match:
-	(jamendo:artist_geo(Id,Geo),jamendo_match:geonames(Geo,URI)) 
+	(atomic(Id),jamendo:artist_geo(Id,Geo),jamendo_match:geonames(Geo,URI)) 
 		eq
 	[
 		rdf(pattern(['http://dbtune.org/jamendo/artist/',Id]),foaf:based_near,URI)

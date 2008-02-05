@@ -16,7 +16,6 @@
 
 
 :- use_module(p2r_entailment).
-:- use_module(rdf_dump).
 :- use_module(rdf_compile).
 :- use_module(library('semweb/rdf_persistency')).
 
@@ -51,7 +50,7 @@ server(Port) :-
  writeln(' --------------------------------'),nl,
  writeln(' - Two choices:'),nl,
  writeln('   * Use P2R (slow, but dynamic, use that if you wrap web services, DBs, ...'),
- writeln('     CODE: jamendo_p2r,entailment(p2r).'),
+ writeln('     CODE: jamendo_p2r,compile,entailment(p2r).'),
  nl,
  writeln('   * Use a RDF dump (fast, but static)'),
  writeln('     CODE: (1st time) jamendo_p2r,init_db,rdf_compile (nth time) init_db,entailment(none)'),
