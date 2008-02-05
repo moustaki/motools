@@ -41,6 +41,7 @@
 
   <link href="http://pingthesemanticweb.com/ontology/css/style.css" rel="stylesheet" type="text/css" />
   <link href="style.css" rel="stylesheet" type="text/css" />
+  
   <link rel="meta" type="application/rdf+xml" title="DOAP" href="http://musicontology.com/about/"/>
   <style type="text/css">
 
@@ -112,9 +113,9 @@
                         <td align="center"><b>Music Ontology Sourceforge project<b></td>
 		</tr>
 		<tr><td align="center">
-			<a href="http://sourceforge.net/projects/motools/" class="style1">Source code, Tools</a></td>
+			<a href="http://sourceforge.net/projects/motools/">Source code, Tools</a></td>
                 </tr>
-
+		<tr><br/><br/><br/></tr>
                   <tr>
 
                         <td rowspan="2">
@@ -126,18 +127,17 @@
                         <td align="center"><b>Music Ontology Specification Group</b></td>
 
                   </tr>
-
-                  <tr><td align="center"><a href="http://groups.google.com/group/music-ontology-specification-group" class="style1">Browse Archives</a></td>
+                  <tr><td align="center"><a href="http://groups.google.com/group/music-ontology-specification-group">Browse Archives</a></td>
 
                   </tr>
-
+			<tr><br/><br/><br/></tr>
                   <tr>
                         <td rowspan="2">
                                 <img src="http://wiki.musicontology.com/images/8/83/Mo-logo-big.jpg" width="150" alt="Wiki" />
                         </td>
                         <td align="center"><b>Music Ontology Wiki</b></td>
 		</tr>
-		<tr><td align="center"><a href="http://wiki.musicontology.com/" class="style1">Examples, datasets, working drafts</a></td>
+		<tr><td align="center"><a href="http://wiki.musicontology.com/">Examples, datasets, working drafts</a></td>
                   </tr>
                 </table>
 	
@@ -146,7 +146,6 @@
 
 </table>
 
-<h2>&nbsp;</h2>
 
 <p class="copyright"><a href="http://creativecommons.org/licenses/by/1.0/"><img
 
@@ -212,7 +211,6 @@ This document contains a detailed description of the Music Ontology.
 
 </p>
 
-<p>&nbsp;</p>
 
 </div>
 
@@ -244,7 +242,6 @@ by a machine-readable <a href="http://purl.org/ontology/mo/">Music Ontology</a> 
 
 by the authors regarding future updates.</p>
 
-<p>&nbsp;</p>
 
 </div>
 <h2 id="toc"><a name="sec-toc" class="mozTocH2" id="sec-toc"></a>Table of Contents</h2>
@@ -277,7 +274,6 @@ by the authors regarding future updates.</p>
 
 	  <li><a href="#sec-classes-relations">Music Ontology Classes Hierarchy</a></li>
 
-	  <li><a href="#sec-music-creation-workflow">Music Creation Workflow</a></li>
 
 	  <li><a href="#sec-example">RDF Document Examples</a></li>
 
@@ -304,7 +300,8 @@ by the authors regarding future updates.</p>
 
       <li><a href="#sec-time-event">Time, and TimeLine, Event </a></li>
 
-	  
+
+	<li><a href="#sec-music-creation-workflow">Music Creation Workflow</a></li>
 
         <li><a href="#sec-standards">Music Ontology and Standards</a></li>
 
@@ -331,7 +328,6 @@ by the authors regarding future updates.</p>
 </ul>
 
 <hr />
-<h2>&nbsp;</h2>
 
 <h2><a name="sec-intro" class="mozTocH2" id="sec-intro"></a>Introduction</h2>
 
@@ -418,7 +414,6 @@ or context-dependent URI as defined in RFC 2396 [<a href="#ref-rfc2396">RFC 2396
   <li><a href="http://purl.org/ontology/mo/">http://purl.org/ontology/mo/</a></li>
 
 </ul>
-<p>&nbsp;</p>
 
 <h2><a name="sec-glance" class="mozTocH2" id="sec-glance"></a>Music Ontology  At A Glance</h2>
 
@@ -558,8 +553,7 @@ property and by individuals. All the terms are hyperlinked to their detailed des
 <a href="#term_remix">remix</a> | 
 <a href="#term_soundtrack">soundtrack</a> | 
 <a href="#term_spokenword">spokenword</a> | 
- </p></div><p>&nbsp;</p>
-
+ </p></div>
 <h2><a name="sec-glance" class="mozTocH2" id="sec-external-glance"></a>External Ontologies used by the Music Ontology  At A Glance</h2>
 
 <p>An alphabetical index of external ontologies terms, by class (categories or types), by 
@@ -594,8 +588,7 @@ property and by individuals, used by the Music Ontology. All the terms are hyper
 <a href="#term_time">time</a> | 
 </p>
 <p>Individuals: | <a href="#term_universaltimeline">universaltimeline</a> | 
- </p></div><p>&nbsp;</p>
-
+ </p></div>
 <h2><a name="sec-glance" class="mozTocH2" id="sec-level1-glance"></a>Music Ontology  At A Glance - Level 1 terms</h2>
 
 <p>
@@ -690,8 +683,7 @@ therefore covering simple editorial information (tracks, releases, artists, grou
 <a href="#term_remix">remix</a> | 
 <a href="#term_soundtrack">soundtrack</a> | 
 <a href="#term_spokenword">spokenword</a> | 
- </p></div><p>&nbsp;</p>
-
+ </p></div>
 <h2><a name="sec-glance" class="mozTocH2" id="sec-level2-glance"></a>Music Ontology  At A Glance - Level 2 terms</h2>
 
 <p>
@@ -747,8 +739,7 @@ therefore covering information about the music creation workflow (Composition, P
 <a href="#term_tempo">tempo</a> | 
 <a href="#term_time">time</a> | 
 </p>
-<p>Individuals: |  </p></div><p>&nbsp;</p>
-
+<p>Individuals: |  </p></div>
 <h2><a name="sec-glance" class="mozTocH2" id="sec-level3-glance"></a>Music Ontology  At A Glance - Level 3 terms</h2>
 
 <p>
@@ -767,9 +758,7 @@ therefore covering event decomposition (`this particular performer was playing t
 <a href="#term_sub_event">sub_event</a> | 
 </p>
 <p>Individuals: | <a href="#term_universaltimeline">universaltimeline</a> | 
- </p></div><p>&nbsp;</p>
-
-<h2>&nbsp;</h2>
+ </p></div>
 
 <h2><a name="sec-overview" class="mozTocH2" id="sec-overview"></a>Music Ontology Overview</h2>
 
@@ -789,7 +778,6 @@ Music Ontology documents to create a unified database of information</p>
 
 
 
-<p>&nbsp;</p>
 
   <div class="rdf-proplist">
 
@@ -1506,109 +1494,6 @@ There are the schemes of the hierarchy of the Music Ontology classes. These sche
 
 
 
-<div style="clear: left;">
-
-  <br /><br /><br /><br /></div>    
-
-  
-
-
-
-<h3><a name="sec-music-creation-workflow" class="mozTocH2" id="sec-music-creation-workflow"></a>Music Creation Workflow</h3>
-
-
-
-<p>
-
-In order to describe music-related events, we consider describing the
-
-workflow beginning with the creation of a musical work to
-
-its release on a particular record. This is our main description<br />
-
-paradigm, and was first used in the music production ontology
-
-developed at <a href="http://www.elec.qmul.ac.uk/digitalmusic/">C4DM</a>.
-
-</p>
-
-<p>
-
-In the &quot;easy&quot; case (non-electronic music), We can describe this
-
-workflow within two boundaries: the simplest one and the most expressive one.<br />
-
-</p>
-
-<p>
-
-The simplest one consider the existence of 4 concepts within this workflow:
-
-MusicalWork (the <em>musical work</em> itself), Performance (the event
-
-corresponding to an actual <em>performance</em><br />
-
-of the work), Signal (recording the performance as a <em>signal</em>),
-
-and MusicalManifestation
-
-(the release of this signal on a particular <em>record</em>).
-
-</p>
-
-<p>
-
-The most expressive one consider the existence of 7 concepts:
-
-Composition (the event leading to the creation of a musical work),
-
-MusicalWork, Performance, Sound (the physical <em>sound</em><br />
-
-produced by the performance), Recording (the event representing the
-
-transduction from a physical sound to a signal, through
-
-the use of a microphone), Signal, and MusicalManifestation.
-
-</p>
-
-<p>
-
-Thus, we could imagine other ontologies plugged on top of MO, in order
-
-to represent the <em>cognition</em> of a sound (related to Sound),
-
-the different types of microphones that can be used (related to
-
-Recording), and so on.
-
-</p>
-
-<p>
-
-In order to switch from the simplest workflow to the most expressive
-
-one, we define a single <em>shortcut</em> property:
-
-recorded_as, directly linking a Performance to a Signal.
-
-This property MUST be present in <em>every</em> case, in order to be
-
-able to do a simple query for accessing simple information.
-
-</p>
-
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>
-
-  <img src="imgs/mo-workflow.jpg" alt="A Music Production Workflow in the Music Ontology"/>
-
-</p>
-
 
 
 
@@ -1778,12 +1663,113 @@ There is only one way of addressing temporal things per class of timeline. On a 
 </p>
 
 <p>
-In order to express knowledge about the production process of a piece of music, we use the  <a href="http://purl.org/NET/c4dm/event.owl">Event</a> ontology, also developped at the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>. Events are seen as a way to arbitrary classify a space/time region. We have the possibiliy to attach to these events: agents (active participants to the event, like a performer, a sound engineer, ...), factors (passive things having a role in the  event, like a musical instrument, a musical score, ...) and products (things produced by the event, such as a sound, a musical work, ...). A key feature of this ontology is also to allow "splitting" of events, through the hasSubEvent transitive property. Using events, we may express: this musician was playing this instrument at this given time.
+In order to express knowledge about the <a href="#sec-music-creation-workflow">production process of a piece of music</a>, we use the  <a href="http://purl.org/NET/c4dm/event.owl">Event</a> ontology, also developped at the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>. Events are seen as a way to arbitrary classify a space/time region. We have the possibiliy to attach to these events: agents (active participants to the event, like a performer, a sound engineer, ...), factors (passive things having a role in the  event, like a musical instrument, a musical score, ...) and products (things produced by the event, such as a sound, a musical work, ...). A key feature of this ontology is also to allow "splitting" of events, through the <em>sub_event</em> transitive property. Using events, we may express: this musician was playing this instrument at this given time.
 </p>
 
 <p>
-In the current version of the Music Ontology, the main sub-classes of Event are: Performance, Recording, Arrangement, Composition. However, given its abstract definition, we will extend the things we may describe using this class: results of feature extraction, beat tracking, segmentation of songs... 
-Thus allowing <a href="http://en.wikipedia.org/wiki/Music_information_retrieval">Music Information Retrieval</a> results to be expressed within it!
+In the current version of the Music Ontology, the main sub-classes of Event are: Performance, Recording, Arrangement, Composition. However, given its abstract definition, we can describe lots of other things using this class: results of feature extraction, beat tracking, segmentation of songs... 
+</p>
+
+
+
+<div style="clear: left;">
+
+  <br /><br /><br /><br /></div>    
+
+  
+
+
+
+<h3><a name="sec-music-creation-workflow" class="mozTocH2" id="sec-music-creation-workflow"></a>Music Creation Workflow</h3>
+
+
+
+<p>
+
+In order to describe music-related events, we consider describing the
+
+workflow beginning with the creation of a musical work to
+
+its release on a particular record. This is our main description<br />
+
+paradigm, and was first used in the music production ontology
+
+developed at <a href="http://www.elec.qmul.ac.uk/digitalmusic/">C4DM</a>.
+
+</p>
+
+<p>
+
+In the &quot;easy&quot; case (non-electronic music), We can describe this
+
+workflow within two boundaries: the simplest one and the most expressive one.<br />
+
+</p>
+
+<p>
+
+The simplest one consider the existence of 4 concepts within this workflow:
+
+MusicalWork (the <em>musical work</em> itself), Performance (the event
+
+corresponding to an actual <em>performance</em><br />
+
+of the work), Signal (recording the performance as a <em>signal</em>),
+
+and MusicalManifestation
+
+(the release of this signal on a particular <em>record</em>).
+
+</p>
+
+<p>
+
+The most expressive one consider the existence of 7 concepts:
+
+Composition (the event leading to the creation of a musical work),
+
+MusicalWork, Performance, Sound (the physical <em>sound</em><br />
+
+produced by the performance), Recording (the event representing the
+
+transduction from a physical sound to a signal, through
+
+the use of a microphone), Signal, and MusicalManifestation.
+
+</p>
+
+<p>
+
+Thus, we could imagine other ontologies plugged on top of MO, in order
+
+to represent the <em>cognition</em> of a sound (related to Sound),
+
+the different types of microphones that can be used (related to
+
+Recording), and so on.
+
+</p>
+
+<p>
+
+In order to switch from the simplest workflow to the most expressive
+
+one, we define a single <em>shortcut</em> property:
+
+recorded_as, directly linking a Performance to a Signal.
+
+This property MUST be present in <em>every</em> case, in order to be
+
+able to do a simple query for accessing simple information.
+
+</p>
+
+
+
+<p>
+
+  <img src="imgs/mo-workflow.jpg" alt="A Music Production Workflow in the Music Ontology"/>
+
 </p>
 
 
@@ -1800,9 +1786,6 @@ Thus allowing <a href="http://en.wikipedia.org/wiki/Music_information_retrieval"
 
 
 
-
-
-<p>&nbsp;</p>
 
 <h3><a name="sec-standards" class="mozTocH3" id="sec-standards"></a>The Music Ontology  and Standards</h3>
 
@@ -1830,7 +1813,6 @@ a syntax (using XML), a data model (RDF graphs) and a mathematically
 
 grounded definition for the rules that underpin the RDF design.</p>
 
-<p>&nbsp;</p>
 
 <h3><a name="sec-sioc-rdf" class="mozTocH2" id="sec-sioc-rdf"></a>The Music Ontology and RDF</h3>
 
@@ -1858,7 +1840,6 @@ grounded definition for the rules that underpin the RDF design.</p>
 
 <p>More information about RDF can be found in the <a href="http://www.w3.org/TR/rdf-primer/" title="RDF Primer">RDF Primer</a>.</p>
 
-<p>&nbsp;</p>
 
 
 
@@ -5772,7 +5753,6 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 </ul>
 <h2><a name="sec-changes" class="mozTocH2" id="sec-changes"></a>Change Log</h2>
 
-<h2>&nbsp; </h2>
 
 <ul>
 
@@ -5946,9 +5926,7 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
 
 
-<p>&nbsp;</p>
 
-<p>&nbsp;</p>
 
 <ul>
 

@@ -21,109 +21,6 @@ There are the schemes of the hierarchy of the Music Ontology classes. These sche
 
 
 
-<div style="clear: left;">
-
-  <br /><br /><br /><br /></div>    
-
-  
-
-
-
-<h3><a name="sec-music-creation-workflow" class="mozTocH2" id="sec-music-creation-workflow"></a>Music Creation Workflow</h3>
-
-
-
-<p>
-
-In order to describe music-related events, we consider describing the
-
-workflow beginning with the creation of a musical work to
-
-its release on a particular record. This is our main description<br />
-
-paradigm, and was first used in the music production ontology
-
-developed at <a href="http://www.elec.qmul.ac.uk/digitalmusic/">C4DM</a>.
-
-</p>
-
-<p>
-
-In the &quot;easy&quot; case (non-electronic music), We can describe this
-
-workflow within two boundaries: the simplest one and the most expressive one.<br />
-
-</p>
-
-<p>
-
-The simplest one consider the existence of 4 concepts within this workflow:
-
-MusicalWork (the <em>musical work</em> itself), Performance (the event
-
-corresponding to an actual <em>performance</em><br />
-
-of the work), Signal (recording the performance as a <em>signal</em>),
-
-and MusicalManifestation
-
-(the release of this signal on a particular <em>record</em>).
-
-</p>
-
-<p>
-
-The most expressive one consider the existence of 7 concepts:
-
-Composition (the event leading to the creation of a musical work),
-
-MusicalWork, Performance, Sound (the physical <em>sound</em><br />
-
-produced by the performance), Recording (the event representing the
-
-transduction from a physical sound to a signal, through
-
-the use of a microphone), Signal, and MusicalManifestation.
-
-</p>
-
-<p>
-
-Thus, we could imagine other ontologies plugged on top of MO, in order
-
-to represent the <em>cognition</em> of a sound (related to Sound),
-
-the different types of microphones that can be used (related to
-
-Recording), and so on.
-
-</p>
-
-<p>
-
-In order to switch from the simplest workflow to the most expressive
-
-one, we define a single <em>shortcut</em> property:
-
-recorded_as, directly linking a Performance to a Signal.
-
-This property MUST be present in <em>every</em> case, in order to be
-
-able to do a simple query for accessing simple information.
-
-</p>
-
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>
-
-  <img src="imgs/mo-workflow.jpg" alt="A Music Production Workflow in the Music Ontology"/>
-
-</p>
-
 
 
 
@@ -293,15 +190,114 @@ There is only one way of addressing temporal things per class of timeline. On a 
 </p>
 
 <p>
-In order to express knowledge about the production process of a piece of music, we use the  <a href="http://purl.org/NET/c4dm/event.owl">Event</a> ontology, also developped at the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>. Events are seen as a way to arbitrary classify a space/time region. We have the possibiliy to attach to these events: agents (active participants to the event, like a performer, a sound engineer, ...), factors (passive things having a role in the  event, like a musical instrument, a musical score, ...) and products (things produced by the event, such as a sound, a musical work, ...). A key feature of this ontology is also to allow "splitting" of events, through the hasSubEvent transitive property. Using events, we may express: this musician was playing this instrument at this given time.
+In order to express knowledge about the <a href="#sec-music-creation-workflow">production process of a piece of music</a>, we use the  <a href="http://purl.org/NET/c4dm/event.owl">Event</a> ontology, also developped at the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>. Events are seen as a way to arbitrary classify a space/time region. We have the possibiliy to attach to these events: agents (active participants to the event, like a performer, a sound engineer, ...), factors (passive things having a role in the  event, like a musical instrument, a musical score, ...) and products (things produced by the event, such as a sound, a musical work, ...). A key feature of this ontology is also to allow "splitting" of events, through the <em>sub_event</em> transitive property. Using events, we may express: this musician was playing this instrument at this given time.
 </p>
 
 <p>
-In the current version of the Music Ontology, the main sub-classes of Event are: Performance, Recording, Arrangement, Composition. However, given its abstract definition, we will extend the things we may describe using this class: results of feature extraction, beat tracking, segmentation of songs... 
-Thus allowing <a href="http://en.wikipedia.org/wiki/Music_information_retrieval">Music Information Retrieval</a> results to be expressed within it!
+In the current version of the Music Ontology, the main sub-classes of Event are: Performance, Recording, Arrangement, Composition. However, given its abstract definition, we can describe lots of other things using this class: results of feature extraction, beat tracking, segmentation of songs... 
 </p>
 
 
+
+<div style="clear: left;">
+
+  <br /><br /><br /><br /></div>    
+
+  
+
+
+
+<h3><a name="sec-music-creation-workflow" class="mozTocH2" id="sec-music-creation-workflow"></a>Music Creation Workflow</h3>
+
+
+
+<p>
+
+In order to describe music-related events, we consider describing the
+
+workflow beginning with the creation of a musical work to
+
+its release on a particular record. This is our main description<br />
+
+paradigm, and was first used in the music production ontology
+
+developed at <a href="http://www.elec.qmul.ac.uk/digitalmusic/">C4DM</a>.
+
+</p>
+
+<p>
+
+In the &quot;easy&quot; case (non-electronic music), We can describe this
+
+workflow within two boundaries: the simplest one and the most expressive one.<br />
+
+</p>
+
+<p>
+
+The simplest one consider the existence of 4 concepts within this workflow:
+
+MusicalWork (the <em>musical work</em> itself), Performance (the event
+
+corresponding to an actual <em>performance</em><br />
+
+of the work), Signal (recording the performance as a <em>signal</em>),
+
+and MusicalManifestation
+
+(the release of this signal on a particular <em>record</em>).
+
+</p>
+
+<p>
+
+The most expressive one consider the existence of 7 concepts:
+
+Composition (the event leading to the creation of a musical work),
+
+MusicalWork, Performance, Sound (the physical <em>sound</em><br />
+
+produced by the performance), Recording (the event representing the
+
+transduction from a physical sound to a signal, through
+
+the use of a microphone), Signal, and MusicalManifestation.
+
+</p>
+
+<p>
+
+Thus, we could imagine other ontologies plugged on top of MO, in order
+
+to represent the <em>cognition</em> of a sound (related to Sound),
+
+the different types of microphones that can be used (related to
+
+Recording), and so on.
+
+</p>
+
+<p>
+
+In order to switch from the simplest workflow to the most expressive
+
+one, we define a single <em>shortcut</em> property:
+
+recorded_as, directly linking a Performance to a Signal.
+
+This property MUST be present in <em>every</em> case, in order to be
+
+able to do a simple query for accessing simple information.
+
+</p>
+
+
+
+<p>
+
+  <img src="imgs/mo-workflow.jpg" alt="A Music Production Workflow in the Music Ontology"/>
+
+</p>
 
 
 
