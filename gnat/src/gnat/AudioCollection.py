@@ -114,6 +114,8 @@ class AudioCollection :
 			error(" - " + e.message)
 		except FileTypeException, e:
 			error(" - " + e.message)
+		if just_URI:
+			return ""
 		return mi
 
 	def fingerprint(self, filename) :
