@@ -59,15 +59,14 @@
 <body>
 <div class="page">
 
-<h1>Music Ontology Specification
-</h1>
+<h1>Music Ontology Specification</h1>
 
 <h2>Specification Document - 5 February 2007</h2>
 
 <table width="100%" border="0">
   <tr>
 
-    <td>i<!--<h2>Specification Document - 5 February 2007</h2>-->
+    <td><!--<h2>Specification Document - 5 February 2007</h2>-->
       <dl>
 
         <dt>Latest version:</dt>
@@ -124,7 +123,7 @@
 
                         </td>
 
-                        <td align=center><b>Music Ontology Specification Group</b></td>
+                        <td align="center"><b>Music Ontology Specification Group</b></td>
 
                   </tr>
 
@@ -134,7 +133,7 @@
 
                   <tr>
                         <td rowspan="2">
-                                <img src="http://wiki.musicontology.com/images/8/83/Mo-logo-big.jpg" width=150 alt="Wiki" />
+                                <img src="http://wiki.musicontology.com/images/8/83/Mo-logo-big.jpg" width="150" alt="Wiki" />
                         </td>
                         <td align="center"><b>Music Ontology Wiki</b></td>
 		</tr>
@@ -266,7 +265,11 @@ by the authors regarding future updates.</p>
 
   <li><a href="#sec-external-glance">External Ontologies used by the Music Ontology At A Glance</a></li>
 
+  <li><a href="#sec-level1-glance">Level 1 Terms At A Glance</a></li>
 
+  <li><a href="#sec-level2-glance">Level 2 Terms At A Glance</a></li>
+
+  <li><a href="#sec-level3-glance">Level 3 Terms At A Glance</a></li>
 
   <li><a href="#sec-overview">Music Ontology Overview</a>
 
@@ -362,6 +365,7 @@ that he was there, and a review). Mary Doe may publish the fact that she attende
 she recorded it using her cell-phone, and that the corresponding item is available in her podcast.
  
 The Music Ontology provides a vocabulary to express information ranging from this example to:
+</p>
 <pre>
 In this performance was interpreted a particular arrangement of the Trout Quintet by Franz Schubert.
 </pre>
@@ -379,9 +383,10 @@ During this gig, the band played ten songs. During the last one (a cover of "Eig
 the drummer from the support band joined them to play with them.
 </pre>
 
-
+<p>
 The Music Ontology is divided in three levels of expressiveness - from the simplest one to the more complex one.
 Everything is clustered around the following categories:
+</p>
 
 <ul>
 <li><strong>Level 1:</strong> aims at providing a vocabulary for simple editorial information (tracks/artists/releases, etc.)</li>
@@ -391,7 +396,6 @@ performance, recording, etc.)</li>
 a particular performance, what is the melody line of a particular work, etc.</li>
 </ul>
 
-</p>
 
 <p>&nbsp;</p>
 
@@ -424,7 +428,7 @@ property and by individuals. All the terms are hyperlinked to their detailed des
 
 
 <div class="glance" id="glance">
-<p>Classes: | <a href="#term_AnalogSignal">AnalogSignal</a> |  </p>
+<p>Classes: | <a href="#term_AnalogSignal">AnalogSignal</a> | <a href="#term_Arrangement">Arrangement</a> | <a href="#term_AudioFile">AudioFile</a> | <a href="#term_CD">CD</a> | <a href="#term_Composition">Composition</a> | <a href="#term_CorporateBody">CorporateBody</a> | <a href="#term_DAT">DAT</a> | <a href="#term_DCC">DCC</a> | <a href="#term_DVDA">DVDA</a> | <a href="#term_DigitalSignal">DigitalSignal</a> | <a href="#term_ED2K">ED2K</a> | <a href="#term_Festival">Festival</a> | <a href="#term_Genre">Genre</a> | <a href="#term_Instrument">Instrument</a> | <a href="#term_Instrumentation">Instrumentation</a> | <a href="#term_Label">Label</a> | <a href="#term_Libretto">Libretto</a> | <a href="#term_Lyrics">Lyrics</a> | <a href="#term_MD">MD</a> | <a href="#term_MagneticTape">MagneticTape</a> | <a href="#term_Medium">Medium</a> | <a href="#term_Movement">Movement</a> | <a href="#term_MusicArtist">MusicArtist</a> | <a href="#term_MusicGroup">MusicGroup</a> | <a href="#term_MusicalExpression">MusicalExpression</a> | <a href="#term_MusicalItem">MusicalItem</a> | <a href="#term_MusicalManifestation">MusicalManifestation</a> | <a href="#term_MusicalWork">MusicalWork</a> | <a href="#term_Orchestration">Orchestration</a> | <a href="#term_Performance">Performance</a> | <a href="#term_PublishedLibretto">PublishedLibretto</a> | <a href="#term_PublishedLyrics">PublishedLyrics</a> | <a href="#term_PublishedScore">PublishedScore</a> | <a href="#term_Record">Record</a> | <a href="#term_Recording">Recording</a> | <a href="#term_ReleaseStatus">ReleaseStatus</a> | <a href="#term_ReleaseType">ReleaseType</a> | <a href="#term_SACD">SACD</a> | <a href="#term_Score">Score</a> | <a href="#term_Show">Show</a> | <a href="#term_Signal">Signal</a> | <a href="#term_SoloMusicArtist">SoloMusicArtist</a> | <a href="#term_Sound">Sound</a> | <a href="#term_Stream">Stream</a> | <a href="#term_Torrent">Torrent</a> | <a href="#term_Track">Track</a> | <a href="#term_Vinyl">Vinyl</a> |  </p>
 <p>Properties: | <a href="#term_amazon_asin">amazon_asin</a> | 
 <a href="#term_arranged_in">arranged_in</a> | 
 <a href="#term_arrangement_of">arrangement_of</a> | 
@@ -563,7 +567,7 @@ property and by individuals. All the terms are hyperlinked to their detailed des
 property and by individuals, used by the Music Ontology. All the terms are hyperlinked to their detailed description for quick reference.</p>
 
 <div class="glance" id="glance">
-<p>Classes: | <a href="#term_Event">Event</a> |  </p>
+<p>Classes: | <a href="#term_AbstractTimeLine">AbstractTimeLine</a> | <a href="#term_Agent">Agent</a> | <a href="#term_Event">Event</a> | <a href="#term_Group">Group</a> | <a href="#term_Instant">Instant</a> | <a href="#term_Interval">Interval</a> | <a href="#term_Organization">Organization</a> | <a href="#term_OriginMap">OriginMap</a> | <a href="#term_Person">Person</a> | <a href="#term_PhysicalTimeLine">PhysicalTimeLine</a> | <a href="#term_RelativeTimeLine">RelativeTimeLine</a> | <a href="#term_TimeLine">TimeLine</a> | <a href="#term_TimeLineMap">TimeLineMap</a> |  </p>
 <p>Properties: | <a href="#term_agent">agent</a> | 
 <a href="#term_atDateTime">atDateTime</a> | 
 <a href="#term_atDuration">atDuration</a> | 
@@ -592,14 +596,14 @@ property and by individuals, used by the Music Ontology. All the terms are hyper
 <p>Individuals: | <a href="#term_universaltimeline">universaltimeline</a> | 
  </p></div><p>&nbsp;</p>
 
-<h2><a name="sec-glance" class="mozTocH2" id="sec-external-glance"></a>Music Ontology  At A Glance - Level 1 terms</h2>
+<h2><a name="sec-glance" class="mozTocH2" id="sec-level1-glance"></a>Music Ontology  At A Glance - Level 1 terms</h2>
 
 <p>
-A list of terms used within the level 2 of the Music Ontology, 
+A list of terms used within the level 1 of the Music Ontology, 
 therefore covering simple editorial information (tracks, releases, artists, groups, etc.).
 </p>
 <div class="glance" id="glance">
-<p>Classes: | <a href="#term_AudioFile">AudioFile</a> |  </p>
+<p>Classes: | <a href="#term_Agent">Agent</a> | <a href="#term_AudioFile">AudioFile</a> | <a href="#term_CD">CD</a> | <a href="#term_CorporateBody">CorporateBody</a> | <a href="#term_DAT">DAT</a> | <a href="#term_DCC">DCC</a> | <a href="#term_DVDA">DVDA</a> | <a href="#term_ED2K">ED2K</a> | <a href="#term_Group">Group</a> | <a href="#term_Label">Label</a> | <a href="#term_MD">MD</a> | <a href="#term_MagneticTape">MagneticTape</a> | <a href="#term_Medium">Medium</a> | <a href="#term_MusicArtist">MusicArtist</a> | <a href="#term_MusicGroup">MusicGroup</a> | <a href="#term_MusicalExpression">MusicalExpression</a> | <a href="#term_MusicalItem">MusicalItem</a> | <a href="#term_MusicalManifestation">MusicalManifestation</a> | <a href="#term_Organization">Organization</a> | <a href="#term_Record">Record</a> | <a href="#term_ReleaseStatus">ReleaseStatus</a> | <a href="#term_ReleaseType">ReleaseType</a> | <a href="#term_SACD">SACD</a> | <a href="#term_Signal">Signal</a> | <a href="#term_SoloMusicArtist">SoloMusicArtist</a> | <a href="#term_Stream">Stream</a> | <a href="#term_Torrent">Torrent</a> | <a href="#term_Track">Track</a> | <a href="#term_Vinyl">Vinyl</a> |  </p>
 <p>Properties: | <a href="#term_amazon_asin">amazon_asin</a> | 
 <a href="#term_available_as">available_as</a> | 
 <a href="#term_biography">biography</a> | 
@@ -688,14 +692,14 @@ therefore covering simple editorial information (tracks, releases, artists, grou
 <a href="#term_spokenword">spokenword</a> | 
  </p></div><p>&nbsp;</p>
 
-<h2><a name="sec-glance" class="mozTocH2" id="sec-external-glance"></a>Music Ontology  At A Glance - Level 2 terms</h2>
+<h2><a name="sec-glance" class="mozTocH2" id="sec-level2-glance"></a>Music Ontology  At A Glance - Level 2 terms</h2>
 
 <p>
 A list of terms used within the level 2 of the Music Ontology, 
 therefore covering information about the music creation workflow (Composition, Performance, Arrangement, Recording, etc.).
 </p>
 <div class="glance" id="glance">
-<p>Classes: | <a href="#term_Event">Event</a> |  </p>
+<p>Classes: | <a href="#term_AnalogSignal">AnalogSignal</a> | <a href="#term_Arrangement">Arrangement</a> | <a href="#term_Arranger">Arranger</a> | <a href="#term_Composer">Composer</a> | <a href="#term_Composition">Composition</a> | <a href="#term_Conductor">Conductor</a> | <a href="#term_DigitalSignal">DigitalSignal</a> | <a href="#term_Event">Event</a> | <a href="#term_Festival">Festival</a> | <a href="#term_Genre">Genre</a> | <a href="#term_Instant">Instant</a> | <a href="#term_Instrument">Instrument</a> | <a href="#term_Instrumentation">Instrumentation</a> | <a href="#term_Interval">Interval</a> | <a href="#term_Libretto">Libretto</a> | <a href="#term_Listener">Listener</a> | <a href="#term_Lyrics">Lyrics</a> | <a href="#term_Movement">Movement</a> | <a href="#term_MusicalWork">MusicalWork</a> | <a href="#term_Orchestration">Orchestration</a> | <a href="#term_Performance">Performance</a> | <a href="#term_Performer">Performer</a> | <a href="#term_PublishedLibretto">PublishedLibretto</a> | <a href="#term_PublishedLyrics">PublishedLyrics</a> | <a href="#term_PublishedScore">PublishedScore</a> | <a href="#term_Recording">Recording</a> | <a href="#term_Score">Score</a> | <a href="#term_Show">Show</a> | <a href="#term_Sound">Sound</a> | <a href="#term_SoundEngineer">SoundEngineer</a> |  </p>
 <p>Properties: | <a href="#term_agent">agent</a> | 
 <a href="#term_arranged_in">arranged_in</a> | 
 <a href="#term_arrangement_of">arrangement_of</a> | 
@@ -745,14 +749,14 @@ therefore covering information about the music creation workflow (Composition, P
 </p>
 <p>Individuals: |  </p></div><p>&nbsp;</p>
 
-<h2><a name="sec-glance" class="mozTocH2" id="sec-external-glance"></a>Music Ontology  At A Glance - Level 3 terms</h2>
+<h2><a name="sec-glance" class="mozTocH2" id="sec-level3-glance"></a>Music Ontology  At A Glance - Level 3 terms</h2>
 
 <p>
 A list of terms used within the level 3 of the Music Ontology, 
 therefore covering event decomposition (`this particular performer was playing that particular instrument at that particular time').
 </p>
 <div class="glance" id="glance">
-<p>Classes: | <a href="#term_AbstractTimeLine">AbstractTimeLine</a> |  </p>
+<p>Classes: | <a href="#term_AbstractTimeLine">AbstractTimeLine</a> | <a href="#term_OriginMap">OriginMap</a> | <a href="#term_PhysicalTimeLine">PhysicalTimeLine</a> | <a href="#term_RelativeTimeLine">RelativeTimeLine</a> | <a href="#term_TimeLine">TimeLine</a> | <a href="#term_TimeLineMap">TimeLineMap</a> |  </p>
 <p>Properties: | <a href="#term_atDuration">atDuration</a> | 
 <a href="#term_beginsAtDateTime">beginsAtDateTime</a> | 
 <a href="#term_beginsAtDuration">beginsAtDuration</a> | 
@@ -1485,9 +1489,10 @@ Music Ontology documents to create a unified database of information</p>
 
 <p>
 
-There are the schemes of the hierarchy of the Music Ontology classes. These schemes show the interaction between the Music Ontology classes and other ontologies classes.</p>
+There are the schemes of the hierarchy of the Music Ontology classes. These schemes show the interaction between the Music Ontology classes and other ontologies classes.
 
-<p><br />
+</p>
+
 
 
 
@@ -1513,7 +1518,9 @@ There are the schemes of the hierarchy of the Music Ontology classes. These sche
 
 
 
-<p>In order to describe music-related events, we consider describing the
+<p>
+
+In order to describe music-related events, we consider describing the
 
 workflow beginning with the creation of a musical work to
 
@@ -1521,15 +1528,19 @@ its release on a particular record. This is our main description<br />
 
 paradigm, and was first used in the music production ontology
 
-developed at <a href="http://www.elec.qmul.ac.uk/digitalmusic/">C4DM</a>.<br />
+developed at <a href="http://www.elec.qmul.ac.uk/digitalmusic/">C4DM</a>.
 
-<br />
+</p>
+
+<p>
 
 In the &quot;easy&quot; case (non-electronic music), We can describe this
 
 workflow within two boundaries: the simplest one and the most expressive one.<br />
 
-<br />
+</p>
+
+<p>
 
 The simplest one consider the existence of 4 concepts within this workflow:
 
@@ -1541,9 +1552,11 @@ of the work), Signal (recording the performance as a <em>signal</em>),
 
 and MusicalManifestation
 
-(the release of this signal on a particular <em>record</em>).<br />
+(the release of this signal on a particular <em>record</em>).
 
-<br />
+</p>
+
+<p>
 
 The most expressive one consider the existence of 7 concepts:
 
@@ -1555,9 +1568,11 @@ produced by the performance), Recording (the event representing the
 
 transduction from a physical sound to a signal, through
 
-the use of a microphone), Signal, and MusicalManifestation.<br />
+the use of a microphone), Signal, and MusicalManifestation.
 
-<br />
+</p>
+
+<p>
 
 Thus, we could imagine other ontologies plugged on top of MO, in order
 
@@ -1565,9 +1580,11 @@ to represent the <em>cognition</em> of a sound (related to Sound),
 
 the different types of microphones that can be used (related to
 
-Recording), and so on.<br />
+Recording), and so on.
 
-<br />
+</p>
+
+<p>
 
 In order to switch from the simplest workflow to the most expressive
 
@@ -1579,17 +1596,16 @@ This property MUST be present in <em>every</em> case, in order to be
 
 able to do a simple query for accessing simple information.
 
-<br />
-
+</p>
 
 
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
-<p><br />
+<p>
 
-  <img src="imgs/mo-workflow.jpg" /><br />
+  <img src="imgs/mo-workflow.jpg" alt="A Music Production Workflow in the Music Ontology"/>
 
 </p>
 
@@ -1634,9 +1650,10 @@ able to do a simple query for accessing simple information.
 <p>The Music Ontology is an effort led by <a href="http://zitgist.com">ZitGist LLC.</a> 
 and the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>
 to express music-related information on the <a href="http://www.w3.org/2001/sw/">Semantic Web</a>.
+</p>
 
 <p>The Music Ontology is mainly influenced by:
-<br/>
+</p>
 <ul>
 <li><a href="http://www.ifla.org/VII/s13/frbr/frbr.htm">The FRBR Final Report</a></li> 
 <li><a href="http://purl.org/NET/c4dm/event.owl">The Event ontology</a></li>
@@ -1645,7 +1662,9 @@ to express music-related information on the <a href="http://www.w3.org/2001/sw/"
 <li><a href="http://www.foaf-project.org">The FOAF Project</a></li>
 </ul>
 
-More detailed are available on the Wiki <a href="http://wiki.musicontology.com/index.php/Publications"/>publication page</a>.
+<p>
+More detailed are available on the Wiki <a href="http://wiki.musicontology.com/index.php/Publications">publication page</a>.
+</p>
 
 <p>&nbsp;</p>
 
@@ -1739,30 +1758,33 @@ A list of available modules is available <a href="http://wiki.musicontology.com/
 <h3><a name="sec-time-event" class="mozTocH3" id="sec-standards"></a>Time, and TimeLine, Event</h3>
 
 
-
+<p>
 The parts of the Music Ontology related to the production process of a particular piece of music (composition, performance, arrangement,...) as well as the parts dealing with time-related information are based on three external ontologies. The Music Ontology provides RDFS wrappers for the main classes, properties and individuals of these three ontologies.
 
-<br /><br />
+</p>
+
+<p>
 
 The first ontology is: <a href="http://www.w3.org/TR/owl-time/">OWL-Time</a>. Three terms of this ontology are used by the Music Ontology: TemporalThing, Instant and Interval. 
 
-<br /><br />
+</p>
 
+<p>
 However the kind of temporal information we may want to express goes a bit beyond OWL-Time, so we use an extension of it, developped in the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music, Queen Mary, University of London</a>: the <a href="http://purl.org/NET/c4dm/timeline.owl">TimeLine</a> ontology. Indeed, we may want to express instants and intervals on multiple "timelines" (a timeline being a coherent backbone for temporal things): the one backing a particular audio file, the one behind an audio/video stream, or the physical one, backing a musical performance. Two classes of timelines are defined: PhysicalTimeLine (an instance of it being universaltimeline, which is the one on which we may address "the 13th of october, 2006"), and RelativeTimeLine (instances of this class may back audio signals, and we may address things such as "between 2 and 3 seconds" on them).
+</p>
 
-<br /><br />
-
+<p>
 There is only one way of addressing temporal things per class of timeline. On a physical time line, a point is identified by a xsd:dateTime -- through the beginsAtDateTime property, and a duration by a xsd:duration -- through the durationXSD property. On a relative time line, a point P is identified by the duration of the interval [0,P], and this duration is identified by a xsd:duration -- through the beginsAtDuration property. A duration is identified by durationXSD.
+</p>
 
-<br /><br />
-
+<p>
 In order to express knowledge about the production process of a piece of music, we use the  <a href="http://purl.org/NET/c4dm/event.owl">Event</a> ontology, also developped at the <a href="http://www.elec.qmul.ac.uk/digitalmusic/">Centre for Digital Music</a>. Events are seen as a way to arbitrary classify a space/time region. We have the possibiliy to attach to these events: agents (active participants to the event, like a performer, a sound engineer, ...), factors (passive things having a role in the  event, like a musical instrument, a musical score, ...) and products (things produced by the event, such as a sound, a musical work, ...). A key feature of this ontology is also to allow "splitting" of events, through the hasSubEvent transitive property. Using events, we may express: this musician was playing this instrument at this given time.
+</p>
 
-<br /><br />
-
+<p>
 In the current version of the Music Ontology, the main sub-classes of Event are: Performance, Recording, Arrangement, Composition. However, given its abstract definition, we will extend the things we may describe using this class: results of feature extraction, beat tracking, segmentation of songs... 
 Thus allowing <a href="http://en.wikipedia.org/wiki/Music_information_retrieval">Music Information Retrieval</a> results to be expressed within it!
-
+</p>
 
 
 
@@ -1877,7 +1899,519 @@ namespace document in RDF/XML</a> for more detail.</p>
 <h3>Classes, Properties and Individuals (full detail)</h3>
 
 <br/>
-<div class="specterm" id="term_MusicArtist"><h3>Class: mo:MusicArtist   -   stable   -   level 1</h3>
+<div class="specterm" id="term_AbstractTimeLine"><h3>Class: tl:AbstractTimeLine   -   unstable   -   level 3</h3>
+<em>AbstractTimeLine</em>
+ - 		Abstract time lines may be used as a backbone for Score, Works, ... <br/>
+		This allows for TimeLine maps to relate works to a given performance (this note was played at this time).<br/>
+		No coordinate systems are defined for these timelines. Their structure is implicitly defined<br/>
+		by the relations between time objects defined on them (eg. this note is before this note, which is<br/>
+		before this silent, which is at the same time as this note).<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_TimeLine">TimeLine</a></td>
+<td><a href="#term_TimeLine">TimeLine</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Agent"><h3>Class: foaf:Agent   -   stable   -   level 1</h3>
+<em>Agent</em>
+ - 		An agent (person, group, software, etc.).<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_similar_to">similar_to</a></td>
+<td><a href="#term_engineer">engineer</a></td>
+<td><a href="#term_listener">listener</a></td>
+<td><a href="#term_conductor">conductor</a></td>
+<td><a href="#term_performer">performer</a></td>
+<td><a href="#term_collaborated_with">collaborated_with</a></td>
+<td><a href="#term_publisher">publisher</a></td>
+<td><a href="#term_producer">producer</a></td>
+<td><a href="#term_composer">composer</a></td>
+<td><a href="#term_agent">agent</a></td>
+<td><a href="#term_member">member</a></td>
+<td><a href="#term_maker">maker</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_free_download">free_download</a></td>
+<td><a href="#term_preview_download">preview_download</a></td>
+<td><a href="#term_download">download</a></td>
+<td><a href="#term_musicbrainz">musicbrainz</a></td>
+<td><a href="#term_wikipedia">wikipedia</a></td>
+<td><a href="#term_similar_to">similar_to</a></td>
+<td><a href="#term_engineered">engineered</a></td>
+<td><a href="#term_listened">listened</a></td>
+<td><a href="#term_conducted">conducted</a></td>
+<td><a href="#term_performed">performed</a></td>
+<td><a href="#term_exchange_item">exchange_item</a></td>
+<td><a href="#term_sell_item">sell_item</a></td>
+<td><a href="#term_want_item">want_item</a></td>
+<td><a href="#term_possess_item">possess_item</a></td>
+<td><a href="#term_collaborated_with">collaborated_with</a></td>
+<td><a href="#term_published">published</a></td>
+<td><a href="#term_produced">produced</a></td>
+<td><a href="#term_onlinecommunity">onlinecommunity</a></td>
+<td><a href="#term_myspace">myspace</a></td>
+<td><a href="#term_isAgentIn">isAgentIn</a></td>
+<td><a href="#term_made">made</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_AnalogSignal"><h3>Class: mo:AnalogSignal   -   stable   -   level 2</h3>
+<em>AnalogSignal</em>
+ - 		An analog signal.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_sampled_version_of">sampled_version_of</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_sampled_version">sampled_version</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Arrangement"><h3>Class: mo:Arrangement   -   stable   -   level 2</h3>
+<em>Arrangement</em>
+ - 		An arrangement event.<br/>
+		Takes as agent the arranger, and produces a score (informational object, not the actually published score).<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_arranged_in">arranged_in</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_genre">genre</a></td>
+<td><a href="#term_arrangement_of">arrangement_of</a></td>
+<td><a href="#term_produced_score">produced_score</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_AudioFile"><h3>Class: mo:AudioFile   -   unstable   -   level 1</h3>
+<em>AudioFile</em>
+ - An audio file, which may be available on a local file system or through http, ftp, etc. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_encoding">encoding</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_CD"><h3>Class: mo:CD   -   unstable   -   level 1</h3>
+<em>CD</em>
+ - Compact Disc used as medium to record a musical manifestation. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Composition"><h3>Class: mo:Composition   -   stable   -   level 2</h3>
+<em>Composition</em>
+ - 		A composition event.<br/>
+		Takes as agent the composer himself.<br/>
+		It produces a MusicalWork, or a MusicalExpression (when the initial "product" is a score, for example), or both...<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_composed_in">composed_in</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_genre">genre</a></td>
+<td><a href="#term_produced_work">produced_work</a></td>
+<td><a href="#term_composer">composer</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_CorporateBody"><h3>Class: mo:CorporateBody   -   stable   -   level 1</h3>
+<em>CorporateBody</em>
+ - Organization or group of individuals and/or other organizations involved in the music market. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_imdb">imdb</a></td>
+<td><a href="#term_mailorder">mailorder</a></td>
+<td><a href="#term_free_download">free_download</a></td>
+<td><a href="#term_paid_download">paid_download</a></td>
+<td><a href="#term_preview_download">preview_download</a></td>
+<td><a href="#term_download">download</a></td>
+<td><a href="#term_discogs">discogs</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Organization">Organization</a></td>
+<td><a href="#term_Organization">Organization</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_DAT"><h3>Class: mo:DAT   -   unstable   -   level 1</h3>
+<em>DAT</em>
+ - Data Audio Tape used as medium to record a musical manifestation. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_DCC"><h3>Class: mo:DCC   -   unstable   -   level 1</h3>
+<em>DCC</em>
+ - Digital Compact Cassette used as medium to record a musical manifestation. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_DVDA"><h3>Class: mo:DVDA   -   unstable   -   level 1</h3>
+<em>DVDA</em>
+ - DVD-Audio used as medium to record a musical manifestation. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_DigitalSignal"><h3>Class: mo:DigitalSignal   -   stable   -   level 2</h3>
+<em>DigitalSignal</em>
+ - 		A digital signal<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_sampled_version">sampled_version</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_bitsPerSample">bitsPerSample</a></td>
+<td><a href="#term_sample_rate">sample_rate</a></td>
+<td><a href="#term_sampled_version_of">sampled_version_of</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_ED2K"><h3>Class: mo:ED2K   -   unstable   -   level 1</h3>
+<em>ED2K</em>
+ - Something available on the E-Donkey peer-2-peer filesharing network 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Event"><h3>Class: event:Event   -   stable   -   level 2</h3>
+<em>Event</em>
+ -  <br/>
+		An event: a way of arbitrary classifying a space/time region.<br/>
+		An event has agents (active entities contributing to the event -- a performer, a composer, an engineer, ...),<br/>
+		factors (passive entities contributing to the event -- flute, score, ...),<br/>
+		and products (things produced by the event -- sound, signal, score, ...). For<br/>
+		example, we may describe as Events: performances, composition events, recordings, arrangements,<br/>
+		creation of a musical group, separation of a musical group,<br/>
+		but also sounds, signals, notes (in a score)...<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_producedIn">producedIn</a></td>
+<td><a href="#term_isFactorOf">isFactorOf</a></td>
+<td><a href="#term_isAgentIn">isAgentIn</a></td>
+<td><a href="#term_sub_event">sub_event</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_event_homepage">event_homepage</a></td>
+<td><a href="#term_product">product</a></td>
+<td><a href="#term_factor">factor</a></td>
+<td><a href="#term_agent">agent</a></td>
+<td><a href="#term_sub_event">sub_event</a></td>
+<td><a href="#term_place">place</a></td>
+<td><a href="#term_time">time</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Festival"><h3>Class: mo:Festival   -   stable   -   level 2</h3>
+<em>Festival</em>
+ - 		A festival - musical/artistic event lasting several days, like Glastonbury, Rock Am Ring...<br/>
+		We migth decompose this event (which is in fact just a classification of the space/time region related to <br/>
+		a particular festival) using hasSubEvent in several performances at different space/time.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Genre"><h3>Class: mo:Genre   -   stable   -   level 2</h3>
+<em>Genre</em>
+ - 		An expressive style of music.<br/>
+		<br/>
+		Any taxonomy can be plug-in here. You can either define a genre by yourself, like this:<br/>
+<br/>
+		:mygenre a mo:Genre; dc:title "electro rock".<br/>
+<br/>
+		Or you can refer to a DBPedia genre (such as http://dbpedia.org/resource/Baroque_music), allowing semantic web<br/>
+		clients to access easily really detailed structured information about the genre you are refering to.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_similar_to">similar_to</a></td>
+<td><a href="#term_genre">genre</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_wikipedia">wikipedia</a></td>
+<td><a href="#term_similar_to">similar_to</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Group"><h3>Class: foaf:Group   -   stable   -   level 1</h3>
+<em>Group</em>
+ - 		A group of agents.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_member_of">member_of</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_member">member</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Instant"><h3>Class: time:Instant   -   stable   -   level 2</h3>
+<em>Instant</em>
+ -  A time point (eg. "now":-) ) 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_onTimeLine">onTimeLine</a></td>
+<td><a href="#term_atDuration">atDuration</a></td>
+<td><a href="#term_atDateTime">atDateTime</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Instrument"><h3>Class: mo:Instrument   -   stable   -   level 2</h3>
+<em>Instrument</em>
+ - 		Any of various devices or contrivances that can be used to produce musical tones or sound.<br/>
+		<br/>
+		Any taxonomy can be used to subsume this concept. The default one is one extracted by Ivan Herman<br/>
+		from the Musicbrainz instrument taxonomy, conforming to SKOS. This concept holds a seeAlso link <br/>
+		towards this taxonomy.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_instrument">instrument</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_wikipedia">wikipedia</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Instrumentation"><h3>Class: mo:Instrumentation   -   stable   -   level 2</h3>
+<em>Instrumentation</em>
+ - 		Instrumentation deals with the techniques of writing music for a specific instrument, <br/>
+		including the limitations of the instrument, playing techniques and idiomatic handling of the instrument.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Arrangement">Arrangement</a></td>
+<td><a href="#term_Arrangement">Arrangement</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Interval"><h3>Class: time:Interval   -   stable   -   level 2</h3>
+<em>Interval</em>
+ -  A time interval (eg. "the year 1994") 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_intervalBefore">intervalBefore</a></td>
+<td><a href="#term_intervalMeets">intervalMeets</a></td>
+<td><a href="#term_intervalDuring">intervalDuring</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_onTimeLine">onTimeLine</a></td>
+<td><a href="#term_intervalBefore">intervalBefore</a></td>
+<td><a href="#term_intervalMeets">intervalMeets</a></td>
+<td><a href="#term_intervalDuring">intervalDuring</a></td>
+<td><a href="#term_durationXSD">durationXSD</a></td>
+<td><a href="#term_beginsAtDuration">beginsAtDuration</a></td>
+<td><a href="#term_beginsAtDateTime">beginsAtDateTime</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Label"><h3>Class: mo:Label   -   stable   -   level 1</h3>
+<em>Label</em>
+ - Trade name of a company that produces musical works or expression of musical works. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_CorporateBody">CorporateBody</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Libretto"><h3>Class: mo:Libretto   -   stable   -   level 2</h3>
+<em>Libretto</em>
+ -                 Libretto<br/>
+         
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publication_of">publication_of</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_published_as">published_as</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Lyrics"><h3>Class: mo:Lyrics   -   stable   -   level 2</h3>
+<em>Lyrics</em>
+ - 		Lyrics<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publication_of">publication_of</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_published_as">published_as</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_MD"><h3>Class: mo:MD   -   unstable   -   level 1</h3>
+<em>MD</em>
+ - Mini Disc used as medium to record a musical manifestation. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_MagneticTape"><h3>Class: mo:MagneticTape   -   unstable   -   level 1</h3>
+<em>MagneticTape</em>
+ - Magnetic analogue tape used as medium to record a musical manifestation. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Medium"><h3>Class: mo:Medium   -   unstable   -   level 1</h3>
+<em>Medium</em>
+ - A means or instrumentality for storing or communicating musical manifestation. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalItem">MusicalItem</a></td>
+<td><a href="#term_MusicalItem">MusicalItem</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Movement"><h3>Class: mo:Movement   -   unstable   -   level 2</h3>
+<em>Movement</em>
+ - A movement is a self-contained part of a musical work. While individual or selected movements from a composition are sometimes performed separately, a performance of the complete work requires all the movements to be performed in succession.<br/>
+<br/>
+Often a composer attempts to interrelate the movements thematically, or sometimes in more subtle ways, in order that the individual<br/>
+movements exert a cumulative effect. In some forms, composers sometimes link the movements, or ask for them to be played without a<br/>
+pause between them.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_movement">movement</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_movement_number">movement_number</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_MusicArtist"><h3>Class: mo:MusicArtist   -   stable   -   level 1</h3>
 <em>MusicArtist</em>
  - 		A person or a group of people (or a computer :-) ), whose musical <br/>
 		creative work shows sensitivity and imagination <br/>
@@ -1909,6 +2443,668 @@ namespace document in RDF/XML</a> for more detail.</p>
 </tr>
 
 <tr><th>sub-class-of:</th><td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_MusicGroup"><h3>Class: mo:MusicGroup   -   stable   -   level 1</h3>
+<em>MusicGroup</em>
+ - Group of musicians, or musical ensemble, usually popular or folk, playing parts of or improvising off of a musical arrangement.  
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Group">Group</a></td>
+<td><a href="#term_Group">Group</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_MusicalExpression"><h3>Class: mo:MusicalExpression   -   unstable   -   level 1</h3>
+<em>MusicalExpression</em>
+ - The intellectual or artistic realization of a work in the form of alpha-numeric, musical, or choreographic notation, sound, etc., or any combination of such forms.    <br/>
+<br/>
+<br/>
+For example:<br/>
+<br/>
+Work #1 Franz Schubert's Trout quintet<br/>
+<br/>
+    * Expression #1 the composer's score<br/>
+    * Expression #2 sound issued from the performance by the Amadeus Quartet and Hephzibah Menuhin on piano<br/>
+    * Expression #3 sound issued from the performance by the Cleveland Quartet and Yo-Yo Ma on the cello<br/>
+    * . . . . <br/>
+<br/>
+The Music Ontology defines the following sub-concepts of a MusicalExpression, which should be used instead of MusicalExpression itself: Score (the<br/>
+result of an arrangement), Sound (produced during a performance), Signal. However, it is possible to stick to FRBR and bypass the worflow<br/>
+mechanism this ontology defines by using the core FRBR properties on such objects. But it is often better to use events to interconnect such <br/>
+expressions (allowing to go deeply into the production process - `this performer was playing this particular instrument at that<br/>
+particular time').<br/>
+	<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_imdb">imdb</a></td>
+<td><a href="#term_discogs">discogs</a></td>
+<td><a href="#term_musicmoz">musicmoz</a></td>
+<td><a href="#term_image">image</a></td>
+<td><a href="#term_manifestation">manifestation</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Expression">Expression</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_MusicalItem"><h3>Class: mo:MusicalItem   -   unstable   -   level 1</h3>
+<em>MusicalItem</em>
+ - A single exemplar of a musical expression.<br/>
+    <br/>
+For example, it could be a single exemplar of a CD. This is normally an single object (a CD) possessed by somebody.<br/>
+<br/>
+From the FRBR final report: The entity defined as item is a concrete entity. It is in many instances a single physical object (e.g., a copy of a one-volume monograph, a single audio cassette, etc.). There are instances, however, where the entity defined as item comprises more than one physical object (e.g., a monograph issued as two separately bound volumes, a recording issued on three separate compact discs, etc.).<br/>
+<br/>
+In terms of intellectual content and physical form, an item exemplifying a manifestation is normally the same as the manifestation itself. However, variations may occur from one item to another, even when the items exemplify the same manifestation, where those variations are the result of actions external to the intent of the producer of the manifestation (e.g., damage occurring after the item was produced, binding performed by a library, etc.). <br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_preview">preview</a></td>
+<td><a href="#term_item">item</a></td>
+<td><a href="#term_available_as">available_as</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_image">image</a></td>
+<td><a href="#term_encodes">encodes</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_MusicalManifestation"><h3>Class: mo:MusicalManifestation   -   stable   -   level 1</h3>
+<em>MusicalManifestation</em>
+ - <br/>
+This entity is related to the edition/production/publication of a musical expression (musical manifestation are closely related with the music industry (their terms, concepts, definitions, methods (production, publication, etc.), etc.)<br/>
+    <br/>
+From the FRBR final report: The entity defined as manifestation encompasses a wide range of materials, including manuscripts, books, periodicals, maps, posters, sound recordings, films, video recordings, CD-ROMs, multimedia kits, etc. As an entity, manifestation represents all the physical objects that bear the same characteristics, in respect to both intellectual content and physical form.<br/>
+<br/>
+<br/>
+Work #1 J. S. Bach's Six suites for unaccompanied cello<br/>
+<br/>
+    * Expression #1 sound issued during the performance by Janos Starker recorded in 1963 and 1965<br/>
+          o Manifestation #1 recordings released on 33 1/3 rpm sound discs in 1965 by Mercury<br/>
+          o Manifestation #2 recordings re-released on compact disc in 1991 by Mercury <br/>
+    * Expression #2 sound issued during the performances by Yo-Yo Ma recorded in 1983<br/>
+          o Manifestation #1 recordings released on 33 1/3 rpm sound discs in 1983 by CBS Records<br/>
+          o Manifestation #2 recordings re-released on compact disc in 1992 by CBS Records <br/>
+<br/>
+          <br/>
+Changes that occur deliberately or even inadvertently in the production process that affect the copies result, strictly speaking, in a new manifestation. A manifestation resulting from such a change may be identified as a particular "state" or "issue" of the publication.<br/>
+<br/>
+Changes that occur to an individual copy after the production process is complete (e.g., the loss of a page, rebinding, etc.) are not considered to result in a new manifestation. That copy is simply considered to be an exemplar (or item) of the manifestation that deviates from the copy as produced.<br/>
+<br/>
+With the entity defined as manifestation we can describe the physical characteristics of a set of items and the characteristics associated with the production and distribution of that set of items that may be important factors in enabling users to choose a manifestation appropriate to their physical needs and constraints, and to identify and acquire a copy of that manifestation.<br/>
+<br/>
+Defining manifestation as an entity also enables us to draw relationships between specific manifestations of a work. We can use the relationships between manifestations to identify, for example, the specific publication that was used to create a microreproduction.          <br/>
+ 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_made">made</a></td>
+<td><a href="#term_other_release_of">other_release_of</a></td>
+<td><a href="#term_published">published</a></td>
+<td><a href="#term_compiled">compiled</a></td>
+<td><a href="#term_produced">produced</a></td>
+<td><a href="#term_manifestation">manifestation</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_imdb">imdb</a></td>
+<td><a href="#term_discogs">discogs</a></td>
+<td><a href="#term_musicbrainz">musicbrainz</a></td>
+<td><a href="#term_musicmoz">musicmoz</a></td>
+<td><a href="#term_image">image</a></td>
+<td><a href="#term_maker">maker</a></td>
+<td><a href="#term_preview">preview</a></td>
+<td><a href="#term_item">item</a></td>
+<td><a href="#term_available_as">available_as</a></td>
+<td><a href="#term_release_status">release_status</a></td>
+<td><a href="#term_release_type">release_type</a></td>
+<td><a href="#term_tribute_to">tribute_to</a></td>
+<td><a href="#term_other_release_of">other_release_of</a></td>
+<td><a href="#term_compilation_of">compilation_of</a></td>
+<td><a href="#term_publishing_location">publishing_location</a></td>
+<td><a href="#term_publisher">publisher</a></td>
+<td><a href="#term_compiler">compiler</a></td>
+<td><a href="#term_producer">producer</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Manifestation">Manifestation</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_MusicalWork"><h3>Class: mo:MusicalWork   -   stable   -   level 2</h3>
+<em>MusicalWork</em>
+ - 	Distinct intellectual or artistic musical creation.<br/>
+    <br/>
+From the FRBR final report: A work is an abstract entity; there is no single material object one can point to as the work. We recognize the work through individual realizations or expressions of the work, but the work itself exists only in the commonality of<br/>
+content between and among the various expressions of the work. When we speak of Homer's Iliad as a work, our point of reference is not a particular recitation or text of the work, but the intellectual creation that lies behind all the various expressions of the work.     <br/>
+<br/>
+For example:<br/>
+<br/>
+work #1 J. S. Bach's The art of the fugue<br/>
+<br/>
+    <br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_performance_of">performance_of</a></td>
+<td><a href="#term_arrangement_of">arrangement_of</a></td>
+<td><a href="#term_produced_work">produced_work</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_imdb">imdb</a></td>
+<td><a href="#term_discogs">discogs</a></td>
+<td><a href="#term_musicbrainz">musicbrainz</a></td>
+<td><a href="#term_musicmoz">musicmoz</a></td>
+<td><a href="#term_key">key</a></td>
+<td><a href="#term_tempo">tempo</a></td>
+<td><a href="#term_bpm">bpm</a></td>
+<td><a href="#term_image">image</a></td>
+<td><a href="#term_performed_in">performed_in</a></td>
+<td><a href="#term_movement">movement</a></td>
+<td><a href="#term_opus">opus</a></td>
+<td><a href="#term_arranged_in">arranged_in</a></td>
+<td><a href="#term_composed_in">composed_in</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Work">Work</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Orchestration"><h3>Class: mo:Orchestration   -   stable   -   level 2</h3>
+<em>Orchestration</em>
+ -         	Orchestration includes, in addition to instrumentation, the handling of groups of instruments and their balance and interaction.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Arrangement">Arrangement</a></td>
+<td><a href="#term_Arrangement">Arrangement</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Organization"><h3>Class: foaf:Organization   -   stable   -   level 1</h3>
+<em>Organization</em>
+ - 		An organization.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+</table>
+
+</div><div class="specterm" id="term_OriginMap"><h3>Class: tl:OriginMap   -   stable   -   level 3</h3>
+<em>OriginMap</em>
+ - 		This time line map represents the relation between the physical timeline and a<br/>
+		continuous time line where the origin is at a given point on the physical timeline<br/>
+		(eg. "the timeline backing this signal corresponds<br/>
+		to the physical timeline: point 0 on this timeline corresponds to the<br/>
+		20th of december at 5pm").<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_originAt">originAt</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_TimeLineMap">TimeLineMap</a></td>
+<td><a href="#term_TimeLineMap">TimeLineMap</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Performance"><h3>Class: mo:Performance   -   stable   -   level 2</h3>
+<em>Performance</em>
+ - 		A performance event. <br/>
+		It might include as agents performers, engineers, conductors, or even listeners.<br/>
+		It might include as factors a score, a MusicalWork, musical instruments. <br/>
+		It might produce a sound:-)<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_engineered">engineered</a></td>
+<td><a href="#term_listened">listened</a></td>
+<td><a href="#term_conducted">conducted</a></td>
+<td><a href="#term_performed">performed</a></td>
+<td><a href="#term_records">records</a></td>
+<td><a href="#term_performed_in">performed_in</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_engineer">engineer</a></td>
+<td><a href="#term_key">key</a></td>
+<td><a href="#term_tempo">tempo</a></td>
+<td><a href="#term_bpm">bpm</a></td>
+<td><a href="#term_genre">genre</a></td>
+<td><a href="#term_instrument">instrument</a></td>
+<td><a href="#term_listener">listener</a></td>
+<td><a href="#term_conductor">conductor</a></td>
+<td><a href="#term_performer">performer</a></td>
+<td><a href="#term_recorded_as">recorded_as</a></td>
+<td><a href="#term_produced_sound">produced_sound</a></td>
+<td><a href="#term_performance_of">performance_of</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Person"><h3>Class: foaf:Person   -   stable   -   </h3>
+<em>Person</em>
+ - 		A person.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_member_of">member_of</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_SpatialThing">SpatialThing</a></td>
+<td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_PhysicalTimeLine"><h3>Class: tl:PhysicalTimeLine   -   stable   -   level 3</h3>
+<em>PhysicalTimeLine</em>
+ - 		Well, the actual physical time as we know it. I may want to address "yesterday" on instances<br/>
+		of this class, or "the year 1789"...<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_TimeLine">TimeLine</a></td>
+<td><a href="#term_TimeLine">TimeLine</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_PublishedLibretto"><h3>Class: mo:PublishedLibretto   -   stable   -   level 2</h3>
+<em>PublishedLibretto</em>
+ - A published libretto 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_published_as">published_as</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_publication_of">publication_of</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_PublishedLyrics"><h3>Class: mo:PublishedLyrics   -   stable   -   level 2</h3>
+<em>PublishedLyrics</em>
+ - Published lyrics, as a book or as a text file, for example 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_published_as">published_as</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_publication_of">publication_of</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_PublishedScore"><h3>Class: mo:PublishedScore   -   stable   -   level 2</h3>
+<em>PublishedScore</em>
+ - A published score (subclass of MusicalManifestation) 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_published_as">published_as</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_publication_of">publication_of</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Record"><h3>Class: mo:Record   -   stable   -   level 1</h3>
+<em>Record</em>
+ - A published record (manifestation which first aim is to render the product of a recording) 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_published_as">published_as</a></td>
+<td><a href="#term_made">made</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_publication_of">publication_of</a></td>
+<td><a href="#term_maker">maker</a></td>
+<td><a href="#term_track">track</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Recording"><h3>Class: mo:Recording   -   stable   -   level 2</h3>
+<em>Recording</em>
+ - 		A recording event.<br/>
+		Takes a sound as a factor to produce a signal (analog or digital).<br/>
+		The location of such events (if any) is the actual location of the corresponding<br/>
+		microphone or the "recording device".<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_engineered">engineered</a></td>
+<td><a href="#term_recorded_in">recorded_in</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_engineer">engineer</a></td>
+<td><a href="#term_genre">genre</a></td>
+<td><a href="#term_produced_signal">produced_signal</a></td>
+<td><a href="#term_recording_of">recording_of</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_RelativeTimeLine"><h3>Class: tl:RelativeTimeLine   -   stable   -   level 3</h3>
+<em>RelativeTimeLine</em>
+ - 		A semi-infinite continuous timeline. Instances of RelativeTimeLine can<br/>
+		back audio/video signals, sounds. Such timelines can<br/>
+		be linked to a physical time line using the OriginMap.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_TimeLine">TimeLine</a></td>
+<td><a href="#term_TimeLine">TimeLine</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_ReleaseStatus"><h3>Class: mo:ReleaseStatus   -   stable   -   level 1</h3>
+<em>ReleaseStatus</em>
+ - Musical manifestation release status. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_release_status">release_status</a></td>
+</tr>
+
+
+</table>
+
+</div><div class="specterm" id="term_ReleaseType"><h3>Class: mo:ReleaseType   -   stable   -   level 1</h3>
+<em>ReleaseType</em>
+ - 		Release type of a particular manifestation, such as "album" or "interview"...<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_release_type">release_type</a></td>
+</tr>
+
+
+</table>
+
+</div><div class="specterm" id="term_SACD"><h3>Class: mo:SACD   -   unstable   -   level 1</h3>
+<em>SACD</em>
+ - Super Audio Compact Disc used as medium to record a musical manifestation. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Score"><h3>Class: mo:Score   -   stable   -   level 2</h3>
+<em>Score</em>
+ - 		Here, we are dealing with the informational object (the MusicalExpression), not the actually "published" score.<br/>
+		This may be, for example, the product of an arrangement process.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_publication_of">publication_of</a></td>
+<td><a href="#term_performance_of">performance_of</a></td>
+<td><a href="#term_produced_score">produced_score</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_published_as">published_as</a></td>
+<td><a href="#term_performed_in">performed_in</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Show"><h3>Class: mo:Show   -   stable   -   level 2</h3>
+<em>Show</em>
+ - 		A show - a musical event lasting several days, in a particular venue. Examples can be<br/>
+		"The Magic Flute" at the Opera Bastille, August 2005, or a musical in the west end...<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Signal"><h3>Class: mo:Signal   -   stable   -   level 1</h3>
+<em>Signal</em>
+ - 		A subclass of MusicalExpression, representing a Signal. Realisation of a MusicalWork through both a Performance and a Recording.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_similar_to">similar_to</a></td>
+<td><a href="#term_publication_of">publication_of</a></td>
+<td><a href="#term_mashup_of">mashup_of</a></td>
+<td><a href="#term_remaster_of">remaster_of</a></td>
+<td><a href="#term_djmix_of">djmix_of</a></td>
+<td><a href="#term_compilation_of">compilation_of</a></td>
+<td><a href="#term_medley_of">medley_of</a></td>
+<td><a href="#term_remix_of">remix_of</a></td>
+<td><a href="#term_djmixed">djmixed</a></td>
+<td><a href="#term_contains_sample_from">contains_sample_from</a></td>
+<td><a href="#term_sampled">sampled</a></td>
+<td><a href="#term_remixed">remixed</a></td>
+<td><a href="#term_encodes">encodes</a></td>
+<td><a href="#term_recorded_as">recorded_as</a></td>
+<td><a href="#term_produced_signal">produced_signal</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_musicbrainz">musicbrainz</a></td>
+<td><a href="#term_similar_to">similar_to</a></td>
+<td><a href="#term_published_as">published_as</a></td>
+<td><a href="#term_mashup_of">mashup_of</a></td>
+<td><a href="#term_remaster_of">remaster_of</a></td>
+<td><a href="#term_djmix_of">djmix_of</a></td>
+<td><a href="#term_medley_of">medley_of</a></td>
+<td><a href="#term_remix_of">remix_of</a></td>
+<td><a href="#term_djmixed_by">djmixed_by</a></td>
+<td><a href="#term_contains_sample_from">contains_sample_from</a></td>
+<td><a href="#term_sampler">sampler</a></td>
+<td><a href="#term_remixer">remixer</a></td>
+<td><a href="#term_isrc">isrc</a></td>
+<td><a href="#term_puid">puid</a></td>
+<td><a href="#term_trmid">trmid</a></td>
+<td><a href="#term_channels">channels</a></td>
+<td><a href="#term_time">time</a></td>
+<td><a href="#term_records">records</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_SoloMusicArtist"><h3>Class: mo:SoloMusicArtist   -   stable   -   level 1</h3>
+<em>SoloMusicArtist</em>
+ - Single person whose musical creative work shows sensitivity and imagination. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Person">Person</a></td>
+<td><a href="#term_Person">Person</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Sound"><h3>Class: mo:Sound   -   stable   -   level 2</h3>
+<em>Sound</em>
+ - 		A subclass of MusicalExpression, representing a sound. Realisation of a MusicalWork during a musical Performance.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_recording_of">recording_of</a></td>
+<td><a href="#term_produced_sound">produced_sound</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_recorded_in">recorded_in</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Stream"><h3>Class: mo:Stream   -   unstable   -   level 1</h3>
+<em>Stream</em>
+ - Transmission over a network  used as medium to broadcast a musical manifestation 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_TimeLine"><h3>Class: tl:TimeLine   -   stable   -   level 3</h3>
+<em>TimeLine</em>
+ -  <br/>
+		A time line -- a coherent "backbone" for addressing points and intervals.<br/>
+		We can consider the timeline backing an audio/video signal, the one<br/>
+		corresponding to the "physical" time, or even the one backing a score.<br/>
+		Here, we consider that the timeline is *also* its coordinate system, for<br/>
+		simplification purposes. In the DL version of the timeline ontology,<br/>
+		coordinate systems are defined through restrictions on the way to <br/>
+		address time points/intervals on a timeline.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_rangeTimeLine">rangeTimeLine</a></td>
+<td><a href="#term_domainTimeLine">domainTimeLine</a></td>
+<td><a href="#term_onTimeLine">onTimeLine</a></td>
+</tr>
+
+
+</table>
+
+</div><div class="specterm" id="term_TimeLineMap"><h3>Class: tl:TimeLineMap   -   stable   -   level 3</h3>
+<em>TimeLineMap</em>
+ - 		Two time lines can be related, such as the one backing a continuous signal and<br/>
+		the one backing the digitized signal. This sort of relation is expressed through an instance<br/>
+		of a TimeLine map (eg. "the timeline backing this signal corresponds<br/>
+		to the physical timeline: point 0 on this timeline corresponds to the<br/>
+		20th of december at 5pm").<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_rangeTimeLine">rangeTimeLine</a></td>
+<td><a href="#term_domainTimeLine">domainTimeLine</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Torrent"><h3>Class: mo:Torrent   -   unstable   -   level 1</h3>
+<em>Torrent</em>
+ - Something available on the Bittorrent peer-2-peer filesharing network 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Track"><h3>Class: mo:Track   -   stable   -   level 1</h3>
+<em>Track</em>
+ - A track on a particular record 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_made">made</a></td>
+<td><a href="#term_track">track</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_maker">maker</a></td>
+<td><a href="#term_olga">olga</a></td>
+<td><a href="#term_track_number">track_number</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Record">Record</a></td>
+<td><a href="#term_Record">Record</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Vinyl"><h3>Class: mo:Vinyl   -   unstable   -   level 1</h3>
+<em>Vinyl</em>
+ - Vinyl used as medium to record a musical manifestation 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Medium">Medium</a></td>
+<td><a href="#term_Medium">Medium</a></td>
 </tr>
 </table>
 
@@ -1920,9 +3116,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#isAgentIn">event:isAgentIn</a></td>
@@ -1954,9 +3152,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Arrangement">Arrangement</a></td>
 <td><a href="#term_Arrangement">Arrangement</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/arrangement_of">mo:arrangement_of</a></td>
@@ -1972,9 +3172,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Arrangement">Arrangement</a></td>
+<td><a href="#term_Arrangement">Arrangement</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/arranged_in">mo:arranged_in</a></td>
@@ -1989,6 +3191,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Instant">Instant</a></td>
 <td><a href="#term_Instant">Instant</a></td>
 
 </tr>
@@ -2005,6 +3208,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Instant">Instant</a></td>
 <td><a href="#term_Instant">Instant</a></td>
 
 </tr>
@@ -2027,9 +3231,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalItem">MusicalItem</a></td>
 <td><a href="#term_MusicalItem">MusicalItem</a></td>
 </tr>
 
@@ -2043,6 +3249,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Interval">Interval</a></td>
 <td><a href="#term_Interval">Interval</a></td>
 
 </tr>
@@ -2061,6 +3268,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Interval">Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -2074,6 +3282,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 <em>biography</em> - Used to link an artist to their online biography. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 
 </tr>
@@ -2091,6 +3300,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_DigitalSignal">DigitalSignal</a></td>
+<td><a href="#term_DigitalSignal">DigitalSignal</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -2107,6 +3317,8 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
@@ -2123,6 +3335,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -2137,9 +3350,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 
@@ -2151,9 +3366,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 
@@ -2165,9 +3382,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/compiler">mo:compiler</a></td>
@@ -2180,9 +3399,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/compiled">mo:compiled</a></td>
@@ -2199,9 +3420,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Composition">Composition</a></td>
 <td><a href="#term_Composition">Composition</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/produced_work">mo:produced_work</a></td>
@@ -2219,9 +3442,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Composition">Composition</a></td>
+<td><a href="#term_Composition">Composition</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 
@@ -2235,9 +3460,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Performance">Performance</a></td>
 <td><a href="#term_Performance">Performance</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/conductor">mo:conductor</a></td>
@@ -2252,9 +3479,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/conducted">mo:conducted</a></td>
@@ -2270,9 +3499,11 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 
@@ -2283,6 +3514,7 @@ namespace document in RDF/XML</a> for more detail.</p>
 <em>discography</em> - Used to links an artist to an online discography of their musical works. The discography should provide a summary of each released musical work of the artist. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 
 </tr>
@@ -2299,9 +3531,14 @@ namespace document in RDF/XML</a> for more detail.</p>
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
@@ -2320,9 +3557,11 @@ The tracks might have been altered by pitching (so that the tempo of one track m
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 
@@ -2336,9 +3575,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/djmixed_by">mo:djmixed_by</a></td>
@@ -2353,9 +3594,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/djmixed">mo:djmixed</a></td>
@@ -2369,9 +3612,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_TimeLineMap">TimeLineMap</a></td>
+<td><a href="#term_TimeLineMap">TimeLineMap</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_TimeLine">TimeLine</a></td>
 <td><a href="#term_TimeLine">TimeLine</a></td>
 </tr>
 
@@ -2395,6 +3640,8 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Manifestation">Manifestation</a></td>
 
@@ -2413,6 +3660,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Interval">Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -2430,9 +3678,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalItem">MusicalItem</a></td>
+<td><a href="#term_MusicalItem">MusicalItem</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 
@@ -2443,6 +3693,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <em>encoding</em> - Method used to convert analog electronic signals into digital format such as "MP3 CBR @ 128kbps", "OGG @ 160kbps", "FLAC", etc.   
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_AudioFile">AudioFile</a></td>
 <td><a href="#term_AudioFile">AudioFile</a></td>
 
 </tr>
@@ -2458,10 +3709,13 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Recording">Recording</a></td>
+<td><a href="#term_Recording">Recording</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 <td><a href="#term_Performance">Performance</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/engineered">mo:engineered</a></td>
@@ -2476,10 +3730,13 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
 <td><a href="#term_Recording">Recording</a></td>
+<td><a href="#term_Recording">Recording</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 <td><a href="#term_Performance">Performance</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/engineer">mo:engineer</a></td>
@@ -2493,6 +3750,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <em>event_homepage</em> - Links a particular event to a web page 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Event">Event</a></td>
 <td><a href="#term_Event">Event</a></td>
 
 </tr>
@@ -2508,6 +3766,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <em>exchange_item</em> - A person, a group of person or an organization exchanging an exemplar of a single manifestation. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 
 </tr>
@@ -2525,6 +3784,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -2539,6 +3799,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <em>fanpage</em> - Used to link an artist to a fan-created webpage devoted to that artist. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 
 </tr>
@@ -2563,6 +3824,8 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Manifestation">Manifestation</a></td>
 
@@ -2584,12 +3847,17 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Recording">Recording</a></td>
+<td><a href="#term_Recording">Recording</a></td>
+<td><a href="#term_Composition">Composition</a></td>
 <td><a href="#term_Composition">Composition</a></td>
 <td><a href="#term_Arrangement">Arrangement</a></td>
+<td><a href="#term_Arrangement">Arrangement</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 <td><a href="#term_Performance">Performance</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Genre">Genre</a></td>
 <td><a href="#term_Genre">Genre</a></td>
 </tr>
 
@@ -2603,8 +3871,12 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalItem">MusicalItem</a></td>
+<td><a href="#term_MusicalItem">MusicalItem</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
@@ -2621,9 +3893,14 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
@@ -2640,9 +3917,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Instrument">Instrument</a></td>
 <td><a href="#term_Instrument">Instrument</a></td>
 </tr>
 
@@ -2657,9 +3936,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Interval">Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Interval">Interval</a></td>
 <td><a href="#term_Interval">Interval</a></td>
 </tr>
 
@@ -2673,9 +3954,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Interval">Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Interval">Interval</a></td>
 <td><a href="#term_Interval">Interval</a></td>
 </tr>
 
@@ -2688,9 +3971,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Interval">Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Interval">Interval</a></td>
 <td><a href="#term_Interval">Interval</a></td>
 </tr>
 
@@ -2703,9 +3988,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Event">Event</a></td>
 <td><a href="#term_Event">Event</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#agent">event:agent</a></td>
@@ -2723,6 +4010,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 </tr>
 <tr><th>Range:</th>
 <td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#factor">event:factor</a></td>
 </tr>
@@ -2736,6 +4024,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 
 </tr>
@@ -2753,9 +4042,11 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalItem">MusicalItem</a></td>
 <td><a href="#term_MusicalItem">MusicalItem</a></td>
 </tr>
 
@@ -2771,6 +4062,8 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
@@ -2806,9 +4099,11 @@ This is usually used to link to a Creative Commons licence.
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Performance">Performance</a></td>
 <td><a href="#term_Performance">Performance</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/listener">mo:listener</a></td>
@@ -2823,9 +4118,11 @@ This is usually used to link to a Creative Commons licence.
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/listened">mo:listened</a></td>
@@ -2841,11 +4138,15 @@ This is usually used to link to a Creative Commons licence.
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
 <td><a href="#term_Track">Track</a></td>
+<td><a href="#term_Track">Track</a></td>
 <td><a href="#term_Record">Record</a></td>
+<td><a href="#term_Record">Record</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://xmlns.com/foaf/0.1/made">foaf:made</a></td>
@@ -2858,6 +4159,8 @@ This is usually used to link to a Creative Commons licence.
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_Manifestation">Manifestation</a></td>
 
@@ -2880,11 +4183,15 @@ This is usually used to link to a Creative Commons licence.
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Track">Track</a></td>
+<td><a href="#term_Track">Track</a></td>
 <td><a href="#term_Record">Record</a></td>
+<td><a href="#term_Record">Record</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://xmlns.com/foaf/0.1/made">foaf:made</a></td>
@@ -2897,9 +4204,11 @@ This is usually used to link to a Creative Commons licence.
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalExpression">MusicalExpression</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 </tr>
 
@@ -2914,9 +4223,11 @@ This means that two musical works or the expressions of a musical work by differ
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 
@@ -2930,9 +4241,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 
@@ -2945,9 +4258,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Group">Group</a></td>
+<td><a href="#term_Group">Group</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 
@@ -2959,9 +4274,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Person">Person</a></td>
+<td><a href="#term_Person">Person</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Group">Group</a></td>
 <td><a href="#term_Group">Group</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://xmlns.com/foaf/0.1/member">foaf:member</a></td>
@@ -2974,9 +4291,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Movement">Movement</a></td>
 <td><a href="#term_Movement">Movement</a></td>
 </tr>
 
@@ -2987,6 +4306,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <em>movement_number</em> - Indicates the position of a movement in a musical work. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Movement">Movement</a></td>
 <td><a href="#term_Movement">Movement</a></td>
 
 </tr>
@@ -3003,8 +4323,12 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
@@ -3021,8 +4345,12 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalExpression">MusicalExpression</a></td>
 <td><a href="#term_MusicalExpression">MusicalExpression</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 
 </tr>
@@ -3039,6 +4367,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -3053,6 +4382,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <em>olga</em> - Used to link a track to a tabulature file for track in the On-Line Guitar Archive. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Track">Track</a></td>
 <td><a href="#term_Track">Track</a></td>
 
 </tr>
@@ -3072,10 +4402,13 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Instant">Instant</a></td>
+<td><a href="#term_Instant">Instant</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 <td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_TimeLine">TimeLine</a></td>
 <td><a href="#term_TimeLine">TimeLine</a></td>
 </tr>
 
@@ -3086,6 +4419,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <em>onlinecommunity</em> - Used to link a person with an online community web page like a blog, a wiki, a forum, a livejournal page, Etc. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 
 </tr>
@@ -3103,6 +4437,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -3119,6 +4454,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_OriginMap">OriginMap</a></td>
+<td><a href="#term_OriginMap">OriginMap</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -3133,9 +4469,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 </tr>
 
@@ -3149,6 +4487,8 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_Manifestation">Manifestation</a></td>
 
@@ -3171,10 +4511,13 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 
 </tr>
 <tr><th>Range:</th>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_Score">Score</a></td>
 <td><a href="#term_Score">Score</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/performed_in">mo:performed_in</a></td>
@@ -3189,9 +4532,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Performance">Performance</a></td>
 <td><a href="#term_Performance">Performance</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/performer">mo:performer</a></td>
@@ -3210,10 +4555,13 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
+<td><a href="#term_Score">Score</a></td>
 <td><a href="#term_Score">Score</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Performance">Performance</a></td>
 <td><a href="#term_Performance">Performance</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/performance_of">mo:performance_of</a></td>
@@ -3228,9 +4576,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/performed">mo:performed</a></td>
@@ -3251,6 +4601,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -3264,6 +4615,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <em>possess_item</em> - A person, a group of person or an organization possessing an exemplar of a single manifestation. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 
 </tr>
@@ -3281,9 +4633,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalItem">MusicalItem</a></td>
 <td><a href="#term_MusicalItem">MusicalItem</a></td>
 </tr>
 
@@ -3304,6 +4658,8 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_CorporateBody">CorporateBody</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Manifestation">Manifestation</a></td>
 
@@ -3323,9 +4679,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/producer">mo:producer</a></td>
@@ -3343,6 +4701,7 @@ This means that the orignial musical expression were rearranged to create a new 
 </tr>
 <tr><th>Range:</th>
 <td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#product">event:product</a></td>
 </tr>
@@ -3356,9 +4715,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Arrangement">Arrangement</a></td>
+<td><a href="#term_Arrangement">Arrangement</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Score">Score</a></td>
 <td><a href="#term_Score">Score</a></td>
 </tr>
 
@@ -3373,9 +4734,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Recording">Recording</a></td>
+<td><a href="#term_Recording">Recording</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 
@@ -3390,9 +4753,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Sound">Sound</a></td>
 <td><a href="#term_Sound">Sound</a></td>
 </tr>
 
@@ -3410,9 +4775,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Composition">Composition</a></td>
+<td><a href="#term_Composition">Composition</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/composed_in">mo:composed_in</a></td>
@@ -3427,9 +4794,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/produced">mo:produced</a></td>
@@ -3443,6 +4812,7 @@ This means that the orignial musical expression were rearranged to create a new 
          
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Event">Event</a></td>
 <td><a href="#term_Event">Event</a></td>
 
 </tr>
@@ -3459,15 +4829,23 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_PublishedLyrics">PublishedLyrics</a></td>
+<td><a href="#term_PublishedLyrics">PublishedLyrics</a></td>
+<td><a href="#term_PublishedLibretto">PublishedLibretto</a></td>
 <td><a href="#term_PublishedLibretto">PublishedLibretto</a></td>
 <td><a href="#term_PublishedScore">PublishedScore</a></td>
+<td><a href="#term_PublishedScore">PublishedScore</a></td>
+<td><a href="#term_Record">Record</a></td>
 <td><a href="#term_Record">Record</a></td>
 
 </tr>
 <tr><th>Range:</th>
 <td><a href="#term_Lyrics">Lyrics</a></td>
+<td><a href="#term_Lyrics">Lyrics</a></td>
+<td><a href="#term_Libretto">Libretto</a></td>
 <td><a href="#term_Libretto">Libretto</a></td>
 <td><a href="#term_Score">Score</a></td>
+<td><a href="#term_Score">Score</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/published_as">mo:published_as</a></td>
@@ -3480,9 +4858,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Agent">Agent</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/publisher">mo:publisher</a></td>
@@ -3497,15 +4877,23 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Lyrics">Lyrics</a></td>
+<td><a href="#term_Lyrics">Lyrics</a></td>
+<td><a href="#term_Libretto">Libretto</a></td>
 <td><a href="#term_Libretto">Libretto</a></td>
 <td><a href="#term_Score">Score</a></td>
+<td><a href="#term_Score">Score</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
 <td><a href="#term_PublishedLyrics">PublishedLyrics</a></td>
+<td><a href="#term_PublishedLyrics">PublishedLyrics</a></td>
+<td><a href="#term_PublishedLibretto">PublishedLibretto</a></td>
 <td><a href="#term_PublishedLibretto">PublishedLibretto</a></td>
 <td><a href="#term_PublishedScore">PublishedScore</a></td>
+<td><a href="#term_PublishedScore">PublishedScore</a></td>
+<td><a href="#term_Record">Record</a></td>
 <td><a href="#term_Record">Record</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/publicationOf">mo:publicationOf</a></td>
@@ -3521,9 +4909,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/published">mo:published</a></td>
@@ -3536,6 +4926,7 @@ This means that the orignial musical expression were rearranged to create a new 
          
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
@@ -3560,6 +4951,7 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -3575,9 +4967,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_TimeLineMap">TimeLineMap</a></td>
+<td><a href="#term_TimeLineMap">TimeLineMap</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_TimeLine">TimeLine</a></td>
 <td><a href="#term_TimeLine">TimeLine</a></td>
 </tr>
 
@@ -3594,9 +4988,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/records">mo:records</a></td>
@@ -3613,9 +5009,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Sound">Sound</a></td>
+<td><a href="#term_Sound">Sound</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Recording">Recording</a></td>
 <td><a href="#term_Recording">Recording</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/recording_of">mo:recording_of</a></td>
@@ -3634,9 +5032,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Recording">Recording</a></td>
+<td><a href="#term_Recording">Recording</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Sound">Sound</a></td>
 <td><a href="#term_Sound">Sound</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/recorded_in">mo:recorded_in</a></td>
@@ -3653,9 +5053,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Performance">Performance</a></td>
 <td><a href="#term_Performance">Performance</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/recordedAs">mo:recordedAs</a></td>
@@ -3669,9 +5071,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_ReleaseStatus">ReleaseStatus</a></td>
 <td><a href="#term_ReleaseStatus">ReleaseStatus</a></td>
 </tr>
 
@@ -3684,9 +5088,11 @@ This means that the orignial musical expression were rearranged to create a new 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_ReleaseType">ReleaseType</a></td>
 <td><a href="#term_ReleaseType">ReleaseType</a></td>
 </tr>
 
@@ -3700,9 +5106,11 @@ A remaster is a new version made for release from source recordings that were ea
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 
@@ -3714,9 +5122,11 @@ A remaster is a new version made for release from source recordings that were ea
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 
@@ -3730,9 +5140,11 @@ This involves taking just one other musical work and using audio editing to make
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/remixer">mo:remixer</a></td>
@@ -3747,9 +5159,11 @@ This involves taking just one other musical work and using audio editing to make
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/remixed">mo:remixed</a></td>
@@ -3783,6 +5197,7 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_DigitalSignal">DigitalSignal</a></td>
+<td><a href="#term_DigitalSignal">DigitalSignal</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -3797,9 +5212,11 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
 <td><a href="#term_Signal">Signal</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/sampler">mo:sampler</a></td>
@@ -3813,9 +5230,11 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_AnalogSignal">AnalogSignal</a></td>
+<td><a href="#term_AnalogSignal">AnalogSignal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_DigitalSignal">DigitalSignal</a></td>
 <td><a href="#term_DigitalSignal">DigitalSignal</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/sampled_version_of">mo:sampled_version_of</a></td>
@@ -3829,9 +5248,11 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_DigitalSignal">DigitalSignal</a></td>
+<td><a href="#term_DigitalSignal">DigitalSignal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_AnalogSignal">AnalogSignal</a></td>
 <td><a href="#term_AnalogSignal">AnalogSignal</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/sampled_version">mo:sampled_version</a></td>
@@ -3844,9 +5265,11 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 </tr>
 <tr><th>Inverse-of: </th><td><a href="http://purl.org/ontology/mo/sampled">mo:sampled</a></td>
@@ -3858,6 +5281,7 @@ The review does not have to be open content, as long as it is accessible to the 
 <em>sell_item</em> - A person, a group of person or an organization selling an exemplar of a single manifestation. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 
 </tr>
@@ -3881,13 +5305,19 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Genre">Genre</a></td>
+<td><a href="#term_Genre">Genre</a></td>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 
 </tr>
 <tr><th>Range:</th>
 <td><a href="#term_Genre">Genre</a></td>
+<td><a href="#term_Genre">Genre</a></td>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 </tr>
 
@@ -3904,9 +5334,11 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Event">Event</a></td>
 <td><a href="#term_Event">Event</a></td>
 </tr>
 
@@ -3918,9 +5350,11 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 </tr>
 
@@ -3937,6 +5371,8 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_Performance">Performance</a></td>
+<td><a href="#term_MusicalWork">MusicalWork</a></td>
 <td><a href="#term_MusicalWork">MusicalWork</a></td>
 
 </tr>
@@ -3958,6 +5394,7 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Event">Event</a></td>
+<td><a href="#term_Event">Event</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -3973,6 +5410,7 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -3987,9 +5425,11 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Record">Record</a></td>
+<td><a href="#term_Record">Record</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_Track">Track</a></td>
 <td><a href="#term_Track">Track</a></td>
 </tr>
 
@@ -4000,6 +5440,7 @@ The review does not have to be open content, as long as it is accessible to the 
 <em>track_number</em> - Indicates the position of a track on a record medium (a CD, etc.). 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Track">Track</a></td>
 <td><a href="#term_Track">Track</a></td>
 
 </tr>
@@ -4029,9 +5470,11 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
+<td><a href="#term_MusicalManifestation">MusicalManifestation</a></td>
 
 </tr>
 <tr><th>Range:</th>
+<td><a href="#term_MusicArtist">MusicArtist</a></td>
 <td><a href="#term_MusicArtist">MusicArtist</a></td>
 </tr>
 
@@ -4047,6 +5490,7 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Signal">Signal</a></td>
+<td><a href="#term_Signal">Signal</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -4060,6 +5504,7 @@ The review does not have to be open content, as long as it is accessible to the 
 <em>want_item</em> - A person, a group of person or an organization wanting an exemplar of a single manifestation. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 
 </tr>
@@ -4078,7 +5523,10 @@ The review does not have to be open content, as long as it is accessible to the 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Genre">Genre</a></td>
+<td><a href="#term_Genre">Genre</a></td>
 <td><a href="#term_Instrument">Instrument</a></td>
+<td><a href="#term_Instrument">Instrument</a></td>
+<td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Agent">Agent</a></td>
 <td><a href="#term_Item">Item</a></td>
 <td><a href="#term_Manifestation">Manifestation</a></td>
@@ -4093,7 +5541,93 @@ The review does not have to be open content, as long as it is accessible to the 
 <tr><th>Sub-property-of: </th><td><a href="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">foaf:isPrimaryTopicOf</a></td>
 </tr>
 </table>
-<br/></div>
+<br/></div><div class="specterm" id="term_album">
+<h3>Individual: album   -   level 1</h3>
+<em>album</em> - 		One or more track issued together.
+    		This is a type of MusicalManifestation defined by the musical industry.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseType">mo:ReleaseType</a></td>
+</tr></table></div><div class="specterm" id="term_audiobook">
+<h3>Individual: audiobook   -   level 1</h3>
+<em>audio book</em> - 		Book read by a narrator without music.
+		This is a type of MusicalManifestation defined by the musical industry.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseType">mo:ReleaseType</a></td>
+</tr></table></div><div class="specterm" id="term_bootleg">
+<h3>Individual: bootleg   -   level 1</h3>
+<em>bootleg</em> - An unofficial/underground musical work or the expression of a musical work that was not sanctioned by the artist and/or the corporate body.  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseStatus">mo:ReleaseStatus</a></td>
+</tr></table></div><div class="specterm" id="term_compilation">
+<h3>Individual: compilation   -   level 1</h3>
+<em>compilation</em> - 		Collection of previously released manifestations of a musical expression by one or more artists.
+		This is a type of MusicalManifestation defined by the musical industry.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseType">mo:ReleaseType</a></td>
+</tr></table></div><div class="specterm" id="term_ep">
+<h3>Individual: ep   -   level 1</h3>
+<em>ep</em> -         	An EP
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseType">mo:ReleaseType</a></td>
+</tr></table></div><div class="specterm" id="term_interview">
+<h3>Individual: interview   -   level 1</h3>
+<em>interview</em> - 		Recording of the questioning of a person.
+		This is a type of MusicalManifestation defined by the musical industry.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseType">mo:ReleaseType</a></td>
+</tr></table></div><div class="specterm" id="term_live">
+<h3>Individual: live   -   level 1</h3>
+<em>live</em> - 		A musical manifestation that was recorded live.
+		This is a type of MusicalManifestation defined by the musical industry.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseType">mo:ReleaseType</a></td>
+</tr></table></div><div class="specterm" id="term_official">
+<h3>Individual: official   -   level 1</h3>
+<em>official</em> - Any musical work or the expression of a musical work officially sanctioned by the artist and/or their corporate body. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseStatus">mo:ReleaseStatus</a></td>
+</tr></table></div><div class="specterm" id="term_promotion">
+<h3>Individual: promotion   -   level 1</h3>
+<em>promotion</em> - A giveaway musical work or the expression of a musical work intended to promote an upcoming official musical work or the expression of a musical work. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseStatus">mo:ReleaseStatus</a></td>
+</tr></table></div><div class="specterm" id="term_remix">
+<h3>Individual: remix   -   level 1</h3>
+<em>remix</em> - 		Musical manifestation that primarily contains remixed material. 
+		This is a type of MusicalManifestation defined by the musical industry.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseType">mo:ReleaseType</a></td>
+</tr></table></div><div class="specterm" id="term_soundtrack">
+<h3>Individual: soundtrack   -   level 1</h3>
+<em>soundtrack</em> - 		Sound recording on a narrow strip of a motion picture film.
+		This is a type of MusicalManifestation defined by the musical industry.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseType">mo:ReleaseType</a></td>
+</tr></table></div><div class="specterm" id="term_spokenword">
+<h3>Individual: spokenword   -   level 1</h3>
+<em>spoken word</em> - 		Spoken word is a form of music or artistic performance in which lyrics, poetry, or stories are spoken rather than sung. 
+		Spoken-word is often done with a musical background, but emphasis is kept on the speaker.
+		This is a type of MusicalManifestation defined by the musical industry.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_ReleaseType">mo:ReleaseType</a></td>
+</tr></table></div><div class="specterm" id="term_universaltimeline">
+<h3>Individual: universaltimeline   -   level 3</h3>
+<em>universal time line</em> - 		The "canonical" physical time-line, on which points/intervals are addressed through UTC.
+		(Remember: we do here the amalgam between timelines and coordinate systems, as we 
+		choose one canonical one per timeline).
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_PhysicalTimeLine">tl:PhysicalTimeLine</a></td>
+</tr></table></div>
 
 
 
@@ -4251,65 +5785,68 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 <ul>
 
 <li>2008-02-05: <strong>Revision 1.13</strong> of the Music Ontology Specification
+<li>
 <ul>
 <li>FIXED: wrong bio namespace</li>
 <li>ADDED: owl:imports statements, to make the Music Ontology load fine in Protege</li>
 <li>ADDED: OWL typing for all properties</li>
 <li>ADDED: XSD types as ranges for literal properties</li>
 </ul>
+</li>
 
-<li>2007-08-10: <strong>Revision 1.12</strong> of the Music Ontology Specification
+<li>2007-08-10: <strong>Revision 1.12</strong> of the Music Ontology Specification</li>
+<li>
 <ul>
 
-<li>ADDED: mo:availableAs subPropertyOf frbr:examplar<li>
-<li>ADDED: mo:Torrent as medium (bittorrent items)<li>
-<li>ADDED: mo:ED2K as medium (edonkey items)<li>
-<li>ADDED: mo:usesScore (Performance --> Score (particular arrangement of a work))<li>
-<li>ADDED: mo:preview_download (Agent or Manifestation to Document<li>
-<li>ADDED: mo:download, super-property of mo:previewdonwload, mo:paiddownload and mo:freedownload<li>
-<li>ADDED: mo:AudioFile (as a medium)<li>
-<li>ADDED: two sub-properties of mo:availableAs -- mo:item (full manifestation available) and mo:preview (only a part of the manifestation is available)<li>
-<li>ADDED: wrapper for foaf:maker, foaf:made, foaf:Agent, foaf:Person, foaf:Group, foaf:member<li>
-<li>ADDED: mo:isrc (international standard recording code)<li>
-<li>ADDED: mo:encodes (musical item --> signal), allowing to associate, for example, an item to a lower-resolution version of the master signal (issued from a Recording event)<li>
-<li>ADDED: mo:genre, subproperty of event:hasFactor<li>
-<li>ADDED: mo:level, an annotation property to specify wether a term belongs to level 1, 2 or 3<li>
-<li>ADDED: mo:sampled_version, inverse of sampled_version_of<li>
-<li>ADDED: produced_score (Arrangement --> Score)<li>
-<li>MODIFIED: mo:usesSound to mo:recording_of (still a owl:sameAs statement between these two for backward compatibility sake)<li>
-<li>MODIFIED: mo:usedInRecording to mo:recorded_in (same)<li>
-<li>MODIFIED: mo:producesSignal to mo:produced_signal (same)<li>
-<li>MODIFIED: mo:producesSound to mo:produced_sound (same)<li>
-<li>MODIFIED: mo:usesWork to mo:performance_of (same)<li>
-<li>MODIFIED: mo:productOfComposition to mo:composed_in (same)<li>
-<li>MODIFIED: mo:usedInPerformance to mo:performed_in (same)<li>
-<li>MODIFIED: mo:producesWork to mo:produced_work (same)<li>
-<li>MODIFIED: mo:paiddownload to mo:paid_download (same)<li>
-<li>MODIFIED: mo:freedownload to mo:free_download (same)<li>
-<li>MODIFIED: mo:signalTime to mo:time (same)<li>
-<li>MODIFIED: mo:sampledVersionOf to mo:sampled_version_of (same)<li>
-<li>MODIFIED: mo:has_track to mo:track (same)<li>
-<li>MODIFIED: mo:trackNum to  mo:track_number (same)<li>
-<li>MODIFIED: mo:releaseType to mo:release_type (same)<li>
-<li>MODIFIED: mo:releaseStatus to mo:release_status (same)<li>
-<li>MODIFIED: mo:eventHomePage to mo:event_homepage (same)<li>
-<li>MODIFIED: mo:hasManifestation to mo:manifestation (same)<li>
-<li>MODIFIED: mo:publishedAs to mo:published_as (same)<li>
-<li>MODIFIED: mo:movementNum to mo:movement_number (same)<li>
-<li>MODIFIED: mo:publicationOf to mo:publication_of (same)<li>
-<li>MODIFIED: mo:publishingLocation to mo:publishing_location (same)<li>
-<li>MODIFIED: mo:sampleRate to mo:sample_rate (same)<li>
-<li>MODIFIED: mo:recordedAs to mo:recorded_as (same)<li>
-<li>MODIFIED: mo:image subproperty of foaf:depiction<li>
-<li>MODIFIED: changed comments and domain of freedownload and paiddownload<li>
-<li>MODIFIED: changed comments on mo:MusicalWork<li>
-<li>MODIFIED: changed comments on availableAs<li>
-<li>MODIFIED: mo:encoding has MusicalItem as a domain<li>
-<li>DELETED: mo:creatorOf - use foaf:made instead<li>
-<li>DELETED: mo:pitch and mo:timbre - this should go to the audio features ontology<li>
-<li>DELETED: mo:stream_url (it should be the identifier of the resource (eg. rtsp://...)<li>
-<li>DELETED: sub concepts of mo:Instrument - instead, a link to Ivan Herman musical instrument SKOS taxonomy<li>
-<li>DELETED: sub concepts of mo:Genre - instead a more proper documentation of this concept<li>
+<li>ADDED: mo:availableAs subPropertyOf frbr:examplar</li>
+<li>ADDED: mo:Torrent as medium (bittorrent items)</li>
+<li>ADDED: mo:ED2K as medium (edonkey items)</li>
+<li>ADDED: mo:usesScore (Performance --&gt; Score (particular arrangement of a work))</li>
+<li>ADDED: mo:preview_download (Agent or Manifestation to Document</li>
+<li>ADDED: mo:download, super-property of mo:previewdonwload, mo:paiddownload and mo:freedownload</li>
+<li>ADDED: mo:AudioFile (as a medium)</li>
+<li>ADDED: two sub-properties of mo:availableAs -- mo:item (full manifestation available) and mo:preview (only a part of the manifestation is available)</li>
+<li>ADDED: wrapper for foaf:maker, foaf:made, foaf:Agent, foaf:Person, foaf:Group, foaf:member</li>
+<li>ADDED: mo:isrc (international standard recording code)</li>
+<li>ADDED: mo:encodes (musical item --&gt; signal), allowing to associate, for example, an item to a lower-resolution version of the master signal (issued from a Recording event)</li>
+<li>ADDED: mo:genre, subproperty of event:hasFactor</li>
+<li>ADDED: mo:level, an annotation property to specify wether a term belongs to level 1, 2 or 3</li>
+<li>ADDED: mo:sampled_version, inverse of sampled_version_of</li>
+<li>ADDED: produced_score (Arrangement --&gt; Score)</li>
+<li>MODIFIED: mo:usesSound to mo:recording_of (still a owl:sameAs statement between these two for backward compatibility sake)</li>
+<li>MODIFIED: mo:usedInRecording to mo:recorded_in (same)</li>
+<li>MODIFIED: mo:producesSignal to mo:produced_signal (same)</li>
+<li>MODIFIED: mo:producesSound to mo:produced_sound (same)</li>
+<li>MODIFIED: mo:usesWork to mo:performance_of (same)</li>
+<li>MODIFIED: mo:productOfComposition to mo:composed_in (same)</li>
+<li>MODIFIED: mo:usedInPerformance to mo:performed_in (same)</li>
+<li>MODIFIED: mo:producesWork to mo:produced_work (same)</li>
+<li>MODIFIED: mo:paiddownload to mo:paid_download (same)</li>
+<li>MODIFIED: mo:freedownload to mo:free_download (same)</li>
+<li>MODIFIED: mo:signalTime to mo:time (same)</li>
+<li>MODIFIED: mo:sampledVersionOf to mo:sampled_version_of (same)</li>
+<li>MODIFIED: mo:has_track to mo:track (same)</li>
+<li>MODIFIED: mo:trackNum to  mo:track_number (same)</li>
+<li>MODIFIED: mo:releaseType to mo:release_type (same)</li>
+<li>MODIFIED: mo:releaseStatus to mo:release_status (same)</li>
+<li>MODIFIED: mo:eventHomePage to mo:event_homepage (same)</li>
+<li>MODIFIED: mo:hasManifestation to mo:manifestation (same)</li>
+<li>MODIFIED: mo:publishedAs to mo:published_as (same)</li>
+<li>MODIFIED: mo:movementNum to mo:movement_number (same)</li>
+<li>MODIFIED: mo:publicationOf to mo:publication_of (same)</li>
+<li>MODIFIED: mo:publishingLocation to mo:publishing_location (same)</li>
+<li>MODIFIED: mo:sampleRate to mo:sample_rate (same)</li>
+<li>MODIFIED: mo:recordedAs to mo:recorded_as (same)</li>
+<li>MODIFIED: mo:image subproperty of foaf:depiction</li>
+<li>MODIFIED: changed comments and domain of freedownload and paiddownload</li>
+<li>MODIFIED: changed comments on mo:MusicalWork</li>
+<li>MODIFIED: changed comments on availableAs</li>
+<li>MODIFIED: mo:encoding has MusicalItem as a domain</li>
+<li>DELETED: mo:creatorOf - use foaf:made instead</li>
+<li>DELETED: mo:pitch and mo:timbre - this should go to the audio features ontology</li>
+<li>DELETED: mo:stream_url (it should be the identifier of the resource (eg. rtsp://...)</li>
+<li>DELETED: sub concepts of mo:Instrument - instead, a link to Ivan Herman musical instrument SKOS taxonomy</li>
+<li>DELETED: sub concepts of mo:Genre - instead a more proper documentation of this concept</li>
 
 </ul>
 
@@ -4317,8 +5854,8 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
 
 
-<li>2007-03-21: <strong>Revision 1.11</strong> of the Music Ontology Specification
-
+<li>2007-03-21: <strong>Revision 1.11</strong> of the Music Ontology Specification</li>
+<li>
     <ul>
 
 
@@ -4331,27 +5868,27 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
    publishedAs)</li>
 
-    <li> ADDED: mo:composer (Composition --> Agent)      </li>
+    <li> ADDED: mo:composer (Composition --&gt; Agent)      </li>
 
-    <li> ADDED: mo:producesWork (Composition --> MusicalWork)      </li>
+    <li> ADDED: mo:producesWork (Composition --&gt; MusicalWork)      </li>
 
-    <li> ADDED: mo:usedInPerformance (Work --> Performance)      </li>
+    <li> ADDED: mo:usedInPerformance (Work --&gt; Performance)      </li>
 
-    <li> ADDED: mo:productOfComposition (MusicalWork --> Composition)      </li>
+    <li> ADDED: mo:productOfComposition (MusicalWork --&gt; Composition)      </li>
 
-    <li> ADDED: mo:usesWork (Performance --> MusicalWork)      </li>
+    <li> ADDED: mo:usesWork (Performance --&gt; MusicalWork)      </li>
 
     <li> ADDED: Medium subclassof MusicalItem      </li>
 
-    <li> ADDED: mo:producesSound (Perfomance --> Sound)      </li>
+    <li> ADDED: mo:producesSound (Perfomance --&gt; Sound)      </li>
 
-    <li> ADDED: mo:usedInRecording (Sound --> Recording)      </li>
+    <li> ADDED: mo:usedInRecording (Sound --&gt; Recording)      </li>
 
-    <li> ADDED: mo:usesSound (Recording --> Soung)      </li>
+    <li> ADDED: mo:usesSound (Recording --&gt; Sound)      </li>
 
-    <li> ADDED: mo:producesSignal (Recording --> Signal)      </li>
+    <li> ADDED: mo:producesSignal (Recording --&gt; Signal)      </li>
 
-    <li> ADDED: shortcut mo:recordedAs (Performance --> Signal)      </li>
+    <li> ADDED: shortcut mo:recordedAs (Performance --&gt; Signal)      </li>
 
     <li> ADDED: term status: all subproperties of hasAgent, hasProduct, has Factor
 
@@ -4359,15 +5896,15 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
     <li> ADDED: mo:musibrainz
 
-      (Work;Expression;Manifestation;Item;Agent;Instrument;Genre --> Document)      </li>
+      (Work;Expression;Manifestation;Item;Agent;Instrument;Genre --&gt; Document)      </li>
 
     <li> ADDED: mo:ep a ReleaseType      </li>
 
-    <li> ADDED: mo:publicationLocation (MusicalManifestation --> SpatialThing)      </li>
+    <li> ADDED: mo:publicationLocation (MusicalManifestation --&gt; SpatialThing)      </li>
 
-    <li> ADDED: mo:contains_sample_from (Signal --> Signal)      </li>
+    <li> ADDED: mo:contains_sample_from (Signal --&gt; Signal)      </li>
 
-    <li> ADDED: wrapper for event:place (Event --> SpatialThing)      </li>
+    <li> ADDED: wrapper for event:place (Event --&gt; SpatialThing)      </li>
 
     <li> CHANGED: pitch and timber' domain: now Signal      </li>
 
@@ -4403,6 +5940,7 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
     </ul>
 
+</li>
 </ul>
 
 
@@ -4423,23 +5961,25 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
       <li> ADDED: Clear conceptual separation between MusicalExpression and the
 
-        process leading to it:<br />
+        process leading to it:</li>
+	<li>
 
         <ul>
 
-          <li>MusicalExpression:<br />
+          <li>MusicalExpression:</li>
 
+	<li>
             <ul>
 
-              <li>Sound subClassOf MusicalExpression,Event<br />
+              <li>Sound subClassOf MusicalExpression,Event
 
               </li>
 
-              <li>Score subClassOf MusicalExpression<br />
+              <li>Score subClassOf MusicalExpression
 
               </li>
 
-              <li>Signal subClassOf MusicalExpression,Event<br />
+              <li>Signal subClassOf MusicalExpression,Event
 
               </li>
 
@@ -4447,19 +5987,34 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
           </li>
 
-          <li>DigitalSignal subClassOf Signal<br />
+          <li>DigitalSignal subClassOf Signal
 
           </li>
 
-          <li>ContinuousSignal subClassOf Signal<br />
+          <li>ContinuousSignal subClassOf Signal</li>
 
-              <ul>
 
-                <li>Lyrics subClassOf MusicalExpression<br />
+                <li>Lyrics subClassOf MusicalExpression
 
                 </li>
 
-                <li>Libretto subClassOf MusicalExpression<br />
+                <li>Libretto subClassOf MusicalExpression
+
+                </li>
+
+
+          </li>
+
+          <li>Events leading (eventually) to MusicalExpression</li>
+	  <li>
+
+              <ul>
+
+                <li>Performance subClassOf Event
+
+                </li>
+
+                <li>Arrangement subClassOf Event
 
                 </li>
 
@@ -4467,27 +6022,12 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
           </li>
 
-          <li>Events leading (eventually) to MusicalExpression<br />
-
-              <ul>
-
-                <li>Performance subClassOf Event<br />
-
-                </li>
-
-                <li>Arrangement subClassOf Event<br />
-
-                </li>
-
-              </ul>
+          <li>Orchestration subClassOf Arrangement
 
           </li>
 
-          <li>Orchestration subClassOf Arrangement<br />
-
-          </li>
-
-          <li>Instrumentation subClassOf Arrangement<br />
+          <li>Instrumentation subClassOf Arrangement</li>
+	  <li>
 
               <ul>
 
@@ -4505,15 +6045,16 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
       </li>
 
-      <li>ADDED: sub properties of hasAgent, related to Performance:<br />
+      <li>ADDED: sub properties of hasAgent, related to Performance:</li>
+      <li>
 
           <ul>
 
-            <li>performer/performed<br />
+            <li>performer/performed
 
             </li>
 
-            <li>conductor/conducted<br />
+            <li>conductor/conducted
 
             </li>
 
@@ -4663,7 +6204,8 @@ href="http://www.ietf.org/rfc/rfc2396.txt">http://www.ietf.org/rfc/rfc2396.txt</
 
 </ul>
 
-<ul><li>2007-02-12: <strong>Revision 1.03</strong> of the Music Ontology Specification
+<ul><li>2007-02-12: <strong>Revision 1.03</strong> of the Music Ontology Specification</li>
+<li>
 
     <ul>
 
