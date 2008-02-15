@@ -9,7 +9,7 @@
 friends_rdf(User,[rdf(User,rdf:type,foaf:'Person'),rdf(User,foaf:holdsAccount,Account),rdf(Account,rdf:type,foaf:'OnlineAccount'),rdf(Account,foaf:primaryTopicOf,Page),rdf(Account,foaf:accountServiceHomepage,'http://www.last.fm/'),rdf(Account,foaf:accountName,literal(User))|Triples]) :-
 	friends_xml(User,[element(friends,_,Friends)]),!,
 	findall(Rdf,friend_rdf(Friends,User,Rdf),T),
-	flatten(T,TT),rdf_global_term(TT,Triples),
+	flatten(T,Triples),%rdf_global_term(TT,Triples),
 	rdf_bnode(Account),
 	format(atom(Page),'http://www.last.fm/user/~w',[User]).
 

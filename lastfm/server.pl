@@ -21,7 +21,8 @@ reply(Request) :-
 	log:log('Generating RDF scrobble for ~w',[User]),
 	scrobble_rdf(User,Triples1),
 	friends_rdf(User,Triples2),
-	append(Triples1,Triples2,Triples),
+	append(Triples1,Triples2,Triples3),
+	rdf_global_term(Triples3,Triples),
 	rdf_write_xml(S,Triples).
 
 reply(Request) :-
