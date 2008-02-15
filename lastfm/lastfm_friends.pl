@@ -6,10 +6,12 @@
 :- use_module(namespaces).
 :- use_module(config).
 
-friends_rdf(User,Triples) :-
+friends_rdf(User,[rdf(User,rdf:type,foaf:'Person'),rdf(User,foaf:holdsAccount,Account),rdf(Account,rdf:type,foaf:'OnlineAccount'),rdf(Account,foaf:primaryTopicOf,Page),rdf(Account,foaf:accountServiceHomepage,'http://www.last.fm/'),rdf(Account,foaf:accountName,literal(User))|Triples]) :-
 	friends_xml(User,[element(friends,_,Friends)]),!,
 	findall(Rdf,friend_rdf(Friends,User,Rdf),T),
-	flatten(T,TT),rdf_global_term(TT,Triples).
+	flatten(T,TT),rdf_global_term(TT,Triples),
+	rdf_bnode(Account),
+	format(atom(Page),'http://www.last.fm/user/~w',[User]).
 
 
 friend_rdf(Friends,User1,[rdf(URI1,foaf:knows,URI2),rdf(URI2,foaf:img,Image),rdf(URI2,foaf:holdsAccount,Account),rdf(Account,rdf:type,foaf:'OnlineAccount'),rdf(Account,foaf:primaryTopicOf,Page),rdf(Account,foaf:accountServiceHomepage,'http://www.last.fm/'),rdf(Account,foaf:accountName,literal(User2))]) :-
