@@ -269,12 +269,7 @@ def scaleIntervalFromNoteNames(n1, n2):
 		return -1
 
 	mods = ['bb','b','','#','##'][2 + mod_dist]
-	if mod_dist < 0:
-		si = mods + str(base_interval)
-	else:
-		si = str(base_interval) + mods
-	
-	return si
+	return mods + str(base_interval)
 
 #
 # Chord map
