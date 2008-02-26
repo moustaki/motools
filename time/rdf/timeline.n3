@@ -25,6 +25,10 @@
     foaf:maker <http://moustaki.org/foaf.rdf#moustaki>;
     owl:imports <http://www.w3.org/2006/time-entry>, <http://www.w3.org/2006/time> . 
 
+# People
+<http://moustaki.org/foaf.rdf#moustaki> a foaf:Person.
+
+# Status of terms
 vs:term_status a owl:AnnotationProperty.
 
 ###############################################
@@ -42,14 +46,14 @@ Two timelines can be mapped using timeline maps.""" .
 	rdfs:label "instant";
 	vs:term_status "stable";
 	rdfs:comment "An instant (same as in OWL-Time)";
-	owl:sameAs time:Instant;
+	owl:equivalentClass time:Instant;
 	.
 
 :Interval a owl:Class;
 	rdfs:label "interval";
 	vs:term_status "stable";
 	rdfs:comment "An interval (same as in OWL-Time). Allen's relationships are defined in OWL-Time.";
-	owl:sameAs time:ProperInterval;
+	owl:equivalentClass time:ProperInterval;
 	.
 
 :onTimeLine
@@ -107,6 +111,24 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
+####################################
+# Part 1.5: equivalence statements #
+####################################
+
+:meets owl:sameAs time:intervalMeets.
+:equals owl:sameAs time:intervalEquals.
+:before owl:sameAs time:intervalBefore.
+:meets owl:sameAs time:intervalMeets.
+:overlaps owl:sameAs time:intervalOverlaps.
+:starts owl:sameAs time:intervalStarts.
+:during owl:sameAs time:intervalDuring.
+:finishes owl:sameAs time:intervalFinishes.
+:after owl:sameAs time:intervalAfter.
+:metBy owl:sameAs time:intervalMetBy.
+:overlappedBy owl:sameAs time:intervalOverlappedBy.
+:startedBy owl:sameAs time:intervalStartedBy.
+:contains owl:sameAs time:intervalContains.
+:finishedBy owl:sameAs time:intervalFinishedBy.
 
 ############################################################################
 # Part 2: Extra DL stuff, timeline taxonomies, coordinate systems handling #
