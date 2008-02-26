@@ -10,7 +10,7 @@
 
 # Ontology header
 
-<> a owl:Ontology;
+<http://purl.org/NET/c4dm/event.owl> a owl:Ontology;
 	dc:title "The Event ontology";
 	owl:versionInfo "Revision: 1.01";
 	rdfs:label "The Event ontology";
@@ -24,10 +24,17 @@
 		Regarding the ontological status of event tokens, they are seen
 		as the way cognitive agents classify space/time regions
 	""";
+	owl:imports <http://xmlns.com/foaf/spec/index.rdf> ;
+	owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
+	owl:imports <http://www.w3.org/2003/01/geo/wgs84_pos>;
+	owl:imports <http://www.w3.org/2006/time> ;
 	dc:creator <http://moustaki.org/foaf.rdf#moustaki> ;
 	foaf:maker <http://moustaki.org/foaf.rdf#moustaki> ;
 	dc:date "$Date: 2007/06/29 15:25:11 $";
 	.
+
+# People
+<http://moustaki.org/foaf.rdf#moustaki> a foaf:Person.
 
 # Status of terms
 vs:term_status a owl:AnnotationProperty.
@@ -81,7 +88,7 @@ event:agent a owl:ObjectProperty;
 		""";
 	rdfs:range foaf:Agent;
 	rdfs:domain event:Event;
-	owl:sameAs event:hasAgent; #see verbs vs nouns discussion
+	owl:equivalentProperty event:hasAgent; #see verbs vs nouns discussion
 	owl:inverseOf event:isAgentIn;
 	.
 
@@ -92,7 +99,7 @@ event:factor a owl:ObjectProperty;
 		Relates an event to a passive factor (a tool, an instrument, an abstract cause...)
 		""";
 	rdfs:domain event:Event;
-	owl:sameAs event:hasFactor;
+	owl:equivalentProperty event:hasFactor;
 	owl:inverseOf event:isFactorOf;
 	.
 
@@ -105,7 +112,7 @@ event:literal_factor a owl:DatatypeProperty;
 		(like an hypothetic :weatherCelsius, linking an event to a temperature).
 		""";
 	rdfs:domain event:Event;
-	owl:sameAs event:hasLiteralFactor;
+	owl:equivalentProperty event:hasLiteralFactor;
 	.
 
 event:product a owl:ObjectProperty;
@@ -115,7 +122,7 @@ event:product a owl:ObjectProperty;
 		Relates an event to something produced during the event---a sound, a pie, whatever...
 		""";
 	rdfs:domain event:Event;
-	owl:sameAs event:hasProduct;
+	owl:equivalentProperty event:hasProduct;
 	owl:inverseOf event:producedIn;
 	.
 
@@ -128,7 +135,7 @@ event:sub_event a owl:ObjectProperty;
 		""";
 	rdfs:domain event:Event;
 	rdfs:range event:Event;
-	owl:sameAs event:hasSubEvent;
+	owl:equivalentProperty event:hasSubEvent;
 	.
 
 event:time a owl:FunctionalProperty;
@@ -158,22 +165,36 @@ event:place a owl:FunctionalProperty;
 # Inverses, additional stuff, etc.
 
 event:isAgentIn rdfs:label "agent in";
-	owl:sameAs event:agent_in;
+	owl:equivalentProperty event:agent_in;
+	a owl:ObjectProperty;
+	vs:term_status "deprecated";
 	.
 
 event:isFactorOf rdfs:label "factor of";
-	owl:sameAs event:factor_of;
+	owl:equivalentProperty event:factor_of;
+	a owl:ObjectProperty;
+	 vs:term_status "deprecated";
 	.
 
 event:producedIn rdfs:label "produced in";
-	owl:sameAs event:produced_in;
+	owl:equivalentProperty event:produced_in;
+	a owl:ObjectProperty;
+	 vs:term_status "deprecated";
 	.
 
-event:hasFactor vs:term_status "stable".
-event:hasAgent vs:term_status "stable".
-event:hasProduct vs:term_status "stable".
-event:hasLiteralFactor vs:term_status "stable".
-event:agent_in vs:term_status "stable".
-event:factor_of vs:term_status "stable".
-event:produced_in vs:term_status "stable".
-
+event:hasFactor a owl:ObjectProperty;
+	vs:term_status "deprecated".
+event:hasAgent a owl:ObjectProperty;
+	vs:term_status "deprecated".
+event:hasProduct a owl:ObjectProperty;
+	vs:term_status "deprecated".
+event:hasLiteralFactor a owl:DatatypeProperty;
+	vs:term_status "deprecated".
+event:agent_in a owl:ObjectProperty;
+	vs:term_status "stable".
+event:factor_of a owl:ObjectProperty;
+	vs:term_status "stable".
+event:produced_in a owl:ObjectProperty;
+	vs:term_status "stable".
+event:hasSubEvent a owl:ObjectProperty;
+	vs:term_status "deprecated".
