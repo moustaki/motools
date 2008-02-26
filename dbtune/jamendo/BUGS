@@ -1,0 +1,10 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX geo: <http://www.geonames.org/ontology#>
+
+DESCRIBE ?artisturi ?placeuri WHERE { 
+?artisturi foaf:name ?artist; 
+           foaf:based_near ?placeuri .
+?placeuri  geo:inCountry <http://www.geonames.org/countries/#NO> ;
+           geo:name ?place .
+
+}
