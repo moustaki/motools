@@ -7,6 +7,7 @@
 	xmlns:xhtml="http://www.w3.org/1999/xhtml"
 	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
 	xmlns:tl="http://purl.org/NET/c4dm/timeline.owl#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
 	xmlns:time="http://www.w3.org/2006/time#"
 	exclude-result-prefixes="xhtml"
         version="1.0">
@@ -66,7 +67,7 @@
 </xsl:template>
 
 <xsl:template name="track">
-	<mo:has_track rdf:resource="{descendant::xhtml:a[@rel=&quot;enclosure&quot;]/@href}"/>
+	<mo:track rdf:resource="{descendant::xhtml:a[@rel=&quot;enclosure&quot;]/@href}"/>
 </xsl:template>
 
 <xsl:template name="haudio">
@@ -77,13 +78,13 @@
         	<dc:description><xsl:value-of select="normalize-space(.//xhtml:*[@class=&quot;description&quot;])"/></dc:description>
 		</xsl:if>
 		<mo:freedownload rdf:resource="{.//xhtml:a[@rel=&quot;enclosure&quot;]/@href}"/>
-		<dc:creator>
+		<foaf:maker>
 			<mo:MusicGroup rdf:about="{.//xhtml:*[contains(concat(' ',normalize-space(@class),' '),' url ')]/@href}">
 				<img rdf:resource="{.//xhtml:img[@class=&quot;photo&quot;]/@src}"/>
 				<name><xsl:value-of select="normalize-space(.//xhtml:*[@class=&quot;contributor&quot;]/.)" /></name>
 				<homepage rdf:resource="{.//xhtml:*[contains(concat(' ',normalize-space(@class),' '),' url ')]/@href}"/>
 			</mo:MusicGroup>
-		</dc:creator>
+		</foaf:maker>
 		<mo:time>
 		   	<tl:Interval>
    			<tl:durationXSD>PT<xsl:call-template name="min"/>M<xsl:call-template name="second"/>S</tl:durationXSD>
