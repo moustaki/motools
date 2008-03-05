@@ -4,7 +4,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix mo: <http://purl.org/ontology/mo/>.
-@prefix so: <http://purl.org/ontology/so/>.
+@prefix so: <http://purl.org/ontology/symbolic-music/>.
 @prefix event: <http://purl.org/NET/c4dm/event.owl#>.
 @prefix tl: <http://purl.org/NET/c4dm/timeline.owl#>.
 @prefix : <>.

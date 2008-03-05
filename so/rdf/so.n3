@@ -8,7 +8,7 @@
 @prefix event: <http://purl.org/NET/c4dm/event.owl#>.
 @prefix mo: <http://purl.org/ontology/mo/>.
 @prefix co: <http://purl.org/ontology/chord/>.
-@prefix : <http://purl.org/ontology/so/>.
+@prefix : <http://purl.org/ontology/symbolic-music/>.
 
 
 <> 
