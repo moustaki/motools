@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:local="http://chrissutton.org/tmp/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="AudioWaveform">
+    <dc:description>'The AudioWaveform Descriptor describes the audio waveform envelope (minimum and maximum), typically for display purposes.'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Basic</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="MeterType">
+    <dc:description>'the meter that defines the unit of measurement of beats (whole note, half-note, quarter-note, dotted quarter note etc.) and is described using MeterType'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>MPEG-7-1</local:tag>
+    <local:tag>Tempo</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioSpectrumEnvelope">
+    <dc:description>'a logarithmic-frequency spectrum, spaced by a power-of-two divisor or multiple of an octave. This AudioSpectrumEnvelope is a vector that describes the short-term power spectrum of an audio signal. It may be used to display a spectrogram, to synthesize a crude </dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>BasicSpectral</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="HarmonicSpectralSpread">
+    <dc:description>'The HarmonicSpectralSpread describes the amplitude-weighted standard deviation of the harmonic peaks of the spectrum, normalized by the instantaneous HarmonicSpectralCentroid.'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TimbralSpectral</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioHarmonicity">
+    <dc:description>'The AudioHarmonicity Descriptor represents the harmonicity of a signal, allowing distinction between sounds with a harmonic spectrum (e.g., musical tones or voiced speech [e.g., vowels]), sounds with an inharmonic spectrum (e.g., metallic or bell-like sounds) and sounds with a non-harmonic spectrum (e.g., noise, unvoiced speech [e.g., fricatives like ‘f’], or dense mixtures of instruments).'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>SignalParameters</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioSpectrumSpread">
+    <dc:description>'The AudioSpectrumSpread Descriptor complements the previous Descriptor by describing the second moment of the log-frequency power spectrum, indicating whether the power spectrum is centered near the spectral centroid, or spread out over the spectrum. This may help distinguish between pure-tone and noise-like sounds.'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>BasicSpectral</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="TemporalCentroid">
+    <dc:description>'The TemporalCentroid Descriptor also characterizes the signal envelope, representing where in time the energy of a signal is focused. This Descriptor may, for example, distinguish between a decaying piano note and a sustained organ note, when the lengths and the attacks of the two notes are identical.'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TimbralTemporal</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="HarmonicSpectralDeviation">
+    <dc:description>The HarmonicSpectralDeviation Descriptor indicates the spectral deviation of log-amplitude components from a global spectral envelope.</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TimbralSpectral</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioPower">
+    <dc:description>'The AudioPower Descriptor describes the temporally-smoothed instantaneous power, which is useful as a quick summary of a signal, and in conjunction with the power spectrum'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Basic</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioSpectrumProjection">
+    <dc:description>'The AudioSpectrumProjection Descriptor is used together with the AudioSpectrumBasis Descriptor, and represents low-dimensional features of a spectrum after projection upon a reduced rank basis.'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>SpectralBasis</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="HarmonicSpectralVariation">
+    <dc:description>'The HarmonicSpectralVariation Descriptor is the normalized correlation between the amplitude of the harmonic peaks between two subsequent time-slices of the signal.'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TimbralSpectral</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioFundamentalFrequency">
+    <dc:description>The AudioFundamentalFrequency descriptor describes the fundamental frequency of an audio signal. The representation of this descriptor allows for a confidence measure in recognition of the fact that the various extraction methods, commonly called "pitch-tracking," are not perfectly accurate, and in recognition of the fact that there may be sections of a signal (e.g., noise) for which no fundamental frequency may be extracted. </dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>SignalParameters</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="HarmonicSpectralCentroid">
+    <dc:description>'The HarmonicSpectralCentroid is the amplitude-weighted mean of the harmonic peaks of the spectrum. It has a similar semantic to the other centroid Descriptors, but applies only to the harmonic (non-noise) parts of the musical tone. '</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TimbralSpectral</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioSpectrumBasis">
+    <dc:description>#The AudioSpectrumBasis Descriptor is a series of (potentially time-varying and/or statistically independent) basis functions that are derived from the singular value decomposition of a normalized power spectrum.'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>SpectralBasis</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioSpectrumCentroid">
+    <dc:description>'The AudioSpectrumCentroid Descriptor describes the center of gravity of the log-frequency power spectrum. This Descriptor is an economical description of the shape of the power spectrum, indicating whether the spectral content of a signal is dominated by high or low frequencies.'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>BasicSpectral</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioBPMType">
+    <dc:description>Frequency of beats in beats per minute</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>MPEG-7-1</local:tag>
+    <local:tag>Tempo</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Silence">
+    <dc:description>'The silence segment simply attaches the simple semantic of </dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Basic</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AudioSpectrumFlatness">
+    <dc:description>'The AudioSpectrumFlatness Descriptor describes the flatness properties of the spectrum of an audio signal for each of a number of frequency bands. When this vector indicates a high deviation from a flat spectral shape for a given band, it may signal the presence of tonal components.'</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>BasicSpectral</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="LogAttackTime">
+    <dc:description>The LogAttackTime Descriptor characterizes the </dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TimbralTemporal</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralCentroid">
+    <dc:description>'The SpectralCentroid Descriptor is the power-weighted average of the frequency of the bins in the linear power spectrum. As such, it is very similar to the AudioSpectrumCentroid Descriptor, but specialized for use in distinguishing musical instrument timbres. It is has a high correlation with the perceptual feature of the </dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TimbralSpectral</local:tag>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="SpectralFlux">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralZeroCrossings">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <dc:description>(really ?)</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralRolloff">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="MFCC">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralCentroid">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BeatFeatures">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <dc:description>"Beat histogram features" - what ?</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="LSP">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="LPCC">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <dc:description>LPC-derived cepstral coeffs</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="LinearSpectralPairs">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <dc:description>mmm</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralFlatnessMeasure">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <dc:description>from MPEG-7</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralCrestFactor">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <dc:description>from MPEG-7</dc:description>
+  </rdf:Description>
+</rdf:RDF>

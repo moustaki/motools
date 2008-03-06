@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:local="http://chrissutton.org/tmp/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="Tempo">
+    <dc:description>derived from calculated onsets with ACF, spectrum or both</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Rhythm</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="EnergyOnsetDetectionFunction">
+    <dc:description>Use peaks of waveform envelope or the halfwave-rectified difference ftn of the envelope to detect onsets</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Rhythm</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Inharmonicity">
+    <dc:description>The proportion(?) of partials which are not multiples of the fundamental frequency. (presupposes monophonic audio)</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Pitch</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Brightness">
+    <dc:description>The proportion of energy above a given frequency</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Timbre</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Chroma">
+    <dc:description></dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Pitch</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Rolloff">
+    <dc:description>The frequency below which 85% of the energy is contained. The percentage may be user-chosen</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Timbre</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="RhythmicFluctuation">
+    <dc:description>Rhythmic periodicity along auditory channels</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Rhythm</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Regularity">
+    <dc:description>The degree of variation of the successive peaks of the spectrum</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Timbre</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="ZeroCrossingRate">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Timbre</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralFluxOnsetDetectionFunction">
+    <dc:description>Use peaks of spectral flux to detect onsets</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Rhythm</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="RMSEnergy">
+    <dc:description>root mean square energy</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Dynamics</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Mode">
+    <dc:description>Major vs. Minor, calculated as the strength difference between the best major and best minor key candidates</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Pitch</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Attack">
+    <dc:description>estimates the beginning of the attack phase of a note by locating the local minimum before the maximum corresponding to the onset</dc:description>
+    <rdfs:comment>These can have start time *and end time*</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Timbre</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="MFCC">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Timbre</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="AttackSlope">
+    <dc:description>average slope of attack phase, computed either as a simple ratio, or a Gaussian-weighted average to emphasise the middle of the attack</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Timbre</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Key">
+    <dc:description>The best candidate key</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Pitch</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="NoteOnset">
+    <dc:description>note onset times</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Rhythm</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="KeyStrength">
+    <dc:description>The probability distribution across possible keys</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Pitch</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Roughness">
+    <dc:description>The average dissonance between all pairs of peaks in the spectrum</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Timbre</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Pitch">
+    <dc:description>Pitch estimated via ACF, autocorrelation spectrum or cepstrum, or a combination</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Pitch</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="LowEnergy">
+    <dc:description>percentage of frames showing less than average energy</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>Dynamics</local:tag>
+  </rdf:Description>
+</rdf:RDF>

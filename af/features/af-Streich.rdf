@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns="http://sonictruths.net/onto/af/Streich/"
+   xmlns:ss="http://sonictruths.net/onto/af/Streich/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:local="http://sonictruths.net/onto/af/Streich/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="Scheirer2000-10">
+    <dc:description>Most likely tempo</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-15">
+    <dc:description>Mean time between beats</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-4">
+    <dc:description>Variance of number of auditory streams</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-13">
+    <dc:description>Centroid of tempo-energy distribution</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-9">
+    <dc:description>Dynamic range (measured in loudness)</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-16">
+    <dc:description>Variance of time between beats</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-3">
+    <dc:description>Mean number of auditory sreams</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-8">
+    <dc:description>Loudness of loudest moment</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Streich">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-6">
+    <dc:description>Entropy of loudness estimates in auditory streams</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-7">
+    <dc:description>Entropy of pitch estimates in auditory streams</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="StreichAcousticComplexityStuff">
+    <rdfs:comment>He has a few loudness &amp; stereo based derived features for measured perceived acoustic complexity. Would be nice to be able to describe these with the ontology. Note : Descriptions are lengthy and wordy</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-12">
+    <dc:description>Stability of tempo estimates over time</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="StreichTimbralComplexity">
+    <local:source rdf:resource="Streich"/>
+    <rdfs:comment>he has some stuff about HMMs on MFCCs for classification (I think) of timbre</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-2">
+    <dc:description>Mean number of auditory streams</dc:description>
+    <dc:description>Stability of within-auditory-stream pitches over time</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-5">
+    <dc:description>Mean amount of modulation (spectrotemporal change)</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-11">
+    <dc:description>Entropy of tempo-energy distribution</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-1">
+    <dc:description>Coherence of spectral assignment to auditory streams</dc:description>
+    <local:source rdf:resource="Streich"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Scheirer2000-14">
+    <dc:description>Number of beats elicited from foot-tapping model</dc:description>
+  </rdf:Description>
+</rdf:RDF>

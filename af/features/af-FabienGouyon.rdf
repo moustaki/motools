@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns="http://sonictruths.net/onto/af/FabienGouyon/"
+   xmlns:fg="http://sonictruths.net/onto/af/FabienGouyon/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:local="http://sonictruths.net/onto/af/FabienGouyon/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="ZeroCrossingRate">
+    <dc:description># sample sign changes / # samples</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>TimeDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumSpread">
+    <source rdf:resource="FabienGouyon"/>
+    <dc:description>The variance of the magnitude spectrum around its mean (see SpectrumMean)</dc:description>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralDifference">
+    <dc:description>Frame to frame difference of spectral energies</dc:description>
+    <local:source rdf:resource="FabienGouyon"/>
+    <local:tag>differentiation</local:tag>
+    <local:tag>FreqDomain</local:tag>
+    <local:tag>onset detection</local:tag>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumFlatness">
+    <dc:description>Ratio of geometric mean to the mean of the magnitude spectrum</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralPeakThirdTristimulus">
+    <dc:description>Ratio of sum of fifth and above peak energies to sum of all peak energies</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>SpectralPeakDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumMagnitudeSkewness">
+    <dc:description>The skewness of the magnitude distribution... see thesis</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:seeAlso rdf:resource="FabienGouyonThesis"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="FabienGouyon">
+    <foaf:name>FabienGouyon</foaf:name>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralPeakSecondTristimulus">
+    <dc:description>Ratio of sum of second, third and fourth peak energies to sum of all peak energies</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>SpectralPeakDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="ComplexSpectralDifference">
+    <dc:description>onset detection ftn in the complex domain (Bello)</dc:description>
+    <local:source rdf:resource="FabienGouyon"/>
+    <local:tag>ComplexDomain</local:tag>
+    <local:tag>differentiation</local:tag>
+    <local:tag>onset detection</local:tag>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumHighFreqContent">
+    <dc:description>Total energy measured with a linear weighting along frequency bins</dc:description>
+    <source>FabienGouyon</source>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumMean">
+    <dc:description>Arithmetic mean across bins of the magnitude spectrum</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="MFCCs">
+    <dc:description>Coeffs resulting from a mel-frequency cepstral transform.</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>CepstralDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumSlope">
+    <dc:description>Slope of the best fitting linear regression for the magnitude spectrum.</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralPeakHarmonicCentroid">
+    <dc:description>Centre of gravity of peak magnitudes</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>SpectralPeakDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralPeakMagnitudeMean">
+    <dc:description>Arithmetic mean of magnitudes of peaks of magnitude spectrum</dc:description>
+    <source rdf:resource="#FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>SpectralPeakDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="HighFreqContent">
+    <dc:description>Linearly weighted sum of spectral magnitudes. Unlike SpectrumHighFreqContent this is computed from magnitudes, not energies</dc:description>
+    <local:source rdf:resource="FabienGouyon"/>
+    <local:tag>FreqDomain</local:tag>
+    <local:tag>onset detection</local:tag>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SubbandEnergy">
+    <dc:description>coming from Dixon, but this could cover other sub-band approaches too... maybe a set of predicates rather than a class of features ? So that any feature can be marked as coming only from a particular freq band</dc:description>
+    <local:source rdf:resource="FabienGouyon"/>
+    <rdfs:comment>In Fabien Gouyon's thesis, there are 'Dixon-like' and 'Scheirer-like' subband energy features</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>FreqDomain</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumEnergy">
+    <dc:description>Sum of the square of the bins of the magnitude spectrum</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumGeometricMean">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumLowFreqEnergyRelation">
+    <dc:description>Ratio of spectrum magnitude energy under 100Hz to the total energy</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumCentroid">
+    <dc:description>The 'centre of gravity' of the magnitude spectrum</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumMaxMagnitudeFrequency">
+    <dc:description>Freq of the highest magnitude in the spectrum</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="PhaseDeviation">
+    <dc:description>A measure of the distribution of phase deviations between successive frames. See FabienGouyonThesis</dc:description>
+    <dc:description rdf:resource="http://sonictruths.net/onto/af/A"/>
+    <local:source rdf:resource="FabienGouyon"/>
+    <local:tag>ComplexDomain?</local:tag>
+    <local:tag>differentiation</local:tag>
+    <local:tag>FreqDomain</local:tag>
+    <local:tag>onset detection</local:tag>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="EnergydB">
+    <dc:description>Unlike SpectrumEnergy, this is normalised and on a dB (rather than linear) scale</dc:description>
+    <local:source rdf:resource="FabienGouyon"/>
+    <local:tag>FreqDomain</local:tag>
+    <local:tag>onset detection</local:tag>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="ERBPower">
+    <dc:description>Power measured in bins of Equivalent Rectangular Bandwidth (a critical band scale)</dc:description>
+    <local:source rdf:resource="FabienGouyon"/>
+    <rdfs:comment>In Fabien Gouyon's thesis, these come from Klapuri et al.</rdfs:comment>
+    <rdfs:comment>This family could share predicates with the SubbandEnergy family to mark out freq band edges.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>FreqDomain</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumMagnitudeKurtosis">
+    <dc:description>The kurtosis of the magnitude distribution... see thesis</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:seeAlso rdf:resource="FabienGouyonThesis"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectrumRolloff">
+    <dc:description>Freq below which 85% of the signal energy remains</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>FreqDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="FeatureDifferential">
+    <dc:description>Various features can usefully be considered by their frame-to-frame differential. Fabien Gouyon describes a number of methods for computing such differentials. Being able to describe these in terms of deriving from Feature types would be useful for a structured features ontology</dc:description>
+    <local:source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralPeakHarmonicDeviation">
+    <dc:description>Sum of absolute deviation of peaks with respect to local spectrum envelopes, normalised by sum of peak magnitudes.</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:seeAlso rdf:resource="FabienGouyonThesis"/>
+    <tag>SpectralPeakDomain</tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="SpectralPeakFirstTristimulus">
+    <dc:description>Ratio of first peak energy to sum of all peak energies</dc:description>
+    <source rdf:resource="FabienGouyon"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <tag>SpectralPeakDomain</tag>
+  </rdf:Description>
+</rdf:RDF>

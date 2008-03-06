@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:local="http://chrissutton.org/tmp/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="SinusoidalPeaks">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>SMS</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="ResidualBranchSpectrum">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>SMS</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="ChordCorrelation">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TonalAnalysis</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Fundamental">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>SMS</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="FFT">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="PitchProfile">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TonalAnalysis</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="ResidualSpectrum">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>SMS</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="Tuning">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TonalAnalysis</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="ChromaPeaks">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>TonalAnalysis</local:tag>
+  </rdf:Description>
+  <rdf:Description rdf:about="ResidualSinusoidalSpectrum">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <local:tag>SMS</local:tag>
+  </rdf:Description>
+</rdf:RDF>
