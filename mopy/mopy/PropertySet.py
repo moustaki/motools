@@ -4,7 +4,7 @@ PropertySet.py
 Created by Chris Sutton on 2007-08-11.
 Copyright (c) 2007 Chris Sutton. All rights reserved.
 """
-from logging import log, error, warning, info, debug
+from logging import error, warning, info, debug
 
 class PropertySet(set):
 

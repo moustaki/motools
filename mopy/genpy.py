@@ -306,6 +306,7 @@ def removeDeprecated(g, xs):
 def main():
 	spec_g = rdflib.ConjunctiveGraph()
 	print "Loading ontology documents..."
+	# add mew ontologies here...
 	spec_g.load("owl.rdfs")
 	spec_g.load("time.owl")
 	spec_g.load("../mo/rdf/musicontology.rdfs")
@@ -314,6 +315,7 @@ def main():
 	spec_g.load("../chord/chordontology.rdfs")
 	spec_g.load("../time/rdf/timeline.rdf")
 	spec_g.load("../event/rdf/event.rdf")
+	spec_g.load("musicnet.rdf")
 
 	# FIXME : Why do these get lost in loading ?
 	spec_g.namespace_manager.bind("owl",rdflib.URIRef('http://www.w3.org/2002/07/owl#'))
