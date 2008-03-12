@@ -22,33 +22,36 @@
 
 <p>
 
-This service provides a live RDF representation of a target <a href="http://www.myspace.com/">Myspace</a> page.  If the page is also an "artist" page, then the tracks with availableAs links to the streaming audio cache are included in the RDF.  Note that only the "top friends" in the target Mysapce page are included in the RDF.
+This service provides a live RDF representation of <a href="http://www.myspace.com/">Myspace</a> users.  
+If the user is also an <i>artist</i>, then the corresponding tracks in the streaming audio cache are included in the RDF.  
+Note that only the <i>top friends</i> in the target Myspace page are included in the RDF.
 </p>
 
 
 <p>
 This representations is designed using the <a href="http://musicontology.com/">
-Music Ontology</a> and <a href="http://xmlns.com/foaf/0.1/">FOAF</a>.
+Music Ontology</a> and <a href="http://xmlns.com/foaf/0.1/">FOAF</a>. The scraping is handled by the 
+<a href="http://sourceforge.net/projects/mypyspace/">MyPySpace</a>.
 </p>
 
 <!--><p>
 This effort is part of the <a href="http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/LinkingOpenData">Linking
 Open Data on the Semantic Web</a> community project, hosted by the <a href="http://www.w3.org/2001/sw/sweo/">Semantic
 Web Education and Outreach</a> interest group.
-</p>-->-
+</p>-->
 
 
 
 <h2><a name="use" id="use"></a>2. Using this service</h2>
 
 <p>
-Starting from a Myspace URL:
+Starting from a Myspace user name:
 <pre>
-http://myspace.com/&lt;userURL&gt;
+http://myspace.com/&lt;user name&gt;
 </pre>
 Just get the following URI:
 <pre>
-http://dbtune.org/myspace/&lt;userURL&gt;
+http://dbtune.org/myspace/&lt;user name&gt;
 </pre>
 Alternatively, you can use the Myspace user id directly:
 <pre>
@@ -56,14 +59,19 @@ http://dbtune.org/myspace/uid/&lt;userID&gt;
 </pre>
 
 </p>
-<p>
-Try to load this URI in the <a href="http://www.w3.org/2005/ajar/tab">Tabulator</a>
+
+<p>For example, the following URI identifies a <a href="http://myspace.com/lesversaillaisesamoustache">band in MySpace</a>:
+<pre>
+http://dbtune.org/myspace/lesversaillaisesamoustache
+</pre>
 </p>
 
+
 <p>
-You can also add this information to your <a href="http://xmlns.com/foaf/0.1/">FOAF profile</a> by adding the following line in it:
+If you have a MySpace account, you can
+add the corresponding information to your <a href="http://xmlns.com/foaf/0.1/">FOAF profile</a> by adding the following statement in it:
 <pre>
-&lt;my URI&gt; owl:sameAs &lt;http://dbtune.org/myspace/&lt;userURL&gt;
+&lt;my URI&gt; owl:sameAs &lt;http://dbtune.org/myspace/&lt;user name&gt;
 </pre>
 </p>
 
@@ -71,7 +79,7 @@ You can also add this information to your <a href="http://xmlns.com/foaf/0.1/">F
 <p>
 As usual, <a href="http://motools.svn.sourceforge.net/viewvc/mypyspace/musicGrabber/branches/webserv-branch/">all the code running this service</a>
 is open source and based
-on <a href="http://www.python.org">Python</a> and <a href="http://www.swi-prolog.org">SW-Prolog</a>
+on <a href="http://www.python.org">Python</a> and <a href="http://www.swi-prolog.org">SWI-Prolog</a>
 
 </p>
 
