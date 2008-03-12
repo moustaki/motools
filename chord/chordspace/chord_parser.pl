@@ -39,14 +39,15 @@ add_image_link(DescIn, DescOut, IntsIn, IntsOut, _) :-
 	member(rdf(I,'http://purl.org/ontology/chord/degree',literal(type(_,D))),DescIn),
 	\+member(D, IntsIn),
 	append([D], IntsIn, I2),
-	add_image_link(DescIn, DescOut, I2, IntsOut, _).
+	add_image_link(DescIn, DescOut, I2, IntsOut).
 
-add_image_link(DescIn, DescOut, IntsIn, IntsIn, Root) :-
+add_image_link(DescIn, DescOut, IntsIn, IntsIn) :-
 	member(rdf(C,'http://purl.org/ontology/chord/interval',_), DescIn),
-	root_for_chord(DescIn,C,Root),
-	sort(IntsIn, SortedInts),
-	concat_atom(SortedInts,',',Ints),
-	format(atom(Image),'http://doc.gold.ac.uk/isms/tmp/chords/png/~w:(~w)',[Root,Ints]),
+	%root_for_chord(DescIn,C,Root),
+	%sort(IntsIn, SortedInts),
+	%concat_atom(SortedInts,',',Ints),
+	atom_concat('http://purl.org/ontology/chord/symbol/',Symbol,C),
+	format(atom(Image),'http://rvw.doc.gold.ac.uk/omras2/widgets/chord/~w',[Symbol]),
 	append([rdf(C,'http://xmlns.com/foaf/0.1/depiction', Image)],DescIn, DescOut).
 	
 

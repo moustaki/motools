@@ -58,7 +58,7 @@ accept_png('image/png').
  */
 reply(Request) :-
 	member(path(Path),Request),
-	member(accept(AcceptHeader),Request),
+	%member(accept(AcceptHeader),Request),
 	accept_rdf(AcceptHeader),
 	!,
 	namespace(NS),
