@@ -76,6 +76,8 @@ Two timelines can be mapped using timeline maps.""" .
         )
     ] .
 
+:timeline owl:sameAs :onTimeLine.
+
 :at
     a owl:FunctionalProperty;
     rdfs:label "at";
@@ -104,12 +106,16 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
+:end owl:sameAs :endsAt. # Shortcut
+
 :beginsAt
     rdfs:label "begins at";
     rdfs:comment "refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource";
     vs:term_status "stable";
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
+
+:start owl:sameAs :beginsAt. # Shortcut
 
 ####################################
 # Part 1.5: equivalence statements #

@@ -62,6 +62,9 @@ Two timelines can be mapped using timeline maps.</rdfs:comment>
       </owl:Class>
     </rdfs:domain>
   </owl:FunctionalProperty>
+  <rdf:Description rdf:about="#timeline">
+    <owl:sameAs rdf:resource="#onTimeLine"/>
+  </rdf:Description>
   <owl:FunctionalProperty rdf:about="#at">
     <rdfs:label>at</rdfs:label>
     <vs:term_status>stable</vs:term_status>
@@ -95,12 +98,18 @@ Two timelines can be mapped using timeline maps.</rdfs:comment>
     <vs:term_status>stable</vs:term_status>
     <rdfs:domain rdf:resource="#Interval"/>
   </owl:DatatypeProperty>
+  <rdf:Description rdf:about="#end">
+    <owl:sameAs rdf:resource="#endsAt"/>
+  </rdf:Description>
   <owl:DatatypeProperty rdf:about="#beginsAt">
     <rdfs:label>begins at</rdfs:label>
     <rdfs:comment>refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource</rdfs:comment>
     <vs:term_status>stable</vs:term_status>
     <rdfs:domain rdf:resource="#Interval"/>
   </owl:DatatypeProperty>
+  <rdf:Description rdf:about="#start">
+    <owl:sameAs rdf:resource="#beginsAt"/>
+  </rdf:Description>
   <rdf:Description rdf:about="#meets">
     <owl:sameAs rdf:resource="http://www.w3.org/2006/time#intervalMeets"/>
     <owl:sameAs rdf:resource="http://www.w3.org/2006/time#intervalMeets"/>
