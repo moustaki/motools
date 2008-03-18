@@ -96,7 +96,7 @@ date_info(User,Track,ScrobbleDesc,[rdf(Evt,rdf:type,lfm:'ScrobbleEvent'),rdf(Evt
 	((atom_chars(H,HC),length(HC,1))->atom_chars(H2,['0'|HC]);H2=H),
 	((atom_chars(Mi,MiC),length(MiC,1))->atom_chars(Mi2,['0'|MiC]);Mi2=Mi),
 	((atom_chars(S,SC),length(SC,1))->atom_chars(S2,['0'|SC]);S2=S),
-	format(atom(Date),'~w-~w-~wT~w:~w:~w',[Y,Mo2,D2,H2,Mi2,S2]),
+	format(atom(Date),'~w-~w-~wT~w:~w:~wz',[Y,Mo2,D2,H2,Mi2,S2]),
 	host(Host),
 	format(atom(Uri),'~w/~w',[Host,User])
 	%format(atom(Uri),'http://ws.audioscrobbler.com/1.0/user/~w',[User])
