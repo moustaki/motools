@@ -1,0 +1,165 @@
+@prefix map: <file:/home/moustaki/work/workspace/opendata/d2r-server-0.3.1/mapping.n3#> .
+@prefix db: <> .
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix vocab: <vocab/> .
+@prefix tl: <http://purl.org/NET/c4dm/timeline.owl#>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix time: <http://www.w3.org/TR/owl-time/>.
+@prefix mo: <http://purl.org/ontology/mo/> .
+
+map:database a d2rq:Database;
+	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
+	d2rq:jdbcDSN "jdbc:mysql://localhost/moustaki";
+	d2rq:username "root";
+	.
+#Tuning the mapping to match the music ontology
+
+# TRACK
+map:magnatune_song a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "magnatune/track/@@magnatune_song_info.songid@@";
+	d2rq:class mo:Track;
+	.
+map:magnatune_song_trackname a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_song;
+	d2rq:property dc:title;
+	d2rq:column "magnatune_song_info.trackname";
+	d2rq:datatype xsd:string;
+	.
+map:magnatune_song_tracknum a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_song;
+	d2rq:property mo:trackNum;
+	d2rq:column "magnatune_song_info.tracknum";
+	d2rq:datatype xsd:int;
+	.
+map:magnatune_free_song_download a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_song;
+	d2rq:property mo:freedownload;
+	d2rq:uriPattern "@@magnatune_song_info.download_mp3@@";
+	.
+map:magnatune_paid_song_download a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_song;
+	d2rq:property mo:paiddownload;
+	d2rq:uriPattern "@@magnatune_song_info.buy@@";
+	.
+map:magnatune_song_creator a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_song;
+	d2rq:property dc:creator;
+	d2rq:uriPattern "magnatune/artist/@@magnatune_song_info.page@@";
+	.
+map:magnatune_song_date a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_song;
+	d2rq:property dc:created;
+	d2rq:column "magnatune_song_info.launchdate";
+	d2rq:datatype xsd:date;
+	.
+
+# ALBUM
+map:magnatune_album a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "magnatune/album/@@magnatune_song_info.albumsku@@";
+	d2rq:class mo:Album;
+	.
+map:magnatune_hastrack a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_album;
+	d2rq:property mo:hasTrack;
+	d2rq:uriPattern "magnatune/track/@@magnatune_song_info.songid@@";
+	.
+map:magnatune_albumname a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_album;
+	d2rq:property dc:title;
+	d2rq:column "magnatune_song_info.albumname";
+	d2rq:datatype xsd:string;
+	.
+map:magnatune_album_creator a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_album;
+	d2rq:property dc:creator;
+	d2rq:uriPattern "magnatune/artist/@@magnatune_song_info.page@@";
+	.
+
+# ARTIST
+map:magnatune_artist a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "magnatune/artist/@@magnatune_song_info.page@@";
+	d2rq:Class mo:MusicArtist;
+	.
+map:magnatune_artistname a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_artist;
+	d2rq:property foaf:name;
+	d2rq:column "magnatune_song_info.artist";
+	d2rq:datatype xsd:string;
+	.
+map:magnatune_artistdesc a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_artist;
+	d2rq:property dc:description;
+	d2rq:column "magnatune_song_info.artistdesc";
+	d2rq:datatype xsd:string;
+	.
+map:magnatune_artistbio a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_artist;
+	d2rq:property mo:biography;
+	d2rq:column "magnatune_song_info.bio";
+	d2rq:datatype xsd:string;
+	.
+map:magnatune_artistimg a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_artist;
+	d2rq:property foaf:img;
+	d2rq:uriPattern "@@magnatune_song_info.bandphoto@@";
+	.
+map:magnatune_artisthp a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_artist;
+	d2rq:property foaf:homepage;
+	d2rq:uriPattern "@@magnatune_song_info.home@@";
+	.
+
+# SIGNAL
+map:magnatune_signal a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "magnatune/signal/@@magnatune_song_info.songid@@";
+	d2rq:Class mo:Signal;
+	.
+map:magnatune_signal_ti a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "magnatune/signal/@@magnatune_song_info.songid@@/timeinterval";
+	d2rq:Class time:Interval;
+	.
+map:magnatune_signaltime a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_signal;
+	d2rq:property mo:signalTime;
+	d2rq:uriPattern "magnatune/signal/@@magnatune_song_info.songid@@/timeinterval";
+	.
+map:magnatune_duration a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_signal_ti;
+	d2rq:property tl:durationXSD;
+	d2rq:pattern "PT@@magnatune_song_info.seconds@@S";
+	d2rq:datatype xsd:duration;
+	.
+map:magnatune_publi a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_signal;
+	d2rq:property mo:publishedAs;
+	d2rq:uriPattern "magnatune/track/@@magnatune_song_info.songid@@";
+	.
+
+# PERFORMANCE
+map:magnatune_performance a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "magnatune/performance/@@magnatune_song_info.songid@@";
+	d2rq:Class mo:Performance;
+	.
+map:magnatune_recordedAs a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_performance;
+	d2rq:property mo:recordedAs;
+	d2rq:uriPattern "magnatune/signal/@@magnatune_song_info.songid@@/timeinterval";
+	.
+map:magnatune_place a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:magnatune_performance;
+	d2rq:property event:place;
+	d2rq:column "magnatune_song_info.country"; # there is also .citystate
+	.
+
+
