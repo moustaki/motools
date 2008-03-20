@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>Henry - a DSP-driving SPARQL end-point</title>
+
+<style type="text/css" media="all">
+        @import url(style.css);
+</style>
+
+</head>
+
+<body>
+
+
+<a href="http://dbtune.org/"><h1 style="font-size: 250%;">DBTune.org</h1></a>
+
+<div id="tagline">Henry - a DSP-driving SPARQL end-point - yves _at_ dbtune _dot_ org</div>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
+
+<p>
+This server hosts a <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> 
+end-point able to perform audio processing tasks to answer a particular query.
+It builds on top of <a href="http://www.w3.org/TeamSubmission/n3/">N3</a> and <a href="http://www.cs.sunysb.edu/~kifer/dood/tr-tutorial.html">
+Transaction Logic</a>. More details to come.
+</p>
+
+<h2><a name="details" id="details"></a>2. Details</h2>
+<p>
+<a href="http://code.google.com/p/km-rdf/">Henry</a> was initally intended to be a small application
+on top of a <a href="http://www.swi-prolog.org/">SWI-Prolog</a> <a href="http://code.google.com/p/km-rdf/source/browse/trunk/n3/n3_dcg.pl">N3 parser</a>, 
+interpreting parsed N3 rules as entailment rules within the <a href="http://e-culture.multimedian.nl/software/ClioPatria.shtml">SWI-Prolog
+Semantic Web server</a>. 
+</p>
+
+<p>
+Now, Henry provides the ability to easily register new audio processing builtin predicates (which may be discovered at querying time).
+Henry works on top of a quad-store <i>m</i> and a binary store <i>b</i>. 
+</p>
+
+<p>
+A simplistic version of the 
+behavior of Henry is the following.
+When processing a SPARQL query <i>q</i>, Henry gets through the following steps:
+<ol>
+<li> For every newly appearing web identifier <i>i</i> in <i>q</i>, dereference it, and then:</li>
+<ul>
+<li>If the representation is RDF, store it in <i>m</i>. If <i>i</i> is a property and its representation 
+links to a built-in implementation matching the current platform, get it ;</li>
+<li>If the representation is N3, store it in <i>m</i> and register the corresponding rules ;</li>
+<li>If the representation is binary, cache it in <i>b</i> ;</li>
+</ul>
+<li> For every triple pattern <i>p</i> in <i>q</i>, the possible solutions are:</li>
+<ul>
+<li>Instantiations of <i>p</i> in <i>m</i> ;</li>
+<li>If <i>p</i> is in the head of a rule, solutions of step <i>2</i> with the body of the rule as <i>q</i> (plus a few extra things to deal
+with equivalency, existentials in the head, etc.) ;</li>
+<li>if <i>p=(s_p,p_p,o_p)</i> where <i>p_p</i> is a built-in predicate, solutions derived using this built-in.</li>
+</ul>
+</ol>
+</p>
+
+<p>
+This implementation is still in the early stages, and still a bit experimental, it may perfectly die horribly :-) A look at
+the <a href="http://code.google.com/p/km-rdf/issues/list">issue tracker</a> may give insights on what is still buggy.
+Also, the server running this service is quite.... slow :)
+</p>
+
+
+
+<h2><a name="use" id="use"></a>3. Using this service</h2>
+<p>
+There is a raw SPARQL end point at <pre>http://dbtune.org:3070/sparql/</pre>.
+</p>
+<p>
+A <a href="http://dbtune.org:3070/">web interface</a> is also available. Get in the <b>Query database</b> page, make sure you choose <b>SPARQL</b>
+as your query language, and check that the entailment is set to <b>n3</b> (it should be the default, anyway).
+</p>
+
+<p>
+A query involving only builtins (no N3 rules) is the following. It computes MFCC models for two tracks and compute
+their Kullback-Leiber divergence (heh, I should declare some namespaces, it is pretty huge like that :-) ):
+</p>
+<pre>
+select ?d
+where
+{
+&lt;http://dbtune.org/audio/Den-Nostalia.ogg&gt; &lt;http://purl.org/ontology/dsp/cache&gt; ?local.
+?local &lt;http://purl.org/ontology/dsp/aspl_decode&gt; ?sig.
+?sig &lt;http://purl.org/ontology/vamp/qm-mfccparameters&gt; (?means1 ?vars1).
+
+&lt;http://dbtune.org/audio/Both-Axel.ogg&gt; &lt;http://purl.org/ontology/dsp/cache&gt; ?local2 .
+?local2 &lt;http://purl.org/ontology/dsp/aspl_decode&gt; ?sig2.
+?sig2 &lt;http://purl.org/ontology/vamp/qm-mfccparameters&gt; (?means2 ?vars2).
+
+((?means1 ?vars1) (?means2 ?vars2)) &lt;http://purl.org/ontology/dsp/mfcc_kldiv&gt; ?d
+}
+</pre>
+
+<p>
+Another one is the following, computing keys using the <a href="http://www.elec.qmul.ac.uk/digitalmusic/downloads/index.html#qm-vamp-plugins">key
+detection Vamp plugin in the Queen Mary plugin set</a>:
+</p>
+<pre>
+select ?otp ?s ?e ?d
+where
+{
+&lt;http://dbtune.org/audio/Den-Nostalia.ogg&gt; &lt;http://purl.org/ontology/dsp/cache&gt; ?local.
+?local &lt;http://purl.org/ontology/dsp/aspl_decode&gt; ?sig.
+?sig &lt;http://purl.org/ontology/vamp/qm-keydetector&gt; ?result.
+(?otp ?s ?e ?d) &lt;http://www.w3.org/2000/10/swap/list#in&gt; ?result.
+}
+</pre>
+
+
+<p>
+Finally, one using the N3 rule defined at the bottom of <a href="http://code.google.com/p/km-rdf/source/browse/trunk/n3-km/dsp-n3/vamp.n3">this N3
+document</a>, getting some attributes of key events currently cached (computed through previous queries):
+</p>
+<pre>
+select ?start ?end ?key
+where
+{
+_:evt a &lt;http://purl.org/ontology/af/KeyEvent&gt;; 
+	tl:startsAt ?start ; 
+	tl:endsAt ?end; 
+	&lt;http://purl.org/ontology/af/key&gt; ?key
+}
+</pre>
+
+<h2><a name="code" id="code"></a>4. Code</h2>
+<p>
+All the code is open source and available in our <a href="http://code.google.com/p/km-rdf">Google code project</a>.
+</p>
+
+
+<h2><a name="ack" id="ack"></a>5. Acknowledgements</h2>
+<p>
+Thanks to David Pastor who wrote the <a href="http://www.vamp-plugins.org/">Vamp</a> to <a href="http://www.swi-prolog.org/">SWI-Prolog</a>
+interface, and the similarity query above!
+</p>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3327144-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+
+</body>
+
+</html>
+
