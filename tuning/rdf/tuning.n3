@@ -25,7 +25,7 @@
 	.
 
 # People
-"David Pastor Escuredo" a foaf:Person.
+#"David Pastor Escuredo" a foaf:Person.
 
 # Status of terms
 vs:term_status a owl:AnnotationProperty.
@@ -41,7 +41,7 @@ tuning:TuningSystem
 	vs:term_status "unstable";
 	.
 
-Tuning:EqualTemperament
+tuning:EqualTemperament
 	a owl:Class;
 	rdfs:subClassOf tuning:TuningSystem;
 	rdfs:label "Equal Temperament";
@@ -51,7 +51,7 @@ Tuning:EqualTemperament
 	vs:term_status "unstable";
 	.
 
-Tuning:WellTemperament
+tuning:WellTemperament
 	a owl:Class;
 	rdfs:subClassOf tuning:TuningSystem;
 	rdfs:label "Well Temperament";
@@ -93,7 +93,7 @@ tuning:InstrumentTuning
 
 tuning:octave_divisions
 	a owl:FunctionalProperty;
-	rdfs:label "octave divisions"
+	rdfs:label "octave divisions";
 	rdfs:comment """
 		Number of divisions within the octave.
 	""";
@@ -104,7 +104,7 @@ tuning:octave_divisions
 
 tuning:frequency_A
 	a owl:FunctionalProperty;
-	rdfs:label "frequency for A"
+	rdfs:label "frequency for A";
 	rdfs:comment """
 		Tuning of an instrument given the exact frequency for A
 	""";
