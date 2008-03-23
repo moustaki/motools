@@ -1,0 +1,2611 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix tl: <http://purl.org/NET/c4dm/timeline.owl#>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix co: <http://purl.org/ontology/chord/>.
+@prefix tonality: <http://purl.org/ontology/tonality/>.
+@prefix int: <http://purl.org/ontology/tonality/interval/>.
+@prefix scale: <http://purl.org/ontology/tonality/scale/>.
+@prefix mode: <http://purl.org/ontology/tonality/mode/>.
+@prefix key: <http://purl.org/ontology/tonality/key/>.
+@prefix tuning: <http://purl.org/ontology/tuning/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix note: <http://purl.org/ontology/chord/note/>.
+
+
+<> 
+	a owl:Ontology;
+	dc:title "The Tonality ontology";
+	rdfs:label "The Tonality ontology";
+	dc:description """
+
+		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works. The ontology has two different levels:
+
+		-The most high level describes musical theory structures like keys and scales used as resources for composition in order to create a specific tonality.
+		-A second level describes the tonality in terms of mathematical models considering the tonality as projection onto a geometrical space ordered according to a psychological distribution of the tonal space.
+		
+		This document is a testing stage and any contribution is welcome and can be made through the Music Ontology community at 
+http://wiki.musicontology.com/
+
+	""";
+	dc:creator "David Pastor Escuredo";
+        #foaf:maker <http://yo> ;
+        dc:date "$Date: 2008/03/22 18:05:11 $";
+	.
+
+# People
+#<http://yo> a foaf:Person.
+
+# Status of terms
+vs:term_status a owl:AnnotationProperty.
+
+#####################
+#### CLASSES ########
+#####################
+
+tonality:Interval
+	a owl:Class;
+	vs:term_status "unstable";
+	rdfs:label "Interval";
+	rdfs:comment """
+		This class represents the distance between two notes supporting different tuning systems. This is the basic piece of the ontology and have a bunch of optional properties to full specify an interval depending the situation and musical system. Well known intervals can be declared as individuals while its flexibility allows to create an interval as needed.		
+	""";	
+	.
+
+tonality:IntervalClass
+	a owl:Class;
+	vs:term_status "unstable";
+	#rdfs:subClassOf tonality:Interval;
+	rdfs:label "Interval Class";
+	rdfs:comment """
+		This class is an extension thougth for atonal music representation. Interval class represents the distance between two unordered pitch classes where octave, enharmonic and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distance from the minimum to the maximum values possible within the octave. Note: may be an interval subclass?	
+	""";
+	.
+
+tonality:Pitch
+	a owl:Class;
+	rdfs:label "Pitch";
+	rdfs:comment """
+		Pitch is a frequency represented by a musical note. Pitch generalizes the note transcription but may be dependent of the octave if the tuning is not TET. A C in the 3rd octave may not be equivalent to a C in the 5th octave.	
+	""";
+	vs:term_status "unstable";
+	.
+
+tonality:PitchClass
+	a owl:Class;
+	owl:sameAs co:note;
+	rdfs:label "Pitch Class";
+	rdfs:comment """
+		Another generalization where octave, enharmonic and inversion equivalency is again assumed. So pitches are equivalent from octave to octave and wrapped into a pitch class. Note: Should be a pitch subclass?	
+	""";
+	vs:term_status "unstable";
+	.
+		
+tonality:Tonality
+	a owl:Class;
+	rdfs:subClassOf event:Event;
+	vs:term_status "unstable";
+	rdfs:label "Tonality";
+	rdfs:comment """
+		 Describing the tonality as a tonal region in the signal timeline. Tonality is a Event subclass so the declaration of a Tonality defines a region in the timeline which serves as resource for tonal information which can be:
+			-high-level descriptors like scales or keys
+			-mathematical tonal models which gives a geometrical representation in a tonal space with psychological ordenation instead of acoustic
+	""";
+	.
+		
+tonality:TonalEvent
+	a owl:Class;
+	rdfs:subClassOf event:Event;
+	rdfs:label "Tonal Event";
+	rdfs:comment """
+		 Describing a specific tonal event within the tonal region. This is conceived for meaningful and specific tonal events within the tonal region that are not significant to change the tonal region itself. This may be useless anyway...
+	""";
+	vs:term_status "deprecated";
+	.
+
+tonality:Scale
+	a owl:Class;
+	rdfs:label "Scale";
+	rdfs:comment """
+		Representation of musical scales in two senses:
+			Scale-type: an abstract structure of intervals associated to specific degrees. Eg: diatonic scale
+			Scale: scale-type at a certain pitch. Eg: A major scale.
+	""";
+	vs:term_status "unstable";
+	.
+
+tonality:Mode
+	a owl:Class;
+	rdfs:label "Mode";
+	rdfs:comment "Modes represents each of the different cyclic sequences of intervals defined by a scale-type.";
+	vs:term_status "unstable";
+	.
+
+tonality:Degree
+	a owl:Class;
+	rdfs:label "Degree";
+	rdfs:comment """
+		Degrees define the ordenation and then the functionality of the tonal structures. This class is defined by a bunch of properties that specifies all the data related to the tonal structure (keys, scales...) as a resource.
+	""";
+	vs:term_status "unstable";
+	.
+
+tonality:Key
+	a owl:Class;
+	rdfs:label "Key";
+	rdfs:comment """
+		Key is defined as the centre of gravity origined by a chord progession and relying on a diatonic scale. Key is intrinsically related to the key signature as the key signature represent the most stable notes in the score. Although tonality can not be reduced to the establishing of a main key and modulations from key to key, keys are still an important resource to decribe tonal music.
+	""";
+	vs:term_status "unstable";
+	.
+
+tonality:HarmonicFunction
+	a owl:Class;
+	rdfs:label "Harmonic Function";
+	rdfs:comment """
+		This class is declared to give specific harmonic information for each degree of the key besides what the actual name of the degree suggests. It is thought for future extensions.
+	""";
+	.
+
+tonality:HeptatonicScale
+	a owl:Class;
+	rdfs:subClassOf tonality:Scale;
+	rdfs:label "heptatonic scale";
+	rdfs:comment "A particular scale subclass that represents scale-types formed by 7 notes.";
+	tonality:num_degrees 7;
+	vs:term_status "deprecated";
+	.
+
+tonality:PentatonicScale
+	a owl:Class;
+	rdfs:subClassOf tonality:Scale;
+	rdfs:label "pentatonic scale";
+	rdfs:comment "A particular scale subclass that represents scale-types formed by 5 notes.";
+	tonality:num_degrees 5;
+	vs:term_status "deprecated";
+	.
+
+
+##############################
+###DEFINED PROPERTIES#########
+##############################
+
+#INTERVAL RELATED
+
+tonality:steps a owl:FunctionalProperty;
+        vs:term_status "unstable";
+        rdfs:label "steps";
+        rdfs:comment "Measure for intervals in equally temperaments";
+        rdfs:domain tonality:Interval;
+	rdfs:domain tonality:IntervalClass;
+        rdfs:range xsd:decimal;
+        .
+
+tonality:semitones a owl:FunctionalProperty;
+        vs:term_status "unstable";
+        rdfs:label "semitones";
+        rdfs:comment "Convenience measure in EDO systems. Treated as distance it doesn't represent the real tonal distance but a frequency distance.";
+        rdfs:domain tonality:Interval;
+	rdfs:domain tonality:IntervalClass;
+	rdfs:range xsd:integer;
+	rdfs:equivalentProperty co:semitone_interval;
+        .
+
+tonality:scale_steps a owl:FunctionalProperty;
+        vs:term_status "unstable";
+        rdfs:label "scale steps";
+        rdfs:comment """
+		Steps of the scale comprised in the interval. This is used to characterized general intervals and relate specific intervals to the a certain degree.
+	""";
+        rdfs:domain tonality:Interval;
+	rdfs:range xsd:integer;
+        .
+
+tonality:ratio a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "ratio";
+	rdfs:comment "Measure of intervals in Just Intonation system as a ratio of the frequencies (simple rationale numbers).";
+	rdfs:domain tonality:Interval;
+	.
+
+tonality:comparable_ratio a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "comparable ratio";
+	rdfs:comment "Closest ratio in a Just Intonation tuning for a given equally-tempered interval. (This is actually very optional).";
+	rdfs:domain tonality:Interval;
+	.	
+
+tonality:tuning a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "in tuning";
+	rdfs:comment """
+		The tuning system in which we consider the interval. Through this property we do not restric the interval definition to an equally temperament but to any temperament and division of the octave.
+	""";
+	rdfs:domain tonality:Interval;
+	rdfs:range tuning:TuningSystem;
+	.
+
+tonality:cents a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "cents";
+	rdfs:comment """
+		Cents measurement: 1200×log2(f2/f1). This value is used to compare the size of intervals.
+	""";
+	rdfs:domain tonality:Interval;
+	rdfs:range xsd:decimal;
+	.
+
+tonality:just_cents a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "just cents";
+	rdfs:comment """
+		Just cents does not represent the real cents of the interval but the cents value of the comparable ratio for a equal-tempered interval. This is very optional as well in interval definition.
+	""";
+	rdfs:domain tonality:Interval;
+	rdfs:range xsd:decimal;
+	.
+
+tonality:interval_class a owl:SymmetricProperty;
+	vs:term_status "unstable";
+	rdfs:label "of interval class";
+	rdfs:comment "The Interval Class (0-6) which the interval belongs to according to the semitones property";
+	rdfs:domain tonality:Interval;
+	rdfs:range tonality:IntervalClass;
+	.
+
+tonality:inversion a owl:SymmetricProperty;
+	vs:term_status "unstable";
+        rdfs:label "inversion";
+        rdfs:comment "This property links an interval with its inversion. Major second is the inversion of minor seventh.";
+	rdfs:range tonality:Interval;
+        rdfs:domain tonality:Interval;
+        .
+
+tonality:enharmonic a owl:SymmetricProperty;
+	vs:term_status "unstable";
+        rdfs:label "enharmonic";
+        rdfs:comment """
+                Two intervals are enharmonic when they express the same pitch distance but as different general intervals, so they have the same number of semitones but different number of scale steps. Enharmony is a general musical property which states that two different musical elements has the same acoustic value.
+        """;
+	rdfs:range tonality:Interval;
+        rdfs:domain tonality:Interval;
+        .
+
+tonality:close_interval a owl:ObjectProperty;
+        vs:term_status "unstable";
+        rdfs:label "close interval";
+        rdfs:comment """
+               In equal temperaments open intervals (bigger than a octave) are indeed a close interval and n octaves. This property relates an open interval like minor ninth with its close version minor second. 
+        """;
+        rdfs:domain tonality:Interval;
+	rdfs:range tonality:Interval;
+        .
+
+tonality:octaves a owl:FunctionalProperty;
+	vs:term_status "unstable";
+        rdfs:label "octaves";
+        rdfs:comment "Number of octaves comprised in an open interval.";
+        rdfs:domain tonality:Interval;
+	rdfs:range xsd:integer;
+	.
+
+tonality:strength a owl:FunctionalProperty;
+	vs:term_status "unstable";
+        rdfs:label "strength";
+        rdfs:comment """
+               This property expresses the stability of an interval given its tuning. Although is very difficult to state that a certain interval is stable or not.
+        """;
+        rdfs:domain tonality:Interval;
+        .
+
+tonality:interval a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "interval";
+	rdfs:comment """
+		This property allows to link an interval to some other structure. So far we define intervals for Scale, Degree (which link it to a Scale or a Key) and Chord.
+	""";
+	rdfs:domain tonality:Scale;
+	rdfs:domain tonality:Degree;
+	rdfs:domain co:Chord;
+	rdfs:range tonality:Interval;
+	#rdfs:equivalentProperty chord:interval;
+	#rdfs:domain tonality:Tonality;
+	#rdfs:domain tonality:Key;
+	.
+
+#DEGREE RELATED
+
+tonality:degree_name a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "degree name";
+	rdfs:comment """
+		Property that expresses the name of the degree which normally will convey implicitly its harmonic functionality. We declare a specific property for this instead of using any other name property.
+	""";
+	rdfs:domain tonality:Degree;
+	.
+
+tonality:degree_position a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "degree position";
+	rdfs:comment "Position of the degree within the scale which will determine its functionality.";
+	rdfs:domain tonality:Degree;
+	rdfs:range xsd:integer;
+	.
+
+tonality:note a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "note";
+	rdfs:comment """
+		Note corresponding to the degree if there is a tonic specification. We can express it with a note individual or with a pitch class which can be more accurate indeed. Elements of the class Pitch could also use this property (and the octave one).
+	""";
+	rdfs:domain tonality:Degree;
+	rdfs:domain tonality:Pitch;
+	rdfs:range co:Note;
+	rdfs:equivalentProperty tonality:pitch_class;
+	.
+
+tonality:pitch_class a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "pitch_class";
+	rdfs:comment """
+		This property expresses the same information than note except for the difference we consider between note and pitch class. This should be better considered.
+	""";
+	rdfs:domain tonality:Degree;
+	rdfs:domain tonality:Pitch;
+	rdfs:range co:PitchClass;
+	.
+
+tonality:pitch a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "pitch";
+	rdfs:comment """
+		Associates the degree to a total pitch which is determined by a note in a specific octave. This is only necessary when the tuning system is not equally tempered so pitches can not be easily infered from octave to octave (non-octave equivalency).
+	""";
+	rdfs:domain tonality:Degree;
+	rdfs:range tonality:Pitch;
+	.
+
+tonality:octave a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "octave";
+	rdfs:comment "Specify the concrete pitch in a particular octave. Eg: A in the 3rd octave.";
+	rdfs:domain tonality:Pitch;
+	rdfs:range xsd:integer;
+	.
+
+tonality:frequency a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "frequency";
+	rdfs:comment "Express the real frequency of the pitch.";
+	rdfs:domain tonality:Degree;
+	rdfs:domain tonality:Pitch;
+	rdfs:range  xsd:decimal;
+	.
+	
+tonality:owned_chord a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "valid chord";
+	rdfs:comment """
+		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then altered ones borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See altered_chord
+	""";
+	rdfs:domain tonality:Degree;
+	rdfs:range co:Chord;
+	.
+
+tonality:altered_chord a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "altered chord";
+	rdfs:comment """
+		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability. Some degrees substitute its seventh owned interval by some other seventh interval producing an altered chord and introducing an altered interval (may be chormatic) in the key. An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key).
+	""";
+	rdfs:domain tonality:Degree;
+	rdfs:range co:Chord;
+	.
+
+tonality:harmonic_function a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "harmonic function";
+	rdfs:comment "Declared to relate a HarmonicFunction individual or resource (so far it is not used).";
+	rdfs:domain tonality:Degree;
+	rdfs:range tonality:HarmonicFunction;
+	.
+
+tonality:degree a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "degree";
+	rdfs:comment "Binds a degree resource to a structure.";
+	rdfs:domain tonality:Key;
+	rdfs:domain tonality:Scale;
+	rdfs:range tonality:Degree;
+	.
+
+#SCALES AND MODES
+
+tonality:on_degree a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "on degree";
+	rdfs:comment "Defines a scale degree as root of the mode.";
+	rdfs:domain tonality:Mode;
+	rdfs:range xsd:integer;	
+	.
+
+tonality:num_degrees a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:comment "Number of steps in a scale.";
+	rdfs:domain tonality:Scale;
+	rdfs:range xsd:integer;
+	.
+
+tonality:scale_type a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "scale type";
+	rdfs:comment """
+		Scales comprises scale-types (what is actually a scale) and scales understood as scale at a certain pitch). We can define a scale by its scale_type and a tonic. Eg: A major scale is the major scale (scale_type) with A as tonic.
+	""";
+	rdfs:domain tonality:Scale;
+	rdfs:range tonality:Scale;
+	.
+
+tonality:from_mode a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "scale type";
+	rdfs:comment """
+		We can consider a scale as one of the mode of other scale. Eg. The minor scale is indeed the sixth mode of a diatonic scale or we can talk about a Dorian scale.
+	""";
+	rdfs:domain tonality:Scale;
+	rdfs:range tonality:Mode;
+	.
+
+tonality:scale a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "scale";
+	rdfs:comment "Binds a scale to other structures.";
+	rdfs:domain tonality:Mode;
+	rdfs:domain tonality:Tonality;
+	rdfs:domain tonality:Key;
+	rdfs:range tonality:Scale;
+	.
+			
+tonality:mode a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "mode";
+	rdfs:comment "Associates a mode.";
+	rdfs:domain tonality:Tonality;
+	rdfs:range tonality:Mode;
+	.
+
+#Keys
+
+tonality:tonic a owl:FunctionalProperty;
+	vs:term_status "unstable";
+	rdfs:label "tonic";
+	rdfs:comment "Sets the tonic of a key or scale if the first degree is not bound to a note.";
+	rdfs:domain tonality:Key;
+	rdfs:domain tonality:Scale;
+	rdfs:range co:Note;
+	.
+
+tonality:key_colour a owl:FunctionalProperty;
+	vs:term_status "deprecated";
+	rdfs:label "colour";
+	rdfs:comment "In well-temperatement keys present pronounced intervalic differences which give them specific sensations as colours.";
+	rdfs:domain tonality:Key;
+	.
+
+
+##############
+#Individuals##
+##############
+
+####################Interval Class individuals##############
+
+int:ic0 a tonality:IntervalClass;
+	rdfs:label "Interval class 0";
+	vs:term_status "unstable";
+	rdfs:comment "The interval class 0 for unison an octave.";
+	tonality:semitones 0;
+	.
+
+int:ic1 a tonality:IntervalClass;
+	rdfs:label "Interval class 1";
+	vs:term_status "unstable";
+	rdfs:comment "minor second and major seventh and enharmonics.";
+	tonality:semitones 1;
+	.
+
+int:ic2 a tonality:IntervalClass;
+	vs:term_status "unstable";
+	rdfs:label "Interval class 2";
+	rdfs:comment "major second and minor seventh and enharmonics.";
+	tonality:semitones 2;
+	.
+
+int:ic3 a tonality:IntervalClass;
+	rdfs:label "Interval class 3";
+	vs:term_status "unstable";
+	rdfs:comment "minor third and major sixth and enharmonics.";
+	tonality:semitones 3;
+	.
+
+int:ic4 a tonality:IntervalClass;
+	rdfs:label "Interval class 4";
+	vs:term_status "unstable";
+	rdfs:comment "major third and minor sixth and enharmonics.";
+	tonality:semitones 4;
+	.
+
+int:ic5 a tonality:IntervalClass;
+	rdfs:label "Interval class 5";
+	vs:term_status "unstable";
+	rdfs:comment "perfect fourth and fifth and enharmonics.";
+	tonality:semitones 5;
+	.
+
+int:ic6 a tonality:IntervalClass;
+	rdfs:label "Interval class 6";
+	vs:term_status "unstable";
+	rdfs:comment "augmented fourth and disminished fifth and enharmonics.";
+	tonality:semitones 6;
+	.
+
+#####################Interval individuals################
+
+int:unison a tonality:Interval;
+	rdfs:label "unison";
+	vs:term_status "unstable";
+	rdfs:comment "Unison interval.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:semitones 0;
+	tonality:scale_steps 0;
+	tonality:steps 0;
+	tonality:cents 0;
+	tonality:interval_class int:ic0;
+	.
+
+int:second_min a tonality:Interval;
+	rdfs:label "minor 2nd";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic minor 2nd in 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 1;
+	tonality:semitones 1;
+	tonality:steps 0.5;
+	tonality:cents 100;
+	tonality:interval_class int:ic1;
+	dc:type "diatonic";
+	.
+
+int:second_maj a tonality:Interval;
+	rdfs:label "major 2nd";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic major 2nd in 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 1;
+	tonality:semitones 2;
+	tonality:steps 1;
+	tonality:cents 200;
+	tonality:interval_class int:ic2;
+	dc:type "diatonic";
+	.
+
+int:third_min a tonality:Interval;
+	rdfs:label "minor 3rd";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic minor 3rd in 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 2;
+	tonality:semitones 3;
+	tonality:steps 1.5;
+	tonality:cents 300;
+	tonality:interval_class int:ic3;
+	dc:type "diatonic";
+	.
+
+int:third_maj a tonality:Interval;
+	rdfs:label "major 3rd";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic major 3rd in 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 2;
+	tonality:semitones 4;
+	tonality:steps 2;
+	tonality:cents 400;
+	tonality:interval_class int:ic4;
+	dc:type "diatonic";
+	.
+
+int:fourth_per a tonality:Interval;
+	rdfs:label "perfect 4th";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic perfect fourth 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 3;
+	tonality:semitones 5;
+	tonality:steps 2.5;
+	tonality:cents 500;
+	tonality:interval_class int:ic5;
+	dc:type "diatonic";
+	.
+
+int:fourth_aug a tonality:Interval;
+	rdfs:label "augmented 4th";
+	vs:term_status "unstable";
+	rdfs:comment "Chromatic augmented fourth 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 3;
+	tonality:semitones 6;
+	tonality:steps 3;
+	tonality:cents 600;
+	tonality:interval_class int:ic6;
+	dc:type "chromatic";
+	.
+
+int:fifth_dis a tonality:Interval;
+	rdfs:label "disminished 5th";
+	vs:term_status "unstable";
+	rdfs:comment "Chromatic disminished 5th 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 4;
+	tonality:semitones 6;
+	tonality:steps 3;
+	tonality:cents 600;
+	tonality:interval_class int:ic6;
+	dc:type "chromatic";
+	tonality:enharmonic int:fourth_aug;
+	tonality:inversion int:fourth_aug;
+	.
+
+int:fifth_per a tonality:Interval;
+	rdfs:label "perfect fifth";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic perfect fifth in 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 4;
+	tonality:semitones 7;
+	tonality:steps 3.5;
+	tonality:cents 700;
+	dc:type "diatonic";
+	tonality:interval_class int:ic5;
+	tonality:inversion int:fourth_per;
+	.
+
+int:sixth_min a tonality:Interval;
+	rdfs:label "minor 6th";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic minor sixth in 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 5;
+	tonality:semitones 8;
+	tonality:steps 4;
+	tonality:cents 800;
+	tonality:interval_class int:ic4;
+	dc:type "diatonic";
+	tonality:inversion int:third_maj;
+	.
+
+int:sixth_maj a tonality:Interval;
+	rdfs:label "major 6th";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic major sixth in 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 5;
+	tonality:semitones 9;
+	tonality:steps 4.5;
+	tonality:cents 900;
+	tonality:interval_class int:ic3;
+	dc:type "diatonic";
+	tonality:inversion int:third_min;
+	.
+
+int:seventh_min a tonality:Interval;
+	rdfs:label "minor 7th";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic minor seventh in 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 6;
+	tonality:semitones 10;
+	tonality:steps 5;
+	tonality:cents 1000;
+	tonality:interval_class int:ic2;
+	dc:type "diatonic";
+	tonality:inversion int:second_maj;
+	.
+
+int:seventh_maj a tonality:Interval;
+	rdfs:label "major 7th";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic major seventh in 12 EDO.";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 6;
+	tonality:semitones 11;
+	tonality:steps 5.5;
+	tonality:cents 1100;
+	tonality:interval_class int:ic1;
+	dc:type "diatonic";
+	tonality:inversion int:second_min;
+	.
+
+int:octave a tonality:Interval;
+	rdfs:label "octave";
+	rdfs:comment "Octave.";
+	vs:term_status "unstable";
+	tonality:tuning tuning:twelve_edo;
+	tonality:scale_steps 12;
+	tonality:semitones 12;
+	tonality:steps 6;
+	tonality:cents 1200;
+	tonality:interval_class int:ic0;
+	dc:type "diatonic";
+	.
+
+#Example of open interval
+
+int:ninth_min a tonality:Interval;
+	rdfs:label "minor 9th";
+	vs:term_status "unstable";
+	rdfs:comment "Open interval of a minor second in the next octave (12-EDO)";
+	tonality:tuning tuning:twelve_edo;
+	tonality:close_interval int:second_min;
+	tonality:octaves 1;
+	.
+
+int:tritone a tonality:Interval;
+	rdfs:label "tritone";
+	vs:term_status "unstable";
+	rdfs:comment """
+		Interval composed by 3 semitones in 12 EDO. Main interval of dissonance in Western music and really important in Harmony as it defines a the function of the dominant degree (which should be major with minor seventh).
+	""";
+	tonality:tuning tuning:twelve_edo;	
+	tonality:interval_class int:ic6;
+	tonality:semitones 6;
+	tonality:stemos 3;
+	tonality:cents 600;
+	tonality:strength "dissonant";
+	tonality:enharmonic int:fifth_dis;
+	tonality:enharmonic int:fourth_aug;
+	.
+
+#############Example of intervals in Meantone###############
+
+int:tritone_meantone a tonality:Interval;
+	rdfs:label "tritone meantone";
+	vs:term_status "unstable";
+	rdfs:comment """
+		Tritone in Meantone Intonation measured in one octave. In Meantone temperament it just equivalent to a augmented fourth and not a to a disminished 5th
+	""";
+	tonality:tuning tuning:meantone;	
+	tonality:ratio "7/5";
+	tonality:cents 582.5;
+	tonality:strength "dissonant";
+	.
+
+int:wolf_fifth_meantone a tonality:Interval;
+	rdfs:label "wolf fifth";
+	vs:term_status "unstable";
+	rdfs:comment """
+		Really dissonat interval produced in meantone temperament. The appearance of this interval in the meantone tuning was the reason to avoid it. The Just Intonation system produces a howl of 35.683 cents sharper than a just fifth which makes it really augmented and dissonant.
+	""";
+	tonality:tuning tuning:meantone;	
+	tonality:ratio "32/21";
+	tonality:cents 737.637;
+	tonality:strength "very dissonant";
+	.
+
+
+#################### Scales Individuals ###############
+
+scale:diatonic a tonality:Scale;
+	rdfs:label "Diatonic scale";
+	vs:term_status "unstable";
+	rdfs:comment "Diatonic scale-type";
+	tonality:num_degrees 7;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:interval int:seventh_maj];
+	.
+
+scale:major a tonality:Scale;
+	rdfs:label "Major scale";
+	vs:term_status "unstable";
+	rdfs:comment "Major scale which is the diatonic scale in the Ionian mode";
+	owl:sameAs scale:diatonic;
+	tonality:from_mode mode:ionian;
+	.
+
+scale:minor a tonality:Scale;
+	rdfs:label "Natural Minor scale";
+	vs:term_status "unstable";
+	rdfs:comment """
+		The Natural Minor scale which is the minor relative of the major scale and the Eloian mode of the diatonic scale. It is a very stable scale but it lacks a major seventh
+	""";
+	tonality:num_degrees 7;
+	tonality:from_mode mode:aeolian;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:interval int:seventh_min];
+	.
+
+scale:harmonic_minor a tonality:Scale;
+	rdfs:label "Harmonic Minor scale";
+	vs:term_status "unstable";
+	rdfs:comment """
+		The Harmonic Minor scale alters the seventh degree which is a major seventh and is a very used scale as it provides a dominant major with seventh minor.
+	""";
+	tonality:num_degrees 7;
+	tonality:from_mode mode:eolian;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:interval int:seventh_maj];
+	.
+	
+scale:pentatonic_min a tonality:PentatonicScale;
+	rdfs:label "Pentatonic minor scale";
+	vs:term_status "unstable";
+	rdfs:comment "Pentatonic minor scale.";
+	tonality:num_degrees 5;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:interval int:seventh_min];
+	.
+
+scale:pentatonic_maj a tonality:PentatonicScale;
+	rdfs:label "Pentatonic major scale";
+	rdfs:comment "The Pentatonic major scale.";
+	vs:term_status "unstable";
+	tonality:num_degrees 5;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:interval int:sixth_maj];
+	.
+
+scale:majorA
+	a tonality:Scale;
+	rdfs:label "A major scale";
+	vs:term_status "unstable";
+	rdfs:comment "Major scale in A.";
+	tonality:scale_type scale:major;
+	tonality:tonic note:A;
+	.
+
+###########Modes individuals (only diatonic scale)############
+
+mode:ionian
+	a tonality:Mode;
+	rdfs:label "Ionian mode";
+	vs:term_status "unstable";
+	rdfs:comment "First mode of a diatonic scale and equivalent to a major scale.";
+	tonality:scale scale:diatonic;
+	tonality:on_degree 1;
+	.
+
+mode:dorian
+	a tonality:Mode;
+	rdfs:label "Dorian mode";
+	vs:term_status "unstable";
+	rdfs:comment "Second mode of a diatonic scale.";
+	tonality:scale scale:diatonic;
+	tonality:on_degree 2;
+	.
+
+mode:phrygian
+	a tonality:Mode;
+	rdfs:label "Phrygian mode";
+	vs:term_status "unstable";
+	rdfs:comment "Third mode of a diatonic scale.";
+	tonality:scale scale:diatonic;
+	tonality:on_degree 3;
+	.
+
+mode:lydian
+	a tonality:Mode;
+	rdfs:label "Lydian mode";
+	vs:term_status "unstable";
+	rdfs:comment "Fourth mode of a diatonic scale.";
+	tonality:scale scale:diatonic;
+	tonality:on_degree 4;
+	.
+
+mode:mixolydian
+	a tonality:Mode;
+	rdfs:label "Mixolydian mode";
+	vs:term_status "unstable";
+	rdfs:comment "Fifth mode of a diatonic scale.";
+	tonality:scale scale:diatonic;
+	tonality:on_degree 5;
+	.
+
+mode:aeolian
+	a tonality:Mode;
+	rdfs:label "Aeolian mode";
+	vs:term_status "unstable";
+	rdfs:comment "Sixth mode of a diatonic scale (minor scale).";
+	tonality:scale scale:diatonic;
+	tonality:on_degree 6;
+	.
+
+mode:locrian
+	a tonality:Mode;
+	rdfs:label "Locrian mode";
+	vs:term_status "unstable";
+	rdfs:comment """
+		Seventh mode of a diatonic scale. The main characteristic is the disminished fifth which makes this mode very intestable and used in Jazz for example.
+	""";
+	tonality:scale scale:diatonic;
+	tonality:on_degree 6;
+	.
+
+####################Keys individuals (12 EDO)######################
+
+#C
+
+key:Cmajor
+	a tonality:key;
+	rdfs:label "C major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the C major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:C;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:C;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:D;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:E;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:F;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:G;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:A;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:B;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Cminor
+	a tonality:key;
+	rdfs:label "C minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the C minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:C;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:C;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:D;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Eb;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:F;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:G;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:Ab;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Bb;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#C sharp
+
+key:Csmajor
+	a tonality:key;
+	rdfs:label "C sharp major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the C sharp major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Cs;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:Cs;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:Ds;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Es;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:Fs;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:Gs;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:As;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Bs;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Csminor
+	a tonality:key;
+	rdfs:label "C sharp minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the C sharp minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:Cs;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:Cs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:Ds;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:E;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:Fs;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:G;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:A;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:B;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#D flat
+
+key:Dbmajor
+	a tonality:key;
+	rdfs:label "D flat major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the D  flat major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Db;
+	owl:sameAs key:Csmajor;
+	.
+
+key:Dbminor
+	a tonality:key;
+	rdfs:label "D flat minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the D  flat minor key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Db;
+	owl:sameAs key:Csminor;
+	.
+
+#D
+
+key:Dmajor
+	a tonality:key;
+	rdfs:label "D major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the D major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:D;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:D;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:E;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Fs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:G;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:A;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:B;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Cs;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Dminor
+	a tonality:key;
+	rdfs:label "D minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the D minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:D;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:D;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:E;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:F;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:G;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:A;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:Bb;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:C;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#D Sharp
+
+key:Dsmajor
+	a tonality:key;
+	rdfs:label "D sharp major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the D sharp major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Ds;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:Ds;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:F;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:G;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:Gs;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:As;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:C;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:D;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Dsminor
+	a tonality:key;
+	rdfs:label "D sharp minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the D sharp minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:Ds;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:Ds;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:F;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Fs;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:Gs;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:As;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:B;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Cs;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#E flat
+
+key:Ebmajor
+	a tonality:key;
+	rdfs:label "E flat major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the E flat major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Eb;
+	owl:sameAs key:Dsmajor;
+	.
+
+key:Ebminor
+	a tonality:key;
+	rdfs:label "E flat minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the E flat minor key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Eb;
+	owl:sameAs key:Dsminor;
+	.
+
+#E
+
+key:Emajor
+	a tonality:key;
+	rdfs:label "E major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the E major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:E;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:E;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:Fs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Gs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:A;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:B;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:Cs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Ds;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Eminor
+	a tonality:key;
+	rdfs:label "E minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the E minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:E;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:E;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:Fs;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:G;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:A;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:B;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:C;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:D;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#E SHARP
+
+key:Esmajor
+	a tonality:key;
+	rdfs:label "E sharp major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the E sharp major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Es;
+	owl:sameAs key:Fmajor;
+	.
+
+key:Esminor
+	a tonality:key;
+	rdfs:label "E flat minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the E flat minor key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Eb;
+	owl:sameAs key:Dsminor;
+	.
+
+
+#F
+
+key:Fmajor
+	a tonality:key;
+	rdfs:label "F major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the F major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:F;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:F;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:G;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:A;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:Bb;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:C;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:D;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:E;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Fminor
+	a tonality:key;
+	rdfs:label "F minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the F minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:F;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:F;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:G;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Ab;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:Bb;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:C;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:Db;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Eb;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#F sharp
+
+key:Fsmajor
+	a tonality:key;
+	rdfs:label "F sharp major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the F sharp major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Fs;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:Fs;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:Gs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:As;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:B;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:Cs;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:Ds;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Es;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Fsminor
+	a tonality:key;
+	rdfs:label "F sharp minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the F sharp minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:Fs;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:Fs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:Gs;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:A;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:B;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:Cs;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:D;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:E;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#G flat
+
+key:Gbmajor
+	a tonality:key;
+	rdfs:label "G flat major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the G flat major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Gb;
+	owl:sameAs key:Fsmajor;
+	.
+
+key:Gbminor
+	a tonality:key;
+	rdfs:label "G flat minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the G flat minor key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Gb;
+	owl:sameAs key:Fsminor;
+	.
+
+#G
+
+key:Gmajor
+	a tonality:key;
+	rdfs:label "G major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the G major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:G;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:G;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:A;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:B;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:C;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:D;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:E;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Fs;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Gminor
+	a tonality:key;
+	rdfs:label "G minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the G minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:G;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:G;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:A;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Bb;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:C;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:D;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:Eb;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:F;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#G SHARP
+
+key:Gsmajor
+	a tonality:key;
+	rdfs:label "G sharp major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the G sharp major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Gs;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:Gs;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:As;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:C;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:Db;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:Eb;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:F;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:G;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Gsminor
+	a tonality:key;
+	rdfs:label "G sharp minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the G sharp minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:Gs;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:Gs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:As;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:B;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:Cs;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:Ds;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:E;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Fs;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#A flat
+
+key:Abmajor
+	a tonality:key;
+	rdfs:label "A flat major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the A flat major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Ab;
+	owl:sameAs key:Gsmajor;
+	.
+
+key:Abminor
+	a tonality:key;
+	rdfs:label "A flat minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the A flat minor key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Ab;
+	owl:sameAs key:Gsminor;
+	.
+
+#A
+
+key:Amajor
+	a tonality:key;
+	rdfs:label "A major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the A major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:A;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:A;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:B;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Cs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:D;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:E;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:Fs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Ds;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Aminor
+	a tonality:key;
+	rdfs:label "A minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the A minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:A;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:A;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:B;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:C;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:D;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:E;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:F;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:G;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#A SHARP 
+
+key:Asmajor
+	a tonality:key;
+	rdfs:label "A sharp major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the A sharp major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:As;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:As;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:C;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:D;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:Eb;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:F;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:G;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:A;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Asminor
+	a tonality:key;
+	rdfs:label "A sharp minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the A sharp minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:As;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:As;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:Bs;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Cs;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:Ds;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:Es;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:Fs;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:Gs;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#B flat
+
+key:Bbmajor
+	a tonality:key;
+	rdfs:label "B flat major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the B flat major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Bb;
+	owl:sameAs key:Asmajor;
+	.
+
+key:Bbminor
+	a tonality:key;
+	rdfs:label "B flat minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the B flat minor key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Bb;
+	owl:sameAs key:Asminor;
+	.
+#B
+
+key:Bmajor
+	a tonality:key;
+	rdfs:label "B major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the B major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:B;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:B;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:Cs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:Ds;
+			tonality:owned_chord co:min7;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			tonality:note note:E;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			tonality:note note:Fs;
+			tonality:owned_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:Gs;
+			tonality:owned_chord co:min7;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:As;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:seventh_maj];
+	.
+
+key:Bminor
+	a tonality:key;
+	rdfs:label "B minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the B minor key.";
+	tonality:scale scale:minor;
+	tonality:scale scale:harmonic_minor;
+	tonality:tonic note:B;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:degree_name "Tonic";
+			tonality:note note:B;
+			tonality:owned_chord co:min7;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:degree_name "Supertonic";
+			tonality:note note:Cs;
+			tonality:owned_chord co:hdim7;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:degree_name "Mediant";
+			tonality:note note:D;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:degree_name "Subdominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
+			tonality:note note:E;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:degree_name "Dominant";
+			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
+			tonality:note note:Fs;
+			tonality:owned_chord co:min7;
+			tonality:altered_chord co:seventh;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:degree_name "Submediant";
+			tonality:note note:G;
+			tonality:owned_chord co:maj7;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:degree_name "Subtonic or Leading Tone";
+			tonality:note note:A;
+			tonality:owned_chord co:seventh;
+			tonality:altered_chord co:dim7;
+			tonality:interval int:seventh_min];
+	.
+
+#B SHARP
+
+key:Bsmajor
+	a tonality:key;
+	rdfs:label "B sharp major key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the B sharp major key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Bs;
+	owl:sameAs key:Cmajor;
+	.
+
+key:Bsminor
+	a tonality:key;
+	rdfs:label "B sharp minor key";
+	vs:term_status "testing";
+	rdfs:comment "Description of the B sharp minor key.";
+	tonality:scale scale:major;
+	tonality:tonic note:Bs;
+	owl:sameAs key:Cminor;
+	.
+
+##############################################
+############## TUNING ONTOLOGY ###############
+##############################################
+
+#To move somewhere else
+
+tuning:TuningSystem
+	a owl:Class;
+	rdfs:label "Tuning System";
+	rdfs:comment """
+		Class representing the tuning of the octave
+	""";
+	vs:term_status "unstable";
+	.
+
+tuning:EqualTemperament
+	a owl:Class;
+	rdfs:subClassOf tuning:TuningSystem;
+	rdfs:label "Equal Temperament";
+	rdfs:comment """
+		Temperament adjusts the intervals of the octave diving it in equal steps
+	""";
+	vs:term_status "unstable";
+	.
+
+tuning:WellTemperament
+	a owl:Class;
+	rdfs:subClassOf tuning:TuningSystem;
+	rdfs:label "Well Temperament";
+	rdfs:comment """
+		Temperament adjusts the intervals of the octave so the progression of interval is circular but not through equal intervals
+	""";
+	vs:term_status "unstable";
+	.
+
+tuning:JustIntonation
+	a owl:Class;
+	rdfs:subClassOf tuning:TuningSystem;
+	rdfs:label "Just Intonation";
+	rdfs:comment """
+		Tuning system where intervals are just related by rationale number ratios
+	""";
+	vs:term_status "unstable";
+	.
+
+tuning:Tuning
+	a owl:Class;
+	rdfs:label "Tuning";
+	rdfs:comment """
+		Class representing the specific tuning 
+	""";
+	vs:term_status "unstable";
+	.
+
+tuning:InstrumentTuning
+	a owl:Class;
+	rdfs:label "Instrument Tuning";
+	rdfs:comment """
+		Class representing the specific tuning of an instrument
+	""";
+	vs:term_status "unstable";
+	.
+
+#TUNING ONTOLOGY PROPERTIES
+
+tuning:octave_divisions
+	a owl:FunctionalProperty;
+	rdfs:label "octave divisions";
+	rdfs:comment """
+		Number of divisions within the octave.
+	""";
+	rdfs:domain tuning:TuningSystem;
+	rdfs:range xsd:integer;
+	vs:term_status "unstable";
+	.
+
+tuning:frequency_A
+	a owl:FunctionalProperty;
+	rdfs:label "frequency for A";
+	rdfs:comment """
+		Tuning of an instrument given the exact frequency for A
+	""";
+	rdfs:domain tuning:Tuning;
+	rdfs:range xsd:decimal;
+	vs:term_status "unstable";
+	.	
+
+#TUNING SYSTEM INDIVIDUALS
+
+tuning:twelve_edo
+	a tuning:EqualTemperament;
+	rdfs:label "12 EDO";
+	rdfs:comment """
+		12 equal division of the octave. Kind of TET
+	""";
+	vs:term_status "unstable";
+	tuning:octave_divisons 12;
+	.
+
+tuning:meantone
+	a tuning:JustIntonation;
+	rdfs:label "Meantone Temperament";
+	rdfs:comment """
+		The meantone temperament (just intonation)
+	""";
+	vs:term_status "unstable";
+	.
+
+
+
+
+
+
+
+
+
