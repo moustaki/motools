@@ -117,17 +117,16 @@ where
 
 <p>
 Finally, one using the N3 rule defined at the bottom of <a href="http://code.google.com/p/km-rdf/source/browse/trunk/n3-km/dsp-n3/vamp.n3">this N3
-document</a>, getting some attributes of key events currently cached (computed through previous queries):
+document</a>, getting some attributes of key events on an audio signal' time-line:
 </p>
 <pre>
-select ?start ?end ?key
-where
-{
-_:evt a &lt;http://purl.org/ontology/af/KeyEvent&gt;; 
-	tl:startsAt ?start ; 
-	tl:endsAt ?end; 
-	&lt;http://purl.org/ontology/af/key&gt; ?key
-}
+select ?start ?end ?key where {
+&lt;http://dbtune.org/audio/Den-Nostalia.ogg&gt; mo:encodes ?sig.
+?sig mo:time ?time.
+?time tl:timeline ?tl.
+_:evt a &lt;http://purl.org/ontology/tonality/Tonality&gt;; 
+	event:time [tl:start ?start;tl:end ?end;tl:timeline ?tl] ;
+        &lt;http://purl.org/ontology/tonality/key&gt; ?key}
 </pre>
 
 <h2><a name="code" id="code"></a>4. Code</h2>
