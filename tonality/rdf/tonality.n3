@@ -1022,7 +1022,7 @@ mode:locrian
 #C
 
 key:Cmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "C major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the C major key.";
@@ -1073,7 +1073,7 @@ key:Cmajor
 	.
 
 key:Cminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "C minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the C minor key.";
@@ -1132,7 +1132,7 @@ key:Cminor
 #C sharp
 
 key:Csmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "C sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the C sharp major key.";
@@ -1183,7 +1183,7 @@ key:Csmajor
 	.
 
 key:Csminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "C sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the C sharp minor key.";
@@ -1242,7 +1242,7 @@ key:Csminor
 #D flat
 
 key:Dbmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "D flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D  flat major key.";
@@ -1252,7 +1252,7 @@ key:Dbmajor
 	.
 
 key:Dbminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "D flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D  flat minor key.";
@@ -1264,7 +1264,7 @@ key:Dbminor
 #D
 
 key:Dmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "D major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D major key.";
@@ -1315,7 +1315,7 @@ key:Dmajor
 	.
 
 key:Dminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "D minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D minor key.";
@@ -1374,7 +1374,7 @@ key:Dminor
 #D Sharp
 
 key:Dsmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "D sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D sharp major key.";
@@ -1425,7 +1425,7 @@ key:Dsmajor
 	.
 
 key:Dsminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "D sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D sharp minor key.";
@@ -1484,7 +1484,7 @@ key:Dsminor
 #E flat
 
 key:Ebmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "E flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E flat major key.";
@@ -1494,7 +1494,7 @@ key:Ebmajor
 	.
 
 key:Ebminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "E flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E flat minor key.";
@@ -1506,7 +1506,7 @@ key:Ebminor
 #E
 
 key:Emajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "E major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E major key.";
@@ -1557,7 +1557,7 @@ key:Emajor
 	.
 
 key:Eminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "E minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E minor key.";
@@ -1616,7 +1616,7 @@ key:Eminor
 #E SHARP
 
 key:Esmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "E sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E sharp major key.";
@@ -1626,7 +1626,7 @@ key:Esmajor
 	.
 
 key:Esminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "E flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E flat minor key.";
@@ -1639,7 +1639,7 @@ key:Esminor
 #F
 
 key:Fmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "F major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the F major key.";
@@ -1690,7 +1690,7 @@ key:Fmajor
 	.
 
 key:Fminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "F minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the F minor key.";
@@ -1749,7 +1749,7 @@ key:Fminor
 #F sharp
 
 key:Fsmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "F sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the F sharp major key.";
@@ -1800,7 +1800,7 @@ key:Fsmajor
 	.
 
 key:Fsminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "F sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the F sharp minor key.";
@@ -1859,7 +1859,7 @@ key:Fsminor
 #G flat
 
 key:Gbmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "G flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G flat major key.";
@@ -1869,7 +1869,7 @@ key:Gbmajor
 	.
 
 key:Gbminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "G flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G flat minor key.";
@@ -1881,7 +1881,7 @@ key:Gbminor
 #G
 
 key:Gmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "G major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G major key.";
@@ -1932,7 +1932,7 @@ key:Gmajor
 	.
 
 key:Gminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "G minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G minor key.";
@@ -1991,7 +1991,7 @@ key:Gminor
 #G SHARP
 
 key:Gsmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "G sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G sharp major key.";
@@ -2042,7 +2042,7 @@ key:Gsmajor
 	.
 
 key:Gsminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "G sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G sharp minor key.";
@@ -2101,7 +2101,7 @@ key:Gsminor
 #A flat
 
 key:Abmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "A flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A flat major key.";
@@ -2111,7 +2111,7 @@ key:Abmajor
 	.
 
 key:Abminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "A flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A flat minor key.";
@@ -2123,7 +2123,7 @@ key:Abminor
 #A
 
 key:Amajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "A major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A major key.";
@@ -2174,7 +2174,7 @@ key:Amajor
 	.
 
 key:Aminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "A minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A minor key.";
@@ -2233,7 +2233,7 @@ key:Aminor
 #A SHARP 
 
 key:Asmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "A sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A sharp major key.";
@@ -2284,7 +2284,7 @@ key:Asmajor
 	.
 
 key:Asminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "A sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A sharp minor key.";
@@ -2343,7 +2343,7 @@ key:Asminor
 #B flat
 
 key:Bbmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "B flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B flat major key.";
@@ -2353,7 +2353,7 @@ key:Bbmajor
 	.
 
 key:Bbminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "B flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B flat minor key.";
@@ -2364,7 +2364,7 @@ key:Bbminor
 #B
 
 key:Bmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "B major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B major key.";
@@ -2415,7 +2415,7 @@ key:Bmajor
 	.
 
 key:Bminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "B minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B minor key.";
@@ -2474,7 +2474,7 @@ key:Bminor
 #B SHARP
 
 key:Bsmajor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "B sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B sharp major key.";
@@ -2484,7 +2484,7 @@ key:Bsmajor
 	.
 
 key:Bsminor
-	a tonality:key;
+	a tonality:Key;
 	rdfs:label "B sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B sharp minor key.";
