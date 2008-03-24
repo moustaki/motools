@@ -1,0 +1,2883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:co="http://purl.org/ontology/chord/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:event="http://purl.org/NET/c4dm/event.owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:int="http://purl.org/ontology/tonality/interval/" xmlns:key="http://purl.org/ontology/tonality/key/" xmlns:mo="http://purl.org/ontology/mo/" xmlns:mode="http://purl.org/ontology/tonality/mode/" xmlns:note="http://purl.org/ontology/chord/note/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:scale="http://purl.org/ontology/tonality/scale/" xmlns:tl="http://purl.org/NET/c4dm/timeline.owl#" xmlns:tonality="http://purl.org/ontology/tonality/" xmlns:tuning="http://purl.org/ontology/tuning/" xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://purl.org/ontology/tonality/">
+  <owl:Ontology rdf:about="">
+    <dc:title>The Tonality ontology</dc:title>
+    <rdfs:label>The Tonality ontology</rdfs:label>
+    <dc:description>
+
+		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works. The ontology has two different levels:
+
+		-The most high level describes musical theory structures like keys and scales used as resources for composition in order to create a specific tonality.
+		-A second level describes the tonality in terms of mathematical models considering the tonality as projection onto a geometrical space ordered according to a psychological distribution of the tonal space.
+		
+		This document is a testing stage and any contribution is welcome and can be made through the Music Ontology community at 
+http://wiki.musicontology.com/
+
+	</dc:description>
+    <dc:creator>David Pastor Escuredo</dc:creator>
+    <dc:date>$Date: 2008/03/22 18:05:11 $</dc:date>
+  </owl:Ontology>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
+  <owl:Class rdf:about="Interval">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>Interval</rdfs:label>
+    <rdfs:comment>
+		This class represents the distance between two notes supporting different tuning systems. This is the basic piece of the ontology and have a bunch of optional properties to full specify an interval depending the situation and musical system. Well known intervals can be declared as individuals while its flexibility allows to create an interval as needed.		
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="IntervalClass">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>Interval Class</rdfs:label>
+    <rdfs:comment>
+		This class is an extension thougth for atonal music representation. Interval class represents the distance between two unordered pitch classes where octave, enharmonic and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distance from the minimum to the maximum values possible within the octave. Note: may be an interval subclass?	
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="Pitch">
+    <rdfs:label>Pitch</rdfs:label>
+    <rdfs:comment>
+		Pitch is a frequency represented by a musical note. Pitch generalizes the note transcription but may be dependent of the octave if the tuning is not TET. A C in the 3rd octave may not be equivalent to a C in the 5th octave.	
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="PitchClass">
+    <owl:sameAs rdf:resource="../chord/note"/>
+    <rdfs:label>Pitch Class</rdfs:label>
+    <rdfs:comment>
+		Another generalization where octave, enharmonic and inversion equivalency is again assumed. So pitches are equivalent from octave to octave and wrapped into a pitch class. Note: Should be a pitch subclass?	
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="Tonality">
+    <rdfs:subClassOf rdf:resource="../../NET/c4dm/event.owl#Event"/>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>Tonality</rdfs:label>
+    <rdfs:comment>
+		 Describing the tonality as a tonal region in the signal timeline. Tonality is a Event subclass so the declaration of a Tonality defines a region in the timeline which serves as resource for tonal information which can be:
+			-high-level descriptors like scales or keys
+			-mathematical tonal models which gives a geometrical representation in a tonal space with psychological ordenation instead of acoustic
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="TonalEvent">
+    <rdfs:subClassOf rdf:resource="../../NET/c4dm/event.owl#Event"/>
+    <rdfs:label>Tonal Event</rdfs:label>
+    <rdfs:comment>
+		 Describing a specific tonal event within the tonal region. This is conceived for meaningful and specific tonal events within the tonal region that are not significant to change the tonal region itself. This may be useless anyway...
+	</rdfs:comment>
+    <vs:term_status>deprecated</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="Scale">
+    <rdfs:label>Scale</rdfs:label>
+    <rdfs:comment>
+		Representation of musical scales in two senses:
+			Scale-type: an abstract structure of intervals associated to specific degrees. Eg: diatonic scale
+			Scale: scale-type at a certain pitch. Eg: A major scale.
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="Mode">
+    <rdfs:label>Mode</rdfs:label>
+    <rdfs:comment>Modes represents each of the different cyclic sequences of intervals defined by a scale-type.</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="Degree">
+    <rdfs:label>Degree</rdfs:label>
+    <rdfs:comment>
+		Degrees define the ordenation and then the functionality of the tonal structures. This class is defined by a bunch of properties that specifies all the data related to the tonal structure (keys, scales...) as a resource.
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="Key">
+    <rdfs:label>Key</rdfs:label>
+    <rdfs:comment>
+		Key is defined as the centre of gravity origined by a chord progession and relying on a diatonic scale. Key is intrinsically related to the key signature as the key signature represent the most stable notes in the score. Although tonality can not be reduced to the establishing of a main key and modulations from key to key, keys are still an important resource to decribe tonal music.
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="HarmonicFunction">
+    <rdfs:label>Harmonic Function</rdfs:label>
+    <rdfs:comment>
+		This class is declared to give specific harmonic information for each degree of the key besides what the actual name of the degree suggests. It is thought for future extensions.
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="HeptatonicScale">
+    <rdfs:subClassOf rdf:resource="Scale"/>
+    <rdfs:label>heptatonic scale</rdfs:label>
+    <rdfs:comment>A particular scale subclass that represents scale-types formed by 7 notes.</rdfs:comment>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
+    <vs:term_status>deprecated</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="PentatonicScale">
+    <rdfs:subClassOf rdf:resource="Scale"/>
+    <rdfs:label>pentatonic scale</rdfs:label>
+    <rdfs:comment>A particular scale subclass that represents scale-types formed by 5 notes.</rdfs:comment>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:num_degrees>
+    <vs:term_status>deprecated</vs:term_status>
+  </owl:Class>
+  <owl:FunctionalProperty rdf:about="steps">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>steps</rdfs:label>
+    <rdfs:comment>Measure for intervals in equally temperaments</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+    <rdfs:domain rdf:resource="IntervalClass"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="semitones">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>semitones</rdfs:label>
+    <rdfs:comment>Convenience measure in EDO systems. Treated as distance it doesn't represent the real tonal distance but a frequency distance.</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+    <rdfs:domain rdf:resource="IntervalClass"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:equivalentProperty rdf:resource="../chord/semitone_interval"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="scale_steps">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>scale steps</rdfs:label>
+    <rdfs:comment>
+		Steps of the scale comprised in the interval. This is used to characterized general intervals and relate specific intervals to the a certain degree.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="ratio">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>ratio</rdfs:label>
+    <rdfs:comment>Measure of intervals in Just Intonation system as a ratio of the frequencies (simple rationale numbers).</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="comparable_ratio">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>comparable ratio</rdfs:label>
+    <rdfs:comment>Closest ratio in a Just Intonation tuning for a given equally-tempered interval. (This is actually very optional).</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="tuning">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>in tuning</rdfs:label>
+    <rdfs:comment>
+		The tuning system in which we consider the interval. Through this property we do not restric the interval definition to an equally temperament but to any temperament and division of the octave.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+    <rdfs:range rdf:resource="../tuning/TuningSystem"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="cents">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>cents</rdfs:label>
+    <rdfs:comment>
+		Cents measurement: 1200×log2(f2/f1). This value is used to compare the size of intervals.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="just_cents">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>just cents</rdfs:label>
+    <rdfs:comment>
+		Just cents does not represent the real cents of the interval but the cents value of the comparable ratio for a equal-tempered interval. This is very optional as well in interval definition.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:FunctionalProperty>
+  <owl:SymmetricProperty rdf:about="interval_class">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>of interval class</rdfs:label>
+    <rdfs:comment>The Interval Class (0-6) which the interval belongs to according to the semitones property</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+    <rdfs:range rdf:resource="IntervalClass"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="inversion">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>inversion</rdfs:label>
+    <rdfs:comment>This property links an interval with its inversion. Major second is the inversion of minor seventh.</rdfs:comment>
+    <rdfs:range rdf:resource="Interval"/>
+    <rdfs:domain rdf:resource="Interval"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="enharmonic">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>enharmonic</rdfs:label>
+    <rdfs:comment>
+                Two intervals are enharmonic when they express the same pitch distance but as different general intervals, so they have the same number of semitones but different number of scale steps. Enharmony is a general musical property which states that two different musical elements has the same acoustic value.
+        </rdfs:comment>
+    <rdfs:range rdf:resource="Interval"/>
+    <rdfs:domain rdf:resource="Interval"/>
+  </owl:SymmetricProperty>
+  <owl:ObjectProperty rdf:about="close_interval">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>close interval</rdfs:label>
+    <rdfs:comment>
+               In equal temperaments open intervals (bigger than a octave) are indeed a close interval and n octaves. This property relates an open interval like minor ninth with its close version minor second. 
+        </rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+    <rdfs:range rdf:resource="Interval"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="octaves">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>octaves</rdfs:label>
+    <rdfs:comment>Number of octaves comprised in an open interval.</rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="strength">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>strength</rdfs:label>
+    <rdfs:comment>
+               This property expresses the stability of an interval given its tuning. Although is very difficult to state that a certain interval is stable or not.
+        </rdfs:comment>
+    <rdfs:domain rdf:resource="Interval"/>
+  </owl:FunctionalProperty>
+  <owl:ObjectProperty rdf:about="interval">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>interval</rdfs:label>
+    <rdfs:comment>
+		This property allows to link an interval to some other structure. So far we define intervals for Scale, Degree (which link it to a Scale or a Key) and Chord.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Scale"/>
+    <rdfs:domain rdf:resource="Degree"/>
+    <rdfs:domain rdf:resource="../chord/Chord"/>
+    <rdfs:range rdf:resource="Interval"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="degree_name">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>degree name</rdfs:label>
+    <rdfs:comment>
+		Property that expresses the name of the degree which normally will convey implicitly its harmonic functionality. We declare a specific property for this instead of using any other name property.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Degree"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="degree_position">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>degree position</rdfs:label>
+    <rdfs:comment>Position of the degree within the scale which will determine its functionality.</rdfs:comment>
+    <rdfs:domain rdf:resource="Degree"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="note">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>note</rdfs:label>
+    <rdfs:comment>
+		Note corresponding to the degree if there is a tonic specification. We can express it with a note individual or with a pitch class which can be more accurate indeed. Elements of the class Pitch could also use this property (and the octave one).
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Degree"/>
+    <rdfs:domain rdf:resource="Pitch"/>
+    <rdfs:range rdf:resource="../chord/Note"/>
+    <rdfs:equivalentProperty rdf:resource="pitch_class"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="pitch_class">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>pitch_class</rdfs:label>
+    <rdfs:comment>
+		This property expresses the same information than note except for the difference we consider between note and pitch class. This should be better considered.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Degree"/>
+    <rdfs:domain rdf:resource="Pitch"/>
+    <rdfs:range rdf:resource="../chord/PitchClass"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="pitch">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>pitch</rdfs:label>
+    <rdfs:comment>
+		Associates the degree to a total pitch which is determined by a note in a specific octave. This is only necessary when the tuning system is not equally tempered so pitches can not be easily infered from octave to octave (non-octave equivalency).
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Degree"/>
+    <rdfs:range rdf:resource="Pitch"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="octave">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>octave</rdfs:label>
+    <rdfs:comment>Specify the concrete pitch in a particular octave. Eg: A in the 3rd octave.</rdfs:comment>
+    <rdfs:domain rdf:resource="Pitch"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="frequency">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>frequency</rdfs:label>
+    <rdfs:comment>Express the real frequency of the pitch.</rdfs:comment>
+    <rdfs:domain rdf:resource="Degree"/>
+    <rdfs:domain rdf:resource="Pitch"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:FunctionalProperty>
+  <owl:ObjectProperty rdf:about="owned_chord">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>valid chord</rdfs:label>
+    <rdfs:comment>
+		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then altered ones borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See altered_chord
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Degree"/>
+    <rdfs:range rdf:resource="../chord/Chord"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="altered_chord">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>altered chord</rdfs:label>
+    <rdfs:comment>
+		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability. Some degrees substitute its seventh owned interval by some other seventh interval producing an altered chord and introducing an altered interval (may be chormatic) in the key. An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key).
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Degree"/>
+    <rdfs:range rdf:resource="../chord/Chord"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="harmonic_function">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>harmonic function</rdfs:label>
+    <rdfs:comment>Declared to relate a HarmonicFunction individual or resource (so far it is not used).</rdfs:comment>
+    <rdfs:domain rdf:resource="Degree"/>
+    <rdfs:range rdf:resource="HarmonicFunction"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="degree">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>degree</rdfs:label>
+    <rdfs:comment>Binds a degree resource to a structure.</rdfs:comment>
+    <rdfs:domain rdf:resource="Key"/>
+    <rdfs:domain rdf:resource="Scale"/>
+    <rdfs:range rdf:resource="Degree"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="on_degree">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>on degree</rdfs:label>
+    <rdfs:comment>Defines a scale degree as root of the mode.</rdfs:comment>
+    <rdfs:domain rdf:resource="Mode"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="num_degrees">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Number of steps in a scale.</rdfs:comment>
+    <rdfs:domain rdf:resource="Scale"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:FunctionalProperty>
+  <owl:ObjectProperty rdf:about="scale_type">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>scale type</rdfs:label>
+    <rdfs:comment>
+		Scales comprises scale-types (what is actually a scale) and scales understood as scale at a certain pitch). We can define a scale by its scale_type and a tonic. Eg: A major scale is the major scale (scale_type) with A as tonic.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Scale"/>
+    <rdfs:range rdf:resource="Scale"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="from_mode">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>scale type</rdfs:label>
+    <rdfs:comment>
+		We can consider a scale as one of the mode of other scale. Eg. The minor scale is indeed the sixth mode of a diatonic scale or we can talk about a Dorian scale.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Scale"/>
+    <rdfs:range rdf:resource="Mode"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="scale">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>scale</rdfs:label>
+    <rdfs:comment>Binds a scale to other structures.</rdfs:comment>
+    <rdfs:domain rdf:resource="Mode"/>
+    <rdfs:domain rdf:resource="Tonality"/>
+    <rdfs:domain rdf:resource="Key"/>
+    <rdfs:range rdf:resource="Scale"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="mode">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>mode</rdfs:label>
+    <rdfs:comment>Associates a mode.</rdfs:comment>
+    <rdfs:domain rdf:resource="Tonality"/>
+    <rdfs:range rdf:resource="Mode"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="tonic">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>tonic</rdfs:label>
+    <rdfs:comment>Sets the tonic of a key or scale if the first degree is not bound to a note.</rdfs:comment>
+    <rdfs:domain rdf:resource="Key"/>
+    <rdfs:domain rdf:resource="Scale"/>
+    <rdfs:range rdf:resource="../chord/Note"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="key_colour">
+    <vs:term_status>deprecated</vs:term_status>
+    <rdfs:label>colour</rdfs:label>
+    <rdfs:comment>In well-temperatement keys present pronounced intervalic differences which give them specific sensations as colours.</rdfs:comment>
+    <rdfs:domain rdf:resource="Key"/>
+  </owl:FunctionalProperty>
+  <tonality:IntervalClass rdf:about="interval/ic0">
+    <rdfs:label>Interval class 0</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>The interval class 0 for unison an octave.</rdfs:comment>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</tonality:semitones>
+  </tonality:IntervalClass>
+  <tonality:IntervalClass rdf:about="interval/ic1">
+    <rdfs:label>Interval class 1</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>minor second and major seventh and enharmonics.</rdfs:comment>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:semitones>
+  </tonality:IntervalClass>
+  <tonality:IntervalClass rdf:about="interval/ic2">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>Interval class 2</rdfs:label>
+    <rdfs:comment>major second and minor seventh and enharmonics.</rdfs:comment>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:semitones>
+  </tonality:IntervalClass>
+  <tonality:IntervalClass rdf:about="interval/ic3">
+    <rdfs:label>Interval class 3</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>minor third and major sixth and enharmonics.</rdfs:comment>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:semitones>
+  </tonality:IntervalClass>
+  <tonality:IntervalClass rdf:about="interval/ic4">
+    <rdfs:label>Interval class 4</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>major third and minor sixth and enharmonics.</rdfs:comment>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:semitones>
+  </tonality:IntervalClass>
+  <tonality:IntervalClass rdf:about="interval/ic5">
+    <rdfs:label>Interval class 5</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>perfect fourth and fifth and enharmonics.</rdfs:comment>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:semitones>
+  </tonality:IntervalClass>
+  <tonality:IntervalClass rdf:about="interval/ic6">
+    <rdfs:label>Interval class 6</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>augmented fourth and disminished fifth and enharmonics.</rdfs:comment>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:semitones>
+  </tonality:IntervalClass>
+  <tonality:Interval rdf:about="interval/unison">
+    <rdfs:label>unison</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Unison interval.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</tonality:semitones>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</tonality:scale_steps>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic0"/>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/second_min">
+    <rdfs:label>minor 2nd</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic minor 2nd in 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic1"/>
+    <dc:type>diatonic</dc:type>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/second_maj">
+    <rdfs:label>major 2nd</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic major 2nd in 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic2"/>
+    <dc:type>diatonic</dc:type>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/third_min">
+    <rdfs:label>minor 3rd</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic minor 3rd in 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic3"/>
+    <dc:type>diatonic</dc:type>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/third_maj">
+    <rdfs:label>major 3rd</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic major 3rd in 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic4"/>
+    <dc:type>diatonic</dc:type>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/fourth_per">
+    <rdfs:label>perfect 4th</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic perfect fourth 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic5"/>
+    <dc:type>diatonic</dc:type>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/fourth_aug">
+    <rdfs:label>augmented 4th</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Chromatic augmented fourth 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">600</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic6"/>
+    <dc:type>chromatic</dc:type>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/fifth_dis">
+    <rdfs:label>disminished 5th</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Chromatic disminished 5th 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">600</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic6"/>
+    <dc:type>chromatic</dc:type>
+    <tonality:enharmonic rdf:resource="interval/fourth_aug"/>
+    <tonality:inversion rdf:resource="interval/fourth_aug"/>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/fifth_per">
+    <rdfs:label>perfect fifth</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic perfect fifth in 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">700</tonality:cents>
+    <dc:type>diatonic</dc:type>
+    <tonality:interval_class rdf:resource="interval/ic5"/>
+    <tonality:inversion rdf:resource="interval/fourth_per"/>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/sixth_min">
+    <rdfs:label>minor 6th</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic minor sixth in 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">800</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic4"/>
+    <dc:type>diatonic</dc:type>
+    <tonality:inversion rdf:resource="interval/third_maj"/>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/sixth_maj">
+    <rdfs:label>major 6th</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic major sixth in 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.5</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">900</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic3"/>
+    <dc:type>diatonic</dc:type>
+    <tonality:inversion rdf:resource="interval/third_min"/>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/seventh_min">
+    <rdfs:label>minor 7th</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic minor seventh in 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1000</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic2"/>
+    <dc:type>diatonic</dc:type>
+    <tonality:inversion rdf:resource="interval/second_maj"/>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/seventh_maj">
+    <rdfs:label>major 7th</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic major seventh in 12 EDO.</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.5</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1100</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic1"/>
+    <dc:type>diatonic</dc:type>
+    <tonality:inversion rdf:resource="interval/second_min"/>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/octave">
+    <rdfs:label>octave</rdfs:label>
+    <rdfs:comment>Octave.</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</tonality:scale_steps>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</tonality:semitones>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:steps>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</tonality:cents>
+    <tonality:interval_class rdf:resource="interval/ic0"/>
+    <dc:type>diatonic</dc:type>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/ninth_min">
+    <rdfs:label>minor 9th</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Open interval of a minor second in the next octave (12-EDO)</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:close_interval rdf:resource="interval/second_min"/>
+    <tonality:octaves rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:octaves>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/tritone">
+    <rdfs:label>tritone</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>
+		Interval composed by 3 semitones in 12 EDO. Main interval of dissonance in Western music and really important in Harmony as it defines a the function of the dominant degree (which should be major with minor seventh).
+	</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/twelve_edo"/>
+    <tonality:interval_class rdf:resource="interval/ic6"/>
+    <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:semitones>
+    <tonality:stemos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:stemos>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">600</tonality:cents>
+    <tonality:strength>dissonant</tonality:strength>
+    <tonality:enharmonic rdf:resource="interval/fifth_dis"/>
+    <tonality:enharmonic rdf:resource="interval/fourth_aug"/>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/tritone_meantone">
+    <rdfs:label>tritone meantone</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>
+		Tritone in Meantone Intonation measured in one octave. In Meantone temperament it just equivalent to a augmented fourth and not a to a disminished 5th
+	</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/meantone"/>
+    <tonality:ratio>7/5</tonality:ratio>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">582.5</tonality:cents>
+    <tonality:strength>dissonant</tonality:strength>
+  </tonality:Interval>
+  <tonality:Interval rdf:about="interval/wolf_fifth_meantone">
+    <rdfs:label>wolf fifth</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>
+		Really dissonat interval produced in meantone temperament. The appearance of this interval in the meantone tuning was the reason to avoid it. The Just Intonation system produces a howl of 35.683 cents sharper than a just fifth which makes it really augmented and dissonant.
+	</rdfs:comment>
+    <tonality:tuning rdf:resource="../tuning/meantone"/>
+    <tonality:ratio>32/21</tonality:ratio>
+    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">737.637</tonality:cents>
+    <tonality:strength>very dissonant</tonality:strength>
+  </tonality:Interval>
+  <tonality:Scale rdf:about="scale/diatonic">
+    <rdfs:label>Diatonic scale</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Diatonic scale-type</rdfs:comment>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Scale>
+  <tonality:Scale rdf:about="scale/major">
+    <rdfs:label>Major scale</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Major scale which is the diatonic scale in the Ionian mode</rdfs:comment>
+    <owl:sameAs rdf:resource="scale/diatonic"/>
+    <tonality:from_mode rdf:resource="mode/ionian"/>
+  </tonality:Scale>
+  <tonality:Scale rdf:about="scale/minor">
+    <rdfs:label>Natural Minor scale</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>
+		The Natural Minor scale which is the minor relative of the major scale and the Eloian mode of the diatonic scale. It is a very stable scale but it lacks a major seventh
+	</rdfs:comment>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
+    <tonality:from_mode rdf:resource="mode/aeolian"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Scale>
+  <tonality:Scale rdf:about="scale/harmonic_minor">
+    <rdfs:label>Harmonic Minor scale</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>
+		The Harmonic Minor scale alters the seventh degree which is a major seventh and is a very used scale as it provides a dominant major with seventh minor.
+	</rdfs:comment>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
+    <tonality:from_mode rdf:resource="mode/eolian"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Scale>
+  <tonality:PentatonicScale rdf:about="scale/pentatonic_min">
+    <rdfs:label>Pentatonic minor scale</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Pentatonic minor scale.</rdfs:comment>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:num_degrees>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:PentatonicScale>
+  <tonality:PentatonicScale rdf:about="scale/pentatonic_maj">
+    <rdfs:label>Pentatonic major scale</rdfs:label>
+    <rdfs:comment>The Pentatonic major scale.</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:num_degrees>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:PentatonicScale>
+  <tonality:Scale rdf:about="scale/majorA">
+    <rdfs:label>A major scale</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Major scale in A.</rdfs:comment>
+    <tonality:scale_type rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/A"/>
+  </tonality:Scale>
+  <tonality:Mode rdf:about="mode/ionian">
+    <rdfs:label>Ionian mode</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>First mode of a diatonic scale and equivalent to a major scale.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/diatonic"/>
+    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:on_degree>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="mode/dorian">
+    <rdfs:label>Dorian mode</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Second mode of a diatonic scale.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/diatonic"/>
+    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:on_degree>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="mode/phrygian">
+    <rdfs:label>Phrygian mode</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Third mode of a diatonic scale.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/diatonic"/>
+    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:on_degree>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="mode/lydian">
+    <rdfs:label>Lydian mode</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Fourth mode of a diatonic scale.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/diatonic"/>
+    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:on_degree>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="mode/mixolydian">
+    <rdfs:label>Mixolydian mode</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Fifth mode of a diatonic scale.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/diatonic"/>
+    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:on_degree>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="mode/aeolian">
+    <rdfs:label>Aeolian mode</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>Sixth mode of a diatonic scale (minor scale).</rdfs:comment>
+    <tonality:scale rdf:resource="scale/diatonic"/>
+    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:on_degree>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="mode/locrian">
+    <rdfs:label>Locrian mode</rdfs:label>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:comment>
+		Seventh mode of a diatonic scale. The main characteristic is the disminished fifth which makes this mode very intestable and used in Jazz for example.
+	</rdfs:comment>
+    <tonality:scale rdf:resource="scale/diatonic"/>
+    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:on_degree>
+  </tonality:Mode>
+  <tonality:Key rdf:about="key/Cmajor">
+    <rdfs:label>C major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the C major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/C"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Cminor">
+    <rdfs:label>C minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the C minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/C"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Eb"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ab"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Bb"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Csmajor">
+    <rdfs:label>C sharp major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the C sharp major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Cs"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Es"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/As"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Bs"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Csminor">
+    <rdfs:label>C sharp minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the C sharp minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/Cs"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Dbmajor">
+    <rdfs:label>D flat major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the D  flat major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Db"/>
+    <owl:sameAs rdf:resource="key/Csmajor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Dbminor">
+    <rdfs:label>D flat minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the D  flat minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Db"/>
+    <owl:sameAs rdf:resource="key/Csminor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Dmajor">
+    <rdfs:label>D major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the D major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/D"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Dminor">
+    <rdfs:label>D minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the D minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/D"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Bb"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Dsmajor">
+    <rdfs:label>D sharp major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the D sharp major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Ds"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/As"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Dsminor">
+    <rdfs:label>D sharp minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the D sharp minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/Ds"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/As"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Ebmajor">
+    <rdfs:label>E flat major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the E flat major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Eb"/>
+    <owl:sameAs rdf:resource="key/Dsmajor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Ebminor">
+    <rdfs:label>E flat minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the E flat minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Eb"/>
+    <owl:sameAs rdf:resource="key/Dsminor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Emajor">
+    <rdfs:label>E major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the E major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/E"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Eminor">
+    <rdfs:label>E minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the E minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/E"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Esmajor">
+    <rdfs:label>E sharp major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the E sharp major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Es"/>
+    <owl:sameAs rdf:resource="key/Fmajor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Esminor">
+    <rdfs:label>E flat minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the E flat minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Eb"/>
+    <owl:sameAs rdf:resource="key/Dsminor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Fmajor">
+    <rdfs:label>F major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the F major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/F"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Bb"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Fminor">
+    <rdfs:label>F minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the F minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/F"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ab"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/Bb"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Db"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Eb"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Fsmajor">
+    <rdfs:label>F sharp major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the F sharp major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Fs"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/As"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Es"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Fsminor">
+    <rdfs:label>F sharp minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the F sharp minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/Fs"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Gbmajor">
+    <rdfs:label>G flat major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the G flat major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Gb"/>
+    <owl:sameAs rdf:resource="key/Fsmajor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Gbminor">
+    <rdfs:label>G flat minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the G flat minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Gb"/>
+    <owl:sameAs rdf:resource="key/Fsminor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Gmajor">
+    <rdfs:label>G major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the G major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/G"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Gminor">
+    <rdfs:label>G minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the G minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/G"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Bb"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Eb"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Gsmajor">
+    <rdfs:label>G sharp major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the G sharp major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Gs"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/As"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Db"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Eb"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Gsminor">
+    <rdfs:label>G sharp minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the G sharp minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/Gs"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/As"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Abmajor">
+    <rdfs:label>A flat major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the A flat major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Ab"/>
+    <owl:sameAs rdf:resource="key/Gsmajor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Abminor">
+    <rdfs:label>A flat minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the A flat minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Ab"/>
+    <owl:sameAs rdf:resource="key/Gsminor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Amajor">
+    <rdfs:label>A major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the A major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/A"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Aminor">
+    <rdfs:label>A minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the A minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/A"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Asmajor">
+    <rdfs:label>A sharp major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the A sharp major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/As"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/As"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/C"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Eb"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/F"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Asminor">
+    <rdfs:label>A sharp minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the A sharp minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/As"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/As"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Bs"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/Es"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Bbmajor">
+    <rdfs:label>B flat major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the B flat major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Bb"/>
+    <owl:sameAs rdf:resource="key/Asmajor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Bbminor">
+    <rdfs:label>B flat minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the B flat minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Bb"/>
+    <owl:sameAs rdf:resource="key/Asminor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Bmajor">
+    <rdfs:label>B major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the B major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/B"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Ds"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Gs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/As"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Bminor">
+    <rdfs:label>B minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the B minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/minor"/>
+    <tonality:scale rdf:resource="scale/harmonic_minor"/>
+    <tonality:tonic rdf:resource="../chord/note/B"/>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:degree_name>Tonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/B"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:interval rdf:resource="interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:degree_name>Supertonic</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/Cs"/>
+        <tonality:owned_chord rdf:resource="../chord/hdim7"/>
+        <tonality:interval rdf:resource="interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:degree_name>Mediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/D"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:degree_name>Subdominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the melodic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/E"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:degree_name>Dominant</tonality:degree_name>
+        <rdfs:comment>This degree may appear altered borrowing the chord from the harmonic minor scale.</rdfs:comment>
+        <tonality:note rdf:resource="../chord/note/Fs"/>
+        <tonality:owned_chord rdf:resource="../chord/min7"/>
+        <tonality:altered_chord rdf:resource="../chord/seventh"/>
+        <tonality:interval rdf:resource="interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:degree_name>Submediant</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/G"/>
+        <tonality:owned_chord rdf:resource="../chord/maj7"/>
+        <tonality:interval rdf:resource="interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:degree_name>Subtonic or Leading Tone</tonality:degree_name>
+        <tonality:note rdf:resource="../chord/note/A"/>
+        <tonality:owned_chord rdf:resource="../chord/seventh"/>
+        <tonality:altered_chord rdf:resource="../chord/dim7"/>
+        <tonality:interval rdf:resource="interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Bsmajor">
+    <rdfs:label>B sharp major key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the B sharp major key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Bs"/>
+    <owl:sameAs rdf:resource="key/Cmajor"/>
+  </tonality:Key>
+  <tonality:Key rdf:about="key/Bsminor">
+    <rdfs:label>B sharp minor key</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Description of the B sharp minor key.</rdfs:comment>
+    <tonality:scale rdf:resource="scale/major"/>
+    <tonality:tonic rdf:resource="../chord/note/Bs"/>
+    <owl:sameAs rdf:resource="key/Cminor"/>
+  </tonality:Key>
+  <owl:Class rdf:about="../tuning/TuningSystem">
+    <rdfs:label>Tuning System</rdfs:label>
+    <rdfs:comment>
+		Class representing the tuning of the octave
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="../tuning/EqualTemperament">
+    <rdfs:subClassOf rdf:resource="../tuning/TuningSystem"/>
+    <rdfs:label>Equal Temperament</rdfs:label>
+    <rdfs:comment>
+		Temperament adjusts the intervals of the octave diving it in equal steps
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="../tuning/WellTemperament">
+    <rdfs:subClassOf rdf:resource="../tuning/TuningSystem"/>
+    <rdfs:label>Well Temperament</rdfs:label>
+    <rdfs:comment>
+		Temperament adjusts the intervals of the octave so the progression of interval is circular but not through equal intervals
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="../tuning/JustIntonation">
+    <rdfs:subClassOf rdf:resource="../tuning/TuningSystem"/>
+    <rdfs:label>Just Intonation</rdfs:label>
+    <rdfs:comment>
+		Tuning system where intervals are just related by rationale number ratios
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="../tuning/Tuning">
+    <rdfs:label>Tuning</rdfs:label>
+    <rdfs:comment>
+		Class representing the specific tuning 
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="../tuning/InstrumentTuning">
+    <rdfs:label>Instrument Tuning</rdfs:label>
+    <rdfs:comment>
+		Class representing the specific tuning of an instrument
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:FunctionalProperty rdf:about="../tuning/octave_divisions">
+    <rdfs:label>octave divisions</rdfs:label>
+    <rdfs:comment>
+		Number of divisions within the octave.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="../tuning/TuningSystem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="../tuning/frequency_A">
+    <rdfs:label>frequency for A</rdfs:label>
+    <rdfs:comment>
+		Tuning of an instrument given the exact frequency for A
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="../tuning/Tuning"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:FunctionalProperty>
+  <tuning:EqualTemperament rdf:about="../tuning/twelve_edo">
+    <rdfs:label>12 EDO</rdfs:label>
+    <rdfs:comment>
+		12 equal division of the octave. Kind of TET
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+    <tuning:octave_divisons rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</tuning:octave_divisons>
+  </tuning:EqualTemperament>
+  <tuning:JustIntonation rdf:about="../tuning/meantone">
+    <rdfs:label>Meantone Temperament</rdfs:label>
+    <rdfs:comment>
+		The meantone temperament (just intonation)
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </tuning:JustIntonation>
+</rdf:RDF>

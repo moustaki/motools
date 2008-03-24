@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:event="http://purl.org/NET/c4dm/event.owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:mo="http://purl.org/ontology/mo/" xmlns:note="http://purl.org/ontology/chord/note/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:tl="http://purl.org/NET/c4dm/timeline.owl#" xmlns:tonality="http://purl.org/ontology/tonality/" xmlns:tuning="http://purl.org/ontology/tuning/" xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://purl.org/ontology/tuning/">
+  <owl:Ontology rdf:about="">
+    <dc:title>The Tuning ontology</dc:title>
+    <rdfs:label>The Tuning ontology</rdfs:label>
+    <dc:description>
+		Ontology describing musical instruments tuning, band tunings and musical tuning systems
+	</dc:description>
+    <dc:creator>David Pastor Escuredo</dc:creator>
+    <foaf:maker>David Pastor Escuredo</foaf:maker>
+    <dc:date>$Date: 2008/03/21 13:05:11 $</dc:date>
+  </owl:Ontology>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
+  <owl:Class rdf:about="TuningSystem">
+    <rdfs:label>Tuning System</rdfs:label>
+    <rdfs:comment>
+		Class representing the tuning of the octave
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="EqualTemperament">
+    <rdfs:subClassOf rdf:resource="TuningSystem"/>
+    <rdfs:label>Equal Temperament</rdfs:label>
+    <rdfs:comment>
+		Temperament adjusts the intervals of the octave diving it in equal steps
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="WellTemperament">
+    <rdfs:subClassOf rdf:resource="TuningSystem"/>
+    <rdfs:label>Well Temperament</rdfs:label>
+    <rdfs:comment>
+		Temperament adjusts the intervals of the octave so the progression of interval is circular but not through equal intervals
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="JustIntonation">
+    <rdfs:subClassOf rdf:resource="TuningSystem"/>
+    <rdfs:label>Just Intonation</rdfs:label>
+    <rdfs:comment>
+		Tuning system where intervals are just related by rationale number ratios
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="Tuning">
+    <rdfs:label>Tuning</rdfs:label>
+    <rdfs:comment>
+		Class representing the specific tuning 
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="InstrumentTuning">
+    <rdfs:label>Instrument Tuning</rdfs:label>
+    <rdfs:comment>
+		Class representing the specific tuning of an instrument
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
+  <owl:FunctionalProperty rdf:about="octave_divisions">
+    <rdfs:label>octave divisions</rdfs:label>
+    <rdfs:comment>
+		Number of divisions within the octave.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="TuningSystem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="frequency_A">
+    <rdfs:label>frequency for A</rdfs:label>
+    <rdfs:comment>
+		Tuning of an instrument given the exact frequency for A
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="Tuning"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:FunctionalProperty>
+  <tuning:EqualTemperament rdf:about="twelve_edo">
+    <rdfs:label>12 EDO</rdfs:label>
+    <rdfs:comment>
+		12 equal division of the octave. Kind of TET
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+    <tuning:octave_divisons rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</tuning:octave_divisons>
+  </tuning:EqualTemperament>
+  <tuning:JustIntonation rdf:about="meantone">
+    <rdfs:label>Meantone Temperament</rdfs:label>
+    <rdfs:comment>
+		The meantone temperament (just intonation)
+	</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </tuning:JustIntonation>
+</rdf:RDF>
