@@ -87,6 +87,7 @@ tuning:octave_divisions
 	rdfs:label "octave divisions";
 	rdfs:comment "Number of divisions within the octave.";
 	rdfs:domain tuning:TuningSystem;
+	rdfs:range xsd:integer;
 	vs:term_status "unstable";
 	a owl:DatatypeProperty;
 	.
@@ -96,6 +97,7 @@ tuning:frequency_A
 	rdfs:label "frequency for A";
 	rdfs:comment "tuning of an instrument given the exact frequency for A";
 	rdfs:domain tuning:Tuning;
+	rdfs:range xsd:decimal;
 	vs:term_status "unstable";
 	a owl:DatatypeProperty;
 	.	

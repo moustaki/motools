@@ -49,6 +49,7 @@
     <rdfs:label>octave divisions</rdfs:label>
     <rdfs:comment>Number of divisions within the octave.</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tuning/TuningSystem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <vs:term_status>unstable</vs:term_status>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </owl:FunctionalProperty>
@@ -56,6 +57,7 @@
     <rdfs:label>frequency for A</rdfs:label>
     <rdfs:comment>tuning of an instrument given the exact frequency for A</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tuning/Tuning"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     <vs:term_status>unstable</vs:term_status>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </owl:FunctionalProperty>
