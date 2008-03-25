@@ -15,14 +15,15 @@
 @prefix key: <http://purl.org/ontology/tonality/key/>.
 @prefix tuning: <http://purl.org/ontology/tuning/>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix note: <http://purl.org/ontology/chord/note/>.
-
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
 
 <> 
 	a owl:Ontology;
 	dc:title "The Tonality ontology";
 	rdfs:label "The Tonality ontology";
-	dc:description """
+	rdfs:comment """
 
 		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works. The ontology has two different levels:
 
@@ -34,7 +35,7 @@ http://wiki.musicontology.com/
 
 	""";
 	dc:creator "David Pastor Escuredo";
-        #foaf:maker <http://yo> ;
+        foaf:maker "David Pastor Escuredo";
         dc:date "$Date: 2008/03/22 18:05:11 $";
 	.
 
@@ -184,6 +185,7 @@ tonality:steps a owl:FunctionalProperty;
         rdfs:domain tonality:Interval;
 	rdfs:domain tonality:IntervalClass;
         rdfs:range xsd:decimal;
+	a owl:DatatypeProperty;
         .
 
 tonality:semitones a owl:FunctionalProperty;
@@ -194,6 +196,7 @@ tonality:semitones a owl:FunctionalProperty;
 	rdfs:domain tonality:IntervalClass;
 	rdfs:range xsd:integer;
 	rdfs:equivalentProperty co:semitone_interval;
+	a owl:DatatypeProperty;
         .
 
 tonality:scale_steps a owl:FunctionalProperty;
@@ -204,6 +207,7 @@ tonality:scale_steps a owl:FunctionalProperty;
 	""";
         rdfs:domain tonality:Interval;
 	rdfs:range xsd:integer;
+	a owl:DatatypeProperty;
         .
 
 tonality:ratio a owl:FunctionalProperty;
@@ -211,6 +215,7 @@ tonality:ratio a owl:FunctionalProperty;
 	rdfs:label "ratio";
 	rdfs:comment "Measure of intervals in Just Intonation system as a ratio of the frequencies (simple rationale numbers).";
 	rdfs:domain tonality:Interval;
+	a owl:DatatypeProperty;
 	.
 
 tonality:comparable_ratio a owl:FunctionalProperty;
@@ -218,6 +223,7 @@ tonality:comparable_ratio a owl:FunctionalProperty;
 	rdfs:label "comparable ratio";
 	rdfs:comment "Closest ratio in a Just Intonation tuning for a given equally-tempered interval. (This is actually very optional).";
 	rdfs:domain tonality:Interval;
+	a owl:DatatypeProperty;
 	.	
 
 tonality:tuning a owl:FunctionalProperty;
@@ -228,6 +234,7 @@ tonality:tuning a owl:FunctionalProperty;
 	""";
 	rdfs:domain tonality:Interval;
 	rdfs:range tuning:TuningSystem;
+	a owl:ObjectProperty;
 	.
 
 tonality:cents a owl:FunctionalProperty;
@@ -238,6 +245,7 @@ tonality:cents a owl:FunctionalProperty;
 	""";
 	rdfs:domain tonality:Interval;
 	rdfs:range xsd:decimal;
+	a owl:DatatypeProperty;
 	.
 
 tonality:just_cents a owl:FunctionalProperty;
@@ -248,7 +256,9 @@ tonality:just_cents a owl:FunctionalProperty;
 	""";
 	rdfs:domain tonality:Interval;
 	rdfs:range xsd:decimal;
+	a owl:DatatypeProperty;
 	.
+	
 
 tonality:interval_class a owl:SymmetricProperty;
 	vs:term_status "unstable";
@@ -256,6 +266,7 @@ tonality:interval_class a owl:SymmetricProperty;
 	rdfs:comment "The Interval Class (0-6) which the interval belongs to according to the semitones property";
 	rdfs:domain tonality:Interval;
 	rdfs:range tonality:IntervalClass;
+	a owl:ObjectProperty;
 	.
 
 tonality:inversion a owl:SymmetricProperty;
@@ -264,6 +275,7 @@ tonality:inversion a owl:SymmetricProperty;
         rdfs:comment "This property links an interval with its inversion. Major second is the inversion of minor seventh.";
 	rdfs:range tonality:Interval;
         rdfs:domain tonality:Interval;
+	a owl:ObjectProperty;
         .
 
 tonality:enharmonic a owl:SymmetricProperty;
@@ -274,9 +286,10 @@ tonality:enharmonic a owl:SymmetricProperty;
         """;
 	rdfs:range tonality:Interval;
         rdfs:domain tonality:Interval;
+	a owl:ObjectProperty;
         .
 
-tonality:close_interval a owl:ObjectProperty;
+tonality:close_interval a owl:FunctionalProperty;
         vs:term_status "unstable";
         rdfs:label "close interval";
         rdfs:comment """
@@ -284,6 +297,7 @@ tonality:close_interval a owl:ObjectProperty;
         """;
         rdfs:domain tonality:Interval;
 	rdfs:range tonality:Interval;
+	a owl:ObjectProperty;
         .
 
 tonality:octaves a owl:FunctionalProperty;
@@ -292,6 +306,7 @@ tonality:octaves a owl:FunctionalProperty;
         rdfs:comment "Number of octaves comprised in an open interval.";
         rdfs:domain tonality:Interval;
 	rdfs:range xsd:integer;
+	a owl:DatatypeProperty;
 	.
 
 tonality:strength a owl:FunctionalProperty;
@@ -301,6 +316,7 @@ tonality:strength a owl:FunctionalProperty;
                This property expresses the stability of an interval given its tuning. Although is very difficult to state that a certain interval is stable or not.
         """;
         rdfs:domain tonality:Interval;
+	a owl:DatatypeProperty;
         .
 
 tonality:interval a owl:ObjectProperty;
@@ -327,6 +343,7 @@ tonality:degree_name a owl:FunctionalProperty;
 		Property that expresses the name of the degree which normally will convey implicitly its harmonic functionality. We declare a specific property for this instead of using any other name property.
 	""";
 	rdfs:domain tonality:Degree;
+	a owl:DatatypeProperty;
 	.
 
 tonality:degree_position a owl:FunctionalProperty;
@@ -335,6 +352,7 @@ tonality:degree_position a owl:FunctionalProperty;
 	rdfs:comment "Position of the degree within the scale which will determine its functionality.";
 	rdfs:domain tonality:Degree;
 	rdfs:range xsd:integer;
+	a owl:DatatypeProperty;
 	.
 
 tonality:note a owl:FunctionalProperty;
@@ -346,6 +364,7 @@ tonality:note a owl:FunctionalProperty;
 	rdfs:domain tonality:Degree;
 	rdfs:domain tonality:Pitch;
 	rdfs:range co:Note;
+	a owl:ObjectProperty;
 	rdfs:equivalentProperty tonality:pitch_class;
 	.
 
@@ -355,6 +374,7 @@ tonality:pitch_class a owl:FunctionalProperty;
 	rdfs:comment """
 		This property expresses the same information than note except for the difference we consider between note and pitch class. This should be better considered.
 	""";
+	a owl:ObjectProperty;
 	rdfs:domain tonality:Degree;
 	rdfs:domain tonality:Pitch;
 	rdfs:range co:PitchClass;
@@ -368,6 +388,7 @@ tonality:pitch a owl:FunctionalProperty;
 	""";
 	rdfs:domain tonality:Degree;
 	rdfs:range tonality:Pitch;
+	a owl:ObjectProperty;
 	.
 
 tonality:octave a owl:FunctionalProperty;
@@ -376,6 +397,7 @@ tonality:octave a owl:FunctionalProperty;
 	rdfs:comment "Specify the concrete pitch in a particular octave. Eg: A in the 3rd octave.";
 	rdfs:domain tonality:Pitch;
 	rdfs:range xsd:integer;
+	a owl:DatatypeProperty;
 	.
 
 tonality:frequency a owl:FunctionalProperty;
@@ -385,23 +407,24 @@ tonality:frequency a owl:FunctionalProperty;
 	rdfs:domain tonality:Degree;
 	rdfs:domain tonality:Pitch;
 	rdfs:range  xsd:decimal;
+	a owl:DatatypeProperty;
 	.
 	
 tonality:owned_chord a owl:ObjectProperty;
 	vs:term_status "unstable";
 	rdfs:label "valid chord";
 	rdfs:comment """
-		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then altered ones borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See altered_chord
+		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then altered ones borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See borrowed_chord
 	""";
 	rdfs:domain tonality:Degree;
 	rdfs:range co:Chord;
 	.
 
-tonality:altered_chord a owl:ObjectProperty;
+tonality:borrowed_chord a owl:ObjectProperty;
 	vs:term_status "unstable";
 	rdfs:label "altered chord";
 	rdfs:comment """
-		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability. Some degrees substitute its seventh owned interval by some other seventh interval producing an altered chord and introducing an altered interval (may be chormatic) in the key. An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key).
+		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability like the V degree of the relative minor key. Some degrees substitute its seventh owned interval by some other seventh interval from the parallel key giving a borrowed chord but still diatonic (altered chords came from non diatonic intervals). An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key).
 	""";
 	rdfs:domain tonality:Degree;
 	rdfs:range co:Chord;
@@ -432,6 +455,7 @@ tonality:on_degree a owl:FunctionalProperty;
 	rdfs:comment "Defines a scale degree as root of the mode.";
 	rdfs:domain tonality:Mode;
 	rdfs:range xsd:integer;	
+	a owl:DatatypeProperty;
 	.
 
 tonality:num_degrees a owl:FunctionalProperty;
@@ -439,6 +463,7 @@ tonality:num_degrees a owl:FunctionalProperty;
 	rdfs:comment "Number of steps in a scale.";
 	rdfs:domain tonality:Scale;
 	rdfs:range xsd:integer;
+	a owl:DatatypeProperty;
 	.
 
 tonality:scale_type a owl:ObjectProperty;
@@ -488,15 +513,8 @@ tonality:tonic a owl:FunctionalProperty;
 	rdfs:domain tonality:Key;
 	rdfs:domain tonality:Scale;
 	rdfs:range co:Note;
+	a owl:ObjectProperty;
 	.
-
-tonality:key_colour a owl:FunctionalProperty;
-	vs:term_status "deprecated";
-	rdfs:label "colour";
-	rdfs:comment "In well-temperatement keys present pronounced intervalic differences which give them specific sensations as colours.";
-	rdfs:domain tonality:Key;
-	.
-
 
 ##############
 #Individuals##
@@ -1104,7 +1122,7 @@ key:Cminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:F;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -1112,7 +1130,7 @@ key:Cminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:G;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -1125,7 +1143,7 @@ key:Cminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:Bb;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -1214,7 +1232,7 @@ key:Csminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:Fs;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -1222,7 +1240,7 @@ key:Csminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:G;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -1235,7 +1253,7 @@ key:Csminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:B;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -1346,7 +1364,7 @@ key:Dminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:G;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -1354,7 +1372,7 @@ key:Dminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:A;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -1367,7 +1385,7 @@ key:Dminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:C;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -1456,7 +1474,7 @@ key:Dsminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:Gs;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -1464,7 +1482,7 @@ key:Dsminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:As;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -1477,7 +1495,7 @@ key:Dsminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:Cs;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -1588,7 +1606,7 @@ key:Eminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:A;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -1596,7 +1614,7 @@ key:Eminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:B;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -1609,7 +1627,7 @@ key:Eminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:D;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -1721,7 +1739,7 @@ key:Fminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:Bb;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -1729,7 +1747,7 @@ key:Fminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:C;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -1742,7 +1760,7 @@ key:Fminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:Eb;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -1831,7 +1849,7 @@ key:Fsminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:B;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -1839,7 +1857,7 @@ key:Fsminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:Cs;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -1852,7 +1870,7 @@ key:Fsminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:E;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -1963,7 +1981,7 @@ key:Gminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:C;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -1971,7 +1989,7 @@ key:Gminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:D;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -1984,7 +2002,7 @@ key:Gminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:F;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -2073,7 +2091,7 @@ key:Gsminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:Cs;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -2081,7 +2099,7 @@ key:Gsminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:Ds;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -2094,7 +2112,7 @@ key:Gsminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:Fs;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -2205,7 +2223,7 @@ key:Aminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:D;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -2213,7 +2231,7 @@ key:Aminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:E;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -2226,7 +2244,7 @@ key:Aminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:G;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -2315,7 +2333,7 @@ key:Asminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:Ds;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -2323,7 +2341,7 @@ key:Asminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:Es;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -2336,7 +2354,7 @@ key:Asminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:Gs;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -2446,7 +2464,7 @@ key:Bminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the melodic minor scale.";
 			tonality:note note:E;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fourth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 5;
@@ -2454,7 +2472,7 @@ key:Bminor
 			rdfs:comment "This degree may appear altered borrowing the chord from the harmonic minor scale.";
 			tonality:note note:Fs;
 			tonality:owned_chord co:min7;
-			tonality:altered_chord co:seventh;
+			tonality:borrowed_chord co:seventh;
 			tonality:interval int:fifth_per],
 			[ a tonality:Degree;
 			tonality:degree_position 6;
@@ -2467,7 +2485,7 @@ key:Bminor
 			tonality:degree_name "Subtonic or Leading Tone";
 			tonality:note note:A;
 			tonality:owned_chord co:seventh;
-			tonality:altered_chord co:dim7;
+			tonality:borrowed_chord co:dim7;
 			tonality:interval int:seventh_min];
 	.
 
@@ -2493,119 +2511,4 @@ key:Bsminor
 	owl:sameAs key:Cminor;
 	.
 
-##############################################
-############## TUNING ONTOLOGY ###############
-##############################################
-
-#To move somewhere else
-
-tuning:TuningSystem
-	a owl:Class;
-	rdfs:label "Tuning System";
-	rdfs:comment """
-		Class representing the tuning of the octave
-	""";
-	vs:term_status "unstable";
-	.
-
-tuning:EqualTemperament
-	a owl:Class;
-	rdfs:subClassOf tuning:TuningSystem;
-	rdfs:label "Equal Temperament";
-	rdfs:comment """
-		Temperament adjusts the intervals of the octave diving it in equal steps
-	""";
-	vs:term_status "unstable";
-	.
-
-tuning:WellTemperament
-	a owl:Class;
-	rdfs:subClassOf tuning:TuningSystem;
-	rdfs:label "Well Temperament";
-	rdfs:comment """
-		Temperament adjusts the intervals of the octave so the progression of interval is circular but not through equal intervals
-	""";
-	vs:term_status "unstable";
-	.
-
-tuning:JustIntonation
-	a owl:Class;
-	rdfs:subClassOf tuning:TuningSystem;
-	rdfs:label "Just Intonation";
-	rdfs:comment """
-		Tuning system where intervals are just related by rationale number ratios
-	""";
-	vs:term_status "unstable";
-	.
-
-tuning:Tuning
-	a owl:Class;
-	rdfs:label "Tuning";
-	rdfs:comment """
-		Class representing the specific tuning 
-	""";
-	vs:term_status "unstable";
-	.
-
-tuning:InstrumentTuning
-	a owl:Class;
-	rdfs:label "Instrument Tuning";
-	rdfs:comment """
-		Class representing the specific tuning of an instrument
-	""";
-	vs:term_status "unstable";
-	.
-
-#TUNING ONTOLOGY PROPERTIES
-
-tuning:octave_divisions
-	a owl:FunctionalProperty;
-	rdfs:label "octave divisions";
-	rdfs:comment """
-		Number of divisions within the octave.
-	""";
-	rdfs:domain tuning:TuningSystem;
-	rdfs:range xsd:integer;
-	vs:term_status "unstable";
-	.
-
-tuning:frequency_A
-	a owl:FunctionalProperty;
-	rdfs:label "frequency for A";
-	rdfs:comment """
-		Tuning of an instrument given the exact frequency for A
-	""";
-	rdfs:domain tuning:Tuning;
-	rdfs:range xsd:decimal;
-	vs:term_status "unstable";
-	.	
-
-#TUNING SYSTEM INDIVIDUALS
-
-tuning:twelve_edo
-	a tuning:EqualTemperament;
-	rdfs:label "12 EDO";
-	rdfs:comment """
-		12 equal division of the octave. Kind of TET
-	""";
-	vs:term_status "unstable";
-	tuning:octave_divisons 12;
-	.
-
-tuning:meantone
-	a tuning:JustIntonation;
-	rdfs:label "Meantone Temperament";
-	rdfs:comment """
-		The meantone temperament (just intonation)
-	""";
-	vs:term_status "unstable";
-	.
-
-
-
-
-
-
-
-
-
+#Tonality ontology#
