@@ -2,11 +2,11 @@
 :- use_module(library('semweb/rdf_db')).
 :- use_module(library('semweb/rdf_turtle')).
 
-:- rdf_load('tuning.rdf').
+:- rdf_load('../rdf/tuning.rdf').
 
 author_name('David Pastor Escuredo').
 author_foaf('David Pastor Escuredo').
-page_title('Tuning Otology').
+page_title('Tuning Ontology').
 
 glance(G):-
 	glance_html_desc(G).
