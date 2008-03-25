@@ -282,7 +282,7 @@ http://wiki.musicontology.com/
   </owl:FunctionalProperty>
   <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/pitch_class">
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>pitch_class</rdfs:label>
+    <rdfs:label>pitch class</rdfs:label>
     <rdfs:comment>
 		This property expresses the same information than note except for the difference we consider between note and pitch class. This should be better considered.
 	</rdfs:comment>
@@ -320,7 +320,7 @@ http://wiki.musicontology.com/
   </owl:FunctionalProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/owned_chord">
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>valid chord</rdfs:label>
+    <rdfs:label>owned chord</rdfs:label>
     <rdfs:comment>
 		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then altered ones borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See borrowed_chord
 	</rdfs:comment>
@@ -329,7 +329,7 @@ http://wiki.musicontology.com/
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/borrowed_chord">
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>altered chord</rdfs:label>
+    <rdfs:label>borrowed chord</rdfs:label>
     <rdfs:comment>
 		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability like the V degree of the relative minor key. Some degrees substitute its seventh owned interval by some other seventh interval from the parallel key giving a borrowed chord but still diatonic (altered chords came from non diatonic intervals). An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key).
 	</rdfs:comment>
@@ -361,6 +361,7 @@ http://wiki.musicontology.com/
   </owl:FunctionalProperty>
   <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/num_degrees">
     <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>number of degrees</rdfs:label>
     <rdfs:comment>Number of steps in a scale.</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Scale"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
@@ -377,7 +378,7 @@ http://wiki.musicontology.com/
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/from_mode">
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>scale type</rdfs:label>
+    <rdfs:label>from mode</rdfs:label>
     <rdfs:comment>
 		We can consider a scale as one of the mode of other scale. Eg. The minor scale is indeed the sixth mode of a diatonic scale or we can talk about a Dorian scale.
 	</rdfs:comment>

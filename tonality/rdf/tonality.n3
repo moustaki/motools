@@ -370,7 +370,7 @@ tonality:note a owl:FunctionalProperty;
 
 tonality:pitch_class a owl:FunctionalProperty;
 	vs:term_status "unstable";
-	rdfs:label "pitch_class";
+	rdfs:label "pitch class";
 	rdfs:comment """
 		This property expresses the same information than note except for the difference we consider between note and pitch class. This should be better considered.
 	""";
@@ -412,7 +412,7 @@ tonality:frequency a owl:FunctionalProperty;
 	
 tonality:owned_chord a owl:ObjectProperty;
 	vs:term_status "unstable";
-	rdfs:label "valid chord";
+	rdfs:label "owned chord";
 	rdfs:comment """
 		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then altered ones borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See borrowed_chord
 	""";
@@ -422,7 +422,7 @@ tonality:owned_chord a owl:ObjectProperty;
 
 tonality:borrowed_chord a owl:ObjectProperty;
 	vs:term_status "unstable";
-	rdfs:label "altered chord";
+	rdfs:label "borrowed chord";
 	rdfs:comment """
 		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability like the V degree of the relative minor key. Some degrees substitute its seventh owned interval by some other seventh interval from the parallel key giving a borrowed chord but still diatonic (altered chords came from non diatonic intervals). An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key).
 	""";
@@ -460,6 +460,7 @@ tonality:on_degree a owl:FunctionalProperty;
 
 tonality:num_degrees a owl:FunctionalProperty;
 	vs:term_status "unstable";
+	rdfs:label "number of degrees";
 	rdfs:comment "Number of steps in a scale.";
 	rdfs:domain tonality:Scale;
 	rdfs:range xsd:integer;
@@ -478,7 +479,7 @@ tonality:scale_type a owl:ObjectProperty;
 
 tonality:from_mode a owl:ObjectProperty;
 	vs:term_status "unstable";
-	rdfs:label "scale type";
+	rdfs:label "from mode";
 	rdfs:comment """
 		We can consider a scale as one of the mode of other scale. Eg. The minor scale is indeed the sixth mode of a diatonic scale or we can talk about a Dorian scale.
 	""";
