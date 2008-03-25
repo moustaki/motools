@@ -9,19 +9,22 @@
 @prefix mo: <http://purl.org/ontology/mo/>.
 @prefix tonality: <http://purl.org/ontology/tonality/>.
 @prefix tuning: <http://purl.org/ontology/tuning/>.
-@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix note: <http://purl.org/ontology/chord/note/>.
 
 <> 
 	a owl:Ontology;
 	dc:title "The Tuning ontology";
 	rdfs:label "The Tuning ontology";
-	dc:description """
-		Ontology describing musical instruments tuning, band tunings and musical tuning systems
+	rdfs:comment"""
+		Ontology describing:
+			-musical instruments tuning and band tunings 
+			-musical tuning systems
 	""";
 	dc:creator "David Pastor Escuredo";
-        foaf:maker "David Pastor Escuredo";
-        dc:date "$Date: 2008/03/21 13:05:11 $";
+        foaf:maker "David Pastor Escuredo";		
 	.
 
 # People
@@ -30,97 +33,77 @@
 # Status of terms
 vs:term_status a owl:AnnotationProperty.
 
-#TUNING ONTOLOGY CLASSES
+#################################
+## DRAFT DESCRIPTION ############
+#################################
 
 tuning:TuningSystem
 	a owl:Class;
-	rdfs:label "Tuning System";
-	rdfs:comment """
-		Class representing the tuning of the octave
-	""";
+	rdfs:label "tuning system";
+	rdfs:comment "Class representing the tuning of the octave.";
 	vs:term_status "unstable";
 	.
 
 tuning:EqualTemperament
 	a owl:Class;
 	rdfs:subClassOf tuning:TuningSystem;
-	rdfs:label "Equal Temperament";
-	rdfs:comment """
-		Temperament adjusts the intervals of the octave diving it in equal steps
-	""";
+	rdfs:label "equal temperament";
+	rdfs:comment "Temperament adjusts the intervals of the octave dividing it in equal steps.";
 	vs:term_status "unstable";
 	.
 
 tuning:WellTemperament
 	a owl:Class;
 	rdfs:subClassOf tuning:TuningSystem;
-	rdfs:label "Well Temperament";
-	rdfs:comment """
-		Temperament adjusts the intervals of the octave so the progression of interval is circular but not through equal intervals
-	""";
+	rdfs:label "well temperament";
+	rdfs:comment "Temperament adjusts the intervals of the octave so the progression of interval is circular but not through equal intervals.";
 	vs:term_status "unstable";
 	.
 
 tuning:JustIntonation
 	a owl:Class;
 	rdfs:subClassOf tuning:TuningSystem;
-	rdfs:label "Just Intonation";
-	rdfs:comment """
-		Tuning system where intervals are just related by rationale number ratios
-	""";
+	rdfs:label "just intonation";
+	rdfs:comment "Tuning system where intervals are just related by rationale number ratios.";
 	vs:term_status "unstable";
 	.
 
 tuning:Tuning
 	a owl:Class;
-	rdfs:label "Tuning";
-	rdfs:comment """
-		Class representing the specific tuning 
-	""";
+	rdfs:label "tuning";
+	rdfs:comment "Class representing the specific tuning.";
 	vs:term_status "unstable";
 	.
 
 tuning:InstrumentTuning
 	a owl:Class;
-	rdfs:label "Instrument Tuning";
-	rdfs:comment """
-		Class representing the specific tuning of an instrument
-	""";
+	rdfs:label "instrument tuning";
+	rdfs:comment "Class representing the specific tuning of an instrument.";
 	vs:term_status "unstable";
 	.
-
-#TUNING ONTOLOGY PROPERTIES
 
 tuning:octave_divisions
 	a owl:FunctionalProperty;
 	rdfs:label "octave divisions";
-	rdfs:comment """
-		Number of divisions within the octave.
-	""";
+	rdfs:comment "Number of divisions within the octave.";
 	rdfs:domain tuning:TuningSystem;
-	rdfs:range xsd:integer;
 	vs:term_status "unstable";
+	a owl:DatatypeProperty;
 	.
 
 tuning:frequency_A
 	a owl:FunctionalProperty;
 	rdfs:label "frequency for A";
-	rdfs:comment """
-		Tuning of an instrument given the exact frequency for A
-	""";
+	rdfs:comment "tuning of an instrument given the exact frequency for A";
 	rdfs:domain tuning:Tuning;
-	rdfs:range xsd:decimal;
 	vs:term_status "unstable";
+	a owl:DatatypeProperty;
 	.	
-
-#TUNING SYSTEM INDIVIDUALS
 
 tuning:twelve_edo
 	a tuning:EqualTemperament;
-	rdfs:label "12 EDO";
-	rdfs:comment """
-		12 equal division of the octave. Kind of TET
-	""";
+	rdfs:label "edo 12";
+	rdfs:comment "equal division of the octave in twelve steps.";
 	vs:term_status "unstable";
 	tuning:octave_divisons 12;
 	.
@@ -128,8 +111,7 @@ tuning:twelve_edo
 tuning:meantone
 	a tuning:JustIntonation;
 	rdfs:label "Meantone Temperament";
-	rdfs:comment """
-		The meantone temperament (just intonation)
-	""";
+	rdfs:comment "The meantone temperament (just intonation).";
 	vs:term_status "unstable";
 	.
+
