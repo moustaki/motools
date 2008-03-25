@@ -7,7 +7,97 @@
 <link href="style.css" rel="stylesheet" type="text/css" /><meta name="robots" content="all" />
 <title>Tonality Ontology</title>
 </head>
-<body><div class="glance" id="glance">
+<body><div class="page">
+<h1>The Tonality Ontology</h1>
+<span style="font-size: large; "> 
+<table width="100%" border="0">
+ <tr>
+  <td>
+	<dt><strong>Latest Version :</strong></dt>
+		<dd><tt style="font-size: medium">http://purl.org/ontology/tonality/</tt></dd>
+	<dt><strong>Published :</strong></dt>
+		<dd>25th March 2008 </dd>
+	<dt><strong>Authors :</strong></dt>
+		<dd> <a href="mailto: david.pas@gmail.com">David Pastor Escuredo</a></dd>
+  </td>
+  <td>
+	<a href="http://www.omras2.com"><img src="O2textsmi2.png" alt="OMRAS2 Project Logo" border="0"/></a>
+  </td>
+ </tr>
+</table>
+</span>
+<br>
+
+
+<hr/>
+
+<h2>Table of Contents</h2>
+<ol>
+	<li><a href="#introduction">Introduction</a></li>
+	<ol>
+		<li><a href="#acknowledgements">Acknowledgements</a></li>
+		<li><a href="#namespaces">Namespaces</a></li>
+	</ol>
+	<li><a href="#overview">Overview of Terms</a></li>
+	<li><a href="#terms">Ontology Terms</a></li>
+	<ol>
+		<li><a href="#terms_classes">Classes</a></li>
+		<li><a href="#terms_props">Properties</a></li>
+		<li><a href="#terms_inds">Individuals</a></li>
+	</ol>
+</ol>
+	
+	
+<h2 id="introduction">Introduction</h2>
+
+<p>This document describes the first draft specification of the Tonality Ontology developed in the Centre for Digital Music, Queen Mary, University of London. It has been created as part of the <a href="http://www.omras2.com/">OMRAS2</a> project and is aimed to give high-level and low-level descriptors for tonal content in RDF.</p>
+<p>The ontology is still in the testing stage and it has been only used by <a href="http://dbtune.org/henry/">Henry</a> to publish key features extracted from Vamp Plugins in RDF format providing additional information of the harmonic expansion of the key. The specification is available as part of the <a href="http://www.sourceforge.net/projects/motools/"><tt>motools</tt> project on Sourceforge</a>.</p>
+<p>All feedback is welcome and if you would like to propose changes or additions to the ontology, the best place to do so is on the <a href="http://groups.google.com/group/music-ontology-specification-group">Music Ontology mailing list</a>. If you prefer, please feel free to contact the author of the document.</p>
+
+<h3 id="acknowledgements">Acknowledgements</h3>
+<p>The author would like to thank the Centre for Digital Music and the Music Ontology Community for the necessary support to develop this work. This specification has been implemented in hopes of being a useful tool in the music research community and future discussions and contributions will be included in following versions of the document.</p>
+<p>The design and layout of this ontology document is based on the <a href="http://www.musicontology.com/">Music Ontology</a> and <a href="http://xmlns.com/foaf/spec/">FOAF Vocabulary</a> specification documents.</p>
+
+
+<h3 id="namespaces">Namespaces</h3>
+<p>Several namespaces will be assumed to have been defined for the remainder of this document. These are as follows :</p>
+<table width="75%">
+  <tr style="text-align: left"><th>Prefix</th><th>XML Namespace</th><th>Description</th></tr>
+   <tr>
+    <td width="15%">tonality</td>
+    <td width="30%">http://purl.org/ontology/tonality/</td>
+    <td width="30%"><a href="http://purl.org/ontology/tonality/">The Tonality Ontology</a></td>
+  </tr>	
+  <tr>
+    <td width="15%">chord</td>
+    <td width="30%">http://purl.org/ontology/chord/</td>
+    <td width="30%"><a href="http://purl.org/ontology/chord/">The OMRAS2 Chord Ontology</a></td>
+  </tr>
+  <tr>
+    <td width="15%">timeline</td>
+    <td width="30%">http://purl.org/NET/c4dm/timeline.owl#</td>
+    <td width="30%"><a href="http://purl.org/NET/c4dm/timeline.owl#">The TimeLine ontology</a></td>
+  </tr>  
+  <tr>
+    <td width="15%">event</td>
+    <td width="30%">http://purl.org/NET/c4dm/event.owl#</td>
+    <td width="30%"><a href="http://purl.org/NET/c4dm/event.owl#">The Event ontology</a></td>
+  </tr>  
+  <tr>
+    <td width="15%">mo</td>
+    <td width="30%">http://purl.org/ontology/mo/</td>
+    <td width="30%"><a href="http://www.musicontology.com">The Music Ontology</a></td>
+  </tr>  
+  <tr>
+    <td width="15%">tuning</td>
+    <td width="30%">http://purl.org/ontology/tuning/</td>
+    <td width="30%"><a href="http://purl.org/ontology/tuning/">Tuning systems description</a></td>
+  </tr>			
+</table>
+
+<hr/>
+<h2 id="overview">Overview of Terms</h2>
+<p>An alphabetical index of the ontology terms, divided into classes, properties and individuals. All the terms are hyperlinked to their detailed description for quick reference.</p><div class="glance" id="glance">
 <p>Classes: | <a href="#term_Degree">Degree</a> | <a href="#term_HarmonicFunction">HarmonicFunction</a> | <a href="#term_HeptatonicScale">HeptatonicScale</a> | <a href="#term_Interval">Interval</a> | <a href="#term_IntervalClass">IntervalClass</a> | <a href="#term_Key">Key</a> | <a href="#term_Mode">Mode</a> | <a href="#term_PentatonicScale">PentatonicScale</a> | <a href="#term_Pitch">Pitch</a> | <a href="#term_PitchClass">PitchClass</a> | <a href="#term_Scale">Scale</a> | <a href="#term_TonalEvent">TonalEvent</a> | <a href="#term_Tonality">Tonality</a> |  </p>
 <p>Properties: | <a href="#term_borrowed_chord">borrowed_chord</a> | 
 <a href="#term_cents">cents</a> | 
@@ -120,9 +210,7 @@
 <a href="#term_scale/minor">scale/minor</a> | 
 <a href="#term_scale/pentatonic_maj">scale/pentatonic_maj</a> | 
 <a href="#term_scale/pentatonic_min">scale/pentatonic_min</a> | 
- </p></div>
-<h3>Classes and Properties (full detail)</h3>
-<div class="specterm" id="term_Degree"><h3>Class: to:Degree   -   unstable   -   </h3>
+ </p></div><h2 id="terms">Ontology Terms</h2><h2 id="terms_classes">Classes</h2><div class="specterm" id="term_Degree"><h3>Class: to:Degree   -   unstable   -   </h3>
 <em>Degree</em>
  - 		Degrees define the ordenation and then the functionality of the tonal structures. This class is defined by a bunch of properties that specifies all the data related to the tonal structure (keys, scales...) as a resource.<br/>
 	 
@@ -331,7 +419,7 @@
 </tr>
 </table>
 
-</div><div class="specterm" id="term_borrowed_chord">
+</div><h2 id="terms_props">Properties</h2><div class="specterm" id="term_borrowed_chord">
 <h3>Property: to:borrowed_chord   -   unstable   -   </h3>
 <em>borrowed_chord</em> - 		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability like the V degree of the relative minor key. Some degrees substitute its seventh owned interval by some other seventh interval from the parallel key giving a borrowed chord but still diatonic (altered chords came from non diatonic intervals). An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key).<br/>
 	 
@@ -816,7 +904,7 @@
 
 
 </table>
-<br/></div><div class="specterm" id="term_interval/fifth_dis">
+<br/></div><h2 id="terms_inds">Individuals</h2><div class="specterm" id="term_interval/fifth_dis">
 <h3>Individual: interval/fifth_dis   -   </h3>
 <em>disminished 5th</em> - Chromatic disminished 5th 12 EDO. 
 <br/><table style="th { float: top; }"><tr><th>Class:</th>
@@ -1207,4 +1295,4 @@
 <em>Pentatonic minor scale</em> - Pentatonic minor scale. 
 <br/><table style="th { float: top; }"><tr><th>Class:</th>
 <td><a href="#term_PentatonicScale">to:PentatonicScale</a></td>
-</tr></table></div></body></html>
+</tr></table></div>

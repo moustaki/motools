@@ -1,0 +1,89 @@
+<div class="page">
+<h1>The Tonality Ontology</h1>
+<span style="font-size: large; "> 
+<table width="100%" border="0">
+ <tr>
+  <td>
+	<dt><strong>Latest Version :</strong></dt>
+		<dd><tt style="font-size: medium">http://purl.org/ontology/tonality/</tt></dd>
+	<dt><strong>Published :</strong></dt>
+		<dd>25th March 2008 </dd>
+	<dt><strong>Authors :</strong></dt>
+		<dd> <a href="mailto: david.pas@gmail.com">David Pastor Escuredo</a></dd>
+  </td>
+  <td>
+	<a href="http://www.omras2.com"><img src="O2textsmi2.png" alt="OMRAS2 Project Logo" border="0"/></a>
+  </td>
+ </tr>
+</table>
+</span>
+<br>
+
+
+<hr/>
+
+<h2>Table of Contents</h2>
+<ol>
+	<li><a href="#introduction">Introduction</a></li>
+	<ol>
+		<li><a href="#acknowledgements">Acknowledgements</a></li>
+		<li><a href="#namespaces">Namespaces</a></li>
+	</ol>
+	<li><a href="#overview">Overview of Terms</a></li>
+	<li><a href="#terms">Ontology Terms</a></li>
+	<ol>
+		<li><a href="#terms_classes">Classes</a></li>
+		<li><a href="#terms_props">Properties</a></li>
+		<li><a href="#terms_inds">Individuals</a></li>
+	</ol>
+</ol>
+	
+	
+<h2 id="introduction">Introduction</h2>
+
+<p>This document describes the first draft specification of the Tonality Ontology developed in the Centre for Digital Music, Queen Mary, University of London. It has been created as part of the <a href="http://www.omras2.com/">OMRAS2</a> project and is aimed to give high-level and low-level descriptors for tonal content in RDF.</p>
+<p>The ontology is still in the testing stage and it has been only used by <a href="http://dbtune.org/henry/">Henry</a> to publish key features extracted from Vamp Plugins in RDF format providing additional information of the harmonic expansion of the key. The specification is available as part of the <a href="http://www.sourceforge.net/projects/motools/"><tt>motools</tt> project on Sourceforge</a>.</p>
+<p>All feedback is welcome and if you would like to propose changes or additions to the ontology, the best place to do so is on the <a href="http://groups.google.com/group/music-ontology-specification-group">Music Ontology mailing list</a>. If you prefer, please feel free to contact the author of the document.</p>
+
+<h3 id="acknowledgements">Acknowledgements</h3>
+<p>The author would like to thank the Centre for Digital Music and the Music Ontology Community for the necessary support to develop this work. This specification has been implemented in hopes of being a useful tool in the music research community and future discussions and contributions will be included in following versions of the document.</p>
+<p>The design and layout of this ontology document is based on the <a href="http://www.musicontology.com/">Music Ontology</a> and <a href="http://xmlns.com/foaf/spec/">FOAF Vocabulary</a> specification documents.</p>
+
+
+<h3 id="namespaces">Namespaces</h3>
+<p>Several namespaces will be assumed to have been defined for the remainder of this document. These are as follows :</p>
+<table width="75%">
+  <tr style="text-align: left"><th>Prefix</th><th>XML Namespace</th><th>Description</th></tr>
+   <tr>
+    <td width="15%">tonality</td>
+    <td width="30%">http://purl.org/ontology/tonality/</td>
+    <td width="30%"><a href="http://purl.org/ontology/tonality/">The Tonality Ontology</a></td>
+  </tr>	
+  <tr>
+    <td width="15%">chord</td>
+    <td width="30%">http://purl.org/ontology/chord/</td>
+    <td width="30%"><a href="http://purl.org/ontology/chord/">The OMRAS2 Chord Ontology</a></td>
+  </tr>
+  <tr>
+    <td width="15%">timeline</td>
+    <td width="30%">http://purl.org/NET/c4dm/timeline.owl#</td>
+    <td width="30%"><a href="http://purl.org/NET/c4dm/timeline.owl#">The TimeLine ontology</a></td>
+  </tr>  
+  <tr>
+    <td width="15%">event</td>
+    <td width="30%">http://purl.org/NET/c4dm/event.owl#</td>
+    <td width="30%"><a href="http://purl.org/NET/c4dm/event.owl#">The Event ontology</a></td>
+  </tr>  
+  <tr>
+    <td width="15%">mo</td>
+    <td width="30%">http://purl.org/ontology/mo/</td>
+    <td width="30%"><a href="http://www.musicontology.com">The Music Ontology</a></td>
+  </tr>  
+  <tr>
+    <td width="15%">tuning</td>
+    <td width="30%">http://purl.org/ontology/tuning/</td>
+    <td width="30%"><a href="http://purl.org/ontology/tuning/">Tuning systems description</a></td>
+  </tr>			
+</table>
+
+<hr/>
