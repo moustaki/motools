@@ -782,7 +782,7 @@ int:tritone a tonality:Interval;
 	tonality:tuning tuning:twelve_edo;	
 	tonality:interval_class int:ic6;
 	tonality:semitones 6;
-	tonality:stemos 3;
+	tonality:steps 3;
 	tonality:cents 600;
 	tonality:strength "dissonant";
 	tonality:enharmonic int:fifth_dis;
@@ -804,7 +804,7 @@ int:tritone_meantone a tonality:Interval;
 	.
 
 int:wolf_fifth_meantone a tonality:Interval;
-	rdfs:label "wolf fifth";
+	rdfs:label "wolf fifth meantone";
 	vs:term_status "unstable";
 	rdfs:comment """
 		Really dissonat interval produced in meantone temperament. The appearance of this interval in the meantone tuning was the reason to avoid it. The Just Intonation system produces a howl of 35.683 cents sharper than a just fifth which makes it really augmented and dissonant.

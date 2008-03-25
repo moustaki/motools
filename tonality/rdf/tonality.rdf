@@ -643,7 +643,7 @@ http://wiki.musicontology.com/
     <tonality:tuning rdf:resource="http://purl.org/ontology/tuning/twelve_edo"/>
     <tonality:interval_class rdf:resource="http://purl.org/ontology/tonality/interval/ic6"/>
     <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:semitones>
-    <tonality:stemos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:stemos>
+    <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:steps>
     <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">600</tonality:cents>
     <tonality:strength>dissonant</tonality:strength>
     <tonality:enharmonic rdf:resource="http://purl.org/ontology/tonality/interval/fifth_dis"/>
@@ -661,7 +661,7 @@ http://wiki.musicontology.com/
     <tonality:strength>dissonant</tonality:strength>
   </tonality:Interval>
   <tonality:Interval rdf:about="http://purl.org/ontology/tonality/interval/wolf_fifth_meantone">
-    <rdfs:label>wolf fifth</rdfs:label>
+    <rdfs:label>wolf fifth meantone</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
     <rdfs:comment>
 		Really dissonat interval produced in meantone temperament. The appearance of this interval in the meantone tuning was the reason to avoid it. The Just Intonation system produces a howl of 35.683 cents sharper than a just fifth which makes it really augmented and dissonant.
@@ -2823,4 +2823,3 @@ http://wiki.musicontology.com/
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Cminor"/>
   </tonality:Key>
 </rdf:RDF>
-
