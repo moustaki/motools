@@ -99,6 +99,30 @@ at <a href="http://dbtune.org:2105/sparql/">http://dbtune.org:2105/sparql/</a>. 
 web interface available at <a href="http://dbtune.org:2105/">http://dbtune.org:2105/</a>.
 </p>
 
+<p>
+For example, the end-point can answer the following query:
+<pre>
+SELECT DISTINCT ?an ?lat ?long ?name ?population
+WHERE
+{ ?a 
+     a mo:MusicArtist; 
+     foaf:based_near ?place; 
+     foaf:name ?an;
+     foaf:made ?alb.
+  ?alb tags:taggedWithTag &lt;http://dbtune.org/jamendo/tag/punk&gt;.
+  ?place 
+     geo:name ?name; 
+     geo:population ?population; 
+     wgs:lat ?lat; 
+     wgs:long ?long }
+ORDER BY ?population
+</pre>
+This selects artists within Jamendo who made at least one album
+tagged as `punk' by a Jamendo user, sorted by the number of inhabitants of the places they are based near.
+</p>
+
+
+
 <h2><a name="dump" id="dump"></a>5. RDF dump</h2>
 <p>
 The RDF dump is <a href="http://moustaki.org/resources/jamendo-rdf.tar.gz">available for download</a>. 
