@@ -102,6 +102,8 @@ web interface available at <a href="http://dbtune.org:2105/">http://dbtune.org:2
 <p>
 For example, the end-point can answer the following query:
 <pre>
+PREFIX geo: &lt;http://www.geonames.org/ontology#&gt;
+PREFIX wgs: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;
 SELECT DISTINCT ?an ?lat ?long ?name ?population
 WHERE
 { ?a 
