@@ -5,3 +5,6 @@ Magnatune: 322 000 triples + 233 links
 John Peel: 277 000 triples + 2100 links
 Chord URI: Infinite (description generated from the chord notation used in the identifier)
 
+
+==
+Overall: 13 101 707 000
