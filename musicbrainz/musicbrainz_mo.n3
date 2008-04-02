@@ -5,115 +5,46 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "org.postgresql.Driver";
 	d2rq:jdbcDSN "jdbc:postgresql://localhost/musicbrainz";
 	d2rq:username "moustaki";
 	d2rq:password "moustaki";
-	.
-
-# Table Pending
-map:Pending a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "Pending/@@Pending.SeqId@@";
-	d2rq:class vocab:Pending;
-	.
-map:Pending__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:Pending;
-	d2rq:property rdfs:label;
-	d2rq:pattern "Pending #@@Pending.SeqId@@";
-	.
-map:Pending_SeqId a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:Pending;
-	d2rq:property vocab:Pending_SeqId;
-	d2rq:column "Pending.SeqId";
-	d2rq:datatype xsd:int;
-	.
-map:Pending_TableName a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:Pending;
-	d2rq:property vocab:Pending_TableName;
-	d2rq:column "Pending.TableName";
-	.
-map:Pending_Op a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:Pending;
-	d2rq:property vocab:Pending_Op;
-	d2rq:column "Pending.Op";
-	.
-map:Pending_XID a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:Pending;
-	d2rq:property vocab:Pending_XID;
-	d2rq:column "Pending.XID";
-	d2rq:datatype xsd:int;
-	.
-
-# Table PendingData
-map:PendingData a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "PendingData/@@PendingData.SeqId@@/@@PendingData.IsKey@@";
-	d2rq:class vocab:PendingData;
-	.
-map:PendingData__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:PendingData;
-	d2rq:property rdfs:label;
-	d2rq:pattern "PendingData #@@PendingData.SeqId@@/@@PendingData.IsKey@@";
-	.
-map:PendingData_SeqId a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:PendingData;
-	d2rq:property vocab:PendingData_SeqId;
-	d2rq:column "PendingData.SeqId";
-	d2rq:datatype xsd:int;
-	.
-map:PendingData_IsKey a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:PendingData;
-	d2rq:property vocab:PendingData_IsKey;
-	d2rq:column "PendingData.IsKey";
-	.
-map:PendingData_Data a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:PendingData;
-	d2rq:property vocab:PendingData_Data;
-	d2rq:column "PendingData.Data";
+	d2rq:resultSizeLimit "500";
 	.
 
 # Table album
 map:album a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "album/@@album.id@@";
-	d2rq:class vocab:album;
+	d2rq:uriPattern "record/@@album.gid@@";
+	d2rq:class mo:Record;
 	.
 map:album__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
 	d2rq:property rdfs:label;
-	d2rq:pattern "album #@@album.id@@";
-	.
-map:album_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:album_id;
-	d2rq:column "album.id";
-	d2rq:datatype xsd:int;
+	d2rq:column "album.name";
 	.
 map:album_artist a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:album_artist;
-	d2rq:column "album.artist";
-	d2rq:datatype xsd:int;
+	d2rq:property foaf:maker;
+	d2rq:refersToClassMap map:artist;
+	d2rq:join "album.artist = artist.id";
 	.
 map:album_name a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:album_name;
+	d2rq:property dc:title;
 	d2rq:column "album.name";
 	.
 map:album_gid a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:album_gid;
-	d2rq:column "album.gid";
+	d2rq:property mo:musicbrainz;
+	d2rq:uriPattern "http://musicbrainz.org/artist/@@album.gid@@";
 	.
-map:album_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:album_modpending;
-	d2rq:column "album.modpending";
-	d2rq:datatype xsd:int;
-	.
+# To investigate and fix
 map:album_attributes a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:album_attributes;
@@ -137,94 +68,29 @@ map:album_script a d2rq:PropertyBridge;
 	d2rq:column "album.script";
 	d2rq:datatype xsd:int;
 	.
-map:album_modpending_lang a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:album_modpending_lang;
-	d2rq:column "album.modpending_lang";
-	d2rq:datatype xsd:int;
-	.
 map:album_quality a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:album_quality;
 	d2rq:column "album.quality";
 	d2rq:datatype xsd:short;
 	.
-map:album_modpending_qual a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:album_modpending_qual;
-	d2rq:column "album.modpending_qual";
-	d2rq:datatype xsd:int;
-	.
 
 # Table album_amazon_asin
-map:album_amazon_asin a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "album_amazon_asin/@@album_amazon_asin.album@@";
-	d2rq:class vocab:album_amazon_asin;
-	.
-map:album_amazon_asin__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_amazon_asin;
-	d2rq:property rdfs:label;
-	d2rq:pattern "album_amazon_asin #@@album_amazon_asin.album@@";
-	.
-map:album_amazon_asin_album a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_amazon_asin;
-	d2rq:property vocab:album_amazon_asin_album;
-	d2rq:column "album_amazon_asin.album";
-	d2rq:datatype xsd:int;
-	.
 map:album_amazon_asin_asin a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_amazon_asin;
-	d2rq:property vocab:album_amazon_asin_asin;
-	d2rq:column "album_amazon_asin.asin";
+	d2rq:belongsToClassMap map:album;
+	d2rq:property mo:amazon_asin;
+	d2rq:uriPattern "http://www.amazon.com/exec/obidos/ASIN/@@album_amazon_asin.asin@@";
+	d2rq:join "album_amazon_asin.album = album.id";
+	d2rq:condition "album_amazon_asin.coverarturl != ''";
 	.
 map:album_amazon_asin_coverarturl a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_amazon_asin;
-	d2rq:property vocab:album_amazon_asin_coverarturl;
-	d2rq:column "album_amazon_asin.coverarturl";
-	.
-map:album_amazon_asin_lastupdate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_amazon_asin;
-	d2rq:property vocab:album_amazon_asin_lastupdate;
-	d2rq:column "album_amazon_asin.lastupdate";
-	d2rq:datatype xsd:dateTime;
+	d2rq:belongsToClassMap map:album;
+	d2rq:property mo:image;
+	d2rq:uriColumn "album_amazon_asin.coverarturl";
+	d2rq:join "album_amazon_asin.album = album.id";
+	d2rq:condition "album_amazon_asin.coverarturl != ''";
 	.
 
-# Table album_cdtoc
-map:album_cdtoc a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "album_cdtoc/@@album_cdtoc.id@@";
-	d2rq:class vocab:album_cdtoc;
-	.
-map:album_cdtoc__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_cdtoc;
-	d2rq:property rdfs:label;
-	d2rq:pattern "album_cdtoc #@@album_cdtoc.id@@";
-	.
-map:album_cdtoc_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_cdtoc;
-	d2rq:property vocab:album_cdtoc_id;
-	d2rq:column "album_cdtoc.id";
-	d2rq:datatype xsd:int;
-	.
-map:album_cdtoc_album a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_cdtoc;
-	d2rq:property vocab:album_cdtoc_album;
-	d2rq:column "album_cdtoc.album";
-	d2rq:datatype xsd:int;
-	.
-map:album_cdtoc_cdtoc a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_cdtoc;
-	d2rq:property vocab:album_cdtoc_cdtoc;
-	d2rq:column "album_cdtoc.cdtoc";
-	d2rq:datatype xsd:int;
-	.
-map:album_cdtoc_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album_cdtoc;
-	d2rq:property vocab:album_cdtoc_modpending;
-	d2rq:column "album_cdtoc.modpending";
-	d2rq:datatype xsd:int;
-	.
 
 # Table albumjoin
 map:albumjoin a d2rq:ClassMap;
@@ -749,53 +615,49 @@ map:automod_election_vote_votetime a d2rq:PropertyBridge;
 	.
 
 # Table cdtoc
-map:cdtoc a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "cdtoc/@@cdtoc.id@@";
-	d2rq:class vocab:cdtoc;
-	.
-map:cdtoc__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:cdtoc;
-	d2rq:property rdfs:label;
-	d2rq:pattern "cdtoc #@@cdtoc.id@@";
-	.
-map:cdtoc_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:cdtoc;
-	d2rq:property vocab:cdtoc_id;
-	d2rq:column "cdtoc.id";
-	d2rq:datatype xsd:int;
-	.
 map:cdtoc_discid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:cdtoc;
+	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:cdtoc_discid;
 	d2rq:column "cdtoc.discid";
+	d2rq:join "album_cdtoc.album = album.id";
+	d2rq:join "album_cdtoc.id = cdtoc.id";
 	.
 map:cdtoc_freedbid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:cdtoc;
+	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:cdtoc_freedbid;
 	d2rq:column "cdtoc.freedbid";
+	d2rq:join "album_cdtoc.album = album.id";
+	d2rq:join "album_cdtoc.id = cdtoc.id";
 	.
 map:cdtoc_trackcount a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:cdtoc;
+	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:cdtoc_trackcount;
 	d2rq:column "cdtoc.trackcount";
 	d2rq:datatype xsd:int;
+	d2rq:join "album_cdtoc.album = album.id";
+	d2rq:join "album_cdtoc.id = cdtoc.id";
 	.
 map:cdtoc_leadoutoffset a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:cdtoc;
+	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:cdtoc_leadoutoffset;
 	d2rq:column "cdtoc.leadoutoffset";
 	d2rq:datatype xsd:int;
+	d2rq:join "album_cdtoc.album = album.id";
+	d2rq:join "album_cdtoc.id = cdtoc.id";
 	.
 map:cdtoc_trackoffset a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:cdtoc;
+	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:cdtoc_trackoffset;
 	d2rq:column "cdtoc.trackoffset";
+	d2rq:join "album_cdtoc.album = album.id";
+	d2rq:join "album_cdtoc.id = cdtoc.id";
 	.
 map:cdtoc_degraded a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:cdtoc;
+	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:cdtoc_degraded;
 	d2rq:column "cdtoc.degraded";
+	d2rq:join "album_cdtoc.album = album.id";
+	d2rq:join "album_cdtoc.id = cdtoc.id";
 	.
 
 # Table clientversion
