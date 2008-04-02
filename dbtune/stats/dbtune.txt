@@ -1,0 +1,7 @@
+MySpace: 250 million people * 50 triples = 12.5 billion triples
+AudioScrobbler: 1.5 million users (only Europe?) * 400 triples = 600 million
+Jamendo: 1.1 million triples + 5000 links
+Magnatune: 322 000 triples + 233 links
+John Peel: 277 000 triples + 2100 links
+Chord URI: Infinite (description generated from the chord notation used in the identifier)
+
