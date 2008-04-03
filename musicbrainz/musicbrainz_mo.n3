@@ -5,6 +5,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
 @prefix mo: <http://purl.org/ontology/mo/>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
@@ -20,8 +21,8 @@ map:database a d2rq:Database;
 # Table album
 map:album a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "album/@@album.gid@@";
-	d2rq:class mo:Signal;
+	d2rq:uriPattern "record/@@album.gid@@";
+	d2rq:class mo:Record;
 	.
 map:album__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
@@ -76,8 +77,8 @@ map:album_quality a d2rq:PropertyBridge;
 	.
 map:album_cdtoc a d2rq:PropertyBridge;
         d2rq:belongsToClassMap map:album;
-        d2rq:property mo:published_as;
-        d2rq:uriPattern "record/@@album_cdtoc.cdtoc@@";
+        d2rq:property vocab:toc;
+        d2rq:uriPattern "toc/@@album_cdtoc.cdtoc@@";
         d2rq:join "album_cdtoc.album = album.id";
         .
 
@@ -255,60 +256,70 @@ map:annotation_modpending a d2rq:PropertyBridge;
 # Table artist
 map:artist a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "artist/@@artist.id@@";
-	d2rq:class vocab:artist;
+	d2rq:uriPattern "artist/@@artist.gid@@";
+	d2rq:class mo:MusicArtist;
 	.
 map:artist__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
 	d2rq:property rdfs:label;
-	d2rq:pattern "artist #@@artist.id@@";
-	.
-map:artist_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_id;
-	d2rq:column "artist.id";
-	d2rq:datatype xsd:int;
+	d2rq:column "artist.name";
 	.
 map:artist_name a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_name;
+	d2rq:property foaf:name;
 	d2rq:column "artist.name";
 	.
 map:artist_gid a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_gid;
-	d2rq:column "artist.gid";
-	.
-map:artist_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_modpending;
-	d2rq:column "artist.modpending";
-	d2rq:datatype xsd:int;
+	d2rq:property mo:musicbrainz;
+	d2rq:uriPattern "http://musicbrainz.org/artist/@@artist.gid@@";
 	.
 map:artist_sortname a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_sortname;
+	d2rq:property vocab:sortname;
 	d2rq:column "artist.sortname";
 	.
 map:artist_page a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_page;
+	d2rq:property foaf:homepage;
 	d2rq:column "artist.page";
 	d2rq:datatype xsd:int;
 	.
 map:artist_resolution a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_resolution;
+	d2rq:property dc:description;
 	d2rq:column "artist.resolution";
 	.
-map:artist_begindate a d2rq:PropertyBridge;
+map:artist_birth a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_begindate;
+	d2rq:property bio:event;
+	d2rq:uriPattern "artist/@@artist.gid@@/birth";
+	d2rq:condition "artist.begindate!=''";
+	.
+map:artist_death a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property bio:event;
+        d2rq:uriPattern "artist/@@artist.gid@@/death";
+	d2rq:condition "artist.enddate!=''";
+        .
+map:birth a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+        d2rq:uriPattern "artist/@@artist.gid@@/birth";
+        d2rq:class bio:Birth;
+        .
+map:artist_begindate a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:birth;
+	d2rq:property bio:date;
 	d2rq:column "artist.begindate";
 	.
+map:death a d2rq:ClassMap;
+        d2rq:dataStorage map:database;
+        d2rq:uriPattern "artist/@@artist.gid@@/death";
+        d2rq:class bio:Death;
+        .
 map:artist_enddate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_enddate;
+	d2rq:belongsToClassMap map:death;
+	d2rq:property bio:date;
 	d2rq:column "artist.enddate";
 	.
 map:artist_type a d2rq:PropertyBridge;
@@ -322,12 +333,6 @@ map:artist_quality a d2rq:PropertyBridge;
 	d2rq:property vocab:artist_quality;
 	d2rq:column "artist.quality";
 	d2rq:datatype xsd:short;
-	.
-map:artist_modpending_qual a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artist;
-	d2rq:property vocab:artist_modpending_qual;
-	d2rq:column "artist.modpending_qual";
-	d2rq:datatype xsd:int;
 	.
 
 # Table artist_relation
@@ -590,7 +595,7 @@ map:automod_election_vote_votetime a d2rq:PropertyBridge;
 # Table cdtoc
 map:cdtoc a d2rq:ClassMap;
         d2rq:dataStorage map:database;
-        d2rq:uriPattern "record/@@cdtoc.id@@";
+        d2rq:uriPattern "toc/@@cdtoc.id@@";
         d2rq:class mo:Record;
         .
 map:cdtoc_discid a d2rq:PropertyBridge;
@@ -4053,58 +4058,46 @@ map:tag_refcount a d2rq:PropertyBridge;
 map:track a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
 	d2rq:uriPattern "track/@@track.gid@@";
-	d2rq:class vocab:track;
+	d2rq:class mo:Track;
 	.
 map:track_sequence a d2rq:PropertyBridge;
         d2rq:belongsToClassMap map:track;
         d2rq:property mo:track_number;
         d2rq:column "albumjoin.sequence";
         d2rq:datatype xsd:int;
-        d2rq:join "albumjoin.track = track.id";
+	d2rq:join "albumjoin.track = track.id";
         .
 map:track__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:track;
 	d2rq:property rdfs:label;
-	d2rq:pattern "track #@@track.id@@";
+	d2rq:column "track.name";
 	.
-map:track_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:track;
-	d2rq:property vocab:track_id;
-	d2rq:column "track.id";
-	d2rq:datatype xsd:int;
-	.
+map:track__label a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:track;
+        d2rq:property dc:title;
+        d2rq:column "track.name";
+        .
 map:track_artist a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:track;
-	d2rq:property vocab:track_artist;
-	d2rq:column "track.artist";
-	d2rq:datatype xsd:int;
-	.
-map:track_name a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:track;
-	d2rq:property vocab:track_name;
-	d2rq:column "track.name";
+	d2rq:property foaf:maker;
+	d2rq:uriPattern "artist/@@artist.gid@@";
+	d2rq:join "artist.id = track.artist";
 	.
 map:track_gid a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:track;
-	d2rq:property vocab:track_gid;
-	d2rq:column "track.gid";
+	d2rq:property mo:musicbrainz;
+	d2rq:uriPattern "http://musicbrainz.org/track/@@track.gid@@";
 	.
 map:track_length a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:track;
-	d2rq:property vocab:track_length;
+	d2rq:property mo:length;
 	d2rq:column "track.length";
 	d2rq:datatype xsd:int;
 	.
 map:track_year a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:track;
-	d2rq:property vocab:track_year;
+	d2rq:property dc:date;
 	d2rq:column "track.year";
-	d2rq:datatype xsd:int;
-	.
-map:track_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:track;
-	d2rq:property vocab:track_modpending;
-	d2rq:column "track.modpending";
 	d2rq:datatype xsd:int;
 	.
 
