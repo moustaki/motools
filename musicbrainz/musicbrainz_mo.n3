@@ -305,194 +305,11 @@ map:artist_tag_count a d2rq:PropertyBridge;
 	.
 
 # Table artistalias
-map:artistalias a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "artistalias/@@artistalias.id@@";
-	d2rq:class vocab:artistalias;
-	.
-map:artistalias__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistalias;
-	d2rq:property rdfs:label;
-	d2rq:pattern "artistalias #@@artistalias.id@@";
-	.
-map:artistalias_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistalias;
-	d2rq:property vocab:artistalias_id;
-	d2rq:column "artistalias.id";
-	d2rq:datatype xsd:int;
-	.
-map:artistalias_ref a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistalias;
-	d2rq:property vocab:artistalias_ref;
-	d2rq:column "artistalias.ref";
-	d2rq:datatype xsd:int;
-	.
 map:artistalias_name a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistalias;
-	d2rq:property vocab:artistalias_name;
+	d2rq:belongsToClassMap map:artist;
+	d2rq:property vocab:alias;
 	d2rq:column "artistalias.name";
-	.
-map:artistalias_timesused a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistalias;
-	d2rq:property vocab:artistalias_timesused;
-	d2rq:column "artistalias.timesused";
-	d2rq:datatype xsd:int;
-	.
-map:artistalias_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistalias;
-	d2rq:property vocab:artistalias_modpending;
-	d2rq:column "artistalias.modpending";
-	d2rq:datatype xsd:int;
-	.
-map:artistalias_lastused a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistalias;
-	d2rq:property vocab:artistalias_lastused;
-	d2rq:column "artistalias.lastused";
-	d2rq:datatype xsd:dateTime;
-	.
-
-# Table artistwords
-map:artistwords a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "artistwords/@@artistwords.wordid@@/@@artistwords.artistid@@";
-	d2rq:class vocab:artistwords;
-	.
-map:artistwords__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistwords;
-	d2rq:property rdfs:label;
-	d2rq:pattern "artistwords #@@artistwords.wordid@@/@@artistwords.artistid@@";
-	.
-map:artistwords_wordid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistwords;
-	d2rq:property vocab:artistwords_wordid;
-	d2rq:column "artistwords.wordid";
-	d2rq:datatype xsd:int;
-	.
-map:artistwords_artistid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artistwords;
-	d2rq:property vocab:artistwords_artistid;
-	d2rq:column "artistwords.artistid";
-	d2rq:datatype xsd:int;
-	.
-
-# Table automod_election
-map:automod_election a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "automod_election/@@automod_election.id@@";
-	d2rq:class vocab:automod_election;
-	.
-map:automod_election__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property rdfs:label;
-	d2rq:pattern "automod_election #@@automod_election.id@@";
-	.
-map:automod_election_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_id;
-	d2rq:column "automod_election.id";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_candidate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_candidate;
-	d2rq:column "automod_election.candidate";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_proposer a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_proposer;
-	d2rq:column "automod_election.proposer";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_seconder_1 a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_seconder_1;
-	d2rq:column "automod_election.seconder_1";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_seconder_2 a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_seconder_2;
-	d2rq:column "automod_election.seconder_2";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_status a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_status;
-	d2rq:column "automod_election.status";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_yesvotes a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_yesvotes;
-	d2rq:column "automod_election.yesvotes";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_novotes a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_novotes;
-	d2rq:column "automod_election.novotes";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_proposetime a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_proposetime;
-	d2rq:column "automod_election.proposetime";
-	d2rq:datatype xsd:dateTime;
-	.
-map:automod_election_opentime a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_opentime;
-	d2rq:column "automod_election.opentime";
-	d2rq:datatype xsd:dateTime;
-	.
-map:automod_election_closetime a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election;
-	d2rq:property vocab:automod_election_closetime;
-	d2rq:column "automod_election.closetime";
-	d2rq:datatype xsd:dateTime;
-	.
-
-# Table automod_election_vote
-map:automod_election_vote a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "automod_election_vote/@@automod_election_vote.id@@";
-	d2rq:class vocab:automod_election_vote;
-	.
-map:automod_election_vote__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election_vote;
-	d2rq:property rdfs:label;
-	d2rq:pattern "automod_election_vote #@@automod_election_vote.id@@";
-	.
-map:automod_election_vote_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election_vote;
-	d2rq:property vocab:automod_election_vote_id;
-	d2rq:column "automod_election_vote.id";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_vote_automod_election a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election_vote;
-	d2rq:property vocab:automod_election_vote_automod_election;
-	d2rq:column "automod_election_vote.automod_election";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_vote_voter a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election_vote;
-	d2rq:property vocab:automod_election_vote_voter;
-	d2rq:column "automod_election_vote.voter";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_vote_vote a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election_vote;
-	d2rq:property vocab:automod_election_vote_vote;
-	d2rq:column "automod_election_vote.vote";
-	d2rq:datatype xsd:int;
-	.
-map:automod_election_vote_votetime a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:automod_election_vote;
-	d2rq:property vocab:automod_election_vote_votetime;
-	d2rq:column "automod_election_vote.votetime";
-	d2rq:datatype xsd:dateTime;
+	d2rq:join "artistalias.ref = artist.id";
 	.
 
 # Table cdtoc
@@ -534,45 +351,17 @@ map:cdtoc_degraded a d2rq:PropertyBridge;
 	d2rq:column "cdtoc.degraded";
 	.
 
-# Table clientversion
-map:clientversion a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "clientversion/@@clientversion.id@@";
-	d2rq:class vocab:clientversion;
-	.
-map:clientversion__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:clientversion;
-	d2rq:property rdfs:label;
-	d2rq:pattern "clientversion #@@clientversion.id@@";
-	.
-map:clientversion_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:clientversion;
-	d2rq:property vocab:clientversion_id;
-	d2rq:column "clientversion.id";
-	d2rq:datatype xsd:int;
-	.
-map:clientversion_version a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:clientversion;
-	d2rq:property vocab:clientversion_version;
-	d2rq:column "clientversion.version";
-	.
 
 # Table country
 map:country a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "country/@@country.id@@";
+	d2rq:uriPattern "country/@@country.isocode@@";
 	d2rq:class vocab:country;
 	.
 map:country__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:country;
 	d2rq:property rdfs:label;
-	d2rq:pattern "country #@@country.id@@";
-	.
-map:country_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:country;
-	d2rq:property vocab:country_id;
-	d2rq:column "country.id";
-	d2rq:datatype xsd:int;
+	d2rq:column "country.name";
 	.
 map:country_isocode a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:country;
@@ -581,144 +370,15 @@ map:country_isocode a d2rq:PropertyBridge;
 	.
 map:country_name a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:country;
-	d2rq:property vocab:country_name;
+	d2rq:property dc:title;
 	d2rq:column "country.name";
 	.
-
-# Table currentstat
-map:currentstat a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "currentstat/@@currentstat.id@@";
-	d2rq:class vocab:currentstat;
-	.
-map:currentstat__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:currentstat;
-	d2rq:property rdfs:label;
-	d2rq:pattern "currentstat #@@currentstat.id@@";
-	.
-map:currentstat_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:currentstat;
-	d2rq:property vocab:currentstat_id;
-	d2rq:column "currentstat.id";
-	d2rq:datatype xsd:int;
-	.
-map:currentstat_name a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:currentstat;
-	d2rq:property vocab:currentstat_name;
-	d2rq:column "currentstat.name";
-	.
-map:currentstat_value a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:currentstat;
-	d2rq:property vocab:currentstat_value;
-	d2rq:column "currentstat.value";
-	d2rq:datatype xsd:int;
-	.
-map:currentstat_lastupdated a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:currentstat;
-	d2rq:property vocab:currentstat_lastupdated;
-	d2rq:column "currentstat.lastupdated";
-	d2rq:datatype xsd:dateTime;
+map:country_dbpedia a d2rq:PropertyBridge; # FIXME
+	d2rq:belongsToClassMap map:country;
+	d2rq:property owl:sameAs;
+	d2rq:uriPattern "http://dbpedia.org/resource/@@country.name@@";
 	.
 
-# Table editor_subscribe_editor
-map:editor_subscribe_editor a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "editor_subscribe_editor/@@editor_subscribe_editor.id@@";
-	d2rq:class vocab:editor_subscribe_editor;
-	.
-map:editor_subscribe_editor__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:editor_subscribe_editor;
-	d2rq:property rdfs:label;
-	d2rq:pattern "editor_subscribe_editor #@@editor_subscribe_editor.id@@";
-	.
-map:editor_subscribe_editor_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:editor_subscribe_editor;
-	d2rq:property vocab:editor_subscribe_editor_id;
-	d2rq:column "editor_subscribe_editor.id";
-	d2rq:datatype xsd:int;
-	.
-map:editor_subscribe_editor_editor a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:editor_subscribe_editor;
-	d2rq:property vocab:editor_subscribe_editor_editor;
-	d2rq:column "editor_subscribe_editor.editor";
-	d2rq:datatype xsd:int;
-	.
-map:editor_subscribe_editor_subscribededitor a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:editor_subscribe_editor;
-	d2rq:property vocab:editor_subscribe_editor_subscribededitor;
-	d2rq:column "editor_subscribe_editor.subscribededitor";
-	d2rq:datatype xsd:int;
-	.
-map:editor_subscribe_editor_lasteditsent a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:editor_subscribe_editor;
-	d2rq:property vocab:editor_subscribe_editor_lasteditsent;
-	d2rq:column "editor_subscribe_editor.lasteditsent";
-	d2rq:datatype xsd:int;
-	.
-
-# Table gid_redirect
-map:gid_redirect a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "gid_redirect/@@gid_redirect.gid|urlify@@";
-	d2rq:class vocab:gid_redirect;
-	.
-map:gid_redirect__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:gid_redirect;
-	d2rq:property rdfs:label;
-	d2rq:pattern "gid_redirect #@@gid_redirect.gid@@";
-	.
-map:gid_redirect_gid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:gid_redirect;
-	d2rq:property vocab:gid_redirect_gid;
-	d2rq:column "gid_redirect.gid";
-	.
-map:gid_redirect_newid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:gid_redirect;
-	d2rq:property vocab:gid_redirect_newid;
-	d2rq:column "gid_redirect.newid";
-	d2rq:datatype xsd:int;
-	.
-map:gid_redirect_tbl a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:gid_redirect;
-	d2rq:property vocab:gid_redirect_tbl;
-	d2rq:column "gid_redirect.tbl";
-	d2rq:datatype xsd:short;
-	.
-
-# Table historicalstat
-map:historicalstat a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "historicalstat/@@historicalstat.id@@";
-	d2rq:class vocab:historicalstat;
-	.
-map:historicalstat__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:historicalstat;
-	d2rq:property rdfs:label;
-	d2rq:pattern "historicalstat #@@historicalstat.id@@";
-	.
-map:historicalstat_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:historicalstat;
-	d2rq:property vocab:historicalstat_id;
-	d2rq:column "historicalstat.id";
-	d2rq:datatype xsd:int;
-	.
-map:historicalstat_name a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:historicalstat;
-	d2rq:property vocab:historicalstat_name;
-	d2rq:column "historicalstat.name";
-	.
-map:historicalstat_value a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:historicalstat;
-	d2rq:property vocab:historicalstat_value;
-	d2rq:column "historicalstat.value";
-	d2rq:datatype xsd:int;
-	.
-map:historicalstat_snapshotdate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:historicalstat;
-	d2rq:property vocab:historicalstat_snapshotdate;
-	d2rq:column "historicalstat.snapshotdate";
-	d2rq:datatype xsd:date;
-	.
 
 # Table l_album_album
 map:l_album_album a d2rq:ClassMap;
