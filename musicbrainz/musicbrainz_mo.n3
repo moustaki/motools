@@ -99,45 +99,12 @@ map:album_amazon_asin_coverarturl a d2rq:PropertyBridge;
 
 
 # Table albumjoin
-map:albumjoin a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "albumjoin/@@albumjoin.id@@";
-	d2rq:class vocab:albumjoin;
-	.
-map:albumjoin__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:albumjoin;
-	d2rq:property rdfs:label;
-	d2rq:pattern "albumjoin #@@albumjoin.id@@";
-	.
-map:albumjoin_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:albumjoin;
-	d2rq:property vocab:albumjoin_id;
-	d2rq:column "albumjoin.id";
-	d2rq:datatype xsd:int;
-	.
-map:albumjoin_album a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:albumjoin;
-	d2rq:property vocab:albumjoin_album;
-	d2rq:column "albumjoin.album";
-	d2rq:datatype xsd:int;
-	.
 map:albumjoin_track a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:albumjoin;
-	d2rq:property vocab:albumjoin_track;
-	d2rq:column "albumjoin.track";
-	d2rq:datatype xsd:int;
-	.
-map:albumjoin_sequence a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:albumjoin;
-	d2rq:property vocab:albumjoin_sequence;
-	d2rq:column "albumjoin.sequence";
-	d2rq:datatype xsd:int;
-	.
-map:albumjoin_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:albumjoin;
-	d2rq:property vocab:albumjoin_modpending;
-	d2rq:column "albumjoin.modpending";
-	d2rq:datatype xsd:int;
+	d2rq:belongsToClassMap map:album;
+	d2rq:property mo:track;
+	d2rq:uriPattern "track/@@track.gid@@";
+	d2rq:join "album.id = albumjoin.album";
+	d2rq:join "albumjoin.track = track.id";
 	.
 
 # Table albummeta
@@ -4085,9 +4052,16 @@ map:tag_refcount a d2rq:PropertyBridge;
 # Table track
 map:track a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "track/@@track.id@@";
+	d2rq:uriPattern "track/@@track.gid@@";
 	d2rq:class vocab:track;
 	.
+map:track_sequence a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:track;
+        d2rq:property mo:track_number;
+        d2rq:column "albumjoin.sequence";
+        d2rq:datatype xsd:int;
+        d2rq:join "albumjoin.track = track.id";
+        .
 map:track__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:track;
 	d2rq:property rdfs:label;
