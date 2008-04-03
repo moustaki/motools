@@ -20,8 +20,8 @@ map:database a d2rq:Database;
 # Table album
 map:album a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "record/@@album.gid@@";
-	d2rq:class mo:Record;
+	d2rq:uriPattern "album/@@album.gid@@";
+	d2rq:class mo:Signal;
 	.
 map:album__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
@@ -74,6 +74,12 @@ map:album_quality a d2rq:PropertyBridge;
 	d2rq:column "album.quality";
 	d2rq:datatype xsd:short;
 	.
+map:album_cdtoc a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:album;
+        d2rq:property mo:published_as;
+        d2rq:uriPattern "record/@@album_cdtoc.cdtoc@@";
+        d2rq:join "album_cdtoc.album = album.id";
+        .
 
 # Table album_amazon_asin
 map:album_amazon_asin_asin a d2rq:PropertyBridge;
@@ -615,49 +621,42 @@ map:automod_election_vote_votetime a d2rq:PropertyBridge;
 	.
 
 # Table cdtoc
+map:cdtoc a d2rq:ClassMap;
+        d2rq:dataStorage map:database;
+        d2rq:uriPattern "record/@@cdtoc.id@@";
+        d2rq:class mo:Record;
+        .
 map:cdtoc_discid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:cdtoc_discid;
-	d2rq:column "cdtoc.discid";
-	d2rq:join "album_cdtoc.album = album.id";
-	d2rq:join "album_cdtoc.cdtoc = cdtoc.id";
-	.
+        d2rq:belongsToClassMap map:cdtoc;
+        d2rq:property vocab:cdtoc_discid;
+        d2rq:column "cdtoc.discid";
+        .
 map:cdtoc_freedbid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
+	d2rq:belongsToClassMap map:cdtoc;
 	d2rq:property vocab:cdtoc_freedbid;
 	d2rq:column "cdtoc.freedbid";
-	d2rq:join "album_cdtoc.album = album.id";
-	d2rq:join "album_cdtoc.cdtoc = cdtoc.id";
 	.
 map:cdtoc_trackcount a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
+	d2rq:belongsToClassMap map:cdtoc;
 	d2rq:property vocab:cdtoc_trackcount;
 	d2rq:column "cdtoc.trackcount";
 	d2rq:datatype xsd:int;
-	d2rq:join "album_cdtoc.album = album.id";
-	d2rq:join "album_cdtoc.cdtoc = cdtoc.id";
 	.
 map:cdtoc_leadoutoffset a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
+	d2rq:belongsToClassMap map:cdtoc;
 	d2rq:property vocab:cdtoc_leadoutoffset;
 	d2rq:column "cdtoc.leadoutoffset";
 	d2rq:datatype xsd:int;
-	d2rq:join "album_cdtoc.album = album.id";
-	d2rq:join "album_cdtoc.cdtoc = cdtoc.id";
 	.
 map:cdtoc_trackoffset a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
+	d2rq:belongsToClassMap map:cdtoc;
 	d2rq:property vocab:cdtoc_trackoffset;
 	d2rq:column "cdtoc.trackoffset";
-	d2rq:join "album_cdtoc.album = album.id";
-	d2rq:join "album_cdtoc.cdtoc = cdtoc.id";
 	.
 map:cdtoc_degraded a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
+	d2rq:belongsToClassMap map:cdtoc;
 	d2rq:property vocab:cdtoc_degraded;
 	d2rq:column "cdtoc.degraded";
-	d2rq:join "album_cdtoc.album = album.id";
-	d2rq:join "album_cdtoc.cdtoc = cdtoc.id";
 	.
 
 # Table clientversion
