@@ -1,0 +1,150 @@
+@prefix mbz: <http://purl.org/ontology/mbz#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix frbr: <http://purl.org/vocab/frbr/core#>.
+
+mbz:version 
+	a owl:ObjectProperty;
+	rdfs:label "cover and version";
+	rdfs:comment "covers or other versions";
+	rdfs:domain mo:Release;
+	rdfs:range mo:Release;
+	rdfs:subPropertyOf frbr:relatedEndeavour;
+	.
+
+mbz:altered_version
+	a owl:ObjectProperty;
+	rdfs:label "altered versions";
+	rdfs:comment "altered version in a creative way (remixes etc.)";
+	rdfs:domain mo:Record;
+	rdfs:range mo:Record;
+	rdfs:subPropertyOf frbr:relatedEndeavour;
+	.
+
+mbz:first_release
+	a owl:ObjectProperty;
+	rdfs:label "first release";
+	rdfs:comment """
+Indicates that the two albums contain mostly the same audio material. 
+This means that the audio data is *exactly* identical. 
+No remastering has been applied, but it is okay if bonus 
+tracks were added or the order of the tracks was 
+changed. Please take care to always point to 
+the *first* version ever released! 
+See http://wiki.musicbrainz.org/EarliestReleaseRelationshipType
+""";
+	rdfs:domain mo:Release;
+	rdfs:range mo:Release;
+	rdfs:subPropertyOf mbz:version;
+	.
+
+mbz:remaster
+	a owl:ObjectProperty;
+	rdfs:label "remaster";
+	rdfs:comment """
+Indicates that an album is a remaster of another album. 
+This means that the audio data was changed in this process 
+but the same original recording material was used. 
+Please take care to always point to the *first* version ever released!
+See http://wiki.musicbrainz.org/RemasterRelationshipType
+""";
+	rdfs:domain mo:Release;
+	rdfs:range mo:Release;
+	rdfs:subPropertyOf mbz:version;
+	.
+
+mbz:remix
+	a owl:ObjectProperty;
+	rdfs:label "remaster";
+	rdfs:comment """
+Indicates that an album includes remixed versions of all (or most of) the tracks of the other album.
+See http://wiki.musicbrainz.org/RemixRelationshipType
+""";
+	rdfs:domain mo:Record;
+	rdfs:range mo:Record;
+	rdfs:subPropertyOf mbz:altered_version;
+	.
+
+mbz:mashup
+	a owl:ObjectProperty;
+	rdfs:label "mashes up";
+	rdfs:comment """
+Indicates that albums were mashed up on this album. 
+This means that two pieces of music by different artists 
+are mixed together, over each other, or otherwise 
+combined into a single work (usually by a third artist, the remixer).
+""";
+	rdfs:domain mo:Record;
+	rdfs:range mo:Record;
+	rdfs:subPropertyOf mbz:altered_version;
+	.
+
+mbz:dj-mix
+	a owl:ObjectProperty;
+	rdfs:label "DJ mix";
+	rdfs:comment """
+Indicates that all (or most of) the tracks of an album 
+were mixed together from all (or most of) the tracks 
+from another album to form a so called DJ-Mix. The tracks 
+might have been altered by pitching (so that the tempo 
+of one track matches the tempo of the following track) 
+and fading (so that one track blends in smoothly with 
+the other). If the tracks have been more substantially 
+altered, the remix relationship type is more appropriate.
+See http://wiki.musicbrainz.org/DJMixRelationshipType
+""";
+	rdfs:domain mo:Record;
+	rdfs:range mo:Record;
+	# In the DB schema, it is is the subproperty of "compilations" (???)
+	rdfs:subPropertyOf mbz:altered_version;
+	.
+
+mbz:live
+	a owl:ObjectProperty;
+	rdfs:label "live performance";
+	rdfs:comment """
+Indicates that an album was performed live and 
+released as another album. Please use this relationship 
+only if (almost) every track of the original recording 
+was performed on the live version, not for normal live recordings.
+""";
+	rdfs:domain mo:Record;
+	rdfs:range mo:Record;
+	rdfs:subPropertyOf mbz:version;
+	.
+
+mbz:cover
+	a owl:ObjectProperty;
+	rdfs:label "cover";
+	rdfs:comment """
+Indicates a cover version of a album. This means that 
+another artist performed the same songs. Please take 
+care to always point to the *first* version ever released!
+See http://wiki.musicbrainz.org/CoverRelationshipType
+""";
+	rdfs:domain mo:Record;
+	rdfs:range mo:Record;
+	rdfs:subPropertyOf mbz:version;
+	.
+
+mbz:translation
+	a owl:ObjectProperty;
+	rdfs:label "translation";
+	rdfs:comment """
+Indicates that an album has translated or transliterated 
+titles on another album release. This relationship does 
+not indicate a cover where the lyrics have been translated 
+(that should be indicated with 'cover' instead, although both 
+relationships could apply in some cases). This relationship 
+should only be used when the number, order, and audio of the 
+tracks on the two albums are identical, and each of the 
+titles corresponds in meaning.
+""";
+	rdfs:domain mo:Release;
+	rdfs:range mo:Release;
+	rdfs:subPropertyOf mbz:version;
+	.
+
+
+
