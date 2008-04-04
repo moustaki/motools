@@ -12,6 +12,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix lingvoj: <http://www.lingvoj.org/ontology#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix mbz: <http://purl.org/ontology/mbz#>.
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "org.postgresql.Driver";
@@ -389,56 +390,79 @@ map:country_dbpedia a d2rq:PropertyBridge; # FIXME
 
 
 # Table l_album_album
-map:l_album_album a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "l_album_album/@@l_album_album.id@@";
-	d2rq:class vocab:l_album_album;
+map:album_firstrelease a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:album;
+	d2rq:property mbz:first_release;
+	d2rq:refersToClassMap map:album;
+	d2rq:condition "l_album_album.link_type=2";
+	d2rq:join "album.id = l_album_album.link1";
+	d2rq:join "relatedalbum.id = l_album_album.link0";
+	d2rq:alias "album AS relatedalbum";
 	.
-map:l_album_album__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_album;
-	d2rq:property rdfs:label;
-	d2rq:pattern "l_album_album #@@l_album_album.id@@";
-	.
-map:l_album_album_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_album;
-	d2rq:property vocab:l_album_album_id;
-	d2rq:column "l_album_album.id";
-	d2rq:datatype xsd:int;
-	.
-map:l_album_album_link0 a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_album;
-	d2rq:property vocab:l_album_album_link0;
-	d2rq:column "l_album_album.link0";
-	d2rq:datatype xsd:int;
-	.
-map:l_album_album_link1 a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_album;
-	d2rq:property vocab:l_album_album_link1;
-	d2rq:column "l_album_album.link1";
-	d2rq:datatype xsd:int;
-	.
-map:l_album_album_link_type a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_album;
-	d2rq:property vocab:l_album_album_link_type;
-	d2rq:column "l_album_album.link_type";
-	d2rq:datatype xsd:int;
-	.
-map:l_album_album_begindate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_album;
-	d2rq:property vocab:l_album_album_begindate;
-	d2rq:column "l_album_album.begindate";
-	.
-map:l_album_album_enddate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_album;
-	d2rq:property vocab:l_album_album_enddate;
-	d2rq:column "l_album_album.enddate";
-	.
-map:l_album_album_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_album;
-	d2rq:property vocab:l_album_album_modpending;
-	d2rq:column "l_album_album.modpending";
-	d2rq:datatype xsd:int;
-	.
+map:album_remaster a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:album;
+        d2rq:property mbz:remaster;
+        d2rq:refersToClassMap map:album;
+        d2rq:condition "l_album_album.link_type=3";
+        d2rq:join "album.id = l_album_album.link1";
+        d2rq:join "relatedalbum.id = l_album_album.link0";
+        d2rq:alias "album AS relatedalbum";
+        .
+map:album_mashup a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:album;
+        d2rq:property mbz:mashup;
+        d2rq:refersToClassMap map:album;
+        d2rq:condition "l_album_album.link_type=5";
+        d2rq:join "album.id = l_album_album.link1";
+        d2rq:join "relatedalbum.id = l_album_album.link0";
+        d2rq:alias "album AS relatedalbum";
+        .
+map:album_remix a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:album;
+        d2rq:property mbz:remix;
+        d2rq:refersToClassMap map:album;
+        d2rq:condition "l_album_album.link_type=7";
+        d2rq:join "album.id = l_album_album.link1";
+        d2rq:join "relatedalbum.id = l_album_album.link0";
+        d2rq:alias "album AS relatedalbum";
+        .
+map:album_djmix a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:album;
+        d2rq:property mbz:dj-mix;
+        d2rq:refersToClassMap map:album;
+        d2rq:condition "l_album_album.link_type=9";
+        d2rq:join "album.id = l_album_album.link1";
+        d2rq:join "relatedalbum.id = l_album_album.link0";
+        d2rq:alias "album AS relatedalbum";
+        .
+map:album_live a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:album;
+        d2rq:property mbz:live;
+        d2rq:refersToClassMap map:album;
+        d2rq:condition "l_album_album.link_type=11";
+        d2rq:join "album.id = l_album_album.link1";
+        d2rq:join "relatedalbum.id = l_album_album.link0";
+        d2rq:alias "album AS relatedalbum";
+        .
+map:album_cover a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:album;
+        d2rq:property mbz:cover;
+        d2rq:refersToClassMap map:album;
+        d2rq:condition "l_album_album.link_type=13";
+        d2rq:join "album.id = l_album_album.link1";
+        d2rq:join "relatedalbum.id = l_album_album.link0";
+        d2rq:alias "album AS relatedalbum";
+        .
+map:album_translation a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:album;
+        d2rq:property mbz:translation;
+        d2rq:refersToClassMap map:album;
+        d2rq:condition "l_album_album.link_type=15";
+        d2rq:join "album.id = l_album_album.link1";
+        d2rq:join "relatedalbum.id = l_album_album.link0";
+        d2rq:alias "album AS relatedalbum";
+        .
+
 
 # Table l_album_artist
 map:l_album_artist a d2rq:ClassMap;
@@ -1404,26 +1428,21 @@ map:link_attribute_type_modpending a d2rq:PropertyBridge;
 # Table lt_album_album
 map:lt_album_album a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "lt_album_album/@@lt_album_album.id@@";
+	d2rq:uriPattern "property/@@lt_album_album.id@@";
 	d2rq:class vocab:lt_album_album;
 	.
 map:lt_album_album__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:lt_album_album;
 	d2rq:property rdfs:label;
-	d2rq:pattern "lt_album_album #@@lt_album_album.id@@";
-	.
-map:lt_album_album_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:lt_album_album;
-	d2rq:property vocab:lt_album_album_id;
-	d2rq:column "lt_album_album.id";
-	d2rq:datatype xsd:int;
+	d2rq:column "lt_album_album.name";
 	.
 map:lt_album_album_parent a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:lt_album_album;
-	d2rq:property vocab:lt_album_album_parent;
-	d2rq:column "lt_album_album.parent";
-	d2rq:datatype xsd:int;
+	d2rq:property rdfs:subPropertyOf;
+	d2rq:uriPattern "property/@@lt_album_album.parent@@";
+	d2rq:condition "lt_album_album.parent != 0";
 	.
+# FIXME: what is that?
 map:lt_album_album_childorder a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:lt_album_album;
 	d2rq:property vocab:lt_album_album_childorder;
@@ -1437,22 +1456,22 @@ map:lt_album_album_mbid a d2rq:PropertyBridge;
 	.
 map:lt_album_album_name a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:lt_album_album;
-	d2rq:property vocab:lt_album_album_name;
+	d2rq:property rdfs:label;
 	d2rq:column "lt_album_album.name";
 	.
 map:lt_album_album_description a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:lt_album_album;
-	d2rq:property vocab:lt_album_album_description;
+	d2rq:property rdfs:comment;
 	d2rq:column "lt_album_album.description";
 	.
 map:lt_album_album_linkphrase a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:lt_album_album;
-	d2rq:property vocab:lt_album_album_linkphrase;
+	d2rq:property rdfs:comment;
 	d2rq:column "lt_album_album.linkphrase";
 	.
 map:lt_album_album_rlinkphrase a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:lt_album_album;
-	d2rq:property vocab:lt_album_album_rlinkphrase;
+	d2rq:property rdfs:comment;
 	d2rq:column "lt_album_album.rlinkphrase";
 	.
 map:lt_album_album_attribute a d2rq:PropertyBridge;
@@ -1460,22 +1479,10 @@ map:lt_album_album_attribute a d2rq:PropertyBridge;
 	d2rq:property vocab:lt_album_album_attribute;
 	d2rq:column "lt_album_album.attribute";
 	.
-map:lt_album_album_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:lt_album_album;
-	d2rq:property vocab:lt_album_album_modpending;
-	d2rq:column "lt_album_album.modpending";
-	d2rq:datatype xsd:int;
-	.
 map:lt_album_album_shortlinkphrase a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:lt_album_album;
-	d2rq:property vocab:lt_album_album_shortlinkphrase;
+	d2rq:property rdfs:comment;
 	d2rq:column "lt_album_album.shortlinkphrase";
-	.
-map:lt_album_album_priority a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:lt_album_album;
-	d2rq:property vocab:lt_album_album_priority;
-	d2rq:column "lt_album_album.priority";
-	d2rq:datatype xsd:int;
 	.
 
 # Table lt_album_artist
