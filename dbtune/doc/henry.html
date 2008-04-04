@@ -81,7 +81,7 @@ as your query language, and check that the entailment is set to <b>n3</b> (it sh
 
 <p>
 A query involving only builtins (no N3 rules) is the following. It computes MFCC models for two tracks and compute
-their Kullback-Leiber divergence (heh, I should declare some namespaces, it is pretty huge like that :-) ):
+their Kullback-Leiber divergence:
 </p>
 <pre>
 select ?d
@@ -100,7 +100,21 @@ where
 </pre>
 
 <p>
-Another one is the following, computing keys using the <a href="http://www.elec.qmul.ac.uk/digitalmusic/downloads/index.html#qm-vamp-plugins">key
+This is a pretty huge query! 
+But, using a simple <a href="http://code.google.com/p/km-rdf/source/browse/trunk/n3-km/dsp-n3/similarity.n3">N3 rule</a>, we can reduce that to the following query:
+</p>
+
+<pre>
+EFIX sim: &lt;http://purl.org/ontology/similarity/&gt;
+SELECT ?sim
+WHERE
+{
+(&lt;http://dbtune.org/audio/Den-Nostalia.ogg&gt; &lt;http://dbtune.org/audio/Both-Axel.ogg&gt;) sim:div ?sim
+}
+</pre>
+
+<p>
+Another example is the following, computing keys using the <a href="http://www.elec.qmul.ac.uk/digitalmusic/downloads/index.html#qm-vamp-plugins">key
 detection Vamp plugin in the Queen Mary plugin set</a>:
 </p>
 <pre>
