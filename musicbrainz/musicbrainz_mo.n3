@@ -10,6 +10,8 @@
 @prefix tags: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix lingvoj: <http://www.lingvoj.org/ontology#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "org.postgresql.Driver";
@@ -59,9 +61,10 @@ map:album_page a d2rq:PropertyBridge;
 	.
 map:album_language a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:album_language;
-	d2rq:column "album.language";
-	d2rq:datatype xsd:int;
+	d2rq:property dc:language;
+	d2rq:uriPattern "language/@@language.isocode_3t@@";
+	d2rq:join "album.language = language.id";
+	d2rq:condition "album.language is not null";
 	.
 map:album_script a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
@@ -143,6 +146,11 @@ map:albummeta_firstreleasedate a d2rq:PropertyBridge;
 	d2rq:column "albummeta.firstreleasedate";
 	d2rq:join "album.id = albummeta.id";
 	.
+#19:48 < Shepard> I'm not sure why there are two tables
+#19:49 < Shepard> but indeed there should be two places for asins. one is the older one from when it automatically discovered asins. and one
+#                 is relationships to amazon users enter (which should then be copied to the old place)
+#19:49 < Shepard> I think albummeta was the older one
+#19:50 < Shepard> but the relationships should be in the relationship table
 map:albummeta_asin a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:albummeta_asin;
@@ -1163,36 +1171,20 @@ map:l_url_url_modpending a d2rq:PropertyBridge;
 # Table label
 map:label a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "label/@@label.id@@";
-	d2rq:class vocab:label;
+	d2rq:uriPattern "label/@@label.gid@@";
+	d2rq:class mo:Label;
 	.
 map:label__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:label;
 	d2rq:property rdfs:label;
-	d2rq:pattern "label #@@label.id@@";
-	.
-map:label_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label;
-	d2rq:property vocab:label_id;
-	d2rq:column "label.id";
-	d2rq:datatype xsd:int;
+	d2rq:column "label.name";
 	.
 map:label_name a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:label;
 	d2rq:property vocab:label_name;
 	d2rq:column "label.name";
 	.
-map:label_gid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label;
-	d2rq:property vocab:label_gid;
-	d2rq:column "label.gid";
-	.
-map:label_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label;
-	d2rq:property vocab:label_modpending;
-	d2rq:column "label.modpending";
-	d2rq:datatype xsd:int;
-	.
+# No Musicbrainz page? FIXME
 map:label_labelcode a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:label;
 	d2rq:property vocab:label_labelcode;
@@ -1206,29 +1198,46 @@ map:label_sortname a d2rq:PropertyBridge;
 	.
 map:label_country a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:label;
-	d2rq:property vocab:label_country;
-	d2rq:column "label.country";
-	d2rq:datatype xsd:int;
-	.
-map:label_page a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label;
-	d2rq:property vocab:label_page;
-	d2rq:column "label.page";
-	d2rq:datatype xsd:int;
+	d2rq:property foaf:based_near;
+	d2rq:uriPattern "country/@@country.isocode@@";
+	d2rq:join "label.country = country.id";
 	.
 map:label_resolution a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:label;
-	d2rq:property vocab:label_resolution;
+	d2rq:property dc:description;
 	d2rq:column "label.resolution";
+	d2rq:condition "label.resolution!=''";
 	.
+map:label_birth a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:label;
+        d2rq:property bio:event;
+        d2rq:uriPattern "label/@@label.gid@@/birth";
+        d2rq:condition "label.begindate!=''";
+        .
+map:label_death a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:label;
+        d2rq:property bio:event;
+        d2rq:uriPattern "label/@@label.gid@@/death";
+        d2rq:condition "label.enddate!=''";
+        .
+map:l_birth a d2rq:ClassMap;
+        d2rq:dataStorage map:database;
+        d2rq:uriPattern "label/@@label.gid@@/birth";
+        d2rq:class bio:Birth;
+        .
 map:label_begindate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label;
-	d2rq:property vocab:label_begindate;
+	d2rq:belongsToClassMap map:l_birth;
+	d2rq:property bio:date;
 	d2rq:column "label.begindate";
 	.
+map:l_death a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "label/@@label.gid@@/death";
+	d2rq:class bio:Death;
+	.
 map:label_enddate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label;
-	d2rq:property vocab:label_enddate;
+	d2rq:belongsToClassMap map:l_death;
+	d2rq:property bio:date;
 	d2rq:column "label.enddate";
 	.
 map:label_type a d2rq:PropertyBridge;
@@ -1239,154 +1248,72 @@ map:label_type a d2rq:PropertyBridge;
 	.
 
 # Table label_tag
-map:label_tag a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "label_tag/@@label_tag.label@@/@@label_tag.tag@@";
-	d2rq:class vocab:label_tag;
-	.
-map:label_tag__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label_tag;
-	d2rq:property rdfs:label;
-	d2rq:pattern "label_tag #@@label_tag.label@@/@@label_tag.tag@@";
-	.
-map:label_tag_label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label_tag;
-	d2rq:property vocab:label_tag_label;
-	d2rq:column "label_tag.label";
-	d2rq:datatype xsd:int;
-	.
 map:label_tag_tag a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label_tag;
-	d2rq:property vocab:label_tag_tag;
-	d2rq:column "label_tag.tag";
-	d2rq:datatype xsd:int;
+	d2rq:belongsToClassMap map:label;
+	d2rq:property tags:taggedWithTag;
+	d2rq:uriPattern "tag/@@label_tag.tag@@";
+	d2rq:join "label_tag.label = label.id";
 	.
 map:label_tag_count a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:label_tag;
-	d2rq:property vocab:label_tag_count;
+	d2rq:belongsToClassMap map:label;
+	d2rq:property vocab:tag_count;
 	d2rq:column "label_tag.count";
+	d2rq:join "label_tag.label = label.id";
 	d2rq:datatype xsd:int;
 	.
 
 # Table labelalias
-map:labelalias a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "labelalias/@@labelalias.id@@";
-	d2rq:class vocab:labelalias;
-	.
-map:labelalias__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelalias;
-	d2rq:property rdfs:label;
-	d2rq:pattern "labelalias #@@labelalias.id@@";
-	.
-map:labelalias_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelalias;
-	d2rq:property vocab:labelalias_id;
-	d2rq:column "labelalias.id";
-	d2rq:datatype xsd:int;
-	.
-map:labelalias_ref a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelalias;
-	d2rq:property vocab:labelalias_ref;
-	d2rq:column "labelalias.ref";
-	d2rq:datatype xsd:int;
-	.
 map:labelalias_name a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelalias;
-	d2rq:property vocab:labelalias_name;
+	d2rq:belongsToClassMap map:label;
+	d2rq:property vocab:alias;
 	d2rq:column "labelalias.name";
-	.
-map:labelalias_timesused a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelalias;
-	d2rq:property vocab:labelalias_timesused;
-	d2rq:column "labelalias.timesused";
-	d2rq:datatype xsd:int;
-	.
-map:labelalias_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelalias;
-	d2rq:property vocab:labelalias_modpending;
-	d2rq:column "labelalias.modpending";
-	d2rq:datatype xsd:int;
-	.
-map:labelalias_lastused a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelalias;
-	d2rq:property vocab:labelalias_lastused;
-	d2rq:column "labelalias.lastused";
-	d2rq:datatype xsd:dateTime;
-	.
-
-# Table labelwords
-map:labelwords a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "labelwords/@@labelwords.wordid@@/@@labelwords.labelid@@";
-	d2rq:class vocab:labelwords;
-	.
-map:labelwords__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelwords;
-	d2rq:property rdfs:label;
-	d2rq:pattern "labelwords #@@labelwords.wordid@@/@@labelwords.labelid@@";
-	.
-map:labelwords_wordid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelwords;
-	d2rq:property vocab:labelwords_wordid;
-	d2rq:column "labelwords.wordid";
-	d2rq:datatype xsd:int;
-	.
-map:labelwords_labelid a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:labelwords;
-	d2rq:property vocab:labelwords_labelid;
-	d2rq:column "labelwords.labelid";
-	d2rq:datatype xsd:int;
+	d2rq:join "labelalias.ref = label.id";
 	.
 
 # Table language
 map:language a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "language/@@language.id@@";
-	d2rq:class vocab:language;
+	d2rq:uriPattern "language/@@language.isocode_3t@@";
+	d2rq:class lingvoj:LinguisticSystem;
 	.
 map:language__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:language;
 	d2rq:property rdfs:label;
-	d2rq:pattern "language #@@language.id@@";
-	.
-map:language_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:language;
-	d2rq:property vocab:language_id;
-	d2rq:column "language.id";
-	d2rq:datatype xsd:int;
+	d2rq:column "language.name";
 	.
 map:language_isocode_3t a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:language;
-	d2rq:property vocab:language_isocode_3t;
+	d2rq:property lingvoj:iso2t;
 	d2rq:column "language.isocode_3t";
 	.
 map:language_isocode_3b a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:language;
-	d2rq:property vocab:language_isocode_3b;
+	d2rq:property lingvoj:iso2b;
 	d2rq:column "language.isocode_3b";
 	.
 map:language_isocode_2 a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:language;
-	d2rq:property vocab:language_isocode_2;
+	d2rq:property lingvoj:iso1;
 	d2rq:column "language.isocode_2";
-	.
-map:language_name a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:language;
-	d2rq:property vocab:language_name;
-	d2rq:column "language.name";
 	.
 map:language_french_name a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:language;
-	d2rq:property vocab:language_french_name;
+	d2rq:property dc:description;
 	d2rq:column "language.french_name";
 	.
-map:language_frequency a d2rq:PropertyBridge;
+# FIXME: check this
+map:language_lingvoj a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:language;
-	d2rq:property vocab:language_frequency;
-	d2rq:column "language.frequency";
-	d2rq:datatype xsd:int;
+	d2rq:property owl:sameAs;
+	d2rq:uriPattern "http://www.lingvoj.org/lang/@@language.isocode_2@@";
+	#d2rq:condition "language.isocode_2 is not null";
 	.
+map:language_lingvoj a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:language;
+        d2rq:property owl:sameAs;
+        d2rq:uriPattern "http://www.lingvoj.org/lang/@@language.isocode_3t@@";
+        #d2rq:condition "language.isocode_2 is null";
+        .
 
 # Table link_attribute
 map:link_attribute a d2rq:ClassMap;
