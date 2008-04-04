@@ -65,7 +65,7 @@ tonality:IntervalClass
 	#rdfs:subClassOf tonality:Interval;
 	rdfs:label "Interval Class";
 	rdfs:comment """
-		This class is an extension thougth for atonal music representation. Interval class represents the distance between two unordered pitch classes where octave, enharmonic and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distance from the minimum to the maximum values possible within the octave. Note: may be an interval subclass?	
+		Interval class represents the distance between two unordered pitch classes where octave, enharmonic and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distances from the minimum to the maximum value possible within the octave. Note: may be an interval subclass?	
 	""";
 	.
 
@@ -93,11 +93,7 @@ tonality:Tonality
 	rdfs:subClassOf event:Event;
 	vs:term_status "deprecated";
 	rdfs:label "Tonality";
-	rdfs:comment """
-		 Describing the tonality as a tonal region in the signal timeline. Tonality is a Event subclass so the declaration of a Tonality defines a region in the timeline which serves as resource for tonal information which can be:
-			-high-level descriptors like scales or keys
-			-mathematical tonal models which gives a geometrical representation in a tonal space with psychological ordenation instead of acoustic
-	""";
+	rdfs:comment "Concept used to classify tonal regions (see TonalEvent). May be removed";
 	.
 		
 tonality:TonalEvent
@@ -139,7 +135,7 @@ tonality:Key
 	a owl:Class;
 	rdfs:label "Key";
 	rdfs:comment """
-		Key is defined as the centre of gravity origined by a chord progession and relying on a diatonic scale. Key is intrinsically related to the key signature as the key signature represent the most stable notes in the score. Although tonality can not be reduced to the establishing of a main key and modulations from key to key, keys are still an important resource to decribe tonal music.
+		Key is defined as the centre of gravity origined by a chord progession and relying on a diatonic scale. Key is intrinsically related to the key signature as the key signature represent the most stable notes in the score. Tonal music is developed around the concept of Key, but polytonal and atonal music can not be accurately described in terms of keys.
 	""";
 	vs:term_status "unstable";
 	.
@@ -492,17 +488,8 @@ tonality:scale a owl:ObjectProperty;
 	rdfs:label "scale";
 	rdfs:comment "Binds a scale to other structures.";
 	rdfs:domain tonality:Mode;
-	rdfs:domain tonality:Tonality;
 	rdfs:domain tonality:Key;
 	rdfs:range tonality:Scale;
-	.
-			
-tonality:mode a owl:ObjectProperty;
-	vs:term_status "unstable";
-	rdfs:label "mode";
-	rdfs:comment "Associates a mode.";
-	rdfs:domain tonality:Tonality;
-	rdfs:range tonality:Mode;
 	.
 
 #Keys

@@ -31,7 +31,7 @@
     <vs:term_status>unstable</vs:term_status>
     <rdfs:label>Interval Class</rdfs:label>
     <rdfs:comment>
-		This class is an extension thougth for atonal music representation. Interval class represents the distance between two unordered pitch classes where octave, enharmonic and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distance from the minimum to the maximum values possible within the octave. Note: may be an interval subclass?	
+		Interval class represents the distance between two unordered pitch classes where octave, enharmonic and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distances from the minimum to the maximum value possible within the octave. Note: may be an interval subclass?	
 	</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Pitch">
@@ -53,11 +53,7 @@
     <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
     <vs:term_status>deprecated</vs:term_status>
     <rdfs:label>Tonality</rdfs:label>
-    <rdfs:comment>
-		 Describing the tonality as a tonal region in the signal timeline. Tonality is a Event subclass so the declaration of a Tonality defines a region in the timeline which serves as resource for tonal information which can be:
-			-high-level descriptors like scales or keys
-			-mathematical tonal models which gives a geometrical representation in a tonal space with psychological ordenation instead of acoustic
-	</rdfs:comment>
+    <rdfs:comment>Concept used to classify tonal regions (see TonalEvent). May be removed</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/TonalEvent">
     <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
@@ -89,7 +85,7 @@
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Key">
     <rdfs:label>Key</rdfs:label>
     <rdfs:comment>
-		Key is defined as the centre of gravity origined by a chord progession and relying on a diatonic scale. Key is intrinsically related to the key signature as the key signature represent the most stable notes in the score. Although tonality can not be reduced to the establishing of a main key and modulations from key to key, keys are still an important resource to decribe tonal music.
+		Key is defined as the centre of gravity origined by a chord progession and relying on a diatonic scale. Key is intrinsically related to the key signature as the key signature represent the most stable notes in the score. Tonal music is developed around the concept of Key, but polytonal and atonal music can not be accurately described in terms of keys.
 	</rdfs:comment>
     <vs:term_status>unstable</vs:term_status>
   </owl:Class>
@@ -390,16 +386,8 @@
     <rdfs:label>scale</rdfs:label>
     <rdfs:comment>Binds a scale to other structures.</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Mode"/>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Tonality"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Key"/>
     <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Scale"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/mode">
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>mode</rdfs:label>
-    <rdfs:comment>Associates a mode.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Tonality"/>
-    <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Mode"/>
   </owl:ObjectProperty>
   <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/tonic">
     <vs:term_status>unstable</vs:term_status>
