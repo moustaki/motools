@@ -101,7 +101,6 @@
 <p>Classes: | <a href="#term_Degree">Degree</a> | <a href="#term_HarmonicFunction">HarmonicFunction</a> | <a href="#term_HeptatonicScale">HeptatonicScale</a> | <a href="#term_Interval">Interval</a> | <a href="#term_IntervalClass">IntervalClass</a> | <a href="#term_Key">Key</a> | <a href="#term_Mode">Mode</a> | <a href="#term_PentatonicScale">PentatonicScale</a> | <a href="#term_Pitch">Pitch</a> | <a href="#term_PitchClass">PitchClass</a> | <a href="#term_Scale">Scale</a> | <a href="#term_TonalEvent">TonalEvent</a> | <a href="#term_Tonality">Tonality</a> |  </p>
 <p>Properties: | <a href="#term_borrowed_chord">borrowed_chord</a> | 
 <a href="#term_cents">cents</a> | 
-<a href="#term_close_interval">close_interval</a> | 
 <a href="#term_comparable_ratio">comparable_ratio</a> | 
 <a href="#term_degree">degree</a> | 
 <a href="#term_degree_name">degree_name</a> | 
@@ -128,6 +127,7 @@
 <a href="#term_scale_steps">scale_steps</a> | 
 <a href="#term_scale_type">scale_type</a> | 
 <a href="#term_semitones">semitones</a> | 
+<a href="#term_simple_interval">simple_interval</a> | 
 <a href="#term_steps">steps</a> | 
 <a href="#term_strength">strength</a> | 
 <a href="#term_tonic">tonic</a> | 
@@ -212,8 +212,7 @@
 <a href="#term_scale/pentatonic_min">scale/pentatonic_min</a> | 
  </p></div><h2 id="terms">Ontology Terms</h2><h2 id="terms_classes">Classes</h2><div class="specterm" id="term_Degree"><h3>Class: to:Degree   -   unstable   -   </h3>
 <em>Degree</em>
- - 		Degrees define the ordenation and then the functionality of the tonal structures. This class is defined by a bunch of properties that specifies all the data related to the tonal structure (keys, scales...) as a resource.<br/>
-	 
+ - Degrees define the ordenation and the functionality of tonal structures. 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
@@ -234,6 +233,19 @@
 
 </table>
 
+</div><div class="specterm" id="term_HarmonicFunction"><h3>Class: to:HarmonicFunction   -   deprecated   -   </h3>
+<em>HarmonicFunction</em>
+ - 		This class is declared to give specific harmonic information for each degree of the key besides what the actual name of the degree suggests. It is thought for future extensions.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_harmonic_function">harmonic_function</a></td>
+</tr>
+
+
+</table>
+
 </div><div class="specterm" id="term_HeptatonicScale"><h3>Class: to:HeptatonicScale   -   deprecated   -   </h3>
 <em>HeptatonicScale</em>
  - A particular scale subclass that represents scale-types formed by 7 notes. 
@@ -246,22 +258,22 @@
 </tr>
 </table>
 
-</div><div class="specterm" id="term_Interval"><h3>Class: to:Interval   -   unstable   -   </h3>
+</div><div class="specterm" id="term_Interval"><h3>Class: to:Interval   -   stable   -   </h3>
 <em>Interval</em>
- - 		This class represents the distance between two notes supporting different tuning systems. This is the basic piece of the ontology and have a bunch of optional properties to full specify an interval depending the situation and musical system. Well known intervals can be declared as individuals while its flexibility allows to create an interval as needed.		<br/>
+ - 		This OWL class represents the distance in pitch between two notes. Intervals can be referred to distinct tuning systems and measured with different metrics as required. This concept is most basic piece of the ontology used to build other musical structures.	<br/>
 	 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
 <table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_interval">interval</a></td>
-<td><a href="#term_close_interval">close_interval</a></td>
+<td><a href="#term_simple_interval">simple_interval</a></td>
 <td><a href="#term_enharmonic">enharmonic</a></td>
 <td><a href="#term_inversion">inversion</a></td>
 </tr>
 
 <tr><th>in-domain-of:</th><td><a href="#term_strength">strength</a></td>
 <td><a href="#term_octaves">octaves</a></td>
-<td><a href="#term_close_interval">close_interval</a></td>
+<td><a href="#term_simple_interval">simple_interval</a></td>
 <td><a href="#term_enharmonic">enharmonic</a></td>
 <td><a href="#term_inversion">inversion</a></td>
 <td><a href="#term_interval_class">interval_class</a></td>
@@ -308,7 +320,7 @@
 
 </table>
 
-</div><div class="specterm" id="term_Mode"><h3>Class: to:Mode   -   unstable   -   </h3>
+</div><div class="specterm" id="term_Mode"><h3>Class: to:Mode   -   stable   -   </h3>
 <em>Mode</em>
  - Modes represents each of the different cyclic sequences of intervals defined by a scale-type. 
 <br/>
@@ -365,7 +377,7 @@
 
 </table>
 
-</div><div class="specterm" id="term_Scale"><h3>Class: to:Scale   -   unstable   -   </h3>
+</div><div class="specterm" id="term_Scale"><h3>Class: to:Scale   -   stable   -   </h3>
 <em>Scale</em>
  - 		Representation of musical scales in two senses:<br/>
 			Scale-type: an abstract structure of intervals associated to specific degrees. Eg: diatonic scale<br/>
@@ -388,9 +400,9 @@
 
 </table>
 
-</div><div class="specterm" id="term_TonalEvent"><h3>Class: to:TonalEvent   -   deprecated   -   </h3>
+</div><div class="specterm" id="term_TonalEvent"><h3>Class: to:TonalEvent   -   stable   -   </h3>
 <em>TonalEvent</em>
- - 		 Describing a specific tonal event within the tonal region. This is conceived for meaningful and specific tonal events within the tonal region that are not significant to change the tonal region itself. This may be useless anyway...<br/>
+ - 		 A tonal event classifies one particular segment of the timeline of a signal with specific tonal content defining tonal regions. Each tonal element associated with the event is considered a factor<br/>
 	 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -401,7 +413,7 @@
 </tr>
 </table>
 
-</div><div class="specterm" id="term_Tonality"><h3>Class: to:Tonality   -   unstable   -   </h3>
+</div><div class="specterm" id="term_Tonality"><h3>Class: to:Tonality   -   deprecated   -   </h3>
 <em>Tonality</em>
  - 		 Describing the tonality as a tonal region in the signal timeline. Tonality is a Event subclass so the declaration of a Tonality defines a region in the timeline which serves as resource for tonal information which can be:<br/>
 			-high-level descriptors like scales or keys<br/>
@@ -445,21 +457,6 @@
 </tr>
 <tr><th>Range:</th>
 <td><a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a></td>
-</tr>
-
-
-</table>
-<br/></div><div class="specterm" id="term_close_interval">
-<h3>Property: to:close_interval   -   unstable   -   </h3>
-<em>close_interval</em> -                In equal temperaments open intervals (bigger than a octave) are indeed a close interval and n octaves. This property relates an open interval like minor ninth with its close version minor second. <br/>
-         
-<br/><table style="th { float: top; }">
-<tr><th>Domain:</th>
-<td><a href="#term_Interval">Interval</a></td>
-
-</tr>
-<tr><th>Range:</th>
-<td><a href="#term_Interval">Interval</a></td>
 </tr>
 
 
@@ -699,7 +696,7 @@
 </table>
 <br/></div><div class="specterm" id="term_octaves">
 <h3>Property: to:octaves   -   unstable   -   </h3>
-<em>octaves</em> - Number of octaves comprised in an open interval. 
+<em>octaves</em> - Number of octaves comprised in an compound interval. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Interval">Interval</a></td>
@@ -845,6 +842,21 @@
 
 
 </table>
+<br/></div><div class="specterm" id="term_simple_interval">
+<h3>Property: to:simple_interval   -   unstable   -   </h3>
+<em>simple_interval</em> -                In equal temperaments compound intervals (bigger than a octave) are indeed a close interval and n octaves. This property relates an compound interval like minor ninth with its close version minor second. <br/>
+         
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Interval">Interval</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Interval">Interval</a></td>
+</tr>
+
+
+</table>
 <br/></div><div class="specterm" id="term_steps">
 <h3>Property: to:steps   -   unstable   -   </h3>
 <em>steps</em> - Measure for intervals in equally temperaments 
@@ -961,7 +973,7 @@
 <td><a href="#term_IntervalClass">to:IntervalClass</a></td>
 </tr></table></div><div class="specterm" id="term_interval/ninth_min">
 <h3>Individual: interval/ninth_min   -   </h3>
-<em>minor 9th</em> - Open interval of a minor second in the next octave (12-EDO) 
+<em>minor 9th</em> - compound interval of a minor second in the next octave (12-EDO) 
 <br/><table style="th { float: top; }"><tr><th>Class:</th>
 <td><a href="#term_Interval">to:Interval</a></td>
 </tr></table></div><div class="specterm" id="term_interval/octave">
@@ -1028,7 +1040,7 @@
 <td><a href="#term_Interval">to:Interval</a></td>
 </tr></table></div><div class="specterm" id="term_interval/wolf_fifth_meantone">
 <h3>Individual: interval/wolf_fifth_meantone   -   </h3>
-<em>wolf fifth</em> - 		Really dissonat interval produced in meantone temperament. The appearance of this interval in the meantone tuning was the reason to avoid it. The Just Intonation system produces a howl of 35.683 cents sharper than a just fifth which makes it really augmented and dissonant.
+<em>wolf fifth meantone</em> - 		Really dissonat interval produced in meantone temperament. The appearance of this interval in the meantone tuning was the reason to avoid it. The Just Intonation system produces a howl of 35.683 cents sharper than a just fifth which makes it really augmented and dissonant.
 	 
 <br/><table style="th { float: top; }"><tr><th>Class:</th>
 <td><a href="#term_Interval">to:Interval</a></td>

@@ -25,13 +25,14 @@
 	rdfs:label "The Tonality ontology";
 	rdfs:comment """
 
-		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works. The ontology has two different levels:
+		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works and expressions. At this stage, the ontology has two different levels of expresiveness:
 
-		-The most high level describes musical theory structures like keys and scales used as resources for composition in order to create a specific tonality.
-		-A second level describes the tonality in terms of mathematical models considering the tonality as projection onto a geometrical space ordered according to a psychological distribution of the tonal space.
+		-The highest level describes music theory structures such as keys and scales, used as resources for composition in order to create a specific tonality.
+		-A second level describes tonality in terms of mathematical models considering the tonality as a projection onto a tonal space that represents a cognitive/psychological perception of intervals, chords, pitches or keys relationships.
+
+		Tonal regions can be classified as TonalEvent resources with specific factors that characterizing it.
 		
-		This document is a testing stage and any contribution is welcome and can be made through the Music Ontology community at 
-http://wiki.musicontology.com/
+		This document is in a testing stage. Contribution can be made through the Music Ontology community at http://wiki.musicontology.com/
 
 	""";
 	dc:creator "David Pastor Escuredo";
@@ -51,10 +52,10 @@ vs:term_status a owl:AnnotationProperty.
 
 tonality:Interval
 	a owl:Class;
-	vs:term_status "unstable";
+	vs:term_status "stable";
 	rdfs:label "Interval";
 	rdfs:comment """
-		This class represents the distance between two notes supporting different tuning systems. This is the basic piece of the ontology and have a bunch of optional properties to full specify an interval depending the situation and musical system. Well known intervals can be declared as individuals while its flexibility allows to create an interval as needed.		
+		This OWL class represents the distance in pitch between two notes. Intervals can be referred to distinct tuning systems and measured with different metrics as required. This concept is most basic piece of the ontology used to build other musical structures.	
 	""";	
 	.
 
@@ -90,7 +91,7 @@ tonality:PitchClass
 tonality:Tonality
 	a owl:Class;
 	rdfs:subClassOf event:Event;
-	vs:term_status "unstable";
+	vs:term_status "deprecated";
 	rdfs:label "Tonality";
 	rdfs:comment """
 		 Describing the tonality as a tonal region in the signal timeline. Tonality is a Event subclass so the declaration of a Tonality defines a region in the timeline which serves as resource for tonal information which can be:
@@ -104,9 +105,9 @@ tonality:TonalEvent
 	rdfs:subClassOf event:Event;
 	rdfs:label "Tonal Event";
 	rdfs:comment """
-		 Describing a specific tonal event within the tonal region. This is conceived for meaningful and specific tonal events within the tonal region that are not significant to change the tonal region itself. This may be useless anyway...
+		 A tonal event classifies one particular segment of the timeline of a signal with specific tonal content defining tonal regions. Each tonal element associated with the event is considered a factor
 	""";
-	vs:term_status "deprecated";
+	vs:term_status "stable";
 	.
 
 tonality:Scale
@@ -117,22 +118,20 @@ tonality:Scale
 			Scale-type: an abstract structure of intervals associated to specific degrees. Eg: diatonic scale
 			Scale: scale-type at a certain pitch. Eg: A major scale.
 	""";
-	vs:term_status "unstable";
+	vs:term_status "stable";
 	.
 
 tonality:Mode
 	a owl:Class;
 	rdfs:label "Mode";
 	rdfs:comment "Modes represents each of the different cyclic sequences of intervals defined by a scale-type.";
-	vs:term_status "unstable";
+	vs:term_status "stable";
 	.
 
 tonality:Degree
 	a owl:Class;
 	rdfs:label "Degree";
-	rdfs:comment """
-		Degrees define the ordenation and then the functionality of the tonal structures. This class is defined by a bunch of properties that specifies all the data related to the tonal structure (keys, scales...) as a resource.
-	""";
+	rdfs:comment "Degrees define the ordenation and the functionality of tonal structures.";
 	vs:term_status "unstable";
 	.
 
@@ -151,6 +150,7 @@ tonality:HarmonicFunction
 	rdfs:comment """
 		This class is declared to give specific harmonic information for each degree of the key besides what the actual name of the degree suggests. It is thought for future extensions.
 	""";
+	vs:term_status "deprecated";
 	.
 
 tonality:HeptatonicScale
@@ -289,11 +289,11 @@ tonality:enharmonic a owl:SymmetricProperty;
 	a owl:ObjectProperty;
         .
 
-tonality:close_interval a owl:FunctionalProperty;
+tonality:simple_interval a owl:FunctionalProperty;
         vs:term_status "unstable";
         rdfs:label "close interval";
         rdfs:comment """
-               In equal temperaments open intervals (bigger than a octave) are indeed a close interval and n octaves. This property relates an open interval like minor ninth with its close version minor second. 
+               In equal temperaments compound intervals (bigger than a octave) are indeed a close interval and n octaves. This property relates an compound interval like minor ninth with its close version minor second. 
         """;
         rdfs:domain tonality:Interval;
 	rdfs:range tonality:Interval;
@@ -303,7 +303,7 @@ tonality:close_interval a owl:FunctionalProperty;
 tonality:octaves a owl:FunctionalProperty;
 	vs:term_status "unstable";
         rdfs:label "octaves";
-        rdfs:comment "Number of octaves comprised in an open interval.";
+        rdfs:comment "Number of octaves comprised in an compound interval.";
         rdfs:domain tonality:Interval;
 	rdfs:range xsd:integer;
 	a owl:DatatypeProperty;
@@ -762,14 +762,14 @@ int:octave a tonality:Interval;
 	dc:type "diatonic";
 	.
 
-#Example of open interval
+#Example of compound interval
 
 int:ninth_min a tonality:Interval;
 	rdfs:label "minor 9th";
 	vs:term_status "unstable";
-	rdfs:comment "Open interval of a minor second in the next octave (12-EDO)";
+	rdfs:comment "compound interval of a minor second in the next octave (12-EDO)";
 	tonality:tuning tuning:twelve_edo;
-	tonality:close_interval int:second_min;
+	tonality:simple_interval int:second_min;
 	tonality:octaves 1;
 	.
 

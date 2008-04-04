@@ -5,13 +5,14 @@
     <rdfs:label>The Tonality ontology</rdfs:label>
     <rdfs:comment>
 
-		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works. The ontology has two different levels:
+		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works and expressions. At this stage, the ontology has two different levels of expresiveness:
 
-		-The most high level describes musical theory structures like keys and scales used as resources for composition in order to create a specific tonality.
-		-A second level describes the tonality in terms of mathematical models considering the tonality as projection onto a geometrical space ordered according to a psychological distribution of the tonal space.
+		-The highest level describes music theory structures such as keys and scales, used as resources for composition in order to create a specific tonality.
+		-A second level describes tonality in terms of mathematical models considering the tonality as a projection onto a tonal space that represents a cognitive/psychological perception of intervals, chords, pitches or keys relationships.
+
+		Tonal regions can be classified as TonalEvent resources with specific factors that characterizing it.
 		
-		This document is a testing stage and any contribution is welcome and can be made through the Music Ontology community at 
-http://wiki.musicontology.com/
+		This document is in a testing stage. Contribution can be made through the Music Ontology community at http://wiki.musicontology.com/
 
 	</rdfs:comment>
     <dc:creator>David Pastor Escuredo</dc:creator>
@@ -20,10 +21,10 @@ http://wiki.musicontology.com/
   </owl:Ontology>
   <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Interval">
-    <vs:term_status>unstable</vs:term_status>
+    <vs:term_status>stable</vs:term_status>
     <rdfs:label>Interval</rdfs:label>
     <rdfs:comment>
-		This class represents the distance between two notes supporting different tuning systems. This is the basic piece of the ontology and have a bunch of optional properties to full specify an interval depending the situation and musical system. Well known intervals can be declared as individuals while its flexibility allows to create an interval as needed.		
+		This OWL class represents the distance in pitch between two notes. Intervals can be referred to distinct tuning systems and measured with different metrics as required. This concept is most basic piece of the ontology used to build other musical structures.	
 	</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/IntervalClass">
@@ -50,7 +51,7 @@ http://wiki.musicontology.com/
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Tonality">
     <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
-    <vs:term_status>unstable</vs:term_status>
+    <vs:term_status>deprecated</vs:term_status>
     <rdfs:label>Tonality</rdfs:label>
     <rdfs:comment>
 		 Describing the tonality as a tonal region in the signal timeline. Tonality is a Event subclass so the declaration of a Tonality defines a region in the timeline which serves as resource for tonal information which can be:
@@ -62,9 +63,9 @@ http://wiki.musicontology.com/
     <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
     <rdfs:label>Tonal Event</rdfs:label>
     <rdfs:comment>
-		 Describing a specific tonal event within the tonal region. This is conceived for meaningful and specific tonal events within the tonal region that are not significant to change the tonal region itself. This may be useless anyway...
+		 A tonal event classifies one particular segment of the timeline of a signal with specific tonal content defining tonal regions. Each tonal element associated with the event is considered a factor
 	</rdfs:comment>
-    <vs:term_status>deprecated</vs:term_status>
+    <vs:term_status>stable</vs:term_status>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Scale">
     <rdfs:label>Scale</rdfs:label>
@@ -73,18 +74,16 @@ http://wiki.musicontology.com/
 			Scale-type: an abstract structure of intervals associated to specific degrees. Eg: diatonic scale
 			Scale: scale-type at a certain pitch. Eg: A major scale.
 	</rdfs:comment>
-    <vs:term_status>unstable</vs:term_status>
+    <vs:term_status>stable</vs:term_status>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Mode">
     <rdfs:label>Mode</rdfs:label>
     <rdfs:comment>Modes represents each of the different cyclic sequences of intervals defined by a scale-type.</rdfs:comment>
-    <vs:term_status>unstable</vs:term_status>
+    <vs:term_status>stable</vs:term_status>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Degree">
     <rdfs:label>Degree</rdfs:label>
-    <rdfs:comment>
-		Degrees define the ordenation and then the functionality of the tonal structures. This class is defined by a bunch of properties that specifies all the data related to the tonal structure (keys, scales...) as a resource.
-	</rdfs:comment>
+    <rdfs:comment>Degrees define the ordenation and the functionality of tonal structures.</rdfs:comment>
     <vs:term_status>unstable</vs:term_status>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Key">
@@ -99,6 +98,7 @@ http://wiki.musicontology.com/
     <rdfs:comment>
 		This class is declared to give specific harmonic information for each degree of the key besides what the actual name of the degree suggests. It is thought for future extensions.
 	</rdfs:comment>
+    <vs:term_status>deprecated</vs:term_status>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/HeptatonicScale">
     <rdfs:subClassOf rdf:resource="http://purl.org/ontology/tonality/Scale"/>
@@ -213,11 +213,11 @@ http://wiki.musicontology.com/
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Interval"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:SymmetricProperty>
-  <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/close_interval">
+  <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/simple_interval">
     <vs:term_status>unstable</vs:term_status>
     <rdfs:label>close interval</rdfs:label>
     <rdfs:comment>
-               In equal temperaments open intervals (bigger than a octave) are indeed a close interval and n octaves. This property relates an open interval like minor ninth with its close version minor second. 
+               In equal temperaments compound intervals (bigger than a octave) are indeed a close interval and n octaves. This property relates an compound interval like minor ninth with its close version minor second. 
         </rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Interval"/>
     <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Interval"/>
@@ -226,7 +226,7 @@ http://wiki.musicontology.com/
   <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/octaves">
     <vs:term_status>unstable</vs:term_status>
     <rdfs:label>octaves</rdfs:label>
-    <rdfs:comment>Number of octaves comprised in an open interval.</rdfs:comment>
+    <rdfs:comment>Number of octaves comprised in an compound interval.</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Interval"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -629,9 +629,9 @@ http://wiki.musicontology.com/
   <tonality:Interval rdf:about="http://purl.org/ontology/tonality/interval/ninth_min">
     <rdfs:label>minor 9th</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>Open interval of a minor second in the next octave (12-EDO)</rdfs:comment>
+    <rdfs:comment>compound interval of a minor second in the next octave (12-EDO)</rdfs:comment>
     <tonality:tuning rdf:resource="http://purl.org/ontology/tuning/twelve_edo"/>
-    <tonality:close_interval rdf:resource="http://purl.org/ontology/tonality/interval/second_min"/>
+    <tonality:simple_interval rdf:resource="http://purl.org/ontology/tonality/interval/second_min"/>
     <tonality:octaves rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:octaves>
   </tonality:Interval>
   <tonality:Interval rdf:about="http://purl.org/ontology/tonality/interval/tritone">
@@ -2823,3 +2823,4 @@ http://wiki.musicontology.com/
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Cminor"/>
   </tonality:Key>
 </rdf:RDF>
+
