@@ -13,6 +13,7 @@
 @prefix lingvoj: <http://www.lingvoj.org/ontology#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix mbz: <http://purl.org/ontology/mbz#>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "org.postgresql.Driver";
@@ -469,7 +470,7 @@ map:performance a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
 	d2rq:uriPattern "performance/@@l_album_artist.id@@";
 	d2rq:class mo:Performance;
-	d2rq:condition "l_album_artist.link_type=3";
+	d2rq:condition "(l_album_artist.link_type=3 or l_album_artist.link_type=5 or l_album_artist.link_type=9)";
 	.
 map:performance_label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:performance;
@@ -481,9 +482,16 @@ map:performance_label a d2rq:PropertyBridge;
 map:performance_performer a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:performance;
 	d2rq:property mo:performer;
+	d2rq:condition "l_album_artist.link_type=3";
 	d2rq:join "l_album_artist.link1 = artist.id";
 	d2rq:refersToClassMap map:artist;
 	.
+map:performance_agent a d2rq:PropertyBridge; # Do i really need such a generic link?
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property event:agent;
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
 map:performance_availableas a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:performance;
 	d2rq:property mo:recorded_as;
@@ -537,6 +545,60 @@ map:performance_instrument a d2rq:PropertyBridge;
 	d2rq:join "link_attribute.attribute_type = link_attribute_type.id";
 	d2rq:refersToClassMap map:instrument;
 	.
+# FIXME - If an entity is an object of this relationship, then it is an orchestra (not only a MusicArtist)
+map:performance_orchestra a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
+	d2rq:property mo:orchestra;
+	d2rq:join "l_album_artist.link1 = artist.id";
+	d2rq:refersToClassMap map:artist;
+	d2rq:condition "l_album_artist.link_type=5";
+	.
+map:performance_chamber a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
+	d2rq:property mo:chamber_orchestra;
+	d2rq:join "l_album_artist.link1 = artist.id";
+	d2rq:join "l_album_artist.id = link_attribute.link";
+	d2rq:refersToClassMap map:artist;
+	d2rq:condition "link_attribute.attribute_type=245";
+	.
+map:performance_symphony a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:symphony_orchestra;
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:refersToClassMap map:artist;
+        d2rq:condition "link_attribute.attribute_type=244";
+        .
+map:orchestra a d2rq:ClassMap;
+        d2rq:dataStorage map:database;
+        d2rq:uriPattern "artist/@@artist.gid@@";
+        d2rq:class mo:ChamberOrchestra;
+        d2rq:join "artist.id = l_album_artist.link1";
+        d2rq:condition "l_album_artist.link_type=5";
+        .
+map:chamber_orchestra a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "artist/@@artist.gid@@";
+	d2rq:class mo:ChamberOrchestra;
+	d2rq:join "artist.id = l_album_artist.link1";
+	d2rq:join "l_album_artist.id = link_attribute.link";
+	d2rq:condition "link_attribute.attribute_type=245";
+	.
+map:symphony_orchestra a d2rq:ClassMap;
+        d2rq:dataStorage map:database;
+        d2rq:uriPattern "artist/@@artist.gid@@";
+        d2rq:class mo:SymphonyOrchestra;
+        d2rq:join "artist.id = l_album_artist.link1";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=244444";
+        .
+map:performance_conductor a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
+	d2rq:property mo:conductor;
+	d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        d2rq:condition "l_album_artist.link_type=9";
+        .
 
 # Table l_album_label
 map:l_album_label a d2rq:ClassMap;
