@@ -465,55 +465,77 @@ map:album_translation a d2rq:PropertyBridge;
 
 
 # Table l_album_artist
-map:l_album_artist a d2rq:ClassMap;
+map:performance a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
-	d2rq:uriPattern "l_album_artist/@@l_album_artist.id@@";
-	d2rq:class vocab:l_album_artist;
+	d2rq:uriPattern "performance/@@l_album_artist.id@@";
+	d2rq:class mo:Performance;
+	d2rq:condition "l_album_artist.link_type=3";
 	.
-map:l_album_artist__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_artist;
+map:performance_label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
 	d2rq:property rdfs:label;
-	d2rq:pattern "l_album_artist #@@l_album_artist.id@@";
+	d2rq:join "l_album_artist.link1 = artist.id";
+	d2rq:join "l_album_artist.link0 = album.id";
+	d2rq:pattern "@@artist.name@@ performing (recorded on album @@album.name@@)";
 	.
-map:l_album_artist_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_artist;
-	d2rq:property vocab:l_album_artist_id;
-	d2rq:column "l_album_artist.id";
-	d2rq:datatype xsd:int;
+map:performance_performer a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
+	d2rq:property mo:performer;
+	d2rq:join "l_album_artist.link1 = artist.id";
+	d2rq:refersToClassMap map:artist;
 	.
-map:l_album_artist_link0 a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_artist;
-	d2rq:property vocab:l_album_artist_link0;
-	d2rq:column "l_album_artist.link0";
-	d2rq:datatype xsd:int;
+map:performance_availableas a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
+	d2rq:property mo:recorded_as;
+	d2rq:join "l_album_artist.link0 = album.id";
+	d2rq:refersToClassMap map:album;
 	.
-map:l_album_artist_link1 a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_artist;
-	d2rq:property vocab:l_album_artist_link1;
-	d2rq:column "l_album_artist.link1";
-	d2rq:datatype xsd:int;
+#map:performance_instrument_ivan a d2rq:PropertyBridge; # Links to Ivan's SKOS - FIXME
+#	d2rq:belongsToClassMap map:performance;
+#	d2rq:property mo:instrument;
+#	d2rq:join "l_album_artist.id = link_attribute.link";
+#	d2rq:join "link_attribute.attribute_type = link_attribute_type.id";
+#	d2rq:uriPattern "http://purl.org/ontology/mo/mit#@@link_attribute_type.name@@";
+#	.
+
+# Direct view of the instrument taxonomy in the DB
+# FIXME: relate that to mo:Instrument
+map:instrument a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "instrument/@@link_attribute_type.id@@";
+	d2rq:condition """((link_attribute_type.id>13 and link_attribute_type.id<243)
+or (link_attribute_type.id>247 and link_attribute_type.id<252)
+or (link_attribute_type.id>260 and link_attribute_type.id<371)
+or (link_attribute_type.id>274 and link_attribute_type.id<424)
+or (link_attribute_type.id>425 and link_attribute_type.id<461)
+or (link_attribute_type.id>461 and link_attribute_type.id<477)
+or (link_attribute_type.id>477 and link_attribute_type.id<511))
+""";
+	d2rq:class owl:Class;
 	.
-map:l_album_artist_link_type a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_artist;
-	d2rq:property vocab:l_album_artist_link_type;
-	d2rq:column "l_album_artist.link_type";
-	d2rq:datatype xsd:int;
+map:instrument_label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:instrument;
+	d2rq:property rdfs:label;
+	d2rq:column "link_attribute_type.name";
 	.
-map:l_album_artist_begindate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_artist;
-	d2rq:property vocab:l_album_artist_begindate;
-	d2rq:column "l_album_artist.begindate";
-	.
-map:l_album_artist_enddate a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_artist;
-	d2rq:property vocab:l_album_artist_enddate;
-	d2rq:column "l_album_artist.enddate";
-	.
-map:l_album_artist_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:l_album_artist;
-	d2rq:property vocab:l_album_artist_modpending;
-	d2rq:column "l_album_artist.modpending";
-	d2rq:datatype xsd:int;
+map:instrument_desc a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:instrument;
+        d2rq:property rdfs:comment;
+        d2rq:column "link_attribute_type.description";
+        .
+map:instrument_parent a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:instrument;
+	d2rq:property rdfs:subClassOf;
+	d2rq:alias "link_attribute_type AS instrument_p";
+	d2rq:join "link_attribute_type.parent = instrument_p.id";
+	d2rq:refersToClassMap map:instrument;
+	. 
+map:performance_instrument a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
+	d2rq:property mo:instrument;
+	d2rq:join "l_album_artist.id = link_attribute.link";
+	d2rq:join "link_attribute.attribute_type = link_attribute_type.id";
+	d2rq:refersToClassMap map:instrument;
 	.
 
 # Table l_album_label
