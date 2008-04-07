@@ -464,13 +464,30 @@ map:album_translation a d2rq:PropertyBridge;
         d2rq:alias "album AS relatedalbum";
         .
 
+map:album_remixer a d2rq:PropertyBridge;
+	d2rq:belondsToClassMap map:album;
+	d2rq:property mbz:remixer;
+	d2rq:refersToClassMap map:artist;
+	d2rq:join "l_album_artist.link0 = album.id";
+	d2rq:join "l_album_artist.link1 = artist.id";
+	d2rq:condition "l_album_artist.link_type=11";
+	.
 
 # Table l_album_artist
+# Performance data
 map:performance a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
 	d2rq:uriPattern "performance/@@l_album_artist.id@@";
 	d2rq:class mo:Performance;
-	d2rq:condition "(l_album_artist.link_type=3 or l_album_artist.link_type=5 or l_album_artist.link_type=9)";
+	d2rq:condition """
+(
+l_album_artist.link_type=2 or
+l_album_artist.link_type=3 or 
+l_album_artist.link_type=4 or
+l_album_artist.link_type=5 or 
+l_album_artist.link_type=9
+)
+""";
 	.
 map:performance_label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:performance;
@@ -482,10 +499,116 @@ map:performance_label a d2rq:PropertyBridge;
 map:performance_performer a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:performance;
 	d2rq:property mo:performer;
-	d2rq:condition "l_album_artist.link_type=3";
+	d2rq:condition "(l_album_artist.link_type=4 or l_album_artist.link_type=3 or l_album_artist.link_type=2)";
 	d2rq:join "l_album_artist.link1 = artist.id";
 	d2rq:refersToClassMap map:artist;
 	.
+map:performance_guestperformer a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
+	d2rq:property mo:invited_performer;
+	d2rq:condition "(l_album_artist.link_type=3 or l_album_artist.link_type=2)";
+	d2rq:join "l_album_artist.id = link_attribute.link";
+	d2rq:condition "link_attribute.attribute_type=1";
+	d2rq:join "l_album_artist.link1 = artist.id";
+	d2rq:refersToClassMap map:artist;
+	.
+map:performance_singer a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
+	d2rq:property mo:singer;
+	d2rq:condition "l_album_artist.link_type=4";
+	d2rq:join "l_album_artist.link1 = artist.id";
+	d2rq:refersToClassMap map:artist;
+	.
+map:performance_lead_singer a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:performance;
+	d2rq:property mo:lead_singer; # Perhaps not a fancy name
+	d2rq:condition "l_album_artist.link_type=4";
+	d2rq:join "l_album_artist.id = link_attribute.link";
+	d2rq:condition "link_attribute.attribute_type=4";
+	d2rq:join "l_album_artist.link1 = artist.id";
+	d2rq:refersToClassMap map:artist;
+	.
+map:performance_alto a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:alto; 
+        d2rq:condition "l_album_artist.link_type=4";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=5";
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
+map:performance_baritone a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:baritone;
+        d2rq:condition "l_album_artist.link_type=4";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=6";
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
+map:performance_bass a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:bass;
+        d2rq:condition "l_album_artist.link_type=4";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=7";
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
+map:performance_contratenor a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:contra-tenor;
+        d2rq:condition "l_album_artist.link_type=4";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=8";
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
+map:performance_mezzosoprano a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:mezzo-soprano;
+        d2rq:condition "l_album_artist.link_type=4";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=9";
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
+map:performance_soprano a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:soprano;
+        d2rq:condition "l_album_artist.link_type=4";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=10";
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
+map:performance_tenor a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:tenor;
+        d2rq:condition "l_album_artist.link_type=4";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=11";
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
+map:performance_background a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:background_singer;
+        d2rq:condition "l_album_artist.link_type=4";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=12";
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
+map:performance_choir a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:performance;
+        d2rq:property mo:choir;
+        d2rq:condition "l_album_artist.link_type=4";
+        d2rq:join "l_album_artist.id = link_attribute.link";
+        d2rq:condition "link_attribute.attribute_type=13";
+        d2rq:join "l_album_artist.link1 = artist.id";
+        d2rq:refersToClassMap map:artist;
+        .
 map:performance_agent a d2rq:PropertyBridge; # Do i really need such a generic link?
         d2rq:belongsToClassMap map:performance;
         d2rq:property event:agent;
@@ -543,6 +666,7 @@ map:performance_instrument a d2rq:PropertyBridge;
 	d2rq:property mo:instrument;
 	d2rq:join "l_album_artist.id = link_attribute.link";
 	d2rq:join "link_attribute.attribute_type = link_attribute_type.id";
+	d2rq:condition "link_attribute.link_type='album_artist'";
 	d2rq:refersToClassMap map:instrument;
 	.
 # FIXME - If an entity is an object of this relationship, then it is an orchestra (not only a MusicArtist)
@@ -558,6 +682,7 @@ map:performance_chamber a d2rq:PropertyBridge;
 	d2rq:property mo:chamber_orchestra;
 	d2rq:join "l_album_artist.link1 = artist.id";
 	d2rq:join "l_album_artist.id = link_attribute.link";
+	d2rq:condition "link_attribute.link_type='album_artist'";
 	d2rq:refersToClassMap map:artist;
 	d2rq:condition "link_attribute.attribute_type=245";
 	.
@@ -566,6 +691,7 @@ map:performance_symphony a d2rq:PropertyBridge;
         d2rq:property mo:symphony_orchestra;
         d2rq:join "l_album_artist.link1 = artist.id";
         d2rq:join "l_album_artist.id = link_attribute.link";
+	d2rq:condition "link_attribute.link_type='album_artist'";
         d2rq:refersToClassMap map:artist;
         d2rq:condition "link_attribute.attribute_type=244";
         .
@@ -582,6 +708,7 @@ map:chamber_orchestra a d2rq:ClassMap;
 	d2rq:class mo:ChamberOrchestra;
 	d2rq:join "artist.id = l_album_artist.link1";
 	d2rq:join "l_album_artist.id = link_attribute.link";
+	d2rq:condition "link_attribute.link_type='album_artist'";
 	d2rq:condition "link_attribute.attribute_type=245";
 	.
 map:symphony_orchestra a d2rq:ClassMap;
@@ -590,6 +717,7 @@ map:symphony_orchestra a d2rq:ClassMap;
         d2rq:class mo:SymphonyOrchestra;
         d2rq:join "artist.id = l_album_artist.link1";
         d2rq:join "l_album_artist.id = link_attribute.link";
+	d2rq:condition "link_attribute.link_type='album_artist'";
         d2rq:condition "link_attribute.attribute_type=244444";
         .
 map:performance_conductor a d2rq:PropertyBridge;
@@ -599,6 +727,8 @@ map:performance_conductor a d2rq:PropertyBridge;
         d2rq:refersToClassMap map:artist;
         d2rq:condition "l_album_artist.link_type=9";
         .
+
+
 
 # Table l_album_label
 map:l_album_label a d2rq:ClassMap;
