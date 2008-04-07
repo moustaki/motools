@@ -146,5 +146,16 @@ titles corresponds in meaning.
 	rdfs:subPropertyOf mbz:version;
 	.
 
-
-
+mbz:remixer
+	a owl:ObjectProperty;
+	rdfs:label "remixer";
+	rdfs:comment """
+Indicates the person who remixed the album by taking tracks, 
+substanially altering them and mixing them together with other 
+material. Note that this one is used for the artist who created 
+a mash-up or used samples as well.
+See http://wiki.musicbrainz.org/RemixerRelationshipType
+""";
+	rdfs:domain mo:Record;
+	rdfs:range mo:Record;
+	.
