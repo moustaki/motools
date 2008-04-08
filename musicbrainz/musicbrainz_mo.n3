@@ -261,8 +261,18 @@ map:artist_quality a d2rq:PropertyBridge;
 	d2rq:column "artist.quality";
 	d2rq:datatype xsd:short;
 	.
-
-# Table artist_relation
+map:artist_dbpedia a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:artist;
+	d2rq:property owl:sameAs;
+	d2rq:translateWith map:artist_dbpedia_tr;
+	d2rq:join "artist.id = l_artist_url.link0";
+	d2rq:condition "l_artist_url.link_type=10";
+	d2rq:join "l_artist_url.link1 = url.id";
+	d2rq:uriColumn "url.url";
+	.
+map:artist_dbpedia_tr a d2rq:TranslationTable;
+	d2rq:javaClass "WikipediaTranslator";
+	.
 # FIXME - No clue what that is
 #map:artist_relation a d2rq:ClassMap;
 #	d2rq:dataStorage map:database;
