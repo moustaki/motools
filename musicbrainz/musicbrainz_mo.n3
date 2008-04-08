@@ -206,12 +206,12 @@ map:artist_sortname a d2rq:PropertyBridge;
 	d2rq:property vocab:sortname;
 	d2rq:column "artist.sortname";
 	.
-map:artist_page a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:artist;
-	d2rq:property foaf:homepage;
-	d2rq:column "artist.page";
-	d2rq:datatype xsd:int;
-	.
+#map:artist_page a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:artist;
+#	d2rq:property foaf:homepage;
+#	d2rq:column "artist.page";
+#	d2rq:datatype xsd:int;
+#	.
 map:artist_resolution a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
 	d2rq:property dc:description;
@@ -261,6 +261,15 @@ map:artist_quality a d2rq:PropertyBridge;
 	d2rq:column "artist.quality";
 	d2rq:datatype xsd:short;
 	.
+map:artist_homepage a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property foaf:homepage;
+        d2rq:translateWith map:artist_dbpedia_tr;
+        d2rq:join "artist.id = l_artist_url.link0";
+        d2rq:condition "l_artist_url.link_type=2";
+        d2rq:join "l_artist_url.link1 = url.id";
+        d2rq:uriColumn "url.url";
+        .
 map:artist_dbpedia a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
 	d2rq:property owl:sameAs;
