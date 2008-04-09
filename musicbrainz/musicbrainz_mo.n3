@@ -86,6 +86,19 @@ map:album_cdtoc a d2rq:PropertyBridge;
         d2rq:uriPattern "toc/@@album_cdtoc.cdtoc@@";
         d2rq:join "album_cdtoc.album = album.id";
         .
+map:album_dbpedia a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:album;
+        d2rq:property owl:sameAs;
+        d2rq:translateWith map:artist_dbpedia_tr;
+        d2rq:join "album.id = l_album_url.link0";
+        d2rq:condition "l_album_url.link_type=23";
+        d2rq:join "l_album_url.link1 = url.id";
+        d2rq:uriColumn "url.url";
+        .
+map:album_dbpedia_tr a d2rq:TranslationTable;
+        d2rq:javaClass "WikipediaTranslator";
+        .
+
 
 # Table album_amazon_asin
 map:album_amazon_asin_asin a d2rq:PropertyBridge;
