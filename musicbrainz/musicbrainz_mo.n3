@@ -98,7 +98,12 @@ map:album_dbpedia a d2rq:PropertyBridge;
 map:album_dbpedia_tr a d2rq:TranslationTable;
         d2rq:javaClass "WikipediaTranslator";
         .
-
+map:album_release a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:album;
+	d2rq:property mo:release;
+	d2rq:join "album.id = release.album";
+	d2rq:refersToClassMap map:release;
+	.
 
 # Table album_amazon_asin
 map:album_amazon_asin_asin a d2rq:PropertyBridge;
@@ -178,7 +183,6 @@ map:albummeta_coverarturl a d2rq:PropertyBridge;
 	d2rq:column "albummeta.coverarturl";
 	d2rq:join "album.id = albummeta.id";
 	.
-
 
 # Table annotation
 #map:annotation_rowid a d2rq:PropertyBridge;
@@ -2956,47 +2960,32 @@ map:puidjoin_stat_usecount a d2rq:PropertyBridge;
 map:release a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
 	d2rq:uriPattern "release/@@release.id@@";
-	d2rq:class vocab:release;
+	d2rq:class mo:Release;
 	.
 map:release__label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:release;
 	d2rq:property rdfs:label;
-	d2rq:pattern "release #@@release.id@@";
-	.
-map:release_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:release;
-	d2rq:property vocab:release_id;
-	d2rq:column "release.id";
-	d2rq:datatype xsd:int;
-	.
-map:release_album a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:release;
-	d2rq:property vocab:release_album;
-	d2rq:column "release.album";
-	d2rq:datatype xsd:int;
+	d2rq:join "release.album = album.id";
+	d2rq:join "release.country = country.id";
+	d2rq:pattern "Release of @@album.name@@ in @@country.name@@, @@release.releasedate@@";
 	.
 map:release_country a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:release;
-	d2rq:property vocab:release_country;
-	d2rq:column "release.country";
-	d2rq:datatype xsd:int;
+	d2rq:property mo:release_country;
+	d2rq:join "release.country = country.id";
+	d2rq:refersToClassMap map:country;
 	.
 map:release_releasedate a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:release;
-	d2rq:property vocab:release_releasedate;
+	d2rq:property dc:date;
 	d2rq:column "release.releasedate";
-	.
-map:release_modpending a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:release;
-	d2rq:property vocab:release_modpending;
-	d2rq:column "release.modpending";
-	d2rq:datatype xsd:int;
+	d2rq:datatype xsd:date;
 	.
 map:release_label a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:release;
-	d2rq:property vocab:release_label;
-	d2rq:column "release.label";
-	d2rq:datatype xsd:int;
+	d2rq:property mo:release_label;
+	d2rq:join "release.label = label.id";
+	d2rq:refersToClassMap map:label;
 	.
 map:release_catno a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:release;
@@ -3005,7 +2994,7 @@ map:release_catno a d2rq:PropertyBridge;
 	.
 map:release_barcode a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:release;
-	d2rq:property vocab:release_barcode;
+	d2rq:property mo:barcode;
 	d2rq:column "release.barcode";
 	.
 map:release_format a d2rq:PropertyBridge;
