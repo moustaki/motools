@@ -94,7 +94,7 @@ their Kullback-Leiber divergence:
 select ?d
 where
 {
-&lt;http://dbtune.org/audio/Both-Axel.ogg&gt; &lt;http://purl.org/ontology/dsp/cache&gt; ?local.
+&lt;http://dbtune.org/audio/Den-Nostalia.ogg&gt; &lt;http://purl.org/ontology/dsp/cache&gt; ?local.
 ?local &lt;http://purl.org/ontology/dsp/aspl_decode&gt; ?sig.
 ?sig &lt;http://purl.org/ontology/vamp/qm-mfccparameters&gt; (?means1 ?vars1).
 
@@ -142,7 +142,7 @@ document</a>, getting some attributes of key events on an audio signal' time-lin
 </p>
 <pre>
 select ?start ?end ?key where {
-&lt;http://dbtune.org/audio/Den-Nostalia.ogg&gt; mo:encodes ?sig.
+&lt;http://dbtune.org/audio/Both-Axel.ogg&gt; mo:encodes ?sig.
 ?sig mo:time ?time.
 ?time tl:timeline ?tl.
 _:evt a &lt;http://purl.org/ontology/tonality/Tonality&gt;; 
