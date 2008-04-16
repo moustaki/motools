@@ -872,6 +872,18 @@ map:l_album_track_modpending a d2rq:PropertyBridge;
 	.
 
 # Table l_album_url
+map:album_amazon_img a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:album;
+	d2rq:property mo:image;
+	d2rq:translateWith map:album_amazon_tr;
+	d2rq:join "l_album_url.link0 = album.id";
+	d2rq:condition "l_album_url.link_type=30";
+	d2rq:join "l_album_url.link1 = url.id";
+	d2rq:uriColumn "url.url";
+	.
+map:album_amazon_tr a d2rq:TranslationTable;
+        d2rq:javaClass "AmazonTranslator";
+        .
 map:l_album_url a d2rq:ClassMap;
 	d2rq:dataStorage map:database;
 	d2rq:uriPattern "l_album_url/@@l_album_url.id@@";

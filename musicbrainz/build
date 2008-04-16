@@ -1,9 +1,9 @@
 #!/bin/bash
 
 echo "Compiling..."
-javac -classpath d2r-server-0.4/lib/d2rq-0.5.2-dev.jar WikipediaTranslator.java
+javac -classpath d2r-server-0.4/lib/d2rq-0.5.2-dev.jar WikipediaTranslator.java AmazonTranslator.java
 echo "Creating JAR file..."
-jar cf mbzd2r.jar WikipediaTranslator.class
+jar cf mbzd2r.jar WikipediaTranslator.class AmazonTranslator.class
 echo "Copying in d2r /lib..."
 cp mbzd2r.jar d2r-server-0.4/lib/
 
