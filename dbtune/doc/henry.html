@@ -57,14 +57,14 @@ When processing a SPARQL query <i>q</i>, Henry gets through the following steps:
 <li>If the representation is RDF, store it in <i>m</i>. If <i>i</i> is a property and its representation 
 links to a built-in implementation matching the current platform, get it ;</li>
 <li>If the representation is N3, store it in <i>m</i> and register the corresponding rules ;</li>
-<li>If the representation is binary, cache it in <i>b</i> ;</li>
+<li>If the representation is of a known mime-type, cache it in <i>b</i> ;</li>
 </ul>
 <li> For every triple pattern <i>p</i> in <i>q</i>, the possible solutions are:</li>
 <ul>
 <li>Instantiations of <i>p</i> in <i>m</i> ;</li>
 <li>If <i>p</i> is in the head of a rule, solutions of step <i>2</i> with the body of the rule as <i>q</i> (plus a few extra things to deal
-with equivalency, existentials in the head, etc.) ;</li>
-<li>if <i>p=(s_p,p_p,o_p)</i> where <i>p_p</i> is a built-in predicate, solutions derived using this built-in.</li>
+with equivalency, lists, existentials in the head, etc.) ;</li>
+<li>If <i>p=(s_p,p_p,o_p)</i> where <i>p_p</i> is a built-in predicate, solutions derived using this built-in (update the state of <i>b</i> accordingly)</li>
 </ul>
 </ol>
 </p>
