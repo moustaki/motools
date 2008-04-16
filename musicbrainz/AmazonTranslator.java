@@ -15,8 +15,10 @@ public class AmazonTranslator implements Translator {
 	}	
 
 	public String toRDFValue(String dbValue) {
-		String asin = (dbValue.split("gp/product/"))[1];
-		return "http://images.amazon.com/images/P/"+asin;
+		String r = null;
+		if((dbValue.split("gp/product/")).length==2) r = "http://images.amazon.com/images/P/"+(dbValue.split("gp/product/"))[1];
+		else r = dbValue;
+		return r;
 	}
 }
 
