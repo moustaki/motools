@@ -1,0 +1,395 @@
+/* Generic styles
+------------------------------ */
+* {
+margin: 0;
+padding: 0;
+}
+
+/* Masthead */
+#masthead {
+padding: 3% 4% 2%;
+}
+p.slogan {
+padding: .5% 0% 0% 10%;
+}
+
+/* Table of contents
+------------------------------ */
+#toc {
+padding: 0 3%;
+}
+#toc ul {
+list-style: none;
+}
+#toc li {
+float: left;
+padding-right: .3%;
+}
+#toc a {
+display: block;
+float: left;
+padding: .5em .7em;
+}
+
+/* Content (main content section)
+------------------------------ */
+#content {
+border-style: solid;
+border-width: 0 1px 1px 0;
+float: left;
+width: 74%;
+}
+#content-inner {
+margin: 2em;
+}
+
+/* Nav
+------------------------------ */
+#nav {
+float: left;
+width: 25%;
+}
+#nav-inner {
+margin: 2em;
+}
+#nav-inner-inner {
+width: 11em;
+}
+
+/* Content sections
+------------------------------ */
+.section {
+margin-bottom: 2em;
+}
+
+/* Headings
+------------------------------ */
+h2 {
+padding-bottom: 1em;
+}
+h3 {
+padding-bottom: .5em;
+}
+h4 {
+padding-bottom: .5em;
+}
+h5 {
+padding-bottom: .5em;
+}
+
+/* Definition lists
+------------------------------ */
+dd {
+margin-left: 1em;
+}
+
+/* Pick lists
+------------------------------ */
+.pick-list {
+list-style: none;
+}
+.pick-list li {
+margin-bottom: 1em;
+}
+
+/* Floated lists
+------------------------------ */
+.floated-list {
+list-style: none;
+}
+.floated-list li {
+float: left;
+margin: 1em;
+}
+
+/* Chart table
+------------------------------ */
+.chart {
+width: 100%;
+}
+.chart td {
+padding: 0 .3em .3em 0;
+vertical-align: top;
+}
+
+/* Cover art list
+------------------------------ */
+ol.cover-art {
+list-style: none;
+}
+ol.cover-art li {
+float: left;
+}
+#main ol.cover-art img {
+border: none;
+}
+#main ol.cover-art a:link, #main ol.cover-art a:visited {
+border: none;
+}
+#main ol.cover-art a:active, #main ol.cover-art a:hover {
+background-color: #f7bf0d;
+color: #222;
+}
+
+/* Discography
+------------------------------ */
+#discography ol {
+width: 100%;
+}
+#discography .image-wrapper {
+float: left;
+padding-right: 1em;
+}
+#discography .image-wrapper img {
+height: 5em;
+width: 5em;
+}
+#discography .text-wrapper {
+float: left;
+}
+
+/* Spot details
+------------------------------ */
+#spot-details {
+margin-bottom: .5em;
+}
+
+/* Note paragraph
+------------------------------ */
+p.note {
+margin-bottom: 1em;
+}
+
+/* Progress bar
+------------------------------ */
+#progress {
+border-width: 1px;
+border-style: solid;
+margin-bottom: 1em;
+padding: .5em;
+text-align: center;
+}
+
+/* Content links (horizontal navigation stuff)
+------------------------------ */
+#main a:link, #main a:visited {
+border-style: dotted;
+border-width: 0 0 1px;
+}
+
+/* Tagclouds
+------------------------------ */
+.tagcloud {
+list-style: none;
+}
+.tagcloud li {
+display: inline;
+}
+#main .tagcloud a:link, #main .tagcloud a:visited {
+border-width: 0 1px 1px 0;
+border-style: solid;
+line-height: 2.4em;
+margin: 0 .5em .5em 0;
+padding: .3em .5em;
+}
+
+/* Calendar
+------------------------------ */
+#calendar {
+border-style: solid;
+border-width: 0 1px 1px 0;
+float: right;
+margin: 0 0 1em 1em;
+padding: .5em;
+}
+#calendar th {
+padding: .2em;
+}
+#calendar td {
+border-style: solid;
+border-width: 1px;
+text-align: right;
+}
+#calendar td a:link, #calendar td a:visited {
+border: none;
+display: block;
+}
+#calendar td span {
+display: block;
+padding: .2em;
+}
+
+/* Form stuff
+------------------------------ */
+form #tips {
+margin-bottom: 1.5em;
+}
+form #tips p {
+margin-bottom: .5em;
+}
+form #warning {
+margin-bottom: 2em;
+}
+form fieldset {
+margin-bottom: 1em;
+}
+form fieldset legend {
+padding: 0 .5em;
+}
+form fieldset .fieldset {
+padding: .5em;
+}
+#content form dt {
+float: left;
+width: 30%;
+}
+form dd {
+margin-bottom: .5em;
+}
+#content form dd {
+float: left;
+width: 70%;
+}
+#content form input {
+width: 80%;
+}
+#content form dd .tip {
+width: 80%;
+}
+#main form input.checkbox {
+width: 1.2em;
+}
+form textarea {
+height: 8em;
+width: 80%;
+}
+form .submit-button {
+text-align: center;
+}
+form .submit-button input {
+padding: .2em 0;
+}
+#main form .submit-button input {
+width: 80%;
+}
+form .submit-button input:hover {
+cursor: pointer;
+}
+
+/* Sign in form stuff
+------------------------------ */
+#nav form input {
+width: 100%;
+}
+
+/* Comment delete form
+------------------------------ */
+#comments form .submit-button {
+margin-top: .5em;
+text-align: right;
+}
+#comments form .submit-button input {
+width: 32%;
+}
+
+/* Textarea for comment form
+------------------------------ */
+#post-comment textarea {
+margin-bottom: 1em;
+width: 100%;
+}
+
+/* Textarea for spot notes
+------------------------------ */
+#notes textarea {
+width: 100%;
+}
+
+/* Form error stuff
+------------------------------ */
+#errorExplanation {
+margin-bottom: 2em;
+}
+#errorExplanation p {
+margin-bottom: .5em;
+}
+#errorExplanation ul {
+margin-left: 1.5em;
+}
+
+/* Comments stuff
+------------------------------ */
+#comments ol {
+list-style: none;
+}
+#comments li {
+border-top-style: dotted;
+border-top-width: 1px;
+padding: .7em 0;
+}
+#comments li.first {
+border-top: 0;
+padding-top: 0;
+}
+#comments li.last {
+padding-bottom: 0;
+}
+
+/* Signed in spotter nav
+------------------------------ */
+#signed-in-spotter-nav {
+list-style: none;
+}
+#signed-in-spotter-nav li {
+margin-bottom: .5em;
+}
+
+/* About nav
+------------------------------ */
+#about-nav {
+list-style: none;
+}
+#about-nav li {
+margin-bottom: .5em;
+}
+
+/* Licence
+------------------------------ */
+.licence .image-wrapper {
+float: left;
+margin-right: .5em;
+}
+#main .licence .image-wrapper a:link, #main .licence .image-wrapper a:visited, #main .licence .image-wrapper a:active, #main .licence .image-wrapper a:hover {
+border-width: 0;
+}
+#main .licence img {
+border-width: 0;
+}
+
+/* Auto complete
+------------------------------ */
+div.auto_complete ul {
+border-style: solid;
+border-width: 0 1px 1px;
+list-style: none;
+}
+div.auto_complete ul li {
+padding: .2em;
+}
+div.auto_complete ul li.selected {
+cursor: pointer;
+}
+
+/* Expose IDs on headings
+------------------------------ */
+h2[id]:hover:after, h3[id]:hover:after {
+content: " #" attr(id);
+}
+
+/* Footer
+------------------------------ */
+.footer {
+padding-top: 1em;
+text-align: center;
+width: 74%;
+}

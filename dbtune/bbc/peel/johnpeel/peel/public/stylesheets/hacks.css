@@ -1,0 +1,20 @@
+/* Clear-float */
+/* This fix from http://positioniseverything.net/easyclearing.html */
+.clear-me:after {
+clear: both;
+content: ".";
+display: block;
+height: 0;
+visibility: hidden;
+}
+.clear-me {
+display: inline-table;
+}
+/* Hides from IE-mac \*/
+* html .clear-me {
+height: 1%;
+}
+.clear-me {
+display: block;
+}
+/* End hide from IE-mac */

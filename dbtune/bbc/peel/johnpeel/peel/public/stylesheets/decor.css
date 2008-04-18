@@ -1,0 +1,155 @@
+/* Body
+------------------------------ */
+body {
+background-color: #f7b50d;
+}
+
+/* Banner
+------------------------------ */
+#banner {
+background-color: #222;
+color: #fff;
+}
+#banner a {
+color: #fff;
+}
+
+/* Table of contents
+------------------------------ */
+#toc a:hover {
+background-color: #f7bf0d; 
+color: #222;
+}
+body.section-artist #toc a.link-artist {
+background-color: #f7bf0d;
+color: #222;
+}
+body.section-festive50 #toc a.link-festive50 {
+background-color: #f7bf0d;
+color: #222;
+}
+body.section-session #toc a.link-session {
+background-color: #f7bf0d;
+color: #222;
+}
+
+/* Content (main content section)
+------------------------------ */
+#content {
+background-color: #f7bf0d;
+border-color: #e7aa11;
+}
+
+/* Headings
+------------------------------ */
+h2, h3 {
+color: #222;
+}
+
+/* Body text
+------------------------------ */
+#main p {
+color: #000;
+}
+
+/* Progress bar
+------------------------------ */
+#progress {
+background: url("/images/progress/progress.gif") no-repeat 30%;
+background-color: #f7b50d;
+border-color: #e7aa11;
+color: #222;
+}
+
+/* Content links (horizontal navigation stuff)
+------------------------------ */
+#main a:link, #main a:visited, .footer a:link, .footer a:visited {
+border-color: #a00;
+color: #a00;
+}
+#main a:active, #main a:hover, .footer a:active, .footer a:hover {
+background-color: #222;
+color: #f7bf0d;
+}
+
+/* Tagclouds
+------------------------------ */
+#main .tagcloud a:link, #main .tagcloud a:visited {
+background-color: #f7b50d;
+border-color: #e7aa11;
+}
+#main .tagcloud a:active, #main .tagcloud a:hover {
+background-color: #222;
+}
+
+/* Calendar
+------------------------------ */
+#calendar {
+background-color: #fff;
+border-color: #e7aa11;
+}
+#calendar td {
+border-color: #eee;
+color: #ccc;
+}
+#calendar td.previous-month, #calendar td.next-month {
+color: #eee;
+}
+#calendar td a:active, #calendar td a:hover, #calendar td.selected-date a {
+background-color: #f7bf0d;
+color: #222;
+}
+
+/* Form stuff
+------------------------------ */
+form .submit-button input {
+background-color: #f7bf0d;
+color: #222;
+}
+form .submit-button input:hover {
+background-color: #222;
+color: #f7bf0d;
+}
+
+/* Form error stuff
+------------------------------ */
+.fieldWithErrors input, .fieldWithErrors select, .fieldWithErrors textarea {
+background-color: yellow;
+}
+
+/* Comments stuff
+------------------------------ */
+#comments li {
+border-top-color: #e7aa11;
+}
+
+/* Licence
+------------------------------ */
+#main .licence .image-wrapper a:link, #main .licence .image-wrapper a:visited, #main .licence .image-wrapper a:active, #main .licence .image-wrapper a:hover {
+background-color: #f7bf0d;
+}
+
+/* Auto complete
+------------------------------ */
+div.auto_complete {
+background: #fff;
+}
+div.auto_complete ul {
+border-color: #888;
+}
+div.auto_complete ul li {
+color: #222;
+}
+div.auto_complete ul li.selected {
+background: #f7bf0d;
+}
+/* No idea what this bit does */
+div.auto_complete ul strong.highlight {
+color: #800;
+}
+
+/* Expose IDs on headings
+------------------------------ */
+h2[id]:hover:after, h3[id]:hover:after {
+color: #ddd;
+}

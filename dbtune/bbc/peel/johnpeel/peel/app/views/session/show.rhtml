@@ -1,0 +1,61 @@
+<!-- Meta Stuff -->
+<% @page_title = "Session - #{@peel_session.artist.name} - #{@peel_session.display_tx_date}" -%>
+<% @description = "John Peel session by #{@peel_session.artist.name} first broadcast on #{@peel_session.display_tx_date}" -%>
+<% @section = 'session' -%>
+
+<!-- Title -->
+<%= content_tag 'h2', "#{@peel_session.artist.name} - #{@peel_session.display_tx_date}", :id => 'session-title' %>
+
+<!-- Details -->
+<div class="section">
+	<dl>
+		<%= content_tag 'dt', 'Artist:' %>
+		<%= content_tag 'dd', link_to((h @peel_session.artist.name), show_artist_url(:url_key => @peel_session.artist.url_key)) %>
+		<%= content_tag 'dt', 'Recorded:' %>
+		<%= content_tag 'dd', @peel_session.display_record_date %>
+		<%= content_tag 'dt', 'First broadcast:' %>
+		<%= content_tag 'dd', @peel_session.display_tx_date %>
+		<%= content_tag 'dt', 'Producer:' %>
+		<%= content_tag 'dd', @peel_session.display_producer %>
+		<% if @peel_session.engineer1 + @peel_session.engineer2 != '' -%>
+			<%= content_tag 'dt', 'Engineer(s):' %>
+			<% if @peel_session.engineer1 != '' -%>
+				<%= content_tag 'dd', @peel_session.engineer1 %>
+			<% end -%>
+			<% if @peel_session.engineer2 != '' -%>
+				<%= content_tag 'dd', @peel_session.engineer2 %>
+			<% end -%>
+		<% end -%>
+		<%= content_tag 'dt', 'Studio:' %>
+		<%= content_tag 'dd', @peel_session.display_studio %>
+	</dl>
+</div>
+
+<!-- Tracks -->
+<% if @peel_session.has_session_tracks? -%>
+	<div class="section">
+		<%= content_tag 'h3', 'Tracklist', :id => 'tracklist' %>
+		<ul class="pick-list">
+			<% @peel_session.session_tracks.each do |t| -%>
+				<%= content_tag 'li', (h t.track_title) %>
+			<% end -%>
+		</ul>
+	</div>
+<% end -%>
+
+<!-- Line-up -->
+<% if @peel_session.has_session_band_members? -%>
+	<div class="section">
+		<%= content_tag 'h3', 'Line-up', :id => 'line-up' %>
+		<ul class="pick-list">
+			<% @peel_session.session_band_members.each do |m| -%>
+				<li>
+					<%= h m.performer %>
+					<% if m.instrument != '' -%>
+						(<%= h m.instrument %>)
+					<% end -%>
+				</li>
+			<% end -%>
+		</ul>
+	</div>
+<% end -%>

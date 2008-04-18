@@ -1,0 +1,15 @@
+<!-- Meta Stuff -->
+<% @page_title = 'Session' -%>
+<% @description = 'John Peel sessions by year' -%>
+<% @section = 'session' -%>
+
+<!-- Years -->
+<div class="section">
+	<%= content_tag 'p', 'Sessions listed by transmission date:' %>
+	<ul class="floated-list clear-me">
+		<% @years.each do |y| -%>
+			<%= content_tag 'li', link_to(y.year, session_date_url(:year => y.year)) %>
+		<% end -%>
+	</ul>
+	<%= content_tag 'p', "#{link_to "#{@sessions_with_unknown_tx_date.size} sessions have unknown transmission dates", list_sessions_with_unknown_tx_dates_url}." %>
+</div>

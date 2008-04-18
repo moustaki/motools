@@ -1,0 +1,13 @@
+<!-- Meta Stuff -->
+<% @page_title = 'Session - TX Date Unknown' -%>
+<% @description = 'John Peel sessions with unknown transmission dates' -%>
+<% @section = 'session' -%>
+
+<div class="section">
+	<%= content_tag 'h2', 'Sessions with Unknown Transmission Dates', :id => 'unknown-tx-dates' %>
+	<ul class="pick-list">
+		<% @sessions.each do |s| -%>
+			<%= content_tag 'li', link_to("#{s.artist.name} (Recorded #{s.display_record_date})", show_session_url(:url_key => s.url_key)) %>
+		<% end -%>
+	</ul>
+</div>

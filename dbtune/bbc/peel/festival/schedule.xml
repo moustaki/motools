@@ -1,0 +1,1268 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<musicevent>
+	<schedule>
+		<listen>
+			<radio>
+				<!-- RADIO 1  -->	
+				<event>
+					<network id="radio1">Radio 1</network>
+					<summary>Jo Whiley</summary>
+					<description>Jo arrives at the festival.</description>
+					<start>
+						<date>2007-06-22</date>
+						<time>10:00</time>
+						<description>10:00</description>
+					</start>
+					<end>
+						<date>2007-06-22</date>
+						<time>12:45</time>
+						<description>22:45</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-23" >http://www.bbc.co.uk/radio/aod/radio1_aod.shtml?radio1/whiley_fri</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-23</date>
+							<description>23 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-28</date>
+							<description>28 June 2007</description>
+						</end>
+					</online>
+				</event>
+				
+				
+				<event>
+					<network id="radio1">Radio 1</network>
+					<summary>Jo Whiley</summary>
+					<description>Jo Whiley, live from the festival, chats to artists and listeners.</description>
+					<start>
+						<date>2007-06-23</date>
+						<time>13:00</time>
+						<description>13:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>16:00</time>
+						<description>16:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-24" >http://www.bbc.co.uk/radio/aod/radio1_aod.shtml?radio1/cox_sat</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-24</date>
+							<description>24 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-29</date>
+							<description>29 June 2007</description>
+						</end>
+					</online>
+				</event>
+				
+				<event>
+					<network id="radio1">Radio 1</network>
+					<summary>Jo Whiley</summary>
+					<description>Live from the festival, Jo's going to the Lost Vagueness Chapel...</description>
+					<start>
+						<date>2007-06-24</date>
+						<time>13:00</time>
+						<description>13:00</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time>16:00</time>
+						<description>16:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-25" >http://www.bbc.co.uk/radio/aod/radio1_aod.shtml?radio1/cox_sun</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-25</date>
+							<description>25 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-30</date>
+							<description>30 June 2007</description>
+						</end>
+					</online>
+				</event>
+				
+				<event>
+					<network id="radio1">Radio 1</network>
+					<summary>Best of Glastonbury</summary>
+					<description>Your ultimate review of Glastonbury with five hours of live sets and interviews</description>
+					<start>
+						<date>2007-06-25</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</start>
+					<end>
+						<date>2007-06-26</date>
+						<time>00:00</time>
+						<description>00:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-25" >http://www.bbc.co.uk/radio/aod/radio1_aod.shtml?radio1/zane_mon</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-26</date>
+							<description>26 June 2007</description>
+						</start>
+						<end>
+							<date>2007-07-01</date>
+							<description>1 July 2007</description>
+						</end>
+					</online>
+				</event>
+				
+<!-- 6 MUSIC -->
+			
+			
+			<event>
+					<network id="sixmusic">6 Music</network>
+					<summary>Steve Lamacq</summary>
+					<description>Live from backstage.</description>
+					<start>
+						<date>2007-06-22</date>
+						<time>16:00</time>
+						<description>16:00</description>
+					</start>
+					<end>
+						<date>2007-06-22</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-23" >http://www.bbc.co.uk/radio/aod/6music_aod.shtml?6music/6m_lamacq_mon</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-23</date>
+							<description>23 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-28</date>
+							<description>28 June 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+				<event>
+					<network id="sixmusic">6 Music</network>
+					<summary>Queens of Noize</summary>
+					<description>The Queens are on a festival safari! Let's see if they manage to hunt down any exclusive celebrity couples. They'll also be attempting to find a new nana at the festival, to replace their on-show nan.</description>
+					<start>
+						<date>2007-06-23</date>
+						<time>16:00</time>
+						<description>16:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>18:00</time>
+						<description>18:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-24" >http://www.bbc.co.uk/radio/aod/6music_aod.shtml?6music/6m_queens</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-24</date>
+							<description>24 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-29</date>
+							<description>29 June 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+				<event>
+					<network id="sixmusic">6 Music</network>
+					<summary>Music Week</summary>
+					<description>Music Week will be focusing on the headliners, so expect some Pyramid and Other Stage action!</description>
+					<start>
+						<date>2007-06-24</date>
+						<time>13:00</time>
+						<description>13:00</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time>14:00</time>
+						<description>14:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-25" >http://www.bbc.co.uk/radio/aod/6music_aod.shtml?6music/6m_musicweek</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-25</date>
+							<description>25 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-30</date>
+							<description>30 June 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+				<event>
+					<network id="sixmusic">6 Music</network>
+					<summary>Stephen Merchant</summary>
+					<description>Live from backstage, Stephen will be bringing his usual brand of entertainment to the festival.</description>
+					<start>
+						<date>2007-06-24</date>
+						<time>15:00</time>
+						<description>15:00</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time>17:00</time>
+						<description>17:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-25" >http://www.bbc.co.uk/radio/aod/6music_aod.shtml?6music/6m_merchant</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-25</date>
+							<description>25 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-30</date>
+							<description>30 June 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+				<event>
+					<network id="sixmusic">6 Music</network>
+					<summary>Best of Glastonbury 2007</summary>
+					<description>Queens of Noise look back over the weekend, will they have got hold of Lily Allen, or even talked to Paul Weller? Wait and see!</description>
+					<start>
+						<date>2007-06-24</date>
+						<time>22:00</time>
+						<description>22:00</description>
+					</start>
+					<end>
+						<date>2007-06-25</date>
+						<time>00:00</time>
+						<description>00:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-25" >http://www.bbc.co.uk/radio/aod/6music_aod.shtml?6music/6m_garvey</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-25</date>
+							<description>25 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-30</date>
+							<description>30 June 2007</description>
+						</end>
+					</online>
+				</event> 
+			
+<!-- ASIAN NETWORK	 -->		
+			
+			<event>
+					<network id="asiannetwork">Asian Network</network>
+					<summary>Sonia Deol</summary>
+					<description>Sonia's a festival virgin! Follow her progress at the festival, from pitching her tent, to how muddy she gets. </description>
+					<start>
+						<date>2007-06-22</date>
+						<time>06:00</time>
+						<description>06:00</description>
+					</start>
+					<end>
+						<date>2007-06-22</date>
+						<time>09:00</time>
+						<description>09:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-25" >http://www.bbc.co.uk/radio/aod/asiannet_aod.shtml?asiannet/asiansonia_mon</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-23</date>
+							<description>23 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-28</date>
+							<description>28 June 2007</description>
+						</end>
+					</online>
+				</event> 
+			
+			<event>
+					<network id="asiannetwork">Asian Network</network>
+					<summary>Friction</summary>
+					<description>Bobby Friction presents, bringing the best highlights and interviews from the Asian Network stage, including Swami and Catch 22.</description>
+					<start>
+						<date>2007-06-22</date>
+						<time>22:00</time>
+						<description>22:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>01:00</time>
+						<description>01:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-23" >http://www.bbc.co.uk/radio/aod/asiannet_aod.shtml?asiannet/asianfriction_fri</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-23</date>
+							<description>23 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-28</date>
+							<description>28 June 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+				<event>
+					<network id="asiannetwork">Asian Network</network>
+					<summary>Electro East</summary>
+					<description>Nerm presents the best in Asian Electronica live from the festival and will be playing some of the best live music highlights, including sets from India's Midival Punditz and Bandish Projekt.</description>
+					<start>
+						<date>2007-06-23</date>
+						<time>20:00</time>
+						<description>20:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>22:00</time>
+						<description>22:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-24" >http://www.bbc.co.uk/radio/aod/asiannet_aod.shtml?asiannet/asianelectroeast</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-24</date>
+							<description>24 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-30</date>
+							<description>30 June 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+<!-- RADIO 3 -->
+
+				<event>
+					<network id="radio3">Radio 3</network>
+					<summary>Jazz on 3</summary>
+					<description>From the Jazz Lounge, they'll be bringing you sessions from <a href="/glastonbury/2007/artists/soilandpimp/">Soil and &quot;Pimp&quot; Sessions</a>, <a href="/glastonbury/2007/artists/empirical">Empirical</a>, and <a href="/glastonbury/2007/artists/johntchicai/">John Tchicai, with strings</a></description>
+					<start>
+						<date>2007-06-22</date>
+						<time>23:30</time>
+						<description>23:30</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>01:00</time>
+						<description>01:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-23" >http://www.bbc.co.uk/radio/aod/radio3_aod.shtml?radio3/jon3</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-23</date>
+							<description>23 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-29</date>
+							<description>29 June 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+				<event>
+					<network id="radio3">Radio 3</network>
+					<summary>Jazz Line-up</summary>
+					<description>Live from the Jazz Lounge, Julian Joseph hosts sessions from <a href="/glastonbury/2007/artists/dennisrollins/">Dennis Rollins</a>, Bad Bone and Co, and <a href="/glastonbury/2007/artists/lianecarroll/">Liane Carroll, with her trio</a></description>
+					<start>
+						<date>2007-06-23</date>
+						<time>16:00</time>
+						<description>16:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>17:30</time>
+						<description>17:30</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-24" >http://www.bbc.co.uk/radio/aod/radio3_aod.shtml?radio3/jazzlineup</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-24</date>
+							<description>24 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-30</date>
+							<description>30 June 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+<!-- RADIO 4		 -->		
+
+				<event>
+					<network id="radio4">Radio 4</network>
+					<summary>Today Programme</summary>
+					<description>Live from the festival</description>
+					<start>
+						<date>2007-06-23</date>
+						<time>07:00</time>
+						<description>07:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>21:00</time>
+						<description>21:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-06-24" >http://www.bbc.co.uk/radio/aod/radio4_aod.shtml?radio4/today_sat</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-24</date>
+							<description>24 June 2007</description>
+						</start>
+						<end>
+							<date>2007-06-30</date>
+							<description>30 June 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+				<event>
+					<network id="radio4">Radio 4</network>
+					<summary>Giles Wemmbley-Hogg goes off... to Glastonbury</summary>
+					<description>One-off special where Marcus Brigstocke as the rather posh Giles Wemmbley Hogg goes to the Glastonbury Festival and reports back as if it was a foreign country, complete with his reactions to the music, the mayhem and the endless, endless, hummus.</description>
+					<start>
+						<date>2007-06-26</date>
+						<time>18:30</time>
+						<description>18:30</description>
+					</start>
+					<end>
+						<date>2007-06-26</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-07-04" >http://www.bbc.co.uk/radio/aod/radio4_aod.shtml?radio4/XXXXXXX</url_advanced>
+						<url />
+						<start>
+							<date>2007-07-27</date>
+							<description>27 June 2007</description>
+						</start>
+						<end>
+							<date>2007-07-03</date>
+							<description>03 July 2007</description>
+						</end>
+					</online>
+				</event> 
+			
+			
+			<event>
+					<network id="radio4">Radio 4</network>
+					<summary>Jon Ronson on Glastonbury</summary>
+					<description>Jon Ronson aims to get to the heart of Glastonbury, and the people who go there. Although he feels he ought to like Glastonbury, that he owes it to his childlike hippy self, he sometimes finds it difficult... </description>
+					<start>
+						<date>2007-06-26</date>
+						<time>23:00</time>
+						<description>23:00</description>
+					</start>
+					<end>
+						<date>2007-06-26</date>
+						<time>23:30</time>
+						<description>23:30</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-07-03" >http://www.bbc.co.uk/radio/aod/radio4_aod.shtml?radio4/jonronsonon</url_advanced>
+						<url />
+						<start>
+							<date>2007-07-27</date>
+							<description>27 June 2007</description>
+						</start>
+						<end>
+							<date>2007-07-03</date>
+							<description>03 July 2007</description>
+						</end>
+					</online>
+				</event> 
+				
+				<event>
+					<network id="radio4">Radio 4</network>
+					<summary>4 in a Field</summary>
+					<description>Stand up comedy</description>
+					<start>
+						<date>2007-07-27</date>
+						<time>23:00</time>
+						<description>Marcus Brigstocke comperes an evening of stand-up including Sean Hughes,
+Ed Byrne, Phil Nichol, Rory Motion, and Janey Godley.</description>
+					</start>
+					<end>
+						<date>2007-07-27</date>
+						<time>23:30</time>
+						<description>23:30</description>
+					</end>
+					<online available="yes">
+					<url_advanced date="2007-07-12" >http://www.bbc.co.uk/radio/aod/radio4_aod.shtml?radio4/XXXXXX</url_advanced>
+						<url />
+						<start>
+							<date>2007-06-28</date>
+							<description>28 July 2007</description>
+						</start>
+						<end>
+							<date>2007-07-04</date>
+							<description>4 July 2007</description>
+						</end>
+					</online>
+				</event> 
+			
+			</radio>
+
+			
+			<podcast>
+			</podcast>
+		</listen>
+		<watch>
+		
+<!-- BBC TWO		 -->
+		
+		
+			<television>
+				<event>
+					<network id="bbc2">BBC TWO</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-22</date>
+						<time>20:00</time>
+						<description>20:00</description>
+					</start>
+					<end>
+						<date>2007-06-22</date>
+						<time>20:30</time>
+						<description>20:30</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc2">BBC TWO</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-22</date>
+						<time>23:00</time>
+						<description>23:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>02:00</time>
+						<description>02:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc2">BBC TWO</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-23</date>
+						<time>16:45</time>
+						<description>16:45</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc2">BBC TWO</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-23</date>
+						<time>22:30</time>
+						<description>22:30</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time>02:00</time>
+						<description>02:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc2">BBC TWO</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-24</date>
+						<time>17:15</time>
+						<description>17:15</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc2">BBC TWO</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-24</date>
+						<time>22:30</time>
+						<description>22:30</description>
+					</start>
+					<end>
+						<date>2007-06-25</date>
+						<time>02:00</time>
+						<description>02:00</description>
+					</end>
+				</event>
+				
+				
+<!-- BBC THREE -->
+				
+				
+				<event>
+					<network id="bbc3">BBC THREE</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-22</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</start>
+					<end>
+						<date>2007-06-22</date>
+						<time>23:00</time>
+						<description>23:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc3">BBC THREE</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-23</date>
+						<time>00:15</time>
+						<description>00:15</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>02:00</time>
+						<description>02:00</description>
+					</end>
+				</event>
+				
+				
+				<event>
+					<network id="bbc3">BBC THREE</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-23</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>19:50</time>
+						<description>19:50</description>
+					</end>
+				</event>
+				
+					<event>
+					<network id="bbc3">BBC THREE</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-23</date>
+						<time>20:35</time>
+						<description>20:35</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>22:30</time>
+						<description>22:30</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc3">BBC THREE</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-24</date>
+						<time>00:00</time>
+						<description>00:00</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time>02:00</time>
+						<description>02:00</description>
+					</end>
+				</event>
+				
+				
+				<event>
+					<network id="bbc3">BBC THREE</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-24</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time>20:00</time>
+						<description>20:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc3">BBC THREE</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-24</date>
+						<time>20:45</time>
+						<description>00:15</description>
+					</start>
+					<end>
+						<date>2007-06-25</date>
+						<time>02:00</time>
+						<description>02:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc3">BBC THREE</network>
+					<summary>Highlights from the festival</summary>
+					<start>
+						<date>2007-06-25</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</start>
+					<end>
+						<date>2007-06-25</date>
+						<time>20:00</time>
+						<description>20:00</description>
+					</end>
+				</event>
+				
+<!-- BBC FOUR -->
+
+				<event>
+					<network id="bbc4">BBC FOUR</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-22</date>
+						<time>21:00</time>
+						<description>21:00</description>
+					</start>
+					<end>
+						<date>2007-06-22</date>
+						<time>22:30</time>
+						<description>22:30</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc4">BBC FOUR</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-23</date>
+						<time>22:30</time>
+						<description>22:30</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time>00:00</time>
+						<description>00:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbc4">BBC FOUR</network>
+					<summary></summary>
+					<start>
+						<date>2007-06-24</date>
+						<time>22:30</time>
+						<description>22:30</description>
+					</start>
+					<end>
+						<date>2007-06-25</date>
+						<time>00:00</time>
+						<description>00:00</description>
+					</end>
+				</event>
+				
+				
+			</television>
+				
+				
+			<interactive>
+			
+<!-- RED BUTTON BBCi		 -->	
+				<event>
+					<network id="bbci">BBCi</network>
+					<summary>Up to four extra channels of live sets from the festival</summary>
+					<description/>
+					<start>
+						<date>2007-06-22</date>
+						<time/>
+						<description>19:00 - 02:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				
+					<event>
+					<network id="bbci">BBCi</network>
+					<summary>Up to four extra channels of live sets from the festival</summary>
+					<description/>
+					<start>
+						<date>2007-06-23</date>
+						<time/>
+						<description>16:45 - 02:00</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bbci">BBCi</network>
+					<summary>Up to four extra channels of live sets from the festival</summary>
+					<description/>
+					<start>
+						<date>2007-06-24</date>
+						<time/>
+						<description>17:15 - 02:00</description>
+					</start>
+					<end>
+						<date>2007-06-25</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				
+			</interactive>
+			
+			
+<!-- BIG SCREENS -->			
+			<bigscreens>
+				<event>
+					<network id="bigscreens">BIRMINGHAM, CHAMBERLAIN SQUARE; HULL, QUEEN VICTORIA SQUARE; LIVERPOOL, CLAYTON SQUARE; MANCHESTER, EXCHANGE SQUARE; LEEDS, MILLENNIUM SQUARE; ROTHERHAM, ALL SAINTS SQUARE; BRADFORD, CENTENARY SQUARE;</network>
+					<summary>Watch the festival in a city centre</summary>
+					<description/>
+					<start>
+						<date>2007-06-22</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</start>
+					<end>
+						<date>2007-06-22</date>
+						<time>21:00</time>
+						<description>22:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bigscreens">BIRMINGHAM, CHAMBERLAIN SQUARE; HULL, QUEEN VICTORIA SQUARE; LIVERPOOL, CLAYTON SQUARE; MANCHESTER, EXCHANGE SQUARE; LEEDS, MILLENNIUM SQUARE; ROTHERHAM, ALL SAINTS SQUARE; BRADFORD, CENTENARY SQUARE;</network>
+					<summary>Watch the festival in a city centre</summary>
+					<description/>
+					<start>
+						<date>2007-06-23</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</start>
+					<end>
+						<date>2007-06-23</date>
+						<time>21:00</time>
+						<description>22:00</description>
+					</end>
+				</event>
+				
+				<event>
+					<network id="bigscreens">BIRMINGHAM, CHAMBERLAIN SQUARE; HULL, QUEEN VICTORIA SQUARE; LIVERPOOL, CLAYTON SQUARE; MANCHESTER, EXCHANGE SQUARE; LEEDS, MILLENNIUM SQUARE; ROTHERHAM, ALL SAINTS SQUARE; BRADFORD, CENTENARY SQUARE;</network>
+					<summary>Watch the festival in a city centre</summary>
+					<description/>
+					<start>
+						<date>2007-06-24</date>
+						<time>19:00</time>
+						<description>19:00</description>
+					</start>
+					<end>
+						<date>2007-06-24</date>
+						<time>21:00</time>
+						<description>22:00</description>
+					</end>
+				</event>
+				
+			</bigscreens>
+		</watch>
+		<online>
+			<watch>
+				<!-- ONLINE	-->	
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="jamiet">Jamie T</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/jamiet.shtml</url>
+					
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="natashabedingfield">Natasha Bedingfield</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/natashabedingfield.shtml</url>
+			
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="fray">The Fray</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/fray.shtml</url>
+					
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="kasabian">Kasabian</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/kasabian.shtml</url>
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="pigeondetectives">The Pigeon Detectives</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/pigeondetectives.shtml</url>
+					
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="coldwarkids">Cold War Kids</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/coldwarkids.shtml</url>
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="biffyclyro">Biffy Clyro</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/biffyclyro.shtml</url>
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="css">CSS</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/css.shtml</url>
+					
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="lcdsoundsystem">LCD Soundsystem</summary>
+					<description>Highlights</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/lcdsoundsystem.shtml</url>
+					
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="gossip">The Gossip</summary>
+					<description>Highlights</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/gossip.shtml</url>
+				
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="groovearmada">Groove Armada</summary>
+					<description>Highlights</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/groovearmada.shtml</url>
+					
+					<start>
+						<date>2007-06-20</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="calvinharris">Calvin Harris</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/calvinharris.shtml</url>
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="markronson">Mark Ronson</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/markronson.shtml</url>
+					
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="view">The View</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/view.shtml</url>
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="stereophonics">Stereophonics</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/stereophonics.shtml</url>
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="enemy">The Enemy</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/enermy.shtml</url>
+					
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="getcapewearcapefly">Get Cape. Wear Cape. Fly</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/getcapewearcapefly.shtml</url>
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="mia">MIA</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/mia.shtml</url>
+				
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="dizzeerascal">Dizzee Rascal</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/dizzeerascal.shtml</url>
+					
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				
+				
+			
+				
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="maximopark">Maximo Park</summary>
+					<description>Full Set</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/maximopark.shtml</url>
+				
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+				<event>
+					<network id="online">Glastonbury website</network>
+					<summary id="blocparty">Bloc Party</summary>
+					<description>Highlights</description>
+					<url>http://www.bbc.co.uk/radio1/bigweekend/2007/videoplayer/blocparty.shtml</url>
+					<start>
+						<date>2007-06-21</date>
+						<time/>
+						<description>From 08:00</description>
+					</start>
+					<end>
+						<date>2007-06-30</date>
+						<time/>
+						<description/>
+					</end>
+				</event>
+			</watch>
+		</online>
+	</schedule>
+</musicevent>

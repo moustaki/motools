@@ -1,0 +1,37 @@
+<!-- Meta Stuff -->
+<% @page_title = 'Artists' -%>
+<% @description = 'John Peel artists' -%>
+<% @section = 'artist' -%>
+
+<!-- Calculate maximum and minimum appearance count -->
+<% maximum_appearance_count = 0 -%>
+<% @artists.each do |a| -%>
+	<% if a.sessions.size + a.festive_fifties.size > maximum_appearance_count -%>
+		<% maximum_appearance_count = a.sessions.size + a.festive_fifties.size -%>
+	<% end -%>
+<% end -%>
+<% minimum_appearance_count = 1 -%>
+
+<!-- Title -->
+<%= content_tag 'h2', 'Artists', :id => 'artists' %>
+
+<!-- Artist list -->
+<div class="section">
+	<ol class="tagcloud clear-me">
+		<% @artists.each do |a| -%>
+			<li>
+				<%= link_to (h a.name), show_artist_url(:url_key => a.url_key),
+				:style => font_size_for_tag_cloud (a.sessions.size + a.festive_fifties.size, {
+				:min => minimum_appearance_count,
+				:max => maximum_appearance_count}
+				),
+				:title => "#{a.sessions.size + a.festive_fifties.size} appearances by #{h a.name}" %>
+			</li>
+		<% end -%>
+	</ol>
+</div>
+
+
+
+
+		

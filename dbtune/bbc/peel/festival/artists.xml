@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<musicevent>
+	<artists>	
+		<grouping>
+			<!-- GROUPING NAME: Equivalent to Stage Name -->
+			<name id="main">Main Stage</name>
+			<!-- ARTIST ID: Equivalent to URL of Artist -->
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="scissorsisters" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Scissor Sisters</name>
+			</artist>
+			<!-- ARTIST ID: Equivalent to URL of Artist -->
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="razorlight" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Razorlight</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="kasabian" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Kasabian</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="fratellis" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>The Fratellis</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="fray" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>The Fray</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="natashabedingfield" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Natasha Bedingfield</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="twang" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>The Twang</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="jamiet" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Jamie T</name>
+			</artist>
+
+			<!-- SUNDAY -->
+
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="kaiserchiefs" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Kaiser Chiefs</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="stereophonics" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Stereophonics</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="view" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>The View</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="mika" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Mika</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="rihanna" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Rihanna</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="markronson" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Mark Ronson</name>
+			</artist>
+		    <!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="justjack" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Just Jack</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) -->
+			<artist id="calvinharris" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Calvin Harris</name>
+			</artist>
+		</grouping>
+		<grouping>
+			<!-- GROUPING NAME: Equivalent to Stage Name -->
+			<name id="inmwt">In New Music We Trust Stage</name>
+			<!-- ARTIST ID: Equivalent to URL of Artist -->
+			
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="groovearmada" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Groove Armada</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="gossip" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Gossip</name>
+			</artist>			
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="lcdsoundsystem" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>LCD Soundsystem</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="css" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>CSS</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="biffyclyro" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Biffy Clyro</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="coldwarkids" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Cold War Kids</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="pigeondetectives" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>The Pigeon Detectives</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="blocparty" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Bloc Party</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="maximopark" status="highlight" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Maximo Park</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="klaxons" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Klaxons</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="dizzeerascal" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Dizzee Rascal</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="mia" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>M.I.A.</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="getcapewearcapefly" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Get Cape Wear Cape Fly</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="enemy" status="featured" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>The Enemy</name>
+			</artist>
+			
+		</grouping>
+		<grouping>
+			<!-- GROUPING NAME: Equivalent to Stage Name -->
+			<name id="outdoor">Outdoor Arena</name>
+			<!-- ARTIST ID: Equivalent to URL of Artist -->
+			
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="westwood" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Westwood</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="mistajam" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Mista Jam</name>
+			</artist>			
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="seamushaji" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Seamus Haji</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="meck" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Meck</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="djsetgroovearmada" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Groove Armada - DJ set</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="judgejules" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Judge Jules</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="timdeluxesimonfranks" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Tim Deluxe vs Simon Franks (Audio Bullys)</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="simianmobiledisco" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Simian Mobile Disco</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="anniemac" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Anne Mac</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="freemasons" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>190507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Free Masons</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="bobbyandnihal" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Bobby and Nihal</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="robdabank" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Rob da Bank</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="zanelowemarkronson" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Zane Lowe and Mark Ronson</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="djsetklaxons" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Klaxons - DJ set</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="petetongvernonkay" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Pete Tong and Vernon Kay</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="davidguetta" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>David Guetta</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="trophytwins" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Trophy Twins</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="fergie" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Fergie</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="tylorleigh" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Tylor Leigh</name>
+			</artist>
+			<!-- ARTIST STATUS: none(no profile) | featured(has-profile) | highlight(high profile artist) --> 
+			<artist id="davepearce" status="none" >
+				<!-- DATE: Date the artist is on -->
+				<date>200507</date>
+				<!-- NAME: Full name of artist -->
+				<name>Dave Pearce</name>
+			</artist>
+
+			
+		</grouping>		
+	</artists>
+</musicevent>

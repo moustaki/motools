@@ -1,0 +1,51 @@
+John Peel to DBPedia links
+--------------------------
+
+1 - Introduction:
+
+This package holds links, expressed in NTriples,
+from the John Peel dataset [1] to the DBPedia one [2].
+
+It holds owl:sameAs links for works and agents (musicians,
+bands, producers, engineers).
+
+
+2 - Linking Methodology:
+
+Such following queries were issued to the DBPedia SPARQL end-point for
+linking works:
+
+---
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+SELECT ?u 
+WHERE 
+{
+?u <http://dbpedia.org/property/name> "Facing West From California's Shores"@en.
+?u rdf:type <http://dbpedia.org/class/yago/Song107048000>
+}
+---
+
+Such following queries were issued to the DBPedia SPARQL end-point for 
+linking agents:
+
+---
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+SELECT ?u 
+WHERE {
+{
+	{
+		{?u <http://dbpedia.org/property/name> "Joyrider"@en} UNION {?u <http://dbpedia.org/property/bandName> "Joyrider"@en}
+	} 
+	?u <http://dbpedia.org/property/wikiPageUsesTemplate> <http://dbpedia.org/resource/Template:infobox_musical_artist>
+} 
+UNION {
+		?u rdfs:label "Joyrider"@en. 
+		{{?u a <http://dbpedia.org/class/yago/Group100031264>} UNION {?u a <http://dbpedia.org/class/yago/Artist109812338>}}
+	}
+}
+---
+
+
+[1] http://dbtune.org/bbc/peel/
+[2] http://dbpedia.org/
+
