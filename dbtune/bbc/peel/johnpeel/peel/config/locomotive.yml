@@ -1,6 +1,0 @@
----
-mode: development
-runs_at_launch: 0
-identifier: peel
-port: 3005
-bundle: /Users/smethm01/Applications/Locomotive2/Bundles/standardRailsSept2006.locobundle

@@ -1,9 +1,0 @@
-# Logfile created on Tue Jan 30 16:09:57 +0000 2007 by logger.rb/1.5.2.9
-D, [2007-01-30T16:09:57.355000 #5024] DEBUG -- : TRACING ON Tue Jan 30 16:09:57 +0000 2007
-D, [2007-01-31T20:59:11.241000 #4732] DEBUG -- : TRACING ON Wed Jan 31 20:59:11 +0000 2007
-D, [2007-02-05T08:39:56.207000 #2816] DEBUG -- : TRACING ON Mon Feb 05 08:39:56 +0000 2007
-FILES OPEN AT EXIT
---- 
-C:/INSTAN~1/rails_apps/peel/config/../log/development.log: 1
-log/mongrel_debug/files.log: 1
-
