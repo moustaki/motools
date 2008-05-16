@@ -12,6 +12,6 @@
 load :-
 	rdf_load('index.ttl'),!,
 	findall(T,rdf(_,rdfs:seeAlso,T),Ts),!,
-	forall(member(T,Ts),((T='http://moustaki.org/rdf/popsongs//',!);rdf_load(T))).
+	forall(member(T,Ts),(rdf_load(T))).
 
 

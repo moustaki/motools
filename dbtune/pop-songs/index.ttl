@@ -1,10 +1,5 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 
-<> rdfs:seeAlso <http://moustaki.org/rdf/popsongs/?C=N;O=D>.
-<> rdfs:seeAlso <http://moustaki.org/rdf/popsongs/?C=M;O=A>.
-<> rdfs:seeAlso <http://moustaki.org/rdf/popsongs/?C=S;O=A>.
-<> rdfs:seeAlso <http://moustaki.org/rdf/popsongs/?C=D;O=A>.
-<> rdfs:seeAlso <http://moustaki.org/rdf/popsongs//rdf/>.
 <> rdfs:seeAlso <http://moustaki.org/rdf/popsongs/ALpon_reggae.mma.rdf>.
 <> rdfs:seeAlso <http://moustaki.org/rdf/popsongs/A_Ballad_for_a_Jazz_Festival____onit_Pno_.mma.rdf>.
 <> rdfs:seeAlso <http://moustaki.org/rdf/popsongs/A_Call_For_Demons.mma.rdf>.
