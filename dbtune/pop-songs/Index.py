@@ -2,7 +2,7 @@ import urllib
 import sys
 from BeautifulSoup import BeautifulSoup
 
-url = 'http://chordtranscriptions.net/popsongs/'
+url = 'http://moustaki.org/rdf/popsongs/'
 
 f = urllib.urlopen(url)
 html = f.read()
