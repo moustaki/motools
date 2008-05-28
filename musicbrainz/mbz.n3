@@ -3,6 +3,7 @@
 @prefix mo: <http://purl.org/ontology/mo/>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix frbr: <http://purl.org/vocab/frbr/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 
 mbz:version 
 	a owl:ObjectProperty;
@@ -159,3 +160,14 @@ See http://wiki.musicbrainz.org/RemixerRelationshipType
 	rdfs:domain mo:Record;
 	rdfs:range mo:Record;
 	.
+
+mbz:involved_with
+	a owl:ObjectProperty;
+	rdfs:label "involved with";
+	rdfs:comment """Indicates that two persons were romantically involved with each other without being married.
+http://wiki.musicbrainz.org/InvolvedWithRelationshipType
+	""";
+	rdfs:domain foaf:Person;
+	rdfs:range foaf:Person;
+	.
+

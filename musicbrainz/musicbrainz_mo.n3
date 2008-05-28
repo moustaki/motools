@@ -15,6 +15,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix mbz: <http://purl.org/ontology/mbz#>.
 @prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix rel: <http://purl.org/vocab/relationship/>.
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "org.postgresql.Driver";
@@ -309,6 +310,88 @@ map:artist_member a d2rq:PropertyBridge;
 	d2rq:join "memberartist.id = l_artist_artist.link0";
 	d2rq:refersToClassMap map:artist;
 	.
+map:artist_impersonata a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property mo:alter_ego;
+        d2rq:condition "l_artist_artist.link_type=4";
+        d2rq:join "artist.id = l_artist_artist.link0";
+        d2rq:alias "artist AS personaartist";
+        d2rq:join "personaartist.id = l_artist_artist.link1";
+        d2rq:refersToClassMap map:artist;
+        .
+map:artist_parent a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property rel:childOf;
+        d2rq:condition "l_artist_artist.link_type=6";
+        d2rq:join "artist.id = l_artist_artist.link1";
+        d2rq:alias "artist AS parent";
+        d2rq:join "parent.id = l_artist_artist.link0";
+        d2rq:refersToClassMap map:artist;
+        .
+map:artist_sibling a d2rq:PropertyBridge; # FIXME - transitive/symmetric?
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property rel:siblingOf;
+        d2rq:condition "l_artist_artist.link_type=7";
+        d2rq:join "artist.id = l_artist_artist.link1";
+        d2rq:alias "artist AS parent";
+        d2rq:join "parent.id = l_artist_artist.link0";
+        d2rq:refersToClassMap map:artist;
+        .
+map:artist_married a d2rq:PropertyBridge; # FIXME - symmetric
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property rel:spouseOf;
+        d2rq:condition "l_artist_artist.link_type=8";
+        d2rq:join "artist.id = l_artist_artist.link1";
+        d2rq:alias "artist AS parent";
+        d2rq:join "parent.id = l_artist_artist.link0";
+        d2rq:refersToClassMap map:artist;
+        .
+map:artist_involved a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property mbz:involved_with; # FIXME - not right!
+        d2rq:condition "l_artist_artist.link_type=9";
+        d2rq:join "artist.id = l_artist_artist.link1";
+        d2rq:alias "artist AS parent";
+        d2rq:join "parent.id = l_artist_artist.link0";
+        d2rq:refersToClassMap map:artist;
+        .
+map:artist_collab a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property rel:collaboratesWith;
+        d2rq:condition "l_artist_artist.link_type=11";
+        d2rq:join "artist.id = l_artist_artist.link1";
+        d2rq:alias "artist AS parent";
+        d2rq:join "parent.id = l_artist_artist.link0";
+        d2rq:refersToClassMap map:artist;
+        .
+map:artist_support a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property mbz:supporting_musician;
+        d2rq:condition "l_artist_artist.link_type=13";
+        d2rq:join "artist.id = l_artist_artist.link1";
+        d2rq:alias "artist AS parent";
+        d2rq:join "parent.id = l_artist_artist.link0";
+        d2rq:refersToClassMap map:artist;
+        .
+map:artist_support_v a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property mbz:vocal_supporting_musician;
+        d2rq:condition "l_artist_artist.link_type=14";
+        d2rq:join "artist.id = l_artist_artist.link1";
+        d2rq:alias "artist AS parent";
+        d2rq:join "parent.id = l_artist_artist.link0";
+        d2rq:refersToClassMap map:artist;
+        .
+map:artist_support_i a d2rq:PropertyBridge;
+        d2rq:belongsToClassMap map:artist;
+        d2rq:property mbz:instrumental_supporting_musician;
+        d2rq:condition "l_artist_artist.link_type=15";
+        d2rq:join "artist.id = l_artist_artist.link1";
+        d2rq:alias "artist AS parent";
+        d2rq:join "parent.id = l_artist_artist.link0";
+        d2rq:refersToClassMap map:artist;
+        .
+
 
 # FIXME - No clue what that is
 #map:artist_relation a d2rq:ClassMap;
