@@ -300,6 +300,16 @@ map:artist_dbpedia a d2rq:PropertyBridge;
 map:artist_dbpedia_tr a d2rq:TranslationTable;
 	d2rq:javaClass "WikipediaTranslator";
 	.
+map:artist_member a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:artist;
+	d2rq:property foaf:member_of;
+	d2rq:condition "l_artist_artist.link_type=2";
+	d2rq:join "artist.id = l_artist_artist.link0";
+	d2rq:alias "artist AS memberartist";
+	d2rq:join "memberartist.id = l_artist_artist.link1";
+	d2rq:refersToClassMap map:artist;
+	.
+
 # FIXME - No clue what that is
 #map:artist_relation a d2rq:ClassMap;
 #	d2rq:dataStorage map:database;
