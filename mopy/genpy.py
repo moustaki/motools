@@ -309,12 +309,12 @@ def main():
 	# add mew ontologies here...
 	spec_g.load("owl.rdfs")
 	spec_g.load("time.owl")
-	spec_g.load("../mo/rdf/musicontology.rdfs")
+	spec_g.load("musicontology.rdfs")
 	spec_g.load("extras.rdfs")
 	spec_g.load("foaf.rdfs")
-	spec_g.load("../chord/chordontology.rdfs")
-	spec_g.load("../time/rdf/timeline.rdf")
-	spec_g.load("../event/rdf/event.rdf")
+	spec_g.load("chordontology.rdfs")
+	spec_g.load("timeline.rdf")
+	spec_g.load("event.rdf")
 	spec_g.load("musicnet.rdf")
 
 	# FIXME : Why do these get lost in loading ?
