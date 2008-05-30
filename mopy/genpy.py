@@ -315,12 +315,14 @@ def main():
 	spec_g.load("chordontology.rdfs")
 	spec_g.load("timeline.rdf")
 	spec_g.load("event.rdf")
-	spec_g.load("musicnet.rdf")
+	spec_g.load("myspace.owl")
+	#spec_g.load("musicnet.rdf")
 
 	# FIXME : Why do these get lost in loading ?
 	spec_g.namespace_manager.bind("owl",rdflib.URIRef('http://www.w3.org/2002/07/owl#'))
 	spec_g.namespace_manager.bind("timeline",rdflib.URIRef('http://purl.org/NET/c4dm/timeline.owl#'))
 	spec_g.namespace_manager.bind("time", rdflib.URIRef("http://www.w3.org/2006/time#"))
+	spec_g.namespace_manager.bind("myspace", rdflib.URIRef("http://grasstunes.net/ontology/myspace.owl#"))
 
 	classes = list(set(s for s in spec_g.subjects(RDF.type, OWL.Class) if type(s) != BNode)) # rdflib says rdfs:Class is a subClass of owl:Class - check !
 	removeDeprecated(spec_g, classes)
