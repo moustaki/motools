@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY mo "http://purl.org/ontology/mo/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY owl11 "http://www.w3.org/2006/12/owl11#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl11xml "http://www.w3.org/2006/12/owl11-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY myspace "http://grasstunes.net/ontology/myspace.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://grasstunes.net/ontology/myspace.owl#"
+     xml:base="http://grasstunes.net/ontology/myspace.owl"
+     xmlns:owl11="http://www.w3.org/2006/12/owl11#"
+     xmlns:owl11xml="http://www.w3.org/2006/12/owl11-xml#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:mo="http://purl.org/ontology/mo/"
+     xmlns:myspace="http://grasstunes.net/ontology/myspace.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment
+            >An ontology for describing MySpace stuff, especially artists</rdfs:comment>
+        <owl:imports rdf:resource="file:/Users/kurtjx/mo/motools/mo/rdf/musicontology.rdfs"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#friend -->
+
+    <owl:ObjectProperty rdf:about="#friend">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:range rdf:resource="#Page"/>
+        <rdfs:domain rdf:resource="#Page"/>
+        <rdfs:comment
+            >MySpace friend relationship - undirected</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#genreTag -->
+
+    <owl:ObjectProperty rdf:about="#genreTag">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:comment
+            >for the genres specified by artists on MySpace</rdfs:comment>
+        <rdfs:range rdf:resource="#Genre"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#topFriend -->
+
+    <owl:ObjectProperty rdf:about="#topFriend">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:comment
+            >MySpace top friend relationship - a directed relationship</rdfs:comment>
+        <rdfs:range rdf:resource="#Page"/>
+        <rdfs:domain rdf:resource="#Page"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#bandMembers -->
+
+    <owl:DatatypeProperty rdf:about="#bandMembers">
+        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#cachedMP3 -->
+
+    <owl:DatatypeProperty rdf:about="#cachedMP3">
+        <rdfs:domain rdf:resource="&mo;AudioFile"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#influences -->
+
+    <owl:DatatypeProperty rdf:about="#influences">
+        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#plays -->
+
+    <owl:DatatypeProperty rdf:about="#plays">
+        <rdfs:domain rdf:resource="&mo;AudioFile"/>
+        <rdfs:comment
+            >number of plays for a track</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#profileViews -->
+
+    <owl:DatatypeProperty rdf:about="#profileViews">
+        <rdfs:domain rdf:resource="#Page"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#recordLabel -->
+
+    <owl:DatatypeProperty rdf:about="#recordLabel">
+        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#recordLabelType -->
+
+    <owl:DatatypeProperty rdf:about="#recordLabelType">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="#ArtistPage"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#soundsLike -->
+
+    <owl:DatatypeProperty rdf:about="#soundsLike">
+        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#totalPlays -->
+
+    <owl:DatatypeProperty rdf:about="#totalPlays">
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:domain rdf:resource="#ArtistPage"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#ArtistPage -->
+
+    <owl:Class rdf:about="#ArtistPage">
+        <rdfs:subClassOf rdf:resource="#Page"/>
+        <rdfs:subClassOf rdf:resource="&mo;MusicArtist"/>
+        <rdfs:comment
+            >MySpace Artist page</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#AudioFile -->
+
+    <owl:Class rdf:about="#AudioFile">
+        <rdfs:subClassOf rdf:resource="&mo;AudioFile"/>
+        <rdfs:comment
+            >An audio file on a MySpace artist page</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#Genre -->
+
+    <owl:Class rdf:about="#Genre">
+        <rdfs:subClassOf rdf:resource="&mo;Genre"/>
+        <rdfs:comment
+            >MySpace genre from the list of 119</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://grasstunes.net/ontology/myspace.owl#Page -->
+
+    <owl:Class rdf:about="#Page">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+        <rdfs:subClassOf rdf:resource="&foaf;Document"/>
+        <rdfs:comment>MySpace page</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/mo/AudioFile -->
+
+    <owl:Class rdf:about="&mo;AudioFile"/>
+    
+
+
+    <!-- http://purl.org/ontology/mo/Genre -->
+
+    <owl:Class rdf:about="&mo;Genre"/>
+    
+
+
+    <!-- http://purl.org/ontology/mo/MusicArtist -->
+
+    <owl:Class rdf:about="&mo;MusicArtist"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="&foaf;Agent"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Document -->
+
+    <owl:Class rdf:about="&foaf;Document"/>
+</rdf:RDF>
