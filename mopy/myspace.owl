@@ -63,7 +63,7 @@
         <rdfs:domain rdf:resource="#ArtistPage"/>
         <rdfs:comment
             >for the genres specified by artists on MySpace</rdfs:comment>
-        <rdfs:range rdf:resource="#Genre"/>
+        <rdfs:range rdf:resource="&mo;Genre"/>
     </owl:ObjectProperty>
     
 
