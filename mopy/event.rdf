@@ -117,7 +117,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <vs:term_status>stable</vs:term_status>
     <rdfs:domain rdf:resource="#Event"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+    <rdfs:range rdf:resource="http://purl.org/NET/c4dm/timeline.owl#Interval"/>
     <rdfs:label>time</rdfs:label>
     <rdfs:comment>
 		Relates an event to a time object, classifying a time region (either instantaneous or having an extent).
