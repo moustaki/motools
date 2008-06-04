@@ -139,6 +139,10 @@ Two timelines can be mapped using timeline maps.</rdfs:comment>
    <rdfs:domain rdf:resource="#Interval"/>
    <rdfs:range rdf:resource="#Interval"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2006/time#intervalBefore">
+   <rdfs:domain rdf:resource="#Interval"/>
+   <rdfs:range rdf:resource="#Interval"/>
+  </rdf:Description>
   <rdf:Description rdf:about="#metBy">
     <owl:sameAs rdf:resource="http://www.w3.org/2006/time#intervalMetBy"/>
   </rdf:Description>
