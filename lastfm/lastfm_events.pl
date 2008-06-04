@@ -32,6 +32,7 @@ event_rdf(Event,UserUri,[
 	,	rdf(PlaceUri,foaf:homepage,LocationURI)
 	,	rdf(PlaceUri,wgs:long,literal(Lat))
 	,	rdf(PlaceUri,wgs:lat,literal(Long))
+	,	rdf(PlaceUri,georss:point,literal(LatLong))
 	,	rdf(TimeUri,rdf:type,tl:'Interval')
 	,	rdf(TimeUri,tl:start,literal(type('http://www.w3.org/2001/XMLSchema#dateTime',Start)))
 	,	rdf(TimeUri,tl:end,literal(type('http://www.w3.org/2001/XMLSchema#dateTime',End)))
@@ -49,7 +50,8 @@ event_rdf(Event,UserUri,[
 	Place\='',
 	format(user_error,'Geocoding ~w\n',Place),
 	google_geo(Place,Address,Lat,Long),
-	format(user_error,'Found ~w,~w\n',[Long,Lat]).
+	format(user_error,'Found ~w,~w\n',[Long,Lat]),
+	format(atom(LatLong),'~w ~w',[Lat,Long]).
 	%host(Host),
 	%atom_concat('http://www.last.fm/event/',EventId,Page),
 	%concat_atom([Host,'/','event','/',EventId],Id).
