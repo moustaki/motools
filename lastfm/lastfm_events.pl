@@ -6,6 +6,8 @@
 :- use_module(namespaces).
 :- use_module(config).
 
+:- dynamic cache/1.
+
 events_rdf(User,Triples) :-
 	events_xml(User,Xml),
 	member(element(rss,_,Rss),Xml),!,
@@ -67,6 +69,8 @@ parse_desc(_,'').
 
 api_key('ABQIAAAAu0AMQcAkvqfViJpEeSH_-hT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQ0_Z6CDgX2Q08wvAh1aYjckybfeA').
 google_geo(Literal,Address,Lat,Long) :-
+	cache(google_geo(Literal,Address,Lat,Long)),!.
+google_geo(Literal,Address,Lat,Long) :-
 	api_key(Key),www_form_encode(Literal,LE),
 	format(atom(URL),'http://maps.google.com/maps/geo?q=~w&output=kml&key=~w',[LE,Key]),
 	http_open(URL,Stream,[]),
@@ -78,7 +82,8 @@ google_geo(Literal,Address,Lat,Long) :-
 	member(element('address',_,[Address]),Placemark),
 	member(element('Point',_,Point),Placemark),
 	member(element('coordinates',_,[Coord]),Point),
-	concat_atom([Lat,Long,_Alt],',',Coord).
+	concat_atom([Lat,Long,_Alt],',',Coord),
+	assert(cache(google_geo(Literal,Address,Lat,Long))).
 	
 
 
