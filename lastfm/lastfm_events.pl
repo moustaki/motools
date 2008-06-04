@@ -30,8 +30,8 @@ event_rdf(Event,UserUri,[
 	,	rdf(PlaceUri,rdf:type,wgs:'Point')
 	,	rdf(PlaceUri,dc:title,literal(Address))
 	,	rdf(PlaceUri,foaf:homepage,LocationURI)
-	,	rdf(PlaceUri,wgs:lat,literal(Lat))
 	,	rdf(PlaceUri,wgs:long,literal(Long))
+	,	rdf(PlaceUri,wgs:lat,literal(Lat))
 	,	rdf(TimeUri,rdf:type,tl:'Interval')
 	,	rdf(TimeUri,tl:start,literal(type('http://www.w3.org/2001/XMLSchema#dateTime',Start)))
 	,	rdf(TimeUri,tl:end,literal(type('http://www.w3.org/2001/XMLSchema#dateTime',End)))
@@ -49,7 +49,7 @@ event_rdf(Event,UserUri,[
 	Place\='',
 	format(user_error,'Geocoding ~w\n',Place),
 	google_geo(Place,Address,Lat,Long),
-	format(user_error,'Found ~w,~w\n',[Lat,Long]).
+	format(user_error,'Found ~w,~w\n',[Long,Lat]).
 	%host(Host),
 	%atom_concat('http://www.last.fm/event/',EventId,Page),
 	%concat_atom([Host,'/','event','/',EventId],Id).
@@ -82,7 +82,7 @@ google_geo(Literal,Address,Lat,Long) :-
 	member(element('address',_,[Address]),Placemark),
 	member(element('Point',_,Point),Placemark),
 	member(element('coordinates',_,[Coord]),Point),
-	concat_atom([Lat,Long,_Alt],',',Coord),
+	concat_atom([Long,Lat,_Alt],',',Coord),
 	assert(cache(google_geo(Literal,Address,Lat,Long))).
 	
 
