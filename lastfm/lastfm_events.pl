@@ -22,7 +22,7 @@ event_rdf(Event,UserUri,[
 		rdf(EventUri,dc:title,literal(Title))
 	,	rdf(EventUri,rdf:type,mo:'Performance')
 	,	rdf(UserUri,lfm:recommendation,EventUri)
-	,	rdf(EventUri,foaf:homepage,literal(Page))
+	,	rdf(EventUri,foaf:homepage,Page)
 	,	rdf(EventUri,dc:description,literal(Desc))
 	,	rdf(EventUri,rdf:type,event:'Event')
 	,	rdf(EventUri,event:time,TimeUri)
