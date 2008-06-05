@@ -32,9 +32,9 @@ class PropertySet(set):
 			raise TypeError(msg)
 		set.add(self,o)
 	
-	def get(self):
+	def get(self,elem):
 		#print "in custom get()"
-		return self
+		return self.get(elem)
 
 	def set(self, v):
 		self.clear()
