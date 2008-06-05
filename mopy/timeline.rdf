@@ -33,6 +33,7 @@ Two timelines can be mapped using timeline maps.</rdfs:comment>
     <vs:term_status>stable</vs:term_status>
     <rdfs:comment>An interval (same as in OWL-Time). Allen's relationships are defined in OWL-Time.</rdfs:comment>
     <owl:equivalentClass rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
+ 	<owl:sameAs rdf:resource="http://www.w3.org/2006/time#ProperInterval"/>
   </owl:Class>
   <owl:FunctionalProperty rdf:about="#onTimeLine">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -117,9 +118,6 @@ Two timelines can be mapped using timeline maps.</rdfs:comment>
   <rdf:Description rdf:about="#equals">
     <owl:sameAs rdf:resource="http://www.w3.org/2006/time#intervalEquals"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#before">
-    <owl:sameAs rdf:resource="http://www.w3.org/2006/time#intervalBefore"/>
-  </rdf:Description>
   <rdf:Description rdf:about="#overlaps">
     <owl:sameAs rdf:resource="http://www.w3.org/2006/time#intervalOverlaps"/>
   </rdf:Description>
@@ -132,14 +130,7 @@ Two timelines can be mapped using timeline maps.</rdfs:comment>
   <rdf:Description rdf:about="#finishes">
     <owl:sameAs rdf:resource="http://www.w3.org/2006/time#intervalFinishes"/>
   </rdf:Description>
-  <rdf:Description rdf:about="#after">
-    <owl:sameAs rdf:resource="http://www.w3.org/2006/time#intervalAfter"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/2006/time#intervalAfter">
-   <rdfs:domain rdf:resource="#Interval"/>
-   <rdfs:range rdf:resource="#Interval"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2006/time#intervalBefore">
    <rdfs:domain rdf:resource="#Interval"/>
    <rdfs:range rdf:resource="#Interval"/>
   </rdf:Description>
