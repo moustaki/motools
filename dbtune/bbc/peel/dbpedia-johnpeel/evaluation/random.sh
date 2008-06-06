@@ -10,6 +10,6 @@ let "number %= $RANGE"
 #echo "$number: "
 
 #cat $1 |grep dbtune.org | grep -n dbtune.org | grep "^$number: "
-cat $1|grep dbtune.org | sed -n "${number} p"
+cat $1|grep dbtune.org | sed -n "${number} p" | sed 's/    <uri>\(.*\)<\/uri>/\1/g'
 
 
