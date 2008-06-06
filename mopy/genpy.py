@@ -308,7 +308,7 @@ def main():
 	print "Loading ontology documents..."
 	# add mew ontologies here...
 	spec_g.load("owl.rdfs")
-	# spec_g.load("time.owl")
+	spec_g.load("time.owl")
 	spec_g.load("musicontology.rdfs")
 	spec_g.load("extras.rdfs")
 	spec_g.load("foaf.rdfs")
