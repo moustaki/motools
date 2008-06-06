@@ -2,11 +2,12 @@
 
 # Pick a random DBtune uri in file
 
+RANDOM=$$
 RANGE=`cat $1 |grep dbtune.org | wc -l`
-echo $RANGE
+#echo $RANGE
 number=$RANDOM
 let "number %= $RANGE" 
-echo "$number: "
+#echo "$number: "
 
 #cat $1 |grep dbtune.org | grep -n dbtune.org | grep "^$number: "
 cat $1|grep dbtune.org | sed -n "${number} p"
