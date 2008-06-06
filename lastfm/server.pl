@@ -20,9 +20,9 @@ reply(Request) :-
 	current_output(S),
 	set_stream(S,encoding(utf8)),
 	log:log('Generating RDF scrobble for ~w',[User]),
-	scrobble_rdf(User,Triples1),
-	friends_rdf(User,Triples2),
-	events_rdf(User,Triples3),
+	catch(scrobble_rdf(User,Triples1),_,Triples1=[]),
+	catch(friends_rdf(User,Triples2),_,Triples2=[]),
+	catch(events_rdf(User,Triples3),_,Triples3=[]),
 	flatten([Triples1,Triples2,Triples3],Triples4),
 	rdf_global_term(Triples4,Triples),
 	rdf_write_xml(S,Triples).
