@@ -22,6 +22,7 @@ Copyright (c) 2007 Chris Sutton. All rights reserved.
 
 
 from mopy import model
+from mopy import time
 from mopy.MusicInfo import MusicInfo, getBlindURI, isBlind
 from mopy.rdfs import Resource
 import rdflib; from rdflib import URIRef, Literal, BNode, RDF, RDFS, ConjunctiveGraph
