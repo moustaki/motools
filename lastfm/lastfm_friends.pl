@@ -6,7 +6,7 @@
 :- use_module(namespaces).
 :- use_module(config).
 
-friends_rdf(User,[rdf(URI,rdf:type,foaf:'Person'),rdf(URI,rdfs:label,literal(User)),rdf(URI,foaf:holdsAccount,Account),rdf(Account,rdf:type,foaf:'OnlineAccount'),rdf(Account,foaf:primaryTopicOf,Page),rdf(Account,foaf:accountServiceHomepage,'http://www.last.fm/'),rdf(Account,foaf:accountName,literal(User))|Triples]) :-
+friends_rdf(User,[rdf(URI,rdf:type,foaf:'Person'),rdf(URI,rdfs:label,literal(User)),rdf(URI,foaf:holdsAccount,Account),rdf(Account,rdf:type,foaf:'OnlineAccount'),rdf(Account,foaf:isPrimaryTopicOf,Page),rdf(Account,foaf:accountServiceHomepage,'http://www.last.fm/'),rdf(Account,foaf:accountName,literal(User))|Triples]) :-
 	friends_xml(User,[element(friends,_,Friends)]),!,
 	findall(Rdf,friend_rdf(Friends,User,Rdf),T),
 	flatten(T,Triples),%rdf_global_term(TT,Triples),
