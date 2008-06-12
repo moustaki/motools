@@ -1,0 +1,4 @@
+$ roqet suject-content.sparql >/dev/null
+roqet: Querying from file suject-content.sparql
+roqet: Query has a variable bindings result
+roqet: Query returned 1047 results
