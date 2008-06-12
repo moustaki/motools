@@ -1,0 +1,10 @@
+PREFIX ya: <http://purl.org/ontology/yahoo#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+
+SELECT DISTINCT ?s ?c
+FROM <questions.n3>
+WHERE
+{
+?a a ya:Question; dc:title ?s; dc:description ?c
+}
+
