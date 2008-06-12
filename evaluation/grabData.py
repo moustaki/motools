@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import urllib
 import sys
+import time
 from xml.dom.ext.reader import Sax2
 
 
@@ -41,5 +42,6 @@ while k<=iterations:
 	url = getUrl(appid,category,start)
 	print "Fetching and parsing "+url
 	appendNewQuestions(url)
+	time.sleep(5)
 
 
