@@ -44,7 +44,7 @@
 #<http://yo> a foaf:Person.
 
 # Status of terms
-vs:term_status a owl:AnnotationProperty.
+
 
 #####################
 #### CLASSES ########
@@ -59,13 +59,22 @@ tonality:Interval
 	""";	
 	.
 
+tonality:Set
+	a owl:Class;
+	vs:term_status "unstable";
+	rdfs:label "set"
+	rdfs:comment """
+		Set of intervals that defines a music system
+	""";
+	.
+
 tonality:IntervalClass
 	a owl:Class;
 	vs:term_status "unstable";
 	#rdfs:subClassOf tonality:Interval;
 	rdfs:label "Interval Class";
 	rdfs:comment """
-		Interval class represents the distance between two unordered pitch classes where octave, enharmonic and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distances from the minimum to the maximum value possible within the octave. Note: may be an interval subclass?	
+		Interval class represents the distance between two unordered pitch classes where octave, enharmonically_equivalent and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distances from the minimum to the maximum value possible within the octave. Note: may be an interval subclass?	
 	""";
 	.
 
@@ -83,7 +92,7 @@ tonality:PitchClass
 	owl:sameAs co:note;
 	rdfs:label "Pitch Class";
 	rdfs:comment """
-		Another generalization where octave, enharmonic and inversion equivalency is again assumed. So pitches are equivalent from octave to octave and wrapped into a pitch class. Note: Should be a pitch subclass?	
+		Another generalization where octave, enharmonically_equivalent and inversion equivalency is again assumed. So pitches are equivalent from octave to octave and wrapped into a pitch class. Note: Should be a pitch subclass?	
 	""";
 	vs:term_status "unstable";
 	.
@@ -156,6 +165,14 @@ tonality:HeptatonicScale
 	rdfs:comment "A particular scale subclass that represents scale-types formed by 7 notes.";
 	tonality:num_degrees 7;
 	vs:term_status "deprecated";
+	.
+
+tonality:DiatonicScale
+	a owl:Class;
+	rdfs:subClassOf tonality:Scale;
+	rdfs:label "diatonic scale";
+	rdfs:comment "Heptatonic scales which are defined on the diatonic set";
+	vs:term_status "testing";
 	.
 
 tonality:PentatonicScale
@@ -274,11 +291,11 @@ tonality:inversion a owl:SymmetricProperty;
 	a owl:ObjectProperty;
         .
 
-tonality:enharmonic a owl:SymmetricProperty;
+tonality:enharmonically_equivalent a owl:SymmetricProperty;
 	vs:term_status "unstable";
-        rdfs:label "enharmonic";
+        rdfs:label "enharmonically_equivalent";
         rdfs:comment """
-                Two intervals are enharmonic when they express the same pitch distance but as different general intervals, so they have the same number of semitones but different number of scale steps. Enharmony is a general musical property which states that two different musical elements has the same acoustic value.
+                Two intervals are enharmonically equivalent when they express the same pitch distance but as different general intervals, so they have the same number of semitones but different number of scale steps. Enharmony is a general musical property which states that two different musical elements has the same acoustic value.
         """;
 	rdfs:range tonality:Interval;
         rdfs:domain tonality:Interval;
@@ -324,6 +341,7 @@ tonality:interval a owl:ObjectProperty;
 	rdfs:domain tonality:Scale;
 	rdfs:domain tonality:Degree;
 	rdfs:domain co:Chord;
+	rdfs:domain tonality:Set;
 	rdfs:range tonality:Interval;
 	#rdfs:equivalentProperty chord:interval;
 	#rdfs:domain tonality:Tonality;
@@ -405,6 +423,8 @@ tonality:frequency a owl:FunctionalProperty;
 	rdfs:range  xsd:decimal;
 	a owl:DatatypeProperty;
 	.
+
+##Check this out
 	
 tonality:owned_chord a owl:ObjectProperty;
 	vs:term_status "unstable";
@@ -520,42 +540,42 @@ int:ic0 a tonality:IntervalClass;
 int:ic1 a tonality:IntervalClass;
 	rdfs:label "Interval class 1";
 	vs:term_status "unstable";
-	rdfs:comment "minor second and major seventh and enharmonics.";
+	rdfs:comment "minor second and major seventh and enharmonically_equivalents.";
 	tonality:semitones 1;
 	.
 
 int:ic2 a tonality:IntervalClass;
 	vs:term_status "unstable";
 	rdfs:label "Interval class 2";
-	rdfs:comment "major second and minor seventh and enharmonics.";
+	rdfs:comment "major second and minor seventh and enharmonically_equivalents.";
 	tonality:semitones 2;
 	.
 
 int:ic3 a tonality:IntervalClass;
 	rdfs:label "Interval class 3";
 	vs:term_status "unstable";
-	rdfs:comment "minor third and major sixth and enharmonics.";
+	rdfs:comment "minor third and major sixth and enharmonically_equivalents.";
 	tonality:semitones 3;
 	.
 
 int:ic4 a tonality:IntervalClass;
 	rdfs:label "Interval class 4";
 	vs:term_status "unstable";
-	rdfs:comment "major third and minor sixth and enharmonics.";
+	rdfs:comment "major third and minor sixth and enharmonically_equivalents.";
 	tonality:semitones 4;
 	.
 
 int:ic5 a tonality:IntervalClass;
 	rdfs:label "Interval class 5";
 	vs:term_status "unstable";
-	rdfs:comment "perfect fourth and fifth and enharmonics.";
+	rdfs:comment "perfect fourth and fifth and enharmonically_equivalents.";
 	tonality:semitones 5;
 	.
 
 int:ic6 a tonality:IntervalClass;
 	rdfs:label "Interval class 6";
 	vs:term_status "unstable";
-	rdfs:comment "augmented fourth and disminished fifth and enharmonics.";
+	rdfs:comment "augmented fourth and disminished fifth and enharmonically_equivalents.";
 	tonality:semitones 6;
 	.
 
@@ -662,7 +682,7 @@ int:fifth_dis a tonality:Interval;
 	tonality:cents 600;
 	tonality:interval_class int:ic6;
 	dc:type "chromatic";
-	tonality:enharmonic int:fourth_aug;
+	tonality:enharmonically_equivalent int:fourth_aug;
 	tonality:inversion int:fourth_aug;
 	.
 
@@ -772,8 +792,8 @@ int:tritone a tonality:Interval;
 	tonality:steps 3;
 	tonality:cents 600;
 	tonality:strength "dissonant";
-	tonality:enharmonic int:fifth_dis;
-	tonality:enharmonic int:fourth_aug;
+	tonality:enharmonically_equivalent int:fifth_dis;
+	tonality:enharmonically_equivalent int:fourth_aug;
 	.
 
 #############Example of intervals in Meantone###############
@@ -805,10 +825,11 @@ int:wolf_fifth_meantone a tonality:Interval;
 
 #################### Scales Individuals ###############
 
-scale:diatonic a tonality:Scale;
-	rdfs:label "Diatonic scale";
+#I have to think if i should make a class of this. Then we remove the scale_type thing...
+scale:major a tonality:DiatonicScale;
+	rdfs:label "Major scale";
 	vs:term_status "unstable";
-	rdfs:comment "Diatonic scale-type";
+	rdfs:comment "Major scale";
 	tonality:num_degrees 7;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -833,15 +854,7 @@ scale:diatonic a tonality:Scale;
 			tonality:interval int:seventh_maj];
 	.
 
-scale:major a tonality:Scale;
-	rdfs:label "Major scale";
-	vs:term_status "unstable";
-	rdfs:comment "Major scale which is the diatonic scale in the Ionian mode";
-	owl:sameAs scale:diatonic;
-	tonality:from_mode mode:ionian;
-	.
-
-scale:minor a tonality:Scale;
+scale:minor a tonality:DiatonicScale;
 	rdfs:label "Natural Minor scale";
 	vs:term_status "unstable";
 	rdfs:comment """
@@ -872,7 +885,7 @@ scale:minor a tonality:Scale;
 			tonality:interval int:seventh_min];
 	.
 
-scale:harmonic_minor a tonality:Scale;
+scale:harmonic_minor a tonality:HeptatonicScale;
 	rdfs:label "Harmonic Minor scale";
 	vs:term_status "unstable";
 	rdfs:comment """
@@ -948,15 +961,16 @@ scale:pentatonic_maj a tonality:PentatonicScale;
 	.
 
 scale:majorA
-	a tonality:Scale;
+	a tonality:DiatonicScale;
 	rdfs:label "A major scale";
 	vs:term_status "unstable";
-	rdfs:comment "Major scale in A.";
+	rdfs:comment "Major scale in A. May be major scale a class and this a subclass? i'm not sure... we should define any scale with a tonic?";
 	tonality:scale_type scale:major;
+	#This is finally tricky so...
 	tonality:tonic note:A;
 	.
 
-###########Modes individuals (only diatonic scale)############
+###########Modes individuals ############ Problems to define what is minor...
 
 mode:ionian
 	a tonality:Mode;

@@ -1,0 +1,31 @@
+ISSUES TRACK LIST
+
+First version: released for ISMIR'08 (paper rejected for not good music theory formalism) April 2008
+
+ToDo:
+
+1. Good definition for note/pitch note.n3 has some annotations and thoughts about it
+2. Develop Set class: it gives raise to different Set Theories...
+3. Fix MODE and relationships between SCALE and MODE
+
+
+CHANGES:
+
+May 13th 2008
+
+1.
+
+before: diatonic scale as individual (strong review against this)
+now: we subclass types of scales and there are only individuals of scales with tonic. There is not the diatonic scale but a diatonic scale
+problem: a major scale or the major scale? the a minor scale gives no problems though. Major scale as a class or as an instance?
+
+2.
+
+before: scales = scale and scale type
+now: we distinguish: Set, Scale class hierarchy, Scale individuals. We dont need scale_type anymore
+problems: is there any single and good definition of what a scale is? i have doubts about it
+
+3. 
+
+before: disminished and enharmonic
+now: diminished and enharmonically equivalent

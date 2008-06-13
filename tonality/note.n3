@@ -1,0 +1,127 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix tl: <http://purl.org/NET/c4dm/timeline.owl#>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix co: <http://purl.org/ontology/chord/>.
+@prefix tonality: <http://purl.org/ontology/tonality/>.
+@prefix int: <http://purl.org/ontology/tonality/interval/>.
+@prefix scale: <http://purl.org/ontology/tonality/scale/>.
+@prefix mode: <http://purl.org/ontology/tonality/mode/>.
+@prefix key: <http://purl.org/ontology/tonality/key/>.
+@prefix tuning: <http://purl.org/ontology/tuning/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix chordnote: <http://purl.org/ontology/chord/note/>.
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+@prefix note: <http://purl.org/ontology/note/>.
+@prefix symbolic: <http://purl.org/ontology/symbolic/>.
+
+vs:term_status a owl:AnnotationProperty.
+
+#we define here a proper OWL description of the concept NOTE according to Peter Westergaard's tonal theory. This is clearly perception oriented more
+#than an acoustic description of a signal, which should be an audio features part.
+
+note:Note
+	a owl:Class;
+	rdfs:subClassOf event:Event;
+	vs:term_status "unstable";
+	rdfs:label "note";
+	rdfs:comment"""
+		Formal description of a note. This may be more a resource than any sort of instance as they are real facts which are always different from each other. They are the basic phenomenon for our acoustic and psychological perception. They are indeed events. Notes in a score are symbolic facts which can be clearly defined and are also events within a score but may change in different interpretations of the score.
+Do we need to distinguish between a physical note (the signal of it) and the psychological perspective of it? Talking about tonality we should focus on the psychological part and the acoustic should be an audio features part (it is hard to see just one note fact in isolation though).
+Is there any way to distinguish between physical event and "mental event"? we may not talk of note as event then...
+	""";
+	.
+
+symbolic:Note
+	a owl:Class;
+	rdfs:subClassOf event:Event;
+	vs:term_status "unstable";
+	rdfs:domain note:Note;
+	rdfs:label "note";
+	rdfs:comment"""
+		Note in a score. They are clearly defined by symbolic elements. There is always one representation for a symbolic note but an indefined number of physical interpretations (same as language).
+	""";
+	.
+
+#toDefine: Pitch, PitchClass, (they are in the tonality.n3)
+
+#properties
+
+note:onset
+	a owl:FunctionalPropery;
+	a owl:DatatypeProperty;
+	vs:term_status "unstable";
+	rdfs:label "onset";
+	rdfs:domain note:Note;
+	rdfs:comment"""
+		Onset time definition. The time the note requires to get stable?. phsysical onset + earing limits = note onset
+	""";
+	.
+
+note:pitch
+	a owl:FunctionalProperty;
+	a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "pitch";
+	rdfs:domain note:Note;
+	rdfs:range tonality:Pitch
+	rdfs:comment"""
+		Each note has a specific frequency or pitch. Pitches belong to a PitchClass in case we assume octave equivalence (equally tempered systems). pitch (psychological) = frequency (physical)
+	""";
+	.
+
+note:duration
+	a owl:FunctionalProperty;
+	a owl:ObjectProperty;
+	rdfs:label "note duration";
+	rdfs:domain note:Note;
+	vs:term_status "unstable";
+	rdfs:comment"""
+		Duration of the event. Physically the time is just an event:duration. Same relationship as onset I think
+	""";
+	.
+
+note:loudness
+	a owl:FunctionalProperty;
+	a owl:DatatypeProperty;
+	rdfs:domain note:Note;
+	vs:term_status "unstable";
+	rdfs:comment"""
+		Hard to measure... in dB?. This is more oriented to the psychological perception I guess. I'm not sure which will be the measure for it then. The frequency and the amplitude and the signal + earing frequency response = loudness. mmm it may be better just to define the amplitude/intesity of the signal...
+	""";
+	.
+
+note:timbre
+	a owl:FunctionalProperty;
+	a owl:DatatypeProperty;
+	vs:term_status "unstable";
+	rdfs:domain note:Note;
+	rdfs:comment"""
+		Again... signal shape + earing response = timbre. Actually as the earing response is going to be modelled as a some sort of filter. we don't need to represent psychological properties as they can be computed/inferred from the acoustic ones. This will be the frequency representation of the signal (MFCC).
+	""";
+	
+#properties for symbolic note
+
+symbolic:duration
+	a owl:FunctionalProperty;
+	a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "symbolic duration";
+	rdfs:domain symbolic:Note;
+	rdfs:domain symbolic:Duration;
+	rdfs:comment"""
+		Duration are individuals quaver half-quaver and so on
+	""";
+	.
+
+#symbolic:pitch. This can be as note:pitch.
+#onset = 0
+#no timbre
+#reference to the pentagram?
+
+	
