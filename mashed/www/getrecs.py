@@ -19,18 +19,22 @@ def Main():
 
 
 
+
 		if uriQuery.has_key('gnat'):
 			gnatFile = uriQuery['gnat'].file.read()
 			print "Content-type: text/html\n\n"
 			f = open('temp.rdf', 'w')
-			print "gnat tracks: "
-			print "<br><br>"
 			for char in gnatFile:
 				f.write(char)
 
 			f.close()
-			rdf = mopy.importRDFFile('temp.rdf')
-			tracks = rdf.TrackIdx.keys()
+			try:
+				rdf = mopy.importRDFFile('temp.rdf')
+				tracks = rdf.TrackIdx.keys()
+			except:
+				print "bad file, maybe not a GNAT output..."
+				return
+			print "gnat tracks: <br>"
 			print tracks
 	else:
 		print "must submit an RDF file"
