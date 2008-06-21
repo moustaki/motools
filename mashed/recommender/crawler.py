@@ -53,8 +53,32 @@ WHERE {
 """ % seed
 print query
 
+k=-1
+brands =[]
+playcounts = []
 for row in g.query(query):
 	print "brand %s played artist %s times" % row
+	k = k+1
+	brands.append(row[0])
+	playcounts.append(row[1])
+
+
+for brand in brands:
+	print brand
+	g.load(brand)
+	q = "SELECT ?e WHERE {<%s> <http://purl.org/ontology/po/episode> ?e.}" % brand
+	print q
+	for e in g.query(q):
+		print e
+		g.load(e[0])
+		q2 = "SELECT ?v WHERE {<%s> <http://purl.org/ontology/po/version> ?v.}" % e
+		for v in g.query(q2):
+			g.load(v[0])
+			q3 = "SELECT ?start ?dur WHERE {?broadcast <http://purl.org/ontology/po/broadcast_of> <%s>; <http://purl.org/NET/c4dm/event.owl#time> ?time. ?time <http://purl.org/NET/c4dm/timeline.owl#start> ?start; <http://purl.org/NET/c4dm/timeline.owl#duration> ?dur.}" % v
+			for row in g.query(q3):
+				print "start %s duration %s" % row
+	
+
 
 g.commit()
 
