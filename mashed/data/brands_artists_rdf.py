@@ -14,7 +14,7 @@ for line in parser:
 	for k in range(1,len(line)/2):
 		artist = line[2*k-1]
 		playcount = (line[2*k].split(','))[0]
-		rdf_line = "<http://http://bbc-programmes.dyndns.org/programmes"+brand+"> "+"<http://purl.org/ontology/playcount/playcount> [<http://purl.org/ontology/playcount/count> \""+playcount+"\"; <http://purl.org/ontology/playcount/object> <http://dbtune.org/musicbrainz/artist/"+artist+">].\n"
+		rdf_line = "<http://bbc-programmes.dyndns.org/programmes/"+brand+"> "+"<http://purl.org/ontology/playcount/playcount> [<http://purl.org/ontology/playcount/count> \""+playcount+"\"; <http://purl.org/ontology/playcount/object> <http://dbtune.org/musicbrainz/resource/artist/"+artist+">].\n"
 		rdf.write(rdf_line)
 		
 f.close()
