@@ -74,9 +74,10 @@ for brand in brands:
 		q2 = "SELECT ?v WHERE {<%s> <http://purl.org/ontology/po/version> ?v.}" % e
 		for v in g.query(q2):
 			g.load(v[0])
-			q3 = "SELECT ?start ?dur WHERE {?broadcast <http://purl.org/ontology/po/broadcast_of> <%s>; <http://purl.org/NET/c4dm/event.owl#time> ?time. ?time <http://purl.org/NET/c4dm/timeline.owl#start> ?start; <http://purl.org/NET/c4dm/timeline.owl#duration> ?dur.}" % v
+			q3 = "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT ?start ?dur WHERE {?broadcast <http://purl.org/ontology/po/broadcast_of> <%s>; <http://purl.org/NET/c4dm/event.owl#time> ?time. ?time <http://purl.org/NET/c4dm/timeline.owl#start> ?start; <http://purl.org/NET/c4dm/timeline.owl#duration> ?dur.}" % v
 			for row in g.query(q3):
-				print "start %s duration %s" % row
+				if row[0].startswith('2008'):
+					print "start %s duration %s" % row
 	
 
 
