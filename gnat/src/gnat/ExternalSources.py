@@ -16,8 +16,8 @@ def addIsophonicsTrackLinks(rdfhub):
 	   adds an owl:sameAs link to the corresponding http://isophonics.net/track resource.
 	"""
 	
-	zgURIs = rdfhub.getSubjURIsWithBase("http://zitgist.com/music/track/", "batch_fp")
+	zgURIs = rdfhub.getSubjURIsWithBase("http://zitgist.com/music/", "batch_fp")
 	for zgURI in zgURIs:
-		ipURI = zgURI.replace("http://zitgist.com/music/", "http://isophonics.net/")
+		ipURI = zgURI.replace("http://zitgist.com/music/", "http://dbtune.org/musicbrainz/resource/")
 		debug("Adding sameAs link from %s to %s", zgURI, ipURI)
 		rdfhub.addSameAs(zgURI, ipURI)

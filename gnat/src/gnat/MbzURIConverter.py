@@ -6,7 +6,7 @@
 """
 
 class MbzURIConverter:
-	def __init__(self,mbzuri,zitgisturi='http://zitgist.com/music/'):
+	def __init__(self,mbzuri,zitgisturi='http://dbtune.org/musicbrainz/resource/'):
 		self.mbzuri = mbzuri
 		self.zitgisturi = zitgisturi
 		self.parse()

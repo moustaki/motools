@@ -35,21 +35,35 @@ class AudioCollection :
 		self.processed = 0
 		self.succeeded = 0
 		
-	def walk(self, commandName, filepath, CSVoutput=False):
+	def walk(self, commandName, filepath, CSVoutput=False, singleOut=False):
 		dcount=0; fcount=0
 		if os.path.isdir(filepath):
-			for root,dirs,files in os.walk(filepath) :
-				info("Considering "+root)
-				dcount+=1
-				if self.rdf.open(os.path.join(root,"info_"+commandName+".rdf")):
-					for name in files :
-						filename = os.path.join(root,name)
-						if (re.match(excludeRE, name) == None):
-							mi = getattr(self, commandName)(filename)
-							self.rdf.addMusicInfo(mi)
-							fcount+=1
+			if singleOut:
+				if self.rdf.open(os.path.join(filepath,"info_"+commandName+".rdf")):
+					for root,dirs,files in os.walk(filepath) :
+						info("Considering "+root)
+						dcount+=1
+						for name in files :
+							filename = os.path.join(root,name)
+							if (re.match(excludeRE, name) == None):
+								mi = getattr(self, commandName)(filename)
+								self.rdf.addMusicInfo(mi)
+								fcount+=1
 					self.rdf.write()
 					self.rdf.clear()
+			else:
+				for root,dirs,files in os.walk(filepath) :
+					info("Considering "+root)
+					dcount+=1
+					if self.rdf.open(os.path.join(root,"info_"+commandName+".rdf")):
+						for name in files :
+							filename = os.path.join(root,name)
+							if (re.match(excludeRE, name) == None):
+								mi = getattr(self, commandName)(filename)
+								self.rdf.addMusicInfo(mi)
+								fcount+=1
+						self.rdf.write()
+						self.rdf.clear()
 		else:
 			if filepath.endswith('.csv') and commandName == "metadata":
 				f=open(filepath)
@@ -154,6 +168,8 @@ if __name__ == '__main__':
 						help="write messages to LOGFILE", metavar="LOGFILE", default="error.log")
 	parser.add_option("-c", "--csv-output", action="store_true", dest="CSVoutput", default=False,\
 						help="write CSV as output (only if using CSV input)")
+	parser.add_option("-U", "--single_output", action="store_true", dest="singleOut", default=False,\
+						help="write one output file for all tracks found.")
 
 	(opts,args) = parser.parse_args()
 
@@ -182,8 +198,12 @@ if __name__ == '__main__':
 	
 	ac = AudioCollection()
 	debug("--- Starting "+ asctime()  +" ---")
+	if opts.singleOut:
+		debug("One output file.")
+	else:
+		debug("multiple output files.")
 	if command == "clean":
 		ac.clean(args[1])
 	else:
-		ac.walk(commandName=args[0],filepath=args[1],CSVoutput=opts.CSVoutput)
+		ac.walk(commandName=args[0],filepath=args[1],CSVoutput=opts.CSVoutput, singleOut=opts.singleOut)
 	debug("--- Finished "+ asctime()  +" ---")

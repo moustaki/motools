@@ -26,7 +26,8 @@ class RdfFile(object):
 	
 	def addMusicInfo(self, mi):
 		for o in mi.MainIdx.values():
-			self.mi.add(o)
+			if o != None:
+				self.mi.add(o)
 	
 	def write(self):
 		self.f.close()
