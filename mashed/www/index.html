@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!"http://research-dhcp66.elec.qmul.ac.uk/cgi-bin/playlist-cgi.py">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>PIPs Recommender</title>
+	
+</head>
+
+<body>
+<h1>PIPs Recommender</h1> <br>
+
+	<p>Recommends BBC radio content based on your personal collection/last.fm profile...<br>
+		<hr>
+	<form action="getrecs.py" method="post">
+		<label>Last.fm login name: </label>
+		<input type="text" NAME="lastfm" value="" size="30"><br>
+		<label>GNAT file: </label>
+		<input type="file" name="gnat" size="40"><br>
+
+		
+	<input type="submit" name="submit" value="Get Recs" /><br>
+	</form>
+	<br>
+
+	<br><br><br>
+	notes:
+	<ul>
+
+			<li>Uses GNAT</li>
+			<li>Uses PIPs</li>
+	</ul>
+
+</body>
+</html>
+
