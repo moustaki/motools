@@ -6,7 +6,7 @@ lastfmURI = "http://dbtune.org/lastfm/"
 import cgi
 import cgitb; cgitb.enable()
 import urllib
-import rdflib
+import mopy
 
 def Main():
 
@@ -15,12 +15,19 @@ def Main():
 	
 	gnatFile = uriQuery['gnat'].file.read()
 	print "Content-type: text/html\n\n"
+	f = open('temp.rdf', 'w')
 
 
-	print len(gnatFile)
+	print "tracks: "
 	print "<br><br>"
 
-	for line in gnatFile:
-		print line
+	for char in gnatFile:
+		f.write(char)
+		#print char
+
+	f.close()
+	rdf = mopy.importRDFFile('temp.rdf')
+	tracks = rdf.TrackIdx.keys()
+	print tracks
 
 Main()
