@@ -4,25 +4,23 @@ lastfmURI = "http://dbtune.org/lastfm/"
 
 
 import cgi
+import cgitb; cgitb.enable()
 import urllib
 import rdflib
 
 def Main():
 
 	uriQuery = cgi.FieldStorage()                # Get the query string from the URI
-	lastfm = uriQuery['lastfm'].value
-	lasttype = uriQuery['lastfm'].type
-	gnat = uriQuery['gnat'].value #.getfirst('gnat','')
-	gnat2 = uriQuery['gnat'].type
-	#lines = gnat.open()#.readlines()
-	print "Content-type: text/html\n\n"
+	lastfmUser = uriQuery['lastfm'].value
 	
-	print lastfm+ str(lasttype)+"<br>"
+	gnatFile = uriQuery['gnat'].file.read()
+	print "Content-type: text/html\n\n"
 
-	print "getfirst " + str(gnat) + "<br>"
-	print ".type: " + str(gnat2) +"<br>"
-	print dir(gnat)
-	#for line in lines:
-		#print line
+
+	print len(gnatFile)
+	print "<br><br>"
+
+	for line in gnatFile:
+		print line
 
 Main()
