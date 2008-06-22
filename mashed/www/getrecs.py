@@ -35,12 +35,13 @@ def Main():
 				op = []
 				for track in tracks:
 					op.append(crawler.find(track))
-				print op
+				#print op
 			except:
 				print "bad file, maybe not a GNAT output..."
 				return
 			print "gnat tracks: <br>"
 			print tracks
+			print op
 	else:
 		print "must submit an RDF file"
 
