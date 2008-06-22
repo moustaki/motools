@@ -96,6 +96,7 @@ WHERE {
 							s = row[2]
 						url = create_content_url(row[0],row[1],parse_service(s))
 						print url
+						print "<br/>"
 						broadcasts.append(url)
 		
 
