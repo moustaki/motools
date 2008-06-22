@@ -67,10 +67,10 @@ WHERE {
 		q = "SELECT ?e ?s WHERE {<%s> <http://purl.org/dc/elements/1.1/title> ?e; <http://purl.org/ontology/po/short_synopsis> ?s } " % brand
 		for row in g.query(q):
 			print "---"
-			print "Brand:"
-			print "%s" % row[0]
-			print "Synopsis:"
-			print "%s" % row[1]
+			print "Brand:<br>"
+			print "%s <br>" % row[0]
+			print "Synopsis:<br>"
+			print "%s <br>" % row[1]
 		#print q
 
 #print "loading %s" % seed
