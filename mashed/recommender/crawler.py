@@ -95,7 +95,7 @@ WHERE {
 						else: 
 							s = row[2]
 						url = create_content_url(row[0],row[1],parse_service(s))
-						print url
+						print "<a href='"+url+">"+url+"</a>"
 						print "<br/>"
 						broadcasts.append(url)
 		
