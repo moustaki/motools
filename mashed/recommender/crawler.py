@@ -6,7 +6,7 @@ from sys import argv
 from rdflib import plugin
 #from SPARQLWrapper import SPARQLWrapper
 import sys
-
+import operator
 
 store = plugin.get('SQLite',Store)('rdfstore')
 rt = store.open('db',create=False)
@@ -35,7 +35,7 @@ MO = Namespace('http://purl.org/ontology/mo/')
 #for artist in artists:
 #	print artist
 
-def find(seed):
+def find(seed,service=None):
 	try:
 		g.load(seed)
 	except Exception, e :
@@ -51,7 +51,7 @@ WHERE {
 	pc:object ?artist;
 	pc:count ?count.
 ?brand pc:playcount ?pc.
-}
+} ORDER BY DESC(?pc)
 	""" % seed
 	#print query
 
@@ -61,11 +61,13 @@ WHERE {
 	for row in g.query(query):
 		print "brand %s played artist %s times" % row
 		k = k+1
-		brands.append(row[0])
-		playcounts.append(row[1])
+		t = int(row[1])
+		brands.append((row[0],t))
+	brands.sort(key=operator.itemgetter(1))
+	brands.reverse()
 
-
-	for brand in brands:
+	for (brand,pc) in brands:
+		print "brand %s played artist %s times" % (brand,pc)
 		print brand
 		g.load(fix_uri(brand))
 		g.commit()
@@ -80,12 +82,19 @@ WHERE {
 				print v
 				g.load(fix_uri(v[0]))
 				g.commit()
-				q3 = "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT ?start ?dur ?service WHERE {?broadcast <http://purl.org/ontology/po/broadcast_of> <%s>; <http://purl.org/NET/c4dm/event.owl#time> ?time. ?time <http://purl.org/NET/c4dm/timeline.owl#start> ?start; <http://purl.org/NET/c4dm/timeline.owl#duration> ?dur. ?broadcast <http://purl.org/ontology/po/broadcasted_on> ?service.}" % v
+				if service==None:
+					q3 = "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT ?start ?dur ?service WHERE {?broadcast <http://purl.org/ontology/po/broadcast_of> <%s>; <http://purl.org/NET/c4dm/event.owl#time> ?time. ?time <http://purl.org/NET/c4dm/timeline.owl#start> ?start; <http://purl.org/NET/c4dm/timeline.owl#duration> ?dur. ?broadcast <http://purl.org/ontology/po/broadcasted_on> ?service.}" % v
+				else :
+					q3 = "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT ?start ?dur  WHERE {?broadcast <http://purl.org/ontology/po/broadcast_of> <%s>; <http://purl.org/NET/c4dm/event.owl#time> ?time. ?time <http://purl.org/NET/c4dm/timeline.owl#start> ?start; <http://purl.org/NET/c4dm/timeline.owl#duration> ?dur. ?broadcast <http://purl.org/ontology/po/broadcasted_on> <http://bbc-programmes.dyndns.org/%s>.}" % (v[0],service)
 				for row in g.query(q3):
 					print row[0]
 					if check_date(row[0]):
 						#print "start %s duration %s service %s" % row
-						url = create_content_url(row[0],row[1],parse_service(row[2]))
+						if service!=None:
+							s='http://bbc-programmes.dyndns.org/'+service
+						else: 
+							s = row[2]
+						url = create_content_url(row[0],row[1],parse_service(s))
 						print url
 						broadcasts.append(url)
 		
@@ -119,6 +128,6 @@ def create_content_url(start, duration, service):
 def fix_uri(uri):
 	return uri.split('#')[0]+".rdf"
 
-#seed = argv[1]
-#find(seed)
+seed = argv[1]
+find(seed)
 
