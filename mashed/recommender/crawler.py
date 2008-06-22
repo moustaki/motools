@@ -67,19 +67,19 @@ WHERE {
 	brands.reverse()
 
 	for (brand,pc) in brands:
-		print "brand %s played artist %s times" % (brand,pc)
-		print brand
+		#print "brand %s played artist %s times" % (brand,pc)
+		#print brand
 		g.load(fix_uri(brand))
 		g.commit()
 		q = "SELECT ?e WHERE {<%s> <http://purl.org/ontology/po/episode> ?e.}" % brand
-		print q
+		#print q
 		for e in g.query(q):
-			print e
+			#print e
 			g.load(fix_uri(e[0]))
 			g.commit()
 			q2 = "SELECT ?v WHERE {<%s> <http://purl.org/ontology/po/version> ?v.}" % e
 			for v in g.query(q2):
-				print v
+				#print v
 				g.load(fix_uri(v[0]))
 				g.commit()
 				if service==None:
@@ -87,7 +87,7 @@ WHERE {
 				else :
 					q3 = "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT ?start ?dur  WHERE {?broadcast <http://purl.org/ontology/po/broadcast_of> <%s>; <http://purl.org/NET/c4dm/event.owl#time> ?time. ?time <http://purl.org/NET/c4dm/timeline.owl#start> ?start; <http://purl.org/NET/c4dm/timeline.owl#duration> ?dur. ?broadcast <http://purl.org/ontology/po/broadcasted_on> <http://bbc-programmes.dyndns.org/%s>.}" % (v[0],service)
 				for row in g.query(q3):
-					print row[0]
+					#print row[0]
 					if check_date(row[0]):
 						#print "start %s duration %s service %s" % row
 						if service!=None:
