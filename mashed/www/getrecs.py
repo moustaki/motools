@@ -47,8 +47,9 @@ def Main():
 				return
 			#try:
 			for track in tracks:
-				t = callCrawl(track)
-				t.start()
+				#t = callCrawl(track)
+				#t.start()
+				crawler.find(track)
 			#except:
 			#	print "threading problem"
 			#	return
