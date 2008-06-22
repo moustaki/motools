@@ -8,6 +8,15 @@ import cgitb; cgitb.enable()
 import urllib
 import mopy
 import crawler
+import threading
+
+class callCrawl(threading.Thread):
+	#broadcastsLock = threading.Lock()
+	def __init__(track):
+		self.track = track
+		threading.Thread.__init__(self)
+	def run():
+		crawler.find(self.track)
 
 def Main():
 
@@ -34,7 +43,7 @@ def Main():
 				tracks = rdf.TrackIdx.keys()
 				op = []
 				for track in tracks:
-					op.append(crawler.find(track))
+					callCrawler(track).start()
 				#print op
 			except:
 				print "bad file, maybe not a GNAT output..."
