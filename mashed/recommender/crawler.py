@@ -98,6 +98,8 @@ WHERE {
 						print "<a href='"+url+">"+url+"</a>"
 						print "<br/>"
 						broadcasts.append(url)
+						if len(broadcasts)>5:
+							return True
 		
 
 
@@ -129,6 +131,10 @@ def create_content_url(start, duration, service):
 def fix_uri(uri):
 	return uri.split('#')[0]+".rdf"
 
-#seed = argv[1]
-#find(seed)
+def print_html():
+	for b in broadcasts:
+		print "<a href=\"%s\">broadcast</a>"
+
+seed = argv[1]
+find(seed)
 
