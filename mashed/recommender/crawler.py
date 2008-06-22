@@ -128,6 +128,6 @@ def create_content_url(start, duration, service):
 def fix_uri(uri):
 	return uri.split('#')[0]+".rdf"
 
-seed = argv[1]
-find(seed)
+#seed = argv[1]
+#find(seed)
 
