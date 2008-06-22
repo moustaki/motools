@@ -42,12 +42,17 @@ def Main():
 				rdf = mopy.importRDFFile('temp.rdf')
 				tracks = rdf.TrackIdx.keys()
 				op = []
-				for track in tracks:
-					callCrawler(track).start()
-				#print op
 			except:
 				print "bad file, maybe not a GNAT output..."
 				return
+			try:
+				for track in tracks:
+					callCrawler(track).start()
+			except:
+				print "threading problem"
+				return
+				#print op
+			
 			print "gnat tracks: <br>"
 			print tracks
 			print op
