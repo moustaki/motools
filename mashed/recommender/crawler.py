@@ -135,6 +135,4 @@ def print_html():
 	for b in broadcasts:
 		print "<a href=\"%s\">broadcast</a>"
 
-seed = argv[1]
-find(seed)
 
