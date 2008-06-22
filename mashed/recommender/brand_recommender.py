@@ -103,4 +103,4 @@ def print_html():
 	for b in broadcasts:
 		print "<a href=\"%s\">broadcast</a>"
 
-find(argv[1])
+#find(argv[1])
