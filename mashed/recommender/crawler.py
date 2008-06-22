@@ -59,7 +59,7 @@ WHERE {
 	brands =[]
 	playcounts = []
 	for row in g.query(query):
-		print "brand %s played artist %s times" % row
+		print "brand %s played artist %s times<br>" % row
 		k = k+1
 		t = int(row[1])
 		brands.append((row[0],t))
@@ -123,7 +123,7 @@ def create_content_url(start, duration, service):
 	else:
 		ns = str(s)
 	start = (b.split(':')[0]).split('T')[0]+'T'+ns+':'+b.split(':')[1]+':'+b.split(':')[2]+'Z'
-	print start
+	#print start
 	return "http://10.88.88.88/archives/"+service+"_"+start+"_"+duration+".mp2"
 
 def fix_uri(uri):
