@@ -100,6 +100,6 @@ def create_content_url(start, duration, service):
 	return "http://10.88.88.88/archives/"+service+"_"+start+"_"+duration+".mp2"
 
 
-seed = argv[1]
-find(seed)
+#seed = argv[1]
+#find(seed)
 

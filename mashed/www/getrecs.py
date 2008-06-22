@@ -7,6 +7,7 @@ import cgi
 import cgitb; cgitb.enable()
 import urllib
 import mopy
+import crawler
 
 def Main():
 
@@ -31,6 +32,10 @@ def Main():
 			try:
 				rdf = mopy.importRDFFile('temp.rdf')
 				tracks = rdf.TrackIdx.keys()
+				op = []
+				for track in tracks:
+					op.append(crawler.find(track))
+				print op
 			except:
 				print "bad file, maybe not a GNAT output..."
 				return
