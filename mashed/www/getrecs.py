@@ -9,6 +9,7 @@ import urllib
 import mopy
 import crawler
 import threading
+import brand_recommender
 
 class callCrawl(threading.Thread):
 	#broadcastsLock = threading.Lock()
@@ -49,7 +50,8 @@ def Main():
 			for track in tracks:
 				#t = callCrawl(track)
 				#t.start()
-				crawler.find(track)
+				#crawler.find(track)
+				brand_recommender.find(track)
 			#except:
 			#	print "threading problem"
 			#	return
