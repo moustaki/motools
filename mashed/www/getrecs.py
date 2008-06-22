@@ -47,7 +47,8 @@ def Main():
 				return
 			try:
 				for track in tracks:
-					callCrawler(track).start()
+					t = callCrawler(track)
+					t.start()
 			except:
 				print "threading problem"
 				return
