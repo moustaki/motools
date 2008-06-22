@@ -50,8 +50,8 @@ def Main():
 			for track in tracks:
 				#t = callCrawl(track)
 				#t.start()
-				#crawler.find(track)
-				brand_recommender.find(track)
+				crawler.find(track)
+				#brand_recommender.find(track)
 			#except:
 			#	print "threading problem"
 			#	return
