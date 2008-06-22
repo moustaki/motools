@@ -12,10 +12,10 @@ import threading
 
 class callCrawl(threading.Thread):
 	#broadcastsLock = threading.Lock()
-	def __init__(track):
+	def __init__(self, track):
 		self.track = track
 		threading.Thread.__init__(self)
-	def run():
+	def run(self):
 		crawler.find(self.track)
 
 def Main():
@@ -45,13 +45,13 @@ def Main():
 			except:
 				print "bad file, maybe not a GNAT output..."
 				return
-			try:
-				for track in tracks:
-					t = callCrawler(track)
-					t.start()
-			except:
-				print "threading problem"
-				return
+			#try:
+			for track in tracks:
+				t = callCrawl(track)
+				t.start()
+			#except:
+			#	print "threading problem"
+			#	return
 				#print op
 			
 			print "gnat tracks: <br>"
