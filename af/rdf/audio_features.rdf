@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:af="http://purl.org/ontology/af/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:event="http://purl.org/NET/c4dm/event.owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:mo="http://purl.org/ontology/mo/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:time="http://www.w3.org/2006/time#" xmlns:tl="http://purl.org/NET/c4dm/timeline.owl#" xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#">
+  <owl:Ontology rdf:about="file:///home/moustaki/work/workspace/motools/af/rdf/audio_features.n3">
+    <dc:title>The Audio Features ontology</dc:title>
+    <owl:versionInfo>Revision: 1.1</owl:versionInfo>
+    <rdfs:label>The Audio Features ontology</rdfs:label>
+    <dc:description>
+		This ontology expresses some common concepts
+		to represent automatically extracted features
+		from audio signals. Therefore, it mainly relies 
+		on the Event ontology, in order to classify particular
+		parts of the timeline backing an audio signal. 
+		
+		Programs outputting RDF according to this ontology should 
+		also describe the ouputted document to express some information
+		about itself (estimated confidence, maintainer of the program, etc.)
+		</dc:description>
+    <dc:creator rdf:resource="http://moustaki.org/foaf.rdf#moustaki"/>
+    <foaf:maker rdf:resource="http://moustaki.org/foaf.rdf#moustaki"/>
+    <dc:date>$Date: 2008/06/23 10:24:13 $</dc:date>
+  </owl:Ontology>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Signal">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Signal-level feature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/Signal"/>
+    <rdfs:comment>
+		A signal-like feature, holding dense data describing another signal.
+		Examples of signal features include chromagrams, spectrograms, onset detection functions etc.
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Chromagram">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Chromagram</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Signal"/>
+    <rdfs:comment>
+		A chromagram feature.
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/DetectionFunction">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Detection function</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Signal"/>
+    <rdfs:comment>
+		A detection function.
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/TempoDetectionFunction">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Tempo detection function</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/DetectionFunction"/>
+    <rdfs:comment>
+		A tempo detection function
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/OnsetDetectionFunction">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Onset detection function</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/DetectionFunction"/>
+    <rdfs:comment>
+		An onset detection function
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/TonalChangeDetectionFunction">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Tonal change detection function</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/DetectionFunction"/>
+    <rdfs:comment>
+		A tonal change detection function
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/TonalContentSpace">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Tonal content space</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Signal"/>
+    <rdfs:comment>
+		A 6-D tonal content space
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Amplitude">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Amplitude</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Signal"/>
+    <rdfs:comment>
+		Result of an amplitude following process
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/SpectralCentroid">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Spectral centroid</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Signal"/>
+    <rdfs:comment>
+		Spectral centroid
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/LogFrequencyCentroid">
+    <vs:term_Status>testing</vs:term_Status>
+    <rdfs:label>Log-frequency spectral centroid</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/SpectralCentroid"/>
+    <rdfs:comment>
+		Log-frequency spectral centroid
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/LinearFrequencyCentroid">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Linear-frequency spectral centroid</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/SpectralCentroid"/>
+    <rdfs:comment>
+		Log-frequency spectral centroid
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/ZeroCrossingCount">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Zero-crossing counts</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Signal"/>
+    <rdfs:comment>
+		Zero-crossing counts
+	</rdfs:comment>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/value">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#value"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/Signal"/>
+    <rdfs:label>value</rdfs:label>
+    <rdfs:comment>
+		Associates a signal resource as defined in the Music Ontology to a literal: its actual value.
+		For example, it can be used to link an onset detection function to a list of values.
+	</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Segment">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Segment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:comment>
+		A classifier for a temporal region corresponding to the output
+		of an automatic process---an artificial cognitive agent.
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/FeatureSegment">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>
+		A segment holding the output of feature extraction algorithms
+		</rdfs:comment>
+    <rdfs:label>Feature segment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Segment"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/StructuralSegment">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Structural Segment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Segment"/>
+    <rdfs:comment>
+		A classifier trying to capture the notion of structure in an audio piece.
+		This classifier should be subsumed by more specific classifiers: speech/music
+		segmentation, structural music segmmentation (intro, verse, chorus, etc.).
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Point">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Point</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:comment>
+		A classifier for instants corresponding to the output of an automatic process---an
+		artificial cognitive agent (should be associated to a time:Instant---DL version).
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/SpeechSegment">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Speech</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/StructuralSegment"/>
+    <rdfs:comment>
+		A classifier capturing the notion of an audio segment holding speech
+		content
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Laugh">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Laugh</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/SpeechSegment"/>
+    <rdfs:comment>
+		A classifier for laugh content
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Text">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Text</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/SpeechSegment"/>
+    <rdfs:comment>
+		A classifier allowing to associate some text to a segment
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/EmotionSegment">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Emotion segment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/SpeechSegment"/>
+    <rdfs:comment>
+		A classifier for emotional content
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/IdiomSegment">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Idiom segment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/SpeechSegment"/>
+    <rdfs:comment>
+		A classifier for recognized idiom (English with Irish accent, etc.)
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/PersonSpeaking">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Person speaking</rdfs:label>
+    <rdfs:comment>
+			A classifier associating a FOAF description to a particular segment 
+			(to classify genre, recognized speaker, etc.)
+			</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/SpeechSegment"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/MusicSegment">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Music</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/StructuralSegment"/>
+    <rdfs:comment>
+		A classifier capturing the notion of an audio segment holding music.
+		This classifier can be subsumed with more specific classifiers.
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/MusicStructuralEvent">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Music structural segment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:comment>
+		Classifier capturing the notion of chorus, verse, intro, bridge, phrase, etc.
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/KeyEvent">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>
+		A classifier for keys.
+		In case of a "clean cut", instances of such events
+		should have one factor: the detected key (perhaps using the
+		key ontology at http://purl.org/NET/c4dm/keys.owl).
+		In other cases, we can put several keys as a factor, maybe with different confidence
+		factors, using event decomposition.
+		</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Key event</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/TonicEvent">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>
+		A classifier for tonics.
+		In case of a "clean cut", instances of such events have one
+		factor. In other cases, this event can have several factors, each associated
+		with a particular confidence using event decomposition.	
+	</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Tonic event</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Major">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>
+		A classifier for a major mode region.
+		In case of a "clean cut", instances of such events have one
+                factor. In other cases, this event can have several factors, each associated
+                with a particular confidence using event decomposition.
+	</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Major segment</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Minor">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>
+		A classifier for a minor mode region.
+		In case of a "clean cut", instances of such events have one
+                factor. In other cases, this event can have several factors, each associated
+                with a particular confidence using event decomposition.
+	</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Minor segment</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Loudness">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Event holding a loudness value</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Loudness event</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Pitch">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Event holding a pitch value (for example coming from a monophonic transcription process)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Pitch event</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Pitch event</rdfs:label>
+    <rdfs:comment>Associate a point to a particular pitch</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Point"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Tempo">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>Event holding a tempo value (120bpm...)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Tempo event</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Ornament">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Ornament event</rdfs:label>
+    <rdfs:comment>Classifying a temporal region holding a musical ornament</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/TimeSignature">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Time signature</rdfs:label>
+    <rdfs:comment>Classifying a temporal region with a particular time signature (what? there is something else than 4/4?? :-)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Onset">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Onset</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Point"/>
+    <rdfs:comment>
+		A classifier corresponding to the output of an onset detection process.
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/TonalOnset">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Pitched onset</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Onset"/>
+    <rdfs:comment>A pitched onset</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/NonTonalOnset">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Percussive onset</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Onset"/>
+    <rdfs:comment>A percussive onset</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Beat">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Beat event</rdfs:label>
+    <rdfs:comment>A beat event (instantaneous)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Point"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/KeyChange">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Key change event</rdfs:label>
+    <rdfs:comment>A key change event. The factor of such an event captures the key that holds after that event.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Point"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/TonicChange">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Tonic change event</rdfs:label>
+    <rdfs:comment>A tonic change event. The factors of such events include the tonic that holds after the event.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Point"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/ModeChange">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Mode change event</rdfs:label>
+    <rdfs:comment>A mode change event. The factors of such events include the mode that holds after the event.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Point"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/TonalChange">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Tonal change event</rdfs:label>
+    <rdfs:comment>A tonal change event.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Point"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/ZeroCrossing">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Zero crossing</rdfs:label>
+    <rdfs:comment>Classifier for a zero-crossing point</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Point"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/Idiom">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Idiom</rdfs:label>
+    <rdfs:comment>
+		Idiom (English with Irish accent, Austrian German, etc.)
+		</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/EnglishIdiom">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>English idiom</rdfs:label>
+    <rdfs:comment>
+		English idiom
+		</rdfs:comment>
+  </owl:Class>
+  <af:EnglishIdiom rdf:about="http://purl.org/ontology/af/standard_british_english">
+    <vs:term_status>testing</vs:term_status>
+    <dc:title>Standard British English</dc:title>
+  </af:EnglishIdiom>
+  <af:EnglishIdiom rdf:about="http://purl.org/ontology/af/standard_us_english">
+    <vs:term_status>testing</vs:term_status>
+    <dc:title>Standard US English</dc:title>
+  </af:EnglishIdiom>
+  <af:EnglishIdiom rdf:about="http://purl.org/ontology/af/english_irish_accent">
+    <vs:term_status>testing</vs:term_status>
+    <dc:title>English with an Irish accent</dc:title>
+  </af:EnglishIdiom>
+  <af:EnglishIdiom rdf:about="http://purl.org/ontology/af/english_scottish_accent">
+    <vs:term_status>testing</vs:term_status>
+    <dc:title>English with a Scottish accent</dc:title>
+  </af:EnglishIdiom>
+  <owl:Class rdf:about="http://purl.org/ontology/af/GermanIdiom">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>German idiom</rdfs:label>
+    <rdfs:comment>
+		German idiom
+		</rdfs:comment>
+  </owl:Class>
+  <af:GermanIdiom rdf:about="http://purl.org/ontology/af/austrian_german">
+    <vs:term_status>testing</vs:term_status>
+    <dc:title>Austrian German</dc:title>
+  </af:GermanIdiom>
+  <af:GermanIdiom rdf:about="http://purl.org/ontology/af/swiss_german">
+    <vs:term_status>testing</vs:term_status>
+    <dc:title>Swiss German</dc:title>
+  </af:GermanIdiom>
+  <af:GermanIdiom rdf:about="http://purl.org/ontology/af/standard_german">
+    <vs:term_status>testing</vs:term_status>
+    <dc:title>Standard German</dc:title>
+  </af:GermanIdiom>
+  <owl:Class rdf:about="http://purl.org/ontology/af/HungarianIdiom">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>Hungarian idiom</rdfs:label>
+    <rdfs:comment>Hungarian idiom</rdfs:comment>
+  </owl:Class>
+  <af:HungarianIdiom rdf:about="http://purl.org/ontology/af/standard_hungarian">
+    <vs:term_status>testing</vs:term_status>
+    <dc:title>Standard Hungarian</dc:title>
+  </af:HungarianIdiom>
+  <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/text">
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>
+		Relates a Text segment (classifying a time interval that can 
+		be associated to some text) to a text string or other literals (number, etc.)
+		</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#hasLiteralFactor"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/Text"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/idiom">
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>
+		Associates a segment which classify an idiom (English with Irish accent, etc.) to an actual idiom
+		</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#hasLiteralFactor"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/IdiomSegment"/>
+    <rdfs:range rdf:resource="http://purl.org/ontology/af/Idiom"/>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/person">
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>
+		Associates a segment classified as holding speech content to a FOAF
+		profile (maybe holding information about genre, recognized speaker URI, etc.)
+		</rdfs:comment>
+    <rdfs:label>person</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/PersonSegment"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/emotional_intensity">
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>
+		Associates an "emotional intensity" value to a 
+		segment detected as being "emotional"
+		</rdfs:comment>
+    <rdfs:label>emotional intensity</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/EmotionSegment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/key">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/KeyEvent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
+    <rdfs:label>key</rdfs:label>
+    <rdfs:comment>Associates a key event to the corresponding key</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/new_key">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/KeyChangeEvent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
+    <rdfs:label>new key</rdfs:label>
+    <rdfs:comment>Associates a key change event to the new key, holding after the change</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/tonic">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/TonicEvent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
+    <rdfs:label>tonic</rdfs:label>
+    <rdfs:comment>Associates a tonic event with the corresponding tonic</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/new_tonic">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/TonicChangeEvent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
+    <rdfs:label>new tonic</rdfs:label>
+    <rdfs:comment>Tonic that holds after the tonic change event</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/new_mode">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/ModeChangeEvent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
+    <rdfs:label>new mode</rdfs:label>
+    <rdfs:comment>Mode that holds after the mode change event</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/feature">
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>
+		Associates a segment classifying a feature to the actual feature---we should use mpeg7 sort-of datatypes here
+		</rdfs:comment>
+    <rdfs:label>feature</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#literal_factor"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/Segment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/tempo">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/af/feature"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>tempo</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/Tempo"/>
+    <rdfs:comment>
+		Associates a tempo event to the corresponding tempo value.
+	</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/pitch">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/af/feature"/>
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:label>pitch</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/Pitch"/>
+    <rdfs:comment>
+		Associates a pitch event to the corresponding pitch
+	</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/confidence">
+    <vs:term_status>testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>
+		A really generic property, allowing to associate a confidence to a document or to a particular
+		resource (such as an automatically detected segment)
+		</rdfs:comment>
+    <rdfs:label>confidence</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
