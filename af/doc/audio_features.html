@@ -4,17 +4,25 @@
 <link rel="meta" type="application/rdf+xml" title="FOAF" href="http://moustaki.org/foaf.rdf" />
  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="author" content="Yves Raimond" />
-<meta name="robots" content="all" />
-<title>Yves Raimond</title>
+<link href="style.css" rel="stylesheet" type="text/css" /><meta name="robots" content="all" />
+<title>Ontology Specification</title>
 </head>
-<body><div class="glance" id="glance" style="padding: 5px; border: dotted; background-color: #ddd;">
-<p>Classes: | <a href="#term_Beat">Beat</a> | <a href="#term_EmotionSegment">EmotionSegment</a> | <a href="#term_EnglishIdiom">EnglishIdiom</a> | <a href="#term_FeatureSegment">FeatureSegment</a> | <a href="#term_GermanIdiom">GermanIdiom</a> | <a href="#term_HungarianIdiom">HungarianIdiom</a> | <a href="#term_Idiom">Idiom</a> | <a href="#term_IdiomSegment">IdiomSegment</a> | <a href="#term_KeySegment">KeySegment</a> | <a href="#term_Laugh">Laugh</a> | <a href="#term_Loudness">Loudness</a> | <a href="#term_MusicSegment">MusicSegment</a> | <a href="#term_MusicStructuralSegment">MusicStructuralSegment</a> | <a href="#term_NonTonalOnset">NonTonalOnset</a> | <a href="#term_Onset">Onset</a> | <a href="#term_Ornament">Ornament</a> | <a href="#term_PersonSpeaking">PersonSpeaking</a> | <a href="#term_Pitch">Pitch</a> | <a href="#term_Point">Point</a> | <a href="#term_Segment">Segment</a> | <a href="#term_SpeechSegment">SpeechSegment</a> | <a href="#term_StructuralSegment">StructuralSegment</a> | <a href="#term_Tempo">Tempo</a> | <a href="#term_Text">Text</a> | <a href="#term_TimeSignature">TimeSignature</a> | <a href="#term_TonalOnset">TonalOnset</a> |  </p>
+<body><div class="glance" id="glance">
+<p>Classes: | <a href="#term_Amplitude">Amplitude</a> | <a href="#term_Beat">Beat</a> | <a href="#term_Chromagram">Chromagram</a> | <a href="#term_DetectionFunction">DetectionFunction</a> | <a href="#term_EmotionSegment">EmotionSegment</a> | <a href="#term_EnglishIdiom">EnglishIdiom</a> | <a href="#term_FeatureSegment">FeatureSegment</a> | <a href="#term_GermanIdiom">GermanIdiom</a> | <a href="#term_HungarianIdiom">HungarianIdiom</a> | <a href="#term_Idiom">Idiom</a> | <a href="#term_IdiomSegment">IdiomSegment</a> | <a href="#term_KeyChange">KeyChange</a> | <a href="#term_KeyEvent">KeyEvent</a> | <a href="#term_Laugh">Laugh</a> | <a href="#term_LinearFrequencyCentroid">LinearFrequencyCentroid</a> | <a href="#term_LogFrequencyCentroid">LogFrequencyCentroid</a> | <a href="#term_Loudness">Loudness</a> | <a href="#term_Major">Major</a> | <a href="#term_Minor">Minor</a> | <a href="#term_ModeChange">ModeChange</a> | <a href="#term_MusicSegment">MusicSegment</a> | <a href="#term_MusicStructuralEvent">MusicStructuralEvent</a> | <a href="#term_NonTonalOnset">NonTonalOnset</a> | <a href="#term_Onset">Onset</a> | <a href="#term_OnsetDetectionFunction">OnsetDetectionFunction</a> | <a href="#term_Ornament">Ornament</a> | <a href="#term_PersonSpeaking">PersonSpeaking</a> | <a href="#term_Pitch">Pitch</a> | <a href="#term_Point">Point</a> | <a href="#term_Segment">Segment</a> | <a href="#term_Signal">Signal</a> | <a href="#term_SpectralCentroid">SpectralCentroid</a> | <a href="#term_SpeechSegment">SpeechSegment</a> | <a href="#term_StructuralSegment">StructuralSegment</a> | <a href="#term_Tempo">Tempo</a> | <a href="#term_TempoDetectionFunction">TempoDetectionFunction</a> | <a href="#term_Text">Text</a> | <a href="#term_TimeSignature">TimeSignature</a> | <a href="#term_TonalChange">TonalChange</a> | <a href="#term_TonalChangeDetectionFunction">TonalChangeDetectionFunction</a> | <a href="#term_TonalContentSpace">TonalContentSpace</a> | <a href="#term_TonalOnset">TonalOnset</a> | <a href="#term_TonicChange">TonicChange</a> | <a href="#term_TonicEvent">TonicEvent</a> | <a href="#term_ZeroCrossing">ZeroCrossing</a> | <a href="#term_ZeroCrossingCount">ZeroCrossingCount</a> |  </p>
 <p>Properties: | <a href="#term_confidence">confidence</a> | 
 <a href="#term_emotional_intensity">emotional_intensity</a> | 
 <a href="#term_feature">feature</a> | 
 <a href="#term_idiom">idiom</a> | 
+<a href="#term_key">key</a> | 
+<a href="#term_new_key">new_key</a> | 
+<a href="#term_new_mode">new_mode</a> | 
+<a href="#term_new_tonic">new_tonic</a> | 
 <a href="#term_person">person</a> | 
+<a href="#term_pitch">pitch</a> | 
+<a href="#term_tempo">tempo</a> | 
 <a href="#term_text">text</a> | 
+<a href="#term_tonic">tonic</a> | 
+<a href="#term_value">value</a> | 
 </p>
 <p>Individuals: | <a href="#term_austrian_german">austrian_german</a> | 
 <a href="#term_english_irish_accent">english_irish_accent</a> | 
@@ -26,7 +34,20 @@
 <a href="#term_swiss_german">swiss_german</a> | 
  </p></div>
 <h3>Classes and Properties (full detail)</h3>
-<div class="specterm" id="term_Beat"><h3>Class: af:Beat   -   testing   -   </h3>
+<div class="specterm" id="term_Amplitude"><h3>Class: af:Amplitude   -   testing   -   </h3>
+<em>Amplitude</em>
+ - 		Result of an amplitude following process<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Signal">Signal</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Beat"><h3>Class: af:Beat   -   testing   -   </h3>
 <em>Beat</em>
  - A beat event (instantaneous) 
 <br/>
@@ -34,14 +55,39 @@
 <br/>
 <table style="th { float: top; }">
 
-<tr><th>sub-class-of:</th><td><a href="http://purl.org/ontology/af/Instant">af:Instant</a></td>
+<tr><th>sub-class-of:</th><td><a href="#term_Point">Point</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Chromagram"><h3>Class: af:Chromagram   -   testing   -   </h3>
+<em>Chromagram</em>
+ - 		A chromagram feature.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Signal">Signal</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_DetectionFunction"><h3>Class: af:DetectionFunction   -   testing   -   </h3>
+<em>DetectionFunction</em>
+ - 		A detection function.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Signal">Signal</a></td>
 </tr>
 </table>
 
 </div><div class="specterm" id="term_EmotionSegment"><h3>Class: af:EmotionSegment   -   testing   -   </h3>
 <em>EmotionSegment</em>
- - <br/>
-		A classifier for emotional content<br/>
+ - 		A classifier for emotional content<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -56,8 +102,7 @@
 
 </div><div class="specterm" id="term_EnglishIdiom"><h3>Class: af:EnglishIdiom   -   testing   -   </h3>
 <em>EnglishIdiom</em>
- - <br/>
-		English idiom<br/>
+ - 		English idiom<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -68,8 +113,7 @@
 
 </div><div class="specterm" id="term_FeatureSegment"><h3>Class: af:FeatureSegment   -   testing   -   </h3>
 <em>FeatureSegment</em>
- - <br/>
-		A segment holding the output of feature extraction algorithms<br/>
+ - 		A segment holding the output of feature extraction algorithms<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -82,8 +126,7 @@
 
 </div><div class="specterm" id="term_GermanIdiom"><h3>Class: af:GermanIdiom   -   testing   -   </h3>
 <em>GermanIdiom</em>
- - <br/>
-		German idiom<br/>
+ - 		German idiom<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -104,8 +147,7 @@
 
 </div><div class="specterm" id="term_Idiom"><h3>Class: af:Idiom   -   testing   -   </h3>
 <em>Idiom</em>
- - <br/>
-		Idiom (English with Irish accent, Austrian German, etc.)<br/>
+ - 		Idiom (English with Irish accent, Austrian German, etc.)<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -118,8 +160,7 @@
 
 </div><div class="specterm" id="term_IdiomSegment"><h3>Class: af:IdiomSegment   -   testing   -   </h3>
 <em>IdiomSegment</em>
- - <br/>
-		A classifier for recognized idiom (English with Irish accent, etc.)<br/>
+ - 		A classifier for recognized idiom (English with Irish accent, etc.)<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -132,10 +173,21 @@
 </tr>
 </table>
 
-</div><div class="specterm" id="term_KeySegment"><h3>Class: af:KeySegment   -   testing   -   </h3>
-<em>KeySegment</em>
- - <br/>
-		A classifier capturing the notion of key.<br/>
+</div><div class="specterm" id="term_KeyChange"><h3>Class: af:KeyChange   -   testing   -   </h3>
+<em>KeyChange</em>
+ - A key change event. The factor of such an event captures the key that holds after that event. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Point">Point</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_KeyEvent"><h3>Class: af:KeyEvent   -   testing   -   </h3>
+<em>KeyEvent</em>
+ - 		A classifier for keys.<br/>
 		In case of a "clean cut", instances of such events<br/>
 		should have one factor: the detected key (perhaps using the<br/>
 		key ontology at http://purl.org/NET/c4dm/keys.owl).<br/>
@@ -146,6 +198,8 @@
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
 <table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_key">key</a></td>
+</tr>
 
 <tr><th>sub-class-of:</th><td><a href="#term_MusicSegment">MusicSegment</a></td>
 </tr>
@@ -153,8 +207,7 @@
 
 </div><div class="specterm" id="term_Laugh"><h3>Class: af:Laugh   -   testing   -   </h3>
 <em>Laugh</em>
- - <br/>
-		A classifier for laugh content<br/>
+ - 		A classifier for laugh content<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -162,6 +215,19 @@
 <table style="th { float: top; }">
 
 <tr><th>sub-class-of:</th><td><a href="#term_SpeechSegment">SpeechSegment</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_LinearFrequencyCentroid"><h3>Class: af:LinearFrequencyCentroid   -   testing   -   </h3>
+<em>LinearFrequencyCentroid</em>
+ - 		Log-frequency spectral centroid<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_SpectralCentroid">SpectralCentroid</a></td>
 </tr>
 </table>
 
@@ -177,12 +243,54 @@
 </tr>
 </table>
 
+</div><div class="specterm" id="term_Major"><h3>Class: af:Major   -   testing   -   </h3>
+<em>Major</em>
+ - 		A classifier for a major mode region.<br/>
+		In case of a "clean cut", instances of such events have one<br/>
+                factor. In other cases, this event can have several factors, each associated<br/>
+                with a particular confidence using event decomposition.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicSegment">MusicSegment</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Minor"><h3>Class: af:Minor   -   testing   -   </h3>
+<em>Minor</em>
+ - 		A classifier for a minor mode region.<br/>
+		In case of a "clean cut", instances of such events have one<br/>
+                factor. In other cases, this event can have several factors, each associated<br/>
+                with a particular confidence using event decomposition.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicSegment">MusicSegment</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_ModeChange"><h3>Class: af:ModeChange   -   testing   -   </h3>
+<em>ModeChange</em>
+ - A mode change event. The factors of such events include the mode that holds after the event. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Point">Point</a></td>
+</tr>
+</table>
+
 </div><div class="specterm" id="term_MusicSegment"><h3>Class: af:MusicSegment   -   testing   -   </h3>
 <em>MusicSegment</em>
- - <br/>
-		A classifier capturing the notion of an audio segment holding music.<br/>
-		This classifier can be subsumed with less generic classifiers (corresponding<br/>
-		to "musically meaningful" segments).<br/>
+ - 		A classifier capturing the notion of an audio segment holding music.<br/>
+		This classifier can be subsumed with more specific classifiers.<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -193,10 +301,9 @@
 </tr>
 </table>
 
-</div><div class="specterm" id="term_MusicStructuralSegment"><h3>Class: af:MusicStructuralSegment   -   testing   -   </h3>
-<em>MusicStructuralSegment</em>
- - <br/>
-		Classifier capturing the notion of chorus, verse, intro, bridge, phrase, etc.<br/>
+</div><div class="specterm" id="term_MusicStructuralEvent"><h3>Class: af:MusicStructuralEvent   -   testing   -   </h3>
+<em>MusicStructuralEvent</em>
+ - 		Classifier capturing the notion of chorus, verse, intro, bridge, phrase, etc.<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -209,7 +316,7 @@
 
 </div><div class="specterm" id="term_NonTonalOnset"><h3>Class: af:NonTonalOnset   -   testing   -   </h3>
 <em>NonTonalOnset</em>
- - A non-tonal onset 
+ - A percussive onset 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
@@ -221,15 +328,27 @@
 
 </div><div class="specterm" id="term_Onset"><h3>Class: af:Onset   -   testing   -   </h3>
 <em>Onset</em>
- - <br/>
-		A classifier corresponding to the output of an onset detection process.<br/>
+ - 		A classifier corresponding to the output of an onset detection process.<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
 <table style="th { float: top; }">
 
-<tr><th>sub-class-of:</th><td><a href="http://purl.org/ontology/af/Instant">af:Instant</a></td>
+<tr><th>sub-class-of:</th><td><a href="#term_Point">Point</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_OnsetDetectionFunction"><h3>Class: af:OnsetDetectionFunction   -   testing   -   </h3>
+<em>OnsetDetectionFunction</em>
+ - 		An onset detection function<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_DetectionFunction">DetectionFunction</a></td>
 </tr>
 </table>
 
@@ -247,8 +366,7 @@
 
 </div><div class="specterm" id="term_PersonSpeaking"><h3>Class: af:PersonSpeaking   -   testing   -   </h3>
 <em>PersonSpeaking</em>
- - <br/>
-			A classifier associating a FOAF description to a particular segment <br/>
+ - 			A classifier associating a FOAF description to a particular segment <br/>
 			(to classify genre, recognized speaker, etc.)<br/>
 			 
 <br/>
@@ -262,20 +380,37 @@
 
 </div><div class="specterm" id="term_Pitch"><h3>Class: af:Pitch   -   testing   -   </h3>
 <em>Pitch</em>
+ - Associate a point to a particular pitch 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_pitch">pitch</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Point">Point</a></td>
+<td><a href="#term_MusicSegment">MusicSegment</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Pitch"><h3>Class: af:Pitch   -   testing   -   </h3>
+<em>Pitch</em>
  - Event holding a pitch value (for example coming from a monophonic transcription process) 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
 <table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_pitch">pitch</a></td>
+</tr>
 
-<tr><th>sub-class-of:</th><td><a href="#term_MusicSegment">MusicSegment</a></td>
+<tr><th>sub-class-of:</th><td><a href="#term_Point">Point</a></td>
+<td><a href="#term_MusicSegment">MusicSegment</a></td>
 </tr>
 </table>
 
 </div><div class="specterm" id="term_Point"><h3>Class: af:Point   -   testing   -   </h3>
 <em>Point</em>
- - <br/>
-		A classifier for instants corresponding to the output of an automatic process---an<br/>
+ - 		A classifier for instants corresponding to the output of an automatic process---an<br/>
 		artificial cognitive agent (should be associated to a time:Instant---DL version).<br/>
 		 
 <br/>
@@ -289,8 +424,7 @@
 
 </div><div class="specterm" id="term_Segment"><h3>Class: af:Segment   -   testing   -   </h3>
 <em>Segment</em>
- - <br/>
-		A classifier for a temporal region corresponding to the output<br/>
+ - 		A classifier for a temporal region corresponding to the output<br/>
 		of an automatic process---an artificial cognitive agent.<br/>
 		 
 <br/>
@@ -304,10 +438,38 @@
 </tr>
 </table>
 
+</div><div class="specterm" id="term_Signal"><h3>Class: af:Signal   -   testing   -   </h3>
+<em>Signal</em>
+ - 		A signal-like feature, holding dense data describing another signal.<br/>
+		Examples of signal features include chromagrams, spectrograms, onset detection functions etc.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_value">value</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="http://purl.org/ontology/mo/Signal">mo:Signal</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_SpectralCentroid"><h3>Class: af:SpectralCentroid   -   testing   -   </h3>
+<em>SpectralCentroid</em>
+ - 		Spectral centroid<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Signal">Signal</a></td>
+</tr>
+</table>
+
 </div><div class="specterm" id="term_SpeechSegment"><h3>Class: af:SpeechSegment   -   testing   -   </h3>
 <em>SpeechSegment</em>
- - <br/>
-		A classifier capturing the notion of an audio segment holding speech<br/>
+ - 		A classifier capturing the notion of an audio segment holding speech<br/>
 		content<br/>
 		 
 <br/>
@@ -321,8 +483,7 @@
 
 </div><div class="specterm" id="term_StructuralSegment"><h3>Class: af:StructuralSegment   -   testing   -   </h3>
 <em>StructuralSegment</em>
- - <br/>
-		A classifier trying to capture the notion of structure in an audio piece.<br/>
+ - 		A classifier trying to capture the notion of structure in an audio piece.<br/>
 		This classifier should be subsumed by more specific classifiers: speech/music<br/>
 		segmentation, structural music segmmentation (intro, verse, chorus, etc.).<br/>
 		 
@@ -342,15 +503,29 @@
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
 <table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_tempo">tempo</a></td>
+</tr>
 
 <tr><th>sub-class-of:</th><td><a href="#term_MusicSegment">MusicSegment</a></td>
 </tr>
 </table>
 
+</div><div class="specterm" id="term_TempoDetectionFunction"><h3>Class: af:TempoDetectionFunction   -   testing   -   </h3>
+<em>TempoDetectionFunction</em>
+ - 		A tempo detection function<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_DetectionFunction">DetectionFunction</a></td>
+</tr>
+</table>
+
 </div><div class="specterm" id="term_Text"><h3>Class: af:Text   -   testing   -   </h3>
 <em>Text</em>
- - <br/>
-		A classifier allowing to associate some text to a segment<br/>
+ - 		A classifier allowing to associate some text to a segment<br/>
 		 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
@@ -375,9 +550,47 @@
 </tr>
 </table>
 
+</div><div class="specterm" id="term_TonalChange"><h3>Class: af:TonalChange   -   testing   -   </h3>
+<em>TonalChange</em>
+ - A tonal change event. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Point">Point</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_TonalChangeDetectionFunction"><h3>Class: af:TonalChangeDetectionFunction   -   testing   -   </h3>
+<em>TonalChangeDetectionFunction</em>
+ - 		A tonal change detection function<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_DetectionFunction">DetectionFunction</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_TonalContentSpace"><h3>Class: af:TonalContentSpace   -   testing   -   </h3>
+<em>TonalContentSpace</em>
+ - 		A 6-D tonal content space<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Signal">Signal</a></td>
+</tr>
+</table>
+
 </div><div class="specterm" id="term_TonalOnset"><h3>Class: af:TonalOnset   -   testing   -   </h3>
 <em>TonalOnset</em>
- - A tonal onset 
+ - A pitched onset 
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
@@ -387,10 +600,64 @@
 </tr>
 </table>
 
+</div><div class="specterm" id="term_TonicChange"><h3>Class: af:TonicChange   -   testing   -   </h3>
+<em>TonicChange</em>
+ - A tonic change event. The factors of such events include the tonic that holds after the event. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Point">Point</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_TonicEvent"><h3>Class: af:TonicEvent   -   testing   -   </h3>
+<em>TonicEvent</em>
+ - 		A classifier for tonics.<br/>
+		In case of a "clean cut", instances of such events have one<br/>
+		factor. In other cases, this event can have several factors, each associated<br/>
+		with a particular confidence using event decomposition.	<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_tonic">tonic</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_MusicSegment">MusicSegment</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_ZeroCrossing"><h3>Class: af:ZeroCrossing   -   testing   -   </h3>
+<em>ZeroCrossing</em>
+ - Classifier for a zero-crossing point 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Point">Point</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_ZeroCrossingCount"><h3>Class: af:ZeroCrossingCount   -   testing   -   </h3>
+<em>ZeroCrossingCount</em>
+ - 		Zero-crossing counts<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Signal">Signal</a></td>
+</tr>
+</table>
+
 </div><div class="specterm" id="term_confidence">
 <h3>Property: af:confidence   -   testing   -   </h3>
-<em>confidence</em> - <br/>
-		A really generic property, allowing to associate a confidence to a document or to a particular<br/>
+<em>confidence</em> - 		A really generic property, allowing to associate a confidence to a document or to a particular<br/>
 		resource (such as an automatically detected segment)<br/>
 		 
 <br/><table style="th { float: top; }">
@@ -405,8 +672,7 @@
 </table>
 <br/></div><div class="specterm" id="term_emotional_intensity">
 <h3>Property: af:emotional_intensity   -   testing   -   </h3>
-<em>emotional_intensity</em> - <br/>
-		Associates an "emotional intensity" value to a <br/>
+<em>emotional_intensity</em> - 		Associates an "emotional intensity" value to a <br/>
 		segment detected as being "emotional"<br/>
 		 
 <br/><table style="th { float: top; }">
@@ -422,8 +688,7 @@
 </table>
 <br/></div><div class="specterm" id="term_feature">
 <h3>Property: af:feature   -   testing   -   </h3>
-<em>feature</em> - <br/>
-		Associates a segment classifying a feature to the actual feature---we should use mpeg7 sort-of datatypes here<br/>
+<em>feature</em> - 		Associates a segment classifying a feature to the actual feature---we should use mpeg7 sort-of datatypes here<br/>
 		 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -434,13 +699,12 @@
 <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
 </tr>
 
-<tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#hasLiteralFactor">event:hasLiteralFactor</a></td>
+<tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#literal_factor">event:literal_factor</a></td>
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_idiom">
 <h3>Property: af:idiom   -   testing   -   </h3>
-<em>idiom</em> - <br/>
-		Associates a segment which classify an idiom (English with Irish accent, etc.) to an actual idiom<br/>
+<em>idiom</em> - 		Associates a segment which classify an idiom (English with Irish accent, etc.) to an actual idiom<br/>
 		 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -454,10 +718,69 @@
 <tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#hasLiteralFactor">event:hasLiteralFactor</a></td>
 </tr>
 </table>
+<br/></div><div class="specterm" id="term_key">
+<h3>Property: af:key   -   testing   -   </h3>
+<em>key</em> - Associates a key event to the corresponding key 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_KeyEvent">KeyEvent</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a></td>
+</tr>
+
+<tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#factor">event:factor</a></td>
+</tr>
+</table>
+<br/></div><div class="specterm" id="term_new_key">
+<h3>Property: af:new_key   -   testing   -   </h3>
+<em>new_key</em> - Associates a key change event to the new key, holding after the change 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="http://purl.org/ontology/af/KeyChangeEvent">af:KeyChangeEvent</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a></td>
+</tr>
+
+<tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#factor">event:factor</a></td>
+</tr>
+</table>
+<br/></div><div class="specterm" id="term_new_mode">
+<h3>Property: af:new_mode   -   testing   -   </h3>
+<em>new_mode</em> - Mode that holds after the mode change event 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="http://purl.org/ontology/af/ModeChangeEvent">af:ModeChangeEvent</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a></td>
+</tr>
+
+<tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#factor">event:factor</a></td>
+</tr>
+</table>
+<br/></div><div class="specterm" id="term_new_tonic">
+<h3>Property: af:new_tonic   -   testing   -   </h3>
+<em>new_tonic</em> - Tonic that holds after the tonic change event 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="http://purl.org/ontology/af/TonicChangeEvent">af:TonicChangeEvent</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a></td>
+</tr>
+
+<tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#factor">event:factor</a></td>
+</tr>
+</table>
 <br/></div><div class="specterm" id="term_person">
 <h3>Property: af:person   -   testing   -   </h3>
-<em>person</em> - <br/>
-		Associates a segment classified as holding speech content to a FOAF<br/>
+<em>person</em> - 		Associates a segment classified as holding speech content to a FOAF<br/>
 		profile (maybe holding information about genre, recognized speaker URI, etc.)<br/>
 		 
 <br/><table style="th { float: top; }">
@@ -471,10 +794,41 @@
 
 
 </table>
+<br/></div><div class="specterm" id="term_pitch">
+<h3>Property: af:pitch   -   testing   -   </h3>
+<em>pitch</em> - 		Associates a pitch event to the corresponding pitch<br/>
+	 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Pitch">Pitch</a></td>
+
+</tr>
+<tr><th>Range:</th>
+</tr>
+
+<tr><th>Sub-property-of: </th><td><a href="#term_feature">feature</a></td>
+<td><a href="#term_feature">feature</a></td>
+</tr>
+</table>
+<br/></div><div class="specterm" id="term_tempo">
+<h3>Property: af:tempo   -   testing   -   </h3>
+<em>tempo</em> - 		Associates a tempo event to the corresponding tempo value.<br/>
+	 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Tempo">Tempo</a></td>
+
+</tr>
+<tr><th>Range:</th>
+</tr>
+
+<tr><th>Sub-property-of: </th><td><a href="#term_feature">feature</a></td>
+<td><a href="#term_feature">feature</a></td>
+</tr>
+</table>
 <br/></div><div class="specterm" id="term_text">
 <h3>Property: af:text   -   testing   -   </h3>
-<em>text</em> - <br/>
-		Relates a Text segment (classifying a time interval that can <br/>
+<em>text</em> - 		Relates a Text segment (classifying a time interval that can <br/>
 		be associated to some text) to a text string or other literals (number, etc.)<br/>
 		 
 <br/><table style="th { float: top; }">
@@ -489,4 +843,59 @@
 <tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#hasLiteralFactor">event:hasLiteralFactor</a></td>
 </tr>
 </table>
-<br/></div></body></html>
+<br/></div><div class="specterm" id="term_tonic">
+<h3>Property: af:tonic   -   testing   -   </h3>
+<em>tonic</em> - Associates a tonic event with the corresponding tonic 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_TonicEvent">TonicEvent</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a></td>
+</tr>
+
+<tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#factor">event:factor</a></td>
+</tr>
+</table>
+<br/></div><div class="specterm" id="term_austrian_german">
+<h3>Individual: austrian_german   -   </h3>
+<em>Austrian German</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_GermanIdiom">af:GermanIdiom</a></td>
+</tr></table></div><div class="specterm" id="term_english_irish_accent">
+<h3>Individual: english_irish_accent   -   </h3>
+<em>English with an Irish accent</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_EnglishIdiom">af:EnglishIdiom</a></td>
+</tr></table></div><div class="specterm" id="term_english_scottish_accent">
+<h3>Individual: english_scottish_accent   -   </h3>
+<em>English with a Scottish accent</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_EnglishIdiom">af:EnglishIdiom</a></td>
+</tr></table></div><div class="specterm" id="term_standard_british_english">
+<h3>Individual: standard_british_english   -   </h3>
+<em>Standard British English</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_EnglishIdiom">af:EnglishIdiom</a></td>
+</tr></table></div><div class="specterm" id="term_standard_german">
+<h3>Individual: standard_german   -   </h3>
+<em>Standard German</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_GermanIdiom">af:GermanIdiom</a></td>
+</tr></table></div><div class="specterm" id="term_standard_hungarian">
+<h3>Individual: standard_hungarian   -   </h3>
+<em>Standard Hungarian</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_HungarianIdiom">af:HungarianIdiom</a></td>
+</tr></table></div><div class="specterm" id="term_standard_us_english">
+<h3>Individual: standard_us_english   -   </h3>
+<em>Standard US English</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_EnglishIdiom">af:EnglishIdiom</a></td>
+</tr></table></div><div class="specterm" id="term_swiss_german">
+<h3>Individual: swiss_german   -   </h3>
+<em>Swiss German</em> -  
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_GermanIdiom">af:GermanIdiom</a></td>
+</tr></table></div></body></html>
