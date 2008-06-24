@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - Playcount data linking BBC /programmes and Musicbrainz</title>
+
+<style type="text/css" media="all">
+        @import url(style.css);
+</style>
+
+</head>
+
+<body>
+
+
+<a href="http://dbtune.org/"><h1 style="font-size: 250%;">DBTune.org</h1></a>
+
+<div id="tagline">Playcount data linking BBC /programmes and Musicbrainz</div>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
+
+<p>
+The <a href="http://www.bbc.co.uk/">BBC</a> has <a href="http://mashed-audioandmusic.dyndns.org/">made available</a> a dataset of playcounts of artists 
+per episode and brands in their <a href="http://www.bbc.co.uk/programmes">programmes catalogue</a>, for the <a href="http://mashed08.eventbrite.com/">Mashed 2008</a> event.
+</p>
+
+<p>
+This service provides RDF links using these playcounts, to link the
+<a href="http://dbtune.org/musicbrainz/">Musicbrainz linked data</a> and the 
+<a href="http://bbc-programmes.dyndns.org/">BBC programmes linked data</a>.
+</p>
+
+<p>
+This effort is part of the <a href="http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/LinkingOpenData">Linking
+Open Data on the Semantic Web</a> community project, hosted by the <a href="http://www.w3.org/2001/sw/sweo/">Semantic
+Web Education and Outreach</a> interest group.
+</p>
+
+
+
+<h2><a name="use" id="use"></a>2. Using this service</h2>
+<p>
+A playcount URI in this service looks like:
+<pre>
+http://dbtune.org/playcount/&lt;id&gt;
+</pre>
+Where &lt;id&gt; is the id of the episode or the brand, as in
+<a href="http://www.bbc.co.uk/programmes">/programmes BBC catalogue</a>
+</p>
+
+<h2><a name="sparql" id="sparql"</a>3. Querying the dataset</a></h2>
+We expose a SPARQL end-point for querying this data.
+The SPARQL end-point also holds aggregated information from 
+Musicbrainz and the BBC Programmes service.
+
+<h2><a name="onto" id="onto"></a>4. Playcount ontology</h2>
+<p>
+For the purpose of representing playcounts, we designed a really
+small <a href="http://purl.org/ontology/playcount/">playcount ontology</a>.
+This ontology defines one playcount concept, and three properties
+to link it to the media in which we are counting something, the actual thing,
+and actual  playcount. This ontology can be used as in the following
+example:
+</p>
+<pre>
+:radioepisode pc:playcount [a pc:Playcount; pc:count 12; pc:object :track].
+</pre>
+
+<h2><a name="code" id="code"></a>5. Code</h2>
+<p>
+As usual, <a href="http://motools.svn.sourceforge.net/viewvc/motools/dbtune/playcount">all the code running this service</a>
+is open source and based
+on <a href="http://www.swi-prolog.org">SWI-Prolog</a>
+</p>
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3327144-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+
+</body>
+
+</html>
+
