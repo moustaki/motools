@@ -117,6 +117,15 @@
 		Zero-crossing counts
 	</rdfs:comment>
   </owl:Class>
+  <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/signal_feature">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/mo/Signal"/>
+    <rdfs:label>signal-level feature</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/ontology/af/Signal"/>
+    <rdfs:comment>
+		Associates an audio signal with a track-level signal feature.
+		eg. a spectrogram, a chromagram, an onset detection function.
+	</rdfs:comment>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/value">
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#value"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/af/Signal"/>

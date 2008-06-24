@@ -149,6 +149,16 @@ af:ZeroCrossingCount
 	""";
 	.
 
+af:signal_feature
+	a owl:DatatypeProperty;
+	rdfs:domain mo:Signal;
+	rdfs:label "signal-level feature";
+	rdfs:range af:Signal;
+	rdfs:comment """
+		Associates an audio signal with a track-level signal feature.
+		eg. a spectrogram, a chromagram, an onset detection function.
+	""";
+	.
 af:value 
 	a owl:DatatypeProperty;
 	rdfs:subPropertyOf rdf:value; # Not sure about that bit 
