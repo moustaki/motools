@@ -30,10 +30,10 @@ server(Port) :-
 :- use_module(library('semweb/rdf_http_plugin')).
 
 crawl :-
-	findall(Musicbrainz,rdf_db:rdf(_,pc:object,Musicbrainz),Mbzs),
-	forall(member(M,Mbzs),rdf_db:rdf_load(M)),
-	findall(Bbc,rdf_db:rdf(Bbc,pc:playcount,_),BBCs),
-	forall(member(U,BBCs),(debug_uri(U,V),rdf_db:rdf(load(V)))).
+	setof(Musicbrainz,A^(rdf_db:rdf(A,pc:object,Musicbrainz)),Mbzs),
+	forall(member(M,Mbzs),(writeln(M),((M\='http://dbtune.org/musicbrainz/resource/artist/',catch(rdf_db:rdf_load(M),_,true));true))),
+	setof(Bbc,A^(rdf_db:rdf(Bbc,pc:playcount,A)),BBCs),
+	forall(member(U,BBCs),(debug_uri(U,V),writeln(V),catch(rdf_db:rdf_load(V),_,true))).
 
 debug_uri(U,V) :-
 	concat_atom(L,'#',U),
