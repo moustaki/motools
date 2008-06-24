@@ -1,0 +1,40 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix pc: <http://purl.org/ontology/playcount/>.
+
+#
+# Small playcount ontology
+#
+# Example use:
+#
+# :radioepisode pc:playcount [a pc:Playcount; pc:count 12; pc:object :track].
+#
+
+pc:Playcount a owl:Class;
+	rdfs:label "Playcount";
+	rdfs:comment "Playcount of a given object in a given media";
+	.
+
+pc:playcount a owl:ObjectProperty;
+	rdfs:label "playcount";
+	rdfs:comment "Links an object to a playcount resource";
+	rdfs:domain owl:Thing;
+	rdfs:range pc:Playcount;
+	.
+
+pc:count a owl:DatatypeProperty;
+	rdfs:label "count";
+	rdfs:comment "Links a playcount resource to the actual count";
+	rdfs:domain pc:Playcount;
+	rdfs:range xsd:int;
+	.
+
+pc:object a owl:ObjectProperty;
+	rdfs:label "object";
+	rdfs:comment "The object that is being counted";
+	rdfs:domain pc:Playcount;
+	rdfs:range owl:Thing;
+	.
+
