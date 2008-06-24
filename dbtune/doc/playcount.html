@@ -29,6 +29,7 @@ per episode and brands in their <a href="http://www.bbc.co.uk/programmes">progra
 This service provides RDF links using these playcounts, to link the
 <a href="http://dbtune.org/musicbrainz/">Musicbrainz linked data</a> and the 
 <a href="http://bbc-programmes.dyndns.org/">BBC programmes linked data</a>.
+The earlier is designed with the <a href="http://purl.org/ontology/mo/">Music Ontology</a>, the latter is designed with the <a href="http://www.bbc.co.uk/ontologies/programmes/">BBC Programmes ontology</a>.
 </p>
 
 <p>
@@ -43,10 +44,12 @@ Web Education and Outreach</a> interest group.
 <p>
 A playcount URI in this service looks like:
 <pre>
-http://dbtune.org/playcount/&lt;id&gt;
+http://dbtune.org/playcount/&lt;id&gt;_&lt;k&gt;
 </pre>
 Where &lt;id&gt; is the id of the episode or the brand, as in
-<a href="http://www.bbc.co.uk/programmes">/programmes BBC catalogue</a>
+<a href="http://www.bbc.co.uk/programmes">/programmes BBC catalogue</a>,
+and &lt;k&gt; is a number between 0 and the number of playcounts
+for the episode or the brand.
 </p>
 
 <h2><a name="sparql" id="sparql"</a>3. Querying the dataset</a></h2>
