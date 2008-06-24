@@ -151,6 +151,7 @@ af:ZeroCrossingCount
 
 af:signal_feature
 	a owl:DatatypeProperty;
+	vs:term_status "testing";
 	rdfs:domain mo:Signal;
 	rdfs:label "signal-level feature";
 	rdfs:range af:Signal;

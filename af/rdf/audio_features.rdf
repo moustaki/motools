@@ -118,6 +118,7 @@
 	</rdfs:comment>
   </owl:Class>
   <owl:DatatypeProperty rdf:about="http://purl.org/ontology/af/signal_feature">
+    <vs:term_status>testing</vs:term_status>
     <rdfs:domain rdf:resource="http://purl.org/ontology/mo/Signal"/>
     <rdfs:label>signal-level feature</rdfs:label>
     <rdfs:range rdf:resource="http://purl.org/ontology/af/Signal"/>
