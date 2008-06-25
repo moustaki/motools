@@ -44,7 +44,7 @@ Web Education and Outreach</a> interest group.
 <p>
 A playcount URI in this service looks like:
 <pre>
-http://dbtune.org/playcount/&lt;id&gt;_&lt;k&gt;
+http://dbtune.org/bbc/playcount/&lt;id&gt;_&lt;k&gt;
 </pre>
 Where &lt;id&gt; is the id of the episode or the brand, as in
 <a href="http://www.bbc.co.uk/programmes">/programmes BBC catalogue</a>,
@@ -56,10 +56,27 @@ for the episode or the brand.
 <p>
 We expose a <a href="http://dbtune.org:3062/user/query">SPARQL end-point</a> 
 for querying this data.
-The SPARQL end-point also holds aggregated information from 
+The SPARQL end-point also holds aggregated information (around 2 million triples) from 
 Musicbrainz and the BBC Programmes service.
 The end-point is available at:
 <pre>http://dbtune.org:3062/sparql</pre>
+</p>
+
+<p>
+An example query is the following one:
+<pre>
+SELECT ?brand ?title ?count
+WHERE {
+   ?artist a mo:MusicArtist;
+      foaf:name "The Beatles". 
+   ?pc pc:object ?artist;
+       pc:count ?count.
+   ?brand a po:Brand;
+       pc:playcount ?pc;
+       dc:title ?title 
+    FILTER (?count&gt;10)}
+</pre>
+This will return every BBC brands in which The Beatles were featured at least ten times.
 </p>
 
 <h2><a name="onto" id="onto"></a>4. Playcount ontology</h2>
