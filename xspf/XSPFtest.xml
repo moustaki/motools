@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist version="0" xmlns = "http://xspf.org/ns/0/">
+  <trackList>
+<track><location>file:///mp3s/Yo%20La%20Tengo/1_Nuclear%20War%20Version%201.mp3</location></track>
+<track><location>file:///mp3s/Yo%20La%20Tengo/2_Nuclear%20War%20Version%202.mp3</location></track>
+<track><location>file:///mp3s/Yo%20La%20Tengo/3_Nuclear%20War%20Version%203.mp3</location></track>
+<track><location>file:///mp3s/Yo%20La%20Tengo/4_Nuclear%20War%20Version%204</location></track>
+<track><location>file:///mp3s/Yo%20La%20Tengo/5_Nuclear%20War%20Version%204%20(Mike%20Ladd%20Remix).mp3</location></track>
+  </trackList>
+</playlist>
