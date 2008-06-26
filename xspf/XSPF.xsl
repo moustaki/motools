@@ -69,14 +69,14 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 <rdf:RDF>
 <mo:Playlist>
 <version><xsl:value-of select='@version'/></version>
-<mo:track>
 <xsl:for-each select="play:trackList/play:track">
+ <mo:track>
   <xsl:apply-templates select="play:track"/>
    <mo:Track>
    <mo:available_as rdf:resource="{play:location}"/>
   </mo:Track>
+ </mo:track>
 </xsl:for-each>
-</mo:track>
 </mo:Playlist>
 </rdf:RDF>
 </xsl:template>
