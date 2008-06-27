@@ -48,8 +48,8 @@
 
     <owl:ObjectProperty rdf:about="#friend">
         <rdf:type rdf:resource="&owl;SymmetricProperty"/>
-        <rdfs:range rdf:resource="#Page"/>
-        <rdfs:domain rdf:resource="#Page"/>
+        <rdfs:range rdf:resource="#Agent"/>
+        <rdfs:domain rdf:resource="#Agent"/>
         <rdfs:comment
             >MySpace friend relationship - undirected</rdfs:comment>
     </owl:ObjectProperty>
@@ -74,8 +74,8 @@
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
         <rdfs:comment
             >MySpace top friend relationship - a directed relationship</rdfs:comment>
-        <rdfs:range rdf:resource="#Page"/>
-        <rdfs:domain rdf:resource="#Page"/>
+        <rdfs:range rdf:resource="#Agent"/>
+        <rdfs:domain rdf:resource="#Agent"/>
     </owl:ObjectProperty>
     
 
@@ -132,7 +132,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#profileViews -->
 
     <owl:DatatypeProperty rdf:about="#profileViews">
-        <rdfs:domain rdf:resource="#Page"/>
+        <rdfs:domain rdf:resource="#Agent"/>
         <rdfs:range rdf:resource="&xsd;int"/>
     </owl:DatatypeProperty>
     
@@ -189,7 +189,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#MusicArtist -->
 
     <owl:Class rdf:about="#MusicArtist">
-        <rdfs:subClassOf rdf:resource="#Page"/>
+        <rdfs:subClassOf rdf:resource="#Agent"/>
         <rdfs:subClassOf rdf:resource="&mo;MusicArtist"/>
         <rdfs:comment
             >MySpace Artist page</rdfs:comment>
@@ -217,12 +217,12 @@
     
 
 
-    <!-- http://grasstunes.net/ontology/myspace.owl#Page -->
+    <!-- http://grasstunes.net/ontology/myspace.owl#Agent -->
 
-    <owl:Class rdf:about="#Page">
+    <owl:Class rdf:about="#Agent">
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
-        <rdfs:subClassOf rdf:resource="&foaf;Document"/>
-        <rdfs:comment>MySpace page</rdfs:comment>
+        <!--<rdfs:subClassOf rdf:resource="&foaf;Document"/>-->
+        <rdfs:comment>person described by a MySpace page</rdfs:comment>
     </owl:Class>
     
 
