@@ -1,0 +1,14 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX mo: <http://purl.org/ontology/mo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+SELECT ?mp3 ?track ?artistname ?trackname
+FROM <http://dbtune.org/myspace/uid/9373064>
+WHERE {
+<http://dbtune.org/myspace/uid/9373064> 
+   foaf:name ?artistname; 
+   foaf:made ?track.
+?track 
+   a mo:Track; 
+   mo:available_as ?mp3; 
+   dc:title ?trackname
+}
