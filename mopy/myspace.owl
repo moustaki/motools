@@ -60,7 +60,7 @@
 
     <owl:ObjectProperty rdf:about="#genreTag">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
-        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:domain rdf:resource="#MusicArtist"/>
         <rdfs:comment
             >for the genres specified by artists on MySpace</rdfs:comment>
         <rdfs:range rdf:resource="&mo;Genre"/>
@@ -94,7 +94,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#bandMembers -->
 
     <owl:DatatypeProperty rdf:about="#bandMembers">
-        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:domain rdf:resource="#MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -112,7 +112,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#influences -->
 
     <owl:DatatypeProperty rdf:about="#influences">
-        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:domain rdf:resource="#MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -141,7 +141,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#recordLabel -->
 
     <owl:DatatypeProperty rdf:about="#recordLabel">
-        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:domain rdf:resource="#MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -151,7 +151,7 @@
 
     <owl:DatatypeProperty rdf:about="#recordLabelType">
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:domain rdf:resource="#MusicArtist"/>
     </owl:DatatypeProperty>
     
 
@@ -159,7 +159,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#soundsLike -->
 
     <owl:DatatypeProperty rdf:about="#soundsLike">
-        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:domain rdf:resource="#MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -170,7 +170,7 @@
     <owl:DatatypeProperty rdf:about="#totalPlays">
         <rdfs:range rdf:resource="&xsd;integer"/>
         <rdfs:range rdf:resource="&xsd;int"/>
-        <rdfs:domain rdf:resource="#ArtistPage"/>
+        <rdfs:domain rdf:resource="#MusicArtist"/>
     </owl:DatatypeProperty>
     
 
@@ -186,9 +186,9 @@
     
 
 
-    <!-- http://grasstunes.net/ontology/myspace.owl#ArtistPage -->
+    <!-- http://grasstunes.net/ontology/myspace.owl#MusicArtist -->
 
-    <owl:Class rdf:about="#ArtistPage">
+    <owl:Class rdf:about="#MusicArtist">
         <rdfs:subClassOf rdf:resource="#Page"/>
         <rdfs:subClassOf rdf:resource="&mo;MusicArtist"/>
         <rdfs:comment
