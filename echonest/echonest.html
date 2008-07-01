@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - Echonest Analyze API to Music Ontology RDF</title>
+
+<style type="text/css" media="all">
+        @import url(style.css);
+</style>
+
+</head>
+
+<body>
+
+
+<a href="http://dbtune.org/"><h1 style="font-size: 250%;">DBTune.org</h1></a>
+
+<div id="tagline">Echonest Analyze API to Music Ontology RDF</div>
+
+
+<p>
+A really simple Echonest Analyze XML to Music Ontology RDF XSLT. 
+</p>
+
+<p>
+Original file: <a href="http://dbtune.org/echonest/analyze-example.xml">analyze-example.xml</a>
+Transform: <a href="http://dbtune.org/echonest/echonest.xsl">echonest.xsl</a>
+Results: <a href="http://dbtune.org/echonest/analyze-example.rdf">analyze-example.rdf</a>
+</p>
+
+<p>
+<form method="get" action="http://www.w3.org/2000/06/webdata/xslt">
+<label>URI of XSL resource <input type="text" size="50" name="xslfile" value="http://dbtune.org/echonest/echonest.xsl"/></label>
+<br/>
+<label>URI of Echonest Analyze XML resource <input type="text" size="50" name="xmlfile" value="http://dbtune.org/echonest/analyze-example.xml"/></label><br/>
+<input type="submit" value="Transform!" name="transform">
+</form>
+</p>
+
+<p>
+The outputted RDF is designed using the <a href="http://musicontology.com/">
+Music Ontology</a>, the <a href="http://purl.org/ontology/af/">Audio Features ontology</a> and
+a small <a href="http://purl.org/ontology/echonest/">Echonest ontology</a> extending the latter.
+</p>
+
+
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3327144-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+
+</body>
+
+</html>
+
