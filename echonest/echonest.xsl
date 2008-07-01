@@ -6,6 +6,7 @@
     xmlns:af   ="http://purl.org/ontology/af/"
     xmlns:dc   ="http://purl.org/dc/elements/1.1/"
     xmlns:tl   ="http://purl.org/NET/c4dm/timeline.owl#"
+    xmlns:en   = "http://purl.org/ontology/echonest/"
     xmlns ="http://dbtune.org/echonest/" 
     >
 
@@ -53,13 +54,55 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 
 <xsl:template match='Analysis'>
 <rdf:RDF>
-<mo:Signal rdf:about="#signal">
+<xsl:for-each select='Track'>
+
+<!-- Describing the signal resource and track-wide features -->
+<mo:Signal 
+	rdf:about="#signal" 
+	en:loudnessDynamicsVariance='{Tags/@loudnessDynamicsVariance}'
+	en:timbreMean='{Tags/@timbreMean}'
+	en:endOfFadeIn='{Tags/@endOfFadeIn}'
+	en:loudnessBeginVariance='{Tags/@loudnessBeginVariance}'
+	en:loudnessBeginMean='{Tags/@loudnessBeginMean}'
+	en:beatVariance='{Tags/@beatVariance}'
+	en:timeSignature_Stability='{Tags/@timeSignatureStability}'
+	en:loudnessDynamicsMean='{Tags/@loudnessDynamicsMean}'
+	en:timbreVariance='{Tags/@timbreVariance}'
+	en:loudnessMaxVariance='{Tags/@loudnessMaxVariance}'
+	en:loudnessMaxMean='{Tags/@loudnessMaxMean}'
+	en:segmentDurationVariance='{Tags/@segmentDurationVariance}'
+	en:sizeTimbre='{Tags/@sizeTimbre}'
+	en:pitchMean='{Tags/@pitchMean}'
+	en:startOfFadeOut='{Tags/@startOfFadeOut}'
+	en:tatum='{Tags/@tatum}'
+	en:timeLoudnessMaxMean='{Tags/@timeLoudnessMaxMean}'
+	en:numTatums='{Tags/@numTatums}'
+	en:tempoConfidence='{Tags/@tempoConfidence}'
+	en:loudness='{Tags/@loudness}'
+	en:tempo='{Tags/@tempo}'
+	en:segmentDurationMean='{Tags/@segmentDurationMean}'
+	en:numSections='{Tags/@numSections}'
+	en:tatumConfidence='{Tags/@tatumConfidence}'
+	en:timeSignature='{Tags/@timeSignature}'
+	en:numBeats='{Tags/@numBeats}'
+	en:sizePitches='{Tags/@sizePitches}'
+	en:pitchVariance='{Tags/@pitchVariance}'
+	en:numSegments='{Tags/@numSegments}'
+	en:numTatumsPerBeat='{Tags/@numTatumsPerBeat}'
+	> 
 <mo:time>
 <tl:Interval>
-<tl:duration><xsl:value-of select='Track/@duration'/></tl:duration>
+<tl:duration><xsl:value-of select='@duration'/></tl:duration>
+<tl:onTimeLine> <!-- Should be unique -->
+<tl:TimeLine rdf:about="#timeline"/>
+</tl:onTimeLine>
 </tl:Interval>
 </mo:time>
 </mo:Signal>
+
+<!-- Describing local features -->
+
+</xsl:for-each>
 </rdf:RDF>
 </xsl:template>
 
