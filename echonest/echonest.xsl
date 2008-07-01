@@ -128,6 +128,25 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 </af:StructuralSegment>
 </xsl:for-each>
 
+<xsl:for-each select='Segment'>
+<en:Segment
+	en:loundnessBegin='{Tags/@loudnessBegin}'
+	en:loudnessMax='{Tags/@loudnessMax}'
+	en:loudnessEnd='{Tags/@loudnessEnd}'
+	en:timeLoudnessMax='{Tags/@timeLoudnessMax}'
+	en:pitches='{Tags/@pitches}'
+	en:timbreCoeff='{Tags/@timbreCoeff}'
+	>
+<event:time>
+<tl:Interval>
+<tl:start><xsl:value-of select='@start'/></tl:start>
+<tl:duration><xsl:value-of select='@duration'/></tl:duration>
+<tl:onTimeLine rdf:resource="#timeline"/>
+</tl:Interval>
+</event:time>
+</en:Segment>
+</xsl:for-each>
+
 </xsl:for-each>
 </rdf:RDF>
 </xsl:template>
