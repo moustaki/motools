@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-<title>DBTune - Echonest Analyze API to Music Ontology RDF</title>
+<title>DBTune - Echonest Analyze XML to Music Ontology RDF</title>
 
 <style type="text/css" media="all">
         @import url(style.css);
@@ -16,7 +16,9 @@
 
 <a href="http://dbtune.org/"><h1 style="font-size: 250%;">DBTune.org</h1></a>
 
-<div id="tagline">Echonest Analyze API to Music Ontology RDF</div>
+<br/>
+
+<div id="tagline">Echonest Analyze XML to Music Ontology RDF</div>
 
 
 <p>
@@ -30,7 +32,7 @@ Results: <a href="http://dbtune.org/echonest/analyze-example.rdf">analyze-exampl
 </p>
 
 <p>
-<form method="get" action="http://www.w3.org/2000/06/webdata/xslt">
+<form method="get" action="http://www.w3.org/2005/08/online_xslt/xslt">
 <label>URI of XSL resource <input type="text" size="50" name="xslfile" value="http://dbtune.org/echonest/echonest.xsl"/></label>
 <br/>
 <label>URI of Echonest Analyze XML resource <input type="text" size="50" name="xmlfile" value="http://dbtune.org/echonest/analyze-example.xml"/></label><br/>
@@ -39,12 +41,43 @@ Results: <a href="http://dbtune.org/echonest/analyze-example.rdf">analyze-exampl
 </p>
 
 <p>
+The resulting RDF can be queried using <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a>.
+For example, the <a href="http://dbtune.org/echonest/structure.rq">following query</a> 
+selects starts and durations for extracted structural segments (eg. chorus, verse, etc.).
+<pre>
+PREFIX af: &lt;http://purl.org/ontology/af/&gt;
+PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
+PREFIX tl: &lt;http://purl.org/NET/c4dm/timeline.owl#&gt;
+
+SELECT ?start ?duration
+FROM &lt;http://dbtune.org/echonest/analyze-example.rdf&gt;
+WHERE
+{
+?e      a af:StructuralSegment;
+        event:time ?time.
+?time   tl:start ?start;
+        tl:duration ?duration.
+}
+</pre>
+I tested this query with <a href="http://librdf.org/rasqal/roqet.html">Roqet</a> and <a href="http://jena.sourceforge.net">ARQ</a>.
+</p>
+
+<p>
 The outputted RDF is designed using the <a href="http://musicontology.com/">
 Music Ontology</a>, the <a href="http://purl.org/ontology/af/">Audio Features ontology</a> and
 a small <a href="http://purl.org/ontology/echonest/">Echonest ontology</a> extending the latter.
 </p>
 
-
+<p>
+RDF could be automatically extracted from the Echonest Analyze results through <a href="http://www.w3.org/TR/grddl/">GRDDL</a>,
+by adding the following:
+<pre>
+&lt;Analysis 	xmlns:grddl="http://www.w3.org/2003/g/data-view#" 
+		grddl:transformation="http://dbtune.org/echonest/echonest.xsl"&gt;
+...
+&lt;/Analysis&gt;
+</pre>
+</p>
 
 
 <script type="text/javascript">

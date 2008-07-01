@@ -3,7 +3,7 @@ PREFIX event: <http://purl.org/NET/c4dm/event.owl#>
 PREFIX tl: <http://purl.org/NET/c4dm/timeline.owl#>
 
 SELECT ?start ?duration
-FROM <analyze-example.rdf>
+FROM <http://dbtune.org/echonest/analyze-example.rdf>
 WHERE
 {
 ?e 	a af:StructuralSegment;
