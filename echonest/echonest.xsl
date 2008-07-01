@@ -7,6 +7,7 @@
     xmlns:dc   ="http://purl.org/dc/elements/1.1/"
     xmlns:tl   ="http://purl.org/NET/c4dm/timeline.owl#"
     xmlns:en   = "http://purl.org/ontology/echonest/"
+    xmlns:event="http://purl.org/NET/c4dm/event.owl#"
     xmlns ="http://dbtune.org/echonest/" 
     >
 
@@ -89,6 +90,7 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 	en:pitchVariance='{Tags/@pitchVariance}'
 	en:numSegments='{Tags/@numSegments}'
 	en:numTatumsPerBeat='{Tags/@numTatumsPerBeat}'
+	en:tatums='{Tatums}'
 	> 
 <mo:time>
 <tl:Interval>
@@ -101,6 +103,19 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 </mo:Signal>
 
 <!-- Describing local features -->
+
+<!--- Sadly XSLT 2.0 -->
+<!--<xsl:variable name="tantumID" select="tokenize('@Tatums',' ')"/>
+<xsl:for-each select="$tantumID">
+<en:Tantum>
+<event:time>
+<tl:at><xsl:value-of select='.'/></tl:at>
+<tl:onTimeLine rdf:resource="#timeline"/>
+</event:time>
+</en:Tantum>
+</xsl:for-each>
+-->
+
 
 </xsl:for-each>
 </rdf:RDF>
