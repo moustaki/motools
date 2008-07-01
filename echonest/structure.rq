@@ -1,0 +1,14 @@
+PREFIX af: <http://purl.org/ontology/af/>
+PREFIX event: <http://purl.org/NET/c4dm/event.owl#>
+PREFIX tl: <http://purl.org/NET/c4dm/timeline.owl#>
+
+SELECT ?start ?duration
+FROM <analyze-example.rdf>
+WHERE
+{
+?e 	a af:StructuralSegment;
+	event:time ?time.
+?time	tl:start ?start;
+	tl:duration ?duration.
+}
+
