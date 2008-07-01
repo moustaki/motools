@@ -116,6 +116,17 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 </xsl:for-each>
 -->
 
+<xsl:for-each select='Section'>
+<af:StructuralSegment>
+<event:time>
+<tl:Interval>
+<tl:start><xsl:value-of select='@start'/></tl:start>
+<tl:duration><xsl:value-of select='@duration'/></tl:duration>
+<tl:onTimeLine rdf:resource="#timeline"/>
+</tl:Interval>
+</event:time>
+</af:StructuralSegment>
+</xsl:for-each>
 
 </xsl:for-each>
 </rdf:RDF>
