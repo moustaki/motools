@@ -106,7 +106,8 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
-:end owl:equivalentProperty :endsAt. # Shortcut
+:endsAt owl:equivalentProperty :end; a owl:ObjectProperty. # Shortcut
+
 
 :start
     rdfs:label "begins at";
@@ -121,20 +122,20 @@ Two timelines can be mapped using timeline maps.""" .
 # Part 1.5: equivalence statements #
 ####################################
 
-:meets owl:equivalentProperty time:intervalMeets.
-:equals owl:equivalentProperty time:intervalEquals.
-:before owl:equivalentProperty time:intervalBefore.
-:meets owl:equivalentProperty time:intervalMeets.
-:overlaps owl:equivalentProperty time:intervalOverlaps.
-:starts owl:equivalentProperty time:intervalStarts.
-:during owl:equivalentProperty time:intervalDuring.
-:finishes owl:equivalentProperty time:intervalFinishes.
-:after owl:equivalentProperty time:intervalAfter.
-:metBy owl:equivalentProperty time:intervalMetBy.
-:overlappedBy owl:equivalentProperty time:intervalOverlappedBy.
-:startedBy owl:equivalentProperty time:intervalStartedBy.
-:contains owl:equivalentProperty time:intervalContains.
-:finishedBy owl:equivalentProperty time:intervalFinishedBy.
+:meets owl:equivalentProperty time:intervalMeets; a owl:ObjectProperty.
+:equals owl:equivalentProperty time:intervalEquals; a owl:ObjectProperty.
+:before owl:equivalentProperty time:intervalBefore; a owl:ObjectProperty.
+:meets owl:equivalentProperty time:intervalMeets; a owl:ObjectProperty.
+:overlaps owl:equivalentProperty time:intervalOverlaps; a owl:ObjectProperty.
+:starts owl:equivalentProperty time:intervalStarts ; a owl:ObjectProperty.
+:during owl:equivalentProperty time:intervalDuring; a owl:ObjectProperty.
+:finishes owl:equivalentProperty time:intervalFinishes; a owl:ObjectProperty.
+:after owl:equivalentProperty time:intervalAfter; a owl:ObjectProperty.
+:metBy owl:equivalentProperty time:intervalMetBy; a owl:ObjectProperty.
+:overlappedBy owl:equivalentProperty time:intervalOverlappedBy; a owl:ObjectProperty.
+:startedBy owl:equivalentProperty time:intervalStartedBy; a owl:ObjectProperty.
+:contains owl:equivalentProperty time:intervalContains; a owl:ObjectProperty.
+:finishedBy owl:equivalentProperty time:intervalFinishedBy; a owl:ObjectProperty.
 
 ############################################################################
 # Part 2: Extra DL stuff, timeline taxonomies, coordinate systems handling #
