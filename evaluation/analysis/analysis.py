@@ -16,6 +16,6 @@ s = vs.search(["upbeat"])
 print s
 
 for k in range(0,len(s)):
-	if s[k] > 0:
+	if k > 0.1:
 		print descs[k]
 
