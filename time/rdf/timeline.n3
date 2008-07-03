@@ -56,7 +56,7 @@ Two timelines can be mapped using timeline maps.""" .
 	owl:equivalentClass time:ProperInterval;
 	.
 
-:onTimeLine
+:timeline
     a owl:FunctionalProperty, owl:ObjectProperty;
     rdfs:label "on timeline";
     vs:term_status "stable";
@@ -76,7 +76,7 @@ Two timelines can be mapped using timeline maps.""" .
         )
     ] .
 
-:timeline owl:sameAs :onTimeLine.
+:timeline owl:equivalentProperty :onTimeLine.
 
 :at
     a owl:FunctionalProperty;
@@ -99,42 +99,42 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
-:endsAt
+:end
     rdfs:label "ends at";
     rdfs:comment "refers to the end of a time interval, through an explicit datatype. time:hasEnd can be used as well, if you want to associate the end of the interval to an explicit time point resource";
     vs:term_status "stable";
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
-:end owl:sameAs :endsAt. # Shortcut
+:end owl:equivalentProperty :endsAt. # Shortcut
 
-:beginsAt
+:start
     rdfs:label "begins at";
     rdfs:comment "refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource";
     vs:term_status "stable";
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
-:start owl:sameAs :beginsAt. # Shortcut
+:start owl:equivalentProperty :beginsAt. # Shortcut
 
 ####################################
 # Part 1.5: equivalence statements #
 ####################################
 
-:meets owl:sameAs time:intervalMeets.
-:equals owl:sameAs time:intervalEquals.
-:before owl:sameAs time:intervalBefore.
-:meets owl:sameAs time:intervalMeets.
-:overlaps owl:sameAs time:intervalOverlaps.
-:starts owl:sameAs time:intervalStarts.
-:during owl:sameAs time:intervalDuring.
-:finishes owl:sameAs time:intervalFinishes.
-:after owl:sameAs time:intervalAfter.
-:metBy owl:sameAs time:intervalMetBy.
-:overlappedBy owl:sameAs time:intervalOverlappedBy.
-:startedBy owl:sameAs time:intervalStartedBy.
-:contains owl:sameAs time:intervalContains.
-:finishedBy owl:sameAs time:intervalFinishedBy.
+:meets owl:equivalentProperty time:intervalMeets.
+:equals owl:equivalentProperty time:intervalEquals.
+:before owl:equivalentProperty time:intervalBefore.
+:meets owl:equivalentProperty time:intervalMeets.
+:overlaps owl:equivalentProperty time:intervalOverlaps.
+:starts owl:equivalentProperty time:intervalStarts.
+:during owl:equivalentProperty time:intervalDuring.
+:finishes owl:equivalentProperty time:intervalFinishes.
+:after owl:equivalentProperty time:intervalAfter.
+:metBy owl:equivalentProperty time:intervalMetBy.
+:overlappedBy owl:equivalentProperty time:intervalOverlappedBy.
+:startedBy owl:equivalentProperty time:intervalStartedBy.
+:contains owl:equivalentProperty time:intervalContains.
+:finishedBy owl:equivalentProperty time:intervalFinishedBy.
 
 ############################################################################
 # Part 2: Extra DL stuff, timeline taxonomies, coordinate systems handling #
