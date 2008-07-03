@@ -25,7 +25,6 @@
   <foaf:Person rdf:about="http://moustaki.org/foaf.rdf#moustaki"/>
   <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
   <owl:Class rdf:about="#Event">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
     <rdfs:label>Event</rdfs:label>
     <rdfs:comment>
 		An arbitrary classification of a space/time region, by a 

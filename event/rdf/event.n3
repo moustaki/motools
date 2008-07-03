@@ -41,7 +41,6 @@ vs:term_status a owl:AnnotationProperty.
 
 
 event:Event a owl:Class;
-	a rdfs:Class;
 	rdfs:label "Event";
 	rdfs:comment """
 		An arbitrary classification of a space/time region, by a 
