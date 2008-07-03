@@ -95,8 +95,10 @@ Two timelines can be mapped using timeline maps.</rdfs:comment>
     <rdfs:comment>refers to the end of a time interval, through an explicit datatype. time:hasEnd can be used as well, if you want to associate the end of the interval to an explicit time point resource</rdfs:comment>
     <vs:term_status>stable</vs:term_status>
     <rdfs:domain rdf:resource="#Interval"/>
-    <owl:equivalentProperty rdf:resource="#endsAt"/>
   </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="#endsAt">
+    <owl:equivalentProperty rdf:resource="#end"/>
+  </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="#start">
     <rdfs:label>begins at</rdfs:label>
     <rdfs:comment>refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource</rdfs:comment>
@@ -104,46 +106,47 @@ Two timelines can be mapped using timeline maps.</rdfs:comment>
     <rdfs:domain rdf:resource="#Interval"/>
     <owl:equivalentProperty rdf:resource="#beginsAt"/>
   </owl:DatatypeProperty>
-  <rdf:Description rdf:about="#meets">
+  <owl:ObjectProperty rdf:about="#meets">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalMeets"/>
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalMeets"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#equals">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#equals">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalEquals"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#before">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#before">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalBefore"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#overlaps">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#overlaps">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalOverlaps"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#starts">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#starts">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalStarts"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#during">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#during">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalDuring"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#finishes">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#finishes">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalFinishes"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#after">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#after">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalAfter"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#metBy">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#metBy">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalMetBy"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#overlappedBy">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#overlappedBy">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalOverlappedBy"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#startedBy">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#startedBy">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalStartedBy"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#contains">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#contains">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalContains"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="#finishedBy">
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#finishedBy">
     <owl:equivalentProperty rdf:resource="http://www.w3.org/2006/time#intervalFinishedBy"/>
-  </rdf:Description>
+  </owl:ObjectProperty>
   <owl:Class rdf:about="#AbstractInterval">
     <rdfs:label>abstract interval</rdfs:label>
     <rdfs:comment>
