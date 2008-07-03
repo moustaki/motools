@@ -1,5 +1,6 @@
 @prefix ga: <http://purl.org/ontology/google#>.
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix e: <http://purl.org/ontology/evaluation/>.
 
 <#786778> a ga:Question.
 <#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
@@ -9,85 +10,6 @@ songwriting and composing from top songwriters and producers including
 of this site?  Is it possible to get some of the content from the
 site?  Thanks in advance!""".
 
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
-
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
-
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
-
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
-
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
-
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
-
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
-
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
-
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
-
-<#786778> a ga:Question.
-<#786778> dc:title """Name of old songwriting website featuring Rodney Jerkins and Max Martin?""".
-<#786778> dc:description """There was a website at least a few years ago that featured lessons on
-songwriting and composing from top songwriters and producers including
-(but not limited to) Rodney Jerkins and Max Martin.  What was the name
-of this site?  Is it possible to get some of the content from the
-site?  Thanks in advance!""".
 
 <#786627> a ga:Question.
 <#786627> dc:title """Searching For Title of Song Used In An ESPN Commercial A Couple Years Ago""".
