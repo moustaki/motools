@@ -158,14 +158,14 @@ The corresponding RDF/N3 code is the following:
 
 :instant 
 	a tl:Instant;
-	tl:onTimeLine &lt;http://zitgist.com/music/signal/6da76448-982a-4a01-b65b-9a710301c9c9&gt;
+	tl:timeline &lt;http://zitgist.com/music/signal/6da76448-982a-4a01-b65b-9a710301c9c9&gt;
 	tl:at "PT3S"^^xsd:duration;
 	.
 
 :interval
 	a tl:Interval;
-	tl:onTimeLine tl:universaltimeline;
-	tl:beginsAt "2001-10-26T12:00:00Z"^^xsd:dateTime;
+	tl:timeline tl:universaltimeline;
+	tl:start "2001-10-26T12:00:00Z"^^xsd:dateTime;
 	tl:duration "P7DT";
 	.
 </pre>
@@ -179,8 +179,9 @@ The corresponding RDF/N3 code is the following:
 <h2 id="overview">Overview of Terms</h2>
 <p>An alphabetical index of the ontology terms, divided into classes, properties and individuals. All the terms are hyperlinked to their detailed description for quick reference.</p>
 <div class="glance" id="glance">
-<p>Classes: | <a href="#term_AbstractInstant">AbstractInstant</a> | <a href="#term_AbstractInterval">AbstractInterval</a> | <a href="#term_AbstractTimeLine">AbstractTimeLine</a> | <a href="#term_ContinuousTimeLine">ContinuousTimeLine</a> | <a href="#term_DiscreteInstant">DiscreteInstant</a> | <a href="#term_DiscreteInterval">DiscreteInterval</a> | <a href="#term_DiscreteTimeLine">DiscreteTimeLine</a> | <a href="#term_Instant">Instant</a> | <a href="#term_Interval">Interval</a> | <a href="#term_OriginMap">OriginMap</a> | <a href="#term_PhysicalTimeLine">PhysicalTimeLine</a> | <a href="#term_RelativeInstant">RelativeInstant</a> | <a href="#term_RelativeInterval">RelativeInterval</a> | <a href="#term_RelativeTimeLine">RelativeTimeLine</a> | <a href="#term_ShiftMap">ShiftMap</a> | <a href="#term_TimeLine">TimeLine</a> | <a href="#term_TimeLineMap">TimeLineMap</a> | <a href="#term_UTInstant">UTInstant</a> | <a href="#term_UTInterval">UTInterval</a> | <a href="#term_UniformSamplingMap">UniformSamplingMap</a> | <a href="#term_UniformWindowingMap">UniformWindowingMap</a> |  </p>
-<p>Properties: | <a href="#term_at">at</a> | 
+<p>Classes: | <a href="#term_AbstractInstant">AbstractInstant</a> | <a href="#term_AbstractInterval">AbstractInterval</a> | <a href="#term_AbstractTimeLine">AbstractTimeLine</a> | <a href="#term_ContinuousTimeLine">ContinuousTimeLine</a> | <a href="#term_DiscreteInstant">DiscreteInstant</a> | <a href="#term_DiscreteInterval">DiscreteInterval</a> | <a href="#term_DiscreteTimeLine">DiscreteTimeLine</a> | <a href="#term_Instant">Instant</a> | <a href="#term_Interval">Interval</a> | <a href="#term_OriginMap">OriginMap</a> | <a href="#term_PhysicalTimeLine">PhysicalTimeLine</a> | <a href="#term_RelativeInstant">RelativeInstant</a> | <a href="#term_RelativeInterval">RelativeInterval</a> | <a href="#term_RelativeTimeLine">RelativeTimeLine</a> | <a href="#term_ShiftMap">ShiftMap</a> | <a href="#term_TimeLine">TimeLine</a> | <a href="#term_TimeLineMap">TimeLineMap</a> | <a href="#term_UTInstant">UTInstant</a> | <a href="#term_UTInterval">UTInterval</a> | <a href="#term_UniformSamplingMap">UniformSamplingMap</a> | <a href="#term_UniformSamplingWindowingMap">UniformSamplingWindowingMap</a> | <a href="#term_UniformWindowingMap">UniformWindowingMap</a> |  </p>
+<p>Properties: | <a href="#term_after">after</a> | 
+<a href="#term_at">at</a> | 
 <a href="#term_atDate">atDate</a> | 
 <a href="#term_atDateTime">atDateTime</a> | 
 <a href="#term_atDuration">atDuration</a> | 
@@ -188,30 +189,45 @@ The corresponding RDF/N3 code is the following:
 <a href="#term_atReal">atReal</a> | 
 <a href="#term_atYear">atYear</a> | 
 <a href="#term_atYearMonth">atYearMonth</a> | 
+<a href="#term_before">before</a> | 
 <a href="#term_beginsAt">beginsAt</a> | 
 <a href="#term_beginsAtDateTime">beginsAtDateTime</a> | 
 <a href="#term_beginsAtDuration">beginsAtDuration</a> | 
 <a href="#term_beginsAtInt">beginsAtInt</a> | 
+<a href="#term_contains">contains</a> | 
 <a href="#term_delay">delay</a> | 
 <a href="#term_domainTimeLine">domainTimeLine</a> | 
 <a href="#term_duration">duration</a> | 
 <a href="#term_durationInt">durationInt</a> | 
 <a href="#term_durationXSD">durationXSD</a> | 
+<a href="#term_during">during</a> | 
+<a href="#term_end">end</a> | 
 <a href="#term_endsAt">endsAt</a> | 
 <a href="#term_endsAtDateTime">endsAtDateTime</a> | 
 <a href="#term_endsAtDuration">endsAtDuration</a> | 
 <a href="#term_endsAtInt">endsAtInt</a> | 
+<a href="#term_equals">equals</a> | 
+<a href="#term_finishedBy">finishedBy</a> | 
+<a href="#term_finishes">finishes</a> | 
 <a href="#term_hopSize">hopSize</a> | 
+<a href="#term_meets">meets</a> | 
+<a href="#term_metBy">metBy</a> | 
 <a href="#term_onTimeLine">onTimeLine</a> | 
 <a href="#term_origin">origin</a> | 
+<a href="#term_overlappedBy">overlappedBy</a> | 
+<a href="#term_overlaps">overlaps</a> | 
 <a href="#term_rangeTimeLine">rangeTimeLine</a> | 
 <a href="#term_sampleRate">sampleRate</a> | 
+<a href="#term_start">start</a> | 
+<a href="#term_startedBy">startedBy</a> | 
+<a href="#term_starts">starts</a> | 
+<a href="#term_timeline">timeline</a> | 
 <a href="#term_windowLength">windowLength</a> | 
 </p>
 <p>Individuals: | <a href="#term_universaltimeline">universaltimeline</a> | 
  </p></div><h2 id="terms">Ontology Terms</h2>
 
-<h2 id="term_classes">Classes</h2><div class="specterm" id="term_AbstractInstant"><h3>Class: tl:AbstractInstant   -   stable   -   </h3>
+<h2 id="term_classes">Classes</h2><div class="specterm" id="term_AbstractInstant"><h3>Class: timeline:AbstractInstant   -   stable   -   </h3>
 <em>AbstractInstant</em>
  - An instant defined on an abstract timeline 
 <br/>
@@ -223,7 +239,7 @@ The corresponding RDF/N3 code is the following:
 </tr>
 </table>
 
-</div><div class="specterm" id="term_AbstractInterval"><h3>Class: tl:AbstractInterval   -   stable   -   </h3>
+</div><div class="specterm" id="term_AbstractInterval"><h3>Class: timeline:AbstractInterval   -   stable   -   </h3>
 <em>AbstractInterval</em>
  - 	An interval defined on an abstract time-line.<br/>
      
@@ -236,7 +252,7 @@ The corresponding RDF/N3 code is the following:
 </tr>
 </table>
 
-</div><div class="specterm" id="term_AbstractTimeLine"><h3>Class: tl:AbstractTimeLine   -   stable   -   </h3>
+</div><div class="specterm" id="term_AbstractTimeLine"><h3>Class: timeline:AbstractTimeLine   -   stable   -   </h3>
 <em>AbstractTimeLine</em>
  -     	Abstract time lines may be used as a backbone for Score, Works, ... <br/>
 	This allows for TimeLine maps to relate works to a given <br/>
@@ -250,7 +266,7 @@ The corresponding RDF/N3 code is the following:
 </tr>
 </table>
 
-</div><div class="specterm" id="term_ContinuousTimeLine"><h3>Class: tl:ContinuousTimeLine   -   stable   -   </h3>
+</div><div class="specterm" id="term_ContinuousTimeLine"><h3>Class: timeline:ContinuousTimeLine   -   stable   -   </h3>
 <em>ContinuousTimeLine</em>
  - A continuous timeline, like the universal one, or the one backing an analog signal 
 <br/>
@@ -262,7 +278,7 @@ The corresponding RDF/N3 code is the following:
 </tr>
 </table>
 
-</div><div class="specterm" id="term_DiscreteInstant"><h3>Class: tl:DiscreteInstant   -   stable   -   </h3>
+</div><div class="specterm" id="term_DiscreteInstant"><h3>Class: timeline:DiscreteInstant   -   stable   -   </h3>
 <em>DiscreteInstant</em>
  - An instant defined on a discrete timeline 
 <br/>
@@ -272,7 +288,7 @@ The corresponding RDF/N3 code is the following:
 
 </table>
 
-</div><div class="specterm" id="term_DiscreteInterval"><h3>Class: tl:DiscreteInterval   -   stable   -   </h3>
+</div><div class="specterm" id="term_DiscreteInterval"><h3>Class: timeline:DiscreteInterval   -   stable   -   </h3>
 <em>DiscreteInterval</em>
  - An interval defined on a discrete timeline, like the one backing a digital signal 
 <br/>
@@ -282,7 +298,7 @@ The corresponding RDF/N3 code is the following:
 
 </table>
 
-</div><div class="specterm" id="term_DiscreteTimeLine"><h3>Class: tl:DiscreteTimeLine   -   stable   -   </h3>
+</div><div class="specterm" id="term_DiscreteTimeLine"><h3>Class: timeline:DiscreteTimeLine   -   stable   -   </h3>
 <em>DiscreteTimeLine</em>
  - A discrete time line (like the time line backing a digital signal 
 <br/>
@@ -294,7 +310,7 @@ The corresponding RDF/N3 code is the following:
 </tr>
 </table>
 
-</div><div class="specterm" id="term_Instant"><h3>Class: tl:Instant   -   stable   -   </h3>
+</div><div class="specterm" id="term_Instant"><h3>Class: timeline:Instant   -   stable   -   </h3>
 <em>Instant</em>
  - An instant (same as in OWL-Time) 
 <br/>
@@ -302,12 +318,12 @@ The corresponding RDF/N3 code is the following:
 <br/>
 <table style="th { float: top; }">
 <tr><th>in-domain-of:</th><td><a href="#term_at">at</a></td>
-<td><a href="#term_onTimeLine">onTimeLine</a></td>
+<td><a href="#term_timeline">timeline</a></td>
 </tr>
 
 </table>
 
-</div><div class="specterm" id="term_Interval"><h3>Class: tl:Interval   -   stable   -   </h3>
+</div><div class="specterm" id="term_Interval"><h3>Class: timeline:Interval   -   stable   -   </h3>
 <em>Interval</em>
  - An interval (same as in OWL-Time). Allen's relationships are defined in OWL-Time. 
 <br/>
@@ -315,15 +331,15 @@ The corresponding RDF/N3 code is the following:
 <br/>
 <table style="th { float: top; }">
 <tr><th>in-domain-of:</th><td><a href="#term_at">at</a></td>
-<td><a href="#term_onTimeLine">onTimeLine</a></td>
-<td><a href="#term_beginsAt">beginsAt</a></td>
-<td><a href="#term_endsAt">endsAt</a></td>
+<td><a href="#term_timeline">timeline</a></td>
+<td><a href="#term_start">start</a></td>
+<td><a href="#term_end">end</a></td>
 <td><a href="#term_duration">duration</a></td>
 </tr>
 
 </table>
 
-</div><div class="specterm" id="term_OriginMap"><h3>Class: tl:OriginMap   -   stable   -   </h3>
+</div><div class="specterm" id="term_OriginMap"><h3>Class: timeline:OriginMap   -   stable   -   </h3>
 <em>OriginMap</em>
  - A timeline map linking a physical timeline to a relative one (originating at some point on the physical timeline) 
 <br/>
@@ -337,7 +353,7 @@ The corresponding RDF/N3 code is the following:
 </tr>
 </table>
 
-</div><div class="specterm" id="term_PhysicalTimeLine"><h3>Class: tl:PhysicalTimeLine   -   stable   -   </h3>
+</div><div class="specterm" id="term_PhysicalTimeLine"><h3>Class: timeline:PhysicalTimeLine   -   stable   -   </h3>
 <em>PhysicalTimeLine</em>
  - A "physical" time-line (the universal time line (UTC)) is an instance of this class. Other time zones consists in instances of this class as well, with a "shifting" time line map relating them to the universal time line map. 
 <br/>
@@ -349,7 +365,7 @@ The corresponding RDF/N3 code is the following:
 </tr>
 </table>
 
-</div><div class="specterm" id="term_RelativeInstant"><h3>Class: tl:RelativeInstant   -   stable   -   </h3>
+</div><div class="specterm" id="term_RelativeInstant"><h3>Class: timeline:RelativeInstant   -   stable   -   </h3>
 <em>RelativeInstant</em>
  - An instant defined on a relative timeline 
 <br/>
@@ -359,7 +375,7 @@ The corresponding RDF/N3 code is the following:
 
 </table>
 
-</div><div class="specterm" id="term_RelativeInterval"><h3>Class: tl:RelativeInterval   -   stable   -   </h3>
+</div><div class="specterm" id="term_RelativeInterval"><h3>Class: timeline:RelativeInterval   -   stable   -   </h3>
 <em>RelativeInterval</em>
  - an interval defined on a relative timeline 
 <br/>
@@ -369,7 +385,7 @@ The corresponding RDF/N3 code is the following:
 
 </table>
 
-</div><div class="specterm" id="term_RelativeTimeLine"><h3>Class: tl:RelativeTimeLine   -   stable   -   </h3>
+</div><div class="specterm" id="term_RelativeTimeLine"><h3>Class: timeline:RelativeTimeLine   -   stable   -   </h3>
 <em>RelativeTimeLine</em>
  - Semi infinite time line...canonical coordinate system --> adressed through xsd:duration since the instant 0. 
 <br/>
@@ -381,7 +397,7 @@ The corresponding RDF/N3 code is the following:
 </tr>
 </table>
 
-</div><div class="specterm" id="term_ShiftMap"><h3>Class: tl:ShiftMap   -   stable   -   </h3>
+</div><div class="specterm" id="term_ShiftMap"><h3>Class: timeline:ShiftMap   -   stable   -   </h3>
 <em>ShiftMap</em>
  - a map just shifting one timeline to another 
 <br/>
@@ -395,7 +411,7 @@ The corresponding RDF/N3 code is the following:
 </tr>
 </table>
 
-</div><div class="specterm" id="term_TimeLine"><h3>Class: tl:TimeLine   -   stable   -   </h3>
+</div><div class="specterm" id="term_TimeLine"><h3>Class: timeline:TimeLine   -   stable   -   </h3>
 <em>TimeLine</em>
  - Represents a linear and coherent piece of time -- can be either abstract (such as the one behind a score) or concrete (such as the universal time line).<br/>
 Two timelines can be mapped using timeline maps. 
@@ -404,13 +420,13 @@ Two timelines can be mapped using timeline maps.
 <br/>
 <table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_domainTimeLine">domainTimeLine</a></td>
 <td><a href="#term_rangeTimeLine">rangeTimeLine</a></td>
-<td><a href="#term_onTimeLine">onTimeLine</a></td>
+<td><a href="#term_timeline">timeline</a></td>
 </tr>
 
 
 </table>
 
-</div><div class="specterm" id="term_TimeLineMap"><h3>Class: tl:TimeLineMap   -   stable   -   </h3>
+</div><div class="specterm" id="term_TimeLineMap"><h3>Class: timeline:TimeLineMap   -   stable   -   </h3>
 <em>TimeLineMap</em>
  - Allows to map two time lines together 
 <br/>
@@ -423,7 +439,7 @@ Two timelines can be mapped using timeline maps.
 
 </table>
 
-</div><div class="specterm" id="term_UTInstant"><h3>Class: tl:UTInstant   -   stable   -   </h3>
+</div><div class="specterm" id="term_UTInstant"><h3>Class: timeline:UTInstant   -   stable   -   </h3>
 <em>UTInstant</em>
  - This concept expresses that an instant defined on the universal timeline must be associated to a dateTime value 
 <br/>
@@ -433,7 +449,7 @@ Two timelines can be mapped using timeline maps.
 
 </table>
 
-</div><div class="specterm" id="term_UTInterval"><h3>Class: tl:UTInterval   -   stable   -   </h3>
+</div><div class="specterm" id="term_UTInterval"><h3>Class: timeline:UTInterval   -   stable   -   </h3>
 <em>UTInterval</em>
  - an interval defined on the universal time line 
 <br/>
@@ -443,7 +459,7 @@ Two timelines can be mapped using timeline maps.
 
 </table>
 
-</div><div class="specterm" id="term_UniformSamplingMap"><h3>Class: tl:UniformSamplingMap   -   stable   -   </h3>
+</div><div class="specterm" id="term_UniformSamplingMap"><h3>Class: timeline:UniformSamplingMap   -   stable   -   </h3>
 <em>UniformSamplingMap</em>
  - Describe the relation between a continuous time-line and its sampled equivalent 
 <br/>
@@ -457,7 +473,23 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 
-</div><div class="specterm" id="term_UniformWindowingMap"><h3>Class: tl:UniformWindowingMap   -   stable   -   </h3>
+</div><div class="specterm" id="term_UniformSamplingWindowingMap"><h3>Class: timeline:UniformSamplingWindowingMap   -   stable   -   </h3>
+<em>UniformSamplingWindowingMap</em>
+ - Describes the relation between a continuous time-line, and a time-line that corresponds to its sampled and windowed equivalent 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_windowLength">windowLength</a></td>
+<td><a href="#term_hopSize">hopSize</a></td>
+<td><a href="#term_sampleRate">sampleRate</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_TimeLineMap">TimeLineMap</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_UniformWindowingMap"><h3>Class: timeline:UniformWindowingMap   -   stable   -   </h3>
 <em>UniformWindowingMap</em>
  - Describes the relation between a discrete time line and its windowed equivalent 
 <br/>
@@ -473,7 +505,7 @@ Two timelines can be mapped using timeline maps.
 </table>
 
 </div><h2 id="term_props">Properties</h2><div class="specterm" id="term_at">
-<h3>Property: tl:at   -   stable   -   </h3>
+<h3>Property: timeline:at   -   stable   -   </h3>
 <em>at</em> - refers to a point or an interval on the time line, through an explicit datatype 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -487,7 +519,7 @@ Two timelines can be mapped using timeline maps.
 
 </table>
 <br/></div><div class="specterm" id="term_atDate">
-<h3>Property: tl:atDate   -   stable   -   </h3>
+<h3>Property: timeline:atDate   -   stable   -   </h3>
 <em>atDate</em> - A subproperty of :at, allowing to address a date (beginning of it for an instant, all of it for an interval) 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -501,7 +533,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_atDateTime">
-<h3>Property: tl:atDateTime   -   stable   -   </h3>
+<h3>Property: timeline:atDateTime   -   stable   -   </h3>
 <em>atDateTime</em> - This property links an instant defined on the universal time line to an XSD date/time value 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -515,7 +547,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_atDuration">
-<h3>Property: tl:atDuration   -   stable   -   </h3>
+<h3>Property: timeline:atDuration   -   stable   -   </h3>
 <em>atDuration</em> - A property enabling to adress a time point P through the duration of the interval [0,P] on a continuous timeline 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -529,7 +561,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_atInt">
-<h3>Property: tl:atInt   -   stable   -   </h3>
+<h3>Property: timeline:atInt   -   stable   -   </h3>
 <em>atInt</em> - A subproperty of :at, having as a specific range xsd:int 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -543,7 +575,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_atReal">
-<h3>Property: tl:atReal   -   stable   -   </h3>
+<h3>Property: timeline:atReal   -   stable   -   </h3>
 <em>atReal</em> - subproperty of :at, having xsd:float as a range 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -557,7 +589,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_atYear">
-<h3>Property: tl:atYear   -   stable   -   </h3>
+<h3>Property: timeline:atYear   -   stable   -   </h3>
 <em>atYear</em> - A subproperty of :at, allowing to address a year (beginning of it for an instant, all of it for an interval) 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -571,7 +603,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_atYearMonth">
-<h3>Property: tl:atYearMonth   -   stable   -   </h3>
+<h3>Property: timeline:atYearMonth   -   stable   -   </h3>
 <em>atYearMonth</em> - A subproperty of :at, allowing to address a year/month (beginning of it for an instant, all of it for an interval) 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -584,21 +616,8 @@ Two timelines can be mapped using timeline maps.
 <tr><th>Sub-property-of: </th><td><a href="#term_at">at</a></td>
 </tr>
 </table>
-<br/></div><div class="specterm" id="term_beginsAt">
-<h3>Property: tl:beginsAt   -   stable   -   </h3>
-<em>beginsAt</em> - refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource 
-<br/><table style="th { float: top; }">
-<tr><th>Domain:</th>
-<td><a href="#term_Interval">Interval</a></td>
-
-</tr>
-<tr><th>Range:</th>
-</tr>
-
-
-</table>
 <br/></div><div class="specterm" id="term_beginsAtDateTime">
-<h3>Property: tl:beginsAtDateTime   -   stable   -   </h3>
+<h3>Property: timeline:beginsAtDateTime   -   stable   -   </h3>
 <em>beginsAtDateTime</em> - A subproperty of :beginsAt, allowing to address the beginning of an interval as a date/time 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -612,7 +631,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_beginsAtDuration">
-<h3>Property: tl:beginsAtDuration   -   stable   -   </h3>
+<h3>Property: timeline:beginsAtDuration   -   stable   -   </h3>
 <em>beginsAtDuration</em> - A property enabling to adress a start time point P of an interval [P,E] through the duration of the interval [0,P] on a continuous timeline 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -626,7 +645,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_beginsAtInt">
-<h3>Property: tl:beginsAtInt   -   stable   -   </h3>
+<h3>Property: timeline:beginsAtInt   -   stable   -   </h3>
 <em>beginsAtInt</em> - A subproperty of :beginsAt, having xsd:int as a range 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -640,7 +659,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_delay">
-<h3>Property: tl:delay   -   stable   -   </h3>
+<h3>Property: timeline:delay   -   stable   -   </h3>
 <em>delay</em> - associate a shift map to a particular delay 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -653,7 +672,7 @@ Two timelines can be mapped using timeline maps.
 
 </table>
 <br/></div><div class="specterm" id="term_domainTimeLine">
-<h3>Property: tl:domainTimeLine   -   stable   -   </h3>
+<h3>Property: timeline:domainTimeLine   -   stable   -   </h3>
 <em>domainTimeLine</em> - associates a timeline map to its domain timeline 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -667,7 +686,7 @@ Two timelines can be mapped using timeline maps.
 
 </table>
 <br/></div><div class="specterm" id="term_duration">
-<h3>Property: tl:duration   -   stable   -   </h3>
+<h3>Property: timeline:duration   -   stable   -   </h3>
 <em>duration</em> - the duration of a time interval 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -680,7 +699,7 @@ Two timelines can be mapped using timeline maps.
 
 </table>
 <br/></div><div class="specterm" id="term_durationInt">
-<h3>Property: tl:durationInt   -   stable   -   </h3>
+<h3>Property: timeline:durationInt   -   stable   -   </h3>
 <em>durationInt</em> - A subproperty of :duration, having xsd:int as a range 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -694,7 +713,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_durationXSD">
-<h3>Property: tl:durationXSD   -   stable   -   </h3>
+<h3>Property: timeline:durationXSD   -   stable   -   </h3>
 <em>durationXSD</em> - A subproperty of :duration, having xsd:duration as a range 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -707,9 +726,9 @@ Two timelines can be mapped using timeline maps.
 <tr><th>Sub-property-of: </th><td><a href="#term_duration">duration</a></td>
 </tr>
 </table>
-<br/></div><div class="specterm" id="term_endsAt">
-<h3>Property: tl:endsAt   -   stable   -   </h3>
-<em>endsAt</em> - refers to the end of a time interval, through an explicit datatype. time:hasEnd can be used as well, if you want to associate the end of the interval to an explicit time point resource 
+<br/></div><div class="specterm" id="term_end">
+<h3>Property: timeline:end   -   stable   -   </h3>
+<em>end</em> - refers to the end of a time interval, through an explicit datatype. time:hasEnd can be used as well, if you want to associate the end of the interval to an explicit time point resource 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
 <td><a href="#term_Interval">Interval</a></td>
@@ -721,7 +740,7 @@ Two timelines can be mapped using timeline maps.
 
 </table>
 <br/></div><div class="specterm" id="term_endsAtDateTime">
-<h3>Property: tl:endsAtDateTime   -   stable   -   </h3>
+<h3>Property: timeline:endsAtDateTime   -   stable   -   </h3>
 <em>endsAtDateTime</em> - A subproperty of :endsAt, allowing to address the end of an interval as a date/time 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -735,7 +754,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_endsAtDuration">
-<h3>Property: tl:endsAtDuration   -   stable   -   </h3>
+<h3>Property: timeline:endsAtDuration   -   stable   -   </h3>
 <em>endsAtDuration</em> - A property enabling to adress an end time point P of an interval [S,P] through the duration of the interval [0,P] on a continuous timeline 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -749,7 +768,7 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_endsAtInt">
-<h3>Property: tl:endsAtInt   -   stable   -   </h3>
+<h3>Property: timeline:endsAtInt   -   stable   -   </h3>
 <em>endsAtInt</em> - A subproperty of :endsAt, having xsd:int as a range 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
@@ -763,10 +782,11 @@ Two timelines can be mapped using timeline maps.
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_hopSize">
-<h3>Property: tl:hopSize   -   stable   -   </h3>
+<h3>Property: timeline:hopSize   -   stable   -   </h3>
 <em>hopSize</em> - hop size, associated to a uniform windowing map 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_UniformSamplingWindowingMap">UniformSamplingWindowingMap</a></td>
 <td><a href="#term_UniformWindowingMap">UniformWindowingMap</a></td>
 
 </tr>
@@ -776,9 +796,65 @@ Two timelines can be mapped using timeline maps.
 
 
 </table>
-<br/></div><div class="specterm" id="term_onTimeLine">
-<h3>Property: tl:onTimeLine   -   stable   -   </h3>
-<em>onTimeLine</em> - 	Relates an interval or an instant to the timeline on which it is defined.<br/>
+<br/></div><div class="specterm" id="term_origin">
+<h3>Property: timeline:origin   -   stable   -   </h3>
+<em>origin</em> - associate an origin map to its origin on the domain physical timeline 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_OriginMap">OriginMap</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_rangeTimeLine">
+<h3>Property: timeline:rangeTimeLine   -   stable   -   </h3>
+<em>rangeTimeLine</em> - associates a timeline map to its range timeline 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_TimeLineMap">TimeLineMap</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_TimeLine">TimeLine</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_sampleRate">
+<h3>Property: timeline:sampleRate   -   stable   -   </h3>
+<em>sampleRate</em> - associates a sample rate value to a uniform sampling map 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_UniformSamplingWindowingMap">UniformSamplingWindowingMap</a></td>
+<td><a href="#term_UniformSamplingMap">UniformSamplingMap</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="http://www.w3.org/2001/XMLSchema#int">xsd:int</a></td>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_start">
+<h3>Property: timeline:start   -   stable   -   </h3>
+<em>start</em> - refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Interval">Interval</a></td>
+
+</tr>
+<tr><th>Range:</th>
+</tr>
+
+
+</table>
+<br/></div><div class="specterm" id="term_timeline">
+<h3>Property: timeline:timeline   -   stable   -   </h3>
+<em>timeline</em> - 	Relates an interval or an instant to the timeline on which it is defined.<br/>
 <br/>
 	The 29th of August, 2007 would be linked through this property to the universal timeline, whereas<br/>
 	"from 2s to 5s on this particular signal" would be defined on the signal' timeline.<br/>
@@ -796,53 +872,12 @@ Two timelines can be mapped using timeline maps.
 
 
 </table>
-<br/></div><div class="specterm" id="term_origin">
-<h3>Property: tl:origin   -   stable   -   </h3>
-<em>origin</em> - associate an origin map to its origin on the domain physical timeline 
-<br/><table style="th { float: top; }">
-<tr><th>Domain:</th>
-<td><a href="#term_OriginMap">OriginMap</a></td>
-
-</tr>
-<tr><th>Range:</th>
-<td><a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a></td>
-</tr>
-
-
-</table>
-<br/></div><div class="specterm" id="term_rangeTimeLine">
-<h3>Property: tl:rangeTimeLine   -   stable   -   </h3>
-<em>rangeTimeLine</em> - associates a timeline map to its range timeline 
-<br/><table style="th { float: top; }">
-<tr><th>Domain:</th>
-<td><a href="#term_TimeLineMap">TimeLineMap</a></td>
-
-</tr>
-<tr><th>Range:</th>
-<td><a href="#term_TimeLine">TimeLine</a></td>
-</tr>
-
-
-</table>
-<br/></div><div class="specterm" id="term_sampleRate">
-<h3>Property: tl:sampleRate   -   stable   -   </h3>
-<em>sampleRate</em> - associates a sample rate value to a uniform sampling map 
-<br/><table style="th { float: top; }">
-<tr><th>Domain:</th>
-<td><a href="#term_UniformSamplingMap">UniformSamplingMap</a></td>
-
-</tr>
-<tr><th>Range:</th>
-<td><a href="http://www.w3.org/2001/XMLSchema#int">xsd:int</a></td>
-</tr>
-
-
-</table>
 <br/></div><div class="specterm" id="term_windowLength">
-<h3>Property: tl:windowLength   -   stable   -   </h3>
+<h3>Property: timeline:windowLength   -   stable   -   </h3>
 <em>windowLength</em> - window length, associated to a uniform windowing map 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
+<td><a href="#term_UniformSamplingWindowingMap">UniformSamplingWindowingMap</a></td>
 <td><a href="#term_UniformWindowingMap">UniformWindowingMap</a></td>
 
 </tr>

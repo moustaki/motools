@@ -36,14 +36,14 @@ The corresponding RDF/N3 code is the following:
 
 :instant 
 	a tl:Instant;
-	tl:onTimeLine &lt;http://zitgist.com/music/signal/6da76448-982a-4a01-b65b-9a710301c9c9&gt;
+	tl:timeline &lt;http://zitgist.com/music/signal/6da76448-982a-4a01-b65b-9a710301c9c9&gt;
 	tl:at "PT3S"^^xsd:duration;
 	.
 
 :interval
 	a tl:Interval;
-	tl:onTimeLine tl:universaltimeline;
-	tl:beginsAt "2001-10-26T12:00:00Z"^^xsd:dateTime;
+	tl:timeline tl:universaltimeline;
+	tl:start "2001-10-26T12:00:00Z"^^xsd:dateTime;
 	tl:duration "P7DT";
 	.
 </pre>

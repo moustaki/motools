@@ -222,7 +222,7 @@ Two timelines can be mapped using timeline maps.""" .
         owl:someValuesFrom :RelativeTimeLine
     ], :TimeLineMap;
     rdfs:comment "Describe the relation between a continuous time-line and its sampled equivalent";
-    owl:disjointWith :UniformWindowingMap .
+    owl:disjointWith :UniformWindowingMap , :UniformSamplingWindowingMap .
 
 :sampleRate
     a owl:FunctionalProperty;
@@ -231,7 +231,10 @@ Two timelines can be mapped using timeline maps.""" .
     vs:term_status "stable";
     rdfs:range xsd:int;
     a owl:DatatypeProperty;
-    rdfs:domain :UniformSamplingMap .
+    rdfs:domain  [
+        a owl:Class;
+        owl:unionOf (:UniformSamplingMap :UniformSamplingWindowingMap)
+	].
 
 :rangeTimeLine
     rdfs:label "range timeline";
@@ -295,7 +298,35 @@ Two timelines can be mapped using timeline maps.""" .
         owl:onProperty :rangeTimeLine
     ];
     rdfs:comment "Describes the relation between a discrete time line and its windowed equivalent";
-    owl:disjointWith :UniformSamplingMap .
+    owl:disjointWith :UniformSamplingMap , :UniformSamplingWindowingMap.
+
+:UniformSamplingWindowingMap
+	a owl:Class;
+	rdfs:label "Uniform sampling and windowing map";
+	rdfs:comment "Describes the relation between a continuous time-line, and a time-line that corresponds to its sampled and windowed equivalent";
+	vs:term_status "stable";
+	rdfs:subClassOf [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :hopSize
+    ], [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :windowLength
+    ], [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :sampleRate
+    ], :TimeLineMap, [
+        a owl:Restriction;
+        owl:onProperty :domainTimeLine;
+        owl:someValuesFrom :ContinuousTimeLine
+    ], [
+        a owl:Restriction;
+        owl:someValuesFrom :DiscreteTimeLine;
+        owl:onProperty :rangeTimeLine
+    ];
+	owl:disjointWith :UniformSamplingMap, :UniformWindowingMap .
 
 :DiscreteInstant
     a owl:Class;
@@ -682,7 +713,10 @@ Two timelines can be mapped using timeline maps.""" .
     vs:term_status "stable";
     a owl:FunctionalProperty, owl:DatatypeProperty;
     rdfs:range xsd:int;
-    rdfs:domain :UniformWindowingMap .
+    rdfs:domain  [
+        a owl:Class;
+        owl:unionOf (:UniformWindowingMap :UniformSamplingWindowingMap)
+	] .
 
 :windowLength
     rdfs:label "window length";
@@ -690,7 +724,10 @@ Two timelines can be mapped using timeline maps.""" .
     vs:term_status "stable";
     a owl:FunctionalProperty, owl:DatatypeProperty;
     rdfs:range xsd:int;
-    rdfs:domain :UniformWindowingMap .
+    rdfs:domain  [
+        a owl:Class;
+        owl:unionOf (:UniformWindowingMap :UniformSamplingWindowingMap)
+	] .
 
 :RelativeInstant
     rdfs:label "relative instant";
