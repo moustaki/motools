@@ -2,7 +2,7 @@ import urllib
 from BeautifulSoup import BeautifulSoup
 
 filename="google_questions.n3"
-max = 500
+max = 3500
 file = open(filename,'a')
 
 
