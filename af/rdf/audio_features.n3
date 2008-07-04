@@ -162,12 +162,24 @@ af:signal_feature
 	.
 af:value 
 	a owl:DatatypeProperty;
+	vs:term_status "testing";
 	rdfs:subPropertyOf rdf:value; # Not sure about that bit 
 	rdfs:domain af:Signal;
 	rdfs:label "value";
 	rdfs:comment """
 		Associates a signal resource as defined in the Music Ontology to a literal: its actual value.
 		For example, it can be used to link an onset detection function to a list of values.
+	""";
+	.
+
+af:dimensions
+	a owl:DatatypeProperty;
+	vs:term_status "testing";
+	rdfs:domain af:Signal;
+	rdfs:label "dimensions";
+	rdfs:comment """
+		Associates a signal with its dimensions, eg. "12 3546". Equivalent to the mpeg7:dim attribute of the mpeg7:Raw
+		element.
 	""";
 	.
 

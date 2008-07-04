@@ -55,14 +55,15 @@
  */
 onto_spec(Spec) :-
 	header(Header),
+	first(First),
 	tail(Tail),
 	glance_html_desc(Glance),
 	classes_html_desc(Classes),
 	props_html_desc(Properties),
 	inds_html_desc(Individuals),
 	deprecs_html_desc(Deprecated),
-	format(atom(Spec),'~w~w\n<h3>Classes and Properties (full detail)</h3>\n~w~w~w~w~w',
-		[Header,Glance,Classes,Properties,Individuals,Deprecated,Tail]).
+	format(atom(Spec),'~w~w~w\n<h3>Classes and Properties (full detail)</h3>\n~w~w~w~w~w',
+		[Header,First,Glance,Classes,Properties,Individuals,Deprecated,Tail]).
 
 classes_html_desc(Classes) :-
 	((setof(NC-Desc,NS^(class_html_desc(NS:NC,Desc)),DescsMess),!);DescsMess=[]),
@@ -91,10 +92,14 @@ deprecs_html_desc(Deprecated) :-
 
 header(H) :- author_name(Name), author_foaf(FOAF), page_title(Title),
 			 sformat(H,
-				'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">\n<head>\n<link rel="meta" type="application/rdf+xml" title="FOAF" href="~w" />\n <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />\n<meta name="author" content="~w" />\n<link href="style.css" rel="stylesheet" type="text/css" /><meta name="robots" content="all" />\n<title>~w</title>\n</head>\n<body>',
+				'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">\n<head>\n<link rel="meta" type="application/rdf+xml" title="FOAF" href="~w" />\n <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />\n<meta name="author" content="~w" />\n<link href="style.css" rel="stylesheet" type="text/css" /><meta name="robots" content="all" />\n<title>~w</title>\n</head>\n<body><div class="page">
+',
 					[FOAF,Name,Title]).
 
-tail('</body></html>').
+tail('</div></body></html>').
+
+first('<h1>Audio Features Ontology Specification<br>
+</h1><p>This ontology expresses some common concepts to represent some features of audio signals. It mainly relies on the Event ontology, in order to classify particular parts of the timeline backing an audio signal. It also supports dense features, such as chromagrams, onset detection function etc. </p>').
 
 /**
  * Outputs the specification to a file

@@ -7,9 +7,12 @@
 <link href="style.css" rel="stylesheet" type="text/css" /><meta name="robots" content="all" />
 <title>Ontology Specification</title>
 </head>
-<body><div class="glance" id="glance">
+<body><div class="page">
+<h1>Audio Features Ontology Specification<br>
+</h1><p>This ontology expresses some common concepts to represent some features of audio signals. It mainly relies on the Event ontology, in order to classify particular parts of the timeline backing an audio signal. It also supports dense features, such as chromagrams, onset detection function etc. </p><div class="glance" id="glance">
 <p>Classes: | <a href="#term_Amplitude">Amplitude</a> | <a href="#term_Beat">Beat</a> | <a href="#term_Chromagram">Chromagram</a> | <a href="#term_DetectionFunction">DetectionFunction</a> | <a href="#term_EmotionSegment">EmotionSegment</a> | <a href="#term_EnglishIdiom">EnglishIdiom</a> | <a href="#term_FeatureSegment">FeatureSegment</a> | <a href="#term_GermanIdiom">GermanIdiom</a> | <a href="#term_HungarianIdiom">HungarianIdiom</a> | <a href="#term_Idiom">Idiom</a> | <a href="#term_IdiomSegment">IdiomSegment</a> | <a href="#term_KeyChange">KeyChange</a> | <a href="#term_KeyEvent">KeyEvent</a> | <a href="#term_Laugh">Laugh</a> | <a href="#term_LinearFrequencyCentroid">LinearFrequencyCentroid</a> | <a href="#term_LogFrequencyCentroid">LogFrequencyCentroid</a> | <a href="#term_Loudness">Loudness</a> | <a href="#term_Major">Major</a> | <a href="#term_Minor">Minor</a> | <a href="#term_ModeChange">ModeChange</a> | <a href="#term_MusicSegment">MusicSegment</a> | <a href="#term_MusicStructuralEvent">MusicStructuralEvent</a> | <a href="#term_NonTonalOnset">NonTonalOnset</a> | <a href="#term_Onset">Onset</a> | <a href="#term_OnsetDetectionFunction">OnsetDetectionFunction</a> | <a href="#term_Ornament">Ornament</a> | <a href="#term_PersonSpeaking">PersonSpeaking</a> | <a href="#term_Pitch">Pitch</a> | <a href="#term_Point">Point</a> | <a href="#term_Segment">Segment</a> | <a href="#term_Signal">Signal</a> | <a href="#term_SpectralCentroid">SpectralCentroid</a> | <a href="#term_SpeechSegment">SpeechSegment</a> | <a href="#term_StructuralSegment">StructuralSegment</a> | <a href="#term_Tempo">Tempo</a> | <a href="#term_TempoDetectionFunction">TempoDetectionFunction</a> | <a href="#term_Text">Text</a> | <a href="#term_TimeSignature">TimeSignature</a> | <a href="#term_TonalChange">TonalChange</a> | <a href="#term_TonalChangeDetectionFunction">TonalChangeDetectionFunction</a> | <a href="#term_TonalContentSpace">TonalContentSpace</a> | <a href="#term_TonalOnset">TonalOnset</a> | <a href="#term_TonicChange">TonicChange</a> | <a href="#term_TonicEvent">TonicEvent</a> | <a href="#term_ZeroCrossing">ZeroCrossing</a> | <a href="#term_ZeroCrossingCount">ZeroCrossingCount</a> |  </p>
 <p>Properties: | <a href="#term_confidence">confidence</a> | 
+<a href="#term_dimensions">dimensions</a> | 
 <a href="#term_emotional_intensity">emotional_intensity</a> | 
 <a href="#term_feature">feature</a> | 
 <a href="#term_idiom">idiom</a> | 
@@ -19,6 +22,7 @@
 <a href="#term_new_tonic">new_tonic</a> | 
 <a href="#term_person">person</a> | 
 <a href="#term_pitch">pitch</a> | 
+<a href="#term_signal_feature">signal_feature</a> | 
 <a href="#term_tempo">tempo</a> | 
 <a href="#term_text">text</a> | 
 <a href="#term_tonic">tonic</a> | 
@@ -446,8 +450,11 @@
 <br/>
 <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
 <br/>
-<table style="th { float: top; }">
-<tr><th>in-domain-of:</th><td><a href="#term_value">value</a></td>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_signal_feature">signal_feature</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_dimensions">dimensions</a></td>
+<td><a href="#term_value">value</a></td>
 </tr>
 
 <tr><th>sub-class-of:</th><td><a href="http://purl.org/ontology/mo/Signal">mo:Signal</a></td>
@@ -670,6 +677,21 @@
 
 
 </table>
+<br/></div><div class="specterm" id="term_dimensions">
+<h3>Property: af:dimensions   -   testing   -   </h3>
+<em>dimensions</em> - 		Associates a signal with its dimensions, eg. "12 3546". Equivalent to the mpeg7:dim attribute of the mpeg7:Raw<br/>
+		element.<br/>
+	 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Signal">Signal</a></td>
+
+</tr>
+<tr><th>Range:</th>
+</tr>
+
+
+</table>
 <br/></div><div class="specterm" id="term_emotional_intensity">
 <h3>Property: af:emotional_intensity   -   testing   -   </h3>
 <em>emotional_intensity</em> - 		Associates an "emotional intensity" value to a <br/>
@@ -810,6 +832,22 @@
 <td><a href="#term_feature">feature</a></td>
 </tr>
 </table>
+<br/></div><div class="specterm" id="term_signal_feature">
+<h3>Property: af:signal_feature   -   testing   -   </h3>
+<em>signal_feature</em> - 		Associates an audio signal with a track-level signal feature.<br/>
+		eg. a spectrogram, a chromagram, an onset detection function.<br/>
+	 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="http://purl.org/ontology/mo/Signal">mo:Signal</a></td>
+
+</tr>
+<tr><th>Range:</th>
+<td><a href="#term_Signal">Signal</a></td>
+</tr>
+
+
+</table>
 <br/></div><div class="specterm" id="term_tempo">
 <h3>Property: af:tempo   -   testing   -   </h3>
 <em>tempo</em> - 		Associates a tempo event to the corresponding tempo value.<br/>
@@ -858,6 +896,22 @@
 <tr><th>Sub-property-of: </th><td><a href="http://purl.org/NET/c4dm/event.owl#factor">event:factor</a></td>
 </tr>
 </table>
+<br/></div><div class="specterm" id="term_value">
+<h3>Property: af:value   -   testing   -   </h3>
+<em>value</em> - 		Associates a signal resource as defined in the Music Ontology to a literal: its actual value.<br/>
+		For example, it can be used to link an onset detection function to a list of values.<br/>
+	 
+<br/><table style="th { float: top; }">
+<tr><th>Domain:</th>
+<td><a href="#term_Signal">Signal</a></td>
+
+</tr>
+<tr><th>Range:</th>
+</tr>
+
+<tr><th>Sub-property-of: </th><td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">rdf:value</a></td>
+</tr>
+</table>
 <br/></div><div class="specterm" id="term_austrian_german">
 <h3>Individual: austrian_german   -   </h3>
 <em>Austrian German</em> -  
@@ -898,4 +952,4 @@
 <em>Swiss German</em> -  
 <br/><table style="th { float: top; }"><tr><th>Class:</th>
 <td><a href="#term_GermanIdiom">af:GermanIdiom</a></td>
-</tr></table></div></body></html>
+</tr></table></div></div></body></html>
