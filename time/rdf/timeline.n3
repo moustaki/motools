@@ -28,6 +28,13 @@
 # People
 <http://moustaki.org/foaf.rdf#moustaki> a foaf:Person.
 
+# Make this ontology OWL-DL
+foaf:Person a owl:Class.
+dc:description a owl:DatatypeProperty.
+dc:title a owl:DatatypeProperty.
+foaf:maker a owl:ObjectProperty.
+<http://purl.org/NET/c4dm/timeline.owl> a owl:Thing. # I really don't understand that one
+
 # Status of terms
 vs:term_status a owl:AnnotationProperty.
 
@@ -106,7 +113,7 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
-:endsAt owl:equivalentProperty :end; a owl:ObjectProperty. # Shortcut
+:endsAt owl:equivalentProperty :end; a owl:DatatypeProperty. # Shortcut
 
 
 :start
@@ -116,7 +123,7 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
-:beginsAt owl:equivalentProperty :start; a owl:ObjectProperty. # Shortcut
+:beginsAt owl:equivalentProperty :start; a owl:DatatypeProperty. # Shortcut
 
 ####################################
 # Part 1.5: equivalence statements #
@@ -139,7 +146,6 @@ Two timelines can be mapped using timeline maps.""" .
 
 ############################################################################
 # Part 2: Extra DL stuff, timeline taxonomies, coordinate systems handling #
-#   - This section is not compulsory and should be avoided for simple use  #
 ############################################################################
 
 
@@ -150,12 +156,13 @@ Two timelines can be mapped using timeline maps.""" .
 	An interval defined on an abstract time-line.
     """;
     vs:term_status "stable";
+    rdfs:subClassOf :Interval;
     owl:equivalentClass [
         a owl:Restriction;
         owl:someValuesFrom :AbstractTimeLine;
-        owl:onProperty :onTimeLine
+        owl:onProperty :timeline
     ];
-    rdfs:subClassOf :Interval .
+    .
 
 :AbstractTimeLine
     a owl:Class;
@@ -183,7 +190,7 @@ Two timelines can be mapped using timeline maps.""" .
             [
                 a owl:Restriction;
                 owl:hasValue :universaltimeline;
-                owl:onProperty :onTimeLine
+                owl:onProperty :timeline
             ]
             :Instant
         )
@@ -338,7 +345,7 @@ Two timelines can be mapped using timeline maps.""" .
         owl:intersectionOf (
             [
                 a owl:Restriction;
-                owl:onProperty :onTimeLine;
+                owl:onProperty :timeline;
                 owl:someValuesFrom :DiscreteTimeLine
             ]
 	    :Instant
@@ -457,7 +464,7 @@ Two timelines can be mapped using timeline maps.""" .
             [
                 a owl:Restriction;
                 owl:someValuesFrom :DiscreteTimeLine;
-                owl:onProperty :onTimeLine
+                owl:onProperty :timeline
             ]
             :Interval
         )
@@ -469,14 +476,14 @@ Two timelines can be mapped using timeline maps.""" .
     rdfs:comment "A subproperty of :beginsAt, having xsd:int as a range";
     vs:term_status "stable";
     rdfs:range xsd:int;
-    rdfs:subPropertyOf :beginsAt .
+    rdfs:subPropertyOf :start .
 
 :endsAtInt
     a owl:DatatypeProperty;
     rdfs:label "ends at (integer)";
     rdfs:comment "A subproperty of :endsAt, having xsd:int as a range";
     vs:term_status "stable";
-    rdfs:subPropertyOf :endsAt;
+    rdfs:subPropertyOf :end;
     rdfs:range xsd:int .
 
 :durationInt
@@ -548,7 +555,7 @@ Two timelines can be mapped using timeline maps.""" .
             [
                 a owl:Restriction;
                 owl:someValuesFrom :RelativeTimeLine;
-                owl:onProperty :onTimeLine
+                owl:onProperty :timeline
             ]
             :Interval
         )
@@ -559,7 +566,7 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:comment "A property enabling to adress a start time point P of an interval [P,E] through the duration of the interval [0,P] on a continuous timeline";
     vs:term_status "stable";
-    rdfs:subPropertyOf :beginsAt;
+    rdfs:subPropertyOf :start;
     rdfs:range xsd:duration .
 
 :durationXSD
@@ -575,7 +582,7 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:comment "A property enabling to adress an end time point P of an interval [S,P] through the duration of the interval [0,P] on a continuous timeline";
     vs:term_status "stable";
-    rdfs:subPropertyOf :endsAt;
+    rdfs:subPropertyOf :end;
     rdfs:range xsd:duration .
 
 :ShiftMap
@@ -595,7 +602,7 @@ Two timelines can be mapped using timeline maps.""" .
         owl:intersectionOf (
             [
                 a owl:Restriction;
-                owl:onProperty :onTimeLine;
+                owl:onProperty :timeline;
                 owl:hasValue :universaltimeline
             ]
             :Interval
@@ -696,7 +703,7 @@ Two timelines can be mapped using timeline maps.""" .
     rdfs:comment "A subproperty of :beginsAt, allowing to address the beginning of an interval as a date/time";
     vs:term_status "stable";
     a owl:DatatypeProperty;
-    rdfs:subPropertyOf :beginsAt;
+    rdfs:subPropertyOf :start;
     rdfs:range xsd:dateTime .
 
 :endsAtDateTime
@@ -705,7 +712,7 @@ Two timelines can be mapped using timeline maps.""" .
     vs:term_status "stable";
     a owl:DatatypeProperty;
     rdfs:range xsd:dateTime;
-    rdfs:subPropertyOf :endsAt .
+    rdfs:subPropertyOf :end .
 
 :hopSize
     rdfs:label "hop size";
@@ -745,7 +752,7 @@ Two timelines can be mapped using timeline maps.""" .
             [
                 a owl:Restriction;
                 owl:someValuesFrom :RelativeTimeLine;
-                owl:onProperty :onTimeLine
+                owl:onProperty :timeline
             ]
             :Instant
         )
@@ -768,7 +775,7 @@ Two timelines can be mapped using timeline maps.""" .
     owl:equivalentClass [
         a owl:Restriction;
         owl:someValuesFrom :AbstractTimeLine;
-        owl:onProperty :onTimeLine
+        owl:onProperty :timeline
     ] .
 
 :atReal
