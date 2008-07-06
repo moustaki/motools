@@ -24,17 +24,21 @@
 		Regarding the ontological status of event tokens, they are seen
 		as the way cognitive agents classify space/time regions
 	""";
-	owl:imports <http://xmlns.com/foaf/spec/index.rdf> ;
-	owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
-	owl:imports <http://www.w3.org/2003/01/geo/wgs84_pos>;
 	owl:imports <http://www.w3.org/2006/time> ;
-	dc:creator <http://moustaki.org/foaf.rdf#moustaki> ;
 	foaf:maker <http://moustaki.org/foaf.rdf#moustaki> ;
 	dc:date "$Date: 2007/06/29 15:25:11 $";
 	.
 
-# People
+# Missing types (DL)
 <http://moustaki.org/foaf.rdf#moustaki> a foaf:Person.
+geo:SpatialThing a owl:Class.
+foaf:Person a owl:Class.
+foaf:Agent a owl:Class.
+<http://purl.org/NET/c4dm/event.owl> a owl:Thing. # Why do I have to write that???
+dc:date a owl:DatatypeProperty.
+dc:title a owl:DatatypeProperty.
+dc:description a owl:DatatypeProperty.
+foaf:maker a owl:ObjectProperty.
 
 # Status of terms
 vs:term_status a owl:AnnotationProperty.

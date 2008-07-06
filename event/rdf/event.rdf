@@ -14,15 +14,19 @@
 		Regarding the ontological status of event tokens, they are seen
 		as the way cognitive agents classify space/time regions
 	</dc:description>
-    <owl:imports rdf:resource="http://xmlns.com/foaf/spec/index.rdf"/>
-    <owl:imports rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns"/>
-    <owl:imports rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos"/>
     <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
-    <dc:creator rdf:resource="http://moustaki.org/foaf.rdf#moustaki"/>
     <foaf:maker rdf:resource="http://moustaki.org/foaf.rdf#moustaki"/>
     <dc:date>$Date: 2007/06/29 15:25:11 $</dc:date>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </owl:Ontology>
   <foaf:Person rdf:about="http://moustaki.org/foaf.rdf#moustaki"/>
+  <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+  <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent"/>
+  <owl:DatatypeProperty rdf:about="../../dc/elements/1.1/date"/>
+  <owl:DatatypeProperty rdf:about="../../dc/elements/1.1/title"/>
+  <owl:DatatypeProperty rdf:about="../../dc/elements/1.1/description"/>
+  <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/maker"/>
   <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
   <owl:Class rdf:about="#Event">
     <rdfs:label>Event</rdfs:label>
