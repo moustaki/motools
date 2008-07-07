@@ -91,6 +91,7 @@ if __name__ == '__main__':
 	documents = ["The cat in the hat disabled", "A cat is a fine pet ponies.", "Dogs and cats make good pets.","I haven't got a hat."]
 
 	vectorSpace= VectorSpace(documents)
+	print len(vectorSpace.documentVectors)
 	pprint(vectorSpace.related(0))
 	pprint(vectorSpace.search(["cat"]))
 

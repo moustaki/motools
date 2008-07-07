@@ -1,6 +1,6 @@
 from VectorSpace import *
 
-f = open('data/description_ga.txt','r')
+f = open('data/data.txt','r')
 
 
 descs = []
@@ -23,5 +23,29 @@ for k in range(0,len(stats)):
 #print vs.documentVectors
 #print vs.vectorKeywordIndex
 term_count.sort()
-print term_count
+term_count.reverse()
+#print term_count
+
+print "Overall word count - "+str(len(vs.vectorKeywordIndex))
+
+from matplotlib.pylab import *
+from pylab import *
+y = [t[0] for t in term_count]
+x = [t[1] for t in term_count]
+y = y[1:100]
+x = x[1:100]
+
+for z in range(0,len(y)):
+	print x[z]+" - "+str(y[z])
+
+width = 0.35
+ind = arange(len(x))
+#plot(range(0,len(term_count)),y,'ro')
+bar(ind,y,width,color='r')
+ylabel('Count')
+title('Count of term in dataset')
+xlabel('Term')
+xticks(ind+width/2.,x)
+show()
+
 

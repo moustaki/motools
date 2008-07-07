@@ -25,7 +25,7 @@ class Parser:
 
 	def removeStopWords(self,list):
 		""" Remove common words which have no search value """
-		return [word for word in list if word not in self.stopwords ]
+		return [word for word in list if word not in self.stopwords]
 
 
 	def tokenise(self, string):
