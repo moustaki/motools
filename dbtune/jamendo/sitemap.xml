@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:sc="http://sw.deri.org/2007/07/sitemapextension/scschema.xsd">
+  <sc:dataset>
+   <sc:datasetLabel>Jamendo publication by the DBTune service</sc:datasetLabel>
+   <sc:datasetURI>http://dbtune.org/jamendo/</sc:datasetURI>
+   <sc:sampleURI>http://dbtune.org/jamendo/artist/5</sc:sampleURI>
+   <sc:sparqlEndpointLocation>http://dbtune.org:2105/sparql/</sc:sparqlEndPointLocation>
+   <sc:dataDumpLocation>http://dbtune.org/jamendo/dump.rdf.gz</sc:dataDumpLocation>
+   <changefreq>monthly</changefreq>
+  </sc:dataset>
+</urlset>
