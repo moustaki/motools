@@ -197,14 +197,11 @@ af:Segment a owl:Class;
 		A classifier for a temporal region corresponding to the output
 		of an automatic process---an artificial cognitive agent.
 		""";
-	.
-af:FeatureSegment a owl:Class;
-	vs:term_status "testing";
-	rdfs:comment """
-		A segment holding the output of feature extraction algorithms
-		""";
-	rdfs:label "Feature segment";
-	rdfs:subClassOf af:Segment;
+	rdfs:subClassOf	[
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:someValuesFrom tl:Interval
+	]
 	.
 af:StructuralSegment a owl:Class;
 	vs:term_status "testing";
@@ -224,6 +221,11 @@ af:Point a owl:Class;
 		A classifier for instants corresponding to the output of an automatic process---an
 		artificial cognitive agent (should be associated to a time:Instant---DL version).
 		""";
+	rdfs:subClassOf [
+		a owl:Restriction;
+		owl:onProperty event:time;
+		owl:someValuesFrom tl:Instant
+	]
 	.
 
 # Speech-related part

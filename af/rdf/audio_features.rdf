@@ -154,14 +154,12 @@
 		A classifier for a temporal region corresponding to the output
 		of an automatic process---an artificial cognitive agent.
 		</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/af/FeatureSegment">
-    <vs:term_status>testing</vs:term_status>
-    <rdfs:comment>
-		A segment holding the output of feature extraction algorithms
-		</rdfs:comment>
-    <rdfs:label>Feature segment</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/Segment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/NET/c4dm/event.owl#time"/>
+        <owl:someValuesFrom rdf:resource="http://purl.org/NET/c4dm/timeline.owl#Interval"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/af/StructuralSegment">
     <vs:term_status>testing</vs:term_status>
@@ -181,6 +179,12 @@
 		A classifier for instants corresponding to the output of an automatic process---an
 		artificial cognitive agent (should be associated to a time:Instant---DL version).
 		</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://purl.org/NET/c4dm/event.owl#time"/>
+        <owl:someValuesFrom rdf:resource="http://purl.org/NET/c4dm/timeline.owl#Instant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/af/SpeechSegment">
     <vs:term_status>testing</vs:term_status>
