@@ -295,7 +295,7 @@ af:MusicSegment a owl:Class;
 
 # Interval-based musical features
 
-af:MusicStructuralEvent a owl:Class;
+af:MusicStructuralSegment a owl:Class;
 	vs:term_status "testing";
 	rdfs:label "Music structural segment";
 	rdfs:subClassOf af:MusicSegment;
@@ -303,7 +303,16 @@ af:MusicStructuralEvent a owl:Class;
 		Classifier capturing the notion of chorus, verse, intro, bridge, phrase, etc.
 		""";
 	.
-af:KeyEvent a owl:Class;
+af:ChordSegment a owl:Class;
+	vs:term_status "testing";
+	rdfs:comment """
+		A classifier for chords. Equivalent concept as the one
+		in the Chord ontology.
+	""";
+	owl:equivalentClass <http://purl.org/ontology/chord/ChordEvent>;
+	rdfs:subClassOf af:MusicSegment;
+	.
+af:KeySegment a owl:Class;
 	vs:term_status "testing";
 	rdfs:comment """
 		A classifier for keys.
@@ -316,7 +325,7 @@ af:KeyEvent a owl:Class;
 	rdfs:subClassOf af:MusicSegment;
 	rdfs:label "Key event";
 	.
-af:TonicEvent a owl:Class;
+af:TonicSegment a owl:Class;
 	vs:term_status "testing";
 	rdfs:comment """
 		A classifier for tonics.
@@ -565,7 +574,7 @@ af:emotional_intensity a owl:ObjectProperty;
 
 af:key a owl:ObjectProperty;
 	vs:term_status "testing";
-	rdfs:domain af:KeyEvent;
+	rdfs:domain af:KeySegment;
 	rdfs:range owl:Thing; # More specific...
 	rdfs:subPropertyOf event:factor;
 	rdfs:label "key";
@@ -573,7 +582,7 @@ af:key a owl:ObjectProperty;
 	.
 af:new_key a owl:ObjectProperty;
 	vs:term_status "testing";
-	rdfs:domain af:KeyChangeEvent;
+	rdfs:domain af:KeyChange;
 	rdfs:range owl:Thing;
 	rdfs:subPropertyOf event:factor;
 	rdfs:label "new key";
@@ -581,7 +590,7 @@ af:new_key a owl:ObjectProperty;
 	.
 af:tonic a owl:ObjectProperty;
         vs:term_status "testing";
-        rdfs:domain af:TonicEvent;
+        rdfs:domain af:TonicSegment;
         rdfs:range owl:Thing;
         rdfs:subPropertyOf event:factor;
 	rdfs:label "tonic";

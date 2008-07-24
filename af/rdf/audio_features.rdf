@@ -245,7 +245,7 @@
 		This classifier can be subsumed with more specific classifiers.
 		</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/af/MusicStructuralEvent">
+  <owl:Class rdf:about="http://purl.org/ontology/af/MusicStructuralSegment">
     <vs:term_status>testing</vs:term_status>
     <rdfs:label>Music structural segment</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
@@ -253,7 +253,16 @@
 		Classifier capturing the notion of chorus, verse, intro, bridge, phrase, etc.
 		</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/af/KeyEvent">
+  <owl:Class rdf:about="http://purl.org/ontology/af/ChordSegment">
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:comment>
+		A classifier for chords. Equivalent concept as the one
+		in the Chord ontology.
+	</rdfs:comment>
+    <owl:equivalentClass rdf:resource="http://purl.org/ontology/chord/ChordEvent"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/af/KeySegment">
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>
 		A classifier for keys.
@@ -266,7 +275,7 @@
     <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
     <rdfs:label>Key event</rdfs:label>
   </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/af/TonicEvent">
+  <owl:Class rdf:about="http://purl.org/ontology/af/TonicSegment">
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>
 		A classifier for tonics.
@@ -493,7 +502,7 @@
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/key">
     <vs:term_status>testing</vs:term_status>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/af/KeyEvent"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/KeySegment"/>
     <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
     <rdfs:label>key</rdfs:label>
@@ -501,7 +510,7 @@
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/new_key">
     <vs:term_status>testing</vs:term_status>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/af/KeyChangeEvent"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/KeyChange"/>
     <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
     <rdfs:label>new key</rdfs:label>
@@ -509,7 +518,7 @@
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/ontology/af/tonic">
     <vs:term_status>testing</vs:term_status>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/af/TonicEvent"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/af/TonicSegment"/>
     <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
     <rdfs:label>tonic</rdfs:label>
