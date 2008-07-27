@@ -20,9 +20,9 @@
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "org.postgresql.Driver";
 	d2rq:jdbcDSN "jdbc:postgresql://localhost/musicbrainz";
-	d2rq:username "moustaki";
-	d2rq:password "moustaki";
-	d2rq:resultSizeLimit "500";
+	d2rq:username "yvesr";
+	d2rq:password "yvesr";
+	d2rq:resultSizeLimit "1000";
 	.
 
 # Table album
@@ -3313,7 +3313,12 @@ map:track_artist a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:track;
 	d2rq:property foaf:maker;
 	d2rq:uriPattern "artist/@@artist.gid@@";
+	d2rq:alias "artist as artist2";
 	d2rq:join "artist.id = track.artist";
+	#d2rq:join "albumjoin.track = track.id";
+	#d2rq:join "albumjoin.album = album.id";
+	#d2rq:join "album.artist = artist2.id";
+	#d2rq:condition "artist.id!=artist2.id";
 	.
 map:track_gid a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:track;
