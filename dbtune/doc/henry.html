@@ -120,43 +120,32 @@ WHERE
 </pre>
 
 <p>
-Another example is the following, computing keys using the <a href="http://www.elec.qmul.ac.uk/digitalmusic/downloads/index.html#qm-vamp-plugins">key
-detection Vamp plugin in the Queen Mary plugin set</a>:
+Another example is the following, computing key change events as specified by the <a href="http://purl.org/ontology/af/">Audio Features
+ontology</a>.
+using the <a href="http://www.elec.qmul.ac.uk/digitalmusic/downloads/index.html#qm-vamp-plugins">key
+detection Vamp plugin in the Queen Mary plugin set</a> and <a href="http://code.google.com/p/km-rdf/source/browse/trunk/n3-km/dsp-n3/vamp.n3">this N3
+rule</a>:
 </p>
 <pre>
-select ?otp ?s ?e ?d
-where
-{
-&lt;http://dbtune.org/audio/Both-Axel.ogg&gt; &lt;http://purl.org/ontology/dsp/cache&gt; ?local.
-?local &lt;http://purl.org/ontology/dsp/aspl_decode&gt; ?sig.
-?sig &lt;http://purl.org/ontology/vamp/qm-keydetector&gt; ?result.
-(?otp ?s ?e ?d) &lt;http://www.w3.org/2000/10/swap/list#in&gt; ?result.
-}
-</pre>
-
-
-<p>
-Finally, one using the N3 rule defined at the bottom of <a href="http://code.google.com/p/km-rdf/source/browse/trunk/n3-km/dsp-n3/vamp.n3">this N3
-document</a>, getting some attributes of key events on an audio signal' time-line:
-</p>
-<pre>
-select ?start ?end ?key where {
+select ?start ?key where {
 &lt;http://dbtune.org/audio/Both-Axel.ogg&gt; mo:encodes ?sig.
 ?sig mo:time ?time.
 ?time tl:timeline ?tl.
-_:evt a &lt;http://purl.org/ontology/tonality/Tonality&gt;; 
-	event:time [tl:start ?start;tl:end ?end;tl:timeline ?tl] ;
-        &lt;http://purl.org/ontology/tonality/key&gt; ?key}
+_:evt a af:KeyChange; 
+        event:time [tl:at ?start; tl:timeline ?tl] ;
+        af:new_key ?key }
 </pre>
+
+
 
 <h2><a name="code" id="code"></a>4. Code</h2>
 <p>
 All the code is open source and available in our <a href="http://code.google.com/p/km-rdf">Google code project</a>.
 </p>
 
-<h2><a name="missing" id="missing"></a>5. Things missing</h2>
+<!--<h2><a name="missing" id="missing"></a>5. Things missing</h2>
 <p>Linked data access!! We are implementing the mechanism we use in <a href="http://sonictruths.net/dm.html#SBSimilarity">SBSimilarity</a>.</p>
-
+-->
 <!--<h2><a name="ack" id="ack"></a>5. Acknowledgements</h2>
 <p>
 Thanks to David Pastor who wrote the <a href="http://www.vamp-plugins.org/">Vamp</a> to <a href="http://www.swi-prolog.org/">SWI-Prolog</a>
