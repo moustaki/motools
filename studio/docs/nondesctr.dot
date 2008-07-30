@@ -1,0 +1,54 @@
+digraph G {
+edge [
+fontsize = 11, 
+#fontname = "Courier New Bold", 
+fontname = "Helvetica Bold Oblique",
+labelfloat = "false",
+];
+
+rankdir="TB";
+
+subgraph A {
+"foaf:Project" [style = filled, color=azure3];
+"mt:AudioTrack" [style = filled, color=lightsteelblue1];
+"mt:MultitrackProject" [style = filled, color=lightsteelblue1];
+
+"foaf:Project" -> "mt:MultitrackProject" 
+[label = "subClassOf", style = "dashed", dir = "back"];
+
+"mt:MultitrackProject" ->  "mt:AudioTrack" 
+[label = "mt:hasTrack"];
+
+"mt:AudioTrack" ->  "mt:AudioClip" 
+[label = "mt:hasClip"];
+		
+}
+
+
+
+subgraph B {
+"TimeLine" [label = "timeline:TimeLine", style = filled, color=gold1];
+"Interval1" [label = "timeline:Interval", style = filled, color=gold1];
+"Interval2" [label = "timeline:Interval", style = filled, color=gold1];
+"mo:Signal" [style = filled, color=aquamarine3];
+"mt:MediaClip" [style = filled, color=lightsteelblue1];
+"mt:AudioClip" [style = filled, color=lightsteelblue1];
+
+"TimeLine" ->  "Interval1" [label = "onTimeLine", dir = "back"];
+"TimeLine" ->  "Interval2" [label = "onTimeLine", dir = "back"];
+
+"Interval1" -> "mt:MediaClip" 
+[label = "event:time",dir = "back"];
+
+"Interval2" -> "mo:Signal" 
+[label = "mo:time",dir = "back"];
+
+"mt:MediaClip"-> "mt:AudioClip" 
+[label = "subClassOf", style = "dashed", dir = "back", constraint=false];
+
+"mt:AudioClip" -> "mo:Signal" 
+[label = "mt:hasSignal",constraint=false ];
+}
+
+
+}
