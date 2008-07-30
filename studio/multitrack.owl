@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+	<!ENTITY mt "http://example.org/ontology/multitrack.owl#" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY event "http://purl.org/NET/c4dm/event.owl#" >
+    <!ENTITY mo "http://purl.org/ontology/mo/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY owl11 "http://www.w3.org/2006/12/owl11#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl11xml "http://www.w3.org/2006/12/owl11-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF 
+     xmlns:mt="http://example.org/ontology/multitrack.owl#"
+     xmlns:event="http://purl.org/NET/c4dm/event.owl#"
+     xmlns:owl11="http://www.w3.org/2006/12/owl11#"
+     xmlns:owl11xml="http://www.w3.org/2006/12/owl11-xml#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:mo="http://purl.org/ontology/mo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xml:base="http://example.org/ontology/multitrack.owl">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment
+            >An ontology for describing concepts in multitrack media production </rdfs:comment>
+        <owl:imports rdf:resource="file:/Users/gfazekas/dev/mo-tools/motools/mopy/musicontology.rdfs"/>
+    </owl:Ontology>
+    
+    <!-- 
+    *
+    * 				Classes
+    *
+     -->
+   
+    <!-- http://.../multitrack.owl#MultitrackProject -->
+
+    <owl:Class rdf:about="#MultitrackProject">
+        <rdfs:subClassOf rdf:resource="&foaf;Project"/>
+        <rdfs:comment
+            >A project created in a multitrack media production tool, an audio editor, a DAW, or a sequencer of some kind.</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#ProjectTrack -->
+
+    <owl:Class rdf:about="#ProjectTrack">
+        <!-- <rdfs:subClassOf rdf:resource="&mo;Track"/> ??? -->
+        <rdfs:comment
+            >A track in a multitrack project. A container type for audio/media clips, control events, feature events, or annotations.</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#MediaTrack -->
+
+    <owl:Class rdf:about="#MediaTrack">
+        <rdfs:subClassOf rdf:resource="&mt;ProjectTrack"/>
+        <!-- <rdfs:subClassOf rdf:resource="&mo;Track"/> ??? -->
+        <rdfs:comment
+            >A track in a multitrack project holding audiovisual information only. </rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#AudioTrack -->
+
+    <owl:Class rdf:about="#AudioTrack">
+        <rdfs:subClassOf rdf:resource="&mt;MediaTrack"/>
+        <rdfs:comment
+            >An AudioTrack contains a set of audio clips organized in a musically meaningful way.</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#VideoTrack -->
+
+    <owl:Class rdf:about="#VideoTrack">
+        <rdfs:subClassOf rdf:resource="&mt;MediaTrack"/>
+        <rdfs:comment
+            >Contains a set of video clips organized in some sense.</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#AutomationTrack -->
+
+    <owl:Class rdf:about="#AutomationTrack">
+        <rdfs:subClassOf rdf:resource="&mt;ProjectTrack"/>
+        <rdfs:comment
+            >Represents a sequence of control parameters of some kind, or an envelope.</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#AnnotationTrack -->
+
+    <owl:Class rdf:about="#AnnotationTrack">
+        <rdfs:subClassOf rdf:resource="&mt;ProjectTrack"/>
+        <rdfs:comment
+            >A sequence of labels or descriptors related to a signal. As an example, it may contain a sequence of FeatureEvents described in the audio feature ontology, or a label stating that someone kicked a microphone stand and a resulting artifact needs to be removed from the recording.</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#MidiTrack -->
+
+    <owl:Class rdf:about="#MidiTrack">
+        <rdfs:subClassOf rdf:resource="&mt;ProjectTrack"/>
+        <rdfs:comment
+            >Container for a set of commands or events compatible with the MIDI specification.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://.../multitrack.owl#MediaClip -->
+
+    <owl:Class rdf:about="#MediaClip">
+        <rdfs:subClassOf rdf:resource="&event;Event"/>
+        <rdfs:comment
+            >Represents a take of a usually short performance as stored in a media editor application. 
+It is distinct from the signal itself, (e.g. a picture of a waveform on screen and its zoom ratio) and may not be directly related to a signal at all. A non-destructive editor is a good example of this concept. Generally we refer to an internal state of an editor as a result of a performance and a corresponding recording event.
+			</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://.../multitrack.owl#AudioClip -->
+
+    <owl:Class rdf:about="#AudioClip">
+        <rdfs:subClassOf rdf:resource="&mt;MediaClip"/>
+        <rdfs:comment
+            >A type of MediaClip for Audio content. It may or may not form a musically meaningful section or part of a song. 
+			</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://.../multitrack.owl#VideoClip -->
+
+    <owl:Class rdf:about="#VideoClip">
+        <rdfs:subClassOf rdf:resource="&mt;MediaClip"/>
+        <rdfs:comment
+            >Represents a sequence of images constituting a short section of video in a track.  
+			</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#Annotation -->
+
+    <owl:Class rdf:about="#Annotation">
+        <rdfs:subClassOf rdf:resource="&event;Event"/>
+        <rdfs:comment
+            >A label, marker or some sort of visualization associated with an event in a signal. 
+			</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#ControlEvent -->
+
+    <owl:Class rdf:about="#AutomationEvent">
+        <rdfs:subClassOf rdf:resource="&event;Event"/>
+        <rdfs:comment
+            >Reference to some parameter change, e.g. a volume change command in an automation track. 
+			</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#Envelope -->
+
+    <owl:Class rdf:about="#Envelope">
+     <!--   <rdfs:subClassOf rdf:resource="&event;Event"/> -->
+        <rdfs:comment
+            >A continuous time function of some sort controlling one or more parameters. 
+			</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#MIDICommand -->
+
+    <owl:Class rdf:about="#MIDICommand">
+     <!--   <rdfs:subClassOf rdf:resource="&event;Event"/> -->
+        <rdfs:comment
+            >Reference to a single MIDI message containing a command or event. (Clarify this from MIDI specs.) 
+			</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://.../multitrack.owl#AutomationParameter -->
+
+    <owl:Class rdf:about="#AutomationParameter">
+    <!--    <rdfs:subClassOf rdf:resource="&event;Event"/> -->
+        <rdfs:comment
+            >A numerical parameter used for automation, e.g. volume change. 
+			</rdfs:comment>
+    </owl:Class>
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="&foaf;Project"/>
+    
+    <!-- http://xmlns.com/foaf/0.1/Document -->
+
+    <owl:Class rdf:about="&foaf;Document"/>
+
+    <!-- http://purl.org/NET/c4dm/event.owl#Event -->
+
+    <owl:Class rdf:about="&event;Event"/>
+
+
+    <!-- 
+    *
+    * 			Object Properties 
+    *
+     -->
+
+    <!-- http://.../multitrack.owl#hasTrack -->
+
+    <owl:ObjectProperty rdf:about="#hasTrack">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#MultitrackProject"/>
+        <rdfs:comment
+            >Used for specifying a track in a project.</rdfs:comment>
+        <rdfs:range rdf:resource="#ProjectTrack"/>
+    </owl:ObjectProperty>
+
+    <!-- http://.../multitrack.owl#hasTrack -->
+
+    <owl:ObjectProperty rdf:about="#includedIn">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+		<owl:inverseOf rdf:resource="#hasTrack"/>
+        <rdfs:comment
+            >Used for a track included in several projects. (inverse of hasTrack).</rdfs:comment>
+    </owl:ObjectProperty>
+
+
+    <!-- http://.../multitrack.owl#holdsClip -->
+
+    <owl:ObjectProperty rdf:about="#holdsClip">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#MediaTrack"/>
+        <rdfs:comment
+            >a track contains a clip</rdfs:comment>
+        <rdfs:range rdf:resource="#MediaClip"/>
+    </owl:ObjectProperty>
+
+    <!-- http://.../multitrack.owl#inTrack -->
+
+    <owl:ObjectProperty rdf:about="#containedInTrack">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+		<owl:inverseOf rdf:resource="#holdsClip"/>
+        <rdfs:comment
+	>Used for a clip included in several tracks. (inverse of holdsClip). </rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- http://.../multitrack.owl#holdsAnnotation -->
+
+    <owl:ObjectProperty rdf:about="#holdsAnnotation">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#AnnotationTrack"/>
+        <rdfs:comment
+            >Relates an annotation track to an annotation.</rdfs:comment>
+        <rdfs:range rdf:resource="#Annotation"/>
+    </owl:ObjectProperty>
+
+    <!-- http://.../multitrack.owl#holdsAutomationEvent -->
+
+    <owl:ObjectProperty rdf:about="#holdsAutomationEvent">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#AutomationTrack"/>
+        <rdfs:comment
+            >Relates an automation track to a automation event.</rdfs:comment>
+        <rdfs:range rdf:resource="#AutomationEvent"/>
+    </owl:ObjectProperty>
+
+    <!-- http://.../multitrack.owl#hasParameter -->
+
+    <owl:ObjectProperty rdf:about="#hasParameter">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#AutomationEvent"/>
+        <rdfs:comment
+            >Used to link an automation event to a set of parameters. </rdfs:comment>
+        <rdfs:range rdf:resource="#AutomationParameter"/>
+    </owl:ObjectProperty>
+
+    <!-- http://.../multitrack.owl#holdsEnvelope -->
+
+    <owl:ObjectProperty rdf:about="#holdsEnvelope">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#AutomationTrack"/>
+        <rdfs:comment
+            >Link an envelope to an automation track.</rdfs:comment>
+        <rdfs:range rdf:resource="#Envelope"/>
+    </owl:ObjectProperty>
+
+    <!-- http://.../multitrack.owl#holdsMIDIMessage -->
+
+    <owl:ObjectProperty rdf:about="#holdsMIDICommand">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#MidiTrack"/>
+        <rdfs:comment
+            >Link a MIDI command to a MIDI Track.</rdfs:comment>
+        <rdfs:range rdf:resource="#MIDICommand"/>
+    </owl:ObjectProperty>
+
+    <!-- http://.../multitrack.owl#representationOf -->
+
+    <owl:ObjectProperty rdf:about="#representationOf">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#AudioClip"/>
+        <rdfs:comment
+            >Relates an audio clip to a performance. </rdfs:comment>
+        <rdfs:range rdf:resource="&mo;Performance"/>
+    </owl:ObjectProperty>
+
+    <!-- http://.../multitrack.owl#productOf -->
+    <!-- would this be the redefinition of event:producedIn ?
+    <owl:ObjectProperty rdf:about="#productOf">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#MediaClip"/>
+        <rdfs:comment
+            >A shortcut to relate a clip to a recording event.</rdfs:comment>
+        <rdfs:range rdf:resource="&mo;Recording"/>
+    </owl:ObjectProperty>
+	-->
+
+    <!-- http://.../multitrack.owl#contains_signal -->
+
+    <owl:ObjectProperty rdf:about="#hasSignal">
+        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+        <rdfs:domain rdf:resource="#MediaClip"/>
+        <rdfs:comment
+            >A shortcut to relate a clip to a signal.</rdfs:comment>
+        <rdfs:range rdf:resource="&mo;Signal"/>
+    </owl:ObjectProperty>
+
+
+    <!-- http://purl.org/ontology/mo/Performance -->
+
+    <owl:Class rdf:about="&mo;Performance"/>
+
+    <!-- http://purl.org/ontology/mo/Performance -->
+
+    <owl:Class rdf:about="&mo;Recording"/>
+    <!-- http://purl.org/ontology/mo/Performance -->
+
+    <owl:Class rdf:about="&mo;Signal"/>
+
+    <!-- 
+    *
+    * 			Data Properties 
+    *
+     -->
+
+    <!-- http://.../multitrack.owl#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="#hasValue">
+        <rdfs:domain rdf:resource="#AutomationParameter"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://.../multitrack.owl#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="#hasLabel">
+        <rdfs:domain rdf:resource="#Annotation"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://.../multitrack.owl#functionOf -->
+
+    <owl:DatatypeProperty rdf:about="#functionOf">
+        <rdfs:domain rdf:resource="#Envelope"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:comment>A mathematical expression. Primarily for calculating a parameter between two automation events (e.g. can be a linear function of time.)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    
+</rdf:RDF>
+
