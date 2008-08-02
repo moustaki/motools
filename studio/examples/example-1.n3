@@ -9,20 +9,20 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix trk: <http://ProjectName.org/Tracks/AudioTracks/>.
 
- project:OurSinger a mo:SoloMusicArtist;
+ project:our_singer a mo:SoloMusicArtist;
      foaf:name "Superstar Singer".
 
- project:ChorusTake a mo:Performance;
+ project:chorus_take a mo:Performance;
      dc:title "My first song";
      mo:performer project:OurSinger;
      mo:produced_signal project:chorus. 
 
- project:IntroTake a mo:Performance;
+ project:intro_take a mo:Performance;
      dc:title "My first song";
      mo:performer project:OurSinger;
      mo:produced_signal project:intro. 
 
- project:VerseTake a mo:Performance;
+ project:verse_take a mo:Performance;
      dc:title "My first song";
      mo:performer project:OurSinger;
      mo:produced_signal project:verse. 
@@ -31,26 +31,26 @@
  project:intro a mo:Signal. 
  project:verse a mo:Signal. 
 
- clips:Voclas_001 a mt:AudioClip;
+ clips:voclas_001 a mt:AudioClip;
      rdfs:label "The firs take of the intro";
      mt:signal project:intro. 
 
- clips:Voclas_002 a mt:AudioClip;
+ clips:voclas_002 a mt:AudioClip;
      rdfs:label "The firs take of the verse";
      mt:signal project:verse. 
 
- clips:Voclas_003 a mt:AudioClip;
+ clips:voclas_003 a mt:AudioClip;
      rdfs:label "The firs take of the chorus";
      mt:signal project:chorus. 
 
- trk:Vocals_001 a mt:AudioTrack;
-     mt:clip clips:Voclas_001,
-        	 clips:Voclas_002,
-        	 clips:Voclas_003. 
+ trk:vocals_001 a mt:AudioTrack;
+     mt:clip clips:voclas_001,
+        	 clips:voclas_002,
+        	 clips:voclas_003. 
 
  project:myProject a mt:MultitrackProject;
-     mt:track trk:Bass_001,
-	          trk:Drums_001,
-		      trk:Keyboard_001,
-		      trk:Vocals_001.
+     mt:track trk:bass_001,
+	          trk:drums_001,
+		      trk:keyboard_001,
+		      trk:vocals_001.
 
