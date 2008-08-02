@@ -15,17 +15,17 @@
  project:chorus_take a mo:Performance;
      dc:title "My first song";
      mo:performer project:OurSinger;
-     mo:produced_signal project:chorus. 
+     mo:recorded_as project:chorus. 
 
  project:intro_take a mo:Performance;
      dc:title "My first song";
      mo:performer project:OurSinger;
-     mo:produced_signal project:intro. 
+     mo:recorded_as project:intro. 
 
  project:verse_take a mo:Performance;
      dc:title "My first song";
      mo:performer project:OurSinger;
-     mo:produced_signal project:verse. 
+     mo:recorded_as project:verse. 
 
  project:chorus a mo:Signal. 
  project:intro a mo:Signal. 
