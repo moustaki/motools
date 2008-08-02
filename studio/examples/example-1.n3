@@ -1,0 +1,56 @@
+
+@prefix clips: <http://ProjectName.org/Clips/AudioClips/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix mt: <http://example.org/ontology/multitrack.owl#>.
+@prefix project: <http://ProjectName.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix trk: <http://ProjectName.org/Tracks/AudioTracks/>.
+
+ project:OurSinger a mo:SoloMusicArtist;
+     foaf:name "Superstar Singer".
+
+ project:ChorusTake a mo:Performance;
+     dc:title "My first song";
+     mo:performer project:OurSinger;
+     mo:produced_signal project:chorus. 
+
+ project:IntroTake a mo:Performance;
+     dc:title "My first song";
+     mo:performer project:OurSinger;
+     mo:produced_signal project:intro. 
+
+ project:VerseTake a mo:Performance;
+     dc:title "My first song";
+     mo:performer project:OurSinger;
+     mo:produced_signal project:verse. 
+
+ project:chorus a mo:Signal. 
+ project:intro a mo:Signal. 
+ project:verse a mo:Signal. 
+
+ clips:Voclas_001 a mt:AudioClip;
+     rdfs:label "The firs take of the intro";
+     mt:signal project:intro. 
+
+ clips:Voclas_002 a mt:AudioClip;
+     rdfs:label "The firs take of the verse";
+     mt:signal project:verse. 
+
+ clips:Voclas_003 a mt:AudioClip;
+     rdfs:label "The firs take of the chorus";
+     mt:signal project:chorus. 
+
+ trk:Vocals_001 a mt:AudioTrack;
+     mt:clip clips:Voclas_001,
+        	 clips:Voclas_002,
+        	 clips:Voclas_003. 
+
+ project:myProject a mt:MultitrackProject;
+     mt:track trk:Bass_001,
+	          trk:Drums_001,
+		      trk:Keyboard_001,
+		      trk:Vocals_001.
+
