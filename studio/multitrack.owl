@@ -197,9 +197,9 @@ It is distinct from the signal itself, (e.g. a picture of a waveform on screen a
     *
      -->
 
-    <!-- http://.../multitrack.owl#hasTrack -->
+    <!-- http://.../multitrack.owl#track -->
 
-    <owl:ObjectProperty rdf:about="#hasTrack">
+    <owl:ObjectProperty rdf:about="#track">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
         <rdfs:domain rdf:resource="#MultitrackProject"/>
         <rdfs:comment
@@ -207,19 +207,19 @@ It is distinct from the signal itself, (e.g. a picture of a waveform on screen a
         <rdfs:range rdf:resource="#ProjectTrack"/>
     </owl:ObjectProperty>
 
-    <!-- http://.../multitrack.owl#hasTrack -->
+    <!-- http://.../multitrack.owl#inProject -->
 
-    <owl:ObjectProperty rdf:about="#includedIn">
+    <owl:ObjectProperty rdf:about="#inProject">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
-		<owl:inverseOf rdf:resource="#hasTrack"/>
+		<owl:inverseOf rdf:resource="#track"/>
         <rdfs:comment
             >Used for a track included in several projects. (inverse of hasTrack).</rdfs:comment>
     </owl:ObjectProperty>
 
 
-    <!-- http://.../multitrack.owl#holdsClip -->
+    <!-- http://.../multitrack.owl#clip -->
 
-    <owl:ObjectProperty rdf:about="#holdsClip">
+    <owl:ObjectProperty rdf:about="#clip">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
         <rdfs:domain rdf:resource="#MediaTrack"/>
         <rdfs:comment
@@ -229,16 +229,16 @@ It is distinct from the signal itself, (e.g. a picture of a waveform on screen a
 
     <!-- http://.../multitrack.owl#inTrack -->
 
-    <owl:ObjectProperty rdf:about="#containedInTrack">
+    <owl:ObjectProperty rdf:about="#inTrack">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
-		<owl:inverseOf rdf:resource="#holdsClip"/>
+		<owl:inverseOf rdf:resource="#clip"/>
         <rdfs:comment
 	>Used for a clip included in several tracks. (inverse of holdsClip). </rdfs:comment>
     </owl:ObjectProperty>
 
-    <!-- http://.../multitrack.owl#holdsAnnotation -->
+    <!-- http://.../multitrack.owl#annotation -->
 
-    <owl:ObjectProperty rdf:about="#holdsAnnotation">
+    <owl:ObjectProperty rdf:about="#annotation">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
         <rdfs:domain rdf:resource="#AnnotationTrack"/>
         <rdfs:comment
@@ -246,9 +246,9 @@ It is distinct from the signal itself, (e.g. a picture of a waveform on screen a
         <rdfs:range rdf:resource="#Annotation"/>
     </owl:ObjectProperty>
 
-    <!-- http://.../multitrack.owl#holdsAutomationEvent -->
+    <!-- http://.../multitrack.owl#automationEvent -->
 
-    <owl:ObjectProperty rdf:about="#holdsAutomationEvent">
+    <owl:ObjectProperty rdf:about="#automationEvent">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
         <rdfs:domain rdf:resource="#AutomationTrack"/>
         <rdfs:comment
@@ -256,9 +256,9 @@ It is distinct from the signal itself, (e.g. a picture of a waveform on screen a
         <rdfs:range rdf:resource="#AutomationEvent"/>
     </owl:ObjectProperty>
 
-    <!-- http://.../multitrack.owl#hasParameter -->
+    <!-- http://.../multitrack.owl#parameter -->
 
-    <owl:ObjectProperty rdf:about="#hasParameter">
+    <owl:ObjectProperty rdf:about="#parameter">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
         <rdfs:domain rdf:resource="#AutomationEvent"/>
         <rdfs:comment
@@ -266,9 +266,9 @@ It is distinct from the signal itself, (e.g. a picture of a waveform on screen a
         <rdfs:range rdf:resource="#AutomationParameter"/>
     </owl:ObjectProperty>
 
-    <!-- http://.../multitrack.owl#holdsEnvelope -->
+    <!-- http://.../multitrack.owl#envelope -->
 
-    <owl:ObjectProperty rdf:about="#holdsEnvelope">
+    <owl:ObjectProperty rdf:about="#envelope">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
         <rdfs:domain rdf:resource="#AutomationTrack"/>
         <rdfs:comment
@@ -276,9 +276,9 @@ It is distinct from the signal itself, (e.g. a picture of a waveform on screen a
         <rdfs:range rdf:resource="#Envelope"/>
     </owl:ObjectProperty>
 
-    <!-- http://.../multitrack.owl#holdsMIDIMessage -->
+    <!-- http://.../multitrack.owl#midiCommand -->
 
-    <owl:ObjectProperty rdf:about="#holdsMIDICommand">
+    <owl:ObjectProperty rdf:about="#midiCommand">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
         <rdfs:domain rdf:resource="#MidiTrack"/>
         <rdfs:comment
@@ -309,7 +309,7 @@ It is distinct from the signal itself, (e.g. a picture of a waveform on screen a
 
     <!-- http://.../multitrack.owl#contains_signal -->
 
-    <owl:ObjectProperty rdf:about="#hasSignal">
+    <owl:ObjectProperty rdf:about="#signal">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
         <rdfs:domain rdf:resource="#MediaClip"/>
         <rdfs:comment
@@ -335,18 +335,18 @@ It is distinct from the signal itself, (e.g. a picture of a waveform on screen a
     *
      -->
 
-    <!-- http://.../multitrack.owl#hasValue -->
+    <!-- http://.../multitrack.owl#value -->
 
-    <owl:DatatypeProperty rdf:about="#hasValue">
+    <owl:DatatypeProperty rdf:about="#value">
         <rdfs:domain rdf:resource="#AutomationParameter"/>
         <rdfs:range rdf:resource="&xsd;float"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
         <rdfs:range rdf:resource="&xsd;int"/>
     </owl:DatatypeProperty>
 
-    <!-- http://.../multitrack.owl#hasValue -->
+    <!-- http://.../multitrack.owl#label -->
 
-    <owl:DatatypeProperty rdf:about="#hasLabel">
+    <owl:DatatypeProperty rdf:about="#label">
         <rdfs:domain rdf:resource="#Annotation"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>

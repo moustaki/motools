@@ -1,0 +1,53 @@
+
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix mt: <http://example.org/ontology/multitrack.owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix project: <http://ProjectName.org/>.
+@prefix trk: <http://ProjectName.org/Tracks/AudioTracks/>.
+@prefix clips: <http://ProjectName.org/Clips/AudioClips/>.
+
+ project:our_singer a mo:SoloMusicArtist;
+     foaf:name "Superstar Singer". 
+
+ project:engineer a mo:SoundEngineer;
+     foaf:name "Famous Sound Engineer". 
+
+ project:intro_sound a mo:Sound.
+
+ project:intro_take a mo:Performance;
+     dc:title "My first song";
+     mo:performer project:our_singer;
+     mo:produced_sound project:intro_sound. 
+
+ project:intro_rec_mid a mo:Recording;
+     rdfs:label "mid microphone",
+         "polar pattern: cardioid";
+     mo:engineer project:engineer;
+     mo:produced_signal project:intro_signalM;
+     mo:recording_of project:intro_sound. 
+
+ project:intro_signalM a mo:Signal. 
+
+ project:intro_rec_side a mo:Recording;
+     rdfs:label "side microphone",
+         "polar pattern: figure eight";
+     mo:engineer project:engineer;
+     mo:produced_signal project:intro_signalS;
+     mo:recording_of project:intro_sound. 
+
+ project:intro_signalS a mo:Signal. 
+
+ project:myProject a mt:MultitrackProject;
+     mt:track trk:vocal_track_001. 
+
+ trk:vocal_track_001 a mt:AudioTrack;
+	 mt:clip clips:voclas_001. 
+
+ clips:voclas_001 a mt:AudioClip;
+     rdfs:label "The firs take of the intro";
+     mt:representationOf project:intro_take. 
+
+
