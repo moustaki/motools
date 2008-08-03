@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE rdf:RDF [
-	<!ENTITY mt "http://example.org/ontology/multitrack.owl#" >
+	<!ENTITY mt "http://purl.org/ontology/studio/multitrack#" >
     <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
     <!ENTITY event "http://purl.org/NET/c4dm/event.owl#" >
     <!ENTITY mo "http://purl.org/ontology/mo/" >
@@ -24,7 +24,7 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xml:base="http://example.org/ontology/multitrack.owl">
+     xml:base="http://purl.org/ontology/studio/multitrack">
     <owl:Ontology rdf:about="">
         <rdfs:comment
             >An ontology for describing concepts in multitrack media production </rdfs:comment>

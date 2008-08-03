@@ -1,0 +1,199 @@
+@base <http://purl.org/ontology/studio/multitrack#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix mt: <http://purl.org/ontology/studio/multitrack#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+@prefix owl11: <http://www.w3.org/2006/12/owl11#> .
+@prefix owl11xml: <http://www.w3.org/2006/12/owl11-xml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<http://purl.org/ontology/studio/multitrack>
+    a owl:Ontology;
+    rdfs:comment "An ontology for describing concepts in multitrack media production " .
+
+mt:MultitrackProject
+    a owl:Class;
+    rdfs:subClassOf foaf:Project;
+    rdfs:comment "A project created in a multitrack media production tool, an audio editor, a DAW, or a sequencer of some kind." .
+
+mt:ProjectTrack
+    a owl:Class;
+    rdfs:comment "A track in a multitrack project. A container type for audio/media clips, control events, feature events, or annotations." .
+
+mt:MediaTrack
+    a owl:Class;
+    rdfs:subClassOf mt:ProjectTrack;
+    rdfs:comment "A track in a multitrack project holding audiovisual information only. " .
+
+mt:AudioTrack
+    a owl:Class;
+    rdfs:subClassOf mt:MediaTrack;
+    rdfs:comment "An AudioTrack contains a set of audio clips organized in a musically meaningful way." .
+
+mt:VideoTrack
+    a owl:Class;
+    rdfs:subClassOf mt:MediaTrack;
+    rdfs:comment "Contains a set of video clips organized in some sense." .
+
+mt:AutomationTrack
+    a owl:Class;
+    rdfs:subClassOf mt:ProjectTrack;
+    rdfs:comment "Represents a sequence of control parameters of some kind, or an envelope." .
+
+mt:AnnotationTrack
+    a owl:Class;
+    rdfs:subClassOf mt:ProjectTrack;
+    rdfs:comment "A sequence of labels or descriptors related to a signal. As an example, it may contain a sequence of FeatureEvents described in the audio feature ontology, or a label stating that someone kicked a microphone stand and a resulting artifact needs to be removed from the recording." .
+
+mt:MidiTrack
+    a owl:Class;
+    rdfs:subClassOf mt:ProjectTrack;
+    rdfs:comment "Container for a set of commands or events compatible with the MIDI specification." .
+
+mt:MediaClip
+    a owl:Class;
+    rdfs:subClassOf event:Event;
+    rdfs:comment """Represents a take of a usually short performance as stored in a media editor application. 
+It is distinct from the signal itself, (e.g. a picture of a waveform on screen and its zoom ratio) and may not be directly related to a signal at all. A non-destructive editor is a good example of this concept. Generally we refer to an internal state of an editor as a result of a performance and a corresponding recording event.
+			""" .
+
+mt:AudioClip
+    a owl:Class;
+    rdfs:subClassOf mt:MediaClip;
+    rdfs:comment """A type of MediaClip for Audio content. It may or may not form a musically meaningful section or part of a song. 
+			""" .
+
+mt:VideoClip
+    a owl:Class;
+    rdfs:subClassOf mt:MediaClip;
+    rdfs:comment """Represents a sequence of images constituting a short section of video in a track.  
+			""" .
+
+mt:Annotation
+    a owl:Class;
+    rdfs:subClassOf event:Event;
+    rdfs:comment """A label, marker or some sort of visualization associated with an event in a signal. 
+			""" .
+
+mt:AutomationEvent
+    a owl:Class;
+    rdfs:subClassOf event:Event;
+    rdfs:comment """Reference to some parameter change, e.g. a volume change command in an automation track. 
+			""" .
+
+mt:Envelope
+    a owl:Class;
+    rdfs:comment """A continuous time function of some sort controlling one or more parameters. 
+			""" .
+
+mt:MIDICommand
+    a owl:Class;
+    rdfs:comment """Reference to a single MIDI message containing a command or event. (Clarify this from MIDI specs.) 
+			""" .
+
+mt:AutomationParameter
+    a owl:Class;
+    rdfs:comment """A numerical parameter used for automation, e.g. volume change. 
+			""" .
+
+foaf:Project
+    a owl:Class .
+
+foaf:Document
+    a owl:Class .
+
+event:Event
+    a owl:Class .
+
+mt:track
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    rdfs:domain mt:MultitrackProject;
+    rdfs:comment "Used for specifying a track in a project.";
+    rdfs:range mt:ProjectTrack .
+
+mt:inProject
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    owl:inverseOf mt:track;
+    rdfs:comment "Used for a track included in several projects. (inverse of hasTrack)." .
+
+mt:clip
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    rdfs:domain mt:MediaTrack;
+    rdfs:comment "a track contains a clip";
+    rdfs:range mt:MediaClip .
+
+mt:inTrack
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    owl:inverseOf mt:clip;
+    rdfs:comment "Used for a clip included in several tracks. (inverse of holdsClip). " .
+
+mt:annotation
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    rdfs:domain mt:AnnotationTrack;
+    rdfs:comment "Relates an annotation track to an annotation.";
+    rdfs:range mt:Annotation .
+
+mt:automationEvent
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    rdfs:domain mt:AutomationTrack;
+    rdfs:comment "Relates an automation track to a automation event.";
+    rdfs:range mt:AutomationEvent .
+
+mt:parameter
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    rdfs:domain mt:AutomationEvent;
+    rdfs:comment "Used to link an automation event to a set of parameters. ";
+    rdfs:range mt:AutomationParameter .
+
+mt:envelope
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    rdfs:domain mt:AutomationTrack;
+    rdfs:comment "Link an envelope to an automation track.";
+    rdfs:range mt:Envelope .
+
+mt:midiCommand
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    rdfs:domain mt:MidiTrack;
+    rdfs:comment "Link a MIDI command to a MIDI Track.";
+    rdfs:range mt:MIDICommand .
+
+mt:representationOf
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    rdfs:domain mt:AudioClip;
+    rdfs:comment "Relates an audio clip to a performance. ";
+    rdfs:range mo:Performance .
+
+mt:signal
+    a owl:ObjectProperty, owl11:AntisymmetricProperty;
+    rdfs:domain mt:MediaClip;
+    rdfs:comment "A shortcut to relate a clip to a signal.";
+    rdfs:range mo:Signal .
+
+mo:Performance
+    a owl:Class .
+
+mo:Recording
+    a owl:Class .
+
+mo:Signal
+    a owl:Class .
+
+mt:value
+    a owl:DatatypeProperty;
+    rdfs:domain mt:AutomationParameter;
+    rdfs:range xsd:float, xsd:integer, xsd:int .
+
+mt:label
+    a owl:DatatypeProperty;
+    rdfs:domain mt:Annotation;
+    rdfs:range xsd:string .
+
+mt:functionOf
+    a owl:DatatypeProperty;
+    rdfs:domain mt:Envelope;
+    rdfs:range xsd:string;
+    rdfs:comment "A mathematical expression. Primarily for calculating a parameter between two automation events (e.g. can be a linear function of time.)" .
+
