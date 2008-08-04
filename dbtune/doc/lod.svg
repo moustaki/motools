@@ -16,7 +16,7 @@
    inkscape:version="0.46"
    sodipodi:docname="lod.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/moustaki/work/phd/applications/mlod/figs/lod.png"
+   inkscape:export-filename="/home/moustaki/work/workspace/motools/dbtune/doc/lod.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -57,8 +57,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.61399265"
-     inkscape:cx="182.67576"
-     inkscape:cy="457.695"
+     inkscape:cx="441.63651"
+     inkscape:cy="458.50934"
      inkscape:current-layer="layer1"
      id="namedview2387"
      showgrid="false"
@@ -92,6 +92,13 @@
        y="12.300976"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.98375964000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5293"
+       width="1073.3181"
+       height="700.34961"
+       x="-123.78771"
+       y="14.436328" />
     <image
        y="111.08557"
        x="156.86652"
