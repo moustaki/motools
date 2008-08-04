@@ -2,7 +2,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix mo: <http://purl.org/ontology/mo/>.
-@prefix mt: <http://example.org/ontology/multitrack.owl#>.
+@prefix mt: <http://purl.org/ontology/multitrack.owl#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix project: <http://ProjectName.org/>.
@@ -32,15 +32,15 @@
  project:verse a mo:Signal. 
 
  clips:voclas_001 a mt:AudioClip;
-     rdfs:label "The firs take of the intro";
+     rdfs:label "The first take of the intro";
      mt:signal project:intro. 
 
  clips:voclas_002 a mt:AudioClip;
-     rdfs:label "The firs take of the verse";
+     rdfs:label "The first take of the verse";
      mt:signal project:verse. 
 
  clips:voclas_003 a mt:AudioClip;
-     rdfs:label "The firs take of the chorus";
+     rdfs:label "The first take of the chorus";
      mt:signal project:chorus. 
 
  trk:vocals_001 a mt:AudioTrack;
