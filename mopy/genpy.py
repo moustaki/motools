@@ -310,6 +310,7 @@ def main():
 	spec_g.load("owl.rdfs")
 	spec_g.load("musicnet.rdf")
 	spec_g.load("time.owl")
+	spec_g.load("classicalmusicnav.owl")
 	spec_g.load("musicontology.rdfs")
 	spec_g.load("extras.rdfs")
 	spec_g.load("foaf.rdfs")
@@ -321,6 +322,7 @@ def main():
 
 	# FIXME : Why do these get lost in loading ?
 	spec_g.namespace_manager.bind("owl",rdflib.URIRef('http://www.w3.org/2002/07/owl#'))
+	spec_g.namespace_manager.bind("classicalmusicnav", rdflib.URIRef("http://grasstunes.net/ontology/classicalmusicnav.owl#"))
 	spec_g.namespace_manager.bind("timeline",rdflib.URIRef('http://purl.org/NET/c4dm/timeline.owl#'))
 	spec_g.namespace_manager.bind("time", rdflib.URIRef("http://www.w3.org/2006/time#"))
 	spec_g.namespace_manager.bind("myspace", rdflib.URIRef("http://grasstunes.net/ontology/myspace.owl#"))
