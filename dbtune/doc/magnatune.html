@@ -42,27 +42,51 @@ This service aims at publishing and interlinking with relevant data sources the 
 
 <h2><a name="browse" id="browse"></a>2. Browsing the dataset</h2>
 <p>
-All resource identifiers defined by this RDF dump are dereferencable, and support content negotiation. 
+All resource identifiers defined by this RDF dump are dereferencable. <!--, and support content negotiation. 
 Using the <i>Accept: application/rdf+xml</i> header field, a RDF/XML representation of the resource is sent back.
 Otherwise, a HTML representation, done using <a href="http://zitgist.com/">Zitgist</a>,
-is sent back.
-</p>
+is sent back. 
+</p>-->
 <p>
 Here are some entry points to the dataset:
 </p>
 
 <ul>
 
-<li><a href="http://dbtune.org/magnatune/artist/american_baroque">American Baroque</a> (artist)</li>
-<li><a href="http://dbtune.org/magnatune/artist/antiguru">Antiguru</a> (artist)</li>
-<li><a href="http://dbtune.org/magnatune/album/curtis-calliope1">Calliope</a> (album)</li>
-<li><a href="http://dbtune.org/magnatune/track/130">The Early Horn</a> (track)</li>
+<li><a href="http://dbtune.org/magnatune/artist/american_baroque">American Baroque</a> (artist)
+in <a href="http://demo.openlinksw.com/rdfbrowser2/?uri=http://dbtune/magnatune/artist/american_baroque">OpenLink data explorer</a>,
+<a href="http://dataviewer.zitgist.com/?uri=http://dbtune.org/magnatune/artist/american_baroque">Zitgist data viewer</a>,
+<a href="http://beckr.org/marbles?uri=http://dbtune.org/magnatune/artist/american_baroque">Marbles</a>,
+<a href="http://www4.wiwiss.fu-berlin.de/rdf_browser/?browse_uri=http://dbtune.org/magnatune/artist/american_baroque">DISCO</a>,
+<a href="http://dig.csail.mit.edu/2005/ajar/release/tabulator/0.8/tab.html?uri=http://dbtune.org/magnatune/artist/american_baroque">Tabulator</a>
+</li>
+<li><a href="http://dbtune.org/magnatune/artist/antiguru">Antiguru</a> (artist)
+in <a href="http://demo.openlinksw.com/rdfbrowser2/?uri=http://dbtune/magnatune/artist/antiguru">OpenLink data explorer</a>,
+<a href="http://dataviewer.zitgist.com/?uri=http://dbtune.org/magnatune/artist/antiguru">Zitgist data viewer</a>,
+<a href="http://beckr.org/marbles?uri=http://dbtune.org/magnatune/artist/antiguru">Marbles</a>,
+<a href="http://www4.wiwiss.fu-berlin.de/rdf_browser/?browse_uri=http://dbtune.org/magnatune/artist/antiguru">DISCO</a>,
+<a href="http://dig.csail.mit.edu/2005/ajar/release/tabulator/0.8/tab.html?uri=http://dbtune.org/magnatune/artist/antiguru">Tabulator</a>
+</li>
+<li><a href="http://dbtune.org/magnatune/album/curtis-calliope1">Calliope</a> (album)
+in <a href="http://demo.openlinksw.com/rdfbrowser2/?uri=http://dbtune/magnatune/album/curtis-calliope1">OpenLink data explorer</a>,
+<a href="http://dataviewer.zitgist.com/?uri=http://dbtune.org/magnatune/album/curtis-calliope1">Zitgist data viewer</a>,
+<a href="http://beckr.org/marbles?uri=http://dbtune.org/magnatune/album/curtis-calliope1">Marbles</a>,
+<a href="http://www4.wiwiss.fu-berlin.de/rdf_browser/?browse_uri=http://dbtune.org/magnatune/album/curtis-calliope1">DISCO</a>,
+<a href="http://dig.csail.mit.edu/2005/ajar/release/tabulator/0.8/tab.html?uri=http://dbtune.org/magnatune/album/curtis-calliope1">Tabulator</a>
+</li>
+<li><a href="http://dbtune.org/magnatune/track/130">The Early Horn</a> (track)
+in <a href="http://demo.openlinksw.com/rdfbrowser2/?uri=http://dbtune/magnatune/track/130">OpenLink data explorer</a>,
+<a href="http://dataviewer.zitgist.com/?uri=http://dbtune.org/magnatune/track/130">Zitgist data viewer</a>,
+<a href="http://beckr.org/marbles?uri=http://dbtune.org/magnatune/track/130">Marbles</a>,
+<a href="http://www4.wiwiss.fu-berlin.de/rdf_browser/?browse_uri=http://dbtune.org/magnatune/track/130">DISCO</a>,
+<a href="http://dig.csail.mit.edu/2005/ajar/release/tabulator/0.8/tab.html?uri=http://dbtune.org/magnatune/track/130">Tabulator</a>
+
+</li>
 
 </ul>
 
 <p>
-The dump also exposes some informational RDF documents. However, they do not load properly into DISCO (due to the small
-time out value on the server side). It works fine using the <a href="http://dig.csail.mit.edu/2005/ajar/ajaw/tab.html">Tabulator</a> though.
+The dump also exposes some informational RDF documents. 
 </p>
 
 <p>
@@ -80,12 +104,12 @@ Such documents are:
 
 </ul>
 
-<p>
+<!--<p>
 To test them using a Semantic Web browser, load one of them into the Tabulator (eg. 
 <a href="http://dbtune.org/magnatune/all/artist">http://dbtune.org/magnatune/all/artist</a>)
 and then look for <a href="http://purl.org/ontology/mo/MusicArtist">http://purl.org/ontology/mo/MusicArtist</a>. You will then see
 the list of all Jamendo MusicArtist instances.
-</p>
+</p>-->
 
 <h2><a name="query" id="query"></a>3. Querying the dataset</h2>
 <p>
