@@ -14,7 +14,7 @@ server(Port, Options) :-
 
 
 
-namespace('http://moustaki.org:1111').
+namespace('http://dbtune.org/chord').
 
 /**
  * Handles documents
@@ -25,8 +25,10 @@ reply(Request) :-
 	atom_concat('/',Symbol,SymbolT),
 	!,
 	(parse(Symbol,RDF) ->
-		(format('Content-type: application/rdf+xml~n~n', []),
+		(
 		current_output(S),
+		set_stream(S,encoding(utf8)),
+		format('Content-type: application/rdf+xml; charset=UTF-8~n~n', []),
 		rdf_write_xml(S,RDF));
 		(
 		throw(http_reply(server_error('The specified chord symbol is not valid~n~n')))
