@@ -109,7 +109,7 @@ class Generator:
 				# Add the domain types of any inverse properties
 				for invProp in self.graph.objects(prop, OWL.inverseOf):
 					print "Adding domain types of "+str(invProp)+" inverse of "+str(prop)
-					rTypes.extend(self.graph.objects(invProp, RDFS.range))
+					rTypes.extend(self.graph.objects(invProp, RDFS.domain))
 				
 				rTypeNames = []
 				allowLits=False
