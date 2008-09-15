@@ -48,9 +48,9 @@
 
     <owl:ObjectProperty rdf:about="#friend">
         <rdf:type rdf:resource="&owl;SymmetricProperty"/>
-		<rdfs:subPropertyOf rdf:resource="&foaf;knows">
-        <rdfs:range rdf:resource="#Page"/>
-        <rdfs:domain rdf:resource="#Page"/>
+		<rdfs:subPropertyOf rdf:resource="&foaf;knows"/>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+        <rdfs:domain rdf:resource="&foaf;Person"/>
         <rdfs:comment
             >MySpace friend relationship - undirected</rdfs:comment>
     </owl:ObjectProperty>
@@ -73,13 +73,23 @@
 
     <owl:ObjectProperty rdf:about="#topFriend">
         <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
-		<rdfs:subPropertyOf rdf:resource="&foaf;knows">
+		<rdfs:subPropertyOf rdf:resource="&foaf;knows"/>
         <rdfs:comment
             >MySpace top friend relationship - a directed relationship</rdfs:comment>
-        <rdfs:range rdf:resource="#Page"/>
-        <rdfs:domain rdf:resource="#Page"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
+        <rdfs:range rdf:resource="#MusicArtist"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+        <rdfs:domain rdf:resource="#MusicArtist"/>
     </owl:ObjectProperty>
     
+    <!-- http://grasstunes.net/ontology/myspace.owl#age-->
+
+    <owl:ObjectProperty rdf:about="#age">
+        <rdfs:comment
+            >MySpace age relationship - an age of a MySpace agent in years</rdfs:comment>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:ObjectProperty>
 
 
     <!-- 
@@ -191,8 +201,8 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#MusicArtist -->
 
     <owl:Class rdf:about="#MusicArtist">
-        <rdfs:subClassOf rdf:resource="#Page"/>
         <rdfs:subClassOf rdf:resource="&mo;MusicArtist"/>
+		<rdfs:subClassOf rdf:resource="&foaf;Person"/>
         <rdfs:comment
             >MySpace Artist page</rdfs:comment>
     </owl:Class>
@@ -228,6 +238,13 @@
     </owl:Class>
     
 
+    <!-- http://grasstunes.net/ontology/myspace.owl#Agent -->
+
+    <owl:Class rdf:about="#Agent">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+        <rdfs:comment>MySpace agent</rdfs:comment>
+    </owl:Class>
+
 
     <!-- http://purl.org/ontology/mo/AudioFile -->
 
@@ -252,6 +269,15 @@
     <owl:Class rdf:about="&foaf;Agent"/>
     
 
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="&foaf;Person">
+	<rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+
+    <!-- http://xmlns.com/foaf/0.1/knows -->
+
+    <owl:Class rdf:about="&foaf;knows"/>
 
     <!-- http://xmlns.com/foaf/0.1/Document -->
 
