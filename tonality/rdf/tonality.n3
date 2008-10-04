@@ -18,6 +18,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix note: <http://purl.org/ontology/chord/note/>.
 @prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+@prefix af: <http://purl.org/ontology/af/> .
 
 <> 
 	a owl:Ontology;
@@ -25,19 +26,20 @@
 	rdfs:label "The Tonality ontology";
 	rdfs:comment """
 
-		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works and expressions. At this stage, the ontology has two different levels of expresiveness:
+		Sound is a physical phenomenom produced by variation of pressure of an acoustic wave. This physical phenomenom is perceived by humans by means of the earing. Physical properties of the sound (acoustic features) are perceived by humans as psychological features (timbre, pitch, duration, loudness...) producing a mental states in the receptor.
 
-		-The highest level describes music theory structures such as keys and scales, used as resources for composition in order to create a specific tonality.
-		-A second level describes tonality in terms of mathematical models considering the tonality as a projection onto a tonal space that represents a cognitive/psychological perception of intervals, chords, pitches or keys relationships.
+		Music is the high-level human production of the sound that does not convey information but is based on the effects that the sound produces in ourselves. Music "languages" and systems are built to categorize and organize the sound domain. Musical notes are the categories we use to express and perceive music as phonemes are the acoustical categories that allow us to convey information. As it happens for the phonemes, real note events are not equal but they can be distinguised by physical properties that affect our perception producing a wide range of variations.
 
-		Tonal regions can be classified as TonalEvent resources with specific factors that characterizing it.
+		The perception of the fundamental frequency of the sound (pitch) is of particular interest in music as it is the basis for the construction of musical systems and a really important factor of music production. Perceptios are combined in the brain in complex cognitive constructions. Generally speaking, cognitive structures related to pitch are referred as Tonality.
+
+		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works and expressions. This ontology has been designed in the Music Ontology framework and closely collaborates with the Audio Features Ontology.
 		
 		This document is in a testing stage. Contribution can be made through the Music Ontology community at http://wiki.musicontology.com/
 
 	""";
 	dc:creator "David Pastor Escuredo";
         foaf:maker "David Pastor Escuredo";
-        dc:date "$Date: 2008/03/22 18:05:11 $";
+        dc:date "$Date: 2008/10/04 18:05:11 $";
 	.
 
 # People
@@ -50,78 +52,58 @@
 #### CLASSES ########
 #####################
 
-tonality:Interval
-	a owl:Class;
-	vs:term_status "stable";
-	rdfs:label "Interval";
-	rdfs:comment """
-		This OWL class represents the distance in pitch between two notes. Intervals can be referred to distinct tuning systems and measured with different metrics as required. This concept is most basic piece of the ontology used to build other musical structures.	
-	""";	
-	.
-
-tonality:Set
-	a owl:Class;
-	vs:term_status "unstable";
-	rdfs:label "set"
-	rdfs:comment """
-		Set of intervals that defines a music system
-	""";
-	.
-
-tonality:IntervalClass
-	a owl:Class;
-	vs:term_status "unstable";
-	#rdfs:subClassOf tonality:Interval;
-	rdfs:label "Interval Class";
-	rdfs:comment """
-		Interval class represents the distance between two unordered pitch classes where octave, enharmonically_equivalent and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distances from the minimum to the maximum value possible within the octave. Note: may be an interval subclass?	
-	""";
-	.
-
 tonality:Pitch
 	a owl:Class;
 	rdfs:label "Pitch";
 	rdfs:comment """
-		Pitch is a frequency represented by a musical note. Pitch generalizes the note transcription but may be dependent of the octave if the tuning is not TET. A C in the 3rd octave may not be equivalent to a C in the 5th octave.	
+		Pitch is the perception of the fundamental frequency of a sound. Each played note (a real event) owns physical properties that can be viewed also as human perceptions. The matching between physical and psycological properties is not linear either a one-to-one set of relationships. Tonality is about pitches perception and relationships within a meaningful expression. Pitches are represented by symbols (symbolic notes) used to categorize our perception of sounds as a musical vocabulary.
 	""";
 	vs:term_status "unstable";
 	.
 
 tonality:PitchClass
 	a owl:Class;
-	owl:sameAs co:note;
 	rdfs:label "Pitch Class";
+	rdfs:subClassOf tonality:Pitch;
 	rdfs:comment """
-		Another generalization where octave, enharmonically_equivalent and inversion equivalency is again assumed. So pitches are equivalent from octave to octave and wrapped into a pitch class. Note: Should be a pitch subclass?	
+		Generalization of pitch families where octave, enharmonic and inversion equivalencies are assumed. Equivalent pitches in different octaves are wrapped in the same class. Thus, different frequencies fall in the same musical category.
 	""";
 	vs:term_status "unstable";
 	.
-		
-tonality:Tonality
-	a owl:Class;
-	rdfs:subClassOf event:Event;
-	vs:term_status "deprecated";
-	rdfs:label "Tonality";
-	rdfs:comment "Concept used to classify tonal regions (see TonalEvent). May be removed";
-	.
-		
-tonality:TonalEvent
-	a owl:Class;
-	rdfs:subClassOf event:Event;
-	rdfs:label "Tonal Event";
+	
+tonality:Interval
+	a owl:Class;	
+	rdfs:label "Interval";
 	rdfs:comment """
-		 A tonal event classifies one particular segment of the timeline of a signal with specific tonal content defining tonal regions. Each tonal element associated with the event is considered a factor
+		Distance in pitch between two different sounds. Intervals can be referred to distinct tuning systems and measured with different metrics. Intervals establish the relationships among pitches, so they are the basic elements to build musical structures. The interval corresponds physically to a frequency distance, but the psychological distance between two pitches is not derived from it.
 	""";
-	vs:term_status "stable";
+	vs:term_status "stable";	
+	.
+
+tonality:IntervalClass
+	a owl:Class;
+	vs:term_status "unstable";
+	rdfs:subClassOf tonality:Interval;
+	rdfs:label "Interval Class";
+	rdfs:comment """
+		Generalization if interval classes representing the between two unordered pitch classes where octave, enharmonic and inversional equivalencies are assumed. There are then 7 classes (0-6) representing distances from the minimum to the maximum value possible within the octave. 
+	""";
+	.
+
+tonality:Set
+	a owl:Class;
+	vs:term_status "unstable";
+	rdfs:label "Set"
+	rdfs:comment """
+		Music set formed of an unordered bunch of musical entities. For example {C, D, E, F, G, A, B} is the diatonic set for the key C major.
+	""";
 	.
 
 tonality:Scale
 	a owl:Class;
 	rdfs:label "Scale";
 	rdfs:comment """
-		Representation of musical scales in two senses:
-			Scale-type: an abstract structure of intervals associated to specific degrees. Eg: diatonic scale
-			Scale: scale-type at a certain pitch. Eg: A major scale.
+		Musical sets can be ordered setting a tonic or a final pitch, forming scales. Then, each member of the set plays a role in the scale in respect of the tonic. Therefore, scales are ordered sequences of pitches in respect of a tonic. A progression of notes along a fragment of a musical work can be also considered a scale with a final note, but in this case those notes belongs to a more elementary structure understood as a scale in the first sense.
 	""";
 	vs:term_status "stable";
 	.
@@ -129,14 +111,28 @@ tonality:Scale
 tonality:Mode
 	a owl:Class;
 	rdfs:label "Mode";
-	rdfs:comment "Modes represents each of the different cyclic sequences of intervals defined by a scale-type.";
+	rdfs:comment """
+		Sets can be ordered in several ways forming different scales. The ways we can order a set are the "Modes", so each scale has a particular shape which really describes it. From a tonic and a mode we can generate a scale.
+	""";
+	vs:term_status "stable";
+	.
+
+tonality:KeyMode
+	a owl:Class;
+	rdfs:label "Key Mode";
+	rdfs:subClassOf tonality:Mode;
+	rdfs:comment """
+		Minor or major modes of a key.
+	""";
 	vs:term_status "stable";
 	.
 
 tonality:Degree
 	a owl:Class;
 	rdfs:label "Degree";
-	rdfs:comment "Degrees define the ordenation and the functionality of tonal structures.";
+	rdfs:comment """
+		Ordered sequences owns pitch relationships among their members. Each member is a degree and its tonal and harmonic properties depend on its position in the sequence.
+	""";
 	vs:term_status "unstable";
 	.
 
@@ -144,46 +140,22 @@ tonality:Key
 	a owl:Class;
 	rdfs:label "Key";
 	rdfs:comment """
-		Key is defined as the centre of gravity origined by a chord progession and relying on a diatonic scale. Key is intrinsically related to the key signature as the key signature represent the most stable notes in the score. Tonal music is developed around the concept of Key, but polytonal and atonal music can not be accurately described in terms of keys.
+		Keys are a musical element mainly defined and useful within the western music. It is quite difficult to give a precise definition of key that everybody agrees with. In the Tonality Ontology, the key is seen as higher abstraction of scales only meaningful in traditional tonal music.
+Keys own a tonic and a mode (normally major and minor) and are used as pattern for stable compositions. Note that the minor mode of a key is a mixture of the minor mode of the diatonic set and the harmonic and melodic minor scales.
+On the other hand, keys are very important in harmony. A chord progression establish a key through a fragment and vice-versa the key establish the harmonic function of a set of chords.
 	""";
 	vs:term_status "unstable";
 	.
-
-tonality:HarmonicFunction
+		
+tonality:TonalSegment
 	a owl:Class;
-	rdfs:label "Harmonic Function";
+	rdfs:subClassOf af:MusicSegment;
+	rdfs:label "Tonal Segment";
 	rdfs:comment """
-		This class is declared to give specific harmonic information for each degree of the key besides what the actual name of the degree suggests. It is thought for future extensions.
+		 A tonal classifier of one particular segment of the timeline of a signal with specific tonal content defining tonal regions. Each tonal element associated with the event is considered as a factor. The audio features ontology owns a wider range of classifiers related to tonality and other features.
 	""";
-	vs:term_status "deprecated";
+	vs:term_status "stable";
 	.
-
-tonality:HeptatonicScale
-	a owl:Class;
-	rdfs:subClassOf tonality:Scale;
-	rdfs:label "heptatonic scale";
-	rdfs:comment "A particular scale subclass that represents scale-types formed by 7 notes.";
-	tonality:num_degrees 7;
-	vs:term_status "deprecated";
-	.
-
-tonality:DiatonicScale
-	a owl:Class;
-	rdfs:subClassOf tonality:Scale;
-	rdfs:label "diatonic scale";
-	rdfs:comment "Heptatonic scales which are defined on the diatonic set";
-	vs:term_status "testing";
-	.
-
-tonality:PentatonicScale
-	a owl:Class;
-	rdfs:subClassOf tonality:Scale;
-	rdfs:label "pentatonic scale";
-	rdfs:comment "A particular scale subclass that represents scale-types formed by 5 notes.";
-	tonality:num_degrees 5;
-	vs:term_status "deprecated";
-	.
-
 
 ##############################
 ###DEFINED PROPERTIES#########
@@ -194,7 +166,7 @@ tonality:PentatonicScale
 tonality:steps a owl:FunctionalProperty;
         vs:term_status "unstable";
         rdfs:label "steps";
-        rdfs:comment "Measure for intervals in equally temperaments";
+        rdfs:comment "Measure for intervals in equally-tempered systems";
         rdfs:domain tonality:Interval;
 	rdfs:domain tonality:IntervalClass;
         rdfs:range xsd:decimal;
@@ -272,7 +244,6 @@ tonality:just_cents a owl:FunctionalProperty;
 	a owl:DatatypeProperty;
 	.
 	
-
 tonality:interval_class a owl:SymmetricProperty;
 	vs:term_status "unstable";
 	rdfs:label "of interval class";
@@ -343,9 +314,6 @@ tonality:interval a owl:ObjectProperty;
 	rdfs:domain co:Chord;
 	rdfs:domain tonality:Set;
 	rdfs:range tonality:Interval;
-	#rdfs:equivalentProperty chord:interval;
-	#rdfs:domain tonality:Tonality;
-	#rdfs:domain tonality:Key;
 	.
 
 #DEGREE RELATED
@@ -369,19 +337,6 @@ tonality:degree_position a owl:FunctionalProperty;
 	a owl:DatatypeProperty;
 	.
 
-tonality:note a owl:FunctionalProperty;
-	vs:term_status "unstable";
-	rdfs:label "note";
-	rdfs:comment """
-		Note corresponding to the degree if there is a tonic specification. We can express it with a note individual or with a pitch class which can be more accurate indeed. Elements of the class Pitch could also use this property (and the octave one).
-	""";
-	rdfs:domain tonality:Degree;
-	rdfs:domain tonality:Pitch;
-	rdfs:range co:Note;
-	a owl:ObjectProperty;
-	rdfs:equivalentProperty tonality:pitch_class;
-	.
-
 tonality:pitch_class a owl:FunctionalProperty;
 	vs:term_status "unstable";
 	rdfs:label "pitch class";
@@ -391,7 +346,7 @@ tonality:pitch_class a owl:FunctionalProperty;
 	a owl:ObjectProperty;
 	rdfs:domain tonality:Degree;
 	rdfs:domain tonality:Pitch;
-	rdfs:range co:PitchClass;
+	rdfs:range tonality:PitchClass;
 	.
 
 tonality:pitch a owl:FunctionalProperty;
@@ -424,13 +379,11 @@ tonality:frequency a owl:FunctionalProperty;
 	a owl:DatatypeProperty;
 	.
 
-##Check this out
-	
 tonality:owned_chord a owl:ObjectProperty;
 	vs:term_status "unstable";
 	rdfs:label "owned chord";
 	rdfs:comment """
-		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then altered ones borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See borrowed_chord
+		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See borrowed_chord
 	""";
 	rdfs:domain tonality:Degree;
 	rdfs:range co:Chord;
@@ -440,18 +393,10 @@ tonality:borrowed_chord a owl:ObjectProperty;
 	vs:term_status "unstable";
 	rdfs:label "borrowed chord";
 	rdfs:comment """
-		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability like the V degree of the relative minor key. Some degrees substitute its seventh owned interval by some other seventh interval from the parallel key giving a borrowed chord but still diatonic (altered chords came from non diatonic intervals). An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key).
+		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability like the V degree of the relative minor key. Some degrees substitute its seventh owned interval by some other seventh interval from the parallel key giving a borrowed chord but still diatonic (altered chords came from non diatonic intervals). An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key). Borrowed chords are normally used in a key (minor or major), however other chords can be used while playing in a particular key. These chords should be classified as other tonal events (see audio features ontology).
 	""";
 	rdfs:domain tonality:Degree;
 	rdfs:range co:Chord;
-	.
-
-tonality:harmonic_function a owl:ObjectProperty;
-	vs:term_status "unstable";
-	rdfs:label "harmonic function";
-	rdfs:comment "Declared to relate a HarmonicFunction individual or resource (so far it is not used).";
-	rdfs:domain tonality:Degree;
-	rdfs:range tonality:HarmonicFunction;
 	.
 
 tonality:degree a owl:ObjectProperty;
@@ -460,18 +405,31 @@ tonality:degree a owl:ObjectProperty;
 	rdfs:comment "Binds a degree resource to a structure.";
 	rdfs:domain tonality:Key;
 	rdfs:domain tonality:Scale;
+	rdfs:domain tonality:Mode;
 	rdfs:range tonality:Degree;
 	.
 
-#SCALES AND MODES
+#SCALES, KEYS AND MODES
 
-tonality:on_degree a owl:FunctionalProperty;
+tonality:mode a owl:ObjectProperty;
 	vs:term_status "unstable";
-	rdfs:label "on degree";
-	rdfs:comment "Defines a scale degree as root of the mode.";
-	rdfs:domain tonality:Mode;
-	rdfs:range xsd:integer;	
-	a owl:DatatypeProperty;
+	rdfs:label "mode";
+	rdfs:comment """
+		Mode of a scale (its shape). The scale is well defined by a tonic or reference note and a mode (different organizations of a set). Modes are also used to characterize keys, but in a slightly different way. There are only two modes for keys (major and minor) which actually do not wholy correspond to the minor and major scale modes. Both structures can be defined by an ordered sequence of notes.
+	""";
+	rdfs:domain tonality:Scale;
+	rdfs:domain tonality:Key;
+	rdfs:range tonality:Mode;
+	.
+
+tonality:tonic a owl:FunctionalProperty;
+	a owl:ObjectProperty;
+	vs:term_status "unstable";
+	rdfs:label "tonic";
+	rdfs:comment "Sets the tonic of a key or scale if the first degree is not bound to a note.";
+	rdfs:domain tonality:Key;
+	rdfs:domain tonality:Scale;
+	rdfs:range tonality:Pitch;	
 	.
 
 tonality:num_degrees a owl:FunctionalProperty;
@@ -483,45 +441,12 @@ tonality:num_degrees a owl:FunctionalProperty;
 	a owl:DatatypeProperty;
 	.
 
-tonality:scale_type a owl:ObjectProperty;
-	vs:term_status "unstable";
-	rdfs:label "scale type";
-	rdfs:comment """
-		Scales comprises scale-types (what is actually a scale) and scales understood as scale at a certain pitch). We can define a scale by its scale_type and a tonic. Eg: A major scale is the major scale (scale_type) with A as tonic.
-	""";
-	rdfs:domain tonality:Scale;
-	rdfs:range tonality:Scale;
-	.
-
-tonality:from_mode a owl:ObjectProperty;
-	vs:term_status "unstable";
-	rdfs:label "from mode";
-	rdfs:comment """
-		We can consider a scale as one of the mode of other scale. Eg. The minor scale is indeed the sixth mode of a diatonic scale or we can talk about a Dorian scale.
-	""";
-	rdfs:domain tonality:Scale;
-	rdfs:range tonality:Mode;
-	.
-
 tonality:scale a owl:ObjectProperty;
 	vs:term_status "unstable";
 	rdfs:label "scale";
 	rdfs:comment "Binds a scale to other structures.";
-	rdfs:domain tonality:Mode;
 	rdfs:domain tonality:Key;
 	rdfs:range tonality:Scale;
-	.
-
-#Keys
-
-tonality:tonic a owl:FunctionalProperty;
-	vs:term_status "unstable";
-	rdfs:label "tonic";
-	rdfs:comment "Sets the tonic of a key or scale if the first degree is not bound to a note.";
-	rdfs:domain tonality:Key;
-	rdfs:domain tonality:Scale;
-	rdfs:range co:Note;
-	a owl:ObjectProperty;
 	.
 
 ##############
@@ -575,7 +500,7 @@ int:ic5 a tonality:IntervalClass;
 int:ic6 a tonality:IntervalClass;
 	rdfs:label "Interval class 6";
 	vs:term_status "unstable";
-	rdfs:comment "augmented fourth and disminished fifth and enharmonically_equivalents.";
+	rdfs:comment "augmented fourth and diminished fifth and enharmonically_equivalents.";
 	tonality:semitones 6;
 	.
 
@@ -671,10 +596,10 @@ int:fourth_aug a tonality:Interval;
 	dc:type "chromatic";
 	.
 
-int:fifth_dis a tonality:Interval;
-	rdfs:label "disminished 5th";
+int:fifth_dim a tonality:Interval;
+	rdfs:label "diminished 5th";
 	vs:term_status "unstable";
-	rdfs:comment "Chromatic disminished 5th 12 EDO.";
+	rdfs:comment "Chromatic diminished 5th 12 EDO.";
 	tonality:tuning tuning:twelve_edo;
 	tonality:scale_steps 4;
 	tonality:semitones 6;
@@ -792,44 +717,16 @@ int:tritone a tonality:Interval;
 	tonality:steps 3;
 	tonality:cents 600;
 	tonality:strength "dissonant";
-	tonality:enharmonically_equivalent int:fifth_dis;
+	tonality:enharmonically_equivalent int:fifth_dim;
 	tonality:enharmonically_equivalent int:fourth_aug;
 	.
 
-#############Example of intervals in Meantone###############
+#################### Mode Individuals ###############
 
-int:tritone_meantone a tonality:Interval;
-	rdfs:label "tritone meantone";
+mode:major a tonality:Mode;
+	rdfs:label "major mode";
 	vs:term_status "unstable";
-	rdfs:comment """
-		Tritone in Meantone Intonation measured in one octave. In Meantone temperament it just equivalent to a augmented fourth and not a to a disminished 5th
-	""";
-	tonality:tuning tuning:meantone;	
-	tonality:ratio "7/5";
-	tonality:cents 582.5;
-	tonality:strength "dissonant";
-	.
-
-int:wolf_fifth_meantone a tonality:Interval;
-	rdfs:label "wolf fifth meantone";
-	vs:term_status "unstable";
-	rdfs:comment """
-		Really dissonat interval produced in meantone temperament. The appearance of this interval in the meantone tuning was the reason to avoid it. The Just Intonation system produces a howl of 35.683 cents sharper than a just fifth which makes it really augmented and dissonant.
-	""";
-	tonality:tuning tuning:meantone;	
-	tonality:ratio "32/21";
-	tonality:cents 737.637;
-	tonality:strength "very dissonant";
-	.
-
-
-#################### Scales Individuals ###############
-
-#I have to think if i should make a class of this. Then we remove the scale_type thing...
-scale:major a tonality:DiatonicScale;
-	rdfs:label "Major scale";
-	vs:term_status "unstable";
-	rdfs:comment "Major scale";
+	rdfs:comment "The major mode (ionian)";
 	tonality:num_degrees 7;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -858,7 +755,7 @@ scale:minor a tonality:DiatonicScale;
 	rdfs:label "Natural Minor scale";
 	vs:term_status "unstable";
 	rdfs:comment """
-		The Natural Minor scale which is the minor relative of the major scale and the Eloian mode of the diatonic scale. It is a very stable scale but it lacks a major seventh
+		The Natural Minor scale which is the minor relative of the major scale and the Eolian mode of the diatonic scale. It is a very stable scale but it lacks a major seventh
 	""";
 	tonality:num_degrees 7;
 	tonality:from_mode mode:aeolian;
@@ -1031,7 +928,7 @@ mode:locrian
 	rdfs:label "Locrian mode";
 	vs:term_status "unstable";
 	rdfs:comment """
-		Seventh mode of a diatonic scale. The main characteristic is the disminished fifth which makes this mode very intestable and used in Jazz for example.
+		Seventh mode of a diatonic scale. The main characteristic is the diminished fifth which makes this mode very intestable and used in Jazz for example.
 	""";
 	tonality:scale scale:diatonic;
 	tonality:on_degree 6;
