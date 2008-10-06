@@ -44,6 +44,14 @@ tuning:TuningSystem
 	vs:term_status "unstable";
 	.
 
+tuning:MeantoneTemperament
+	a owl:Class;
+	rdfs:subClassOf tuning:TuningSystem;
+	rdfs:label "Meantone temperament";
+	rdfs:comment "Meantone temperament.";
+	vs:term_status "unstable";
+	.
+
 tuning:EqualTemperament
 	a owl:Class;
 	rdfs:subClassOf tuning:TuningSystem;
@@ -82,6 +90,8 @@ tuning:InstrumentTuning
 	vs:term_status "unstable";
 	.
 
+# PROPERTIES
+
 tuning:octave_divisions
 	a owl:FunctionalProperty;
 	rdfs:label "octave divisions";
@@ -102,18 +112,13 @@ tuning:frequency_A
 	a owl:DatatypeProperty;
 	.	
 
+# INDIVIDUALS
+
 tuning:twelve_edo
 	a tuning:EqualTemperament;
 	rdfs:label "edo 12";
 	rdfs:comment "equal division of the octave in twelve steps.";
 	vs:term_status "unstable";
 	tuning:octave_divisons 12;
-	.
-
-tuning:meantone
-	a tuning:JustIntonation;
-	rdfs:label "Meantone Temperament";
-	rdfs:comment "The meantone temperament (just intonation).";
-	vs:term_status "unstable";
 	.
 

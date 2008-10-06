@@ -17,6 +17,12 @@
     <rdfs:comment>Class representing the tuning of the octave.</rdfs:comment>
     <vs:term_status>unstable</vs:term_status>
   </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/tuning/MeantoneTemperament">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/tuning/TuningSystem"/>
+    <rdfs:label>Meantone temperament</rdfs:label>
+    <rdfs:comment>Meantone temperament.</rdfs:comment>
+    <vs:term_status>unstable</vs:term_status>
+  </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tuning/EqualTemperament">
     <rdfs:subClassOf rdf:resource="http://purl.org/ontology/tuning/TuningSystem"/>
     <rdfs:label>equal temperament</rdfs:label>
@@ -67,10 +73,4 @@
     <vs:term_status>unstable</vs:term_status>
     <tuning:octave_divisons rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</tuning:octave_divisons>
   </tuning:EqualTemperament>
-  <tuning:JustIntonation rdf:about="http://purl.org/ontology/tuning/meantone">
-    <rdfs:label>Meantone Temperament</rdfs:label>
-    <rdfs:comment>The meantone temperament (just intonation).</rdfs:comment>
-    <vs:term_status>unstable</vs:term_status>
-  </tuning:JustIntonation>
 </rdf:RDF>
-
