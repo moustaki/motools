@@ -97,16 +97,99 @@
 <hr/>
 <h2 id="overview">Overview of Terms</h2>
 <p>An alphabetical index of the ontology terms, divided into classes, properties and individuals. All the terms are hyperlinked to their detailed description for quick reference.</p><div class="glance" id="glance">
-<p>Classes: |  </p>
+<p>Classes: | <a href="#term_EqualTemperament">EqualTemperament</a> | <a href="#term_InstrumentTuning">InstrumentTuning</a> | <a href="#term_JustIntonation">JustIntonation</a> | <a href="#term_MeantoneTemperament">MeantoneTemperament</a> | <a href="#term_Tuning">Tuning</a> | <a href="#term_TuningSystem">TuningSystem</a> | <a href="#term_WellTemperament">WellTemperament</a> |  </p>
 <p>Properties: | <a href="#term_frequency_A">frequency_A</a> | 
 <a href="#term_octave_divisions">octave_divisions</a> | 
 </p>
-<p>Individuals: |  </p></div><h2 id="terms">Ontology Terms</h2><h2 id="terms_classes">Classes</h2><h2 id="terms_props">Properties</h2><div class="specterm" id="term_frequency_A">
+<p>Individuals: | <a href="#term_twelve_edo">twelve_edo</a> | 
+ </p></div><h2 id="terms">Ontology Terms</h2><h2 id="terms_classes">Classes</h2><div class="specterm" id="term_EqualTemperament"><h3>Class: tuning:EqualTemperament   -   unstable   -   </h3>
+<em>EqualTemperament</em>
+ - Temperament adjusts the intervals of the octave dividing it in equal steps. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_TuningSystem">TuningSystem</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_InstrumentTuning"><h3>Class: tuning:InstrumentTuning   -   unstable   -   </h3>
+<em>InstrumentTuning</em>
+ - Class representing the specific tuning of an instrument. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+</table>
+
+</div><div class="specterm" id="term_JustIntonation"><h3>Class: tuning:JustIntonation   -   unstable   -   </h3>
+<em>JustIntonation</em>
+ - Tuning system where intervals are just related by rationale number ratios. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_TuningSystem">TuningSystem</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_MeantoneTemperament"><h3>Class: tuning:MeantoneTemperament   -   unstable   -   </h3>
+<em>MeantoneTemperament</em>
+ - Meantone temperament. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_TuningSystem">TuningSystem</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Tuning"><h3>Class: tuning:Tuning   -   unstable   -   </h3>
+<em>Tuning</em>
+ - Class representing the specific tuning. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_frequency_A">frequency_A</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_TuningSystem"><h3>Class: tuning:TuningSystem   -   unstable   -   </h3>
+<em>TuningSystem</em>
+ - Class representing the tuning of the octave. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_octave_divisions">octave_divisions</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_WellTemperament"><h3>Class: tuning:WellTemperament   -   unstable   -   </h3>
+<em>WellTemperament</em>
+ - Temperament adjusts the intervals of the octave so the progression of interval is circular but not through equal intervals. 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_TuningSystem">TuningSystem</a></td>
+</tr>
+</table>
+
+</div><h2 id="terms_props">Properties</h2><div class="specterm" id="term_frequency_A">
 <h3>Property: tuning:frequency_A   -   unstable   -   </h3>
 <em>frequency_A</em> - tuning of an instrument given the exact frequency for A 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tuning/Tuning">tuning:Tuning</a></td>
+<td><a href="#term_Tuning">Tuning</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -120,7 +203,7 @@
 <em>octave_divisions</em> - Number of divisions within the octave. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tuning/TuningSystem">tuning:TuningSystem</a></td>
+<td><a href="#term_TuningSystem">TuningSystem</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -129,4 +212,9 @@
 
 
 </table>
-<br/></div><h2 id="terms_inds">Individuals</h2>
+<br/></div><h2 id="terms_inds">Individuals</h2><div class="specterm" id="term_twelve_edo">
+<h3>Individual: twelve_edo   -   </h3>
+<em>edo 12</em> - equal division of the octave in twelve steps. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_EqualTemperament">tuning:EqualTemperament</a></td>
+</tr></table></div>

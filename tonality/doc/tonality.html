@@ -103,7 +103,7 @@
 <hr/>
 <h2 id="overview">Overview of Terms</h2>
 <p>An alphabetical index of the ontology terms, divided into classes, properties and individuals. All the terms are hyperlinked to their detailed description for quick reference.</p><div class="glance" id="glance">
-<p>Classes: |  </p>
+<p>Classes: | <a href="#term_Degree">Degree</a> | <a href="#term_Interval">Interval</a> | <a href="#term_IntervalClass">IntervalClass</a> | <a href="#term_Key">Key</a> | <a href="#term_KeyMode">KeyMode</a> | <a href="#term_Mode">Mode</a> | <a href="#term_Pitch">Pitch</a> | <a href="#term_PitchClass">PitchClass</a> | <a href="#term_Scale">Scale</a> | <a href="#term_Set">Set</a> | <a href="#term_TonalSegment">TonalSegment</a> |  </p>
 <p>Properties: | <a href="#term_borrowed_chord">borrowed_chord</a> | 
 <a href="#term_cents">cents</a> | 
 <a href="#term_comparable_ratio">comparable_ratio</a> | 
@@ -133,13 +133,281 @@
 <a href="#term_tonic">tonic</a> | 
 <a href="#term_tuning">tuning</a> | 
 </p>
-<p>Individuals: |  </p></div><h2 id="terms">Ontology Terms</h2><h2 id="terms_classes">Classes</h2><h2 id="terms_props">Properties</h2><div class="specterm" id="term_borrowed_chord">
+<p>Individuals: | <a href="#term_interval/fifth_dim">interval/fifth_dim</a> | 
+<a href="#term_interval/fifth_per">interval/fifth_per</a> | 
+<a href="#term_interval/fourth_aug">interval/fourth_aug</a> | 
+<a href="#term_interval/fourth_per">interval/fourth_per</a> | 
+<a href="#term_interval/ic0">interval/ic0</a> | 
+<a href="#term_interval/ic1">interval/ic1</a> | 
+<a href="#term_interval/ic2">interval/ic2</a> | 
+<a href="#term_interval/ic3">interval/ic3</a> | 
+<a href="#term_interval/ic4">interval/ic4</a> | 
+<a href="#term_interval/ic5">interval/ic5</a> | 
+<a href="#term_interval/ic6">interval/ic6</a> | 
+<a href="#term_interval/ninth_min">interval/ninth_min</a> | 
+<a href="#term_interval/octave">interval/octave</a> | 
+<a href="#term_interval/second_maj">interval/second_maj</a> | 
+<a href="#term_interval/second_min">interval/second_min</a> | 
+<a href="#term_interval/seventh_maj">interval/seventh_maj</a> | 
+<a href="#term_interval/seventh_min">interval/seventh_min</a> | 
+<a href="#term_interval/sixth_maj">interval/sixth_maj</a> | 
+<a href="#term_interval/sixth_min">interval/sixth_min</a> | 
+<a href="#term_interval/third_maj">interval/third_maj</a> | 
+<a href="#term_interval/third_min">interval/third_min</a> | 
+<a href="#term_interval/tritone">interval/tritone</a> | 
+<a href="#term_interval/unison">interval/unison</a> | 
+<a href="#term_key/Abmajor">key/Abmajor</a> | 
+<a href="#term_key/Abminor">key/Abminor</a> | 
+<a href="#term_key/Amajor">key/Amajor</a> | 
+<a href="#term_key/Aminor">key/Aminor</a> | 
+<a href="#term_key/Asmajor">key/Asmajor</a> | 
+<a href="#term_key/Asminor">key/Asminor</a> | 
+<a href="#term_key/Bbmajor">key/Bbmajor</a> | 
+<a href="#term_key/Bbminor">key/Bbminor</a> | 
+<a href="#term_key/Bmajor">key/Bmajor</a> | 
+<a href="#term_key/Bminor">key/Bminor</a> | 
+<a href="#term_key/Bsmajor">key/Bsmajor</a> | 
+<a href="#term_key/Bsminor">key/Bsminor</a> | 
+<a href="#term_key/Cmajor">key/Cmajor</a> | 
+<a href="#term_key/Cminor">key/Cminor</a> | 
+<a href="#term_key/Csmajor">key/Csmajor</a> | 
+<a href="#term_key/Csminor">key/Csminor</a> | 
+<a href="#term_key/Dbmajor">key/Dbmajor</a> | 
+<a href="#term_key/Dbminor">key/Dbminor</a> | 
+<a href="#term_key/Dmajor">key/Dmajor</a> | 
+<a href="#term_key/Dminor">key/Dminor</a> | 
+<a href="#term_key/Dsmajor">key/Dsmajor</a> | 
+<a href="#term_key/Dsminor">key/Dsminor</a> | 
+<a href="#term_key/Ebmajor">key/Ebmajor</a> | 
+<a href="#term_key/Ebminor">key/Ebminor</a> | 
+<a href="#term_key/Emajor">key/Emajor</a> | 
+<a href="#term_key/Eminor">key/Eminor</a> | 
+<a href="#term_key/Esmajor">key/Esmajor</a> | 
+<a href="#term_key/Esminor">key/Esminor</a> | 
+<a href="#term_key/Fmajor">key/Fmajor</a> | 
+<a href="#term_key/Fminor">key/Fminor</a> | 
+<a href="#term_key/Fsmajor">key/Fsmajor</a> | 
+<a href="#term_key/Fsminor">key/Fsminor</a> | 
+<a href="#term_key/Gbmajor">key/Gbmajor</a> | 
+<a href="#term_key/Gbminor">key/Gbminor</a> | 
+<a href="#term_key/Gmajor">key/Gmajor</a> | 
+<a href="#term_key/Gminor">key/Gminor</a> | 
+<a href="#term_key/Gsmajor">key/Gsmajor</a> | 
+<a href="#term_key/Gsminor">key/Gsminor</a> | 
+<a href="#term_mode/aeolian">mode/aeolian</a> | 
+<a href="#term_mode/dorian">mode/dorian</a> | 
+<a href="#term_mode/harmonic_minor">mode/harmonic_minor</a> | 
+<a href="#term_mode/ionian">mode/ionian</a> | 
+<a href="#term_mode/locrian">mode/locrian</a> | 
+<a href="#term_mode/lydian">mode/lydian</a> | 
+<a href="#term_mode/major">mode/major</a> | 
+<a href="#term_mode/minor">mode/minor</a> | 
+<a href="#term_mode/mixolydian">mode/mixolydian</a> | 
+<a href="#term_mode/pentatonic_maj">mode/pentatonic_maj</a> | 
+<a href="#term_mode/pentatonic_min">mode/pentatonic_min</a> | 
+<a href="#term_mode/phrygian">mode/phrygian</a> | 
+ </p></div><h2 id="terms">Ontology Terms</h2><h2 id="terms_classes">Classes</h2><div class="specterm" id="term_Degree"><h3>Class: to:Degree   -   unstable   -   </h3>
+<em>Degree</em>
+ - 		Ordered sequences owns pitch relationships among their members. Each member is a degree and its tonal and harmonic properties depend on its position in the sequence.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_degree">degree</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_borrowed_chord">borrowed_chord</a></td>
+<td><a href="#term_owned_chord">owned_chord</a></td>
+<td><a href="#term_frequency">frequency</a></td>
+<td><a href="#term_pitch">pitch</a></td>
+<td><a href="#term_pitch_class">pitch_class</a></td>
+<td><a href="#term_degree_position">degree_position</a></td>
+<td><a href="#term_degree_name">degree_name</a></td>
+<td><a href="#term_interval">interval</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Interval"><h3>Class: to:Interval   -   stable   -   </h3>
+<em>Interval</em>
+ - 		Distance in pitch between two different sounds. Intervals can be referred to distinct tuning systems and measured with different metrics. Intervals establish the relationships among pitches, so they are the basic elements to build musical structures. The interval corresponds physically to a frequency distance, but the psychological distance between two pitches is not derived from it.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_interval">interval</a></td>
+<td><a href="#term_simple_interval">simple_interval</a></td>
+<td><a href="#term_enharmonically_equivalent">enharmonically_equivalent</a></td>
+<td><a href="#term_inversion">inversion</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_strength">strength</a></td>
+<td><a href="#term_octaves">octaves</a></td>
+<td><a href="#term_simple_interval">simple_interval</a></td>
+<td><a href="#term_enharmonically_equivalent">enharmonically_equivalent</a></td>
+<td><a href="#term_inversion">inversion</a></td>
+<td><a href="#term_interval_class">interval_class</a></td>
+<td><a href="#term_just_cents">just_cents</a></td>
+<td><a href="#term_cents">cents</a></td>
+<td><a href="#term_tuning">tuning</a></td>
+<td><a href="#term_comparable_ratio">comparable_ratio</a></td>
+<td><a href="#term_ratio">ratio</a></td>
+<td><a href="#term_scale_steps">scale_steps</a></td>
+<td><a href="#term_semitones">semitones</a></td>
+<td><a href="#term_steps">steps</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_IntervalClass"><h3>Class: to:IntervalClass   -   unstable   -   </h3>
+<em>IntervalClass</em>
+ - 		Generalization if interval classes representing the between two unordered pitch classes where octave, enharmonic and inversional equivalencies are assumed. There are then 7 classes (0-6) representing distances from the minimum to the maximum value possible within the octave. <br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_interval_class">interval_class</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_semitones">semitones</a></td>
+<td><a href="#term_steps">steps</a></td>
+</tr>
+
+<tr><th>sub-class-of:</th><td><a href="#term_Interval">Interval</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Key"><h3>Class: to:Key   -   unstable   -   </h3>
+<em>Key</em>
+ - 		Keys are a musical element mainly defined and useful within the western music. It is quite difficult to give a precise definition of key that everybody agrees with. In the Tonality Ontology, the key is seen as higher abstraction of scales only meaningful in traditional tonal music.<br/>
+Keys own a tonic and a mode (normally major and minor) and are used as pattern for stable compositions. Note that the minor mode of a key is a mixture of the minor mode of the diatonic set and the harmonic and melodic minor scales.<br/>
+On the other hand, keys are very important in harmony. A chord progression establish a key through a fragment and vice-versa the key establish the harmonic function of a set of chords.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_scale">scale</a></td>
+<td><a href="#term_tonic">tonic</a></td>
+<td><a href="#term_mode">mode</a></td>
+<td><a href="#term_degree">degree</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_KeyMode"><h3>Class: to:KeyMode   -   testing   -   </h3>
+<em>KeyMode</em>
+ - 		Minor or major modes of a key.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="#term_Mode">Mode</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Mode"><h3>Class: to:Mode   -   stable   -   </h3>
+<em>Mode</em>
+ - 		Sets can be ordered in several ways forming different scales. The ways we can order a set are the "Modes", so each scale has a particular shape which really describes it. From a tonic and a mode we can generate a scale.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_mode">mode</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_degree">degree</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Pitch"><h3>Class: to:Pitch   -   unstable   -   </h3>
+<em>Pitch</em>
+ - 		Pitch is the perception of the fundamental frequency of a sound. Each played note (a real event) owns physical properties that can be viewed also as human perceptions. The matching between physical and psycological properties is not linear either a one-to-one set of relationships. Tonality is about pitches perception and relationships within a meaningful expression. Pitches are represented by symbols (symbolic notes) used to categorize our perception of sounds as a musical vocabulary.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_tonic">tonic</a></td>
+<td><a href="#term_pitch">pitch</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_frequency">frequency</a></td>
+<td><a href="#term_octave">octave</a></td>
+<td><a href="#term_pitch_class">pitch_class</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_PitchClass"><h3>Class: to:PitchClass   -   unstable   -   </h3>
+<em>PitchClass</em>
+ - 		Generalization of pitch families where octave, enharmonic and inversion equivalencies are assumed. Equivalent pitches in different octaves are wrapped in the same class. Thus, different frequencies fall in the same musical category.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_pitch_class">pitch_class</a></td>
+</tr>
+
+
+<tr><th>sub-class-of:</th><td><a href="#term_Pitch">Pitch</a></td>
+</tr>
+</table>
+
+</div><div class="specterm" id="term_Scale"><h3>Class: to:Scale   -   stable   -   </h3>
+<em>Scale</em>
+ - 		Musical sets can be ordered setting a tonic or a final pitch, forming scales. Then, each member of the set plays a role in the scale in respect of the tonic. Therefore, scales are ordered sequences of pitches in respect of a tonic. A progression of notes along a fragment of a musical work can be also considered a scale with a final note, but in this case those notes belongs to a more elementary structure understood as a scale in the first sense.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }"><tr><th>in-range-of:</th><td><a href="#term_scale">scale</a></td>
+</tr>
+
+<tr><th>in-domain-of:</th><td><a href="#term_num_degrees">num_degrees</a></td>
+<td><a href="#term_tonic">tonic</a></td>
+<td><a href="#term_mode">mode</a></td>
+<td><a href="#term_degree">degree</a></td>
+<td><a href="#term_interval">interval</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_Set"><h3>Class: to:Set   -   unstable   -   </h3>
+<em>Set</em>
+ - 		Music set formed of an unordered bunch of musical entities. For example {C, D, E, F, G, A, B} is the diatonic set for the key C major.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+<tr><th>in-domain-of:</th><td><a href="#term_interval">interval</a></td>
+</tr>
+
+</table>
+
+</div><div class="specterm" id="term_TonalSegment"><h3>Class: to:TonalSegment   -   stable   -   </h3>
+<em>TonalSegment</em>
+ - 		 A tonal classifier of one particular segment of the timeline of a signal with specific tonal content defining tonal regions. Each tonal element associated with the event is considered as a factor. The audio features ontology owns a wider range of classifiers related to tonality and other features.<br/>
+	 
+<br/>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+<table style="th { float: top; }">
+
+<tr><th>sub-class-of:</th><td><a href="http://purl.org/ontology/af/MusicSegment">af:MusicSegment</a></td>
+</tr>
+</table>
+
+</div><h2 id="terms_props">Properties</h2><div class="specterm" id="term_borrowed_chord">
 <h3>Property: to:borrowed_chord   -   unstable   -   </h3>
 <em>borrowed_chord</em> - 		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability like the V degree of the relative minor key. Some degrees substitute its seventh owned interval by some other seventh interval from the parallel key giving a borrowed chord but still diatonic (altered chords came from non diatonic intervals). An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key). Borrowed chords are normally used in a key (minor or major), however other chords can be used while playing in a particular key. These chords should be classified as other tonal events (see audio features ontology).<br/>
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Degree">to:Degree</a></td>
+<td><a href="#term_Degree">Degree</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -154,7 +422,7 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -168,7 +436,7 @@
 <em>comparable_ratio</em> - Closest ratio in a Just Intonation tuning for a given equally-tempered interval. (This is actually very optional). 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -181,13 +449,13 @@
 <em>degree</em> - Binds a degree resource to a structure. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Mode">to:Mode</a></td>
-<td><a href="http://purl.org/ontology/tonality/Scale">to:Scale</a></td>
-<td><a href="http://purl.org/ontology/tonality/Key">to:Key</a></td>
+<td><a href="#term_Mode">Mode</a></td>
+<td><a href="#term_Scale">Scale</a></td>
+<td><a href="#term_Key">Key</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/Degree">to:Degree</a></td>
+<td><a href="#term_Degree">Degree</a></td>
 </tr>
 
 
@@ -198,7 +466,7 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Degree">to:Degree</a></td>
+<td><a href="#term_Degree">Degree</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -211,7 +479,7 @@
 <em>degree_position</em> - Position of the degree within the scale which will determine its functionality. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Degree">to:Degree</a></td>
+<td><a href="#term_Degree">Degree</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -226,11 +494,11 @@
          
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 </tr>
 
 
@@ -240,8 +508,8 @@
 <em>frequency</em> - Express the real frequency of the pitch. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Pitch">to:Pitch</a></td>
-<td><a href="http://purl.org/ontology/tonality/Degree">to:Degree</a></td>
+<td><a href="#term_Pitch">Pitch</a></td>
+<td><a href="#term_Degree">Degree</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -256,14 +524,14 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Set">to:Set</a></td>
+<td><a href="#term_Set">Set</a></td>
 <td><a href="http://purl.org/ontology/chord/Chord">chord:Chord</a></td>
-<td><a href="http://purl.org/ontology/tonality/Degree">to:Degree</a></td>
-<td><a href="http://purl.org/ontology/tonality/Scale">to:Scale</a></td>
+<td><a href="#term_Degree">Degree</a></td>
+<td><a href="#term_Scale">Scale</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 </tr>
 
 
@@ -273,11 +541,11 @@
 <em>interval_class</em> - The Interval Class (0-6) which the interval belongs to according to the semitones property 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/IntervalClass">to:IntervalClass</a></td>
+<td><a href="#term_IntervalClass">IntervalClass</a></td>
 </tr>
 
 
@@ -287,11 +555,11 @@
 <em>inversion</em> - This property links an interval with its inversion. Major second is the inversion of minor seventh. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 </tr>
 
 
@@ -302,7 +570,7 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -317,12 +585,12 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Key">to:Key</a></td>
-<td><a href="http://purl.org/ontology/tonality/Scale">to:Scale</a></td>
+<td><a href="#term_Key">Key</a></td>
+<td><a href="#term_Scale">Scale</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/Mode">to:Mode</a></td>
+<td><a href="#term_Mode">Mode</a></td>
 </tr>
 
 
@@ -332,7 +600,7 @@
 <em>num_degrees</em> - Number of steps in a scale. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Scale">to:Scale</a></td>
+<td><a href="#term_Scale">Scale</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -346,7 +614,7 @@
 <em>octave</em> - Specify the concrete pitch in a particular octave. Eg: A in the 3rd octave. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Pitch">to:Pitch</a></td>
+<td><a href="#term_Pitch">Pitch</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -360,7 +628,7 @@
 <em>octaves</em> - Number of octaves comprised in an compound interval. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -375,7 +643,7 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Degree">to:Degree</a></td>
+<td><a href="#term_Degree">Degree</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -390,11 +658,11 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Degree">to:Degree</a></td>
+<td><a href="#term_Degree">Degree</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/Pitch">to:Pitch</a></td>
+<td><a href="#term_Pitch">Pitch</a></td>
 </tr>
 
 
@@ -405,12 +673,12 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Pitch">to:Pitch</a></td>
-<td><a href="http://purl.org/ontology/tonality/Degree">to:Degree</a></td>
+<td><a href="#term_Pitch">Pitch</a></td>
+<td><a href="#term_Degree">Degree</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/PitchClass">to:PitchClass</a></td>
+<td><a href="#term_PitchClass">PitchClass</a></td>
 </tr>
 
 
@@ -420,7 +688,7 @@
 <em>ratio</em> - Measure of intervals in Just Intonation system as a ratio of the frequencies (simple rationale numbers). 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -433,11 +701,11 @@
 <em>scale</em> - Binds a scale to other structures. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Key">to:Key</a></td>
+<td><a href="#term_Key">Key</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/Scale">to:Scale</a></td>
+<td><a href="#term_Scale">Scale</a></td>
 </tr>
 
 
@@ -448,7 +716,7 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -462,8 +730,8 @@
 <em>semitones</em> - Convenience measure in EDO systems. Treated as distance it doesn't represent the real tonal distance but a frequency distance. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/IntervalClass">to:IntervalClass</a></td>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_IntervalClass">IntervalClass</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -478,11 +746,11 @@
          
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 </tr>
 
 
@@ -492,8 +760,8 @@
 <em>steps</em> - Measure for intervals in equally-tempered systems 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/IntervalClass">to:IntervalClass</a></td>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_IntervalClass">IntervalClass</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -508,7 +776,7 @@
          
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -521,12 +789,12 @@
 <em>tonic</em> - Sets the tonic of a key or scale if the first degree is not bound to a note. 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Scale">to:Scale</a></td>
-<td><a href="http://purl.org/ontology/tonality/Key">to:Key</a></td>
+<td><a href="#term_Scale">Scale</a></td>
+<td><a href="#term_Key">Key</a></td>
 
 </tr>
 <tr><th>Range:</th>
-<td><a href="http://purl.org/ontology/tonality/Pitch">to:Pitch</a></td>
+<td><a href="#term_Pitch">Pitch</a></td>
 </tr>
 
 
@@ -537,7 +805,7 @@
 	 
 <br/><table style="th { float: top; }">
 <tr><th>Domain:</th>
-<td><a href="http://purl.org/ontology/tonality/Interval">to:Interval</a></td>
+<td><a href="#term_Interval">Interval</a></td>
 
 </tr>
 <tr><th>Range:</th>
@@ -546,4 +814,373 @@
 
 
 </table>
-<br/></div><h2 id="terms_inds">Individuals</h2>
+<br/></div><h2 id="terms_inds">Individuals</h2><div class="specterm" id="term_interval/fifth_dim">
+<h3>Individual: interval/fifth_dim   -   </h3>
+<em>diminished 5th</em> - Chromatic diminished 5th 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/fifth_per">
+<h3>Individual: interval/fifth_per   -   </h3>
+<em>perfect fifth</em> - Diatonic perfect fifth in 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/fourth_aug">
+<h3>Individual: interval/fourth_aug   -   </h3>
+<em>augmented 4th</em> - Chromatic augmented fourth 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/fourth_per">
+<h3>Individual: interval/fourth_per   -   </h3>
+<em>perfect 4th</em> - Diatonic perfect fourth 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/ic0">
+<h3>Individual: interval/ic0   -   </h3>
+<em>Interval class 0</em> - The interval class 0 for unison an octave. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_IntervalClass">to:IntervalClass</a></td>
+</tr></table></div><div class="specterm" id="term_interval/ic1">
+<h3>Individual: interval/ic1   -   </h3>
+<em>Interval class 1</em> - minor second and major seventh and enharmonically_equivalents. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_IntervalClass">to:IntervalClass</a></td>
+</tr></table></div><div class="specterm" id="term_interval/ic2">
+<h3>Individual: interval/ic2   -   </h3>
+<em>Interval class 2</em> - major second and minor seventh and enharmonically_equivalents. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_IntervalClass">to:IntervalClass</a></td>
+</tr></table></div><div class="specterm" id="term_interval/ic3">
+<h3>Individual: interval/ic3   -   </h3>
+<em>Interval class 3</em> - minor third and major sixth and enharmonically_equivalents. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_IntervalClass">to:IntervalClass</a></td>
+</tr></table></div><div class="specterm" id="term_interval/ic4">
+<h3>Individual: interval/ic4   -   </h3>
+<em>Interval class 4</em> - major third and minor sixth and enharmonically_equivalents. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_IntervalClass">to:IntervalClass</a></td>
+</tr></table></div><div class="specterm" id="term_interval/ic5">
+<h3>Individual: interval/ic5   -   </h3>
+<em>Interval class 5</em> - perfect fourth and fifth and enharmonically_equivalents. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_IntervalClass">to:IntervalClass</a></td>
+</tr></table></div><div class="specterm" id="term_interval/ic6">
+<h3>Individual: interval/ic6   -   </h3>
+<em>Interval class 6</em> - augmented fourth and diminished fifth and enharmonically_equivalents. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_IntervalClass">to:IntervalClass</a></td>
+</tr></table></div><div class="specterm" id="term_interval/ninth_min">
+<h3>Individual: interval/ninth_min   -   </h3>
+<em>minor 9th</em> - compound interval of a minor second in the next octave (12-EDO) 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/octave">
+<h3>Individual: interval/octave   -   </h3>
+<em>octave</em> - Octave. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/second_maj">
+<h3>Individual: interval/second_maj   -   </h3>
+<em>major 2nd</em> - Diatonic major 2nd in 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/second_min">
+<h3>Individual: interval/second_min   -   </h3>
+<em>minor 2nd</em> - Diatonic minor 2nd in 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/seventh_maj">
+<h3>Individual: interval/seventh_maj   -   </h3>
+<em>major 7th</em> - Diatonic major seventh in 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/seventh_min">
+<h3>Individual: interval/seventh_min   -   </h3>
+<em>minor 7th</em> - Diatonic minor seventh in 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/sixth_maj">
+<h3>Individual: interval/sixth_maj   -   </h3>
+<em>major 6th</em> - Diatonic major sixth in 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/sixth_min">
+<h3>Individual: interval/sixth_min   -   </h3>
+<em>minor 6th</em> - Diatonic minor sixth in 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/third_maj">
+<h3>Individual: interval/third_maj   -   </h3>
+<em>major 3rd</em> - Diatonic major 3rd in 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/third_min">
+<h3>Individual: interval/third_min   -   </h3>
+<em>minor 3rd</em> - Diatonic minor 3rd in 12 EDO. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/tritone">
+<h3>Individual: interval/tritone   -   </h3>
+<em>tritone</em> - 		Interval composed by 3 semitones in 12 EDO. Main interval of dissonance in Western music and really important in Harmony as it defines a the function of the dominant degree (which should be major with minor seventh).
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_interval/unison">
+<h3>Individual: interval/unison   -   </h3>
+<em>unison</em> - Unison interval. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Interval">to:Interval</a></td>
+</tr></table></div><div class="specterm" id="term_key/Abmajor">
+<h3>Individual: key/Abmajor   -   </h3>
+<em>A flat major key</em> - Description of the A flat major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Abminor">
+<h3>Individual: key/Abminor   -   </h3>
+<em>A flat minor key</em> - Description of the A flat minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Amajor">
+<h3>Individual: key/Amajor   -   </h3>
+<em>A major key</em> - Description of the A major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Aminor">
+<h3>Individual: key/Aminor   -   </h3>
+<em>A minor key</em> - Description of the A minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Asmajor">
+<h3>Individual: key/Asmajor   -   </h3>
+<em>A sharp major key</em> - Description of the A sharp major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Asminor">
+<h3>Individual: key/Asminor   -   </h3>
+<em>A sharp minor key</em> - Description of the A sharp minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Bbmajor">
+<h3>Individual: key/Bbmajor   -   </h3>
+<em>B flat major key</em> - Description of the B flat major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Bbminor">
+<h3>Individual: key/Bbminor   -   </h3>
+<em>B flat minor key</em> - Description of the B flat minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Bmajor">
+<h3>Individual: key/Bmajor   -   </h3>
+<em>B major key</em> - Description of the B major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Bminor">
+<h3>Individual: key/Bminor   -   </h3>
+<em>B minor key</em> - Description of the B minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Bsmajor">
+<h3>Individual: key/Bsmajor   -   </h3>
+<em>B sharp major key</em> - Description of the B sharp major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Bsminor">
+<h3>Individual: key/Bsminor   -   </h3>
+<em>B sharp minor key</em> - Description of the B sharp minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Cmajor">
+<h3>Individual: key/Cmajor   -   </h3>
+<em>C major key</em> - Description of the C major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Cminor">
+<h3>Individual: key/Cminor   -   </h3>
+<em>C minor key</em> - Description of the C minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Csmajor">
+<h3>Individual: key/Csmajor   -   </h3>
+<em>C sharp major key</em> - Description of the C sharp major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Csminor">
+<h3>Individual: key/Csminor   -   </h3>
+<em>C sharp minor key</em> - Description of the C sharp minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Dbmajor">
+<h3>Individual: key/Dbmajor   -   </h3>
+<em>D flat major key</em> - Description of the D  flat major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Dbminor">
+<h3>Individual: key/Dbminor   -   </h3>
+<em>D flat minor key</em> - Description of the D  flat minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Dmajor">
+<h3>Individual: key/Dmajor   -   </h3>
+<em>D major key</em> - Description of the D major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Dminor">
+<h3>Individual: key/Dminor   -   </h3>
+<em>D minor key</em> - Description of the D minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Dsmajor">
+<h3>Individual: key/Dsmajor   -   </h3>
+<em>D sharp major key</em> - Description of the D sharp major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Dsminor">
+<h3>Individual: key/Dsminor   -   </h3>
+<em>D sharp minor key</em> - Description of the D sharp minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Ebmajor">
+<h3>Individual: key/Ebmajor   -   </h3>
+<em>E flat major key</em> - Description of the E flat major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Ebminor">
+<h3>Individual: key/Ebminor   -   </h3>
+<em>E flat minor key</em> - Description of the E flat minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Emajor">
+<h3>Individual: key/Emajor   -   </h3>
+<em>E major key</em> - Description of the E major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Eminor">
+<h3>Individual: key/Eminor   -   </h3>
+<em>E minor key</em> - Description of the E minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Esmajor">
+<h3>Individual: key/Esmajor   -   </h3>
+<em>E sharp major key</em> - Description of the E sharp major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Esminor">
+<h3>Individual: key/Esminor   -   </h3>
+<em>E flat minor key</em> - Description of the E flat minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Fmajor">
+<h3>Individual: key/Fmajor   -   </h3>
+<em>F major key</em> - Description of the F major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Fminor">
+<h3>Individual: key/Fminor   -   </h3>
+<em>F minor key</em> - Description of the F minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Fsmajor">
+<h3>Individual: key/Fsmajor   -   </h3>
+<em>F sharp major key</em> - Description of the F sharp major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Fsminor">
+<h3>Individual: key/Fsminor   -   </h3>
+<em>F sharp minor key</em> - Description of the F sharp minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Gbmajor">
+<h3>Individual: key/Gbmajor   -   </h3>
+<em>G flat major key</em> - Description of the G flat major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Gbminor">
+<h3>Individual: key/Gbminor   -   </h3>
+<em>G flat minor key</em> - Description of the G flat minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Gmajor">
+<h3>Individual: key/Gmajor   -   </h3>
+<em>G major key</em> - Description of the G major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Gminor">
+<h3>Individual: key/Gminor   -   </h3>
+<em>G minor key</em> - Description of the G minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Gsmajor">
+<h3>Individual: key/Gsmajor   -   </h3>
+<em>G sharp major key</em> - Description of the G sharp major key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_key/Gsminor">
+<h3>Individual: key/Gsminor   -   </h3>
+<em>G sharp minor key</em> - Description of the G sharp minor key. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Key">to:Key</a></td>
+</tr></table></div><div class="specterm" id="term_mode/aeolian">
+<h3>Individual: mode/aeolian   -   </h3>
+<em>Aeolian mode</em> - Sixth mode of a diatonic scale (minor scale). 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/dorian">
+<h3>Individual: mode/dorian   -   </h3>
+<em>Dorian mode</em> - Second mode of a diatonic set. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/harmonic_minor">
+<h3>Individual: mode/harmonic_minor   -   </h3>
+<em>Harmonic Minor Mode</em> - 		The Harmonic Minor mode alters the seventh degree which is a major seventh and is a very used scale as it provides a dominant major with seventh minor. Often referred as a scale, but strictly we should talk as mode.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/ionian">
+<h3>Individual: mode/ionian   -   </h3>
+<em>Ionian mode</em> - First mode used over a diatonic set 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/locrian">
+<h3>Individual: mode/locrian   -   </h3>
+<em>Locrian mode</em> - 		Seventh mode of a diatonic scale. The main characteristic is the diminished fifth which makes this mode very intestable and used in Jazz for example.
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/lydian">
+<h3>Individual: mode/lydian   -   </h3>
+<em>Lydian mode</em> - Fourth mode of a diatonic set. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/major">
+<h3>Individual: mode/major   -   </h3>
+<em>major mode</em> - The major mode (ionian) 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/minor">
+<h3>Individual: mode/minor   -   </h3>
+<em>Natural Minor mode</em> - 		The Natural Minor scale which is the minor relative of the major scale and the Eolian mode of the diatonic scale. It is a very stable scale but it lacks a major seventh
+	 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/mixolydian">
+<h3>Individual: mode/mixolydian   -   </h3>
+<em>Mixolydian mode</em> - Fifth mode of a diatonic scale. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/pentatonic_maj">
+<h3>Individual: mode/pentatonic_maj   -   </h3>
+<em>Pentatonic major mode</em> - The Pentatonic major mode 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/pentatonic_min">
+<h3>Individual: mode/pentatonic_min   -   </h3>
+<em>Pentatonic minor mode</em> - Pentatonic minor mode. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div><div class="specterm" id="term_mode/phrygian">
+<h3>Individual: mode/phrygian   -   </h3>
+<em>Phrygian mode</em> - Third mode of a diatonic set. 
+<br/><table style="th { float: top; }"><tr><th>Class:</th>
+<td><a href="#term_Mode">to:Mode</a></td>
+</tr></table></div>
