@@ -1,119 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:co="http://purl.org/ontology/chord/" xmlns:daml="http://www.daml.org/2001/03/daml+oil#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:event="http://purl.org/NET/c4dm/event.owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:int="http://purl.org/ontology/tonality/interval/" xmlns:key="http://purl.org/ontology/tonality/key/" xmlns:mo="http://purl.org/ontology/mo/" xmlns:mode="http://purl.org/ontology/tonality/mode/" xmlns:note="http://purl.org/ontology/chord/note/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:scale="http://purl.org/ontology/tonality/scale/" xmlns:tl="http://purl.org/NET/c4dm/timeline.owl#" xmlns:tonality="http://purl.org/ontology/tonality/" xmlns:tuning="http://purl.org/ontology/tuning/" xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<rdf:RDF xmlns:af="http://purl.org/ontology/af/" xmlns:co="http://purl.org/ontology/chord/" xmlns:daml="http://www.daml.org/2001/03/daml+oil#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:event="http://purl.org/NET/c4dm/event.owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:int="http://purl.org/ontology/tonality/interval/" xmlns:key="http://purl.org/ontology/tonality/key/" xmlns:mo="http://purl.org/ontology/mo/" xmlns:mode="http://purl.org/ontology/tonality/mode/" xmlns:note="http://purl.org/ontology/chord/note/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:scale="http://purl.org/ontology/tonality/scale/" xmlns:tl="http://purl.org/NET/c4dm/timeline.owl#" xmlns:tonality="http://purl.org/ontology/tonality/" xmlns:tuning="http://purl.org/ontology/tuning/" xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
   <owl:Ontology rdf:about="">
     <dc:title>The Tonality ontology</dc:title>
     <rdfs:label>The Tonality ontology</rdfs:label>
     <rdfs:comment>
 
-		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works and expressions. At this stage, the ontology has two different levels of expresiveness:
+		Sound is a physical phenomenom consisting of the variation of pressure produced by an acoustic wave. This physical phenomenom is perceived by humans by means of the earing. Physical properties of the sound (acoustic features) are perceived as psychological features (timbre, pitch, duration, loudness...), which depend on the earing response and the brain, producing mental states in the receptor.
 
-		-The highest level describes music theory structures such as keys and scales, used as resources for composition in order to create a specific tonality.
-		-A second level describes tonality in terms of mathematical models considering the tonality as a projection onto a tonal space that represents a cognitive/psychological perception of intervals, chords, pitches or keys relationships.
+		Music is the high-level human production of the sound that does not convey information but is based on the effects that the sound produces in ourselves. Music "languages" and systems are built to categorize and organize the sound domain. Musical notes are the categories we use to express and perceive music as phonemes are the acoustical categories that allow us to convey information. As it happens for the phonemes, real note events are not equal but they can be distinguised by physical properties that affect our perception producing a wide range of variations.
 
-		Tonal regions can be classified as TonalEvent resources with specific factors that characterizing it.
+		The perception of the fundamental frequency of the sound (pitch) is of particular interest in music as it is the basis for the construction of musical systems and a really important factor of music production. Perceptios are combined in the brain in complex cognitive constructions. Generally speaking, cognitive structures related to pitch are referred as Tonality.
+
+		The Tonality Ontology is a specific-domain ontology that describes tonal content information of musical works and expressions. This ontology has been designed in the Music Ontology framework and closely collaborates with the Audio Features Ontology.
 		
 		This document is in a testing stage. Contribution can be made through the Music Ontology community at http://wiki.musicontology.com/
 
 	</rdfs:comment>
     <dc:creator>David Pastor Escuredo</dc:creator>
     <foaf:maker>David Pastor Escuredo</foaf:maker>
-    <dc:date>$Date: 2008/03/22 18:05:11 $</dc:date>
+    <dc:date>$Date: 2008/10/04 18:05:11 $</dc:date>
   </owl:Ontology>
-  <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
-  <owl:Class rdf:about="http://purl.org/ontology/tonality/Interval">
-    <vs:term_status>stable</vs:term_status>
-    <rdfs:label>Interval</rdfs:label>
-    <rdfs:comment>
-		This OWL class represents the distance in pitch between two notes. Intervals can be referred to distinct tuning systems and measured with different metrics as required. This concept is most basic piece of the ontology used to build other musical structures.	
-	</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/tonality/IntervalClass">
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>Interval Class</rdfs:label>
-    <rdfs:comment>
-		Interval class represents the distance between two unordered pitch classes where octave, enharmonic and in inversional equivalency is assumed. There are then 7 classes (0-6) representing distances from the minimum to the maximum value possible within the octave. Note: may be an interval subclass?	
-	</rdfs:comment>
-  </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Pitch">
     <rdfs:label>Pitch</rdfs:label>
     <rdfs:comment>
-		Pitch is a frequency represented by a musical note. Pitch generalizes the note transcription but may be dependent of the octave if the tuning is not TET. A C in the 3rd octave may not be equivalent to a C in the 5th octave.	
+		Pitch is the perception of the fundamental frequency of a sound. Each played note (a real event) owns physical properties that can be viewed also as human perceptions. The matching between physical and psycological properties is not linear either a one-to-one set of relationships. Tonality is about pitches perception and relationships within a meaningful expression. Pitches are represented by symbols (symbolic notes) used to categorize our perception of sounds as a musical vocabulary.
 	</rdfs:comment>
     <vs:term_status>unstable</vs:term_status>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/PitchClass">
-    <owl:sameAs rdf:resource="http://purl.org/ontology/chord/note"/>
     <rdfs:label>Pitch Class</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/tonality/Pitch"/>
     <rdfs:comment>
-		Another generalization where octave, enharmonic and inversion equivalency is again assumed. So pitches are equivalent from octave to octave and wrapped into a pitch class. Note: Should be a pitch subclass?	
+		Generalization of pitch families where octave, enharmonic and inversion equivalencies are assumed. Equivalent pitches in different octaves are wrapped in the same class. Thus, different frequencies fall in the same musical category.
 	</rdfs:comment>
     <vs:term_status>unstable</vs:term_status>
   </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/tonality/Tonality">
-    <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
-    <vs:term_status>deprecated</vs:term_status>
-    <rdfs:label>Tonality</rdfs:label>
-    <rdfs:comment>Concept used to classify tonal regions (see TonalEvent). May be removed</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/tonality/TonalEvent">
-    <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
-    <rdfs:label>Tonal Event</rdfs:label>
+  <owl:Class rdf:about="http://purl.org/ontology/tonality/Interval">
+    <rdfs:label>Interval</rdfs:label>
     <rdfs:comment>
-		 A tonal event classifies one particular segment of the timeline of a signal with specific tonal content defining tonal regions. Each tonal element associated with the event is considered a factor
+		Distance in pitch between two different sounds. Intervals can be referred to distinct tuning systems and measured with different metrics. Intervals establish the relationships among pitches, so they are the basic elements to build musical structures. The interval corresponds physically to a frequency distance, but the psychological distance between two pitches is not derived from it.
 	</rdfs:comment>
     <vs:term_status>stable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/tonality/IntervalClass">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/tonality/Interval"/>
+    <rdfs:label>Interval Class</rdfs:label>
+    <rdfs:comment>
+		Generalization if interval classes representing the between two unordered pitch classes where octave, enharmonic and inversional equivalencies are assumed. There are then 7 classes (0-6) representing distances from the minimum to the maximum value possible within the octave. 
+	</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/tonality/Set">
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>Set</rdfs:label>
+    <rdfs:comment>
+		Music set formed of an unordered bunch of musical entities. For example {C, D, E, F, G, A, B} is the diatonic set for the key C major.
+	</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Scale">
     <rdfs:label>Scale</rdfs:label>
     <rdfs:comment>
-		Representation of musical scales in two senses:
-			Scale-type: an abstract structure of intervals associated to specific degrees. Eg: diatonic scale
-			Scale: scale-type at a certain pitch. Eg: A major scale.
+		Musical sets can be ordered setting a tonic or a final pitch, forming scales. Then, each member of the set plays a role in the scale in respect of the tonic. Therefore, scales are ordered sequences of pitches in respect of a tonic. A progression of notes along a fragment of a musical work can be also considered a scale with a final note, but in this case those notes belongs to a more elementary structure understood as a scale in the first sense.
 	</rdfs:comment>
     <vs:term_status>stable</vs:term_status>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Mode">
     <rdfs:label>Mode</rdfs:label>
-    <rdfs:comment>Modes represents each of the different cyclic sequences of intervals defined by a scale-type.</rdfs:comment>
+    <rdfs:comment>
+		Sets can be ordered in several ways forming different scales. The ways we can order a set are the "Modes", so each scale has a particular shape which really describes it. From a tonic and a mode we can generate a scale.
+	</rdfs:comment>
     <vs:term_status>stable</vs:term_status>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/tonality/KeyMode">
+    <rdfs:label>Key Mode</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/tonality/Mode"/>
+    <rdfs:comment>
+		Minor or major modes of a key.
+	</rdfs:comment>
+    <vs:term_status>testing</vs:term_status>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Degree">
     <rdfs:label>Degree</rdfs:label>
-    <rdfs:comment>Degrees define the ordenation and the functionality of tonal structures.</rdfs:comment>
+    <rdfs:comment>
+		Ordered sequences owns pitch relationships among their members. Each member is a degree and its tonal and harmonic properties depend on its position in the sequence.
+	</rdfs:comment>
     <vs:term_status>unstable</vs:term_status>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/ontology/tonality/Key">
     <rdfs:label>Key</rdfs:label>
     <rdfs:comment>
-		Key is defined as the centre of gravity origined by a chord progession and relying on a diatonic scale. Key is intrinsically related to the key signature as the key signature represent the most stable notes in the score. Tonal music is developed around the concept of Key, but polytonal and atonal music can not be accurately described in terms of keys.
+		Keys are a musical element mainly defined and useful within the western music. It is quite difficult to give a precise definition of key that everybody agrees with. In the Tonality Ontology, the key is seen as higher abstraction of scales only meaningful in traditional tonal music.
+Keys own a tonic and a mode (normally major and minor) and are used as pattern for stable compositions. Note that the minor mode of a key is a mixture of the minor mode of the diatonic set and the harmonic and melodic minor scales.
+On the other hand, keys are very important in harmony. A chord progression establish a key through a fragment and vice-versa the key establish the harmonic function of a set of chords.
 	</rdfs:comment>
     <vs:term_status>unstable</vs:term_status>
   </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/tonality/HarmonicFunction">
-    <rdfs:label>Harmonic Function</rdfs:label>
+  <owl:Class rdf:about="http://purl.org/ontology/tonality/TonalSegment">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/af/MusicSegment"/>
+    <rdfs:label>Tonal Segment</rdfs:label>
     <rdfs:comment>
-		This class is declared to give specific harmonic information for each degree of the key besides what the actual name of the degree suggests. It is thought for future extensions.
+		 A tonal classifier of one particular segment of the timeline of a signal with specific tonal content defining tonal regions. Each tonal element associated with the event is considered as a factor. The audio features ontology owns a wider range of classifiers related to tonality and other features.
 	</rdfs:comment>
-    <vs:term_status>deprecated</vs:term_status>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/tonality/HeptatonicScale">
-    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/tonality/Scale"/>
-    <rdfs:label>heptatonic scale</rdfs:label>
-    <rdfs:comment>A particular scale subclass that represents scale-types formed by 7 notes.</rdfs:comment>
-    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
-    <vs:term_status>deprecated</vs:term_status>
-  </owl:Class>
-  <owl:Class rdf:about="http://purl.org/ontology/tonality/PentatonicScale">
-    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/tonality/Scale"/>
-    <rdfs:label>pentatonic scale</rdfs:label>
-    <rdfs:comment>A particular scale subclass that represents scale-types formed by 5 notes.</rdfs:comment>
-    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:num_degrees>
-    <vs:term_status>deprecated</vs:term_status>
+    <vs:term_status>stable</vs:term_status>
   </owl:Class>
   <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/steps">
     <vs:term_status>unstable</vs:term_status>
     <rdfs:label>steps</rdfs:label>
-    <rdfs:comment>Measure for intervals in equally temperaments</rdfs:comment>
+    <rdfs:comment>Measure for intervals in equally-tempered systems</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Interval"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/IntervalClass"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
@@ -199,11 +192,11 @@
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Interval"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:SymmetricProperty>
-  <owl:SymmetricProperty rdf:about="http://purl.org/ontology/tonality/enharmonic">
+  <owl:SymmetricProperty rdf:about="http://purl.org/ontology/tonality/enharmonically_equivalent">
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>enharmonic</rdfs:label>
+    <rdfs:label>enharmonically_equivalent</rdfs:label>
     <rdfs:comment>
-                Two intervals are enharmonic when they express the same pitch distance but as different general intervals, so they have the same number of semitones but different number of scale steps. Enharmony is a general musical property which states that two different musical elements has the same acoustic value.
+                Two intervals are enharmonically equivalent when they express the same pitch distance but as different general intervals, so they have the same number of semitones but different number of scale steps. Enharmony is a general musical property which states that two different musical elements has the same acoustic value.
         </rdfs:comment>
     <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Interval"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Interval"/>
@@ -245,6 +238,7 @@
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Scale"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Degree"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/chord/Chord"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Set"/>
     <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Interval"/>
   </owl:ObjectProperty>
   <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/degree_name">
@@ -264,18 +258,6 @@
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </owl:FunctionalProperty>
-  <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/note">
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>note</rdfs:label>
-    <rdfs:comment>
-		Note corresponding to the degree if there is a tonic specification. We can express it with a note individual or with a pitch class which can be more accurate indeed. Elements of the class Pitch could also use this property (and the octave one).
-	</rdfs:comment>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Degree"/>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Pitch"/>
-    <rdfs:range rdf:resource="http://purl.org/ontology/chord/Note"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:equivalentProperty rdf:resource="http://purl.org/ontology/tonality/pitch_class"/>
-  </owl:FunctionalProperty>
   <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/pitch_class">
     <vs:term_status>unstable</vs:term_status>
     <rdfs:label>pitch class</rdfs:label>
@@ -285,7 +267,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Degree"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Pitch"/>
-    <rdfs:range rdf:resource="http://purl.org/ontology/chord/PitchClass"/>
+    <rdfs:range rdf:resource="http://purl.org/ontology/tonality/PitchClass"/>
   </owl:FunctionalProperty>
   <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/pitch">
     <vs:term_status>unstable</vs:term_status>
@@ -318,7 +300,7 @@
     <vs:term_status>unstable</vs:term_status>
     <rdfs:label>owned chord</rdfs:label>
     <rdfs:comment>
-		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then altered ones borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See borrowed_chord
+		This property allows to associate chords to each of the degrees of the key describing the harmonic properties of the tonality. We will associate 7th chords as standard, but any chord with the same functionality would be valid as well. Other chords will be then borrowed from a key not actually present or produced by the use of a chromatic interval (to avoid a tritone for example). See borrowed_chord
 	</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Degree"/>
     <rdfs:range rdf:resource="http://purl.org/ontology/chord/Chord"/>
@@ -327,17 +309,10 @@
     <vs:term_status>unstable</vs:term_status>
     <rdfs:label>borrowed chord</rdfs:label>
     <rdfs:comment>
-		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability like the V degree of the relative minor key. Some degrees substitute its seventh owned interval by some other seventh interval from the parallel key giving a borrowed chord but still diatonic (altered chords came from non diatonic intervals). An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key).
+		Some chords owned by a key (infered for the underlying scale) are not very stable so some alterations are normally present to obtain more stability like the V degree of the relative minor key. Some degrees substitute its seventh owned interval by some other seventh interval from the parallel key giving a borrowed chord but still diatonic (altered chords came from non diatonic intervals). An important case is also the alteration of the dominant degree of the minor key to obtain a tritone producing the harmonic minor scale (can be seen as a chord borrowed from the major relative key). Borrowed chords are normally used in a key (minor or major), however other chords can be used while playing in a particular key. These chords should be classified as other tonal events (see audio features ontology).
 	</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Degree"/>
     <rdfs:range rdf:resource="http://purl.org/ontology/chord/Chord"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/harmonic_function">
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>harmonic function</rdfs:label>
-    <rdfs:comment>Declared to relate a HarmonicFunction individual or resource (so far it is not used).</rdfs:comment>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Degree"/>
-    <rdfs:range rdf:resource="http://purl.org/ontology/tonality/HarmonicFunction"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/degree">
     <vs:term_status>unstable</vs:term_status>
@@ -345,15 +320,27 @@
     <rdfs:comment>Binds a degree resource to a structure.</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Key"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Scale"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Mode"/>
     <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Degree"/>
   </owl:ObjectProperty>
-  <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/on_degree">
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/mode">
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>on degree</rdfs:label>
-    <rdfs:comment>Defines a scale degree as root of the mode.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Mode"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>mode</rdfs:label>
+    <rdfs:comment>
+		Mode of a scale (its shape). The scale is well defined by a tonic or reference note and a mode (different organizations of a set). Modes are also used to characterize keys, but in a slightly different way. There are only two modes for keys (major and minor) which actually do not wholy correspond to the minor and major scale modes. Both structures can be defined by an ordered sequence of notes.
+	</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Scale"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Key"/>
+    <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Mode"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/tonic">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <vs:term_status>unstable</vs:term_status>
+    <rdfs:label>tonic</rdfs:label>
+    <rdfs:comment>Sets the tonic of a key or scale if the first degree is not bound to a note.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Key"/>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Scale"/>
+    <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Pitch"/>
   </owl:FunctionalProperty>
   <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/num_degrees">
     <vs:term_status>unstable</vs:term_status>
@@ -363,41 +350,13 @@
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </owl:FunctionalProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/scale_type">
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>scale type</rdfs:label>
-    <rdfs:comment>
-		Scales comprises scale-types (what is actually a scale) and scales understood as scale at a certain pitch). We can define a scale by its scale_type and a tonic. Eg: A major scale is the major scale (scale_type) with A as tonic.
-	</rdfs:comment>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Scale"/>
-    <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Scale"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/from_mode">
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>from mode</rdfs:label>
-    <rdfs:comment>
-		We can consider a scale as one of the mode of other scale. Eg. The minor scale is indeed the sixth mode of a diatonic scale or we can talk about a Dorian scale.
-	</rdfs:comment>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Scale"/>
-    <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Mode"/>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/ontology/tonality/scale">
     <vs:term_status>unstable</vs:term_status>
     <rdfs:label>scale</rdfs:label>
     <rdfs:comment>Binds a scale to other structures.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Mode"/>
     <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Key"/>
     <rdfs:range rdf:resource="http://purl.org/ontology/tonality/Scale"/>
   </owl:ObjectProperty>
-  <owl:FunctionalProperty rdf:about="http://purl.org/ontology/tonality/tonic">
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:label>tonic</rdfs:label>
-    <rdfs:comment>Sets the tonic of a key or scale if the first degree is not bound to a note.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Key"/>
-    <rdfs:domain rdf:resource="http://purl.org/ontology/tonality/Scale"/>
-    <rdfs:range rdf:resource="http://purl.org/ontology/chord/Note"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </owl:FunctionalProperty>
   <tonality:IntervalClass rdf:about="http://purl.org/ontology/tonality/interval/ic0">
     <rdfs:label>Interval class 0</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
@@ -407,37 +366,37 @@
   <tonality:IntervalClass rdf:about="http://purl.org/ontology/tonality/interval/ic1">
     <rdfs:label>Interval class 1</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>minor second and major seventh and enharmonics.</rdfs:comment>
+    <rdfs:comment>minor second and major seventh and enharmonically_equivalents.</rdfs:comment>
     <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:semitones>
   </tonality:IntervalClass>
   <tonality:IntervalClass rdf:about="http://purl.org/ontology/tonality/interval/ic2">
     <vs:term_status>unstable</vs:term_status>
     <rdfs:label>Interval class 2</rdfs:label>
-    <rdfs:comment>major second and minor seventh and enharmonics.</rdfs:comment>
+    <rdfs:comment>major second and minor seventh and enharmonically_equivalents.</rdfs:comment>
     <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:semitones>
   </tonality:IntervalClass>
   <tonality:IntervalClass rdf:about="http://purl.org/ontology/tonality/interval/ic3">
     <rdfs:label>Interval class 3</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>minor third and major sixth and enharmonics.</rdfs:comment>
+    <rdfs:comment>minor third and major sixth and enharmonically_equivalents.</rdfs:comment>
     <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:semitones>
   </tonality:IntervalClass>
   <tonality:IntervalClass rdf:about="http://purl.org/ontology/tonality/interval/ic4">
     <rdfs:label>Interval class 4</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>major third and minor sixth and enharmonics.</rdfs:comment>
+    <rdfs:comment>major third and minor sixth and enharmonically_equivalents.</rdfs:comment>
     <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:semitones>
   </tonality:IntervalClass>
   <tonality:IntervalClass rdf:about="http://purl.org/ontology/tonality/interval/ic5">
     <rdfs:label>Interval class 5</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>perfect fourth and fifth and enharmonics.</rdfs:comment>
+    <rdfs:comment>perfect fourth and fifth and enharmonically_equivalents.</rdfs:comment>
     <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:semitones>
   </tonality:IntervalClass>
   <tonality:IntervalClass rdf:about="http://purl.org/ontology/tonality/interval/ic6">
     <rdfs:label>Interval class 6</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>augmented fourth and disminished fifth and enharmonics.</rdfs:comment>
+    <rdfs:comment>augmented fourth and diminished fifth and enharmonically_equivalents.</rdfs:comment>
     <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:semitones>
   </tonality:IntervalClass>
   <tonality:Interval rdf:about="http://purl.org/ontology/tonality/interval/unison">
@@ -523,10 +482,10 @@
     <tonality:interval_class rdf:resource="http://purl.org/ontology/tonality/interval/ic6"/>
     <dc:type>chromatic</dc:type>
   </tonality:Interval>
-  <tonality:Interval rdf:about="http://purl.org/ontology/tonality/interval/fifth_dis">
-    <rdfs:label>disminished 5th</rdfs:label>
+  <tonality:Interval rdf:about="http://purl.org/ontology/tonality/interval/fifth_dim">
+    <rdfs:label>diminished 5th</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>Chromatic disminished 5th 12 EDO.</rdfs:comment>
+    <rdfs:comment>Chromatic diminished 5th 12 EDO.</rdfs:comment>
     <tonality:tuning rdf:resource="http://purl.org/ontology/tuning/twelve_edo"/>
     <tonality:scale_steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:scale_steps>
     <tonality:semitones rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:semitones>
@@ -534,7 +493,7 @@
     <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">600</tonality:cents>
     <tonality:interval_class rdf:resource="http://purl.org/ontology/tonality/interval/ic6"/>
     <dc:type>chromatic</dc:type>
-    <tonality:enharmonic rdf:resource="http://purl.org/ontology/tonality/interval/fourth_aug"/>
+    <tonality:enharmonically_equivalent rdf:resource="http://purl.org/ontology/tonality/interval/fourth_aug"/>
     <tonality:inversion rdf:resource="http://purl.org/ontology/tonality/interval/fourth_aug"/>
   </tonality:Interval>
   <tonality:Interval rdf:about="http://purl.org/ontology/tonality/interval/fifth_per">
@@ -634,35 +593,13 @@
     <tonality:steps rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:steps>
     <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">600</tonality:cents>
     <tonality:strength>dissonant</tonality:strength>
-    <tonality:enharmonic rdf:resource="http://purl.org/ontology/tonality/interval/fifth_dis"/>
-    <tonality:enharmonic rdf:resource="http://purl.org/ontology/tonality/interval/fourth_aug"/>
+    <tonality:enharmonically_equivalent rdf:resource="http://purl.org/ontology/tonality/interval/fifth_dim"/>
+    <tonality:enharmonically_equivalent rdf:resource="http://purl.org/ontology/tonality/interval/fourth_aug"/>
   </tonality:Interval>
-  <tonality:Interval rdf:about="http://purl.org/ontology/tonality/interval/tritone_meantone">
-    <rdfs:label>tritone meantone</rdfs:label>
+  <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/major">
+    <rdfs:label>major mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>
-		Tritone in Meantone Intonation measured in one octave. In Meantone temperament it just equivalent to a augmented fourth and not a to a disminished 5th
-	</rdfs:comment>
-    <tonality:tuning rdf:resource="http://purl.org/ontology/tuning/meantone"/>
-    <tonality:ratio>7/5</tonality:ratio>
-    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">582.5</tonality:cents>
-    <tonality:strength>dissonant</tonality:strength>
-  </tonality:Interval>
-  <tonality:Interval rdf:about="http://purl.org/ontology/tonality/interval/wolf_fifth_meantone">
-    <rdfs:label>wolf fifth meantone</rdfs:label>
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>
-		Really dissonat interval produced in meantone temperament. The appearance of this interval in the meantone tuning was the reason to avoid it. The Just Intonation system produces a howl of 35.683 cents sharper than a just fifth which makes it really augmented and dissonant.
-	</rdfs:comment>
-    <tonality:tuning rdf:resource="http://purl.org/ontology/tuning/meantone"/>
-    <tonality:ratio>32/21</tonality:ratio>
-    <tonality:cents rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">737.637</tonality:cents>
-    <tonality:strength>very dissonant</tonality:strength>
-  </tonality:Interval>
-  <tonality:Scale rdf:about="http://purl.org/ontology/tonality/scale/diatonic">
-    <rdfs:label>Diatonic scale</rdfs:label>
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>Diatonic scale-type</rdfs:comment>
+    <rdfs:comment>The major mode (ionian)</rdfs:comment>
     <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
     <tonality:degree>
       <tonality:Degree>
@@ -706,22 +643,14 @@
         <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/seventh_maj"/>
       </tonality:Degree>
     </tonality:degree>
-  </tonality:Scale>
-  <tonality:Scale rdf:about="http://purl.org/ontology/tonality/scale/major">
-    <rdfs:label>Major scale</rdfs:label>
-    <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>Major scale which is the diatonic scale in the Ionian mode</rdfs:comment>
-    <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/scale/diatonic"/>
-    <tonality:from_mode rdf:resource="http://purl.org/ontology/tonality/mode/ionian"/>
-  </tonality:Scale>
-  <tonality:Scale rdf:about="http://purl.org/ontology/tonality/scale/minor">
-    <rdfs:label>Natural Minor scale</rdfs:label>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/minor">
+    <rdfs:label>Natural Minor mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
     <rdfs:comment>
-		The Natural Minor scale which is the minor relative of the major scale and the Eloian mode of the diatonic scale. It is a very stable scale but it lacks a major seventh
+		The Natural Minor scale which is the minor relative of the major scale and the Eolian mode of the diatonic scale. It is a very stable scale but it lacks a major seventh
 	</rdfs:comment>
     <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
-    <tonality:from_mode rdf:resource="http://purl.org/ontology/tonality/mode/aeolian"/>
     <tonality:degree>
       <tonality:Degree>
         <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
@@ -764,15 +693,14 @@
         <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/seventh_min"/>
       </tonality:Degree>
     </tonality:degree>
-  </tonality:Scale>
-  <tonality:Scale rdf:about="http://purl.org/ontology/tonality/scale/harmonic_minor">
-    <rdfs:label>Harmonic Minor scale</rdfs:label>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/harmonic_minor">
+    <rdfs:label>Harmonic Minor Mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
     <rdfs:comment>
-		The Harmonic Minor scale alters the seventh degree which is a major seventh and is a very used scale as it provides a dominant major with seventh minor.
+		The Harmonic Minor mode alters the seventh degree which is a major seventh and is a very used scale as it provides a dominant major with seventh minor. Often referred as a scale, but strictly we should talk as mode.
 	</rdfs:comment>
     <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
-    <tonality:from_mode rdf:resource="http://purl.org/ontology/tonality/mode/eolian"/>
     <tonality:degree>
       <tonality:Degree>
         <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
@@ -815,11 +743,11 @@
         <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/seventh_maj"/>
       </tonality:Degree>
     </tonality:degree>
-  </tonality:Scale>
-  <tonality:PentatonicScale rdf:about="http://purl.org/ontology/tonality/scale/pentatonic_min">
-    <rdfs:label>Pentatonic minor scale</rdfs:label>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/pentatonic_min">
+    <rdfs:label>Pentatonic minor mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>Pentatonic minor scale.</rdfs:comment>
+    <rdfs:comment>Pentatonic minor mode.</rdfs:comment>
     <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:num_degrees>
     <tonality:degree>
       <tonality:Degree>
@@ -851,10 +779,10 @@
         <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/seventh_min"/>
       </tonality:Degree>
     </tonality:degree>
-  </tonality:PentatonicScale>
-  <tonality:PentatonicScale rdf:about="http://purl.org/ontology/tonality/scale/pentatonic_maj">
-    <rdfs:label>Pentatonic major scale</rdfs:label>
-    <rdfs:comment>The Pentatonic major scale.</rdfs:comment>
+  </tonality:Mode>
+  <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/pentatonic_maj">
+    <rdfs:label>Pentatonic major mode</rdfs:label>
+    <rdfs:comment>The Pentatonic major mode</rdfs:comment>
     <vs:term_status>unstable</vs:term_status>
     <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:num_degrees>
     <tonality:degree>
@@ -887,70 +815,272 @@
         <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/sixth_maj"/>
       </tonality:Degree>
     </tonality:degree>
-  </tonality:PentatonicScale>
-  <tonality:Scale rdf:about="http://purl.org/ontology/tonality/scale/majorA">
+  </tonality:Mode>
+  <tonality:DiatonicScale rdf:about="http://purl.org/ontology/tonality/scale/majorA">
     <rdfs:label>A major scale</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>Major scale in A.</rdfs:comment>
-    <tonality:scale_type rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
+    <rdfs:comment>Major scale in A (the minor mode starting in A)</rdfs:comment>
+    <tonality:mode rdf:resource="http://purl.org/ontology/tonality/mode/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/A"/>
-  </tonality:Scale>
+  </tonality:DiatonicScale>
   <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/ionian">
     <rdfs:label>Ionian mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>First mode of a diatonic scale and equivalent to a major scale.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/diatonic"/>
-    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:on_degree>
+    <rdfs:comment>First mode used over a diatonic set</rdfs:comment>
+    <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/mode/major"/>
   </tonality:Mode>
   <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/dorian">
     <rdfs:label>Dorian mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>Second mode of a diatonic scale.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/diatonic"/>
-    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:on_degree>
+    <rdfs:comment>Second mode of a diatonic set.</rdfs:comment>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
   </tonality:Mode>
   <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/phrygian">
     <rdfs:label>Phrygian mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>Third mode of a diatonic scale.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/diatonic"/>
-    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:on_degree>
+    <rdfs:comment>Third mode of a diatonic set.</rdfs:comment>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/second_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/third_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/seventh_min"/>
+      </tonality:Degree>
+    </tonality:degree>
   </tonality:Mode>
   <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/lydian">
     <rdfs:label>Lydian mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
-    <rdfs:comment>Fourth mode of a diatonic scale.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/diatonic"/>
-    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:on_degree>
+    <rdfs:comment>Fourth mode of a diatonic set.</rdfs:comment>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fourth_aug"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
   </tonality:Mode>
   <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/mixolydian">
     <rdfs:label>Mixolydian mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
     <rdfs:comment>Fifth mode of a diatonic scale.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/diatonic"/>
-    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:on_degree>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/second_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fifth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/sixth_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
   </tonality:Mode>
   <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/aeolian">
     <rdfs:label>Aeolian mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
     <rdfs:comment>Sixth mode of a diatonic scale (minor scale).</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/diatonic"/>
-    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:on_degree>
+    <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/mode/minor"/>
   </tonality:Mode>
   <tonality:Mode rdf:about="http://purl.org/ontology/tonality/mode/locrian">
     <rdfs:label>Locrian mode</rdfs:label>
     <vs:term_status>unstable</vs:term_status>
     <rdfs:comment>
-		Seventh mode of a diatonic scale. The main characteristic is the disminished fifth which makes this mode very intestable and used in Jazz for example.
+		Seventh mode of a diatonic scale. The main characteristic is the diminished fifth which makes this mode very intestable and used in Jazz for example.
 	</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/diatonic"/>
-    <tonality:on_degree rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:on_degree>
+    <tonality:num_degrees rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:num_degrees>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/unison"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/second_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/third_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fourth_per"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/fifth_dim"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/sixth_min"/>
+      </tonality:Degree>
+    </tonality:degree>
+    <tonality:degree>
+      <tonality:Degree>
+        <tonality:degree_position rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</tonality:degree_position>
+        <tonality:interval rdf:resource="http://purl.org/ontology/tonality/interval/seventh_maj"/>
+      </tonality:Degree>
+    </tonality:degree>
   </tonality:Mode>
   <tonality:Key rdf:about="http://purl.org/ontology/tonality/key/Cmajor">
     <rdfs:label>C major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the C major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/C"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1020,8 +1150,6 @@
     <rdfs:label>C minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the C minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/C"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1096,7 +1224,6 @@
     <rdfs:label>C sharp major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the C sharp major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Cs"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1166,8 +1293,6 @@
     <rdfs:label>C sharp minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the C sharp minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Cs"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1242,7 +1367,6 @@
     <rdfs:label>D flat major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the D  flat major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Db"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Csmajor"/>
   </tonality:Key>
@@ -1250,7 +1374,6 @@
     <rdfs:label>D flat minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the D  flat minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Db"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Csminor"/>
   </tonality:Key>
@@ -1258,7 +1381,6 @@
     <rdfs:label>D major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the D major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/D"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1328,8 +1450,6 @@
     <rdfs:label>D minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the D minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/D"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1404,7 +1524,6 @@
     <rdfs:label>D sharp major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the D sharp major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Ds"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1474,8 +1593,6 @@
     <rdfs:label>D sharp minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the D sharp minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Ds"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1550,7 +1667,6 @@
     <rdfs:label>E flat major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the E flat major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Eb"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Dsmajor"/>
   </tonality:Key>
@@ -1558,7 +1674,6 @@
     <rdfs:label>E flat minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the E flat minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Eb"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Dsminor"/>
   </tonality:Key>
@@ -1566,7 +1681,6 @@
     <rdfs:label>E major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the E major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/E"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1636,8 +1750,6 @@
     <rdfs:label>E minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the E minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/E"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1712,7 +1824,6 @@
     <rdfs:label>E sharp major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the E sharp major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Es"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Fmajor"/>
   </tonality:Key>
@@ -1720,7 +1831,6 @@
     <rdfs:label>E flat minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the E flat minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Eb"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Dsminor"/>
   </tonality:Key>
@@ -1728,7 +1838,6 @@
     <rdfs:label>F major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the F major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/F"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1798,8 +1907,6 @@
     <rdfs:label>F minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the F minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/F"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1874,7 +1981,6 @@
     <rdfs:label>F sharp major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the F sharp major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Fs"/>
     <tonality:degree>
       <tonality:Degree>
@@ -1944,8 +2050,6 @@
     <rdfs:label>F sharp minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the F sharp minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Fs"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2020,7 +2124,6 @@
     <rdfs:label>G flat major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the G flat major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Gb"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Fsmajor"/>
   </tonality:Key>
@@ -2028,7 +2131,6 @@
     <rdfs:label>G flat minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the G flat minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Gb"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Fsminor"/>
   </tonality:Key>
@@ -2036,7 +2138,6 @@
     <rdfs:label>G major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the G major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/G"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2106,8 +2207,6 @@
     <rdfs:label>G minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the G minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/G"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2182,7 +2281,6 @@
     <rdfs:label>G sharp major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the G sharp major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Gs"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2252,8 +2350,6 @@
     <rdfs:label>G sharp minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the G sharp minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Gs"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2328,7 +2424,6 @@
     <rdfs:label>A flat major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the A flat major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Ab"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Gsmajor"/>
   </tonality:Key>
@@ -2336,7 +2431,6 @@
     <rdfs:label>A flat minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the A flat minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Ab"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Gsminor"/>
   </tonality:Key>
@@ -2344,7 +2438,6 @@
     <rdfs:label>A major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the A major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/A"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2414,8 +2507,6 @@
     <rdfs:label>A minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the A minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/A"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2490,7 +2581,6 @@
     <rdfs:label>A sharp major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the A sharp major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/As"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2560,8 +2650,6 @@
     <rdfs:label>A sharp minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the A sharp minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/As"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2636,7 +2724,6 @@
     <rdfs:label>B flat major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the B flat major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Bb"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Asmajor"/>
   </tonality:Key>
@@ -2644,7 +2731,6 @@
     <rdfs:label>B flat minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the B flat minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Bb"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Asminor"/>
   </tonality:Key>
@@ -2652,7 +2738,6 @@
     <rdfs:label>B major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the B major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/B"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2722,8 +2807,6 @@
     <rdfs:label>B minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the B minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/minor"/>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/harmonic_minor"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/B"/>
     <tonality:degree>
       <tonality:Degree>
@@ -2798,7 +2881,6 @@
     <rdfs:label>B sharp major key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the B sharp major key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Bs"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Cmajor"/>
   </tonality:Key>
@@ -2806,9 +2888,7 @@
     <rdfs:label>B sharp minor key</rdfs:label>
     <vs:term_status>testing</vs:term_status>
     <rdfs:comment>Description of the B sharp minor key.</rdfs:comment>
-    <tonality:scale rdf:resource="http://purl.org/ontology/tonality/scale/major"/>
     <tonality:tonic rdf:resource="http://purl.org/ontology/chord/note/Bs"/>
     <owl:sameAs rdf:resource="http://purl.org/ontology/tonality/key/Cminor"/>
   </tonality:Key>
 </rdf:RDF>
-

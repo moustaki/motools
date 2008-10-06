@@ -93,7 +93,7 @@ tonality:IntervalClass
 tonality:Set
 	a owl:Class;
 	vs:term_status "unstable";
-	rdfs:label "Set"
+	rdfs:label "Set";
 	rdfs:comment """
 		Music set formed of an unordered bunch of musical entities. For example {C, D, E, F, G, A, B} is the diatonic set for the key C major.
 	""";
@@ -1028,7 +1028,7 @@ mode:locrian
 			tonality:degree_position 7;
 			tonality:interval int:seventh_maj];
 	.
-	.
+	
 
 ####################Keys individuals (12 EDO)######################
 
