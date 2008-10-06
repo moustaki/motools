@@ -26,7 +26,7 @@
 	rdfs:label "The Tonality ontology";
 	rdfs:comment """
 
-		Sound is a physical phenomenom produced by variation of pressure of an acoustic wave. This physical phenomenom is perceived by humans by means of the earing. Physical properties of the sound (acoustic features) are perceived by humans as psychological features (timbre, pitch, duration, loudness...) producing a mental states in the receptor.
+		Sound is a physical phenomenom consisting of the variation of pressure produced by an acoustic wave. This physical phenomenom is perceived by humans by means of the earing. Physical properties of the sound (acoustic features) are perceived as psychological features (timbre, pitch, duration, loudness...), which depend on the earing response and the brain, producing mental states in the receptor.
 
 		Music is the high-level human production of the sound that does not convey information but is based on the effects that the sound produces in ourselves. Music "languages" and systems are built to categorize and organize the sound domain. Musical notes are the categories we use to express and perceive music as phonemes are the acoustical categories that allow us to convey information. As it happens for the phonemes, real note events are not equal but they can be distinguised by physical properties that affect our perception producing a wide range of variations.
 
@@ -124,7 +124,7 @@ tonality:KeyMode
 	rdfs:comment """
 		Minor or major modes of a key.
 	""";
-	vs:term_status "stable";
+	vs:term_status "testing";
 	.
 
 tonality:Degree
@@ -751,14 +751,13 @@ mode:major a tonality:Mode;
 			tonality:interval int:seventh_maj];
 	.
 
-scale:minor a tonality:DiatonicScale;
-	rdfs:label "Natural Minor scale";
+mode:minor a tonality:Mode;
+	rdfs:label "Natural Minor mode";
 	vs:term_status "unstable";
 	rdfs:comment """
 		The Natural Minor scale which is the minor relative of the major scale and the Eolian mode of the diatonic scale. It is a very stable scale but it lacks a major seventh
 	""";
 	tonality:num_degrees 7;
-	tonality:from_mode mode:aeolian;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
 			tonality:interval int:unison],	
@@ -782,14 +781,13 @@ scale:minor a tonality:DiatonicScale;
 			tonality:interval int:seventh_min];
 	.
 
-scale:harmonic_minor a tonality:HeptatonicScale;
-	rdfs:label "Harmonic Minor scale";
+mode:harmonic_minor a tonality:Mode;
+	rdfs:label "Harmonic Minor Mode";
 	vs:term_status "unstable";
 	rdfs:comment """
-		The Harmonic Minor scale alters the seventh degree which is a major seventh and is a very used scale as it provides a dominant major with seventh minor.
+		The Harmonic Minor mode alters the seventh degree which is a major seventh and is a very used scale as it provides a dominant major with seventh minor. Often referred as a scale, but strictly we should talk as mode.
 	""";
 	tonality:num_degrees 7;
-	tonality:from_mode mode:eolian;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
 			tonality:interval int:unison],	
@@ -813,10 +811,10 @@ scale:harmonic_minor a tonality:HeptatonicScale;
 			tonality:interval int:seventh_maj];
 	.
 	
-scale:pentatonic_min a tonality:PentatonicScale;
-	rdfs:label "Pentatonic minor scale";
+mode:pentatonic_min a tonality:Mode;
+	rdfs:label "Pentatonic minor mode";
 	vs:term_status "unstable";
-	rdfs:comment "Pentatonic minor scale.";
+	rdfs:comment "Pentatonic minor mode.";
 	tonality:num_degrees 5;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -835,9 +833,9 @@ scale:pentatonic_min a tonality:PentatonicScale;
 			tonality:interval int:seventh_min];
 	.
 
-scale:pentatonic_maj a tonality:PentatonicScale;
-	rdfs:label "Pentatonic major scale";
-	rdfs:comment "The Pentatonic major scale.";
+mode:pentatonic_maj a tonality:Mode;
+	rdfs:label "Pentatonic major mode";
+	rdfs:comment "The Pentatonic major mode";
 	vs:term_status "unstable";
 	tonality:num_degrees 5;
 	tonality:degree [ a tonality:Degree;
@@ -861,9 +859,8 @@ scale:majorA
 	a tonality:DiatonicScale;
 	rdfs:label "A major scale";
 	vs:term_status "unstable";
-	rdfs:comment "Major scale in A. May be major scale a class and this a subclass? i'm not sure... we should define any scale with a tonic?";
-	tonality:scale_type scale:major;
-	#This is finally tricky so...
+	rdfs:comment "Major scale in A (the minor mode starting in A)";
+	tonality:mode mode:major;
 	tonality:tonic note:A;
 	.
 
@@ -873,36 +870,95 @@ mode:ionian
 	a tonality:Mode;
 	rdfs:label "Ionian mode";
 	vs:term_status "unstable";
-	rdfs:comment "First mode of a diatonic scale and equivalent to a major scale.";
-	tonality:scale scale:diatonic;
-	tonality:on_degree 1;
+	rdfs:comment "First mode used over a diatonic set";
+	owl:sameAs mode:major;
 	.
 
 mode:dorian
 	a tonality:Mode;
 	rdfs:label "Dorian mode";
 	vs:term_status "unstable";
-	rdfs:comment "Second mode of a diatonic scale.";
-	tonality:scale scale:diatonic;
-	tonality:on_degree 2;
+	rdfs:comment "Second mode of a diatonic set.";
+	tonality:num_degrees 7;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:interval int:seventh_min];
 	.
 
 mode:phrygian
 	a tonality:Mode;
 	rdfs:label "Phrygian mode";
 	vs:term_status "unstable";
-	rdfs:comment "Third mode of a diatonic scale.";
-	tonality:scale scale:diatonic;
-	tonality:on_degree 3;
+	rdfs:comment "Third mode of a diatonic set.";
+	tonality:num_degrees 7;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:second_min],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:third_min],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:interval int:seventh_min];
 	.
 
 mode:lydian
 	a tonality:Mode;
 	rdfs:label "Lydian mode";
 	vs:term_status "unstable";
-	rdfs:comment "Fourth mode of a diatonic scale.";
-	tonality:scale scale:diatonic;
-	tonality:on_degree 4;
+	rdfs:comment "Fourth mode of a diatonic set.";
+	tonality:num_degrees 7;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fourth_aug],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:interval int:seventh_maj];
 	.
 
 mode:mixolydian
@@ -910,8 +966,28 @@ mode:mixolydian
 	rdfs:label "Mixolydian mode";
 	vs:term_status "unstable";
 	rdfs:comment "Fifth mode of a diatonic scale.";
-	tonality:scale scale:diatonic;
-	tonality:on_degree 5;
+	tonality:num_degrees 7;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:second_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:interval int:fifth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:interval int:sixth_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:interval int:seventh_maj];
 	.
 
 mode:aeolian
@@ -919,8 +995,7 @@ mode:aeolian
 	rdfs:label "Aeolian mode";
 	vs:term_status "unstable";
 	rdfs:comment "Sixth mode of a diatonic scale (minor scale).";
-	tonality:scale scale:diatonic;
-	tonality:on_degree 6;
+	owl:sameAs mode:minor;
 	.
 
 mode:locrian
@@ -930,8 +1005,29 @@ mode:locrian
 	rdfs:comment """
 		Seventh mode of a diatonic scale. The main characteristic is the diminished fifth which makes this mode very intestable and used in Jazz for example.
 	""";
-	tonality:scale scale:diatonic;
-	tonality:on_degree 6;
+	tonality:num_degrees 7;
+	tonality:degree [ a tonality:Degree;
+			tonality:degree_position 1;
+			tonality:interval int:unison],	
+			[ a tonality:Degree;
+			tonality:degree_position 2;
+			tonality:interval int:second_min],
+			[ a tonality:Degree;
+			tonality:degree_position 3;
+			tonality:interval int:third_maj],
+			[ a tonality:Degree;
+			tonality:degree_position 4;
+			tonality:interval int:fourth_per],
+			[ a tonality:Degree;
+			tonality:degree_position 5;
+			tonality:interval int:fifth_dim],
+			[ a tonality:Degree;
+			tonality:degree_position 6;
+			tonality:interval int:sixth_min],
+			[ a tonality:Degree;
+			tonality:degree_position 7;
+			tonality:interval int:seventh_maj];
+	.
 	.
 
 ####################Keys individuals (12 EDO)######################
@@ -943,7 +1039,6 @@ key:Cmajor
 	rdfs:label "C major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the C major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:C;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -994,8 +1089,6 @@ key:Cminor
 	rdfs:label "C minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the C minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:C;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1053,7 +1146,6 @@ key:Csmajor
 	rdfs:label "C sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the C sharp major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Cs;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1104,8 +1196,6 @@ key:Csminor
 	rdfs:label "C sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the C sharp minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:Cs;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1163,7 +1253,6 @@ key:Dbmajor
 	rdfs:label "D flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D  flat major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Db;
 	owl:sameAs key:Csmajor;
 	.
@@ -1173,7 +1262,6 @@ key:Dbminor
 	rdfs:label "D flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D  flat minor key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Db;
 	owl:sameAs key:Csminor;
 	.
@@ -1185,7 +1273,6 @@ key:Dmajor
 	rdfs:label "D major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:D;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1236,8 +1323,6 @@ key:Dminor
 	rdfs:label "D minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:D;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1295,7 +1380,6 @@ key:Dsmajor
 	rdfs:label "D sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D sharp major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Ds;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1346,8 +1430,6 @@ key:Dsminor
 	rdfs:label "D sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the D sharp minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:Ds;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1405,7 +1487,6 @@ key:Ebmajor
 	rdfs:label "E flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E flat major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Eb;
 	owl:sameAs key:Dsmajor;
 	.
@@ -1415,7 +1496,6 @@ key:Ebminor
 	rdfs:label "E flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E flat minor key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Eb;
 	owl:sameAs key:Dsminor;
 	.
@@ -1427,7 +1507,6 @@ key:Emajor
 	rdfs:label "E major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:E;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1478,8 +1557,6 @@ key:Eminor
 	rdfs:label "E minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:E;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1537,7 +1614,6 @@ key:Esmajor
 	rdfs:label "E sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E sharp major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Es;
 	owl:sameAs key:Fmajor;
 	.
@@ -1547,7 +1623,6 @@ key:Esminor
 	rdfs:label "E flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the E flat minor key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Eb;
 	owl:sameAs key:Dsminor;
 	.
@@ -1560,7 +1635,6 @@ key:Fmajor
 	rdfs:label "F major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the F major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:F;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1611,8 +1685,6 @@ key:Fminor
 	rdfs:label "F minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the F minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:F;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1670,7 +1742,6 @@ key:Fsmajor
 	rdfs:label "F sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the F sharp major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Fs;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1721,8 +1792,6 @@ key:Fsminor
 	rdfs:label "F sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the F sharp minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:Fs;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1780,7 +1849,6 @@ key:Gbmajor
 	rdfs:label "G flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G flat major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Gb;
 	owl:sameAs key:Fsmajor;
 	.
@@ -1790,7 +1858,6 @@ key:Gbminor
 	rdfs:label "G flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G flat minor key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Gb;
 	owl:sameAs key:Fsminor;
 	.
@@ -1802,7 +1869,6 @@ key:Gmajor
 	rdfs:label "G major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:G;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1853,8 +1919,6 @@ key:Gminor
 	rdfs:label "G minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:G;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1912,7 +1976,6 @@ key:Gsmajor
 	rdfs:label "G sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G sharp major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Gs;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -1963,8 +2026,6 @@ key:Gsminor
 	rdfs:label "G sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the G sharp minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:Gs;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -2022,7 +2083,6 @@ key:Abmajor
 	rdfs:label "A flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A flat major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Ab;
 	owl:sameAs key:Gsmajor;
 	.
@@ -2032,7 +2092,6 @@ key:Abminor
 	rdfs:label "A flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A flat minor key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Ab;
 	owl:sameAs key:Gsminor;
 	.
@@ -2044,7 +2103,6 @@ key:Amajor
 	rdfs:label "A major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:A;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -2095,8 +2153,6 @@ key:Aminor
 	rdfs:label "A minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:A;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -2154,7 +2210,6 @@ key:Asmajor
 	rdfs:label "A sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A sharp major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:As;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -2205,8 +2260,6 @@ key:Asminor
 	rdfs:label "A sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the A sharp minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:As;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -2264,7 +2317,6 @@ key:Bbmajor
 	rdfs:label "B flat major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B flat major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Bb;
 	owl:sameAs key:Asmajor;
 	.
@@ -2274,7 +2326,6 @@ key:Bbminor
 	rdfs:label "B flat minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B flat minor key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Bb;
 	owl:sameAs key:Asminor;
 	.
@@ -2285,7 +2336,6 @@ key:Bmajor
 	rdfs:label "B major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:B;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -2336,8 +2386,6 @@ key:Bminor
 	rdfs:label "B minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B minor key.";
-	tonality:scale scale:minor;
-	tonality:scale scale:harmonic_minor;
 	tonality:tonic note:B;
 	tonality:degree [ a tonality:Degree;
 			tonality:degree_position 1;
@@ -2395,7 +2443,6 @@ key:Bsmajor
 	rdfs:label "B sharp major key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B sharp major key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Bs;
 	owl:sameAs key:Cmajor;
 	.
@@ -2405,7 +2452,6 @@ key:Bsminor
 	rdfs:label "B sharp minor key";
 	vs:term_status "testing";
 	rdfs:comment "Description of the B sharp minor key.";
-	tonality:scale scale:major;
 	tonality:tonic note:Bs;
 	owl:sameAs key:Cminor;
 	.
