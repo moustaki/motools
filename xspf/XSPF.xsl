@@ -4,7 +4,10 @@
     xmlns:rdfs ="http://www.w3.org/2000/02/rdfschema#"
     xmlns:play ="http://xspf.org/ns/0/" 
     xmlns:mo   ="http://purl.org/ontology/mo/"
-    xmlns ="http://xspf.org/ns/0/" 
+    xmlns ="http://xspf.org/ns/0/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
     >
 
  <!-- 
@@ -67,24 +70,80 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 
 <xsl:template match='play:playlist'>
 <rdf:RDF>
-<mo:Playlist>
-<version><xsl:value-of select='@version'/></version>
-<xsl:for-each select="play:trackList/play:track">
- <mo:track>
-  <xsl:apply-templates select="play:track"/>
-   <mo:Track>
-   <mo:available_as rdf:resource="{play:location}"/>
-  </mo:Track>
- </mo:track>
-</xsl:for-each>
-</mo:Playlist>
+
+  <mo:Playlist>
+    <version><xsl:value-of select='@version'/></version>
+  
+    <!-- Track List -->
+    <xsl:for-each select="play:trackList/play:track">
+      <mo:track>
+        <xsl:choose>
+
+        <xsl:when test="play:identifier">
+          <xsl:call-template name="track">      
+            <xsl:with-param name="id">
+              <xsl:value-of select="play:identifier" />
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+          <xsl:call-template name="track">
+            <xsl:with-param name="id">#<xsl:value-of select="generate-id(.)" /></xsl:with-param>
+          </xsl:call-template>
+        </xsl:otherwise>
+
+        </xsl:choose>
+      </mo:track>
+    </xsl:for-each>
+
+  </mo:Playlist>
 </rdf:RDF>
 </xsl:template>
 
-<xsl:template match='play:track'>
-<mo:Track>
- <mo:available_as rdf:resource="{play:location}"/>
-</mo:Track>
+
+<!-- Track -->
+<xsl:template name='track'>
+  <xsl:param name="id" />
+  
+  <mo:Track rdf:about="{$id}">
+
+    <!-- 0 or more -->
+    <xsl:if test="play:location">
+      <mo:available_as rdf:resource="{play:location}"/>
+    </xsl:if>
+
+    <xsl:if test="play:creator">
+       <dc:creator>
+         <xsl:value-of select="play:creator" />
+       </dc:creator>
+       <!-- mo:MusicalArtist? -->
+    </xsl:if>
+
+    <xsl:if test="play:title">
+      <dc:title><xsl:value-of select="play:title" /></dc:title>
+    </xsl:if>
+
+    <xsl:if test="play:album">
+      <!-- WRONG -->
+      <mo:album><xsl:value-of select="play:album" /></mo:album>
+    </xsl:if>
+
+    <xsl:if test="play:annotation">
+      <dc:description><xsl:value-of select="play:annotation" /></dc:description>
+    </xsl:if>
+
+    <xsl:if test="play:image">
+      <mo:image rdf:resource="{play:image}" />
+    </xsl:if>
+
+    <xsl:if test="play:info">
+      <rdfs:seeAlso rdf:resource="{play:info}" />
+    </xsl:if>
+<!--
+    <duration>271066</duration>
+-->
+  </mo:Track>
 </xsl:template>
 
 <!--<xsl:variable name="itemURI">-->
