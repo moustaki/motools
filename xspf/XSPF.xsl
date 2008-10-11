@@ -12,31 +12,106 @@
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     >
 
- <!-- 
-
-see http://xspf.org/
-
--->
-
-
 <xsl:output method="xml" indent="yes" encoding="utf-8"/>
 
 <div xmlns="http://www.w3.org/1999/xhtml">
-<p>testing GRDDL for xspf.com: examples taken from
-http://gonze.com/xspf/xspf-draft-8.html
-</p>
-<p>Copyright (c) <a href="http://www.asemantics.com">Asemantics
-S.R.L</a>, 2005</p>
+  <h1>Transform XSPF to MusicOntology RDF</h1>
+  <p>This document specifies how to transform a valid <a href="http://xspf.org/">XSPF</a> document into <a href="http://musicontology.com">MusicOntology</a> RDF/XML.</p>
+  <p>It is designed for use by agents who understand <a href="http://www.w3.org/TR/grddl/">GRDDL</a>, and acts as the XSPF <a href="http://www.w3.org/TR/grddl/#ns-bind">NamespaceTransformation</a>.</p>
+  <p>Based on <a href="http://libby.asemantics.com/2005/01/XSPF/">original work</a> by <a href="mailto:libby@asemantics.com">Libby Miller</a></p>
+  <p>Copyright <a href="http://moustaki.org/">Yves Raimond</a> &amp; <a href="http://clockwerx.blogspot.com/">Daniel O'Connor</a></p>
 
-<!-- Creative Commons License -->
-<a rel="license"
-href="http://creativecommons.org/licenses/by-sa/2.0/"><img alt="Creative
-Commons License" border="0"
-src="http://creativecommons.org/images/public/somerights20.gif"
-/></a><br />
+  <h2>Example</h2>
+The below XSPF playlist
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;playlist version="1" xmlns="http://xspf.org/ns/0/"&gt;
+
+  &lt;title&gt;My playlist&lt;/title&gt;
+
+  &lt;creator&gt;Jane Doe&lt;/creator&gt;
+  &lt;annotation&gt;My favorite songs&lt;/annotation&gt;
+  &lt;info&gt;http://example.com/myplaylists&lt;/info&gt;
+  &lt;location&gt;http://example.com/myplaylists/myplaylist&lt;/location&gt;
+  &lt;identifier&gt;magnet:?xt=urn:sha1:YNCKHTQCWBTRNJIV4WNAE52SJUQCZO5C&lt;/identifier&gt;
+  &lt;image&gt;http://example.com/img/mypicture&lt;/image&gt;
+  &lt;date&gt;2005-01-08T17:10:47-05:00&lt;/date&gt;
+  &lt;license&gt;http://creativecommons.org/licenses/by/1.0/&lt;/license&gt;
+  &lt;attribution&gt;
+    &lt;identifier&gt;http://bar.com/secondderived.xspf&lt;/identifier&gt;
+    &lt;location&gt;http://foo.com/original.xspf&lt;/location&gt;
+  &lt;/attribution&gt;
+  &lt;link rel="http://foaf.example.org/namespace/version1"&gt;http://socialnetwork.example.org/foaf/mary.rdfs&lt;/link&gt;
+  &lt;meta rel="http://example.org/key"&gt;value&lt;/meta&gt;
+  &lt;extension application="http://example.com"&gt;
+    &lt;clip start="25000" end="34500"/&gt;
+  &lt;/extension&gt;
+
+&lt;trackList&gt;
+
+    &lt;track&gt;
+
+      &lt;location&gt;http://example.com/my.mp3&lt;/location&gt;
+      &lt;identifier&gt;magnet:?xt=urn:sha1:YNCKHTQCWBTRNJIV4WNAE52SJUQCZO5C&lt;/identifier&gt;
+      &lt;title&gt;My Way&lt;/title&gt;
+      &lt;creator&gt;Frank Sinatra&lt;/creator&gt;
+      &lt;annotation&gt;This is my theme song.&lt;/annotation&gt;
+      &lt;info&gt;http://franksinatra.com/myway&lt;/info&gt;
+      &lt;image&gt;http://franksinatra.com/img/myway&lt;/image&gt;
+      &lt;album&gt;Frank Sinatra&apos;s Greatest Hits&lt;/album&gt;
+      &lt;trackNum&gt;3&lt;/trackNum&gt;
+      &lt;duration&gt;19200&lt;/duration&gt;
+      &lt;link rel="http://foaf.org/namespace/version1"&gt;http://socialnetwork.org/foaf/mary.rdfs&lt;/link&gt;
+      &lt;meta rel="http://example.org/key"&gt;value&lt;/meta&gt;
+      &lt;extension application="http://example.com"&gt;
+        &lt;clip start="25000" end="34500"/&gt;
+      &lt;/extension&gt;
+
+    &lt;/track&gt;
+
+  &lt;/trackList&gt;
+
+
+&lt;/playlist&gt;
+</pre>
+can be transformed into
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/02/rdfschema#" xmlns:play="http://xspf.org/ns/0/" xmlns:mo="http://purl.org/ontology/mo/" xmlns="http://xspf.org/ns/0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:owl="http://www.w3.org/2002/07/owl#"&gt;
+  &lt;mo:MusicalItem rdf:about="magnet:?xt=urn:sha1:YNCKHTQCWBTRNJIV4WNAE52SJUQCZO5C"&gt;
+    &lt;owl:sameAs rdf:resource="http://example.com/myplaylists/myplaylist"/&gt;
+    &lt;rdfs:seeAlso rdf:resource="http://example.com/myplaylists"/&gt;
+    &lt;foaf:maker&gt;Jane Doe&lt;/foaf:maker&gt;
+    &lt;dc:created&gt;2005-01-08T17:10:47-05:00&lt;/dc:created&gt;
+    &lt;cc:license rdf:resource="http://creativecommons.org/licenses/by/1.0/"/&gt;
+    &lt;mo:license rdf:resource="http://creativecommons.org/licenses/by/1.0/"/&gt;
+    &lt;dc:description&gt;My favorite songs&lt;/dc:description&gt;
+    &lt;mo:image rdf:resource="http://example.com/img/mypicture"/&gt;
+    &lt;mo:track&gt;
+      &lt;mo:Track rdf:about="magnet:?xt=urn:sha1:YNCKHTQCWBTRNJIV4WNAE52SJUQCZO5C"&gt;
+        &lt;mo:available_as rdf:resource="http://example.com/my.mp3"/&gt;
+        &lt;foaf:maker&gt;Frank Sinatra&lt;/foaf:maker&gt;
+        &lt;dc:title&gt;My Way&lt;/dc:title&gt;
+        &lt;mo:album&gt;
+          &lt;mo:MusicalWork&gt;
+            &lt;dc:title&gt;Frank Sinatra's Greatest Hits&lt;/dc:title&gt;
+          &lt;/mo:MusicalWork&gt;
+        &lt;/mo:album&gt;
+        &lt;dc:description&gt;This is my theme song.&lt;/dc:description&gt;
+        &lt;mo:image rdf:resource="http://franksinatra.com/img/myway"/&gt;
+        &lt;rdfs:seeAlso rdf:resource="http://franksinatra.com/myway"/&gt;
+      &lt;/mo:Track&gt;
+    &lt;/mo:track&gt;
+  &lt;/mo:MusicalItem&gt;
+&lt;/rdf:RDF&gt;
+</pre>
+
+
+  <h2>License</h2>
+  <!-- Creative Commons License -->
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
 This work is licensed under a <a rel="license"
-href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons
-License</a>.
+href="http://creativecommons.org/licenses/by-sa/2.0/">Creative Commons License</a>.
 <!-- /Creative Commons License -->
 
 <!--
@@ -61,11 +136,6 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 </rdf:RDF>
 
 -->
-
-
-<address>
-<a href="mailto:libby@asemantics.com">libby Miller</a>
-</address>
 </div>
 
 
