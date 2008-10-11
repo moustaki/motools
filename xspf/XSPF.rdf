@@ -1,31 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/02/rdfschema#" xmlns:play="http://xspf.org/ns/0/" xmlns:mo="http://purl.org/ontology/mo/" xmlns="http://xspf.org/ns/0/">
-<mo:Playlist>
-<version>0</version>
-<mo:track>
-<mo:Track>
-<mo:available_as rdf:resource="file:///mp3s/Yo%20La%20Tengo/1_Nuclear%20War%20Version%201.mp3"/>
-</mo:Track>
-</mo:track>
-<mo:track>
-<mo:Track>
-<mo:available_as rdf:resource="file:///mp3s/Yo%20La%20Tengo/2_Nuclear%20War%20Version%202.mp3"/>
-</mo:Track>
-</mo:track>
-<mo:track>
-<mo:Track>
-<mo:available_as rdf:resource="file:///mp3s/Yo%20La%20Tengo/3_Nuclear%20War%20Version%203.mp3"/>
-</mo:Track>
-</mo:track>
-<mo:track>
-<mo:Track>
-<mo:available_as rdf:resource="file:///mp3s/Yo%20La%20Tengo/4_Nuclear%20War%20Version%204"/>
-</mo:Track>
-</mo:track>
-<mo:track>
-<mo:Track>
-<mo:available_as rdf:resource="file:///mp3s/Yo%20La%20Tengo/5_Nuclear%20War%20Version%204%20(Mike%20Ladd%20Remix).mp3"/>
-</mo:Track>
-</mo:track>
-</mo:Playlist>
+<?xml-stylesheet href="about.xsl" type="text/xsl" ?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dataview="http://www.w3.org/2003/g/data-view#">
+ <rdf:Description rdf:about="http://xspf.org/ns/0/">
+   <dataview:namespaceTransformation
+       rdf:resource="http://xspf.org/ns/0/XSPF.xsl"/>
+ </rdf:Description>
 </rdf:RDF>
