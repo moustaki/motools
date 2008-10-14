@@ -10,6 +10,7 @@
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:cc="http://web.resource.org/cc/"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
     >
 
 <xsl:output method="xml" indent="yes" encoding="utf-8"/>
@@ -146,7 +147,14 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
     <xsl:when test="play:identifier">
       <xsl:call-template name="playlist">      
         <xsl:with-param name="url">
-          <xsl:value-of select="play:identifier" />
+          <xsl:choose>
+            <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+              <xsl:value-of select="fn:resolve-uri(play:identifier, fn:base-uri(play:identifier))" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="play:identifier" />
+            </xsl:otherwise>
+          </xsl:choose>   
         </xsl:with-param>
       </xsl:call-template>
     </xsl:when>
@@ -154,7 +162,14 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
     <xsl:when test="play:location">
       <xsl:call-template name="playlist">      
         <xsl:with-param name="url">
-          <xsl:value-of select="play:location" />
+          <xsl:choose>
+            <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+              <xsl:value-of select="fn:resolve-uri(play:location, fn:base-uri(play:location))" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="play:location" />
+            </xsl:otherwise>
+          </xsl:choose>   
         </xsl:with-param>
       </xsl:call-template>
     </xsl:when>
@@ -180,11 +195,25 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 
     <!-- Do we have two URLs which can be used for this item? -->
     <xsl:if test="play:identifier and play:location">
-        <owl:sameAs rdf:resource="{play:location}" />
+      <xsl:choose>
+        <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+          <owl:sameAs rdf:resource="{fn:resolve-uri(play:location, fn:base-uri(play:location))}" />
+        </xsl:when>
+        <xsl:otherwise>
+          <owl:sameAs rdf:resource="{play:location}"/>
+        </xsl:otherwise>
+      </xsl:choose>   
     </xsl:if>
     
     <xsl:if test="play:info">
-        <rdfs:seeAlso rdf:resource="{play:info}" />
+      <xsl:choose>
+        <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+          <rdfs:seeAlso rdf:resource="{fn:resolve-uri(play:info, fn:base-uri(play:info))}" />
+        </xsl:when>
+        <xsl:otherwise>
+          <rdfs:seeAlso rdf:resource="{play:info}" />
+        </xsl:otherwise>
+      </xsl:choose>   
     </xsl:if>
 
     <xsl:if test="play:creator">
@@ -197,8 +226,17 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
     </xsl:if>
 
     <xsl:if test="play:license">
-       <cc:license rdf:resource="{play:license}" />
-       <mo:license rdf:resource="{play:license}" />
+      <xsl:choose>
+        <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+          <cc:license rdf:resource="{fn:resolve-uri(play:license, fn:base-uri(play:license))}" />
+          <mo:license rdf:resource="{fn:resolve-uri(play:license, fn:base-uri(play:license))}" />
+        </xsl:when>
+        <xsl:otherwise>
+          <cc:license rdf:resource="{play:license}" />
+          <mo:license rdf:resource="{play:license}" />
+        </xsl:otherwise>
+      </xsl:choose>    
+
     </xsl:if>
 
     <xsl:if test="play:annotation">
@@ -206,7 +244,14 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
     </xsl:if>
   
     <xsl:if test="play:image">
-      <mo:image rdf:resource="{play:image}" /> 
+      <xsl:choose>
+        <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+          <mo:image rdf:resource="{fn:resolve-uri(play:image, fn:base-uri(play:image))}" />
+        </xsl:when>
+        <xsl:otherwise>
+          <mo:image rdf:resource="{play:image}" />
+        </xsl:otherwise>
+      </xsl:choose>    
     </xsl:if>
 
     <!-- TODO: meta -->
@@ -229,19 +274,27 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
     <mo:track>
       <xsl:choose>
  
-      <xsl:when test="play:identifier">
-        <xsl:call-template name="track">      
-          <xsl:with-param name="id">
-            <xsl:value-of select="play:identifier" />
-          </xsl:with-param>
-        </xsl:call-template>
-      </xsl:when>
+        <xsl:when test="play:identifier">
+          <xsl:call-template name="track">      
+            <xsl:with-param name="id">
+              <xsl:choose>
+                <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+                  <xsl:value-of select="fn:resolve-uri(play:identifier, fn:base-uri(play:identifier))" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="play:identifier" />
+                </xsl:otherwise>
+              </xsl:choose>   
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:when>
+
       
-      <xsl:otherwise>
-        <xsl:call-template name="track">
-          <xsl:with-param name="id">#<xsl:value-of select="generate-id(.)" /></xsl:with-param>
-        </xsl:call-template>
-      </xsl:otherwise>
+       <xsl:otherwise>
+         <xsl:call-template name="track">
+           <xsl:with-param name="id">#<xsl:value-of select="generate-id(.)" /></xsl:with-param>
+         </xsl:call-template>
+       </xsl:otherwise>
      </xsl:choose>
     </mo:track>
   </xsl:for-each>
@@ -255,7 +308,14 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
 
     <!-- 0 or more -->
     <xsl:if test="play:location">
-      <mo:available_as rdf:resource="{play:location}"/>
+      <xsl:choose>
+        <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+          <mo:available_as rdf:resource="{fn:resolve-uri(play:location, fn:base-uri(play:location))}" />
+        </xsl:when>
+        <xsl:otherwise>
+          <mo:available_as rdf:resource="{play:location}"/>
+        </xsl:otherwise>
+      </xsl:choose>   
     </xsl:if>
 
     <xsl:if test="play:creator">
@@ -280,11 +340,25 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
     </xsl:if>
 
     <xsl:if test="play:image">
-      <mo:image rdf:resource="{play:image}" />
+      <xsl:choose>
+        <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+          <mo:image rdf:resource="{fn:resolve-uri(play:image, fn:base-uri(play:image))}" />
+        </xsl:when>
+        <xsl:otherwise>
+          <mo:image rdf:resource="{play:image}" />
+        </xsl:otherwise>
+      </xsl:choose>    
     </xsl:if>
 
     <xsl:if test="play:info">
-      <rdfs:seeAlso rdf:resource="{play:info}" />
+      <xsl:choose>
+        <xsl:when test="function-available('resolve-uri') and function-available('base-uri')">
+          <rdfs:seeAlso rdf:resource="{fn:resolve-uri(play:info, fn:base-uri(play:info))}" />
+        </xsl:when>
+        <xsl:otherwise>
+          <rdfs:seeAlso rdf:resource="{play:info}" />
+        </xsl:otherwise>
+      </xsl:choose>   
     </xsl:if>
 
     <!-- duration -->
