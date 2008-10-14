@@ -174,6 +174,10 @@ rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
  <xsl:param name="url" />
  <mo:MusicalItem rdf:about="{$url}">
 
+    <xsl:if test="play:title">
+        <dc:title><xsl:value-of select="play:title" /></dc:title>
+    </xsl:if>
+
     <!-- Do we have two URLs which can be used for this item? -->
     <xsl:if test="play:identifier and play:location">
         <owl:sameAs rdf:resource="{play:location}" />
