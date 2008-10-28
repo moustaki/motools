@@ -1,0 +1,86 @@
+@prefix n: <http://purl.org/ontology/event-notes#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<http://purl.org/ontology/event-notes>
+    a owl:Ontology;
+    rdfs:label "Ontology for event notes";
+    rdfs:comment """
+    A small ontology to take quick notes during events 
+    such as conferences etc.
+    """;
+    foaf:maker <http://moustaki.org/foaf.rdf#moustaki>;
+    .
+
+
+n:Conference
+    a owl:Class;
+    rdfs:label "Conference";
+    rdfs:comment """
+    A conference event
+    """;
+    rdfs:subClassOf event:Event;
+    .
+
+n:Workshop
+    a owl:Class;
+    rdfs:label "Workshop";
+    rdfs:comment """
+    A workshop event
+    """;
+    rdfs:subClassOf event:Event;
+    .
+
+n:Talk
+    a owl:Class;
+    rdfs:label "Talk";
+    rdfs:comment """
+    A talk (e.g. at a conference)
+    """;
+    rdfs:subClassOf event:Event;
+    .
+
+n:Keynote
+    a owl:Class;
+    rdfs:label "Keynote";
+    rdfs:comment """
+    A keynote talk
+    """;
+    rdfs:subClassOf event:Event;
+    .
+
+n:LighteningTalk
+    a owl:Class;
+    rdfs:label "Lightening talk";
+    rdfs:comment """
+    A lightening talk
+    """;
+    .
+
+###
+
+n:attendee
+    a owl:ObjectProperty;
+    rdfs:label "attendee";
+    rdfs:comment """
+    Relates an event to one of its attendee
+    """;
+    rdfs:domain event:Event;
+    rdfs:range foaf:Person;
+    rdfs:subPropertyOf event:agent;
+    .
+
+n:speaker
+    a owl:ObjectProperty;
+    rdfs:label "speaker";
+    rdfs:comment """
+    Relats an event to one speaker
+    """;
+    rdfs:domain event:Event;
+    rdfs:range foaf:Person;
+    rdfs:subPropertyOf event:agent;
+    .
+
