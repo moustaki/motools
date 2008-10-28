@@ -13,6 +13,7 @@
 
 <http://purl.org/NET/c4dm/timeline.owl>
     a owl:Ontology;
+    rdfs:label "The Timeline ontology";
     rdfs:comment """
     	Extends owl-time ontology (http://www.w3.org/2006/time) with  
 	support for several timelines, acting as a backbone to adress 

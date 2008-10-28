@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:daml="http://www.daml.org/2001/03/daml+oil#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:time="http://www.w3.org/2006/time#" xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns="http://purl.org/NET/c4dm/timeline.owl#" xml:base="http://purl.org/NET/c4dm/timeline.owl#">
   <owl:Ontology rdf:about="">
+    <rdfs:label>The Timeline ontology</rdfs:label>
     <rdfs:comment>
     	Extends owl-time ontology (http://www.w3.org/2006/time) with  
 	support for several timelines, acting as a backbone to adress 
