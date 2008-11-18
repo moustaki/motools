@@ -1,0 +1,29 @@
+RDF-pastebin
+
+Yves Raimond, BBC A&Mi, November 2008
+yves.raimond@bbc.co.uk
+
+---
+
+= Summary
+The server in server.pl handles the following:
+ * HTTP POSTing of RDF documents (RDF/XML or RDF/Turtle)
+ * SPARQL end-point, to query the posted documents
+ * Dereferencability of URIs within the server namespace
+
+= Dependencies
+ * SWI-Prolog + semweb library
+     http://www.swi-prolog.org/
+ * ClioPatria SeRQL Semantic Web server
+     http://e-culture.multimedian.nl/software/ClioPatria.shtml
+
+= Launch
+ * Type the following at a SWI-Prolog prompt:
+    ?- [server].
+    ?- server.
+
+= Try
+ * Write a RDF/Turtle file called foo.n3, describing a http://localhost:3019/foo resource, and try:
+    $ curl -F rdf=@./foo.n3 -F type=ttl http://localhost:3019/
+    $ curl -L -v http://localhost:3019/foo
+ * Or try the small HTML form in index.html
