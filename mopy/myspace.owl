@@ -5,33 +5,31 @@
     <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
     <!ENTITY mo "http://purl.org/ontology/mo/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY owl11 "http://www.w3.org/2006/12/owl11#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY owl11xml "http://www.w3.org/2006/12/owl11-xml#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY wgs84_pos "http://www.w3.org/2003/01/geo/wgs84_pos#" >
-    <!ENTITY myspace "http://grasstunes.net/ontology/myspace.owl#" >
+    <!ENTITY myspace "http://purl.org/ontology/myspace/" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
 
-<rdf:RDF xmlns="http://grasstunes.net/ontology/myspace.owl#"
-     xml:base="http://grasstunes.net/ontology/myspace.owl"
-     xmlns:owl11="http://www.w3.org/2006/12/owl11#"
-     xmlns:owl11xml="http://www.w3.org/2006/12/owl11-xml#"
+<rdf:RDF xmlns="http://purl.org/ontology/myspace/"
+     xml:base="http://purl.org/ontology/myspace/"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
      xmlns:mo="http://purl.org/ontology/mo/"
-     xmlns:myspace="http://grasstunes.net/ontology/myspace.owl#"
+     xmlns:myspace="http://purl.org/ontology/myspace/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#">
     <owl:Ontology rdf:about="">
-        <owl:imports rdf:resource="http://www.geonames.org/ontology"/>
         <rdfs:comment
             >An ontology for describing MySpace stuff, especially artists</rdfs:comment>
-        <owl:imports rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#"/>
+        <owl:imports rdf:resource="http://www.geonames.org/ontology"/>
+        <owl:imports rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos"/>
     </owl:Ontology>
     
 
@@ -49,51 +47,51 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#age -->
 
-    <owl:ObjectProperty rdf:about="#age">
-        <rdfs:range rdf:resource="&rdfs;Literal"/>
-        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    <owl:ObjectProperty rdf:about="&myspace;age">
         <rdfs:comment
             >MySpace age relationship - an age of a MySpace agent in years</rdfs:comment>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
     
 
 
     <!-- http://grasstunes.net/ontology/myspace.owl#friend -->
 
-    <owl:ObjectProperty rdf:about="#friend">
+    <owl:ObjectProperty rdf:about="&myspace;friend">
         <rdf:type rdf:resource="&owl;SymmetricProperty"/>
-        <rdfs:subPropertyOf rdf:resource="&foaf;knows"/>
-        <rdfs:range rdf:resource="&foaf;Person"/>
         <rdfs:comment
             >MySpace friend relationship - undirected</rdfs:comment>
+        <rdfs:range rdf:resource="&foaf;Person"/>
         <rdfs:domain rdf:resource="&foaf;Person"/>
+        <rdfs:subPropertyOf rdf:resource="&foaf;knows"/>
     </owl:ObjectProperty>
     
 
 
     <!-- http://grasstunes.net/ontology/myspace.owl#genreTag -->
 
-    <owl:ObjectProperty rdf:about="#genreTag">
-        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+    <owl:ObjectProperty rdf:about="&myspace;genreTag">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdfs:comment
             >for the genres specified by artists on MySpace</rdfs:comment>
+        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
         <rdfs:range rdf:resource="&mo;Genre"/>
-        <rdfs:domain rdf:resource="#MusicArtist"/>
     </owl:ObjectProperty>
     
 
 
     <!-- http://grasstunes.net/ontology/myspace.owl#topFriend -->
 
-    <owl:ObjectProperty rdf:about="#topFriend">
-        <rdf:type rdf:resource="&owl11;AntisymmetricProperty"/>
+    <owl:ObjectProperty rdf:about="&myspace;topFriend">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdfs:comment
             >MySpace top friend relationship - a directed relationship</rdfs:comment>
-        <rdfs:domain rdf:resource="#MusicArtist"/>
-        <rdfs:subPropertyOf rdf:resource="&foaf;knows"/>
+        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
+        <rdfs:range rdf:resource="&myspace;MusicArtist"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
         <rdfs:range rdf:resource="&foaf;Agent"/>
-        <rdfs:range rdf:resource="#MusicArtist"/>
+        <rdfs:subPropertyOf rdf:resource="&foaf;knows"/>
     </owl:ObjectProperty>
     
 
@@ -117,16 +115,16 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#bandMembers -->
 
-    <owl:DatatypeProperty rdf:about="#bandMembers">
+    <owl:DatatypeProperty rdf:about="&myspace;bandMembers">
+        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain rdf:resource="#MusicArtist"/>
     </owl:DatatypeProperty>
     
 
 
     <!-- http://grasstunes.net/ontology/myspace.owl#cachedMP3 -->
 
-    <owl:DatatypeProperty rdf:about="#cachedMP3">
+    <owl:DatatypeProperty rdf:about="&myspace;cachedMP3">
         <rdfs:domain rdf:resource="&mo;AudioFile"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -135,8 +133,8 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#influences -->
 
-    <owl:DatatypeProperty rdf:about="#influences">
-        <rdfs:domain rdf:resource="#MusicArtist"/>
+    <owl:DatatypeProperty rdf:about="&myspace;influences">
+        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -144,10 +142,10 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#plays -->
 
-    <owl:DatatypeProperty rdf:about="#plays">
-        <rdfs:domain rdf:resource="&mo;AudioFile"/>
+    <owl:DatatypeProperty rdf:about="&myspace;plays">
         <rdfs:comment
             >number of plays for a track</rdfs:comment>
+        <rdfs:domain rdf:resource="&mo;AudioFile"/>
         <rdfs:range rdf:resource="&xsd;int"/>
     </owl:DatatypeProperty>
     
@@ -155,8 +153,8 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#profileViews -->
 
-    <owl:DatatypeProperty rdf:about="#profileViews">
-        <rdfs:domain rdf:resource="#Page"/>
+    <owl:DatatypeProperty rdf:about="&myspace;profileViews">
+        <rdfs:domain rdf:resource="&myspace;Page"/>
         <rdfs:range rdf:resource="&xsd;int"/>
     </owl:DatatypeProperty>
     
@@ -164,8 +162,8 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#recordLabel -->
 
-    <owl:DatatypeProperty rdf:about="#recordLabel">
-        <rdfs:domain rdf:resource="#MusicArtist"/>
+    <owl:DatatypeProperty rdf:about="&myspace;recordLabel">
+        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -173,8 +171,8 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#recordLabelType -->
 
-    <owl:DatatypeProperty rdf:about="#recordLabelType">
-        <rdfs:domain rdf:resource="#MusicArtist"/>
+    <owl:DatatypeProperty rdf:about="&myspace;recordLabelType">
+        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -182,19 +180,19 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#soundsLike -->
 
-    <owl:DatatypeProperty rdf:about="#soundsLike">
+    <owl:DatatypeProperty rdf:about="&myspace;soundsLike">
+        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-        <rdfs:domain rdf:resource="#MusicArtist"/>
     </owl:DatatypeProperty>
     
 
 
     <!-- http://grasstunes.net/ontology/myspace.owl#totalPlays -->
 
-    <owl:DatatypeProperty rdf:about="#totalPlays">
-        <rdfs:range rdf:resource="&xsd;integer"/>
+    <owl:DatatypeProperty rdf:about="&myspace;totalPlays">
+        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;int"/>
-        <rdfs:domain rdf:resource="#MusicArtist"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
     
 
@@ -212,7 +210,7 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#Agent -->
 
-    <owl:Class rdf:about="#Agent">
+    <owl:Class rdf:about="&myspace;Agent">
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
         <rdfs:comment>MySpace agent</rdfs:comment>
     </owl:Class>
@@ -221,7 +219,7 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#AudioFile -->
 
-    <owl:Class rdf:about="#AudioFile">
+    <owl:Class rdf:about="&myspace;AudioFile">
         <rdfs:subClassOf rdf:resource="&mo;AudioFile"/>
         <rdfs:comment
             >An audio file on a MySpace artist page</rdfs:comment>
@@ -231,7 +229,7 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#Country -->
 
-    <owl:Class rdf:about="#Country">
+    <owl:Class rdf:about="&myspace;Country">
         <rdfs:subClassOf rdf:resource="&wgs84_pos;SpatialThing"/>
     </owl:Class>
     
@@ -239,7 +237,7 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#Genre -->
 
-    <owl:Class rdf:about="#Genre">
+    <owl:Class rdf:about="&myspace;Genre">
         <rdfs:subClassOf rdf:resource="&mo;Genre"/>
         <rdfs:comment
             >MySpace genre from the list of 119</rdfs:comment>
@@ -249,7 +247,7 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#MusicArtist -->
 
-    <owl:Class rdf:about="#MusicArtist">
+    <owl:Class rdf:about="&myspace;MusicArtist">
         <rdfs:subClassOf rdf:resource="&mo;MusicArtist"/>
         <rdfs:subClassOf rdf:resource="&foaf;Person"/>
         <rdfs:comment
@@ -260,7 +258,7 @@
 
     <!-- http://grasstunes.net/ontology/myspace.owl#Page -->
 
-    <owl:Class rdf:about="#Page">
+    <owl:Class rdf:about="&myspace;Page">
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
         <rdfs:subClassOf rdf:resource="&foaf;Document"/>
         <rdfs:comment>MySpace page</rdfs:comment>
@@ -316,3 +314,8 @@
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
     </owl:Class>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.941) http://owlapi.sourceforge.net -->
+
