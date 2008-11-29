@@ -117,7 +117,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#bandMembers -->
 
     <owl:DatatypeProperty rdf:about="&myspace;bandMembers">
-        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
+        <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -135,7 +135,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#influences -->
 
     <owl:DatatypeProperty rdf:about="&myspace;influences">
-        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
+        <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -164,7 +164,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#recordLabel -->
 
     <owl:DatatypeProperty rdf:about="&myspace;recordLabel">
-        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
+        <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -173,7 +173,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#recordLabelType -->
 
     <owl:DatatypeProperty rdf:about="&myspace;recordLabelType">
-        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
+        <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -182,7 +182,7 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#soundsLike -->
 
     <owl:DatatypeProperty rdf:about="&myspace;soundsLike">
-        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
+        <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -191,7 +191,15 @@
     <!-- http://grasstunes.net/ontology/myspace.owl#totalPlays -->
 
     <owl:DatatypeProperty rdf:about="&myspace;totalPlays">
-        <rdfs:domain rdf:resource="&myspace;MusicArtist"/>
+        <rdfs:domain rdf:resource="&mo;MusicArtist"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+
+    <!-- #myspaceID -->
+
+    <owl:DatatypeProperty rdf:about="&myspace;myspaceID">
+        <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;int"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
@@ -223,7 +231,7 @@
     <owl:Class rdf:about="&myspace;AudioFile">
         <rdfs:subClassOf rdf:resource="&mo;AudioFile"/>
         <rdfs:comment
-            >An audio file on a MySpace artist page</rdfs:comment>
+            >***Depricate use mo:AudioFile*** An audio file on a MySpace artist page</rdfs:comment>
     </owl:Class>
     
 
@@ -252,7 +260,7 @@
         <rdfs:subClassOf rdf:resource="&mo;MusicArtist"/>
         <rdfs:subClassOf rdf:resource="&foaf;Person"/>
         <rdfs:comment
-            >MySpace Artist page</rdfs:comment>
+            >***Depricated use mo:MusicArtist*** MySpace Artist page</rdfs:comment>
     </owl:Class>
     
 
