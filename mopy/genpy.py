@@ -308,7 +308,6 @@ def main():
 	print "Loading ontology documents..."
 	# add mew ontologies here...
 	spec_g.load("owl.rdfs")
-	#spec_g.load("musicnet.rdf")
 	spec_g.load("time.owl")
 	spec_g.load("classicalmusicnav.owl")
 	spec_g.load("musicontology.rdfs")
@@ -318,7 +317,6 @@ def main():
 	spec_g.load("timeline.rdf")
 	spec_g.load("event.rdf")
 	spec_g.load("myspace.owl")
-	#spec_g.load("musicnet.rdf")
 
 	# FIXME : Why do these get lost in loading ?
 	spec_g.namespace_manager.bind("owl",rdflib.URIRef('http://www.w3.org/2002/07/owl#'))
