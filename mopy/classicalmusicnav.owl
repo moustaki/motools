@@ -9,13 +9,13 @@
     <!ENTITY owl11xml "http://www.w3.org/2006/12/owl11-xml#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY classicalmusicnav "http://purl.org/ontology/classicalmusicnav/#" >
+    <!ENTITY classicalmusicnav "http://grasstunes.net/ontology/classicalmusicnav.owl#" >
 ]>
 
 
 <rdf:RDF xmlns="http://purl.org/ontology/classicalmusicnav/"
      xml:base="http://purl.org/ontology/classicalmusicnav/"
-     xmlns:classicalmusicnav="http://purl.org/ontology/classicalmusicnav/"
+     xmlns:classicalmusicnav="http://grasstunes.net/ontology/classicalmusicnav.owl#"
      xmlns:owl11="http://www.w3.org/2006/12/owl11#"
      xmlns:owl11xml="http://www.w3.org/2006/12/owl11-xml#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
