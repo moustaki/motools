@@ -9,13 +9,13 @@
     <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY classicalmusicnav "http://grasstunes.net/ontology/classicalmusicnav.owl#" >
+    <!ENTITY classicalmusicnav "http://purl.org/ontology/classicalmusicnav#" >
 ]>
 
 
-<rdf:RDF xmlns="&ontology;classicalmusicnav.owl#"
-     xml:base="&ontology;classicalmusicnav.owl"
-     xmlns:classicalmusicnav="&ontology;classicalmusicnav.owl#"
+<rdf:RDF xmlns="http://purl.org/ontology/classicalmusicnav#"
+     xml:base="http://purl.org/ontology/classicalmusicnav"
+     xmlns:classicalmusicnav="http://purl.org/ontology/classicalmusicnav#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
      xmlns:mo="http://purl.org/ontology/mo/"
@@ -41,7 +41,7 @@
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#from_style_period -->
+    <!-- http://purl.org/ontology/classicalmusicnav#from_style_period -->
 
     <owl:ObjectProperty rdf:about="#from_style_period">
         <rdfs:comment xml:lang="en"
@@ -53,7 +53,7 @@
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#hasInfluenced -->
+    <!-- http://purl.org/ontology/classicalmusicnav#hasInfluenced -->
 
     <owl:ObjectProperty rdf:about="#hasInfluenced">
         <rdfs:comment xml:lang="en"
@@ -69,7 +69,7 @@ Has Influenced: Lists individuals and groups influenced BY a given composer. Nam
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#influencedBy -->
+    <!-- http://purl.org/ontology/classicalmusicnav#influencedBy -->
 
     <owl:ObjectProperty rdf:about="#influencedBy">
         <rdfs:comment xml:lang="en"
@@ -85,7 +85,7 @@ Musical Influences: Lists individual and group musical influences ON a given com
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#quantity_of_work_produced -->
+    <!-- http://purl.org/ontology/classicalmusicnav#quantity_of_work_produced -->
 
     <owl:ObjectProperty rdf:about="#quantity_of_work_produced">
         <rdfs:comment xml:lang="en"
@@ -109,7 +109,7 @@ Musical Influences: Lists individual and group musical influences ON a given com
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#genre_profile -->
+    <!-- http://purl.org/ontology/classicalmusicnav#genre_profile -->
 
     <owl:DatatypeProperty rdf:about="#genre_profile">
         <rdfs:comment xml:lang="en"
@@ -150,7 +150,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#geographical_affinities -->
+    <!-- http://purl.org/ontology/classicalmusicnav#geographical_affinities -->
 
     <owl:DatatypeProperty rdf:about="#geographical_affinities">
         <rdfs:comment xml:lang="en"
@@ -162,7 +162,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#notable_works -->
+    <!-- http://purl.org/ontology/classicalmusicnav#notable_works -->
 
     <owl:DatatypeProperty rdf:about="#notable_works">
         <rdfs:comment
@@ -185,7 +185,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#Composer -->
+    <!-- http://purl.org/ontology/classicalmusicnav#Composer -->
 
     <owl:Class rdf:about="#Composer">
         <owl:equivalentClass rdf:resource="&mo;Composer"/>
@@ -196,7 +196,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#StylePeriod -->
+    <!-- http://purl.org/ontology/classicalmusicnav#StylePeriod -->
 
     <owl:Class rdf:about="#StylePeriod">
         <rdfs:subClassOf rdf:resource="&owl;Thing"/>
@@ -206,7 +206,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#WorkQuantity -->
+    <!-- http://purl.org/ontology/classicalmusicnav#WorkQuantity -->
 
     <owl:Class rdf:about="#WorkQuantity">
         <rdfs:subClassOf rdf:resource="&owl;Thing"/>
@@ -216,7 +216,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owlWorkQuantity -->
+    <!-- http://purl.org/ontology/classicalmusicnavWorkQuantity -->
 
     <owl:Class rdf:about="WorkQuantity"/>
     
@@ -248,7 +248,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#considerable -->
+    <!-- http://purl.org/ontology/classicalmusicnav#considerable -->
 
     <ontology:classicalmusicnav.owlWorkQuantity rdf:about="#considerable">
         <rdfs:comment
@@ -257,7 +257,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#extensive -->
+    <!-- http://purl.org/ontology/classicalmusicnav#extensive -->
 
     <ontology:classicalmusicnav.owlWorkQuantity rdf:about="#extensive">
         <rdfs:comment
@@ -266,7 +266,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#immense -->
+    <!-- http://purl.org/ontology/classicalmusicnav#immense -->
 
     <ontology:classicalmusicnav.owlWorkQuantity rdf:about="#immense">
         <rdfs:comment
@@ -275,7 +275,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#modest -->
+    <!-- http://purl.org/ontology/classicalmusicnav#modest -->
 
     <ontology:classicalmusicnav.owlWorkQuantity rdf:about="#modest">
         <rdfs:comment
@@ -284,7 +284,7 @@ So, a profile that visually appears as: &#39;303-2222-1112-111-00-11x&#39; would
     
 
 
-    <!-- http://grasstunes.net/ontology/classicalmusicnav.owl#small -->
+    <!-- http://purl.org/ontology/classicalmusicnav#small -->
 
     <ontology:classicalmusicnav.owlWorkQuantity rdf:about="#small">
         <rdfs:comment
