@@ -9,18 +9,18 @@
     <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY wgs84_pos "http://www.w3.org/2003/01/geo/wgs84_pos#" >
-    <!ENTITY myspace "http://purl.org/ontology/myspace/myspace.owl#" >
+    <!ENTITY myspace "http://purl.org/ontology/myspace#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
 
-<rdf:RDF xmlns="http://purl.org/ontology/myspace/myspace.owl"
-     xml:base="http://purl.org/ontology/myspace/myspace.owl#"
+<rdf:RDF xmlns="http://purl.org/ontology/myspace"
+     xml:base="http://purl.org/ontology/myspace#"
      xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
      xmlns:mo="http://purl.org/ontology/mo/"
-     xmlns:myspace="http://purl.org/ontology/myspace/myspace.owl#"
+     xmlns:myspace="http://purl.org/ontology/myspace#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -45,7 +45,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#age -->
+    <!-- http://purl.org/ontology/myspace#age -->
 
     <owl:ObjectProperty rdf:about="&myspace;age">
         <rdfs:comment
@@ -56,7 +56,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#friend -->
+    <!-- http://purl.org/ontology/myspace#friend -->
 
     <owl:ObjectProperty rdf:about="&myspace;friend">
         <rdf:type rdf:resource="&owl;SymmetricProperty"/>
@@ -69,7 +69,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#genreTag -->
+    <!-- http://purl.org/ontology/myspace#genreTag -->
 
     <owl:ObjectProperty rdf:about="&myspace;genreTag">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
@@ -82,7 +82,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#topFriend -->
+    <!-- http://purl.org/ontology/myspace#topFriend -->
 
     <owl:ObjectProperty rdf:about="&myspace;topFriend">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
@@ -114,7 +114,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#bandMembers -->
+    <!-- http://purl.org/ontology/myspace#bandMembers -->
 
     <owl:DatatypeProperty rdf:about="&myspace;bandMembers">
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
@@ -123,7 +123,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#cachedMP3 -->
+    <!-- http://purl.org/ontology/myspace#cachedMP3 -->
 
     <owl:DatatypeProperty rdf:about="&myspace;cachedMP3">
         <rdfs:domain rdf:resource="&mo;AudioFile"/>
@@ -132,7 +132,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#influences -->
+    <!-- http://purl.org/ontology/myspace#influences -->
 
     <owl:DatatypeProperty rdf:about="&myspace;influences">
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
@@ -141,7 +141,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#plays -->
+    <!-- http://purl.org/ontology/myspace#plays -->
 
     <owl:DatatypeProperty rdf:about="&myspace;plays">
         <rdfs:comment
@@ -152,7 +152,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#profileViews -->
+    <!-- http://purl.org/ontology/myspace#profileViews -->
 
     <owl:DatatypeProperty rdf:about="&myspace;profileViews">
         <rdfs:domain rdf:resource="&myspace;Page"/>
@@ -161,7 +161,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#recordLabel -->
+    <!-- http://purl.org/ontology/myspace#recordLabel -->
 
     <owl:DatatypeProperty rdf:about="&myspace;recordLabel">
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
@@ -170,7 +170,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#recordLabelType -->
+    <!-- http://purl.org/ontology/myspace#recordLabelType -->
 
     <owl:DatatypeProperty rdf:about="&myspace;recordLabelType">
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
@@ -179,7 +179,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#soundsLike -->
+    <!-- http://purl.org/ontology/myspace#soundsLike -->
 
     <owl:DatatypeProperty rdf:about="&myspace;soundsLike">
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
@@ -188,7 +188,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#totalPlays -->
+    <!-- http://purl.org/ontology/myspace#totalPlays -->
 
     <owl:DatatypeProperty rdf:about="&myspace;totalPlays">
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
@@ -217,7 +217,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#Agent -->
+    <!-- http://purl.org/ontology/myspace#Agent -->
 
     <owl:Class rdf:about="&myspace;Agent">
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
@@ -226,7 +226,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#AudioFile -->
+    <!-- http://purl.org/ontology/myspace#AudioFile -->
 
     <owl:Class rdf:about="&myspace;AudioFile">
         <rdfs:subClassOf rdf:resource="&mo;AudioFile"/>
@@ -236,7 +236,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#Country -->
+    <!-- http://purl.org/ontology/myspace#Country -->
 
     <owl:Class rdf:about="&myspace;Country">
         <rdfs:subClassOf rdf:resource="&wgs84_pos;SpatialThing"/>
@@ -244,7 +244,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#Genre -->
+    <!-- http://purl.org/ontology/myspace#Genre -->
 
     <owl:Class rdf:about="&myspace;Genre">
         <rdfs:subClassOf rdf:resource="&mo;Genre"/>
@@ -254,7 +254,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#MusicArtist -->
+    <!-- http://purl.org/ontology/myspace#MusicArtist -->
 
     <owl:Class rdf:about="&myspace;MusicArtist">
         <rdfs:subClassOf rdf:resource="&mo;MusicArtist"/>
@@ -265,7 +265,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace/myspace.owl#Page  ***DEPRICATED*** -->
+    <!-- http://purl.org/ontology/myspace#Page  ***DEPRICATED*** -->
 
     <owl:Class rdf:about="&myspace;Page">
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
