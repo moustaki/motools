@@ -27,7 +27,7 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#">
     <owl:Ontology rdf:about="">
         <rdfs:comment
-            >An ontology for describing MySpace stuff, especially artists</rdfs:comment>
+            >An ontology for describing agents on MySpace, especially music artists</rdfs:comment>
         <owl:imports rdf:resource="http://www.geonames.org/ontology"/>
         <owl:imports rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos"/>
     </owl:Ontology>
@@ -49,7 +49,7 @@
 
     <owl:ObjectProperty rdf:about="&myspace;age">
         <rdfs:comment
-            >MySpace age relationship - an age of a MySpace agent in years</rdfs:comment>
+            >MySpace age - an age of a MySpace agent in years</rdfs:comment>
         <rdfs:range rdf:resource="&rdfs;Literal"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
     </owl:ObjectProperty>
@@ -61,7 +61,7 @@
     <owl:ObjectProperty rdf:about="&myspace;friend">
         <rdf:type rdf:resource="&owl;SymmetricProperty"/>
         <rdfs:comment
-            >MySpace friend relationship - undirected</rdfs:comment>
+            >MySpace friend relationship - an undirected (symmetric) relationship and a subproperty of foaf:knows</rdfs:comment>
         <rdfs:range rdf:resource="&foaf;Person"/>
         <rdfs:domain rdf:resource="&foaf;Person"/>
         <rdfs:subPropertyOf rdf:resource="&foaf;knows"/>
@@ -74,7 +74,7 @@
     <owl:ObjectProperty rdf:about="&myspace;genreTag">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdfs:comment
-            >for the genres specified by artists on MySpace</rdfs:comment>
+            >Associates a mo:MusicArtist with a genre tag specified by artists on MySpace</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
 	<rdfs:domain rdf:resource="&mo;MusicGroup"/>
         <rdfs:range rdf:resource="&mo;Genre"/>
@@ -87,7 +87,7 @@
     <owl:ObjectProperty rdf:about="&myspace;topFriend">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdfs:comment
-            >MySpace top friend relationship - a directed relationship</rdfs:comment>
+            >MySpace top friend relationship - a directed (asymmetric) relationship</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&mo;MusicArtist"/>
         <rdfs:domain rdf:resource="&foaf;Agent"/>
@@ -117,6 +117,8 @@
     <!-- http://purl.org/ontology/myspace#bandMembers -->
 
     <owl:DatatypeProperty rdf:about="&myspace;bandMembers">
+	<rdfs:comment
+            >A data property container for the free text field on MySpace indicating 'band memebers'</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -126,7 +128,11 @@
     <!-- http://purl.org/ontology/myspace#cachedMP3 -->
 
     <owl:DatatypeProperty rdf:about="&myspace;cachedMP3">
-        <rdfs:domain rdf:resource="&mo;AudioFile"/>
+	<rdfs:comment
+            >A data property container for the cached audiofile url associated with a MySpace agent</rdfs:comment>
+	<rdfs:domain rdf:resource="&mo;MusicArtist"/>
+	<rdfs:domain rdf:resource="&mo;MusicGroup"/>        
+	<rdfs:domain rdf:resource="&mo;AudioFile"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -135,6 +141,8 @@
     <!-- http://purl.org/ontology/myspace#influences -->
 
     <owl:DatatypeProperty rdf:about="&myspace;influences">
+	<rdfs:comment
+            >A data property container for free text field specifying a music artist's influences on MySpace</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -145,7 +153,7 @@
 
     <owl:DatatypeProperty rdf:about="&myspace;plays">
         <rdfs:comment
-            >number of plays for a track</rdfs:comment>
+            >A data property container for the number of plays for a given track on MySpace</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;AudioFile"/>
         <rdfs:range rdf:resource="&xsd;int"/>
     </owl:DatatypeProperty>
@@ -155,7 +163,9 @@
     <!-- http://purl.org/ontology/myspace#profileViews -->
 
     <owl:DatatypeProperty rdf:about="&myspace;profileViews">
-        <rdfs:domain rdf:resource="&myspace;Page"/>
+        <rdfs:comment
+            >A data property container for the profile views associated with an agent on MySpace</rdfs:comment>
+	<rdfs:domain rdf:resource="&foaf;Person"/>
         <rdfs:range rdf:resource="&xsd;int"/>
     </owl:DatatypeProperty>
     
@@ -164,6 +174,8 @@
     <!-- http://purl.org/ontology/myspace#recordLabel -->
 
     <owl:DatatypeProperty rdf:about="&myspace;recordLabel">
+	<rdfs:comment
+            >A data property container for the free text field indicating a music artist's record label on MySpace</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -173,6 +185,8 @@
     <!-- http://purl.org/ontology/myspace#recordLabelType -->
 
     <owl:DatatypeProperty rdf:about="&myspace;recordLabelType">
+	<rdfs:comment
+            >A data property container for the field indicating a music artist's record label type on MySpace</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -182,6 +196,8 @@
     <!-- http://purl.org/ontology/myspace#soundsLike -->
 
     <owl:DatatypeProperty rdf:about="&myspace;soundsLike">
+	<rdfs:comment
+            >A data property container for the free text field indicating what a music artist 'sounds like' on MySpace</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -191,6 +207,8 @@
     <!-- http://purl.org/ontology/myspace#totalPlays -->
 
     <owl:DatatypeProperty rdf:about="&myspace;totalPlays">
+	<rdfs:comment
+            >A data property container for the total number of track plays for an artist on MySpace</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;int"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
@@ -199,6 +217,8 @@
     <!-- #myspaceID -->
 
     <owl:DatatypeProperty rdf:about="&myspace;myspaceID">
+	<rdfs:comment
+            >A data property container for the MySpace user id number</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;int"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
@@ -221,7 +241,7 @@
 
     <owl:Class rdf:about="&myspace;Agent">
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
-        <rdfs:comment>MySpace agent</rdfs:comment>
+        <rdfs:comment>***Depricated use foaf:Person*** MySpace agent</rdfs:comment>
     </owl:Class>
     
 
@@ -231,7 +251,7 @@
     <owl:Class rdf:about="&myspace;AudioFile">
         <rdfs:subClassOf rdf:resource="&mo;AudioFile"/>
         <rdfs:comment
-            >***Depricate use mo:AudioFile*** An audio file on a MySpace artist page</rdfs:comment>
+            >***Depricated use mo:AudioFile*** An audio file on a MySpace artist page</rdfs:comment>
     </owl:Class>
     
 
@@ -239,6 +259,8 @@
     <!-- http://purl.org/ontology/myspace#Country -->
 
     <owl:Class rdf:about="&myspace;Country">
+	<rdfs:comment
+            >A country location specifiec on MySpace</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&wgs84_pos;SpatialThing"/>
     </owl:Class>
     
@@ -249,7 +271,7 @@
     <owl:Class rdf:about="&myspace;Genre">
         <rdfs:subClassOf rdf:resource="&mo;Genre"/>
         <rdfs:comment
-            >MySpace genre from the list of 119</rdfs:comment>
+            >MySpace genre from the list of 119 music genres currently specified by MySpace</rdfs:comment>
     </owl:Class>
     
 
@@ -270,7 +292,7 @@
     <owl:Class rdf:about="&myspace;Page">
         <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
         <rdfs:subClassOf rdf:resource="&foaf;Document"/>
-        <rdfs:comment>MySpace page</rdfs:comment>
+        <rdfs:comment>***Depricated use foaf:Person or mo:MusicArtist describing the person not the page*** MySpace page</rdfs:comment>
     </owl:Class>
     
 
