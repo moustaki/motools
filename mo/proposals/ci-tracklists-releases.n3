@@ -31,7 +31,7 @@ mo:Record a owl:Class .
 mo:Signal a owl:Class .
 mo:track a owl:ObjectProperty; rdfs:domain mo:Record; rdfs:range mo:Track .
 
-# Cultural identifier 
+# 1) Cultural identifier 
 # Based on Zazi's email, http://groups.google.com/group/music-ontology-specification-group/browse_thread/thread/8e1ec6cc68e2c035
 mo:RecordingSession a owl:Class; rdfs:subPropertyOf event:Event .
 # an mo:RecordingSession can be decomposed in several performances/recordings using event:sub_event to be described in further details
@@ -39,14 +39,14 @@ mo:RecordingSession a owl:Class; rdfs:subPropertyOf event:Event .
 mo:Album a owl:Class ; rdfs:subClassOf mo:MusicalExpression . # Matches Musicbrainz terminology, but not sure if it is an appropriate name
 mo:produced_album a owl:ObjectProperty; rdfs:domain mo:RecordingSession; rdfs:range mo:Album .
 
-# Tracklist
+# 2) Tracklist
 mo:Tracklist a owl:Class; owl:equivalentClass mo:Record . # Do we need that? Or can we keep on using mo:Record?
 # Adding Zazi's trackcount property
 mo:track_count a owl:DatatypeProperty; rdfs:range mo:Tracklist .
 # Handling multi-disc releases
 mo:sub_tracklist a owl:ObjectProperty; rdfs:domain mo:Tracklist; rdfs:range mo:Tracklist .
 
-# Release events
+# 3) Release events
 mo:ReleaseEvent a owl:Class; rdfs:subClassOf event:Event .
 mo:label a owl:ObjectProperty; rdfs:domain mo:ReleaseEvent; rdfs:subPropertyOf event:agent .
 mo:released_record a owl:ObjectProperty; rdfs:domain mo:ReleaseEvent; rdfs:range mo:Record ; rdfs:subPropertyOf event:factor .
