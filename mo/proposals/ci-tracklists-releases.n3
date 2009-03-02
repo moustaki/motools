@@ -1,0 +1,54 @@
+@prefix <http://purl.org/ontology/mo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+
+# Three entities to consider
+#   1) Cultural identifier (e.g. "Sgt. Pepper")
+#     - Issued from a recording session lasting 129 days, starting on the 6th of December 1966
+#   2) Tracklist
+#     - A set of tracks: Track 1 is ... Track 2 is ... 
+#     - One cultural identifier may have many tracklists
+#   3) Release (e.g. UK on the 1st of June 1967, US on the 2nd of June 1967)
+#     - One tracklist may have many releases
+
+# Relationships to existing MO concepts
+#    1) 
+#       mo:Signal has been used for it so far, but this is confusing (we want something higher-level)
+#       We want to keep a track of a recording session event, which product is this cultural identifier
+#    2)
+#       Corresponds to our current mo:Record
+#    3)
+#       Not handled yet. We can model that as another event.
+#       We need to reconsider the status of mo:release_type and mo:release_status when adding it
+
+# Existing level 1 MO stuff
+mo:Track a owl:Class .
+mo:Record a owl:Class . 
+mo:Signal a owl:Class .
+mo:track a owl:ObjectProperty; rdfs:domain mo:Record; rdfs:range mo:Track .
+
+# Cultural identifier 
+# Based on Zazi's email, http://groups.google.com/group/music-ontology-specification-group/browse_thread/thread/8e1ec6cc68e2c035
+mo:RecordingSession a owl:Class; rdfs:subPropertyOf event:Event .
+# an mo:RecordingSession can be decomposed in several performances/recordings using event:sub_event to be described in further details
+mo:Album a owl:Class ; rdfs:subClassOf mo:MusicalExpression . # Matches Musicbrainz terminology, but not sure if it is an appropriate name
+mo:produced_album a owl:ObjectProperty rdfs:domain mo:RecordingSession; rdfs:range mo:Album .
+
+# Tracklist
+mo:Tracklist a owl:Class; owl:equivalentClass mo:Record . # Do we need that? Or can we keep on using mo:Record?
+# Adding Zazi's trackcount property
+mo:track_count a owl:DatatypeProperty; rdfs:range mo:Record .
+
+# Release events
+mo:ReleaseEvent a owl:Class; rdfs:subClassOf event:Event .
+mo:label a owl:ObjectProperty; rdfs:domain mo:ReleaseEvent; rdfs:subPropertyOf event:agent .
+mo:released_record a owl:ObjectProperty; rdfs:domain mo:ReleaseEvent; rdfs:range mo:Record ; rdfs:subPropertyOf event:factor .
+mo:release a owl:ObjectProperty; rdfs:domain mo:Record; rdfs:range mo:ReleaseEvent; owl:inverseOf mo:released_record .
+
+
+# EXAMPLES
+
+
+
+
