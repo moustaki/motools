@@ -208,7 +208,7 @@ individual_class(NS:I,NS2:C) :-
 subclassof(C,C2) :-
 	rdf(C,rdfs:subClassOf,C2).
 class(Class) :-
-	rdf(Class,rdf:type,rdfs:'Class').
+	rdf(Class,rdf:type,owl:'Class').
 term_level(NS:T,Level) :-
 	(rdf(Term,mo:level,literal(Level1)),rdf_global_id(NS:T,Term),format(atom(Level),'level ~w',[Level1]),!);Level=''.
 %class(Class) :-
