@@ -1,4 +1,4 @@
-@base <http://purl.org/ontology/studio/multitrack#> .
+base <http://purl.org/ontology/studio/multitrack#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix mt: <http://purl.org/ontology/studio/multitrack#> .
 @prefix event: <http://purl.org/NET/c4dm/event.owl#> .

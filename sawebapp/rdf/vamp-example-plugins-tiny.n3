@@ -1,0 +1,58 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix vamp:     <http://purl.org/ontology/vamp/> .
+@prefix plugbase: <http://vamp-plugins.org/rdf/plugins/vamp-example-plugins#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix dc:       <http://purl.org/dc/elements/1.1/> .
+@prefix af:       <http://purl.org/ontology/af/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix cc:       <http://web.resource.org/cc/> .
+@prefix :         <#> .
+
+#<>  a   vamp:PluginDescription ;
+#    foaf:maker          <http://www.vamp-plugins.org/doap.rdf#template-generator> ;
+#    foaf:primaryTopic   <http://vamp-plugins.org/rdf/plugins/vamp-example-plugins> .
+
+:vamp-example-plugins a  vamp:PluginLibrary ;
+    vamp:identifier "vamp-example-plugins"  ; 
+    foaf:page <http://www.vamp-plugins.org/plugin-doc/vamp-example-plugins.html> ;
+    vamp:available_plugin plugbase:zerocrossing ; 
+    .
+
+plugbase:zerocrossing a   vamp:Plugin ;
+    dc:title              "Zero Crossings" ;
+    vamp:name             "Zero Crossings" ;
+    dc:description        "Detect and count zero crossing points" ;
+#	this is certainly wrong: the given URI is a vamp:Plugin and not a foaf:Document!
+    foaf:page <http://www.vamp-plugins.org/plugin-doc/vamp-example-plugins.html#zerocrossing> ;
+    foaf:maker            [ a foaf:Agent; foaf:name "Vamp SDK Example Plugins" ] ; 
+    cc:license            <http://creativecommons.org/licenses/BSD/> ;
+    dc:rights             "Freely redistributable (BSD license)" ;
+    vamp:identifier       "zerocrossing" ;
+    vamp:vamp_API_version vamp:api_version_2 ;
+    owl:versionInfo       "2" ;
+    vamp:input_domain     vamp:TimeDomain ;
+    vamp:output      plugbase:zerocrossing_output_counts ;
+    .
+
+plugbase:zerocrossing_output_counts 
+	a  					  vamp:DenseOutput ;
+	a                     vamp:QuantizedOutput ;
+    vamp:identifier       "counts" ;
+    dc:title              "Zero Crossing Counts" ;
+    dc:description        "The number of zero crossing points per processing block"  ;
+    vamp:fixed_bin_count  "true" ;
+    vamp:unit             "crossings" ;
+	# a property can not point to a class directly but a resource of type af:ZeroCrossingCount.
+	#vamp:computes_signal_type   <http://www.ex.org/zcc> ;
+    vamp:computes_signal_type   [ a af:ZeroCrossingCount ] ;
+    vamp:quantize_step    1  ;
+    # ("") will create an unnecessary blind node
+    vamp:bin_names        "";
+    vamp:bin_count        1 ;
+    .
+
+<http://www.vamp-plugins.org/plugin-doc/vamp-example-plugins.html> a foaf:Document.
+<http://www.vamp-plugins.org/plugin-doc/vamp-example-plugins.html#zerocrossing> a foaf:Document.
+<http://www.ex.org/zcc> a af:ZeroCrossingCount.

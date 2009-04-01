@@ -1,0 +1,33 @@
+
+Sonic Annotator Web Application
+===============================
+
+This python program generates and serves a web interface for 
+Vamp plugins available on the system and allows 
+feature extraction of uploaded audio files using Sonic Annotator.
+
+An example of a generated html page can be found in ./examples
+
+REQUIREMENTS:
+
+Cherrypy (web server)
+Sonic Annotator
+Cheetah template library
+Mopy 
+Musicbrainz2 library
+...more to come here
+
+TODO:
+
+*This is really in the phase of "testing ideas" but 
+ already quite usable
+
+*Display enhanced plugin information using mopy+vamp ontology
+*Finalize JSON generator for mb data (maybe use mopy e.g. like GNAT)
+*Post process RDF output to include metadata from musicbrainz
+*Visualisations of RDF (e.g. using Matplotlib/ Flash interface)
+*Cache the resulting RDF on the Virtuoso server (Kurt?) 
+Any more ideas?
+
+
+

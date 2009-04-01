@@ -1,0 +1,80 @@
+<script type="text/javascript">
+
+//javascript data
+// var trackMetadata = new Array();
+// trackMetadata[0] = {tag:"puid",value:"56748647392breufr3w"};
+
+var trackMetadata = new Array();
+$javascript_data
+
+// Draw table from 'trackMetadata' array of objects
+function drawTable2(tbody) {
+    var tr, td, subject;
+    subject = tbody;
+    tbody = document.getElementById(tbody);
+
+    // loop through data source
+    for (var i = 0; i < trackMetadata.length; i++) {
+        tr = tbody.insertRow(tbody.rows.length);
+		// if (trackMetadata[i].subject != "phrase.wav") continue;
+		if (trackMetadata[i].subject != subject) continue;
+
+        td = tr.insertCell(tr.cells.length);
+        td.setAttribute("align", "center");
+        td.innerHTML = trackMetadata[i].predicate;
+        td.innerHTML = trackMetadata[i].predicate;
+
+        td = tr.insertCell(tr.cells.length);
+        td.setAttribute("align", "center");
+        td.innerHTML = trackMetadata[i].object;
+    }
+}
+
+</script>
+
+<br/>
+
+<!-- List of uploaded files -->
+<h2><font color="darkred">
+	$section_title
+</font></h2>
+List of uploaded audio files: (Please select at least one.)
+<br/>
+You can view some metadata of any identified audio file by clicking <i> show metadata </i>.
+<br/><br/>
+
+<!-- outer table -->
+<table border="0" cellpadding="1" cellspacing="1" id="content" >
+<tr><td valign="top">
+
+	#for $i in range (len($file_list))
+	#set $filename = $file_list.pop()
+
+<!-- head table: Plugin -->
+<table border="0" cellpadding="0" cellspacing="0" id="content" >
+
+
+	<tr><td valign="top" bgcolor = "beige">          
+
+		&nbsp;<input type="checkbox" name="filelist" value=$filename checked="checked">
+		Audio File: <b>$filename</b>
+		<!--><INPUT TYPE = Button VALUE = "Click Me" OnClick = "drawTable2('$filename')">-->
+        <small><a OnClick = "drawTable2('$filename')"> (show metadata) </a></small>
+	 </td></tr>
+
+
+</table>
+
+<!-- /outer table new row --></td></tr><tr><td>
+
+<!-- insert a metadata table using some javascript -->
+<table border="0" cellpadding="2" cellspacing="2" id="content" bgcolor = "lightblue">
+    <tr><tbody id='$filename'></tbody></tr>
+</table>
+
+
+<!-- /outer table new row --></td></tr><tr><td>
+
+	#end for
+
+<!-- /outer table ends--></td></tr></table>
