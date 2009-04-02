@@ -10,17 +10,20 @@ import artistlookup
 class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     
     def do_GET(self):
-        try: 
-            if self.path.startswith('/mbid'):
-                mbid = self.path.rsplit('/mbid/')[1]
-                print mbid
+        #try:
+            if self.path.startswith('/mbid') and not self.path.endswith('.rdf'):
+                self.send_response(303, 'http://localhost:2059/'+self.path+'.rdf')
+                #return
+            elif self.path.startswith('/mbid') and self.path.endswith('.rdf'):
+                mbid = self.path.rsplit('/mbid/')[1].rsplit('.rdf')[0]
                 lses = artistlookup.LastFMSession()
                 lses.authenticate()
                 lses.getLastFMdata(mbid)
                 
-                self.send_header('Content-type', 'application/rdf+xml')
-                self.end_headers()
+                #self.send_header('Content-type', 'application/rdf+xml')
+                #self.end_headers()
                 self.wfile.write(lses.createRDFGraph())
+                #return
             
             elif self.path.startswith('/'):
                 artistname = self.path.rsplit('/')[1]
@@ -28,14 +31,15 @@ class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 lses.authenticate()
                 lses.getLastFMdata()
                 
-                self.send_header('Content-type', 'application/rdf+xml')
-                self.end_headers()
+                #self.send_header('Content-type', 'application/rdf+xml')
+                #self.end_headers()
                 self.wfile.write(lses.createRDFGraph())
-        except:
-            self.wfile.write("server error")
-    
-        return
-    
+                #return
+        #except Exception:
+            
+        #    self.wfile.write("server error")
+        #return
+
 
 def main():
     try:
