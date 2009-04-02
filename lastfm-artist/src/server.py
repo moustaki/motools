@@ -17,7 +17,9 @@ class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 lses = artistlookup.LastFMSession()
                 lses.authenticate()
                 lses.getLastFMdata(mbid)
-            
+                
+                self.send_header('Content-type', 'application/rdf+xml')
+                self.end_headers()
                 self.wfile.write(lses.createRDFGraph())
             
             elif self.path.startswith('/'):
@@ -25,6 +27,9 @@ class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 lses = artistlookup.LastFMSession(artistname)
                 lses.authenticate()
                 lses.getLastFMdata()
+                
+                self.send_header('Content-type', 'application/rdf+xml')
+                self.end_headers()
                 self.wfile.write(lses.createRDFGraph())
         except:
             self.wfile.write("server error")
