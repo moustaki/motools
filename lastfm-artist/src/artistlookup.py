@@ -106,10 +106,11 @@ class LastFMSession:
 		self.graph.namespace_manager.bind("dc", rdflib.URIRef("http://purl.org/dc/elements/1.1/"))
 
 		try:
-			aNode = rdflib.BNode(DBTUNE_PREFIX+"mbid/"+self.mbid)
+			#aNode = rdflib.BNode(DBTUNE_PREFIX+"mbid/"+self.mbid)
+			aNode = rdflib.URIRef(DBTUNE_PREFIX+"mbid/"+self.mbid)
 		except TypeError:
-			aNode = rdflib.BNode(DBTUNE_PREFIX+urllib.quote(self.artistname))
-			
+			#aNode = rdflib.BNode(DBTUNE_PREFIX+urllib.quote(self.artistname))
+			aNode = rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(self.artistname))
 		
 		lastfm = rdflib.BNode("http://last.fm")
 		
@@ -126,10 +127,10 @@ class LastFMSession:
 		for artistinfo in self.similarArtists:
 			try:
 				if artistinfo[1]:
-					nodeList.append(rdflib.BNode(DBTUNE_PREFIX+"mbid/"+artistinfo[1]))
+					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+"mbid/"+artistinfo[1]))
 					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-ContextSim-"+artistinfo[1])))
 				else:
-					nodeList.append(rdflib.BNode(DBTUNE_PREFIX+urllib.quote(str(artistinfo[0]).encode('ascii','replace'))))
+					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(str(artistinfo[0]).encode('ascii','replace'))))
 					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-ContextSim-"+urllib.quote(str(artistinfo[0]).encode('ascii','replace')))))
 					
 			except UnicodeEncodeError:
