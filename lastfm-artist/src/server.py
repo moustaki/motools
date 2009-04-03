@@ -11,14 +11,15 @@ import BaseHTTPServer
 import artistlookup
 
 PORT = 2059
-HOST_NAME = "http://localhost:"+str(PORT)
+HOST_BASE = "http://localhost:"+str(PORT)
+#HOST_BASE = "http://dbtune.org/sandbox"
 
 
 class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     
     def do_HEAD(self):
         self.send_response(303)
-        self.send_header("Location", HOST_NAME+self.path+'.rdf')
+        self.send_header("Location", HOST_BASE+self.path+'.rdf')
         self.end_headers()
             
     
@@ -26,20 +27,18 @@ class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         try:
             if self.path.startswith('/mbid') and not self.path.endswith('.rdf'):
                 self.do_HEAD()
-
-                #return
-                #soc = urllib2.urlopen('http://localhost:2059/'+self.path+'.rdf')
-                #f = soc.read()
-                #self.wfile.write(f)
                 
             elif self.path.startswith('/mbid') and self.path.endswith('.rdf'):
                 mbid = self.path.rsplit('/mbid/')[1].rsplit('.rdf')[0]
+                
+                # set the headers
+                self.resp200()
+                
                 lses = artistlookup.LastFMSession()
                 lses.authenticate()
                 lses.getLastFMdata(mbid)
                 
-                #self.send_header('Content-type', 'application/rdf+xml')
-                #self.end_headers()
+                
                 self.wfile.write(lses.createRDFGraph())
                 #return
             
@@ -48,6 +47,10 @@ class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             
             elif self.path.startswith('/') and self.path.endswith('.rdf'):
                 artistname = self.path.rsplit('/')[1].rsplit('.rdf')[0]
+                
+                # set the headers
+                self.resp200()
+                
                 lses = artistlookup.LastFMSession(artistname)
                 lses.authenticate()
                 lses.getLastFMdata()
@@ -62,6 +65,12 @@ class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         except Exception:
             self.wfile.write("internal server error")
         #return
+        
+    def resp200(self):
+        '''return 200 ok headers and rdf/xml'''
+        self.send_response(200)
+        self.send_header('Content-type', 'application/rdf+xml')
+        self.end_headers()
 
 
 def main():
