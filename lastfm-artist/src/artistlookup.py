@@ -4,7 +4,7 @@
 lastfm.py
 
 Created by Kurt Jacobson on 2007-11-14.
-Copyright (c) 2007 __MyCompanyName__. All rights reserved.
+Copyright (c) 2008 Centre for Digital Music. All rights reserved.
 """
 import urllib
 
@@ -25,7 +25,10 @@ except:
 API_KEY = "908f1a693236e128cc35fef9b6e4d8de"
 API_SECRET = "f9a797118e9d34878f174cc39d354866"
 
-DBTUNE_PREFIX = "http://dbtune.org/last-fm/artists/"
+DBTUNE_PREFIX = "http://dbtune.org/artists/last-fm/"
+DBTUNE_MBZ = "http://dbtune.org/musicbrainz/page/artist/"
+BBC_PREFIX = "http://www.bbc.co.uk/music/artists/"
+
 
 help_message = '''
 	$ python artistlookup.py [flags]
@@ -39,6 +42,7 @@ FOAF = rdflib.Namespace("http://xmlns.com/foaf/0.1/")
 MO = rdflib.Namespace("http://purl.org/ontology/mo/")
 MUSIM = rdflib.Namespace("http://purl.org/ontology/musim#")
 DC = rdflib.Namespace("http://purl.org/dc/elements/1.1/")
+OWL = rdflib.Namespace("http://www.w3.org/2002/07/owl#")
 
 class Usage(Exception):
 	def __init__(self, msg):
@@ -50,7 +54,10 @@ class LastFMSession:
 	'''
 	def __init__(self, artistname=None):
 		self.graph = rdflib.ConjunctiveGraph()
-		self.artistname = artistname
+		if artistname != None:
+			self.artistname = urllib.unquote(artistname)
+		else:
+			self.artistname = None
 		self.Artist = None
 		self.session_key = None
 		self.similarArtists = {}
@@ -104,6 +111,7 @@ class LastFMSession:
 		self.graph.namespace_manager.bind("foaf", rdflib.URIRef("http://xmlns.com/foaf/0.1/"))
 		self.graph.namespace_manager.bind("musim", rdflib.URIRef("http://purl.org/ontology/musim#"))
 		self.graph.namespace_manager.bind("dc", rdflib.URIRef("http://purl.org/dc/elements/1.1/"))
+		self.graph.namespace_manager.bind("owl", rdflib.URIRef("http://www.w3.org/2002/07/owl#"))
 
 		try:
 			#aNode = rdflib.BNode(DBTUNE_PREFIX+"mbid/"+self.mbid)
@@ -117,6 +125,10 @@ class LastFMSession:
 		# add the type and name of the main guy
 		self.graph.add((aNode, rdflib.RDF.type, MO['MusicArtist']))
 		self.graph.add((aNode, FOAF['name'], rdflib.Literal(self.artistname)))
+		if self.mbid != None:
+			self.graph.add((aNode, MO['musicbrainz'], rdflib.Literal(self.mbid)))
+			self.graph.add((aNode, OWL['sameAs'], rdflib.URIRef(BBC_PREFIX+self.mbid)))
+			self.graph.add((aNode, OWL['sameAs'], rdflib.URIRef(DBTUNE_MBZ+self.mbid)))
 		
 		
 		
@@ -140,8 +152,16 @@ class LastFMSession:
 		
 		for idx, node in enumerate(nodeList):
 			# adding similar artists and there names
+			# using nested lists
+			#		similarArtists[idx][0] - Artist object
+			#		similarArtists[idx][1] - artist musicbrainz id
+			#		similarArtists[idx][2] - last.fm match value
 			self.graph.add((node, rdflib.RDF.type, MO['MusicArtist']))
 			self.graph.add((node, FOAF['name'], rdflib.Literal(self.similarArtists[idx][0])))
+			if self.similarArtists[idx][1] != None:
+				self.graph.add((node, OWL['sameAs'], rdflib.URIRef(BBC_PREFIX+self.similarArtists[idx][1])))
+				self.graph.add((node, OWL['sameAs'], rdflib.URIRef(DBTUNE_MBZ+self.similarArtists[idx][1])))
+				self.graph.add((node, MO['musicbrainz'], rdflib.Literal(self.similarArtists[idx][1])))
 			
 			# from artist nodes to similarity
 			self.graph.add((node, MUSIM['object_of'], assList[idx]))
@@ -163,7 +183,7 @@ def main(argv=None):
 		argv = sys.argv
 	try:
 		try:
-			opts, args = getopt.getopt(argv[1:], "hn:m:", ["help", "name=","mbid="])
+			opts = getopt.getopt(argv[1:], "hn:m:", ["help", "name=","mbid="])
 		except getopt.error, msg:
 			raise Usage(msg)
 	

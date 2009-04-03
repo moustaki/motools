@@ -19,6 +19,8 @@
 # USA
 #
 # http://code.google.com/p/pylast/
+#
+# modifications by Kurt Jacobson 2009-04-01
 
 __name__ = 'pylast'
 __version__ = '0.3.2'
@@ -36,10 +38,9 @@ __last_call_time = 0
 import hashlib
 import httplib
 import urllib
-import threading
 from xml.dom import minidom
-import os
-import time
+#import os
+#import time #@UnusedImport
 from logging import *
 
 STATUS_INVALID_SERVICE = 2

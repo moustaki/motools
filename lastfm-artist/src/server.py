@@ -1,6 +1,9 @@
 '''
 Created on 2 Apr 2009
 
+A really simple python webserver to implement linked data - style 
+303 redirects and last.fm lookups
+
 @author: kurtjx
 '''
 
@@ -57,7 +60,7 @@ class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 self.wfile.write("invalid URI")
 
         except Exception:
-            self.wfile.write("server error")
+            self.wfile.write("internal server error")
         #return
 
 
