@@ -11,29 +11,10 @@ A really simple python webserver to implement linked data - style
 import cherrypy
 import artistlookup
 
-HTML_USAGE = '''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+f = open('index.html')
+HTML_USAGE = f.read()
+f.close()
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
-<head>
-<title>DBTune - Last.fm Artist RDF Service</title>
-
-<style type="text/css" media="all">
-        @import url(style.css);
-</style>
-
-</head>
-
-<body>
-instructions of usage to go here
-
-<p>
-http://dbtune.org/artists/last-fm/&lt;last-fm artist name&gt;
-<p>
-http://dbtune.org/artists/last-fm/mbid/&lt;musicbrainz id&gt;
-
-</body>
-'''
 
 URL_BASE = 'http://dbtune.org/artists/last-fm/'
 
