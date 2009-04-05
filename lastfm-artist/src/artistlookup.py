@@ -26,7 +26,7 @@ API_KEY = "908f1a693236e128cc35fef9b6e4d8de"
 API_SECRET = "f9a797118e9d34878f174cc39d354866"
 
 DBTUNE_PREFIX = "http://dbtune.org/artists/last-fm/"
-DBTUNE_MBZ = "http://dbtune.org/musicbrainz/page/artist/"
+DBTUNE_MBZ = "http://dbtune.org/musicbrainz/resource/artist/"
 BBC_PREFIX = "http://www.bbc.co.uk/music/artists/"
 
 

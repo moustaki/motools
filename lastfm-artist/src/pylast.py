@@ -39,6 +39,7 @@ import hashlib
 import httplib
 import urllib
 from xml.dom import minidom
+import threading
 #import os
 #import time #@UnusedImport
 from logging import *
