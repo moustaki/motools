@@ -2,85 +2,49 @@
 Created on 2 Apr 2009
 
 A really simple python webserver to implement linked data - style 
-303 redirects and last.fm lookups
+303 redirects and last.fm lookups - uses CherryPy
 
 @author: kurtjx
 '''
 
-import BaseHTTPServer
+
+import cherrypy
 import artistlookup
 
-PORT = 2059
-HOST_BASE = "http://localhost:"+str(PORT)
-#HOST_BASE = "http://dbtune.org/sandbox"
 
-
-class SemWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
+class SWServer:
+    def default(self, urlpath):
+        if urlpath.endswith('.rdf'):
+            cherrypy.response.headers['Content-Type'] = 'application/rdf+xml'
+            print cherrypy.response.headers
+            lses = artistlookup.LastFMSession(urlpath.rsplit('.rdf')[0])
+            lses.authenticate()
+            lses.getLastFMdata()
+            return lses.createRDFGraph()
+        else:
+            # do a 303 redirect adding '.rdf' to the end
+            raise cherrypy.HTTPRedirect('/'+urlpath+'.rdf', 303)
+    default.exposed = True
     
-    def do_HEAD(self):
-        self.send_response(303)
-        self.send_header("Location", HOST_BASE+self.path+'.rdf')
-        self.end_headers()
-            
+class MBIDServer:
+    def default(self, urlpath):
+        if urlpath.endswith('.rdf'):
+            # actually do the lookup
+            cherrypy.response.headers['Content-Type'] = 'application/rdf+xml'
+            lses = artistlookup.LastFMSession()
+            lses.authenticate()
+            lses.getLastFMdata(urlpath.rsplit('.rdf')[0])
+            return lses.createRDFGraph()
+        else:
+            # redirect
+            raise cherrypy.HTTPRedirect('/mbid/'+urlpath+'.rdf', 303)
+    default.exposed = True
     
-    def do_GET(self):
-        try:
-            if self.path.startswith('/mbid') and not self.path.endswith('.rdf'):
-                self.do_HEAD()
-                
-            elif self.path.startswith('/mbid') and self.path.endswith('.rdf'):
-                mbid = self.path.rsplit('/mbid/')[1].rsplit('.rdf')[0]
-                
-                # set the headers
-                self.resp200()
-                
-                lses = artistlookup.LastFMSession()
-                lses.authenticate()
-                lses.getLastFMdata(mbid)
-                
-                
-                self.wfile.write(lses.createRDFGraph())
-                #return
-            
-            elif self.path.startswith('/') and not self.path.endswith('.rdf'):
-                self.do_HEAD()
-            
-            elif self.path.startswith('/') and self.path.endswith('.rdf'):
-                artistname = self.path.rsplit('/')[1].rsplit('.rdf')[0]
-                
-                # set the headers
-                self.resp200()
-                
-                lses = artistlookup.LastFMSession(artistname)
-                lses.authenticate()
-                lses.getLastFMdata()
-                
-                #self.send_header('Content-type', 'application/rdf+xml')
-                #self.end_headers()
-                self.wfile.write(lses.createRDFGraph())
-                
-            else:
-                self.wfile.write("invalid URI")
 
-        except Exception:
-            self.wfile.write("internal server error")
-        #return
-        
-    def resp200(self):
-        '''return 200 ok headers and rdf/xml'''
-        self.send_response(200)
-        self.send_header('Content-type', 'application/rdf+xml')
-        self.end_headers()
+root = SWServer()
+root.mbid = MBIDServer()
 
+cherrypy.config.update({'server.socket_port': 2059})
 
-def main():
-    try:
-        server = BaseHTTPServer.HTTPServer(('', PORT), SemWebHandler)
-        print "server started"
-        server.serve_forever()
-    except:
-        server.socket.close()
-
-if __name__ == '__main__':
-    main()
+cherrypy.quickstart(root)
             

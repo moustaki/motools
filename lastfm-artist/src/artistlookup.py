@@ -61,6 +61,7 @@ class LastFMSession:
 		self.Artist = None
 		self.session_key = None
 		self.similarArtists = {}
+		self.mbid = None
 
 	def authenticate(self):
 		'''
@@ -81,20 +82,26 @@ class LastFMSession:
 			self.Artist = pylast.Artist(self.artistname, API_KEY, API_SECRET, self.session_key)
 		else:
 			print "error retrieving artist data - bad name or mbid"
-			sys.exit(2)
+			#sys.exit(2)
 		
 		# will actually not fail unti here if there's problems	
 		try:
 			self.similarArtists = self.Artist.get_similar()
 		except pylast.ServiceException, msg:
 			print "error retrieving artist data - " +str(msg)
-			sys.exit(2)
+			#sys.exit(2)
 		
 		# do a bunch of getting
-		self.bio = self.Artist.get_bio_content()
-		self.bio_summary = self.Artist.get_bio_summary()
-		self.image_url = self.Artist.get_image_url()
-		self.mbid = self.Artist.get_mbid()
+		try:
+			self.bio = self.Artist.get_bio_content()
+		except pylast.ServiceException, msg:
+			print "error retrieving artist data - " +str(msg)
+			
+		try:
+			self.mbid = self.Artist.get_mbid()
+		except:
+			print "error retrieving artist data - " +str(msg)
+		
 		
 	def createRDFGraph(self):
 		'''
