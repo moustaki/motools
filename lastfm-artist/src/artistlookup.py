@@ -92,15 +92,20 @@ class LastFMSession:
 			#sys.exit(2)
 		
 		# do a bunch of getting
-		try:
-			self.bio = self.Artist.get_bio_content()
-		except pylast.ServiceException, msg:
-			print "error retrieving artist data - " +str(msg)
-			
+#		try:
+#			self.bio = self.Artist.get_bio_content()
+#		except pylast.ServiceException, msg:
+#			print "error retrieving artist data - " +str(msg)
+#			
 		try:
 			self.mbid = self.Artist.get_mbid()
 		except:
 			print "error retrieving artist data - " +str(msg)
+			
+#		try:
+#			self.Artist.get_image_url(0)
+#		except:
+#			pass
 		
 		
 	def createRDFGraph(self):
@@ -190,6 +195,7 @@ class LastFMSession:
 			# let's add mo:similar_to while we're at it
 			self.graph.add((aNode, MO['similar_to'], node))
 		
+		#print self.graph.serialize()
 		return self.graph.serialize()
 		
 def main(argv=None):
@@ -197,7 +203,7 @@ def main(argv=None):
 		argv = sys.argv
 	try:
 		try:
-			opts = getopt.getopt(argv[1:], "hn:m:", ["help", "name=","mbid="])
+			opts, args = getopt.getopt(argv[1:], "hn:m:", ["help", "name=","mbid="])
 		except getopt.error, msg:
 			raise Usage(msg)
 	

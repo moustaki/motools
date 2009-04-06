@@ -164,7 +164,7 @@ class _Request(object):
 		
 		for name in keys:
 			string += name
-			string += self.params[name]
+			string += urllib.quote(self.params[name])
 		
 		string += self.api_secret
 		
