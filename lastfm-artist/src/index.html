@@ -6,16 +6,85 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>DBTune - Last.fm Artist RDF Service</title>
 	<meta name="author" content="kurtjx">
+	<LINK REL=StyleSheet HREF="http://dbtune.org/style.css" TYPE="text/css" MEDIA=screen>
 	<!-- Date: 2009-04-05 -->
 </head>
 
 <body>
-instructions of usage to go here
+<h1 style="font-size: 250%;">DBTune - Artists - Last.fm</h1>
+
+<h2><a name="disc" id="disc"></a>0. Disclaimer</h2>
+<p>
+This is a non-commercial site. The information contained in this site has been collected from several 
+sources and its accuracy cannot be guaranteed. 
+No copyright has been intentionally 
+violated. If you feel a copyright has been violated please contact <a href="#contact">me</a> immediately and the material will be removed
+
+</p>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
 
 <p>
-http://dbtune.org/artists/last-fm/&lt;last-fm artist name&gt;
+<!--<b>This service is down at the moment.</b> MySpace changed their
+HTML, so the scraping doesn't work as expected anymore.
+</p>-->
+
 <p>
+This service provides an RDF representation of music artists and their similar artists based
+on the <a href="http://www.last.fm/api">Last.fm API</a>.  Last.fm, when available, uses 
+<a href="http://musicbrainz.org/">musicbrainz</a> identifiers which allows us to easily inter-link
+this data with <a href="http://www.bbc.co.uk/music/artists/">bbc.co.uk/music/artists</a>
+as well as with <a href="http://dbtune.org/musicbrainz/">dbtune.org/musicbrainz</a>.
+</p>
+
+<p>
+This representations is designed using the <a href="http://musicontology.com/">
+Music Ontology</a> and <a href="http://purl.org/ontology/musim">MuSim</a> the music similarity
+ontology.
+</p>
+
+<h2><a name="use" id="use"></a>2. Using this service</h2>
+
+<p>
+Starting from a Last.fm artist name:
+<pre>
+http://dbtune.org/artists/last-fm/&lt;last-fm artist name&gt;
+</pre>
+
+Alternatively (and preferably) you can use a musicbrainz identifier:
+<pre>
 http://dbtune.org/artists/last-fm/mbid/&lt;musicbrainz id&gt;
+</pre>
+
+<p>
+For example _the_ Godfather of Soul James Brown has the uri:
+<pre>
+http://dbtune.org/artists/last-fm/James%20Brown
+</pre>
+as well as the musicbrainz-based uri:
+<pre>
+http://dbtune.org/artists/last-fm/mbid/20ff3303-4fe2-4a47-a1b6-291e26aa3438
+</pre>
+<p>
+The service returns RDF/XML representations.
+</p>
+
+<h2><a name="code" id="code"></a>3. Code</h2>
+<p>
+As usual, <a href="http://motools.svn.sourceforge.net/viewvc/mypyspace/musicGrabber/branches/webserv-branch/">all the code running this service</a>
+is open source and based
+on <a href="http://www.python.org">Python</a>.
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3327144-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
 
 </body>
 </html>
