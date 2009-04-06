@@ -121,10 +121,10 @@ class LastFMSession:
 		self.graph.namespace_manager.bind("owl", rdflib.URIRef("http://www.w3.org/2002/07/owl#"))
 
 		try:
-			#aNode = rdflib.BNode(DBTUNE_PREFIX+"mbid/"+self.mbid)
+			# try using the mbid first
 			aNode = rdflib.URIRef(DBTUNE_PREFIX+"mbid/"+self.mbid)
 		except TypeError:
-			#aNode = rdflib.BNode(DBTUNE_PREFIX+urllib.quote(self.artistname))
+			# use last.fm artist name as backup
 			aNode = rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(self.artistname))
 		
 		lastfm = rdflib.BNode("http://last.fm")
@@ -139,20 +139,24 @@ class LastFMSession:
 		
 		
 		
-		# creat node for each similar artist
-		#keys = self.similarArtists.keys()
-		nodeList = []
-		assList = []
+		# create node for each similar artist
+		# using nested lists
+		#		similarArtists[idx][0] - Artist object
+		#		similarArtists[idx][1] - artist musicbrainz id
+		#		similarArtists[idx][2] - last.fm match value
+		nodeList = [] # a list of artist nodes mo:MusicArtists
+		assList = []  # a list of musim:Associations
 		for artistinfo in self.similarArtists:
 			try:
 				if artistinfo[1]:
 					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+"mbid/"+artistinfo[1]))
 					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-ContextSim-"+artistinfo[1])))
 				else:
-					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(str(artistinfo[0]).encode('ascii','replace'))))
-					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-ContextSim-"+urllib.quote(str(artistinfo[0]).encode('ascii','replace')))))
+					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(str(artistinfo[0]))))#.encode('ascii','replace'))))
+					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-ContextSim-"+urllib.quote(str(artistinfo[0])))))#.encode('ascii','replace')))))
 					
 			except UnicodeEncodeError:
+				# if we just can't encode the artist name at all, use a blank node
 				nodeList.append(rdflib.BNode())
 				assList.append(rdflib.BNode())
 					
@@ -182,6 +186,9 @@ class LastFMSession:
 			
 			# add this is made by last.fm
 			self.graph.add((assList[idx], DC['creator'], lastfm))
+			
+			# let's add mo:similar_to while we're at it
+			self.graph.add((aNode, MO['similar_to'], node))
 		
 		return self.graph.serialize()
 		
