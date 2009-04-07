@@ -57,8 +57,11 @@ class MBIDServer:
 
 root = SWServer()
 root.mbid = MBIDServer()
-#appconf = {'/': {'tools.proxy.on':True,}}
-cherrypy.config.update({'server.socket_port': 2059, 'log.screen:': False, 'log.access_file:': '/var/log/artist-last-fm-access.log', 'log.error_file:':'/var/log/artist-last-fm-error.log'})
+appconf = {'/': {'tools.proxy.on':True,}}
+cherrypy.config.update({'server.socket_port': 2059, 'log.screen': False, 
+'log.access_file': '/var/log/artist-last-fm-access.log', 
+'log.error_file':'/var/log/artist-last-fm-error.log'})
 
-cherrypy.quickstart(root)#, '/', appconf)
+print cherrypy.config
+cherrypy.quickstart(root, '/', appconf)
             
