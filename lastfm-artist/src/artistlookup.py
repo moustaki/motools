@@ -71,10 +71,17 @@ class LastFMSession:
 		md5_pwd = pylast.md5("nopassword")
 		self.session_key = pylast.SessionKeyGenerator(API_KEY, API_SECRET).get_session_key(username, md5_pwd)
 	
+	def getMBID(self):
+		'''check for an mbid to do a redirect'''
+		self.Artist = pylast.Artist(self.artistname, API_KEY, API_SECRET, self.session_key)
+		return self.Artist.get_mbid()
+	
 	def getLastFMdata(self, mbid=None):
 		'''
 		actually get the artist data
 		'''
+		
+		#if self.Artist == None:
 		if self.artistname == None and mbid != None:
 			self.Artist = pylast.get_artist_by_mbid(mbid, API_KEY, API_SECRET, self.session_key)
 			self.artistname = self.Artist.get_name();
