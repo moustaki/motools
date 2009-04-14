@@ -1,0 +1,8 @@
+Generating the Magnatune RDF
+--
+
+* MySQL dump available at http://www.magnatune.com/info/song_info.sql
+* Load that dump in MySQL
+* Download D2R server from http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/
+* Run 
+$ $PATH_TO_D2R/dump-rdf -m magnatune_mapping.n3 -o magnatune.rdf -b http://dbtune.org/magnatune/
