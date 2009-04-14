@@ -5,4 +5,6 @@ Generating the Magnatune RDF
 * Load that dump in MySQL
 * Download D2R server from http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/
 * Run 
-$ $PATH_TO_D2R/dump-rdf -m magnatune_mapping.n3 -o magnatune.rdf -b http://dbtune.org/magnatune/
+$ $PATH_TO_D2R/dump-rdf -m magnatune_mapping.n3 -o magnatune.n3 -b http://dbtune.org/magnatune/
+
+NOTE: With D2R 0.6, I have troubles making the -b parameter work. It works fine with previous versions
