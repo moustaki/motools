@@ -162,7 +162,7 @@ class LastFMSession:
 			try:
 				if artistinfo[1]:
 					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+"mbid/"+artistinfo[1]))
-					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-ContextSim-"+artistinfo[1])))
+					assList.append(rdflib.BNode(urllib.quote(str(aNode).split("mbid/")[1]+"-ContextSim-"+artistinfo[1])))
 				else:
 					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(str(artistinfo[0]))))#.encode('ascii','replace'))))
 					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-ContextSim-"+urllib.quote(str(artistinfo[0])))))#.encode('ascii','replace')))))
@@ -197,7 +197,7 @@ class LastFMSession:
 			self.graph.add((assList[idx], MUSIM['weight'], rdflib.Literal(self.similarArtists[idx][2])))
 			
 			# add this is made by last.fm
-			self.graph.add((assList[idx], MUSIM['asserted_by'], lastfm))
+			self.graph.add((assList[idx], MUSIM['asserter'], lastfm))
 			
 			# let's add mo:similar_to while we're at it
 			self.graph.add((aNode, MO['similar_to'], node))
@@ -232,12 +232,12 @@ def main(argv=None):
 			l = LastFMSession(urllib.unquote(artistname))
 			l.authenticate()
 			l.getLastFMdata()
-			l.createRDFGraph()
+			print l.createRDFGraph()
 		elif mbid != None:
 			l = LastFMSession()
 			l.authenticate()
 			l.getLastFMdata(mbid)
-			l.createRDFGraph()
+			print l.createRDFGraph()
 		else:
 			raise Usage("must supply name or mbid!!!")
 	
