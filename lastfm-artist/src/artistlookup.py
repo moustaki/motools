@@ -187,13 +187,13 @@ class LastFMSession:
 				self.graph.add((node, MO['musicbrainz'], rdflib.Literal(self.similarArtists[idx][1])))
 			
 			# from artist nodes to similarity
-			self.graph.add((node, MUSIM['object_of'], assList[idx]))
-			self.graph.add((aNode, MUSIM['subject_of'], assList[idx]))
+			#self.graph.add((node, MUSIM['object_of'], assList[idx]))
+			#self.graph.add((aNode, MUSIM['subject_of'], assList[idx]))
 			
 			# create the contextsimilarity object and add subs/obs
 			self.graph.add((assList[idx], rdflib.RDF.type, MUSIM['ContextualSimilarity']))
-			self.graph.add((assList[idx], MUSIM['has_subject'], aNode))
-			self.graph.add((assList[idx], MUSIM['has_object'], node))
+			self.graph.add((assList[idx], MUSIM['subject'], aNode))
+			self.graph.add((assList[idx], MUSIM['object'], node))
 			self.graph.add((assList[idx], MUSIM['weight'], rdflib.Literal(self.similarArtists[idx][2])))
 			
 			# add this is made by last.fm
