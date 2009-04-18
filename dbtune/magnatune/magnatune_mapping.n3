@@ -67,6 +67,8 @@ map:magnatune_song_buy a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:magnatune_song;
 	d2rq:property mo:paid_download;
 	d2rq:uriColumn "magnatune_song_info.buy";
+    # Avoid a bug in Magnatune SQL dump, where buy URIs are truncated to 100 chars
+    d2rq:condition "LENGTH(magnatune_song_info.buy) < 100";
 	.
 map:magnatune_song_creator a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:magnatune_song;
