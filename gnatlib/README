@@ -23,6 +23,15 @@ disambiguation algorithm from Raimond et al. 2008
   yves.raimond (at) elec.qmul.ac.uk
   kurt.jacobson (at) elec.qmul.ac.uk
   
+REQUIREMENTS:
+
+ - musicbrainz2 - http://musicbrainz.org/doc/PythonMusicBrainz2
+ - mutagen - easy_install mutagen
+
+INSTALLATION:
+
+$ python setup.py install
+  
 USAGE:
   
 >> import gnatlib
