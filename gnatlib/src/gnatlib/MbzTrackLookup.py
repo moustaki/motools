@@ -604,5 +604,5 @@ def metadatalookup(artist=None,
         
     '''
     
-    mbz = MetadataLookup(artist, album, title, tracknumber, threshold, verbose, allow_ambiguous, use_cache)
+    mbz = MetadataLookup(artist, release, track, tracknumber, threshold, verbose, allow_ambiguous, use_cache)
     return __setdict__(mbz)
