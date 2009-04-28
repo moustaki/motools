@@ -162,10 +162,11 @@ class LastFMSession:
 			try:
 				if artistinfo[1]:
 					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+"mbid/"+artistinfo[1]))
-					assList.append(rdflib.BNode(urllib.quote(str(aNode).split("mbid/")[1]+"-ContextSim-"+artistinfo[1])))
+					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-Similarity-"+artistinfo[1])))
+
 				else:
 					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(str(artistinfo[0]))))#.encode('ascii','replace'))))
-					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-ContextSim-"+urllib.quote(str(artistinfo[0])))))#.encode('ascii','replace')))))
+					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-Similarity-"+urllib.quote(str(artistinfo[0])))))#.encode('ascii','replace')))))
 					
 			except UnicodeEncodeError:
 				# if we just can't encode the artist name at all, use a blank node
@@ -191,7 +192,7 @@ class LastFMSession:
 			#self.graph.add((aNode, MUSIM['subject_of'], assList[idx]))
 			
 			# create the contextsimilarity object and add subs/obs
-			self.graph.add((assList[idx], rdflib.RDF.type, MUSIM['ContextualSimilarity']))
+			self.graph.add((assList[idx], rdflib.RDF.type, MUSIM['Similarity']))
 			self.graph.add((assList[idx], MUSIM['subject'], aNode))
 			self.graph.add((assList[idx], MUSIM['object'], node))
 			self.graph.add((assList[idx], MUSIM['weight'], rdflib.Literal(self.similarArtists[idx][2])))
