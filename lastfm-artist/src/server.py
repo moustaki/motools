@@ -1,3 +1,4 @@
+#!/usr/bin/python2.4
 '''
 Created on 2 Apr 2009
 
