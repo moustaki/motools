@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import cherrypy
-import artistlookup
+from artistlookup import LastFMSession
 
 f = open('index.html')
 HTML_USAGE = f.read()
@@ -33,16 +33,18 @@ f.close()
 URL_BASE = 'http://dbtune.org/artists/last-fm/'
 
 # make a global LastFMSession instance
-lses = artistlookup.LastFMSession()
-lses.authenticate()
+
 
 class SWServer:
     @cherrypy.expose
     def default(self, urlpath):
+        lses = LastFMSession()
+        lses.authenticate()
         if urlpath.endswith('.rdf'):
             cherrypy.response.headers['Content-Type'] = 'application/rdf+xml'
             #lses = artistlookup.LastFMSession(urlpath.rsplit('.rdf')[0])
             #lses.authenticate()
+            
             lses.artistname = urlpath.rsplit('.rdf')[0]
             lses.getLastFMdata()
             return lses.createRDFGraph()
@@ -63,6 +65,8 @@ class SWServer:
 class MBIDServer:
     @cherrypy.expose
     def default(self, urlpath):
+        lses = LastFMSession()
+        lses.authenticate()
         if urlpath.endswith('.rdf'):
             # actually do the lookup
             cherrypy.response.headers['Content-Type'] = 'application/rdf+xml'
