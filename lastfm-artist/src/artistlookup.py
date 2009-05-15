@@ -139,7 +139,7 @@ class LastFMSession:
 			# use last.fm artist name as backup
 			aNode = rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(self.artistname))
 		
-		lastfm = rdflib.BNode("http://last.fm")
+		lastfm = rdflib.BNode()
 		
 		# add the type and name of the main guy
 		self.graph.add((aNode, rdflib.RDF.type, MO['MusicArtist']))
