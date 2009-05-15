@@ -87,6 +87,8 @@ cherrypy.config.update({'server.socket_port': 2059,
                         ,'log.error_file':'/var/log/artist-last-fm-error.log'
                         ,'server.thread_pool':30
                         ,'server.socket_queue_size': 10
+                        ,'response.timeout': 100000000  # do we need this??
+                        ,'request.timeout':  100000000
                         })
 
 print cherrypy.config
