@@ -162,7 +162,7 @@ class LastFMSession:
 			try:
 				if artistinfo[1]:
 					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+"mbid/"+artistinfo[1]))
-					assList.append(rdflib.BNode(urllib.quote(str(aNode)+"-Similarity-"+artistinfo[1])))
+					assList.append(rdflib.BNode(urllib.quote(str(aNode).rsplit('http://dbtune.org/artists/last-fm/mbid/')[1]+"-Similarity-"+artistinfo[1])))
 
 				else:
 					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(str(artistinfo[0]))))#.encode('ascii','replace'))))
