@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - Myspace RDF Service</title>
+
+<link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+
+<body>
+
+
+<a href="http://dbtune.org/"><h1 style="font-size: 250%;">DBTune.org</h1></a>
+
+<div id="tagline">Myspace RDF Service</div>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
+
+<p>
+<!--<b>This service is down at the moment.</b> MySpace changed their
+HTML, so the scraping doesn't work as expected anymore.
+</p>-->
+
+<p>
+
+This service provides a live RDF representation of <a href="http://www.myspace.com/">Myspace</a> users.  
+If the user is also an <i>artist</i>, then the corresponding tracks in the streaming audio cache are included in the RDF.  
+Note that only the <i>top friends</i> of the target Myspace user are included in the RDF.
+
+</p>
+
+
+<p>
+This representations is designed using the <a href="http://musicontology.com/">
+Music Ontology</a>, <a href="http://xmlns.com/foaf/0.1/">FOAF</a>, and a small 
+<a href="http://purl.org/ontology/myspace">Myspace Ontology</a>. The scraping is handled by the 
+<a href="http://sourceforge.net/projects/mypyspace/">MyPySpace</a>.
+</p>
+
+<p>
+
+Please note this service may sometimes behave unexpectedly as Myspace makes changes to their page templates.  Please contact kurtjx at gmail if you have any questions or notice any problems with this service.  This service is in no way affiliated or endorsed by Myspace.com.
+
+<!--><p>
+This effort is part of the <a href="http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/LinkingOpenData">Linking
+Open Data on the Semantic Web</a> community project, hosted by the <a href="http://www.w3.org/2001/sw/sweo/">Semantic
+Web Education and Outreach</a> interest group.
+</p>-->
+
+
+
+<h2><a name="use" id="use"></a>2. Using this service</h2>
+
+<p>
+Starting from a Myspace user name:
+<pre>
+http://myspace.com/&lt;user name&gt;
+</pre>
+Just get the following URI:
+<pre>
+
+http://dbtune.org/myspace/&lt;user name&gt;
+</pre>
+Alternatively, you can use the Myspace user id directly:
+<pre>
+http://dbtune.org/myspace/uid/&lt;userID&gt;
+</pre>
+
+</p>
+
+<p>For example, the following URI identifies a <a href="http://myspace.com/lesversaillaisesamoustache">band in MySpace</a>:
+<pre>
+
+http://dbtune.org/myspace/lesversaillaisesamoustache
+</pre>
+</p>
+
+
+<p>
+If you have a MySpace account, you can
+add the corresponding information to your <a href="http://xmlns.com/foaf/0.1/">FOAF profile</a> by adding the following statement in it:
+<pre>
+&lt;my URI&gt; owl:sameAs &lt;http://dbtune.org/myspace/&lt;user name&gt;
+
+</pre>
+</p>
+
+<h2><a name="code" id="code"></a>3. Code</h2>
+<p>
+As usual, <a href="http://motools.svn.sourceforge.net/viewvc/mypyspace/musicGrabber/branches/webserv-branch/">all the code running this service</a>
+is open source and based
+on <a href="http://www.python.org">Python</a>, MoPy, and CherryPy.
+
+</p>
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3327144-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+
+
+</body>
+
+</html>
+
+

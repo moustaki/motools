@@ -1,0 +1,85 @@
+body { background: white; color: black;  line-height: 1.4em; padding: 2.5em 3em; margin: 0; }
+
+:link { color: #00c; }
+
+:visited { color: #609; }
+
+a:link img { border: none; }
+
+a:visited img { border: none; }
+
+h1, h2, h3 { background: white; color: #800; }
+
+h1 { font: 170% sans-serif; margin: 0; }
+
+h2 { font: 140% sans-serif; margin: 1.5em 0 -0.5em 0; }
+
+h3 { font: 120% sans-serif; margin: 1.5em 0 -0.5em 0; }
+
+h4 { font: bold 100% sans-serif; }
+
+h5 { font: italic 100% sans-serif; }
+
+h6 { font: small-caps 100% sans-serif; }
+
+.hide { display: none; }
+
+pre { background: #fff6bb; font-family: monospace; line-height: 1.2em; padding: 1em 2em; }
+
+dt { font-weight: bold; margin-top: 0; margin-bottom: 0; }
+
+dd { margin-top: 0; margin-bottom: 0; }
+
+code, tt { font-family: monospace; }
+
+ul.toc { list-style-type: none; }
+
+ol.toc li a { text-decoration: none; }
+
+.note { color: red; }
+
+#header { border-bottom: 1px solid #ccc; }
+
+#logo { float: right; }
+
+#authors { clear: right; float: right; font-size: 80%; text-align: right; }
+
+#content { clear: both; margin: 2em auto 0 0; text-align: justify }
+
+#download { font-family: sans-serif; margin-bottom: 1em; text-align: center; }
+
+#download h2 { font-size: 125%; margin: 1.5em 0 -0.2em 0; }
+
+#download small { color: #888; font-size: 80%; }
+
+#footer { border-top: 1px solid #ccc; color: #aaa; margin: 2em 0 0; }
+
+
+
+@media Print {
+
+* { font-size: 92%; }
+
+body { padding: 0; line-height: 1.2em; }
+
+#content { margin: 0; width: 100%; }
+
+}
+
+@media Aural {
+
+h1 { stress: 20; richness: 90; }
+
+h2 { stress: 20; richness: 90; }
+
+h3 { stress: 20; richness: 90; }
+
+.hide { speak: none; }
+
+dt { pause-before: 20%; }
+
+pre { speak-punctuation: code; }
+
+}
+
+.Stil2 {color: #000000}
