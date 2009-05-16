@@ -26,7 +26,8 @@ import os
 from myspace2rdf import Scrape
 from myspace2html import Htmlify
 
-URL_BASE = "http://dbtune.org/test/" #change to a blank string for local testing
+#change to a blank string for local testing, no trailing '/'
+URL_BASE = "http://dbtune.org/test" 
 
 class Myspace:
     @cherrypy.expose
