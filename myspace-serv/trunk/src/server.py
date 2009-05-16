@@ -26,7 +26,7 @@ import os
 from myspace2rdf import Scrape
 from myspace2html import Htmlify
 
-URL_BASE = "http://dbtune.org/myspace/"
+URL_BASE = "http://dbtune.org/test/" #change to a blank string for local testing
 
 class Myspace:
     @cherrypy.expose
@@ -43,7 +43,7 @@ class Myspace:
         except:
             print "invalid myspace url or problems w/ myspace server. if you are sure the url is correct, try again in a few seconds..."
         else:
-            raise cherrypy.HTTPRedirect('/uid/'+s.uid, 303)
+            raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+s.uid, 303)
     
 class MyspaceUID:
     @cherrypy.expose
@@ -75,9 +75,9 @@ class MyspaceUID:
             # check accept header and do content negotiation
             accepts = cherrypy.request.headers['Accept']
             if accepts.find('application/rdf+xml') != -1:
-                raise cherrypy.HTTPRedirect('/uid/'+uid+'.rdf', 303)
+                raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.rdf', 303)
             elif accepts.find('text/html') != -1 :
-                raise cherrypy.HTTPRedirect('/uid/'+uid+'.html', 303)
+                raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.html', 303)
             else:
                 return "unknown content type - bad accept header from client"
     
@@ -91,9 +91,9 @@ appconf = {'/': {'tools.proxy.on':True,}
            }
 cherrypy.config.update({'server.socket_port': 1213, 
                         'log.screen': True 
-                        #,'log.access_file': '/var/log/dbtune-myspace-access.log' 
-                        #,'log.error_file':'/var/log/dbtune-myspace-error.log'
-                        #,'tools.caching.on': True   #use cherrypy automagik caching
+                        ,'log.access_file': '/var/log/dbtune-myspace-access.log' 
+                        ,'log.error_file':'/var/log/dbtune-myspace-error.log'
+                        ,'tools.caching.on': True   #use cherrypy automagik caching
                         ,'server.thread_pool':30
                         ,'server.socket_queue_size': 10
                         ,'tools.encode.on': True    #allows unicode not on by default
