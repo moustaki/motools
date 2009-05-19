@@ -555,6 +555,7 @@ def __setdict__(mbz):
     dict['artistURI'] = mbz.getMbzArtistURI()
     if mbz.track_mapping[0][2] != None:
         dict['artist'] = mbz.track_mapping[0][2].artist
+        #dict['artistID'] = mbz.track_mapping[0][2].artist.getID()
     else:
         dict['artist'] = None
     dict['releaseURI'] = mbz.getMbzReleaseURI()
@@ -567,7 +568,8 @@ def __setdict__(mbz):
         dict['track'] = mbz.track_mapping[0][1].track
     else:
         dict['track'] = None
-    dict['score'] = mbz.track_mapping[0][0]   
+    dict['score'] = mbz.track_mapping[0][0]
+    
     return dict
 
 def metadatalookup(artist=None, 
