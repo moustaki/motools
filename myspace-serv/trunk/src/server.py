@@ -94,8 +94,8 @@ appconf = {'/': {'tools.proxy.on':True,}
            }
 cherrypy.config.update({'server.socket_port': 1213, 
                         'log.screen': True 
-                        ,'log.access_file': '/var/log/dbtune-myspace-access.log' 
-                        ,'log.error_file':'/var/log/dbtune-myspace-error.log'
+                        ,'log.access_file': '/var/log/myspace/dbtune-myspace-access.log' 
+                        ,'log.error_file':'/var/log/myspace/dbtune-myspace-error.log'
                         ,'tools.caching.on': True   #use cherrypy automagik caching
                         ,'server.thread_pool':30
                         ,'server.socket_queue_size': 10
