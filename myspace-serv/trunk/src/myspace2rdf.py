@@ -61,6 +61,7 @@ class Scrape(object):
 
 	def getUserID(self, url):
 		'''get the userID from the url of homepage'''
+		print url
 		url = "http://www.myspace.com/"+url
 		
 		resp = try_open(url)
@@ -84,13 +85,10 @@ class Scrape(object):
 			friendNames = scrapePageWhile(self.page, friendNameTag[0], friendNameTag[1])
 			friendPics = scrapePageWhile(self.page, friendPicTag[0], friendPicTag[1])
 			
-			#print friendUIDs
-			print len(friendUIDs)
-			print len(friendNames)
-			# super kludge to fix this problem
-			if len(friendUIDs) > len(friendNames):
+			# TODO fix this horrible hack - for non-artists, they appear here as well
+			if len(friendUIDs) != len(friendNames):
 				friendUIDs = friendUIDs[1:]
-			
+
 			for i in range(len(friendUIDs)):
 				currentUID = friendUIDs[i]
 				if currentUID.isdigit():
@@ -258,7 +256,6 @@ class Scrape(object):
 		
 		self.createCommonRDF()
 		self.mi.add(self.subject)
-		print self.mi
 		graph = mopy.exportRDFGraph(self.mi)
 		return graph.serialize()
 
