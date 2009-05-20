@@ -27,7 +27,7 @@ from myspace2rdf import Scrape
 from myspace2html import Htmlify
 
 #change to a blank string for local testing, no trailing '/'
-URL_BASE = "http://dbtune.org/test" 
+URL_BASE = "http://127.0.0.1:1213" #"http://dbtune.org/test" 
 
 class Myspace:
     @cherrypy.expose
@@ -78,7 +78,7 @@ class MyspaceUID:
             if accepts.find('application/rdf+xml') != -1:
                 raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.rdf', 303)
             elif accepts.find('text/html') != -1 :
-                raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.html', 303)
+                raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.rdf', 303)  # switched off html rep
             else:
                 return "unknown content type - bad accept header from client"
     
