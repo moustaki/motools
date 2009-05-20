@@ -62,7 +62,7 @@ class Scrape(object):
 	def getUserID(self, url):
 		'''get the userID from the url of homepage'''
 		url = "http://www.myspace.com/"+url
-		print url
+		
 		resp = try_open(url)
 		if resp == None:
 			raise BadURL, 'bad url'
@@ -130,7 +130,6 @@ class Scrape(object):
 					self.subject.name.set(self.name)
 				else:
 					print "seems to be an invalid url, try using the UID or the clean url"
-					sys.exit(2)
 				return True
 			else:
 				#self.subject = mopy.mo.Agent('http://dbtune.org/myspace/uid/'+str(self.uid))
@@ -145,7 +144,6 @@ class Scrape(object):
 					self.subject.name.set(self.name)
 				else:
 					print "seems to be an invalid url, try using the UID or the clean url"
-					sys.exit(2)
 				return False
 		else:
 			print "error - no page loaded..."
