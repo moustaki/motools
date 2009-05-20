@@ -85,6 +85,11 @@ class Scrape(object):
 			friendPics = scrapePageWhile(self.page, friendPicTag[0], friendPicTag[1])
 			
 			#print friendUIDs
+			print len(friendUIDs)
+			print len(friendNames)
+			# super kludge to fix this problem
+			if len(friendUIDs) > len(friendNames):
+				friendUIDs = friendUIDs[1:]
 			
 			for i in range(len(friendUIDs)):
 				currentUID = friendUIDs[i]
@@ -253,7 +258,8 @@ class Scrape(object):
 		
 		self.createCommonRDF()
 		self.mi.add(self.subject)
-		graph = mopy.exportRDFFile(self.mi)
+		print self.mi
+		graph = mopy.exportRDFGraph(self.mi)
 		return graph.serialize()
 
 
