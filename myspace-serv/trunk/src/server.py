@@ -73,14 +73,16 @@ class MyspaceUID:
             mh.get_all()
             return mh.html_head + mh.serialize_n3() + mh.get_available_as() +mh.html_tail
         else:
-            # check accept header and do content negotiation
-            accepts = cherrypy.request.headers['Accept']
-            if accepts.find('application/rdf+xml') != -1:
-                raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.rdf', 303)
-            elif accepts.find('text/html') != -1 :
-                raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.rdf', 303)  # switched off html rep
-            else:
-                return "unknown content type - bad accept header from client"
+            raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.rdf', 303)
+            
+#            # check accept header and do content negotiation
+#            accepts = cherrypy.request.headers['Accept']
+#            if accepts.find('application/rdf+xml') != -1:
+#                raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.rdf', 303)
+#            elif accepts.find('text/html') != -1 :
+#                raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.rdf', 303)  # switched off html rep
+#            else:
+#                return "unknown content type - bad accept header from client"
     
     
 root = Myspace()
