@@ -190,6 +190,7 @@ class Scrape(object):
 				
 					track = mopy.mo.Track()
 					track.title.set(thisSong.title)
+					track.plays.set(int(thisSong.playcount))
 					availableAs = thisSong.uri
 					if availableAs:
 						avas = mopy.mo.MusicalItem(availableAs)
