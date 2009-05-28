@@ -141,6 +141,7 @@
     <!-- http://purl.org/ontology/myspace#influences -->
 
     <owl:DatatypeProperty rdf:about="&myspace;influences">
+		<rdfs:label>influences</rdfs:label>
 	<rdfs:comment
             >A data property container for free text field specifying a music artist's influences on MySpace</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
@@ -152,9 +153,11 @@
     <!-- http://purl.org/ontology/myspace#plays -->
 
     <owl:DatatypeProperty rdf:about="&myspace;plays">
+		<rdfs:label>plays</rdfs:label>
         <rdfs:comment
             >A data property container for the number of plays for a given track on MySpace</rdfs:comment>
         <rdfs:domain rdf:resource="&mo;AudioFile"/>
+		<rdfs:domain rdf:resource="&mo;Track"/>
         <rdfs:range rdf:resource="&xsd;int"/>
     </owl:DatatypeProperty>
     
@@ -300,6 +303,10 @@
     <!-- http://purl.org/ontology/mo/AudioFile -->
 
     <owl:Class rdf:about="&mo;AudioFile"/>
+
+    <!-- http://purl.org/ontology/mo/Track -->
+
+    <owl:Class rdf:about="&mo;Track"/>
     
 
 
