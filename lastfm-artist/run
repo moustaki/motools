@@ -1,2 +1,2 @@
 #!/bin/sh
-exec python src/server.py
+cd src && exec python server.py
