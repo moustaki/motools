@@ -52,10 +52,12 @@ class mpsSong:
 	def getUri(self):
 		self.songID = self.xmlNode.getAttribute('songId')
 		xmlPage = try_open(songBase[0] + str(self.songID) + songBase[1])
-		self.exhaustiveXML = dom.parseString(''.join(xmlPage.readlines()))
+		page = xmlPage.readlines()
+		#print page
+		self.exhaustiveXML = dom.parseString(''.join(page))
 		xmlPage.close()
 		try:
-			self.uri = self.exhaustiveXML.getElementsByTagName('link')[0].firstChild.nodeValue
+			self.uri = self.exhaustiveXML.getElementsByTagName('rtmp')[0].firstChild.nodeValue
 		except AttributeError, err:
 			#logging.info("mpsUser::getUri ran into a problem finding the download link for a song by artist with uid: " + 
 			#	str(self.parent().uid) + " link will be left blank.\n\tError msg: " + str(err))

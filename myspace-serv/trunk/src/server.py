@@ -27,7 +27,7 @@ from myspace2rdf import Scrape
 from myspace2html import Htmlify
 
 #change to a blank string for local testing, no trailing '/'
-URL_BASE = "http://dbtune.org/myspace" 
+URL_BASE = '' #"http://dbtune.org/myspace" 
 
 class Myspace:
     @cherrypy.expose
@@ -88,19 +88,19 @@ class MyspaceUID:
 root = Myspace()
 root.uid = MyspaceUID()
 
-appconf = {'/': {'tools.proxy.on':True,}
-           ,'/style.css': {'tools.staticfile.on': True,
-                               'tools.staticfile.filename': os.path.join(os.path.abspath(''), 'static', 'style.css')}
-           }
-cherrypy.config.update({'server.socket_port': 1213, 
-                        'log.screen': True 
-                        ,'log.access_file': '/var/log/myspace/dbtune-myspace-access.log' 
-                        ,'log.error_file':'/var/log/myspace/dbtune-myspace-error.log'
-                        ,'tools.caching.on': True   #use cherrypy automagik caching
-                        ,'server.thread_pool':30
-                        ,'server.socket_queue_size': 10
-                        ,'tools.encode.on': True    #allows unicode not on by default
-                        })
+#appconf = {'/': {'tools.proxy.on':True,}
+#           ,'/style.css': {'tools.staticfile.on': True,
+#                               'tools.staticfile.filename': os.path.join(os.path.abspath(''), 'static', 'style.css')}
+#           }
+#cherrypy.config.update({'server.socket_port': 1213, 
+#                        'log.screen': True 
+#                        ,'log.access_file': '/var/log/myspace/dbtune-myspace-access.log' 
+#                        ,'log.error_file':'/var/log/myspace/dbtune-myspace-error.log'
+#                        ,'tools.caching.on': True   #use cherrypy automagik caching
+#                        ,'server.thread_pool':30
+#                        ,'server.socket_queue_size': 10
+#                        ,'tools.encode.on': True    #allows unicode not on by default
+#                        })
 
-cherrypy.quickstart(root, '/', appconf)
+cherrypy.quickstart(root, '/', 'config')
     
