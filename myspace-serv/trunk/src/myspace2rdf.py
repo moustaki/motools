@@ -61,7 +61,7 @@ class Scrape(object):
 
 	def getUserID(self, url):
 		'''get the userID from the url of homepage'''
-		print url
+		#print url
 		url = "http://www.myspace.com/"+url
 		
 		resp = try_open(url)

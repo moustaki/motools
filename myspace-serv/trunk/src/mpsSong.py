@@ -60,6 +60,8 @@ class mpsSong:
 			#logging.info("mpsUser::getUri ran into a problem finding the download link for a song by artist with uid: " + 
 			#	str(self.parent().uid) + " link will be left blank.\n\tError msg: " + str(err))
 			self.uri = ''
+		except IndexError, err:
+			self.uri = ''
 
 	def setTrackNum(self, trackNumber, totalTracks):
 		'''set the track number for this song and the number of tracks in the album it is in.'''
