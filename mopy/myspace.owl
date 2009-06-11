@@ -45,16 +45,7 @@
     
 
 
-    <!-- http://purl.org/ontology/myspace#age -->
-
-    <owl:ObjectProperty rdf:about="&myspace;age">
-        <rdfs:comment
-            >MySpace age - an age of a MySpace agent in years</rdfs:comment>
-        <rdfs:range rdf:resource="&rdfs;Literal"/>
-        <rdfs:domain rdf:resource="&foaf;Agent"/>
-    </owl:ObjectProperty>
     
-
 
     <!-- http://purl.org/ontology/myspace#friend -->
 
@@ -111,7 +102,41 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+    <!-- http://purl.org/ontology/myspace#age -->
+
+    <owl:DatatypeProperty rdf:about="&myspace;age">
+        <rdfs:comment
+            >MySpace age - an age of a MySpace agent in years</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
+
+
+	<!-- http://purl.org/ontology/myspace#locality -->
+	<owl:DatatypeProperty rdf:about="&myspace;locality">
+        <rdfs:comment
+            >MySpace locality - the free text of the city/locality on myspace</rdfs:comment>
+		<rdfs:label>locality</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
+
+	<!-- http://purl.org/ontology/myspace#region -->
+	<owl:DatatypeProperty rdf:about="&myspace;region">
+        <rdfs:comment
+            >MySpace region - the free text of the region/state on myspace</rdfs:comment>
+		<rdfs:label>region</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
+
+	<!-- http://purl.org/ontology/myspace#country -->
+	<owl:DatatypeProperty rdf:about="&myspace;country">
+        <rdfs:comment
+            >MySpace country - the text of the country on myspace</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+    </owl:DatatypeProperty>
 
 
     <!-- http://purl.org/ontology/myspace#bandMembers -->
@@ -168,7 +193,7 @@
     <owl:DatatypeProperty rdf:about="&myspace;profileViews">
         <rdfs:comment
             >A data property container for the profile views associated with an agent on MySpace</rdfs:comment>
-	<rdfs:domain rdf:resource="&foaf;Person"/>
+	<rdfs:domain rdf:resource="&foaf;Agent"/>
         <rdfs:range rdf:resource="&xsd;int"/>
     </owl:DatatypeProperty>
     
