@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import cherrypy
 import os
-from myspace2rdf import Scrape
+from myspace2rdf import MyspaceScrape, MyspaceException
 from myspace2html import Htmlify
 
 #change to a blank string for local testing, no trailing '/'
@@ -38,13 +38,15 @@ class Myspace:
     
     @cherrypy.expose
     def default(self, artist_name):
-        s = Scrape()
+        M = MyspaceScrape(short_url=artist_name)
         try:
-            s.getUserID(artist_name)
-        except:
+            M.get_page()
+            M.get_uid()
+        
+        except MyspaceException:
             print "invalid myspace url or problems w/ myspace server. if you are sure the url is correct, try again in a few seconds..."
         else:
-            raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+s.uid, 303)
+            raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+M.uid, 303)
     
 class MyspaceUID:
     @cherrypy.expose
@@ -56,15 +58,25 @@ class MyspaceUID:
         if uid.endswith('.rdf'):
             # serve the data
             cherrypy.response.headers['Content-Type'] = 'application/rdf+xml; charset=UTF-8;'
-            s = Scrape(uid.rsplit('.rdf')[0])
-            s.getPage()
-            artist = s.isArtist()
-            s.getFriends(artist)
+            M = MyspaceScrape(uid=uid.rsplit('.rdf')[0])
+            M.get_page()
+            M.get_uid()
+            artist = M.is_artist()
+            
             
             if artist:
-                return s.createArtistRDF()
+                M.get_nice_url()
+                M.get_friends()
+                M.get_image()
+                M.get_songs()
+                M.get_stats()
             else:
-                return s.createRDF()
+                M.get_nice_url_non_artist()
+                M.get_friends_non_artist()
+                M.get_image_non_artist()
+                M.get_stats_non_artist()
+                
+            return M.serialize()
         
         elif uid.endswith('.html'):
             # serve the html
