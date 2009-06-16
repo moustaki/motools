@@ -25,9 +25,24 @@ import cherrypy
 import os
 from myspace2rdf import MyspaceScrape, MyspaceException
 from myspace2html import Htmlify
+from ConfigParser import ConfigParser, Error
+import sys
+from sparql4myspace import SparqlSpace
+from ODBC import ODBC
 
+config = ConfigParser()
+try:
+    config.read('config')
+except:
+    print 'error, no config file\n  exting...'
+    sys.exit(1)
+
+USE_SPARQL = config.get('ODBC', 'sparql') 
 #change to a blank string for local testing, no trailing '/'
-URL_BASE = '' #"http://dbtune.org/myspace" 
+URL_BASE = config.get('urls', 'base')[1:-1] #"http://dbtune.org/myspace"
+
+
+VODBC = ODBC() 
 
 class Myspace:
     @cherrypy.expose
@@ -58,25 +73,26 @@ class MyspaceUID:
         if uid.endswith('.rdf'):
             # serve the data
             cherrypy.response.headers['Content-Type'] = 'application/rdf+xml; charset=UTF-8;'
-            M = MyspaceScrape(uid=uid.rsplit('.rdf')[0])
-            M.get_page()
-            M.get_uid()
-            artist = M.is_artist()
             
+            sparql_match = False
+            if USE_SPARQL:
+                # check sparql endpoint
+                connect = VODBC.connect()
+                cursor = connect.cursor()
+                ss = SparqlSpace('http://dbtune.org/myspace/uid/'+str(uid), cursor)
+                if ss.select():
+                    sparql_match = True
+                    return ss.make_graph()
+                    
             
-            if artist:
-                M.get_nice_url()
-                M.get_friends()
-                M.get_image()
-                M.get_songs()
-                M.get_stats()
-            else:
-                M.get_nice_url_non_artist()
-                M.get_friends_non_artist()
-                M.get_image_non_artist()
-                M.get_stats_non_artist()
-                
-            return M.serialize()
+            if not sparql_match:
+                M = MyspaceScrape(uid=uid.rsplit('.rdf')[0])
+                M.run()
+                if USE_SPARQL:
+                    M.insert_sparql(cursor)
+                    cursor.close()
+                    connect.close()
+                return M.serialize()
         
         elif uid.endswith('.html'):
             # serve the html

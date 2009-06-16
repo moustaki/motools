@@ -12,9 +12,24 @@ import mopy
 import re
 from urllib2 import quote
 from xml.dom import minidom
-
+import os
 from BeautifulSoup import BeautifulSoup as BS
+from ConfigParser import ConfigParser, Error
+import time
 
+
+config = ConfigParser()
+try:
+    config.read('config')
+except:
+    print 'error, no config file\n  exting...'
+    sys.exit(1)
+
+USE_SPARQL = config.get('ODBC', 'sparql') 
+#change to a blank string for local testing, no trailing '/'
+URL_BASE = config.get('urls', 'base')[1:-1] #"http://dbtune.org/myspace"
+GRAPH = config.get('ODBC', 'graph')[1:-1]
+WRITE_PATH = config.get('ODBC', 'write_path')[1:-1]
 
 class MyspaceException(Exception):
     def __init__(self, msg):
@@ -167,10 +182,14 @@ class MyspaceScrape(object):
         return genres
     
     def get_image_non_artist(self):
-        imageURL = self.soup.find('img', 'photo ').get('src')
-        img = mopy.foaf.Image(imageURL)
-        self.subject.depiction.add(img)
-        self.mi.add(img)
+        try:
+            imageURL = self.soup.find('img', 'photo ').get('src')
+        except:
+            imageURL = None
+        else:
+            img = mopy.foaf.Image(imageURL)
+            self.subject.depiction.add(img)
+            self.mi.add(img)
         return imageURL
     
     def get_stats(self):
@@ -212,9 +231,10 @@ class MyspaceScrape(object):
                     
     def get_image(self):
         imageURL = scrapePage(self.html, [uris.picTag[0]+str(self.uid)+'''"><img src="'''], uris.picTag[1])
-        img = mopy.foaf.Image(imageURL)
-        self.subject.depiction.add(img)
-        self.mi.add(img)
+        if imageURL != None:
+            img = mopy.foaf.Image(imageURL)
+            self.subject.depiction.add(img)
+            self.mi.add(img)
         return imageURL
     
     def get_nice_url(self):
@@ -230,7 +250,7 @@ class MyspaceScrape(object):
         try:
             url = self.soup.find('a', 'url').get('href')
         except AttributeError, err:
-            pass
+            url = ''
         else:
             url = url.rsplit(uris.www_myspace)[1]
             thing = mopy.owl.Thing(uris.dbtune+url)
@@ -289,6 +309,24 @@ class MyspaceScrape(object):
                 self.playlistID = i
         #self.playlistID = scrapePage(self.page, [playlistIDtag[0]], playlistIDtag[1])
         return True
+    
+    def insert_sparql(self, cursor):
+        '''DB.DBA.RDF_LOAD_RDFXML (file_to_string ('/usr/local/virtuoso-opensource/var/lib/virtuoso/db/vc-db-1.rdf'), '', 'http://mygraph.com');'''
+        self.mi.add(self.subject)
+        fname = str(self.uid)+'.rdf'
+        fname = os.path.join(WRITE_PATH, fname)
+        mopy.exportRDFFile(self.mi, fname)
+        # do odbc insert, cp caching should make this cool right?
+        q = "DB.DBA.RDF_LOAD_RDFXML_MT (file_to_string('"+ fname+"'), 'junk', '"+GRAPH+"')"
+        cursor.execute(q)
+        # assign a time stamp here
+        q = '''SPARQL INSERT in graph <'''+GRAPH+'''> {<%s> <http://purl.org/dc/terms/modified> "%s"^^xsd:dateTime}'''
+        uri = os.path.join(uris.dbtune+'uid/'+str(self.uid))
+        tstamp = time.strftime('%Y-%m-%dT%H:%M:%S')
+        q = q % (uri, tstamp)
+        print q
+        cursor.execute(q)
+        os.remove(fname)
     
     def serialize(self):
         self.mi.add(self.subject)

@@ -17,7 +17,7 @@ class ODBC:
         Constructor
         '''
         config = ConfigParser()
-        config.read('configuration')
+        config.read('config')
         self.cursor = None
         try:
             self.user = config.get('ODBC', 'user')[1:-1]    # horrible kludge to get rid of quotes
@@ -25,13 +25,12 @@ class ODBC:
             self.pwd = config.get('ODBC', 'pass')[1:-1]
             self.dsn = config.get('ODBC', 'dsn')[1:-1]
         except Error, err:
-            log('FAILED: could not configure ODBC connection - '+str(err))
-        else:
-            self.connect()
+            print 'FAILED: could not configure ODBC connection - '+str(err)
+
         
     def connect(self):
         '''
-            make the connection
+            make the connection and return an ODBC connection object
         '''
-        self.connect = pyodbc.connect('DSN='+self.dsn+';UID='+self.user+';PWD='+self.pwd+';HOST='+self.host)
+        return pyodbc.connect('DSN='+self.dsn+';UID='+self.user+';PWD='+self.pwd+';HOST='+self.host)
         
