@@ -240,6 +240,16 @@
         <rdfs:domain rdf:resource="&mo;MusicArtist"/>
         <rdfs:range rdf:resource="&xsd;int"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>   
+
+	<!-- http://purl.org/ontology/myspace#totalFriends -->
+
+    <owl:DatatypeProperty rdf:about="&myspace;totalFriends">
+	<rdfs:comment
+            >A data property container for the total number of friends for a person on MySpace</rdfs:comment>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
 
     <!-- #myspaceID -->
