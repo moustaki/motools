@@ -194,12 +194,14 @@ class MyspaceScrape(object):
     
     def get_stats(self):
         mess = scrapePage(self.html, [uris.cityTag[0]], uris.cityTag[2])
-        locality = mess.split(uris.cityTag[1])[0]
-        country = mess.split(uris.cityTag[1])[1]
+        if mess != None:
+            locality = mess.split(uris.cityTag[1])[0]
+            country = mess.split(uris.cityTag[1])[1]
+            self.subject.country.set(str(unicode(country)))
+            self.subject.locality.set(str(unicode(locality)))
         profile_views = scrapePage(self.html, [uris.profileViews[0]], uris.profileViews[1])
-        self.subject.country.set(str(unicode(country)))
-        self.subject.locality.set(str(unicode(locality)))
-        self.subject.profileViews.set(int(profile_views))
+        if profile_views != None:
+            self.subject.profileViews.set(int(profile_views))
         try:
             totfri = self.soup.find(property="myspace:friendCount").string
         except AttributeError, err:
