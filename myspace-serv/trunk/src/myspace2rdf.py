@@ -197,8 +197,8 @@ class MyspaceScrape(object):
         if mess != None:
             locality = mess.split(uris.cityTag[1])[0]
             country = mess.split(uris.cityTag[1])[1]
-            self.subject.country.set(str(unicode(country)))
-            self.subject.locality.set(str(unicode(locality)))
+            self.subject.country.set(str(unicode(country).encode('utf-8')))
+            self.subject.locality.set(str(unicode(locality).encode('utf-8')))
         profile_views = scrapePage(self.html, [uris.profileViews[0]], uris.profileViews[1])
         if profile_views != None:
             self.subject.profileViews.set(int(profile_views))
@@ -266,6 +266,7 @@ class MyspaceScrape(object):
         return niceURL
     
     def get_nice_url_non_artist(self):
+        url = None
         try:
             url = self.soup.find('a', 'url').get('href')
         except AttributeError, err:
@@ -277,10 +278,6 @@ class MyspaceScrape(object):
             self.mi.add(thing)
         return url
                 
-
-    def get_total_friend_count_non_artist(self):
-        pass
-    
     
     def get_songs(self):
         ''' do some tricky stuff to get the songs of an artist account '''
@@ -332,8 +329,8 @@ class MyspaceScrape(object):
         for i in ids:
             if i.isdigit():
                 self.artistID = i
-        # self.artistID = scrapePage(self.page, [artistIDtag[0]], artistIDtag[1])
-        return True
+                return True
+        return False
     
     def __get_playlist_id(self):
         """attempts to find via scrape of the internal identifier of an artist's playlist of songs"""
@@ -342,8 +339,8 @@ class MyspaceScrape(object):
         for i in ids:
             if i.isdigit():
                 self.playlistID = i
-        #self.playlistID = scrapePage(self.page, [playlistIDtag[0]], playlistIDtag[1])
-        return True
+                return True
+        return False
     
     def insert_sparql(self, cursor, graph=GRAPH):
         '''DB.DBA.RDF_LOAD_RDFXML (file_to_string ('/usr/local/virtuoso-opensource/var/lib/virtuoso/db/vc-db-1.rdf'), '', 'http://mygraph.com');'''
