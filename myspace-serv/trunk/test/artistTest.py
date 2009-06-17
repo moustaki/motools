@@ -57,11 +57,14 @@ class ArtistTest(unittest.TestCase):
         tCity = 'London,'
         for row in graph.query('''SELECT ?loc ?co where { ?x <http://purl.org/ontology/myspace#locality> ?loc . ?x <http://purl.org/ontology/myspace#country> ?co . } '''):
             loc = row[0]
-            print loc
+            #print loc
             co = row[1]
-            print co
+            #print co
         assert loc == 'London, ' , 'wrong locality '+ str(loc)
         assert co == 'United Kingdom' , 'wrong country '+ str(co)
+        for row in graph.query('SELECT ?totf where { ?x <http://purl.org/ontology/myspace#totalFriends> ?totf } '):
+            totf = row[0]
+        assert int(totf)>190 , 'wrong number of total friends '+str(totf)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

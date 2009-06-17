@@ -37,7 +37,11 @@ except:
     print 'error, no config file\n  exting...'
     sys.exit(1)
 
-USE_SPARQL = config.get('ODBC', 'sparql') 
+wtf = config.get('ODBC', 'sparql')
+if wtf == 'True':
+    USE_SPARQL = True
+else:
+    USE_SPARQL = False    
 #change to a blank string for local testing, no trailing '/'
 URL_BASE = config.get('urls', 'base')[1:-1] #"http://dbtune.org/myspace"
 
@@ -73,17 +77,22 @@ class MyspaceUID:
         if uid.endswith('.rdf'):
             # serve the data
             cherrypy.response.headers['Content-Type'] = 'application/rdf+xml; charset=UTF-8;'
-            
+            print USE_SPARQL
             sparql_match = False
             if USE_SPARQL:
+                #print "USING SPARQL"
                 # check sparql endpoint
                 connect = VODBC.connect()
                 cursor = connect.cursor()
-                ss = SparqlSpace('http://dbtune.org/myspace/uid/'+str(uid), cursor)
+                ss = SparqlSpace('http://dbtune.org/myspace/uid/'+str(uid.rsplit('.rdf')[0]), cursor)
                 if ss.select():
+                    #print "FOUND SPARQL MATCH"
                     sparql_match = True
+                    cursor.close()
+                    connect.commit()
+                    connect.close()
                     return ss.make_graph()
-                    
+                
             
             if not sparql_match:
                 M = MyspaceScrape(uid=uid.rsplit('.rdf')[0])
@@ -91,6 +100,7 @@ class MyspaceUID:
                 if USE_SPARQL:
                     M.insert_sparql(cursor)
                     cursor.close()
+                    connect.commit()
                     connect.close()
                 return M.serialize()
         

@@ -200,33 +200,50 @@ class MyspaceScrape(object):
         self.subject.country.set(str(unicode(country)))
         self.subject.locality.set(str(unicode(locality)))
         self.subject.profileViews.set(int(profile_views))
+        try:
+            totfri = self.soup.find(property="myspace:friendCount").string
+        except AttributeError, err:
+            totfri = '0'
+        else:
+            self.subject.totalFriends.set(int(totfri))
     
     def get_stats_non_artist(self):
         try:
             gender = self.soup.find('span', 'gender').string
-            self.subject.gender.set(str(gender).lower())
         except AttributeError, err:
             pass
+        else:
+            self.subject.gender.set(str(gender).lower())
         try:
             country = self.soup.find('span', 'country-name').string
-            self.subject.country.set(str(unicode(country)))
         except AttributeError, err:
             pass
+        else:
+            self.subject.country.set(str(unicode(country)))
         try:
             locality = self.soup.find('span', 'locality').string
-            self.subject.locality.set(str(unicode(locality)))
         except AttributeError, err:
             pass
+        else:
+            self.subject.locality.set(str(unicode(locality)))
         try:
             region = self.soup.find('span', 'region').string
-            self.subject.region.set(str(region))
         except AttributeError, err:
             pass
+        else:
+            self.subject.region.set(str(region))
         try:
             age = self.soup.find('span', 'age').string
-            self.subject.age.set(int(age))
         except AttributeError, err:
             pass
+        else:
+            self.subject.age.set(int(age))
+        try:
+            totfri = self.soup.find('span','count').string
+        except AttributeError, err:
+            pass
+        else:
+            self.subject.totalFriends.set(int(totfri))
             
                     
     def get_image(self):
@@ -258,6 +275,9 @@ class MyspaceScrape(object):
             self.mi.add(thing)
         return url
                 
+
+    def get_total_friend_count_non_artist(self):
+        pass
     
     
     def get_songs(self):
@@ -282,7 +302,7 @@ class MyspaceScrape(object):
                     song_avas = this_xml.getElementsByTagName('rtmp')[0].firstChild.nodeValue
                     
                     # add to mopy rdf
-                    track = mopy.mo.Track()
+                    track = mopy.mo.Track(os.path.join(uris.dbtune, 'uid',self.uid+'.rdf#'+songID))
                     track.title.set(song_title)
                     track.plays.set(int(song_plays))
                     avas = mopy.mo.MusicalItem(song_avas)
@@ -310,22 +330,25 @@ class MyspaceScrape(object):
         #self.playlistID = scrapePage(self.page, [playlistIDtag[0]], playlistIDtag[1])
         return True
     
-    def insert_sparql(self, cursor):
+    def insert_sparql(self, cursor, graph=GRAPH):
         '''DB.DBA.RDF_LOAD_RDFXML (file_to_string ('/usr/local/virtuoso-opensource/var/lib/virtuoso/db/vc-db-1.rdf'), '', 'http://mygraph.com');'''
         self.mi.add(self.subject)
         fname = str(self.uid)+'.rdf'
+        #print 'writing file'
         fname = os.path.join(WRITE_PATH, fname)
         mopy.exportRDFFile(self.mi, fname)
         # do odbc insert, cp caching should make this cool right?
-        q = "DB.DBA.RDF_LOAD_RDFXML_MT (file_to_string('"+ fname+"'), 'junk', '"+GRAPH+"')"
+        q = "DB.DBA.RDF_LOAD_RDFXML_MT (file_to_string('"+ fname+"'), 'junk', '"+graph+"')"
+        #print q
         cursor.execute(q)
         # assign a time stamp here
-        q = '''SPARQL INSERT in graph <'''+GRAPH+'''> {<%s> <http://purl.org/dc/terms/modified> "%s"^^xsd:dateTime}'''
-        uri = os.path.join(uris.dbtune+'uid/'+str(self.uid))
+        q = '''SPARQL INSERT in graph <'''+graph+'''> {<%s> <http://purl.org/dc/terms/modified> "%s"^^xsd:dateTime}'''
+        uri = os.path.join(uris.dbtune,'uid/', str(self.uid))
         tstamp = time.strftime('%Y-%m-%dT%H:%M:%S')
         q = q % (uri, tstamp)
-        print q
+        #print q
         cursor.execute(q)
+        #cursor.commit()
         os.remove(fname)
     
     def serialize(self):

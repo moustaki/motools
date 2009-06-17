@@ -38,8 +38,8 @@ class CommonTest(unittest.TestCase):
         self.A.get_uid()
         assert self.A.is_artist(), 'should be an artist'
         self.M.get_uid()
-        assert not self.M.is_artist()
-        assert self.M.name == '''Flex Boogie  (Flex Boogie For Real)'''
+        assert not self.M.is_artist(), 'Flex Boogie is not an artist'
+        assert self.M.name == '''Flex Boogie  (Flex Boogie For Real)''', 'wrong name: ' +str(self.M.name)
 
 
 if __name__ == "__main__":

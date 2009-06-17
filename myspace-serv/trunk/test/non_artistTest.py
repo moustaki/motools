@@ -49,6 +49,9 @@ class NonArtistTest(unittest.TestCase):
         assert loc == 'SAINT LOUIS' , 'wrong locality '+str(loc)
         assert reg == 'Missouri' , 'wrong region '+str(reg)
         assert co == 'US' , 'wrong country '+str(co)
+        for row in graph.query('SELECT ?totf where { ?x <http://purl.org/ontology/myspace#totalFriends> ?totf } '):
+            totf = row[0]
+        assert int(totf)>2000 , 'wrong number of friends '+str(totf)
 
     def test_get_image_non_artist(self):
         img = self.M.get_image_non_artist()
