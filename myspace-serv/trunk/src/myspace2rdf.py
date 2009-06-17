@@ -299,17 +299,30 @@ class MyspaceScrape(object):
                     songID = song.getAttribute('songId')
                     resp = try_open(uris.songBase[0] + str(songID) + uris.songBase[1])
                     this_xml = minidom.parseString(resp.read())
-                    song_image = this_xml.getElementsByTagName('small')[0].firstChild.nodeValue
-                    song_title = this_xml.getElementsByTagName('title')[0].firstChild.nodeValue
-                    song_avas = this_xml.getElementsByTagName('rtmp')[0].firstChild.nodeValue
-                    
                     # add to mopy rdf
                     track = mopy.mo.Track(os.path.join(uris.dbtune, 'uid',self.uid+'.rdf#'+songID))
-                    track.title.set(song_title)
                     track.plays.set(int(song_plays))
-                    avas = mopy.mo.MusicalItem(song_avas)
-                    track.available_as.set(avas)
-                    self.mi.add(avas)
+                    try:
+                        song_title = this_xml.getElementsByTagName('title')[0].firstChild.nodeValue
+                    except AttributeError:
+                        pass
+                    else:
+                        track.title.set(song_title)
+                    try:
+                        song_image = this_xml.getElementsByTagName('small')[0].firstChild.nodeValue
+                    except AttributeError:
+                        pass
+                    else:
+                        img = mopy.foaf.Image(song_image)
+                        track.depiction.set(img)
+                    try:
+                        song_avas = this_xml.getElementsByTagName('rtmp')[0].firstChild.nodeValue
+                    except AttributeError:
+                        pass
+                    else:
+                        avas = mopy.mo.MusicalItem(song_avas)
+                        track.available_as.set(avas)
+                        self.mi.add(avas)
                     self.subject.made.add(track)
                     self.mi.add(track)
     

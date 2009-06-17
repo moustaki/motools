@@ -4,11 +4,13 @@ Created on Jun 11, 2009
 @author: kurtjx
 '''
 import unittest
-from MasterTest import *
+import os
+# change to src directory
+os.chdir('../src')
+from myspace2rdf import MyspaceScrape
 import mopy
 
-
-class GetSongsTest(MasterTest):
+class GetSongsTest(unittest.TestCase):
 
     def setUp(self):
         self.short_url_artist = 'kurtisrandom'
@@ -18,7 +20,7 @@ class GetSongsTest(MasterTest):
 
     def test_get_songs(self):
         # do the song getting
-        M = Myspace(short_url = self.short_url_artist)
+        M = MyspaceScrape(short_url = self.short_url_artist)
         M.get_page()
         M.get_uid()
         M.is_artist()
