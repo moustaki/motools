@@ -66,7 +66,7 @@ class MusicInfo(object):
 			for propName in keep._props.keys():
 				 if add._props.has_key(propName):
 					for v in add._props[propName]:
-						debug("Adding "+str(v).replace("\n","|")+" to "+str(keep).replace("\n","|")+" as "+propName)
+						#debug("Adding "+str(v).replace("\n","|")+" to "+str(keep).replace("\n","|")+" as "+propName)
 						keep._props[propName].add(v)
 
 			# Update references
