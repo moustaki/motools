@@ -221,25 +221,28 @@ class MyspaceScrape(object):
         except AttributeError, err:
             pass
         else:
-            self.subject.country.set(str(unicode(country)))
+            self.subject.country.set(str(unicode(country).encode('utf-8')))
         try:
             locality = self.soup.find('span', 'locality').string
         except AttributeError, err:
             pass
         else:
-            self.subject.locality.set(str(unicode(locality)))
+            self.subject.locality.set(str(unicode(locality).encode('utf-8')))
         try:
             region = self.soup.find('span', 'region').string
         except AttributeError, err:
             pass
         else:
-            self.subject.region.set(str(region))
+            self.subject.region.set(str(region).encode('utf-8'))
         try:
             age = self.soup.find('span', 'age').string
         except AttributeError, err:
             pass
         else:
-            self.subject.age.set(int(age))
+            try:
+                self.subject.age.set(int(age))
+            except ValueError:
+                pass # probably means age set to private
         try:
             totfri = self.soup.find('span','count').string
         except AttributeError, err:
@@ -298,7 +301,10 @@ class MyspaceScrape(object):
                     this_xml = minidom.parseString(resp.read())
                     # add to mopy rdf
                     track = mopy.mo.Track(os.path.join(uris.dbtune, 'uid',self.uid+'.rdf#'+songID))
-                    track.plays.set(int(song_plays))
+                    try:
+                        track.plays.set(int(song_plays))
+                    except ValueError:
+                        pass # sometimes we get empty string '' which throws ValueError
                     try:
                         song_title = this_xml.getElementsByTagName('title')[0].firstChild.nodeValue
                     except AttributeError:
@@ -354,7 +360,7 @@ class MyspaceScrape(object):
         #print q
         cursor.execute(q)
         # assign a time stamp here
-        q = '''SPARQL INSERT in graph <'''+graph+'''> {<%s> <http://purl.org/dc/terms/modified> "%s"^^xsd:dateTime}'''
+        q = '''SPARQL define sql:log-enable 2 INSERT in graph <'''+graph+'''> {<%s> <http://purl.org/dc/terms/modified> "%s"^^xsd:dateTime}'''
         uri = os.path.join(uris.dbtune,'uid/', str(self.uid))
         tstamp = time.strftime('%Y-%m-%dT%H:%M:%S')
         q = q % (uri, tstamp)

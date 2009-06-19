@@ -40,12 +40,13 @@ class SparqlSpace(object):
         
     def select(self, graph=GRAPH):
         data = []
-        q = '''SPARQL SELECT DISTINCT ?p ?o FROM <'''+graph+'''> WHERE {<%s> ?p ?o}'''
+        # adding 'define sql:log-enable 2' to preven dead lock as suggested by Hugh Williams on VOS-devel list
+        q = '''SPARQL define sql:log-enable 2 SELECT DISTINCT ?p ?o FROM <'''+graph+'''> WHERE {<%s> ?p ?o}'''
         self.cursor.execute(q % self.uri)
         for r in self.cursor:   data.append(r)
         # blank data if it is too old or not time stamped
         old_date = '2009-01-01'     # should never be older than this :-)
-        q = '''SPARQL SELECT DISTINCT ?time FROM <'''+graph+'''> WHERE { <%s> <http://purl.org/dc/terms/modified> ?time } ORDER BY ASC (?time)'''
+        q = '''SPARQL define sql:log-enable 2 SELECT DISTINCT ?time FROM <'''+graph+'''> WHERE { <%s> <http://purl.org/dc/terms/modified> ?time } ORDER BY ASC (?time)'''
         self.cursor.execute(q % self.uri)
         for r in self.cursor:   old_date = r[0]
         if not self.__still_fresh__(old_date):
@@ -55,7 +56,7 @@ class SparqlSpace(object):
         if len(data)>0:
             self.triples = data
             # get song triples
-            self.cursor.execute('SPARQL SELECT ?track ?p ?o from <%s> WHERE { <%s> <http://xmlns.com/foaf/0.1/made> ?track . ?track ?p ?o . }' % (graph, self.uri))
+            self.cursor.execute('SPARQL define sql:log-enable 2 SELECT ?track ?p ?o from <%s> WHERE { <%s> <http://xmlns.com/foaf/0.1/made> ?track . ?track ?p ?o . }' % (graph, self.uri))
             self.song_triples = []
             for triple in self.cursor:
                 self.song_triples.append(triple)
