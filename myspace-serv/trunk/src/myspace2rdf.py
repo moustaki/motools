@@ -62,8 +62,9 @@ class MyspaceScrape(object):
             self.get_nice_url()
             self.get_friends()
             self.get_image()
-            self.get_songs()
             self.get_stats()
+            self.get_genres()
+            self.get_songs()
         else:
             self.get_nice_url_non_artist()
             self.get_friends_non_artist()
@@ -285,8 +286,8 @@ class MyspaceScrape(object):
     def get_songs(self):
         ''' do some tricky stuff to get the songs of an artist account '''
         if self.__get_artist_id() and self.__get_playlist_id():
-            xml_page = try_open(uris.mediaBase[0] + str(self.artistID) + uris.mediaBase[1] + str(self.playlistID) + uris.mediaBase[2] + str(self.uid) + uris.mediaBase[3])
-            
+            #xml_page = try_open(uris.mediaBase[0] + str(self.artistID) + uris.mediaBase[1] + str(self.playlistID) + uris.mediaBase[2] + str(self.uid) + uris.mediaBase[3])
+            xml_page = try_open(uris.mediaBase[0] + str(self.playlistID) + uris.mediaBase[1] + str(self.artistID) + uris.mediaBase[2] + str(self.uid))
             if xml_page:
                 xml = xml_page.read()
                 #print xml
@@ -298,7 +299,9 @@ class MyspaceScrape(object):
                     song_plays = song.getElementsByTagName('stats')[0].getAttribute('plays')
                     songID = song.getAttribute('songId')
                     resp = try_open(uris.songBase[0] + str(songID) + uris.songBase[1])
-                    this_xml = minidom.parseString(resp.read())
+                    xml2 = resp.read()
+                    #print xml2
+                    this_xml = minidom.parseString(xml2)
                     # add to mopy rdf
                     track = mopy.mo.Track(os.path.join(uris.dbtune, 'uid',self.uid+'.rdf#'+songID))
                     try:

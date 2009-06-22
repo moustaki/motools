@@ -16,11 +16,11 @@ class GetSongsTest(unittest.TestCase):
         self.short_url_artist = 'kurtisrandom'
         self.short_url_non = 'flexboogie'
         self.uid_non = '8840037'
-        self.uid_artist = '30650288'
+        self.uid_artist = '15726394' #'30650288'
 
     def test_get_songs(self):
         # do the song getting
-        M = MyspaceScrape(short_url = self.short_url_artist)
+        M = MyspaceScrape(uid=self.uid_artist)
         M.get_page()
         M.get_uid()
         M.is_artist()

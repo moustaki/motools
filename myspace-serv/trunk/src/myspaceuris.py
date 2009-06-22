@@ -56,7 +56,9 @@ profileViews = '''Profile Views:&nbsp;\r\n\t\t\t\t\t\t''', '''\r\n\t'''
 # this xml file gives the songIDs, the songsIDs must be used individually to request another xml file that then contains the uri to the cached media
 #
 #
-mediaBase = "http://musicservices.myspace.com/Modules/MusicServices/Services/MusicPlayerService.ashx?artistId=","&playlistId=","&artistUserId=","&action=getArtistPlaylist"
+#mediaBase = "http://musicservices.myspace.com/Modules/MusicServices/Services/MusicPlayerService.ashx?artistId=","&playlistId=","&artistUserId=","&action=getArtistPlaylist"
+
+mediaBase = 'http://musicservices.myspace.com/Modules/MusicServices/Services/MusicPlayerService.ashx?action=getArtistPlaylist&playlistId=','&artistId=', '&artistUserId=' #30650288
 
 #Here's the base to grab the aforementioned song xml file with the cached file location
 #
