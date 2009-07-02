@@ -248,7 +248,8 @@ class MbzLookup :
             return artists
 
     def getTracks(self,artist_id=None,release_id=None) :
-        if self.title == None  or (self.tracknumber == None and release_id == None) or (self.tracknumber==None and artist_id==None):
+        if self.title == None:  
+            debug('parameters missing!!!!')
             return []
         else :
             if not(self.tracknumber == None) and not(release_id == None) :
@@ -582,6 +583,15 @@ def metadatalookup(artist=None,
                  use_cache=True):
     '''
     Lookup a set of musicbrainz ids based on the input metadata
+    
+    metadatalookup(artist=None, 
+                 release=None, 
+                 track=None, 
+                 tracknumber=None, 
+                 threshold=60, 
+                 verbose=True, 
+                 allow_ambiguous=False,
+                 use_cache=True)
         
     parameters:
         @param artist -  artist name of music entity in question
@@ -591,7 +601,7 @@ def metadatalookup(artist=None,
         @param threshold=60 - threshold hold value for deciding if results are reliable
         @param verbose=True - if True, set logger to std out
         @param allow_ambiguous=False - if True, allow results to be ambiguous (have same score)
-        @param uuse_cache=True - if True, write queries to disk and re-use queries where possible:
+        @param use_cache=True - if True, write queries to disk and re-use queries where possible:
         
     returns:
         a dictionary of the form 
