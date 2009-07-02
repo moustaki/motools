@@ -9,6 +9,7 @@ from gnatlib import metadatalookup, MbzLookupException
 from ConfigParser import ConfigParser, Error
 from rdflib import ConjunctiveGraph, Namespace, URIRef
 import os
+import sys
 
 config = ConfigParser()
 try:
@@ -40,6 +41,7 @@ class FindSameAs(object):
         
         
     def get_sameAs(self, limit=500, offset=0):
+        print '''getting list with limit %s and offset %s''' % (str(limit), str(offset))
         q = '''SPARQL define sql:log-enable 2 SELECT distinct ?name ?tname ?uri ?track ?mbz WHERE {?s <http://xmlns.com/foaf/0.1/name> ?name . ?s <http://xmlns.com/foaf/0.1/made> ?track . ?track <http://purl.org/dc/elements/1.1/title> ?tname . ?s <http://www.w3.org/2002/07/owl#sameAs> ?o . ?uri <http://www.w3.org/2002/07/owl#sameAs> ?o . optional { ?s <http://purl.org/ontology/mo/musicbrainz> ?mbz } } limit %s offset %s ''' % (str(limit), str(offset))
         self.cursor.execute(q)
         self.graph = ConjunctiveGraph()
@@ -76,4 +78,18 @@ class FindSameAs(object):
         q = "DB.DBA.RDF_LOAD_RDFXML_MT (file_to_string('"+ fname+"'), 'junk', '"+GRAPH+"')"
         self.cursor.execute(q)
         os.remove(fname)
+        
+
+def main():
+    connect = VODBC.connect()
+    cursor = connect.cursor()
+    fsa = FindSameAs(cursor)
+    limit = 500
+    offset = 0
+    while(True):
+        fsa.get_sameAs(limit, offset)
+        offset += limit
             
+if __name__ == "__main__":
+    sys.exit(main())
+                       
