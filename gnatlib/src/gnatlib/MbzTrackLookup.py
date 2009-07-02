@@ -43,6 +43,7 @@ import logging
 from logging import log, error, warning, info, debug
 import re
 
+DBTUNE_URI='http://dbtune.org/musicbrainz/resource'
 
 class MbzLookupException :
 
@@ -538,10 +539,13 @@ def filelookup(file,
         a dictionary of the form 
         
         ['artistURI']     =     URI for artist match or None if no match found
+        ['artistMbz']     =     Artist's musicbrainz page
         ['artist']        =     a musicbrainz2.model.Artist object or None if no match found
         ['releaseURI']    =     URI for release (album) or None if no match found
+        ['releaseMbz']    =     release musicbrainz page
         ['release']       =     a musicbrainz2.model.Release object or None if no match found
         ['trackURI']      =     URI for track match or None if no match found
+        ['trackMbz']      =     track musicbrainz page
         ['track']         =     a musicbrainz2.model.Track object or None if no match found
         ['score']         =     overall score for the match out of 100
         
@@ -553,18 +557,24 @@ def filelookup(file,
 
 def __setdict__(mbz):
     dict = {}
-    dict['artistURI'] = mbz.getMbzArtistURI()
+    if mbz.getMbzArtistURI() != None:
+        dict['artistURI'] = DBTUNE_URI+mbz.getMbzArtistURI().split('http://musicbrainz.org')[1]
+        dict['artistMbz'] = mbz.getMbzArtistURI()
     if mbz.track_mapping[0][2] != None:
         dict['artist'] = mbz.track_mapping[0][2].artist
         #dict['artistID'] = mbz.track_mapping[0][2].artist.getID()
     else:
         dict['artist'] = None
-    dict['releaseURI'] = mbz.getMbzReleaseURI()
+    if mbz.getMbzReleaseURI() !=None:
+        dict['releaseURI'] = DBTUNE_URI+mbz.getMbzReleaseURI().split('http://musicbrainz.org')[1]
+        dict['releaceMbz'] = mbz.getMbzReleaseURI()
     if mbz.track_mapping[0][3] != None:
         dict['release'] = mbz.track_mapping[0][3].release
     else:
         dict['release'] = None
-    dict['trackURI'] = mbz.getMbzTrackURI()
+    if mbz.getMbzTrackURI() !=None:
+        dict['trackURI'] = DBTUNE_URI+mbz.getMbzTrackURI().split('http://musicbrainz.org')[1]
+        dict['trackMbz'] = mbz.getMbzTrackURI()
     if mbz.track_mapping[0][1]!=None:
         dict['track'] = mbz.track_mapping[0][1].track
     else:
@@ -607,10 +617,13 @@ def metadatalookup(artist=None,
         a dictionary of the form 
         
         ['artistURI']     =     URI for artist match or None if no match found
+        ['artistMbz']     =     Artist's musicbrainz page
         ['artist']        =     a musicbrainz2.model.Artist object or None if no match found
         ['releaseURI']    =     URI for release (album) or None if no match found
+        ['releaseMbz']    =     release musicbrainz page
         ['release']       =     a musicbrainz2.model.Release object or None if no match found
         ['trackURI']      =     URI for track match or None if no match found
+        ['trackMbz']      =     track musicbrainz page
         ['track']         =     a musicbrainz2.model.Track object or None if no match found
         ['score']         =     overall score for the match out of 100
         
