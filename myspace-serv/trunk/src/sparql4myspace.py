@@ -45,7 +45,6 @@ class SparqlSpace(object):
         #self.cursor.execute('SPARQL define output:format "RDF/XML"')
         q = '''SPARQL define sql:log-enable 2 define output:format "RDF/XML" construct { <%s> ?p ?o . ?track ?pp ?oo . } from <%s> where { <%s> ?p ?o . <%s> <http://xmlns.com/foaf/0.1/made> ?track . ?track ?pp ?oo . }'''
         q = q % (self.uri, GRAPH, self.uri, self.uri)
-        print q
         self.cursor.execute(q)
         for r in self.cursor:   data.append(r)
         # blank data if it is too old or not time stamped
