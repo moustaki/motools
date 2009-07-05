@@ -13,7 +13,9 @@ from ODBC import ODBC
 import time
 import sys
 VODBC = ODBC()
-GRAPH = "http://insertsparql.test.graph"
+# must reset this graph value
+# do so CAREFULLY - you will CLEAR all data in graph by running test
+GRAPH = "changeme"
 
 class Sparql4MyspaceTest(unittest.TestCase):
 

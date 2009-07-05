@@ -88,10 +88,11 @@ class MyspaceUID:
                 if ss.select():
                     #print "FOUND SPARQL MATCH"
                     sparql_match = True
+                    ret = ss.make_graph()
                     cursor.close()
                     connect.commit()
                     connect.close()
-                    return ss.make_graph()
+                    return ret
                 
             
             if not sparql_match:

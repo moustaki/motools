@@ -27,6 +27,7 @@ class GetSongsTest(unittest.TestCase):
         M.get_songs()
         # verify rdf w/ sparql
         graph = mopy.exportRDFGraph(M.mi)
+        print graph.serialize()
         titles =[]
         for row in graph.query('''SELECT ?titles WHERE { ?track a <http://purl.org/ontology/mo/Track> . ?track <http://purl.org/dc/elements/1.1/title> ?titles . } '''):
             #print row
