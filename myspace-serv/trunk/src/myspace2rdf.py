@@ -303,7 +303,7 @@ class MyspaceScrape(object):
                     #print xml2
                     this_xml = minidom.parseString(xml2)
                     # add to mopy rdf
-                    track = mopy.mo.Track(os.path.join(uris.dbtune, 'uid',self.uid,'tracks', songID))
+                    track = mopy.mo.Track(os.path.join(uris.dbtune, 'uid',self.uid+'.rdf#'+songID))
                     try:
                         track.plays.set(int(song_plays))
                     except ValueError:
