@@ -43,7 +43,7 @@ class SparqlSpace(object):
         # adding 'define sql:log-enable 2' to preven dead lock as suggested by Hugh Williams on VOS-devel list
         #q = '''SPARQL define sql:log-enable 2 SELECT DISTINCT ?p ?o FROM <'''+graph+'''> WHERE {<%s> ?p ?o}'''
         #self.cursor.execute('SPARQL define output:format "RDF/XML"')
-        q = '''SPARQL define sql:log-enable 2 define output:format "RDF/XML" construct { <%s> ?p ?o . ?track ?pp ?oo . } from <%s> where { <%s> ?p ?o . <%s> <http://xmlns.com/foaf/0.1/made> ?track . ?track ?pp ?oo . }'''
+        q = '''SPARQL define sql:log-enable 2 define output:format "RDF/XML" construct { <%s> ?p ?o . ?track ?pp ?oo .  } from <%s> where { <%s> ?p ?o . optional {<%s> <http://xmlns.com/foaf/0.1/made> ?track . ?track ?pp ?oo . } }'''
         q = q % (self.uri, GRAPH, self.uri, self.uri)
         self.cursor.execute(q)
         for r in self.cursor:   data.append(r)

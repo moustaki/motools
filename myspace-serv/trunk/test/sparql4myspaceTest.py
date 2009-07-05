@@ -15,7 +15,7 @@ import sys
 VODBC = ODBC()
 # must reset this graph value
 # do so CAREFULLY - you will CLEAR all data in graph by running test
-GRAPH = "changeme"
+GRAPH = "http://dbtune.org/myspace"
 
 class Sparql4MyspaceTest(unittest.TestCase):
 
