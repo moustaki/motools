@@ -56,7 +56,7 @@ class NonArtistTest(unittest.TestCase):
     def test_get_image_non_artist(self):
         img = self.M.get_image_non_artist()
         # just check it looks vaguely like an image url
-        assert img.startswith('http://') and img.endswith('.jpg'), 'does not look like an image url: '+str(img)
+        assert img.startswith('http://') and (img.endswith('.jpg') or img.endswith('.gif')), 'does not look like an image url: '+str(img)
 
     def test_get_friends(self):
         self.M.get_friends_non_artist()
