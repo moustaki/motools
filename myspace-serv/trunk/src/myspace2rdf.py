@@ -310,20 +310,20 @@ class MyspaceScrape(object):
                         pass # sometimes we get empty string '' which throws ValueError
                     try:
                         song_title = this_xml.getElementsByTagName('title')[0].firstChild.nodeValue
-                    except AttributeError:
+                    except (AttributeError, IndexError):
                         pass
                     else:
                         track.title.set(song_title)
                     try:
                         song_image = this_xml.getElementsByTagName('small')[0].firstChild.nodeValue
-                    except AttributeError:
+                    except (AttributeError, IndexError):
                         pass
                     else:
                         img = mopy.foaf.Image(song_image)
                         track.depiction.set(img)
                     try:
                         song_avas = this_xml.getElementsByTagName('rtmp')[0].firstChild.nodeValue
-                    except AttributeError:
+                    except (AttributeError, IndexError):
                         pass
                     else:
                         avas = mopy.mo.MusicalItem(song_avas)
