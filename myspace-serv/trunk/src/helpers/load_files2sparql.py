@@ -16,7 +16,8 @@ os.chdir('..')
 
 help_message = '''
 utility to dump a directory of files into a store
--p     --path    <path to file to dump in store>
+-p     --path     <path to file to dump in store>
+-g     --graph    <graph to add files to>
 '''
 
 
