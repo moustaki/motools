@@ -67,6 +67,7 @@ def main():
     master_dict['Syrian ArabRepublic'] = GEO_URI_BASE+'163843/'
     master_dict['Cote Divoire'] = GEO_URI_BASE+'2287781/' #ivory coast
     master_dict['Korea,  Democratic Peoples Republic of'] = GEO_URI_BASE + '1835841/'
+    master_dict['Korea, Republic of'] = GEO_URI_BASE + '1835841/'
     master_dict['Virgin Islands (British)'] = GEO_URI_BASE + '3577718/'
     master_dict['DoDDs Schools'] = GEO_URI_BASE + '6252001/' #just say us
 

@@ -371,11 +371,11 @@ class MyspaceScrape(object):
 
     def insert_sparql(self, cursor, graph=GRAPH):
         '''DB.DBA.RDF_LOAD_RDFXML (file_to_string ('/usr/local/virtuoso-opensource/var/lib/virtuoso/db/vc-db-1.rdf'), '', 'http://mygraph.com');'''
-        self.mi.add(self.subject)
+        self.serialize()
         fname = str(self.uid)+'.rdf'
         #print 'writing file'
         fname = os.path.join(WRITE_PATH, fname)
-        mopy.exportRDFFile(self.mi, fname)
+        self.graph.serialize(fname)
         # do odbc insert, cp caching should make this cool right?
         q = "DB.DBA.RDF_LOAD_RDFXML_MT (file_to_string('"+ fname+"'), 'junk', '"+graph+"')"
         #print q
