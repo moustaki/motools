@@ -1,6 +1,8 @@
 '''
 Created on Jul 15, 2009
 
+loads a directory of RDF files into the SPARQL endpoint
+
 @author: kurtjx
 '''
 
@@ -16,8 +18,9 @@ os.chdir('..')
 
 help_message = '''
 utility to dump a directory of files into a store
--p     --path     <path to file to dump in store>
+-p     --path     <path to directory of files to dump in store>
 -g     --graph    <graph to add files to>
+note only files ending with '.rdf' will be added
 '''
 
 
@@ -41,10 +44,10 @@ def main(argv=None):
             opts, args = getopt.getopt(argv[1:], "ho:vp:g:", ["help", "output=", "path=", "graph="])
         except getopt.error, msg:
             raise Usage(msg)
-        
+
         path = ''
         graph = 'http://dbtune.org/myspace/'
-    
+
         # option processing
         for option, value in opts:
             if option == "-v":
@@ -57,8 +60,8 @@ def main(argv=None):
                 path = value
             if option in ("-g", "--graph"):
                 graph = value
-                
-    
+
+
         if path=='':
             raise Usage('must supply a path')
         else:
@@ -68,7 +71,7 @@ def main(argv=None):
             go_thru_files(path, graph, cur)
             cur.close()
             con.close()
-            
+
     except Usage, err:
         print >> sys.stderr, sys.argv[0].split("/")[-1] + ": " + str(err.msg)
         print >> sys.stderr, "\t for help use --help"

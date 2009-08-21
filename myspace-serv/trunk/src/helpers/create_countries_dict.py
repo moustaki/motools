@@ -4,6 +4,8 @@ create a dict object from the list of countries myspace uses
 such that
     key = myspace country text
     value = geonames uri for country
+
+store in a pickle to be used by myspace2rdf.py
 '''
 from urllib2 import urlopen, quote
 from xml.dom import minidom
