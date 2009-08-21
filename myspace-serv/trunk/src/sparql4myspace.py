@@ -26,8 +26,8 @@ EXPIRE_DAYS = int(config.get('ODBC', 'expiration'))
 class SparqlSpace(object):
     '''
     Check the sparql endpoint connected by odbc for the input uri
-    
-    
+
+
     '''
 
 
@@ -37,18 +37,19 @@ class SparqlSpace(object):
         '''
         self.cursor = cursor
         self.uri = uri
-        
+
     def select(self, graph=GRAPH):
         data = []
         # adding 'define sql:log-enable 2' to preven dead lock as suggested by Hugh Williams on VOS-devel list
-        
-        
+
+
         # blank data if it is too old or not time stamped
         old_date = '2009-01-01'     # should never be older than this :-)
         q = '''SPARQL define sql:log-enable 2 SELECT DISTINCT ?time FROM <'''+graph+'''> WHERE { <%s> <http://purl.org/dc/terms/modified> ?time } ORDER BY ASC (?time)'''
         self.cursor.execute(q % self.uri)
         for r in self.cursor:   old_date = r[0]
         if not self.__still_fresh__(old_date):
+            # TODO: delete some triple here?
             return False
         else:
             q = '''SPARQL define sql:log-enable 2 define output:format "RDF/XML" construct { <%s> ?p ?o . ?track ?pp ?oo .  } from <%s> where { <%s> ?p ?o . optional {<%s> <http://xmlns.com/foaf/0.1/made> ?track . ?track ?pp ?oo . } }'''
@@ -58,14 +59,14 @@ class SparqlSpace(object):
             self.triples = data
             return True
 
-        
+
     def make_graph(self):
         ret = ''
-        for triple in self.triples: 
+        for triple in self.triples:
             for d in triple: ret+=d
         return ret
 
-        
+
     def __still_fresh__(self, date_string):
         d = date(int(date_string.split('-')[0]), int(date_string.split('-')[1]), int(date_string.split('-')[2][:2]))
         now = time.strftime('%Y-%m-%d').split('-')
@@ -75,4 +76,3 @@ class SparqlSpace(object):
             return False
         else:
             return True
-        

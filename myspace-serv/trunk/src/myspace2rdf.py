@@ -6,7 +6,7 @@ Created on Jun 10, 2009
 
 import myspaceuris as uris
 from tryurl import try_open
-#from rdflib import ConjunctiveGraph, URIRef
+from rdflib import ConjunctiveGraph, URIRef, Namespace
 from scraping import scrapePage, scrapePageWhile
 import mopy
 import re
@@ -16,7 +16,9 @@ import os
 from BeautifulSoup import BeautifulSoup as BS
 from ConfigParser import ConfigParser, Error
 import time
+import cPickle as pickle
 
+FOAF = Namespace('http://xmlns.com/foaf/0.1/')
 
 config = ConfigParser()
 try:
@@ -25,11 +27,15 @@ except:
     print 'error, no config file\n  exting...'
     sys.exit(1)
 
-USE_SPARQL = config.get('ODBC', 'sparql') 
+USE_SPARQL = config.get('ODBC', 'sparql')
 #change to a blank string for local testing, no trailing '/'
 URL_BASE = config.get('urls', 'base')[1:-1] #"http://dbtune.org/myspace"
 GRAPH = config.get('ODBC', 'graph')[1:-1]
 WRITE_PATH = config.get('ODBC', 'write_path')[1:-1]
+
+f = open('./helpers/countries', 'r')
+COUNTRIES = pickle.load(f)
+f.close()
 
 class MyspaceException(Exception):
     def __init__(self, msg):
@@ -37,7 +43,7 @@ class MyspaceException(Exception):
 
 class MyspaceScrape(object):
     '''
-    Class for scpraping a myspace.com page
+    Class for scraping a myspace.com page
     '''
 
 
@@ -46,14 +52,14 @@ class MyspaceScrape(object):
         Constructor
         '''
         self.mi = mopy.MusicInfo()
-        #self.rdf_graph = ConjunctiveGraph()
+        self.non_mopy_graph = [] #ConjunctiveGraph()
         if short_url != None:
             self.url = uris.www_myspace + short_url
         elif uid != None:
             self.url = uris.viewProfileURLbase + str(uid)
         else:
             raise MyspaceException, 'neither short_url or uid provided'
-    
+
     def run(self):
         self.get_page()
         self.get_uid()
@@ -70,7 +76,7 @@ class MyspaceScrape(object):
             self.get_friends_non_artist()
             self.get_image_non_artist()
             self.get_stats_non_artist()
-    
+
     def get_page(self):
         if self.url != None:
             resp = try_open(self.url, try_num=0, limit=3)
@@ -81,11 +87,11 @@ class MyspaceScrape(object):
             resp.close()
         else:
             self.html = None
-    
+
     def get_uid(self):
         ''' get the uid from the html '''
         self.uid = scrapePage(self.html, [uris.userIDTag[0]], uris.userIDTag[1])
-        
+
     def is_artist(self):
         '''do artist check, assign a self.subject (Person or MusicArtist) and return True or False'''
         genrePresent = scrapePage(self.html, [uris.genreTag[0]], uris.genreTag[1])
@@ -115,7 +121,7 @@ class MyspaceScrape(object):
             else:
                 raise MyspaceException, "seems to be an invalid - could not find foaf:name"
             return False
-    
+
     def get_friends_non_artist(self):
         results = self.soup.findAll('span', 'msProfileLink')
         for r in results:
@@ -124,18 +130,18 @@ class MyspaceScrape(object):
             f.name.set(unicode(r.next.get('title')))
             img = mopy.foaf.Image(r.next.next.next.next.get('src'))
             f.depiction.add(img)
-            
+
             self.subject.topFriend.add(f)
             self.mi.add(f)
-        
-        
+
+
     def get_friends(self):
         ''' get list of top friends '''
         #friendTupleList = scrapePageTuple(self.html, friendDict)
         friendUIDs = scrapePageWhile(self.html, uris.friendTag[0], uris.friendTag[1])
         friendNames = scrapePageWhile(self.html, uris.friendNameTag[0], uris.friendNameTag[1])
         friendPics = scrapePageWhile(self.html, uris.friendPicTag[0], uris.friendPicTag[1])
-            
+
         # TODO fix this horrible hack - for non-artists, they appear here as well
         #if len(friendUIDs) != len(friendNames):
         #    friendUIDs = friendUIDs[1:]
@@ -153,21 +159,21 @@ class MyspaceScrape(object):
             except:
                 pass
 
-            
+
             #self.subject.knows.add(friend)
-            
+
             # self.subject.knows.add(friend)
             # since when did this happen??? mopy wont take foaf:knows as a prop of mo:MusicArtist
-                
+
             self.subject.topFriend.add(friend)
             self.mi.add(friend)
-        
+
     def get_genres(self):
         '''get the genres for an artist'''
         localGenres = scrapePage(self.html, [uris.genreTag[0]], uris.genreTag[1])
         if localGenres == None:
             return None
-        genreNums = re.findall(''':"([0-9]+)"''', localGenres) # should return only 2 or 3 char string between 
+        genreNums = re.findall(''':"([0-9]+)"''', localGenres) # should return only 2 or 3 char string between
         genres = []
         for gnum in genreNums:
             try:
@@ -179,9 +185,9 @@ class MyspaceScrape(object):
                 self.mi.add(genre)
                 self.subject.genreTag.add(genre)
                 genres.append(genre)
-        
+
         return genres
-    
+
     def get_image_non_artist(self):
         try:
             imageURL = self.soup.find('img', 'photo ').get('src')
@@ -192,24 +198,35 @@ class MyspaceScrape(object):
             self.subject.depiction.add(img)
             self.mi.add(img)
         return imageURL
-    
+
     def get_stats(self):
+        # country locality
         mess = scrapePage(self.html, [uris.cityTag[0]], uris.cityTag[2])
         if mess != None:
             locality = mess.split(uris.cityTag[1])[0]
             country = mess.split(uris.cityTag[1])[1]
             self.subject.country.set(str(unicode(country).encode('utf-8')))
             self.subject.locality.set(str(unicode(locality).encode('utf-8')))
+            # geoname foaf:based_near for country
+            #self.mi.add(self.subject)
+            #graph = mopy.exportRDFGraph(self.mi)
+            #graph.add((URIRef(self.subject.URI), FOAF['based_near'], URIRef(COUNTRIES[country])))
+            #print graph.serialize()
+            self.non_mopy_graph.append((URIRef(self.subject.URI), FOAF['based_near'], URIRef(COUNTRIES[country])))
+
+        # profile views
         profile_views = scrapePage(self.html, [uris.profileViews[0]], uris.profileViews[1])
         if profile_views != None:
             self.subject.profileViews.set(int(profile_views))
+
+        # total friend count
         try:
             totfri = self.soup.find(property="myspace:friendCount").string
         except AttributeError, err:
             totfri = '0'
         else:
             self.subject.totalFriends.set(int(totfri))
-    
+
     def get_stats_non_artist(self):
         try:
             gender = self.soup.find('span', 'gender').string
@@ -222,6 +239,7 @@ class MyspaceScrape(object):
         except AttributeError, err:
             pass
         else:
+            uri_country = mopy.geo.SpatialThing
             self.subject.country.set(str(unicode(country).encode('utf-8')))
         try:
             locality = self.soup.find('span', 'locality').string
@@ -250,8 +268,8 @@ class MyspaceScrape(object):
             pass
         else:
             self.subject.totalFriends.set(int(totfri))
-            
-                    
+
+
     def get_image(self):
         imageURL = scrapePage(self.html, [uris.picTag[0]+str(self.uid)+'''"><img src="'''], uris.picTag[1])
         if imageURL != None:
@@ -259,7 +277,7 @@ class MyspaceScrape(object):
             self.subject.depiction.add(img)
             self.mi.add(img)
         return imageURL
-    
+
     def get_nice_url(self):
         niceURL = scrapePage(self.html, [uris.niceURLTag[0]], uris.niceURLTag[1])
         if niceURL:
@@ -268,7 +286,7 @@ class MyspaceScrape(object):
             self.subject.sameAs.set(thing)
             self.mi.add(thing)
         return niceURL
-    
+
     def get_nice_url_non_artist(self):
         url = None
         try:
@@ -281,8 +299,8 @@ class MyspaceScrape(object):
             self.subject.sameAs.set(thing)
             self.mi.add(thing)
         return url
-                
-    
+
+
     def get_songs(self):
         ''' do some tricky stuff to get the songs of an artist account '''
         if self.__get_artist_id() and self.__get_playlist_id():
@@ -331,7 +349,7 @@ class MyspaceScrape(object):
                         self.mi.add(avas)
                     self.subject.made.add(track)
                     self.mi.add(track)
-    
+
     def __get_artist_id(self):
         '''attempt to find via scrape of page the internal artist number.'''
         ids = scrapePageWhile(self.html, uris.artistIDtag[0], uris.artistIDtag[1])
@@ -340,7 +358,7 @@ class MyspaceScrape(object):
                 self.artistID = i
                 return True
         return False
-    
+
     def __get_playlist_id(self):
         """attempts to find via scrape of the internal identifier of an artist's playlist of songs"""
         # make sure we get a digit and not some crap - maybe should to regex
@@ -350,7 +368,7 @@ class MyspaceScrape(object):
                 self.playlistID = i
                 return True
         return False
-    
+
     def insert_sparql(self, cursor, graph=GRAPH):
         '''DB.DBA.RDF_LOAD_RDFXML (file_to_string ('/usr/local/virtuoso-opensource/var/lib/virtuoso/db/vc-db-1.rdf'), '', 'http://mygraph.com');'''
         self.mi.add(self.subject)
@@ -371,9 +389,15 @@ class MyspaceScrape(object):
         cursor.execute(q)
         #cursor.commit()
         os.remove(fname)
-    
+
     def serialize(self):
         self.mi.add(self.subject)
         graph = mopy.exportRDFGraph(self.mi)
+        # add the non-mopy stuff
+        for triple in self.non_mopy_graph:
+            graph.add(triple)
+
+        # for testing
+        self.graph = graph
         return graph.serialize()
-        
+
