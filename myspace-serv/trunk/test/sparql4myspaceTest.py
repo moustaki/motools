@@ -15,27 +15,29 @@ import sys
 VODBC = ODBC()
 # must reset this graph value
 # do so CAREFULLY - you will CLEAR all data in graph by running test
-GRAPH = "http://dbtune.org/myspace"
+GRAPH = "http://localhost/myspace"
 
 class Sparql4MyspaceTest(unittest.TestCase):
 
 
     def setUp(self):
         self.connect = VODBC.connect()
-        self.connect.execute('SPARQL CLEAR GRAPH <%s>' % GRAPH) 
+        self.connect.execute('SPARQL CLEAR GRAPH <%s>' % GRAPH)
         self.uri = 'http://dbtune.org/myspace/uid/30650288'
         self.connect.execute('SPARQL LOAD <%s.rdf> into <%s>' % (self.uri,GRAPH))
-        self.connect.execute('SPARQL INSERT in graph <%s> {<%s> <http://purl.org/dc/terms/modified> "%s"^^xsd:dateTime}' % (GRAPH ,self.uri , time.strftime('%Y-%m-%dT%H:%M:%S')))
+        self.connect.execute('SPARQL LOAD <%s.rdf> into <%s>' % ('http://dbtune.org/myspace/uid/89791699',GRAPH))
+        #self.connect.execute('SPARQL INSERT in graph <%s> {<%s> <http://purl.org/dc/terms/modified> "%s"^^xsd:dateTime}' % (GRAPH ,self.uri , time.strftime('%Y-%m-%dT%H:%M:%S')))
         self.old_date = '2009-03-17T14:27:59+01:00'
-        self.connect.execute('SPARQL INSERT in graph <%s> {<%s> <http://purl.org/dc/terms/modified> "2009-03-17T14:27:59+01:00"^^xsd:dateTime}' % (GRAPH ,self.uri))
-        
+        #self.connect.execute('SPARQL INSERT in graph <%s> {<%s> <http://purl.org/dc/terms/modified> "2009-03-17T14:27:59+01:00"^^xsd:dateTime}' % (GRAPH ,self.uri))
+
 
 
 
     def tearDown(self):
+        #self.connect.execute('SPARQL CLEAR GRAPH <%s>' % GRAPH)
         self.connect.commit()
         self.connect.close()
-        
+
     def test__still_fresh__(self):
         d = '2009-03-17T14:27:59+01:00'
         ss = SparqlSpace(self.uri, self.connect)
@@ -50,13 +52,21 @@ class Sparql4MyspaceTest(unittest.TestCase):
         ss = SparqlSpace('http://junk.uri', cursor)
         assert not ss.select(GRAPH), 'this uri should not be present: http://junk.uri'
         cursor.close()
-        
+
     def test_make_graph(self):
         cursor = self.connect.cursor()
         ss = SparqlSpace(self.uri, cursor)
         ss.select(GRAPH)
         print ss.make_graph()
-        
+
+    def test_delete_totalFriends(self):
+        cursor = self.connect.cursor()
+        ss = SparqlSpace(self.uri, cursor)
+        #q = '''SPARQL INSERT in GRAPH <%s> { <%s> <http://purl.org/ontology/myspace#totalFriends>'''
+        self.connect.execute('SPARQL DELETE from graph <%s> {<%s> <http://purl.org/dc/terms/modified> ?o} from <%s> where { <%s> ?p ?o }' % (GRAPH ,self.uri , GRAPH, self.uri))
+        self.connect.execute('SPARQL INSERT in graph <%s> {<%s> <http://purl.org/dc/terms/modified> "2009-03-17T14:27:59+01:00"^^xsd:dateTime}' % (GRAPH ,self.uri))
+        assert not ss.select(GRAPH)
+
 
 
 if __name__ == "__main__":

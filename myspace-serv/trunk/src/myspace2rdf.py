@@ -207,11 +207,7 @@ class MyspaceScrape(object):
             country = mess.split(uris.cityTag[1])[1]
             self.subject.country.set(str(unicode(country).encode('utf-8')))
             self.subject.locality.set(str(unicode(locality).encode('utf-8')))
-            # geoname foaf:based_near for country
-            #self.mi.add(self.subject)
-            #graph = mopy.exportRDFGraph(self.mi)
-            #graph.add((URIRef(self.subject.URI), FOAF['based_near'], URIRef(COUNTRIES[country])))
-            #print graph.serialize()
+            # geoname foaf:based_near for country - outside of MoPy
             self.non_mopy_graph.append((URIRef(self.subject.URI), FOAF['based_near'], URIRef(COUNTRIES[country])))
 
         # profile views
@@ -396,8 +392,6 @@ class MyspaceScrape(object):
         # add the non-mopy stuff
         for triple in self.non_mopy_graph:
             graph.add(triple)
-
-        # for testing
         self.graph = graph
         return graph.serialize()
 

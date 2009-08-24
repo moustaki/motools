@@ -44,12 +44,20 @@ class SparqlSpace(object):
 
 
         # blank data if it is too old or not time stamped
-        old_date = '2009-01-01'     # should never be older than this :-)
+        old_date = None#'2009-01-01'     # should never be older than this :-)
         q = '''SPARQL define sql:log-enable 2 SELECT DISTINCT ?time FROM <'''+graph+'''> WHERE { <%s> <http://purl.org/dc/terms/modified> ?time } ORDER BY ASC (?time)'''
         self.cursor.execute(q % self.uri)
         for r in self.cursor:   old_date = r[0]
-        if not self.__still_fresh__(old_date):
-            # TODO: delete some triple here?
+        if old_date == None:
+            return False
+        elif not self.__still_fresh__(old_date):
+            # remove the total friends triple or else we get multiple
+            q = '''SPARQL define sql:log-enable 2 DELETE from graph <%s>
+            { <%s> <http://purl.org/ontology/myspace#totalFriends> ?o } from <%s> where
+            { <%s> ?p ?o }
+            ''' % (graph, self.uri, graph, self.uri)
+            self.cursor.execute(q)
+
             return False
         else:
             q = '''SPARQL define sql:log-enable 2 define output:format "RDF/XML" construct { <%s> ?p ?o . ?track ?pp ?oo .  } from <%s> where { <%s> ?p ?o . optional {<%s> <http://xmlns.com/foaf/0.1/made> ?track . ?track ?pp ?oo . } }'''
