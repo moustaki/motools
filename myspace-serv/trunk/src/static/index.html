@@ -17,14 +17,14 @@
 
 <h2><a name="disc" id="disc"></a>0. Disclaimer</h2>
 <p>
-This is a non-commercial site. The information contained in this site has been collected from several 
-sources and its accuracy cannot be guaranteed. 
-No copyright has been intentionally 
+This is a non-commercial site. The information contained in this site has been collected from several
+sources and its accuracy cannot be guaranteed.
+No copyright has been intentionally
 violated. If you feel a copyright has been violated please contact kurtjx at gmail immediately.
 </p>
 <p>
-Please note this service may sometimes behave unexpectedly as Myspace makes changes to their page templates.  
-Please contact kurtjx at gmail if you have any questions or notice any problems with this service.  
+Please note this service may sometimes behave unexpectedly as Myspace makes changes to their page templates.
+Please contact kurtjx at gmail if you have any questions or notice any problems with this service.
 This service is in no way affiliated or endorsed by Myspace.com.
 
 </p>
@@ -38,8 +38,8 @@ HTML, so the scraping doesn't work as expected anymore.
 
 <p>
 
-This service provides a live RDF representation of <a href="http://www.myspace.com/">Myspace</a> users.  
-If the user is also an <i>artist</i>, then the corresponding tracks in the streaming audio cache are included in the RDF.  
+This service provides a live RDF representation of <a href="http://www.myspace.com/">Myspace</a> users.
+If the user is also an <i>artist</i>, then the corresponding tracks in the streaming audio cache are included in the RDF.
 Note that only the <i>top friends</i> of the target Myspace user are included in the RDF.
 
 </p>
@@ -47,20 +47,12 @@ Note that only the <i>top friends</i> of the target Myspace user are included in
 
 <p>
 This representations is designed using the <a href="http://musicontology.com/">
-Music Ontology</a>, <a href="http://xmlns.com/foaf/0.1/">FOAF</a>, and a small 
-<a href="http://purl.org/ontology/myspace">Myspace Ontology</a>. The scraping is handled by the 
+Music Ontology</a>, <a href="http://xmlns.com/foaf/0.1/">FOAF</a>, and a small
+<a href="http://purl.org/ontology/myspace">Myspace Ontology</a>. The scraping is handled by the
 <a href="http://sourceforge.net/projects/mypyspace/">MyPySpace</a>.
 </p>
 
 <p>
-
-
-
-<!--><p>
-This effort is part of the <a href="http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/LinkingOpenData">Linking
-Open Data on the Semantic Web</a> community project, hosted by the <a href="http://www.w3.org/2001/sw/sweo/">Semantic
-Web Education and Outreach</a> interest group.
-</p>-->
 
 
 
@@ -93,14 +85,54 @@ http://dbtune.org/myspace/lesversaillaisesamoustache
 
 <p>
 If you have a MySpace account, you can
-add the corresponding information to your <a href="http://xmlns.com/foaf/0.1/">FOAF profile</a> by adding the following statement in it:
+add the corresponding information to your <a href="http://xmlns.com/foaf/0.1/">FOAF profile</a>
+by adding the following statement in it:
 <pre>
 &lt;my URI&gt; owl:sameAs &lt;http://dbtune.org/myspace/&lt;user name&gt;
 
 </pre>
 </p>
 
-<h2><a name="code" id="code"></a>3. Code</h2>
+<h2><a name="SPARQL" id="SPARQL"></a>3. SPARQL Endpoint</h2>
+<p>
+This service caches wrapper results in a <a href="http://www.w3.org/TR/rdf-sparql-query/" target="_blank">
+SPARQL endpoint</a> powered by Open Link's <a href="http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/" target="_blank">
+Virtuoso</a> triple store.  Both the endpoint and a webinterface are accessible at <a href="http://virtuoso.dbtune.org/sparql"
+target="_blank">http://virtuoso.dbtune.org/sparql</a>.
+</p>
+<p>
+When possible, the endpoint includes links to <a href="http://musicbrainz.org/" target="_blank">Musicbrainz</a>
+ and <a href="http://www.bbc.co.uk/music/artists/" target="_blank">BBC Music artists</a>.  The linkage is performed
+ off-line using a modified version of <a href="http://motools.svn.sourceforge.net/viewvc/motools/gnatlib/" target="_blank">
+ GNATlib</a>.
+</p>
+<p>
+For music artists, links to the <a href="http://www.geonames.org/" target="_blank">Geonames</a> URI of the country specified on
+their Myspace page are provided.  The mapping of Myspace countries to Geonames URIs can be found in the
+<a href="/static/countries_geonames.tsv" target="_blank">countries_geonames.tsv</a> file or in the code as a Python
+pickled dictionary.
+</p>
+<p>
+Here is an example query against the enpoint selecting all music artists from Hungary who specify their
+genre as Hip Hop.  The results are ordered by number of friends:
+<pre><code>
+PREFIX mysp:&lt;http://purl.org/ontology/myspace#&gt;
+PREFIX foaf:&lt;http://xmlns.com/foaf/0.1/&gt;
+PREFIX mo:&lt;http://purl.org/ontology/mo/&gt;
+
+SELECT ?name ?friends from &lt;http://dbtune.org/myspace/&gt;
+WHERE {?artist foaf:based_near &lt;http://sws.geonames.org/719819/&gt; ;
+ a mo:MusicArtist ;
+ foaf:name ?name ;
+ mysp:totalFriends ?friends ;
+ mysp:genreTag &lt;http://purl.org/ontology/myspace#Hip%20Hop&gt; .
+}
+ORDER BY DESC (?friends)
+</code></pre>
+</p>
+
+
+<h2><a name="code" id="code"></a>4. Code</h2>
 <p>
 As usual, <a href="http://motools.svn.sourceforge.net/viewvc/motools/myspace-serv/">all the code running this service</a>
 is open source and based

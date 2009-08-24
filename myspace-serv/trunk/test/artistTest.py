@@ -70,7 +70,7 @@ class ArtistTest(unittest.TestCase):
         # check based near
         for row in graph.query('''select ?based where { ?x <http://xmlns.com/foaf/0.1/based_near> ?based } '''):
             based = row[0]
-        assert based == 'http://sws.geonames.org/2635167/', 'wrong based_near'+ str(based)
+        assert str(based) == 'http://sws.geonames.org/2635167/', 'wrong based_near: '+ str(based)
 
         # total friends count
         totf = -1
