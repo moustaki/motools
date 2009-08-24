@@ -16,7 +16,7 @@ class GetSongsTest(unittest.TestCase):
         self.short_url_artist = 'kurtisrandom'
         self.short_url_non = 'flexboogie'
         self.uid_non = '8840037'
-        self.uid_artist = '15726394' #'30650288'
+        self.uid_artist = '30650288' #'15726394' #
 
     def test_get_songs(self):
         # do the song getting
@@ -35,11 +35,11 @@ class GetSongsTest(unittest.TestCase):
             titles.append(title)
         titles.sort()
         assert titles==[u'A Big Idea short mix', u'Blue92', u'Just to Get a Remix', u'Know What You Want feat Albie', u'Out of mi head feat Raquelle', u'Time  addicted to junk mix'], 'wrong set of titles: '+str(titles)
-        
+
         # TODO: add test for playcounts and available_as
 #        for row in graph.query('''SELECT ?titles WHERE { ?track a <http://purl.org/ontology/mo/Track> . ?track <http://purl.org/dc/elements/1.1/title> ?titles . }'''):
 #            pass
-#        
+#
 
 
 if __name__ == "__main__":

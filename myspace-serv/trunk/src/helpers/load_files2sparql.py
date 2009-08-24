@@ -19,7 +19,7 @@ os.chdir('..')
 help_message = '''
 utility to dump a directory of files into a store
 -p     --path     <path to directory of files to dump in store>
--g     --graph    <graph to add files to>
+-g     --graph    <graph to add files to default is http://dbtune.org/myspace/>
 note only files ending with '.rdf' will be added
 '''
 
