@@ -26,7 +26,7 @@ tracks_rdf(User,Triples) :-
 	flatten(BT,Triples).
 
 
-artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'MusicalArtist'),rdf(Artist,foaf:name,literal(Name)),rdf(Artist,owl:sameAs,URI)|Triples]) -->
+artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'MusicArtist'),rdf(Artist,foaf:name,literal(Name)),rdf(Artist,owl:sameAs,URI)|Triples]) -->
 	newline,
 	[element(artist,[mbid=ID],[Name])],{ID\=''},!,
 	{
@@ -35,7 +35,7 @@ artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'Mus
 	format(atom(ScrobbleDesc),'Listened to "~w"',[Name])
 	},
 	track_info(User,Track,ScrobbleDesc,Triples).
-artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'MusicalArtist'),rdf(Artist,foaf:name,literal(Name))|Triples]) -->
+artist_info(User,Track,[rdf(Track,foaf:maker,Artist),rdf(Artist,rdf:type,mo:'MusicArtist'),rdf(Artist,foaf:name,literal(Name))|Triples]) -->
         newline,
         [element(artist,_,[Name])],
         {
