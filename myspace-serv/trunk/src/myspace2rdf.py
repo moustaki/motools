@@ -248,7 +248,7 @@ class MyspaceScrape(object):
         except AttributeError, err:
             pass
         else:
-            self.subject.region.set(str(region).encode('utf-8'))
+            self.subject.region.set(str(unicode(region).encode('utf-8')))
         try:
             age = self.soup.find('span', 'age').string
         except AttributeError, err:
