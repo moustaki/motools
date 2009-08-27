@@ -16,7 +16,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-  
+
   Yves Raimond, C4DM, Queen Mary, University of London
   yves.raimond (at) elec.qmul.ac.uk
   kurt.jacobson (at) elec.qmul.ac.uk
@@ -54,10 +54,10 @@ class MbzLookupException :
         return self.message
 
 class FileTypeException :
-    
+
     def __init__(self,message) :
         self.message = message
-    
+
     def __str__(self) :
         return self.message
 
@@ -66,18 +66,18 @@ class MbzLookup :
         Base class for Lookup into musicbrainz using the gnat technique
     '''
 
-    def __init__(self, 
-                 artist=None, 
-                 album=None, 
-                 title=None, 
-                 tracknumber=None, 
-                 threshold=60, 
-                 duration_distance_threshold=10000, 
-                 verbose=True, 
+    def __init__(self,
+                 artist=None,
+                 album=None,
+                 title=None,
+                 tracknumber=None,
+                 threshold=60,
+                 duration_distance_threshold=10000,
+                 verbose=True,
                  allow_ambiguous=False,
                  use_cache=True) :
         '''
-        
+
         @param artist:
         @param album:
         @param title:
@@ -94,7 +94,7 @@ class MbzLookup :
         self.cleaner = re.compile(r"[^A-Za-z0-9 ]").sub
         self.use_cache = use_cache
 
-        
+
         if title != None:
             #[title] = self.audio['title']
             self.title = self.__clean_literal(str(title))
@@ -114,7 +114,7 @@ class MbzLookup :
             self.tracknumber = int(self.__clean_literal(str(tracknumber)))
         else:
             self.tracknumber = None
-            
+
         if self.title==None and self.artist==None and self.album ==None:
             raise MbzLookupException('must supply at least one of the following: artist, album, title')
 
@@ -124,18 +124,18 @@ class MbzLookup :
             self.query = CachedMBZQuery()
         else:
             self.query = Query()
-        
+
         debug(' - Trying to guess an ID for track \"'+str(self.title)+'\", artist \"'+str(self.artist)+'\", release \"'+str(self.album)+'\", track number '+str(self.tracknumber))
-        
+
         track_mapping = []
-        
+
         # check for the 'one parameter' case
         if self.artist != None and self.title==None and self.album==None:
             debug("only artist name available, doing simple lookup")
             artists = self.getArtists()
             for artist in artists:
                 track_mapping.append((artist.score, None, artist, None))
-            
+
             self.track_mapping = track_mapping
             return
         elif self.artist == None and self.title!=None and self.album==None:
@@ -143,7 +143,7 @@ class MbzLookup :
             tracks = self.getTracks()
             for track in tracks:
                 track_mapping.append((track.score, track, None, None))
-            
+
             self.track_mapping = track_mapping
             return
         elif self.artist == None and self.title==None and self.album==None:
@@ -153,8 +153,8 @@ class MbzLookup :
                 track_mapping.append((release.score, None, None, release))
             self.track_mapping = track_mapping
             return
-            
-        
+
+
         try:
             artists = self.getArtists()
 
@@ -164,7 +164,7 @@ class MbzLookup :
 
             if(self.album==None):
                 debug("No release information, dropping release lookup")
-            
+
             for artist in artists :
                 artist_id = (MbzURIConverter(artist.artist.id)).getId()
                 artist_mapping.append((artist.score,artist))
@@ -185,16 +185,16 @@ class MbzLookup :
                             track_mapping.append(((artist.score + release.score)/2, None, artist, release))
                         for track in tracks :
                             track_mapping.append(((track.score +release.score + artist.score)/3 ,track, artist, release))
-                        
+
                 else :
                     tracks = self.getTracks(artist_id)
                     for track in tracks :
                         track_mapping.append(((track.score + artist.score)/2 ,track, artist, None))
-      
-                
-                        
-                    
-                    
+
+
+
+
+
             if artists==[] :
                 if(self.album!=None) :
                     releases = self.getReleases()
@@ -208,14 +208,14 @@ class MbzLookup :
                         tracks = self.getTracks(None,release_id)
                         for track in tracks :
                             track_mapping.append(((track.score +release.score)/2 ,track, None, release))
-                        
+
         except ResponseError, e:
             raise MbzLookupException('Musicbrainz response error')
         except ConnectionError, e:
             raise MbzLookupException('Musicbrainz connection error')
         except WebServiceError, e:
             raise MbzLookupException('Musicbrainz webservice error')
-        
+
         # err might need to do this differently
         track_mapping.sort()
         track_mapping.reverse()
@@ -226,10 +226,10 @@ class MbzLookup :
         #self.artist_mapping = artist_mapping
         #self.release_mapping = release_mapping
         self.track_mapping = track_mapping
-        #if self.empty_results() : 
+        #if self.empty_results() :
         #    raise MbzLookupException('No results')
         #    debug('no track results')
-            
+
         #if not self.confident() :
         #    raise MbzLookupException('Not confident enough about matching MBZ tracks')
         #self.clean_results()
@@ -239,7 +239,7 @@ class MbzLookup :
         #if self.empty_results() :
         #    raise MbzLookupException('No results')
         #debug('ID Found : '+self.track_mapping[0][1].track.getId())
-    
+
     def getArtists(self) :
         if self.artist == None :
             return []
@@ -249,8 +249,8 @@ class MbzLookup :
             return artists
 
     def getTracks(self,artist_id=None,release_id=None) :
-        if self.title == None:  
-            debug('parameters missing!!!!')
+        if self.title == None:
+            debug('no track title specified - skipping getTracks')
             return []
         else :
             if not(self.tracknumber == None) and not(release_id == None) :
@@ -285,19 +285,19 @@ class MbzLookup :
             return self.track_mapping[0][1].track.getId()
         else:
             return None
-    
+
     def getMbzArtistURI(self) :
         if self.track_mapping[0][2] != None:
             return self.track_mapping[0][2].artist.getId()
         else:
             return None
-    
+
     def getMbzReleaseURI(self) :
         if self.track_mapping[0][3] != None:
             return self.track_mapping[0][3].release.getId()
         else:
             return None
-    
+
     # returns true if the first result have a confidence higher than the confidence threshold
     def confident(self) :
         if self.track_mapping[0][0] > self.threshold :
@@ -333,7 +333,7 @@ class MbzLookup :
         if not hasattr(self.audio,"info"): # no duration info available (eg. with CSV input)
             #self.track_mapping = []
             return False
-            
+
         duration = self.audio.info.length * 1000
         debug('Duration of the audio file (ms):' + str(duration))
         closest = self.ddt
@@ -354,7 +354,7 @@ class MbzLookup :
     def __clean_literal(self,literal) :
         t = self.cleaner("", literal)
         return re.sub(r' {2,}',' ',t)
-        
+
     def _setlogger(self) :
         '''
             set the logger locally for debugging
@@ -372,17 +372,17 @@ class MetadataLookup(MbzLookup):
         lookup = MetadataLookup(artist=None, album=None, title=None, tracknumber=None, threshold=60)
         note you must supply at least one of artist, album, or title
     '''
-    def __init__(self, 
-                 artist=None, 
-                 album=None, 
-                 title=None, 
-                 tracknumber=None, 
-                 threshold=60, 
-                 verbose=True, 
+    def __init__(self,
+                 artist=None,
+                 album=None,
+                 title=None,
+                 tracknumber=None,
+                 threshold=60,
+                 verbose=True,
                  allow_ambiguous=False,
                  use_cache=True):
         '''
-        
+
         @param artist -  artist name of music entity in question
         @param album - album title of music entity in question
         @param title -  title of a track related to the entity in question
@@ -392,12 +392,12 @@ class MetadataLookup(MbzLookup):
         @param allow_ambiguous=False - if True, allow results to be ambiguous (have same score)
         @param use_cache=True - if True, write queries to disk and re-use queries where possible
         '''
-        
+
         duration_distance_threshold=10000
         self.allow_ambiguous = allow_ambiguous
-        
-        
-        
+
+
+
         try :
             # Note : I think we're too sensitive to track number
             # Before adding this check for track numbers of the form 'x/y' mapping would fail when it should probably have succeeded
@@ -407,17 +407,17 @@ class MetadataLookup(MbzLookup):
                 self.tracknumber = int(str(tracknumber))
         except :
             self.tracknumber = None
-        
+
         MbzLookup.__init__(self, artist, album, title, tracknumber, threshold, duration_distance_threshold, verbose, allow_ambiguous, use_cache)
-        
+
         self.mbzQuery()
         self.check_results()
-        
+
     def check_results(self):
-        if self.empty_results() : 
+        if self.empty_results() :
             raise MbzLookupException('No results')
-        
-            
+
+
         if not self.confident() :
             raise MbzLookupException('Not confident enough about matching MBZ tracks')
         self.clean_results()
@@ -434,15 +434,15 @@ class FileLookup(MbzLookup):
     '''
         lookup a set of mbz URI based on the ID3 tag of the input file
     '''
-    def __init__(self, 
+    def __init__(self,
                  file,
                  threshold=60,
-                 duration_distance_threshold=10000, 
-                 verbose=True, 
+                 duration_distance_threshold=10000,
+                 verbose=True,
                  allow_ambiguous=False,
                  use_cache=True):
         '''
-        
+
         @param file -  path to file with ID3 tag to be used for lookup
         @param threshold=60 - threshold score for accepting a lookup result, lower this to be more forgiving of false positives
         @param duration_distance_threshold=10000 - duration threshold for disambiguating through audio file duration
@@ -455,7 +455,7 @@ class FileLookup(MbzLookup):
         self.file = file
         self.cleaner = re.compile(r"[^A-Za-z0-9 ]").sub
         self.allow_ambiguous = allow_ambiguous
-        
+
 
         # Try MP3 last cause it doesn't seem to throw an exception on wrong filetypes...
         handlers = [FLAC,OggVorbis,OggFLAC,OggTheora,APEv2,ASF,MP4,Musepack,TrueAudio,WavPack,lambda x: MP3(x,ID3=EasyID3)]
@@ -467,7 +467,7 @@ class FileLookup(MbzLookup):
                     pass
         if self.audio is None:
             raise FileTypeException('Unknown file type, no metadata, or file not found.')
-            
+
         try :
             [title] = self.audio['title']
         except :
@@ -478,7 +478,7 @@ class FileLookup(MbzLookup):
             artist = None
         try :
             [album] = self.audio['album']
-            
+
         except :
             album = None
         try :
@@ -491,13 +491,13 @@ class FileLookup(MbzLookup):
                 tracknumber = int(str(tracknumber))
         except :
             tracknumber = None
-        
+
         MbzLookup.__init__(self, artist, album, title, tracknumber, threshold, duration_distance_threshold, verbose, allow_ambiguous, use_cache)
         self.mbzQuery()
         self.check_results()
-        
+
     def check_results(self):
-        if self.empty_results() : 
+        if self.empty_results() :
             raise MbzLookupException('No results')
         if not self.confident() :
             raise MbzLookupException('Not confident enough about matching MBZ tracks')
@@ -509,24 +509,24 @@ class FileLookup(MbzLookup):
         if self.empty_results() :
             raise MbzLookupException('No results')
         debug('ID Found ! ')#+self.track_mapping[0][1].track.getId())
-    
+
 
 def filelookup(file,
                threshold=60,
-               duration_distance_threshold=10000, 
-               verbose=True, 
+               duration_distance_threshold=10000,
+               verbose=True,
                allow_ambiguous=False,
                use_cache=True):
     '''
     Lookup a set of musicbrainz ids based on the ID3 tag of an input audio file
-    
+
     filelookup(file,
                threshold=60,
-               duration_distance_threshold=10000, 
-               verbose=True, 
+               duration_distance_threshold=10000,
+               verbose=True,
                allow_ambiguous=False,
                use_cache=True)
-               
+
     parameters:
         @param file -  path to file with ID3 tag to be used for lookup
         @param threshold=60 - threshold score for accepting a lookup result, lower this to be more forgiving of false positives
@@ -534,10 +534,10 @@ def filelookup(file,
         @param verbose=True
         @param allow_ambiguous=False - set to true to allow for ambiguous results to be accepted (results w/ the same score)
         @param use_cache=True - if True, write queries to disk and re-use queries where possible
-        
+
     returns:
-        a dictionary of the form 
-        
+        a dictionary of the form
+
         ['artistURI']     =     URI for artist match or None if no match found
         ['artistMbz']     =     Artist's musicbrainz page
         ['artist']        =     a musicbrainz2.model.Artist object or None if no match found
@@ -548,10 +548,14 @@ def filelookup(file,
         ['trackMbz']      =     track musicbrainz page
         ['track']         =     a musicbrainz2.model.Track object or None if no match found
         ['score']         =     overall score for the match out of 100
-        
-    
+
+
     '''
-    
+    if verbose:
+        logging.basicConfig(level=logging.DEBUG)
+    else:
+        logging.basicConfig(level=logging.ERROR)
+
     mbz = FileLookup(file, threshold, duration_distance_threshold, verbose, allow_ambiguous, use_cache)
     return __setdict__(mbz)
 
@@ -580,29 +584,29 @@ def __setdict__(mbz):
     else:
         dict['track'] = None
     dict['score'] = mbz.track_mapping[0][0]
-    
+
     return dict
 
-def metadatalookup(artist=None, 
-                 release=None, 
-                 track=None, 
-                 tracknumber=None, 
-                 threshold=60, 
-                 verbose=True, 
+def metadatalookup(artist=None,
+                 release=None,
+                 track=None,
+                 tracknumber=None,
+                 threshold=60,
+                 verbose=True,
                  allow_ambiguous=False,
                  use_cache=True):
     '''
     Lookup a set of musicbrainz ids based on the input metadata
-    
-    metadatalookup(artist=None, 
-                 release=None, 
-                 track=None, 
-                 tracknumber=None, 
-                 threshold=60, 
-                 verbose=True, 
+
+    metadatalookup(artist=None,
+                 release=None,
+                 track=None,
+                 tracknumber=None,
+                 threshold=60,
+                 verbose=True,
                  allow_ambiguous=False,
                  use_cache=True)
-        
+
     parameters:
         @param artist -  artist name of music entity in question
         @param release - release (album) title of music entity in question
@@ -612,10 +616,10 @@ def metadatalookup(artist=None,
         @param verbose=True - if True, set logger to std out
         @param allow_ambiguous=False - if True, allow results to be ambiguous (have same score)
         @param use_cache=True - if True, write queries to disk and re-use queries where possible:
-        
+
     returns:
-        a dictionary of the form 
-        
+        a dictionary of the form
+
         ['artistURI']     =     URI for artist match or None if no match found
         ['artistMbz']     =     Artist's musicbrainz page
         ['artist']        =     a musicbrainz2.model.Artist object or None if no match found
@@ -626,8 +630,12 @@ def metadatalookup(artist=None,
         ['trackMbz']      =     track musicbrainz page
         ['track']         =     a musicbrainz2.model.Track object or None if no match found
         ['score']         =     overall score for the match out of 100
-        
+
     '''
-    
+    if verbose:
+        logging.basicConfig(level=logging.DEBUG)
+    else:
+        logging.basicConfig(level=logging.ERROR)
+
     mbz = MetadataLookup(artist, release, track, tracknumber, threshold, verbose, allow_ambiguous, use_cache)
     return __setdict__(mbz)

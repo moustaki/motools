@@ -18,11 +18,11 @@ disambiguation algorithm from Raimond et al. 2008
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-  
+
   Yves Raimond, C4DM, Queen Mary, University of London
   yves.raimond (at) elec.qmul.ac.uk
   kurt.jacobson (at) elec.qmul.ac.uk
-  
+
 REQUIREMENTS:
 
  - musicbrainz2 - http://musicbrainz.org/doc/PythonMusicBrainz2
@@ -31,31 +31,37 @@ REQUIREMENTS:
 INSTALLATION:
 
 $ python setup.py install
-  
+
 USAGE:
-  
+
 >> import gnatlib
 >> result = gnatlib.filelookup('test.mp3')
 20.04.09 17:11:34 DEBUG     - Trying to guess an ID for track "Light My Fire", artist "Jay Dee", release "Donuts", track number 4
-20.04.09 17:11:34 DEBUG    ID Found ! 
+20.04.09 17:11:34 DEBUG    ID Found !
 >> result['artistURI']
 u'http://musicbrainz.org/artist/cbcbb22c-3a8d-46af-b4ba-09c98f0d7931'
 
->> gnatlib.metadatalookup(artist='Jay Dee', album='Donuts')
+>> gnatlib.metadatalookup(artist='Jay Dee', release='Donuts')
 20.04.09 17:21:07 DEBUG     - Trying to guess an ID for track "None", artist "Jay Dee", release "Donuts", track number None
-20.04.09 17:21:07 DEBUG    ID Found ! 
- 
-{'artist': <musicbrainz2.model.Artist object at 0x20e4330>,
- 'artistURI': u'http://musicbrainz.org/artist/cbcbb22c-3a8d-46af-b4ba-09c98f0d7931',
- 'release': <musicbrainz2.model.Release object at 0x2043e30>,
- 'releaseURI': u'http://musicbrainz.org/release/e3655e9f-3db1-434d-bb4b-3529d09b2989',
+20.04.09 17:21:07 DEBUG    ID Found !
+
+{'artist': <musicbrainz2.model.Artist object at 0x1b0e410>,
+ 'artistMbz': u'http://musicbrainz.org/artist/cbcbb22c-3a8d-46af-b4ba-09c98f0d7931',
+ 'artistURI': u'http://dbtune.org/musicbrainz/resource/artist/cbcbb22c-3a8d-46af-b4ba-09c98f0d7931',
+ 'releaceMbz': u'http://musicbrainz.org/release/e3655e9f-3db1-434d-bb4b-3529d09b2989',
+ 'release': <musicbrainz2.model.Release object at 0x19bcad0>,
+ 'releaseURI': u'http://dbtune.org/musicbrainz/resource/release/e3655e9f-3db1-434d-bb4b-3529d09b2989',
  'score': 88,
- 'track': None,
- 'trackURI': None}
+ 'track': None}
+
+Notice this actually returns the more accurate result for 'J-Dilla' the pseudonym
+used by Jay Dee when the album 'Donuts' was released.
 
 KNOWN ISSUES:
 
 	2009-20-04
 	- @param use_cache=False does not seem to work correctly - sorry you've got to use the cache for now...
+	- turning off verbose seems to not work :-/
 	- no clean up of the ./cache directory - you have to do this yourself
-	 
+	- we use dbtune.org/musicbrainz URIs - it is not clear this is best
+	- no support for PUID MusicDNS lookup
