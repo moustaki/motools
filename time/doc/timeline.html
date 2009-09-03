@@ -190,7 +190,6 @@ The corresponding RDF/N3 code is the following:
 <a href="#term_atYear">atYear</a> | 
 <a href="#term_atYearMonth">atYearMonth</a> | 
 <a href="#term_before">before</a> | 
-<a href="#term_beginsAt">beginsAt</a> | 
 <a href="#term_beginsAtDateTime">beginsAtDateTime</a> | 
 <a href="#term_beginsAtDuration">beginsAtDuration</a> | 
 <a href="#term_beginsAtInt">beginsAtInt</a> | 
@@ -202,7 +201,6 @@ The corresponding RDF/N3 code is the following:
 <a href="#term_durationXSD">durationXSD</a> | 
 <a href="#term_during">during</a> | 
 <a href="#term_end">end</a> | 
-<a href="#term_endsAt">endsAt</a> | 
 <a href="#term_endsAtDateTime">endsAtDateTime</a> | 
 <a href="#term_endsAtDuration">endsAtDuration</a> | 
 <a href="#term_endsAtInt">endsAtInt</a> | 
@@ -212,7 +210,6 @@ The corresponding RDF/N3 code is the following:
 <a href="#term_hopSize">hopSize</a> | 
 <a href="#term_meets">meets</a> | 
 <a href="#term_metBy">metBy</a> | 
-<a href="#term_onTimeLine">onTimeLine</a> | 
 <a href="#term_origin">origin</a> | 
 <a href="#term_overlappedBy">overlappedBy</a> | 
 <a href="#term_overlaps">overlaps</a> | 
@@ -627,7 +624,7 @@ Two timelines can be mapped using timeline maps.
 <td><a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a></td>
 </tr>
 
-<tr><th>Sub-property-of: </th><td><a href="#term_beginsAt">beginsAt</a></td>
+<tr><th>Sub-property-of: </th><td><a href="#term_start">start</a></td>
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_beginsAtDuration">
@@ -641,7 +638,7 @@ Two timelines can be mapped using timeline maps.
 <td><a href="http://www.w3.org/2001/XMLSchema#duration">xsd:duration</a></td>
 </tr>
 
-<tr><th>Sub-property-of: </th><td><a href="#term_beginsAt">beginsAt</a></td>
+<tr><th>Sub-property-of: </th><td><a href="#term_start">start</a></td>
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_beginsAtInt">
@@ -655,7 +652,7 @@ Two timelines can be mapped using timeline maps.
 <td><a href="http://www.w3.org/2001/XMLSchema#int">xsd:int</a></td>
 </tr>
 
-<tr><th>Sub-property-of: </th><td><a href="#term_beginsAt">beginsAt</a></td>
+<tr><th>Sub-property-of: </th><td><a href="#term_start">start</a></td>
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_delay">
@@ -750,7 +747,7 @@ Two timelines can be mapped using timeline maps.
 <td><a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a></td>
 </tr>
 
-<tr><th>Sub-property-of: </th><td><a href="#term_endsAt">endsAt</a></td>
+<tr><th>Sub-property-of: </th><td><a href="#term_end">end</a></td>
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_endsAtDuration">
@@ -764,7 +761,7 @@ Two timelines can be mapped using timeline maps.
 <td><a href="http://www.w3.org/2001/XMLSchema#duration">xsd:duration</a></td>
 </tr>
 
-<tr><th>Sub-property-of: </th><td><a href="#term_endsAt">endsAt</a></td>
+<tr><th>Sub-property-of: </th><td><a href="#term_end">end</a></td>
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_endsAtInt">
@@ -778,7 +775,7 @@ Two timelines can be mapped using timeline maps.
 <td><a href="http://www.w3.org/2001/XMLSchema#int">xsd:int</a></td>
 </tr>
 
-<tr><th>Sub-property-of: </th><td><a href="#term_endsAt">endsAt</a></td>
+<tr><th>Sub-property-of: </th><td><a href="#term_end">end</a></td>
 </tr>
 </table>
 <br/></div><div class="specterm" id="term_hopSize">
@@ -887,6 +884,15 @@ Two timelines can be mapped using timeline maps.
 
 
 </table>
+<br/></div><div class="specterm" id="term_beginsAt">
+<h3>Deprecated: timeline:beginsAt</h3>
+<em>Equivalent to</em> - <a href="#term_start">timeline:start</a> 
+<br/></div><div class="specterm" id="term_endsAt">
+<h3>Deprecated: timeline:endsAt</h3>
+<em>Equivalent to</em> - <a href="#term_end">timeline:end</a> 
+<br/></div><div class="specterm" id="term_onTimeLine">
+<h3>Deprecated: timeline:onTimeLine</h3>
+<em>Equivalent to</em> - <a href="#term_timeline">timeline:timeline</a> 
 <br/></div><h2 id="ref">References</h2>
 
 <ol>

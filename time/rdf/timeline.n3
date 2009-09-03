@@ -84,7 +84,12 @@ Two timelines can be mapped using timeline maps.""" .
         )
     ] .
 
-:onTimeLine owl:equivalentProperty :timeline; a owl:ObjectProperty.
+:onTimeLine
+    a owl:ObjectProperty ;
+    owl:equivalentProperty :timeline ;
+    a owl:ObjectProperty ;
+    vs:term_status "deprecated" ;
+    .
 
 :at
     a owl:FunctionalProperty;
@@ -114,7 +119,7 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
-:endsAt owl:equivalentProperty :end; a owl:DatatypeProperty. # Shortcut
+:endsAt owl:equivalentProperty :end; a owl:DatatypeProperty; vs:term_status "deprecated". # Shortcut
 
 
 :start
@@ -124,7 +129,7 @@ Two timelines can be mapped using timeline maps.""" .
     a owl:DatatypeProperty;
     rdfs:domain :Interval .
 
-:beginsAt owl:equivalentProperty :start; a owl:DatatypeProperty. # Shortcut
+:beginsAt owl:equivalentProperty :start; a owl:DatatypeProperty; vs:term_status "deprecated". # Shortcut
 
 ####################################
 # Part 1.5: equivalence statements #
