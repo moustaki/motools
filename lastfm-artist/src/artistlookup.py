@@ -128,7 +128,7 @@ class LastFMSession:
 		# lets make pretty namespaces
 		self.graph.namespace_manager.bind("mo", rdflib.URIRef("http://purl.org/ontology/mo/"))
 		self.graph.namespace_manager.bind("foaf", rdflib.URIRef("http://xmlns.com/foaf/0.1/"))
-		self.graph.namespace_manager.bind("musim", rdflib.URIRef("http://purl.org/ontology/musim#"))
+		self.graph.namespace_manager.bind("musim", rdflib.URIRef("http://purl.org/ontology/similarity/"))
 		self.graph.namespace_manager.bind("dc", rdflib.URIRef("http://purl.org/dc/elements/1.1/"))
 		self.graph.namespace_manager.bind("owl", rdflib.URIRef("http://www.w3.org/2002/07/owl#"))
 
