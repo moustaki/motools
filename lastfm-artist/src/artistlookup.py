@@ -15,7 +15,7 @@ try:
 except:
 	print "pylast not installed... exiting..."
 	sys.exit(2)
-	
+
 try:
 	import rdflib
 except:
@@ -40,7 +40,7 @@ help_message = '''
 # set namespaces globally?
 FOAF = rdflib.Namespace("http://xmlns.com/foaf/0.1/")
 MO = rdflib.Namespace("http://purl.org/ontology/mo/")
-MUSIM = rdflib.Namespace("http://purl.org/ontology/musim#")
+MUSIM = rdflib.Namespace("http://purl.org/ontology/similarity/")
 DC = rdflib.Namespace("http://purl.org/dc/elements/1.1/")
 OWL = rdflib.Namespace("http://www.w3.org/2002/07/owl#")
 
@@ -70,17 +70,17 @@ class LastFMSession:
 		username = "linkedopendata"
 		md5_pwd = pylast.md5("nopassword")
 		self.session_key = pylast.SessionKeyGenerator(API_KEY, API_SECRET).get_session_key(username, md5_pwd)
-	
+
 	def getMBID(self):
 		'''check for an mbid to do a redirect'''
 		self.Artist = pylast.Artist(self.artistname, API_KEY, API_SECRET, self.session_key)
 		return self.Artist.get_mbid()
-	
+
 	def getLastFMdata(self, mbid=None):
 		'''
 		actually get the artist data
 		'''
-		
+
 		#if self.Artist == None:
 		if self.artistname == None and mbid != None:
 			self.Artist = pylast.get_artist_by_mbid(mbid, API_KEY, API_SECRET, self.session_key)
@@ -90,41 +90,41 @@ class LastFMSession:
 		else:
 			print "error retrieving artist data - bad name or mbid"
 			#sys.exit(2)
-		
-		# will actually not fail unti here if there's problems	
+
+		# will actually not fail unti here if there's problems
 		try:
 			self.similarArtists = self.Artist.get_similar()
 		except pylast.ServiceException, msg:
 			print "error retrieving artist data - " +str(msg)
 			#sys.exit(2)
-		
+
 		# do a bunch of getting
 #		try:
 #			self.bio = self.Artist.get_bio_content()
 #		except pylast.ServiceException, msg:
 #			print "error retrieving artist data - " +str(msg)
-#			
+#
 		try:
 			self.mbid = self.Artist.get_mbid()
 		except:
 			print "error retrieving artist data - " +str(msg)
-			
+
 #		try:
 #			self.Artist.get_image_url(0)
 #		except:
 #			pass
-		
-		
+
+
 	def createRDFGraph(self):
 		'''
 		actually build the RDF graph
 		'''
-		
-		
+
+
 		if not self.Artist:
 			print "error, need to call getLstFMData() first"
 			return
-		
+
 		# lets make pretty namespaces
 		self.graph.namespace_manager.bind("mo", rdflib.URIRef("http://purl.org/ontology/mo/"))
 		self.graph.namespace_manager.bind("foaf", rdflib.URIRef("http://xmlns.com/foaf/0.1/"))
@@ -138,9 +138,9 @@ class LastFMSession:
 		except TypeError:
 			# use last.fm artist name as backup
 			aNode = rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(self.artistname))
-		
+
 		lastfm = rdflib.BNode()
-		
+
 		# add the type and name of the main guy
 		self.graph.add((aNode, rdflib.RDF.type, MO['MusicArtist']))
 		self.graph.add((aNode, FOAF['name'], rdflib.Literal(self.artistname)))
@@ -148,9 +148,9 @@ class LastFMSession:
 			self.graph.add((aNode, MO['musicbrainz'], rdflib.Literal(self.mbid)))
 			self.graph.add((aNode, OWL['sameAs'], rdflib.URIRef(BBC_PREFIX+self.mbid)))
 			self.graph.add((aNode, OWL['sameAs'], rdflib.URIRef(DBTUNE_MBZ+self.mbid)))
-		
-		
-		
+
+
+
 		# create node for each similar artist
 		# using nested lists
 		#		similarArtists[idx][0] - Artist object
@@ -167,13 +167,13 @@ class LastFMSession:
 				else:
 					nodeList.append(rdflib.URIRef(DBTUNE_PREFIX+urllib.quote(str(artistinfo[0]))))#.encode('ascii','replace'))))
 					assList.append(rdflib.BNode())#urllib.quote(str(aNode)+"-Similarity-"+urllib.quote(str(artistinfo[0])))))#.encode('ascii','replace')))))
-					
+
 			except UnicodeEncodeError:
 				# if we just can't encode the artist name at all, use a blank node
 				nodeList.append(rdflib.BNode())
 				assList.append(rdflib.BNode())
-					
-		
+
+
 		for idx, node in enumerate(nodeList):
 			# adding similar artists and there names
 			# using nested lists
@@ -186,26 +186,26 @@ class LastFMSession:
 				self.graph.add((node, OWL['sameAs'], rdflib.URIRef(BBC_PREFIX+self.similarArtists[idx][1])))
 				self.graph.add((node, OWL['sameAs'], rdflib.URIRef(DBTUNE_MBZ+self.similarArtists[idx][1])))
 				self.graph.add((node, MO['musicbrainz'], rdflib.Literal(self.similarArtists[idx][1])))
-			
+
 			# from artist nodes to similarity
 			#self.graph.add((node, MUSIM['object_of'], assList[idx]))
 			#self.graph.add((aNode, MUSIM['subject_of'], assList[idx]))
-			
+
 			# create the contextsimilarity object and add subs/obs
 			self.graph.add((assList[idx], rdflib.RDF.type, MUSIM['Similarity']))
 			self.graph.add((assList[idx], MUSIM['subject'], aNode))
 			self.graph.add((assList[idx], MUSIM['object'], node))
 			self.graph.add((assList[idx], MUSIM['weight'], rdflib.Literal(self.similarArtists[idx][2])))
-			
+
 			# add this is made by last.fm
 			self.graph.add((assList[idx], MUSIM['asserter'], lastfm))
-			
+
 			# let's add mo:similar_to while we're at it
 			self.graph.add((aNode, MO['similar_to'], node))
-		
+
 		#print self.graph.serialize()
 		return self.graph.serialize()
-		
+
 def main(argv=None):
 	if argv is None:
 		argv = sys.argv
@@ -214,7 +214,7 @@ def main(argv=None):
 			opts, args = getopt.getopt(argv[1:], "hn:m:", ["help", "name=","mbid="])
 		except getopt.error, msg:
 			raise Usage(msg)
-	
+
 		artistname = None
 		mbid = None
 		# option processing
@@ -225,10 +225,10 @@ def main(argv=None):
 				artistname = value
 			if option in ("-m", "--mbid"):
 				mbid = value
-				
+
 		if mbid != None and artistname != None:
 			raise Usage("please use just one or the other")
-	
+
 		if artistname != None:
 			l = LastFMSession(urllib.unquote(artistname))
 			l.authenticate()
@@ -241,7 +241,7 @@ def main(argv=None):
 			print l.createRDFGraph()
 		else:
 			raise Usage("must supply name or mbid!!!")
-	
+
 	except Usage, err:
 		print >> sys.stderr, sys.argv[0].split("/")[-1] + ": " + str(err.msg)
 		print >> sys.stderr, "\t for help use --help"
