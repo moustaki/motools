@@ -29,8 +29,8 @@
   </owl:Ontology>
   <foaf:Person rdf:about="http://moustaki.org/foaf.rdf#moustaki"/>
   <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
-  <owl:DatatypeProperty rdf:about="../../dc/elements/1.1/description"/>
-  <owl:DatatypeProperty rdf:about="../../dc/elements/1.1/title"/>
+  <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+  <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
   <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/maker"/>
   <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
   <owl:Class rdf:about="#TimeLine">
