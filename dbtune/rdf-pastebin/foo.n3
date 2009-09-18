@@ -2,5 +2,6 @@
 @prefix : <>.
 
 :foo a foaf:Person;
-  foaf:name "Foo".
+  foaf:name "Foo";
+  foaf:interest <http://www.bbc.co.uk/music/artists/5fee3020-513b-48c2-b1f7-4681b01db0c6#artist> .
 
