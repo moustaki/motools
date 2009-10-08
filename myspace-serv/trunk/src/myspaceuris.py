@@ -49,7 +49,7 @@ artistIDtag = '''"DisplayFriendId":''',''','''
 
 cityTag = '''<br/><br/></span>\r\n\t\t\t\t\t\t\t</strong></font>\r\n\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t''', '''\r\n\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t''', '''\r\n\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\t<br>\r\n\t\t\t\t\t\tProfile Views:&nbsp;\r\n\t\t\t\t\t\t'''
 profileViews = '''Profile Views:&nbsp;\r\n\t\t\t\t\t\t''', '''\r\n\t'''
-
+#profileViews = '''Profile Views:&nbsp;\r\n\t\t\t\t\t\t''', '''\n'''
 #########################################################################################################
 
 # myspace uri for downloads  ----this has gotten a bit more complicated in the roll out of myspace's new media player
@@ -70,4 +70,4 @@ genreDict = {0:"", 61:"2-step", 59:"A'cappella", 125:"Acousmatic / Tape music", 
 def setRDFStoreURL(url):
 	'''set the rdf uri path'''
 	rdfStoreURL = url
-	
+

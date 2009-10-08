@@ -78,6 +78,12 @@ class ArtistTest(unittest.TestCase):
             totf = row[0]
         assert int(totf)>190 , 'wrong number of total friends '+str(totf)
 
+        views = -1
+        for row in graph.query('SELECT ?views WHERE { ?x <http://purl.org/ontology/myspace#profileViews> ?views } '):
+            views = row[0]
+        assert views != -1 , 'faild to get profile views: ' + str(views)
+
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
