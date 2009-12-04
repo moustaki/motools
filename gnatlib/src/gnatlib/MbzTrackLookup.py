@@ -87,8 +87,7 @@ class MbzLookup :
         @param verbose:
         @param allow_ambiguous:
         '''
-        if verbose:
-            self._setlogger()
+        self._setlogger(verbose)
         self.threshold = threshold
         self.ddt=duration_distance_threshold
         self.cleaner = re.compile(r"[^A-Za-z0-9 ]").sub
@@ -355,15 +354,19 @@ class MbzLookup :
         t = self.cleaner("", literal)
         return re.sub(r' {2,}',' ',t)
 
-    def _setlogger(self) :
+    def _setlogger(self, verbose) :
         '''
             set the logger locally for debugging
         '''
-        loggingConfig = {"format":'%(asctime)s %(levelname)-8s %(message)s',
+        if verbose:
+            loggingConfig = {"format":'%(asctime)s %(levelname)-8s %(message)s',
                                    "datefmt":'%d.%m.%y %H:%M:%S',
-                                    "level": logging.DEBUG,
-                                    #"filename":logPath + "musicGrabber.log",
-                                    "filemode":"w"}
+                                    "level": logging.DEBUG}
+        else:
+            loggingConfig = {"format":'%(asctime)s %(levelname)-8s %(message)s',
+                                   "datefmt":'%d.%m.%y %H:%M:%S',
+                                    "level": logging.ERROR}
+            
         logging.basicConfig(**loggingConfig)
 
 class MetadataLookup(MbzLookup):
