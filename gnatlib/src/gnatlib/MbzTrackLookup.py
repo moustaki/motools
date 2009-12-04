@@ -546,6 +546,7 @@ def filelookup(file,
         ['artist']        =     a musicbrainz2.model.Artist object or None if no match found
         ['releaseURI']    =     URI for release (album) or None if no match found
         ['releaseMbz']    =     release musicbrainz page
+        ['releaseMbz-html']    =     release musicbrainz page with '.html' appended b/c musicbrainz redirects fail
         ['release']       =     a musicbrainz2.model.Release object or None if no match found
         ['trackURI']      =     URI for track match or None if no match found
         ['trackMbz']      =     track musicbrainz page
@@ -629,6 +630,7 @@ def metadatalookup(artist=None,
         ['artist']        =     a musicbrainz2.model.Artist object or None if no match found
         ['releaseURI']    =     URI for release (album) or None if no match found
         ['releaseMbz']    =     release musicbrainz page
+        ['releaseMbz-html']    =     release musicbrainz page with '.html' appended b/c musicbrainz redirects fail
         ['release']       =     a musicbrainz2.model.Release object or None if no match found
         ['trackURI']      =     URI for track match or None if no match found
         ['trackMbz']      =     track musicbrainz page
