@@ -571,7 +571,8 @@ def __setdict__(mbz):
         dict['artist'] = None
     if mbz.getMbzReleaseURI() !=None:
         dict['releaseURI'] = DBTUNE_URI+'/record/' +mbz.getMbzReleaseURI().split('http://musicbrainz.org/release/')[1]
-        dict['releaceMbz'] = mbz.getMbzReleaseURI()
+        dict['releaseMbz'] = mbz.getMbzReleaseURI()
+        dict['releaseMbz-html'] = mbz.getMbzReleaseURI()+'.html'
     if mbz.track_mapping[0][3] != None:
         dict['release'] = mbz.track_mapping[0][3].release
     else:
