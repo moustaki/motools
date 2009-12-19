@@ -1,0 +1,52 @@
+
+div.specterm {
+	padding: 0 0 10px 20px;
+	border: 1px solid black;
+	background-color: #CFDBC5;
+}
+
+body {
+	padding: 0 25px 50px 50px;
+	/*background-color: #A6D785;*/
+	background-color: #FFFFFF;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 2em;
+	}
+
+h3 {
+	font-size: 1.5em;
+}
+
+p.copyright {
+	/*font-size: small;*/
+}
+
+div.page {
+	min-width: 750px;
+	width: 90%;
+	padding: 30px 20px 30px 20px;
+	margin-top: 5px;
+	float: center;
+	background-color: white;
+}
+
+div.example{
+	min-width: 750px;
+	width: 90%;
+	margin-top: 5px;
+	float: center;
+	background-color: #CFDBC5;
+}
+
+div.glance {
+	padding: 5px; 
+	border: dotted; 
+	background-color: #CFDBC5;
+	
+}

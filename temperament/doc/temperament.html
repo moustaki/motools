@@ -1,0 +1,960 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html 
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:mvcb="http://webns.net/mvcb/"
+  xml:lang="en"
+> 
+
+  <head>
+    <title>Temperament Ontology: Temperament Ontology</title>
+    <meta http-equiv="content-type" content="text/xhtml+xml; charset=utf-8" />
+    <link rel="mvvb:generatorAgent" type="application/rdf+xml" title="DOAP" href="http://rdfohloh.wikier.org/project/specgen" />
+    <!--<link rel="stylesheet" type="text/css" href="http://example.org/style.css" />-->
+	<link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+
+    <h1 id="title">The Temperament Ontology</h1>
+
+    <!--<h2 id="subtitle">LONG Temperament </h2>-->
+
+    <h3 id="mymw-doctype">Working Draft &mdash; 18 Dec 2009</h3>
+
+    <dl>
+
+      <dt>This version:</dt>
+      <dd><a href="http://purl.org/ontology/temperament/draft1-20091218/">http://purl.org/ontology/temperament/draft1-20091218/</a></dd>
+
+      <dt>Latest version:</dt>
+      <dd><a href="http://purl.org/ontology/temperament/">http://purl.org/ontology/temperament/</a></dd>
+
+      <dt>Last Update: 18. Dec. 2009.</dt>
+      <dd>Date: 18. Dec. 2009.</dd>
+
+      <dt>Editors:</dt>
+      <dd>Gyorgy Fazekas, Centre for Digital Music Queen Mary University of London</dd>
+
+      <dt>Authors:</dt>
+      <dd>Gyorgy Fazekas, Dan Tidhar, Centre for Digital Music Queen Mary University of London</dd>
+
+      <dt>Contributors:</dt>
+      <dd>See <a href="#acknowledgements">acknowledgements</a></dd>
+
+    </dl>
+
+    <p class="copyright">You are granted a license to use, reproduce and create derivative works of this document under <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons</a>.</p>
+
+    <!-- ===================================================================== -->
+
+    <hr />
+
+    <h2 id="abstract">Abstract</h2>
+    <p>
+		The temperament ontology can be used to give a detailed description of the tuning of an instrument.
+		It is developed in the OMRAS2 project, and intended to be used in conjunction
+		with the <em><a href="http://purl.org/ontology/mo/">Music Ontology</a></em>, 
+		for example, when describing the tuning that was used in a particular harpsichord recording.
+    </p>
+
+    <h2 id="status">Status of this Document</h2>
+    <p>
+      <strong>This is a work in progress!</strong> This document is changing
+      on a daily if not hourly basis. Comments are very welcome, please send
+      them to <a href="mailto:gyorgy.fazekas@elec.qmul.ac.uk">gyorgy.fazekas@elec.qmul.ac.uk</a>. Thank you.
+    </p>
+
+    <h2 id="contents">Table of Contents</h2>
+    <ol id="toc">
+      <li><a href="#intro">Introduction</a>
+        <ol>
+          <li><a href="#s11">About instrument tuning</a></li>
+          <li><a href="#s12">An open-ended temperament description model</a></li>
+          <li>
+            <a href="#s13">The many ways of describing temperaments</a>
+            <ol>
+              <li><a href="#s131">The Circle of Fifths</a></li>
+              <li><a href="#s132">Deviation from Equal Temperament</a></li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li><a href="#sec-glance">Temperament  ontology at a glance</a></li>
+      <li>
+        <a href="#overview">Temperament  ontology overview</a>
+        <ol>
+          <li><a href="#s31">Example</a></li>
+        </ol>
+      </li>
+      <li><a href="#reference">Cross-reference for Temperament  classes and properties</a></li>
+    </ol>
+
+    <h3>Appendixes</h3>
+    <ol id="appendix">
+      <li><a href="#references">Normative References</a></li>
+      <li><a href="#changes">Changes in this version</a> (Non-Normative)</li>
+      <li><a href="#acknowledgements">Acknowledgements</a> (Non-Normative)</li>
+    </ol>
+
+    <hr />
+
+    <!-- ===================================================================== -->
+
+    <h2 id="intro">1 Introduction</h2>
+
+    <p>The temperament ontology aims to describe instrument tuning systems and their particularities.
+	It may also be used to characterise a (potentially unknown) temperament that was used when tuning an
+	instrument for a particular performance or recording. <br><br>
+	At this stage the ontology is far from exhaustive. We primarily deal with
+	temperaments in western tonal music with an emphasis on tuning keyboard instruments.
+	One important objective is to be able to describe arbitrary temperaments,
+	or express the results of automatic temperament extraction from audio recordings.
+	</p>
+
+    <h3 id="s11">1.1 About instrument tuning</h3>
+
+    <p>Tuning an instrument consists of choosing the frequency values and spacing (or ratio) of pitches that are used.
+	Pure (just) intervals of pitches correspond to whole number ratios of their frequencies, however
+	these ratios are not compatible with each other as they arranged in scales (the way octaves are divided into discrete pitch classes) in western music. 
+	For example, it is not possible to fit twelve pure fifths (3:2)^12 into seven octaves (2:1)^7. The difference
+	is called the Pythagorean or Ditonic comma (23.5 cents). This difference has to be
+	tempered out ---that is, some (or all) fifths has to be mistuned slightly in order to
+	fit them. There are many tuning systems. Most commonly, they differ in the way they compromise
+	pure intervals to solve this problem. </p>
+
+
+    <h3 id="s12">1.2 An open-ended temperament description model</h3>
+	<p>There is no mutual agreement in the literature on the description or classification
+	of temperaments. Therefore, in this ontology we do not impose a 
+	hierarchy between types of temperaments. We define an opaque
+	top-level temperament concept. Subclasses of this concept can be used
+	in describing individual temperaments, if necessary, using multiple class memberships.
+	Since there is more than one way to associate tuning systems with their properties, 
+	we treat temperament descriptions as concepts as well,
+	and use reification to keep the model open and extensible.</p>
+
+	<p><center><img src="TemperamentDescription.png" alt="Using the Circle of Fifths to describe a temperament." width="850">
+		<br><br>Figure 1. Overview of the temperament ontology.</center></p>
+
+
+    <h3 id="s13">1.3 The many ways of describing temperaments</h3>
+
+    <p>Temperaments can be characterised in lots of different ways. 
+	The most common methods are using either the circle of fifths or
+	give the pitch deviations from equal temperament. We define these
+	descriptions as concepts in the ontology, however, other descriptions
+	may be used and defined in the future. 
+	(For example, one might find it convenient to express the same information using the circle of fourths.)</p>
+
+    <h4 id="s131">1.3.1 The Circle of Fifths</h4>
+	The circle of fifths has several uses in music theory. 
+	It shows the harmonic relationships of the twelve major and minor keys.
+	It can also be seen as a circle of the corresponding pitch class intervals,
+	such as (C-G), (G-D), (D-A) etc... If we go around the circle using pure fifth 
+	intervals, it wouldn't close. What remains is the Pythagorean comma.
+	Hence, it is often used to describe temperaments by showing how 
+	the comma is distributed among the intervals to close the circle.
+	(Note that there are several types of commas related to different 
+	tuning problems. These are defined in the ontology.)
+
+	<!--<p><center><img src="CircleOfFifths.png" alt="Using the Circle of Fifths to describe a temperament." width="350"></center></p>-->
+
+    <p>...</p>
+
+    <h4 id="s132">1.3.2 Deviations from Equal Temperament</h4>
+
+    <p>In equal temperament an octave is divided into twelve equal intervals. 
+	As a result only octaves are pure. All other intervals are impure, and the 
+	deviation from pure is different in case of each interval. Since equal temperament
+	has become very common, other temperaments are often described by
+	the frequency deviations (in cents) of each pitch class from the 
+	corresponding pitch class in equal temperament.</p>
+
+    <!-- ===================================================================== -->
+
+    <h2 id="sec-glance">2. Temperament  ontology at a glance</h2>
+
+    <p>
+      An alphabetical index of Temperament  terms, by class (concepts) and by property 
+      (relationships, attributes), are given below. All the terms are hyperlinked 
+      to their detailed description for quick reference.
+    </p>
+
+    <!-- The list of classes and properties goes here -->
+    <div style="padding: 1em; border: dotted; background-color: #ddd;"><p>Classes:  <a href="#term_CircleOfFifths">CircleOfFifths</a>,  <a href="#term_Comma">Comma</a>,  <a href="#term_DeviationFromFifth">DeviationFromFifth</a>,  <a href="#term_DeviationsFromEqual">DeviationsFromEqual</a>,  <a href="#term_Interval">Interval</a>,  <a href="#term_IntervalDeviation">IntervalDeviation</a>,  <a href="#term_MeantoneTemperament">MeantoneTemperament</a>,  <a href="#term_PitchClass">PitchClass</a>,  <a href="#term_PitchClassDeviation">PitchClassDeviation</a>,  <a href="#term_PitchClassInterval">PitchClassInterval</a>,  <a href="#term_RegularTemperament">RegularTemperament</a>,  <a href="#term_RestrictedTemperament">RestrictedTemperament</a>,  <a href="#term_Temperament">Temperament</a>,  <a href="#term_TemperamentDescription">TemperamentDescription</a>,  <a href="#term_WellTemperament">WellTemperament</a>, 
+</p><p>Properties:  <a href="#term_comma">comma</a>,  <a href="#term_constraint">constraint</a>,  <a href="#term_description">description</a>,  <a href="#term_deviation">deviation</a>,  <a href="#term_frequency_ratio">frequency_ratio</a>,  <a href="#term_intraval">intraval</a>,  <a href="#term_lower">lower</a>,  <a href="#term_pitch_class">pitch_class</a>,  <a href="#term_pitch_class_deviation">pitch_class_deviation</a>,  <a href="#term_upper">upper</a>,  <a href="#term_value">value</a>, 
+</p><p>Instances:  <a href="#term_pitchclass_A">A</a>,  <a href="#term_pitchclass_Ab">Ab</a>,  <a href="#term_pitchclass_As">As</a>,  <a href="#term_pitchclass_B">B</a>,  <a href="#term_pitchclass_Bb">Bb</a>,  <a href="#term_Bendeler">Bendeler</a>,  <a href="#term_pitchclass_Bs">Bs</a>,  <a href="#term_pitchclass_C">C</a>,  <a href="#term_pitchclass_Cb">Cb</a>,  <a href="#term_pitchclass_Cs">Cs</a>,  <a href="#term_pitchclass_D">D</a>,  <a href="#term_pitchclass_Db">Db</a>,  <a href="#term_Diaschisma">Diaschisma</a>,  <a href="#term_DidymusComma">DidymusComma</a>,  <a href="#term_DitonicComma">DitonicComma</a>,  <a href="#term_pitchclass_Ds">Ds</a>,  <a href="#term_pitchclass_E">E</a>,  <a href="#term_pitchclass_Eb">Eb</a>,  <a href="#term_pitchclass_Es">Es</a>,  <a href="#term_pitchclass_F">F</a>,  <a href="#term_pitchclass_Fb">Fb</a>,  <a href="#term_FifthCommaMeantone">FifthCommaMeantone</a>,  <a href="#term_pitchclass_Fs">Fs</a>,  <a href="#term_pitchclass_G">G</a>,  <a href="#term_pitchclass_Gb">Gb</a>,  <a href="#term_pitchclass_Gs">Gs</a>,  <a href="#term_KirnbergerIII">KirnbergerIII</a>,  <a href="#term_Neidhardt">Neidhardt</a>,  <a href="#term_PythagoreanComma">PythagoreanComma</a>,  <a href="#term_QuarterCommaMeantone">QuarterCommaMeantone</a>,  <a href="#term_Schisma">Schisma</a>,  <a href="#term_SixthCommaMeantone">SixthCommaMeantone</a>,  <a href="#term_Stanhope">Stanhope</a>,  <a href="#term_SyntonicComma">SyntonicComma</a>,  <a href="#term_Valotti">Valotti</a>,  <a href="#term_WerckmeisterIII">WerckmeisterIII</a>,  <a href="#term_YoungII">YoungII</a>, 
+</p>
+</div>
+    <!-- End of the terms list -->
+
+    <p>...</p>
+
+    <!-- ===================================================================== -->
+
+    <h2 id="overview">3. Temperament  ontology overview</h2>
+
+    <!--<p>The Temperament definitions presented here are ...</p>-->
+
+    <h3 id="s31">3.1. Example</h3>
+
+    <p>Here is a very basic example describing a pitch class interval in the Valotti temperament using the circle of fifths.</p>
+
+    <div class="example" style="white-space: pre-wrap;">
+      <pre>
+		@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+		@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+		@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+		@prefix tm: &lt;http://purl.org/ontology/temperament/&gt; .
+		@prefix pc: &lt;http://purl.org/ontology/temperament/pitchclass/&gt; .
+
+		:ValottiTemperament a tm:WellTemperament;
+			tm:description :ValottiDescription1 .
+
+		:ValottiDescription1 a tm:CircleOfFifths;
+			tm:interval [
+				a tm:FifthInterval ;
+				tm:deviation [
+					a tm:IntervalDeviation ;
+					tm:comma tm:PythagoreanComma ; 
+					tm:value "-0.16667"^^xsd:float ;
+					rdfs:label "-1/6"
+					] ;
+				tm:lower pc:C ;
+				tm:upper pc:G ] ;
+			tm:interval [ # the rest of the intervals on the circle of fifths 
+				] .
+      </pre>
+    </div>
+
+    <p>A graphical representation of a similar description is shown in figure 2.
+	We explicitly name the pitch classes involved in each interval on the circle of fifths. 
+	The IntervalDeviation concept describes the amount of deviation from a pure interval
+	in terms of a specific type of comma and a corresponding value (a fraction of that comma).
+	We can safely assume that a fifth is pure, unless the deviation is given.</p>
+
+	<p><center><img src="CircleOfFifths.png" alt="Using the Circle of Fifths to describe a temperament." width="350">
+		<br><br>Figure 2. Describing temperaments using the circle of fifths.</center></p>
+
+
+    <!-- ===================================================================== -->
+
+    <h2 id="reference">4. Cross-reference for Temperament  classes and properties</h2>
+
+    <p>...</p>
+
+    <!-- The following is the script-generated list of classes and properties -->
+    <div class="specterm" id="term_CircleOfFifths">
+<h3>Class: tm:CircleOfFifths</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/CircleOfFifths">http://purl.org/ontology/temperament/CircleOfFifths</a></p><p><em>Circle Of Fifths</em> - We use the circle of fifth to describe a temperament.
+	Each alteration of a fifth can be expressed in a number of ways,
+	for example, we may express interval deviations in a particular
+	comma. </p>
+<dl><dt>sub-class-of:</dt><dd><a href="#term_TemperamentDescription" style="font-family: monospace;">tm:TemperamentDescription</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_Comma">
+<h3>Class: tm:Comma</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Comma">http://purl.org/ontology/temperament/Comma</a></p><p><em>Comma</em> - A comma is a very small interval between 
+	two enharmonic notes tuned in different ways. (Source: Wikipedia)  </p>
+<dl><dt>in-range-of:</dt><dd><a href="#term_comma" style="font-family: monospace;">tm:comma</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_DeviationFromFifth">
+<h3>Class: tm:DeviationFromFifth</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/DeviationFromFifth">http://purl.org/ontology/temperament/DeviationFromFifth</a></p><p><em>Deviation from pure fifth.</em> - Represent the deviation from a pure fifth interval. </p>
+<dl><dt>sub-class-of:</dt><dd><a href="#term_IntervalDeviation" style="font-family: monospace;">tm:IntervalDeviation</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_DeviationsFromEqual">
+<h3>Class: tm:DeviationsFromEqual</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/DeviationsFromEqual">http://purl.org/ontology/temperament/DeviationsFromEqual</a></p><p><em>Deviation From Equal</em> - A type of temperament description which describes 
+	a tuning in terms of the deviation of each note (in cents) 
+	from the equal temperament. </p>
+<dl><dt>sub-class-of:</dt><dd><a href="#term_TemperamentDescription" style="font-family: monospace;">tm:TemperamentDescription</a></dd><dt>in-domain-of:</dt><dd><a href="#term_pitch_class_deviation" style="font-family: monospace;">tm:pitch_class_deviation</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_Interval">
+<h3>Class: tm:Interval</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Interval">http://purl.org/ontology/temperament/Interval</a></p><p><em>Interval</em> - Describes the relationship between the 
+	pitches of two notes or pitch classes. </p>
+<dl><dt>in-domain-of:</dt><dd><a href="#term_deviation" style="font-family: monospace;">tm:deviation</a></dd><dd><a href="#term_lower" style="font-family: monospace;">tm:lower</a></dd><dd><a href="#term_upper" style="font-family: monospace;">tm:upper</a></dd><dt>in-range-of:</dt><dd><a href="#term_intraval" style="font-family: monospace;">tm:intraval</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_IntervalDeviation">
+<h3>Class: tm:IntervalDeviation</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/IntervalDeviation">http://purl.org/ontology/temperament/IntervalDeviation</a></p><p><em>Deviation from pure interval</em> - Represents any type of alteration of a pure interval. </p>
+<dl><dt>in-domain-of:</dt><dd><a href="#term_comma" style="font-family: monospace;">tm:comma</a></dd><dd><a href="#term_value" style="font-family: monospace;">tm:value</a></dd><dt>in-range-of:</dt><dd><a href="#term_deviation" style="font-family: monospace;">tm:deviation</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_MeantoneTemperament">
+<h3>Class: tm:MeantoneTemperament</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/MeantoneTemperament">http://purl.org/ontology/temperament/MeantoneTemperament</a></p><p><em>Meantone Temperament</em> - In a meantone temperament, each fifth is narrowed 
+	by the same amount relative to its width in Just Intonation.  </p>
+<dl><dt>sub-class-of:</dt><dd><a href="#term_Temperament" style="font-family: monospace;">tm:Temperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_PitchClass">
+<h3>Class: tm:PitchClass</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/PitchClass">http://purl.org/ontology/temperament/PitchClass</a></p><p><em>Pitch Class</em> - The set of all pitches that are a 
+	whole number of octaves apart. </p>
+<dl><dt>in-range-of:</dt><dd><a href="#term_lower" style="font-family: monospace;">tm:lower</a></dd><dd><a href="#term_upper" style="font-family: monospace;">tm:upper</a></dd><dd><a href="#term_pitch_class" style="font-family: monospace;">tm:pitch_class</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_PitchClassDeviation">
+<h3>Class: tm:PitchClassDeviation</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/PitchClassDeviation">http://purl.org/ontology/temperament/PitchClassDeviation</a></p><p><em>Deviation in cents of a pitch class from its value in equal temperament.</em> - Deviation in cents of a pitch class from its value in equal temperament. </p>
+<dl><dt>in-domain-of:</dt><dd><a href="#term_value" style="font-family: monospace;">tm:value</a></dd><dd><a href="#term_pitch_class" style="font-family: monospace;">tm:pitch_class</a></dd><dt>in-range-of:</dt><dd><a href="#term_pitch_class_deviation" style="font-family: monospace;">tm:pitch_class_deviation</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_PitchClassInterval">
+<h3>Class: tm:PitchClassInterval</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/PitchClassInterval">http://purl.org/ontology/temperament/PitchClassInterval</a></p><p><em>Pitch Class Interval</em> - Describes the relationship between two pitch classes. </p>
+<dl><dt>sub-class-of:</dt><dd><a href="#term_Interval" style="font-family: monospace;">tm:Interval</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_RegularTemperament">
+<h3>Class: tm:RegularTemperament</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/RegularTemperament">http://purl.org/ontology/temperament/RegularTemperament</a></p><p><em>Regular Temperament</em> - Regular temperament is a class of temperaments 
+	where each interval is altered by the same amount. </p>
+<dl><dt>sub-class-of:</dt><dd><a href="#term_Temperament" style="font-family: monospace;">tm:Temperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_RestrictedTemperament">
+<h3>Class: tm:RestrictedTemperament</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/RestrictedTemperament">http://purl.org/ontology/temperament/RestrictedTemperament</a></p><p><em>Restricted Temperament</em> - In restricted temperaments 
+	playing some keys results in poor intonation.  </p>
+<dl><dt>sub-class-of:</dt><dd><a href="#term_Temperament" style="font-family: monospace;">tm:Temperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_Temperament">
+<h3>Class: tm:Temperament</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Temperament">http://purl.org/ontology/temperament/Temperament</a></p><p><em>Temperament</em> - A temperament specifies a system of 
+	instrument tuning.
+	Tempering is a way of altering the size of intervals, 
+	such that they no longer based on pure rational intervals. </p>
+<dl><dt>in-domain-of:</dt><dd><a href="#term_description" style="font-family: monospace;">tm:description</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_TemperamentDescription">
+<h3>Class: tm:TemperamentDescription</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/TemperamentDescription">http://purl.org/ontology/temperament/TemperamentDescription</a></p><p><em>Temperament Description</em> - 
+	A super class of temperament descriptions using,
+	for example, deviation from equal temperament, 
+	or the circle of fifths. </p>
+<dl><dt>in-domain-of:</dt><dd><a href="#term_constraint" style="font-family: monospace;">tm:constraint</a></dd><dd><a href="#term_intraval" style="font-family: monospace;">tm:intraval</a></dd><dt>in-range-of:</dt><dd><a href="#term_description" style="font-family: monospace;">tm:description</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_WellTemperament">
+<h3>Class: tm:WellTemperament</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/WellTemperament">http://purl.org/ontology/temperament/WellTemperament</a></p><p><em>Well Temperament</em> - Well temperament represents a system of tuning 
+	where 5ths are tempered by irregular amounts, such that some 5ths 
+	are tempered by an equal amount, while others remain pure. </p>
+<dl><dt>sub-class-of:</dt><dd><a href="#term_Temperament" style="font-family: monospace;">tm:Temperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_comma">
+<h3>Property: tm:comma</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/comma">http://purl.org/ontology/temperament/comma</a></p><p><em>comma</em> - Links an interval deviation with a type of comma.  </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_IntervalDeviation" style="font-family: monospace;">tm:IntervalDeviation</a></dd><dt>Range:</dt> <dd><a href="#term_Comma" style="font-family: monospace;">tm:Comma</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_constraint">
+<h3>Property: tm:constraint</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/constraint">http://purl.org/ontology/temperament/constraint</a></p><p><em>mathematical constraint</em> - A mathematical constrain on the temperament (This can be described in a named graph or and N3 graph literal). </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_TemperamentDescription" style="font-family: monospace;">tm:TemperamentDescription</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_description">
+<h3>Property: tm:description</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/description">http://purl.org/ontology/temperament/description</a></p><p><em>temperament description</em> -  Associates a temperament with its detailed description. </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_Temperament" style="font-family: monospace;">tm:Temperament</a></dd><dt>Range:</dt> <dd><a href="#term_TemperamentDescription" style="font-family: monospace;">tm:TemperamentDescription</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_deviation">
+<h3>Property: tm:deviation</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/deviation">http://purl.org/ontology/temperament/deviation</a></p><p><em>deviation</em> - Links an interval with a particular deviation
+	from pure that characterises the interval. </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_Interval" style="font-family: monospace;">tm:Interval</a></dd><dt>Range:</dt> <dd><a href="#term_IntervalDeviation" style="font-family: monospace;">tm:IntervalDeviation</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_frequency_ratio">
+<h3>Property: tm:frequency_ratio</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/frequency_ratio">http://purl.org/ontology/temperament/frequency_ratio</a></p><p><em>Frequency ratio of the pictch classes in the interval</em> - The frequency ratio of the two pitch classes in the interval. </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_intarval" style="font-family: monospace;">tm:intarval</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_intraval">
+<h3>Property: tm:intraval</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/intraval">http://purl.org/ontology/temperament/intraval</a></p><p><em>interval</em> - Associates a specific interval on the circle of fifths.  </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_TemperamentDescription" style="font-family: monospace;">tm:TemperamentDescription</a></dd><dt>Range:</dt> <dd><a href="#term_Interval" style="font-family: monospace;">tm:Interval</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_lower">
+<h3>Property: tm:lower</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/lower">http://purl.org/ontology/temperament/lower</a></p><p><em>lower note of an interval</em> - Links an interval with its base note (or pitch calss).  </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_Interval" style="font-family: monospace;">tm:Interval</a></dd><dt>Range:</dt> <dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitch_class">
+<h3>Property: tm:pitch_class</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitch_class">http://purl.org/ontology/temperament/pitch_class</a></p><p><em>pitch class</em> - Links a pitch class deviation with a particular individual of a pitch class. 
+	This can be used to express deviations from equal temperament. </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_PitchClassDeviation" style="font-family: monospace;">tm:PitchClassDeviation</a></dd><dt>Range:</dt> <dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitch_class_deviation">
+<h3>Property: tm:pitch_class_deviation</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitch_class_deviation">http://purl.org/ontology/temperament/pitch_class_deviation</a></p><p><em>pitch_class_deviation</em> - The deviation of a particular pitch class in the described 
+	temperament from its equivalent in equal temperament. </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_DeviationsFromEqual" style="font-family: monospace;">tm:DeviationsFromEqual</a></dd><dt>Range:</dt> <dd><a href="#term_PitchClassDeviation" style="font-family: monospace;">tm:PitchClassDeviation</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_upper">
+<h3>Property: tm:upper</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/upper">http://purl.org/ontology/temperament/upper</a></p><p><em>higher note of an interval</em> - Links an interval with its higher note (or pitch class).  </p>
+<dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_Interval" style="font-family: monospace;">tm:Interval</a></dd><dt>Range:</dt> <dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_value">
+<h3>Property: tm:value</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/value">http://purl.org/ontology/temperament/value</a></p><p><em>deviation value</em> - Links an interval deviation to its float value (in cents).  </p>
+<dl><dt>OWL Type:</dt><dd>DatatypeProperty</dd>
+<dt>Domain:</dt> <dd><a href="#term_IntervalDeviation" style="font-family: monospace;">tm:IntervalDeviation</a></dd><dd><a href="#term_PitchClassDeviation" style="font-family: monospace;">tm:PitchClassDeviation</a></dd><dt>Range:</dt> <dd><a href="http://www.w3.org/2001/XMLSchema#float" style="font-family: monospace;">xsd:float</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_A">
+<h3>Instance: A</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/A">http://purl.org/ontology/temperament/pitchclass/A</a></p><p><em>A</em> - pitch class A </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Ab">
+<h3>Instance: Ab</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Ab">http://purl.org/ontology/temperament/pitchclass/Ab</a></p><p><em>Ab</em> - pitch class Ab </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_As">
+<h3>Instance: As</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/As">http://purl.org/ontology/temperament/pitchclass/As</a></p><p><em>As</em> - pitch class As </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_B">
+<h3>Instance: B</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/B">http://purl.org/ontology/temperament/pitchclass/B</a></p><p><em>B</em> - pitch class B </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Bb">
+<h3>Instance: Bb</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Bb">http://purl.org/ontology/temperament/pitchclass/Bb</a></p><p><em>Bb</em> - pitch class Bb </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_Bendeler">
+<h3>Instance: Bendeler</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Bendeler">http://purl.org/ontology/temperament/Bendeler</a></p><p><em>Bendeler</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_WellTemperament" style="font-family: monospace;">tm:WellTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Bs">
+<h3>Instance: Bs</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Bs">http://purl.org/ontology/temperament/pitchclass/Bs</a></p><p><em>Bs</em> - pitch class Bs </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_C">
+<h3>Instance: C</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/C">http://purl.org/ontology/temperament/pitchclass/C</a></p><p><em>C</em> - pitch class C </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Cb">
+<h3>Instance: Cb</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Cb">http://purl.org/ontology/temperament/pitchclass/Cb</a></p><p><em>Cb</em> - pitch class Cb </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Cs">
+<h3>Instance: Cs</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Cs">http://purl.org/ontology/temperament/pitchclass/Cs</a></p><p><em>Cs</em> - pitch class Cs </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_D">
+<h3>Instance: D</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/D">http://purl.org/ontology/temperament/pitchclass/D</a></p><p><em>D</em> - pitch class D </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Db">
+<h3>Instance: Db</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Db">http://purl.org/ontology/temperament/pitchclass/Db</a></p><p><em>Db</em> - pitch class Db </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_Diaschisma">
+<h3>Instance: Diaschisma</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Diaschisma">http://purl.org/ontology/temperament/Diaschisma</a></p><p><em>Diaschisma</em> - One Diaschisma is 19.55 cents.  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_Comma" style="font-family: monospace;">tm:Comma</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_DidymusComma">
+<h3>Instance: DidymusComma</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/DidymusComma">http://purl.org/ontology/temperament/DidymusComma</a></p><p><em>Didymus Comma</em> - The Didymus is equivalent to the Syntonic comma (21.51 cents). </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_Comma" style="font-family: monospace;">tm:Comma</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_DitonicComma">
+<h3>Instance: DitonicComma</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/DitonicComma">http://purl.org/ontology/temperament/DitonicComma</a></p><p><em>Ditonic Comma</em> - The Ditonic comma is equivalent to the Pythagorean comma. </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_Comma" style="font-family: monospace;">tm:Comma</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Ds">
+<h3>Instance: Ds</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Ds">http://purl.org/ontology/temperament/pitchclass/Ds</a></p><p><em>Ds</em> - pitch class Ds </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_E">
+<h3>Instance: E</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/E">http://purl.org/ontology/temperament/pitchclass/E</a></p><p><em>E</em> - pitch class E </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Eb">
+<h3>Instance: Eb</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Eb">http://purl.org/ontology/temperament/pitchclass/Eb</a></p><p><em>Eb</em> - pitch class Eb </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Es">
+<h3>Instance: Es</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Es">http://purl.org/ontology/temperament/pitchclass/Es</a></p><p><em>Es</em> - pitch class Es </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_F">
+<h3>Instance: F</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/F">http://purl.org/ontology/temperament/pitchclass/F</a></p><p><em>F</em> - pitch class F </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Fb">
+<h3>Instance: Fb</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Fb">http://purl.org/ontology/temperament/pitchclass/Fb</a></p><p><em>Fb</em> - pitch class Fb </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_FifthCommaMeantone">
+<h3>Instance: FifthCommaMeantone</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/FifthCommaMeantone">http://purl.org/ontology/temperament/FifthCommaMeantone</a></p><p><em>FifthCommaMeantone</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_MeantoneTemperament" style="font-family: monospace;">tm:MeantoneTemperament</a></dd><dd><a href="#term_RegularTemperament" style="font-family: monospace;">tm:RegularTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Fs">
+<h3>Instance: Fs</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Fs">http://purl.org/ontology/temperament/pitchclass/Fs</a></p><p><em>Fs</em> - pitch class Fs </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_G">
+<h3>Instance: G</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/G">http://purl.org/ontology/temperament/pitchclass/G</a></p><p><em>G</em> - pitch class G </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Gb">
+<h3>Instance: Gb</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Gb">http://purl.org/ontology/temperament/pitchclass/Gb</a></p><p><em>Gb</em> - pitch class Gb </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_pitchclass_Gs">
+<h3>Instance: Gs</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitchclass/Gs">http://purl.org/ontology/temperament/pitchclass/Gs</a></p><p><em>Gs</em> - pitch class Gs </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_KirnbergerIII">
+<h3>Instance: KirnbergerIII</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/KirnbergerIII">http://purl.org/ontology/temperament/KirnbergerIII</a></p><p><em>KirnbergerIII</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_WellTemperament" style="font-family: monospace;">tm:WellTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_Neidhardt">
+<h3>Instance: Neidhardt</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Neidhardt">http://purl.org/ontology/temperament/Neidhardt</a></p><p><em>Neidhardt</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_WellTemperament" style="font-family: monospace;">tm:WellTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_PythagoreanComma">
+<h3>Instance: PythagoreanComma</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/PythagoreanComma">http://purl.org/ontology/temperament/PythagoreanComma</a></p><p><em>Pythagorean Comma</em> - One Pythagorean Comma, the difference between
+	7 octaves and 12 pure fifths, is 23.5 cents. It is equivalent to the Ditonic comma. </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_Comma" style="font-family: monospace;">tm:Comma</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_QuarterCommaMeantone">
+<h3>Instance: QuarterCommaMeantone</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/QuarterCommaMeantone">http://purl.org/ontology/temperament/QuarterCommaMeantone</a></p><p><em>QuarterCommaMeantone</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_MeantoneTemperament" style="font-family: monospace;">tm:MeantoneTemperament</a></dd><dd><a href="#term_RegularTemperament" style="font-family: monospace;">tm:RegularTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_Schisma">
+<h3>Instance: Schisma</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Schisma">http://purl.org/ontology/temperament/Schisma</a></p><p><em>Schisma</em> - One Schisma is 1.95 cents.  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_Comma" style="font-family: monospace;">tm:Comma</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_SixthCommaMeantone">
+<h3>Instance: SixthCommaMeantone</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/SixthCommaMeantone">http://purl.org/ontology/temperament/SixthCommaMeantone</a></p><p><em>SixthCommaMeantone</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_MeantoneTemperament" style="font-family: monospace;">tm:MeantoneTemperament</a></dd><dd><a href="#term_RegularTemperament" style="font-family: monospace;">tm:RegularTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_Stanhope">
+<h3>Instance: Stanhope</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Stanhope">http://purl.org/ontology/temperament/Stanhope</a></p><p><em>Stanhope</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_WellTemperament" style="font-family: monospace;">tm:WellTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_SyntonicComma">
+<h3>Instance: SyntonicComma</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/SyntonicComma">http://purl.org/ontology/temperament/SyntonicComma</a></p><p><em>Syntonic Comma</em> - One Syntonic Comma is 21.51 cents.  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_Comma" style="font-family: monospace;">tm:Comma</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_Valotti">
+<h3>Instance: Valotti</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Valotti">http://purl.org/ontology/temperament/Valotti</a></p><p><em>Valotti</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_WellTemperament" style="font-family: monospace;">tm:WellTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_WerckmeisterIII">
+<h3>Instance: WerckmeisterIII</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/WerckmeisterIII">http://purl.org/ontology/temperament/WerckmeisterIII</a></p><p><em>WerckmeisterIII</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_WellTemperament" style="font-family: monospace;">tm:WellTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+<div class="specterm" id="term_YoungII">
+<h3>Instance: YoungII</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/YoungII">http://purl.org/ontology/temperament/YoungII</a></p><p><em>YoungII</em> -  </p>
+<dl><dt>RDF Type:</dt><dd><a href="#term_WellTemperament" style="font-family: monospace;">tm:WellTemperament</a></dd></dl>
+<p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
+
+
+
+</div>
+
+
+    <!-- End of the terms list -->
+
+    <p>...</p>
+
+    <!-- ===================================================================== -->
+
+    <h2 id="references">A References</h2>
+
+    <dl>
+      <dt class="label" id="ref-some">Music Ontology</dt>
+      <dd><em>The <a href="http://purl.org/ontology/mo/">Music Ontology</a></em> is a thorough and mature ontology for describing
+		music-related data, including musicological information. This ontology is intended to be
+		used in conjunction with the Music Ontology.</dd>
+    </dl>
+
+    <!--
+    <h3 id="references-other">A.2 Other references</h3>
+
+    <dl>
+      <dt class="label" id="ref-rfc2119">IETF RFC 2119</dt>
+      <dd>
+        <em><a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119: Key words
+        for use in RFCs to Indicate Requirement Levels</a></em>. Internet
+        Engineering Task Force, 1997 (see http://www.ietf.org/rfc/rfc2119.txt).
+      </dd>
+    </dl>
+	-->
+
+    <!-- ===================================================================== -->
+
+    <h2 id="changes">B Changes in this version (Non-Normative)</h2>
+
+    <ul>
+      <li><p>first published draft 18-12-2009</p></li> 
+    </ul>
+
+    <h2><a id="acknowledgements"></a>C Acknowledgements (Non-Normative)</h2>
+
+    <p>Some modelling concepts in this ontology were borrowed form the
+	<a href="http://purl.org/ontology/chord/">Chord Ontology</a></em>
+	and the 
+	<a href="http://purl.org/ontology/similarity/">Music Similarity Ontology</a></em>.
+	</p>
+
+  </body>
+
+</html>
+
+<!-- specification regenerated by SpecGen5 at 13:58:57 12/19/09 GMT -->

@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html 
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:mvcb="http://webns.net/mvcb/"
+  xml:lang="en"
+> 
+
+  <head>
+    <title>Temperament Ontology: Temperament Ontology</title>
+    <meta http-equiv="content-type" content="text/xhtml+xml; charset=utf-8" />
+    <link rel="mvvb:generatorAgent" type="application/rdf+xml" title="DOAP" href="http://rdfohloh.wikier.org/project/specgen" />
+    <!--<link rel="stylesheet" type="text/css" href="http://example.org/style.css" />-->
+	<link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+
+    <h1 id="title">The Temperament Ontology</h1>
+
+    <!--<h2 id="subtitle">LONG Temperament </h2>-->
+
+    <h3 id="mymw-doctype">Working Draft &mdash; 18 Dec 2009</h3>
+
+    <dl>
+
+      <dt>This version:</dt>
+      <dd><a href="http://purl.org/ontology/temperament/draft1-20091218/">http://purl.org/ontology/temperament/draft1-20091218/</a></dd>
+
+      <dt>Latest version:</dt>
+      <dd><a href="http://purl.org/ontology/temperament/">http://purl.org/ontology/temperament/</a></dd>
+
+      <dt>Last Update: 18. Dec. 2009.</dt>
+      <dd>Date: 18. Dec. 2009.</dd>
+
+      <dt>Editors:</dt>
+      <dd>Gyorgy Fazekas, Centre for Digital Music Queen Mary University of London</dd>
+
+      <dt>Authors:</dt>
+      <dd>Gyorgy Fazekas, Dan Tidhar, Centre for Digital Music Queen Mary University of London</dd>
+
+      <dt>Contributors:</dt>
+      <dd>See <a href="#acknowledgements">acknowledgements</a></dd>
+
+    </dl>
+
+    <p class="copyright">You are granted a license to use, reproduce and create derivative works of this document under <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons</a>.</p>
+
+    <!-- ===================================================================== -->
+
+    <hr />
+
+    <h2 id="abstract">Abstract</h2>
+    <p>
+		The temperament ontology can be used to give a detailed description of the tuning of an instrument.
+		It is developed in the OMRAS2 project, and intended to be used in conjunction
+		with the <em><a href="http://purl.org/ontology/mo/">Music Ontology</a></em>, 
+		for example, when describing the tuning that was used in a particular harpsichord recording.
+    </p>
+
+    <h2 id="status">Status of this Document</h2>
+    <p>
+      <strong>This is a work in progress!</strong> This document is changing
+      on a daily if not hourly basis. Comments are very welcome, please send
+      them to <a href="mailto:gyorgy.fazekas@elec.qmul.ac.uk">gyorgy.fazekas@elec.qmul.ac.uk</a>. Thank you.
+    </p>
+
+    <h2 id="contents">Table of Contents</h2>
+    <ol id="toc">
+      <li><a href="#intro">Introduction</a>
+        <ol>
+          <li><a href="#s11">About instrument tuning</a></li>
+          <li><a href="#s12">An open-ended temperament description model</a></li>
+          <li>
+            <a href="#s13">The many ways of describing temperaments</a>
+            <ol>
+              <li><a href="#s131">The Circle of Fifths</a></li>
+              <li><a href="#s132">Deviation from Equal Temperament</a></li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li><a href="#sec-glance">Temperament  ontology at a glance</a></li>
+      <li>
+        <a href="#overview">Temperament  ontology overview</a>
+        <ol>
+          <li><a href="#s31">Example</a></li>
+        </ol>
+      </li>
+      <li><a href="#reference">Cross-reference for Temperament  classes and properties</a></li>
+    </ol>
+
+    <h3>Appendixes</h3>
+    <ol id="appendix">
+      <li><a href="#references">Normative References</a></li>
+      <li><a href="#changes">Changes in this version</a> (Non-Normative)</li>
+      <li><a href="#acknowledgements">Acknowledgements</a> (Non-Normative)</li>
+    </ol>
+
+    <hr />
+
+    <!-- ===================================================================== -->
+
+    <h2 id="intro">1 Introduction</h2>
+
+    <p>The temperament ontology aims to describe instrument tuning systems and their particularities.
+	It may also be used to characterise a (potentially unknown) temperament that was used when tuning an
+	instrument for a particular performance or recording. <br><br>
+	At this stage the ontology is far from exhaustive. We primarily deal with
+	temperaments in western tonal music with an emphasis on tuning keyboard instruments.
+	One important objective is to be able to describe arbitrary temperaments,
+	or express the results of automatic temperament extraction from audio recordings.
+	</p>
+
+    <h3 id="s11">1.1 About instrument tuning</h3>
+
+    <p>Tuning an instrument consists of choosing the frequency values and spacing (or ratio) of pitches that are used.
+	Pure (just) intervals of pitches correspond to whole number ratios of their frequencies, however
+	these ratios are not compatible with each other as they arranged in scales (the way octaves are divided into discrete pitch classes) in western music. 
+	For example, it is not possible to fit twelve pure fifths (3:2)^12 into seven octaves (2:1)^7. The difference
+	is called the Pythagorean or Ditonic comma (23.5 cents). This difference has to be
+	tempered out ---that is, some (or all) fifths has to be mistuned slightly in order to
+	fit them. There are many tuning systems. Most commonly, they differ in the way they compromise
+	pure intervals to solve this problem. </p>
+
+
+    <h3 id="s12">1.2 An open-ended temperament description model</h3>
+	<p>There is no mutual agreement in the literature on the description or classification
+	of temperaments. Therefore, in this ontology we do not impose a 
+	hierarchy between types of temperaments. We define an opaque
+	top-level temperament concept. Subclasses of this concept can be used
+	in describing individual temperaments, if necessary, using multiple class memberships.
+	Since there is more than one way to associate tuning systems with their properties, 
+	we treat temperament descriptions as concepts as well,
+	and use reification to keep the model open and extensible.</p>
+
+	<p><center><img src="TemperamentDescription.png" alt="Using the Circle of Fifths to describe a temperament." width="850">
+		<br><br>Figure 1. Overview of the temperament ontology.</center></p>
+
+
+    <h3 id="s13">1.3 The many ways of describing temperaments</h3>
+
+    <p>Temperaments can be characterised in lots of different ways. 
+	The most common methods are using either the circle of fifths or
+	give the pitch deviations from equal temperament. We define these
+	descriptions as concepts in the ontology, however, other descriptions
+	may be used and defined in the future. 
+	(For example, one might find it convenient to express the same information using the circle of fourths.)</p>
+
+    <h4 id="s131">1.3.1 The Circle of Fifths</h4>
+	The circle of fifths has several uses in music theory. 
+	It shows the harmonic relationships of the twelve major and minor keys.
+	It can also be seen as a circle of the corresponding pitch class intervals,
+	such as (C-G), (G-D), (D-A) etc... If we go around the circle using pure fifth 
+	intervals, it wouldn't close. What remains is the Pythagorean comma.
+	Hence, it is often used to describe temperaments by showing how 
+	the comma is distributed among the intervals to close the circle.
+	(Note that there are several types of commas related to different 
+	tuning problems. These are defined in the ontology.)
+
+	<!--<p><center><img src="CircleOfFifths.png" alt="Using the Circle of Fifths to describe a temperament." width="350"></center></p>-->
+
+    <p>...</p>
+
+    <h4 id="s132">1.3.2 Deviations from Equal Temperament</h4>
+
+    <p>In equal temperament an octave is divided into twelve equal intervals. 
+	As a result only octaves are pure. All other intervals are impure, and the 
+	deviation from pure is different in case of each interval. Since equal temperament
+	has become very common, other temperaments are often described by
+	the frequency deviations (in cents) of each pitch class from the 
+	corresponding pitch class in equal temperament.</p>
+
+    <!-- ===================================================================== -->
+
+    <h2 id="sec-glance">2. Temperament  ontology at a glance</h2>
+
+    <p>
+      An alphabetical index of Temperament  terms, by class (concepts) and by property 
+      (relationships, attributes), are given below. All the terms are hyperlinked 
+      to their detailed description for quick reference.
+    </p>
+
+    <!-- The list of classes and properties goes here -->
+    %s
+    <!-- End of the terms list -->
+
+    <p>...</p>
+
+    <!-- ===================================================================== -->
+
+    <h2 id="overview">3. Temperament  ontology overview</h2>
+
+    <!--<p>The Temperament definitions presented here are ...</p>-->
+
+    <h3 id="s31">3.1. Example</h3>
+
+    <p>Here is a very basic example describing a pitch class interval in the Valotti temperament using the circle of fifths.</p>
+
+    <div class="example" style="white-space: pre-wrap;">
+      <pre>
+		@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+		@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+		@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+		@prefix tm: &lt;http://purl.org/ontology/temperament/&gt; .
+		@prefix pc: &lt;http://purl.org/ontology/temperament/pitchclass/&gt; .
+
+		:ValottiTemperament a tm:WellTemperament;
+			tm:description :ValottiDescription1 .
+
+		:ValottiDescription1 a tm:CircleOfFifths;
+			tm:interval [
+				a tm:FifthInterval ;
+				tm:deviation [
+					a tm:IntervalDeviation ;
+					tm:comma tm:PythagoreanComma ; 
+					tm:value "-0.16667"^^xsd:float ;
+					rdfs:label "-1/6"
+					] ;
+				tm:lower pc:C ;
+				tm:upper pc:G ] ;
+			tm:interval [ # the rest of the intervals on the circle of fifths 
+				] .
+      </pre>
+    </div>
+
+    <p>A graphical representation of a similar description is shown in figure 2.
+	We explicitly name the pitch classes involved in each interval on the circle of fifths. 
+	The IntervalDeviation concept describes the amount of deviation from a pure interval
+	in terms of a specific type of comma and a corresponding value (a fraction of that comma).
+	We can safely assume that a fifth is pure, unless the deviation is given.</p>
+
+	<p><center><img src="CircleOfFifths.png" alt="Using the Circle of Fifths to describe a temperament." width="350">
+		<br><br>Figure 2. Describing temperaments using the circle of fifths.</center></p>
+
+
+    <!-- ===================================================================== -->
+
+    <h2 id="reference">4. Cross-reference for Temperament  classes and properties</h2>
+
+    <p>...</p>
+
+    <!-- The following is the script-generated list of classes and properties -->
+    %s
+    <!-- End of the terms list -->
+
+    <p>...</p>
+
+    <!-- ===================================================================== -->
+
+    <h2 id="references">A References</h2>
+
+    <dl>
+      <dt class="label" id="ref-some">Music Ontology</dt>
+      <dd><em>The <a href="http://purl.org/ontology/mo/">Music Ontology</a></em> is a thorough and mature ontology for describing
+		music-related data, including musicological information. This ontology is intended to be
+		used in conjunction with the Music Ontology.</dd>
+    </dl>
+
+    <!--
+    <h3 id="references-other">A.2 Other references</h3>
+
+    <dl>
+      <dt class="label" id="ref-rfc2119">IETF RFC 2119</dt>
+      <dd>
+        <em><a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119: Key words
+        for use in RFCs to Indicate Requirement Levels</a></em>. Internet
+        Engineering Task Force, 1997 (see http://www.ietf.org/rfc/rfc2119.txt).
+      </dd>
+    </dl>
+	-->
+
+    <!-- ===================================================================== -->
+
+    <h2 id="changes">B Changes in this version (Non-Normative)</h2>
+
+    <ul>
+      <li><p>first published draft 18-12-2009</p></li> 
+    </ul>
+
+    <h2><a id="acknowledgements"></a>C Acknowledgements (Non-Normative)</h2>
+
+    <p>Some modelling concepts in this ontology were borrowed form the
+	<a href="http://purl.org/ontology/chord/">Chord Ontology</a></em>
+	and the 
+	<a href="http://purl.org/ontology/similarity/">Music Similarity Ontology</a></em>.
+	</p>
+
+  </body>
+
+</html>
+

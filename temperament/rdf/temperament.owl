@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:pc="http://purl.org/ontology/temperament/pitchclass/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:tm="http://purl.org/ontology/temperament/" xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/">
+    <dc:title>The OMRAS2 Temperament Ontology</dc:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/">
+    <owl:versionInfo>Draft Revision: 1.0</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/">
+    <dc:description>
+	This ontology can be used to give a detailed description 
+	of the tuning of an instrument.
+	</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/">
+    <dc:date>$Date: 2009/11/18 13:54:19 $</dc:date>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Temperament">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Temperament">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Temperament">
+    <rdfs:label>Temperament</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Temperament">
+    <rdfs:comment>A temperament specifies a system of 
+	instrument tuning.
+	Tempering is a way of altering the size of intervals, 
+	such that they no longer based on pure rational intervals.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Temperament">
+    <vs:term_status>stable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RegularTemperament">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RegularTemperament">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RegularTemperament">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/Temperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RegularTemperament">
+    <rdfs:label>Regular Temperament</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RegularTemperament">
+    <rdfs:comment>Regular temperament is a class of temperaments 
+	where each interval is altered by the same amount.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RegularTemperament">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WellTemperament">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WellTemperament">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WellTemperament">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/Temperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WellTemperament">
+    <rdfs:label>Well Temperament</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WellTemperament">
+    <rdfs:comment>Well temperament represents a system of tuning 
+	where 5ths are tempered by irregular amounts, such that some 5ths 
+	are tempered by an equal amount, while others remain pure.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WellTemperament">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/MeantoneTemperament">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/MeantoneTemperament">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/MeantoneTemperament">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/Temperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/MeantoneTemperament">
+    <rdfs:label>Meantone Temperament</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/MeantoneTemperament">
+    <rdfs:comment>In a meantone temperament, each fifth is narrowed 
+	by the same amount relative to its width in Just Intonation. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/MeantoneTemperament">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RestrictedTemperament">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RestrictedTemperament">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RestrictedTemperament">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/Temperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RestrictedTemperament">
+    <rdfs:label>Restricted Temperament</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RestrictedTemperament">
+    <rdfs:comment>In restricted temperaments 
+	playing some keys results in poor intonation. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/RestrictedTemperament">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/TemperamentDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/TemperamentDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/TemperamentDescription">
+    <rdfs:label>Temperament Description</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/TemperamentDescription">
+    <rdfs:comment>
+	A super class of temperament descriptions using,
+	for example, deviation from equal temperament, 
+	or the circle of fifths.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/TemperamentDescription">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/description">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/description">
+    <rdfs:label>temperament description</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/description">
+    <rdfs:comment> Associates a temperament with its detailed description.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/description">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/Temperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/description">
+    <rdfs:range rdf:resource="http://purl.org/ontology/temperament/TemperamentDescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/description">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/constraint">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/constraint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/constraint">
+    <rdfs:label>mathematical constraint</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/constraint">
+    <rdfs:comment>A mathematical constrain on the temperament (This can be described in a named graph or and N3 graph literal).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/constraint">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/TemperamentDescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/constraint">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Comma">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Comma">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Comma">
+    <rdfs:label>Comma</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Comma">
+    <rdfs:comment>A comma is a very small interval between 
+	two enharmonic notes tuned in different ways. (Source: Wikipedia) </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Comma">
+    <vs:term_status>stable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClass">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClass">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClass">
+    <rdfs:label>Pitch Class</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClass">
+    <rdfs:comment>The set of all pitches that are a 
+	whole number of octaves apart.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClass">
+    <vs:term_status>stable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Interval">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Interval">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Interval">
+    <rdfs:label>Interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Interval">
+    <rdfs:comment>Describes the relationship between the 
+	pitches of two notes or pitch classes.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Interval">
+    <vs:term_status>stable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassInterval">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassInterval">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassInterval">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassInterval">
+    <rdfs:label>Pitch Class Interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassInterval">
+    <rdfs:comment>Describes the relationship between two pitch classes.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassInterval">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/FifthInterval">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/FifthInterval">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/PitchClassInterval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/FifthInterval">
+    <rdfs:label>Fifth Interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/FifthInterval">
+    <rdfs:comment>A fifth interval between notes, either 
+	pure or altered. In the case of a pure fifth it is a 
+	frequecy ratio of 3:2. We may use it to represent a 
+	specific interval on the circle of fifths, with a specific
+	deviation from a pure fifth. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/FifthInterval">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WolfInterval">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WolfInterval">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WolfInterval">
+    <rdfs:label>Wolf Interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WolfInterval">
+    <rdfs:comment>An interval which is regarded as howling may be 
+	called a wolf interval. It is typically a wolf fifth in 
+	meantone temperament. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WolfInterval">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationsFromEqual">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationsFromEqual">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationsFromEqual">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/TemperamentDescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationsFromEqual">
+    <rdfs:label>Deviation From Equal</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationsFromEqual">
+    <rdfs:comment>A type of temperament description which describes 
+	a tuning in terms of the deviation of each note (in cents) 
+	from the equal temperament.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationsFromEqual">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/CircleOfFifths">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/CircleOfFifths">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/CircleOfFifths">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/TemperamentDescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/CircleOfFifths">
+    <rdfs:label>Circle Of Fifths</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/CircleOfFifths">
+    <rdfs:comment>We use the circle of fifth to describe a temperament.
+	Each alteration of a fifth can be expressed in a number of ways,
+	for example, we may express interval deviations in a particular
+	comma.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/CircleOfFifths">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/IntervalDeviation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/IntervalDeviation">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/IntervalDeviation">
+    <rdfs:label>Deviation from pure interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/IntervalDeviation">
+    <rdfs:comment>Represents any type of alteration of a pure interval.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/IntervalDeviation">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassDeviation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassDeviation">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassDeviation">
+    <rdfs:label>Deviation in cents of a pitch class from its value in equal temperament.</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassDeviation">
+    <rdfs:comment>Deviation in cents of a pitch class from its value in equal temperament.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassDeviation">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationFromFifth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationFromFifth">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationFromFifth">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/IntervalDeviation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationFromFifth">
+    <rdfs:label>Deviation from pure fifth.</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationFromFifth">
+    <rdfs:comment>Represent the deviation from a pure fifth interval.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationFromFifth">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+    <rdfs:label>interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+    <rdfs:comment>Associates a specific interval on the circle of fifths. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/TemperamentDescription"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+    <rdfs:range rdf:resource="http://purl.org/ontology/temperament/Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
+    <rdfs:label>deviation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
+    <rdfs:comment>Links an interval with a particular deviation
+	from pure that characterises the interval.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
+    <rdfs:range rdf:resource="http://purl.org/ontology/temperament/IntervalDeviation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
+    <rdfs:label>pitch_class_deviation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
+    <rdfs:comment>The deviation of a particular pitch class in the described 
+	temperament from its equivalent in equal temperament.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/DeviationsFromEqual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
+    <rdfs:range rdf:resource="http://purl.org/ontology/temperament/PitchClassDeviation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/comma">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/comma">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/comma">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/comma">
+    <rdfs:label>comma</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/comma">
+    <rdfs:comment>Links an interval deviation with a type of comma. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/comma">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/IntervalDeviation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/comma">
+    <rdfs:range rdf:resource="http://purl.org/ontology/temperament/Comma"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/comma">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/value">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/value">
+    <rdfs:label>deviation value</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/value">
+    <rdfs:comment>Links an interval deviation to its float value (in cents). </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/value">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/IntervalDeviation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/value">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/PitchClassDeviation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/value">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
+    <rdfs:label>lower note of an interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
+    <rdfs:comment>Links an interval with its base note (or pitch calss). </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
+    <rdfs:range rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
+    <rdfs:label>higher note of an interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
+    <rdfs:comment>Links an interval with its higher note (or pitch class). </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
+    <rdfs:range rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
+    <rdfs:label>pitch class</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
+    <rdfs:comment>Links a pitch class deviation with a particular individual of a pitch class. 
+	This can be used to express deviations from equal temperament.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/PitchClassDeviation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
+    <rdfs:range rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
+    <rdfs:label>Frequency ratio of the pictch classes in the interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
+    <rdfs:comment>The frequency ratio of the two pitch classes in the interval.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/intarval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
+    <vs:term_status>unstable</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Valotti">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/WellTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Valotti">
+    <rdfs:label>Valotti</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Neidhardt">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/WellTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Neidhardt">
+    <rdfs:label>Neidhardt</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Bendeler">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/WellTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Bendeler">
+    <rdfs:label>Bendeler</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Stanhope">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/WellTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Stanhope">
+    <rdfs:label>Stanhope</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/KirnbergerIII">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/WellTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/KirnbergerIII">
+    <rdfs:label>KirnbergerIII</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/YoungII">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/WellTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/YoungII">
+    <rdfs:label>YoungII</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WerckmeisterIII">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/WellTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/WerckmeisterIII">
+    <rdfs:label>WerckmeisterIII</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/QuarterCommaMeantone">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/MeantoneTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/QuarterCommaMeantone">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/RegularTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/QuarterCommaMeantone">
+    <rdfs:label>QuarterCommaMeantone</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/FifthCommaMeantone">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/MeantoneTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/FifthCommaMeantone">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/RegularTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/FifthCommaMeantone">
+    <rdfs:label>FifthCommaMeantone</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/SixthCommaMeantone">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/MeantoneTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/SixthCommaMeantone">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/RegularTemperament"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/SixthCommaMeantone">
+    <rdfs:label>SixthCommaMeantone</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PythagoreanComma">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/Comma"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PythagoreanComma">
+    <rdfs:label>Pythagorean Comma</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/PythagoreanComma">
+    <rdfs:comment>One Pythagorean Comma, the difference between
+	7 octaves and 12 pure fifths, is 23.5 cents. It is equivalent to the Ditonic comma.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DitonicComma">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/Comma"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DitonicComma">
+    <rdfs:label>Ditonic Comma</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DitonicComma">
+    <rdfs:comment>The Ditonic comma is equivalent to the Pythagorean comma.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DitonicComma">
+    <owl:sameAs rdf:resource="http://purl.org/ontology/temperament/PythagoreanComma"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/SyntonicComma">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/Comma"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/SyntonicComma">
+    <rdfs:label>Syntonic Comma</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/SyntonicComma">
+    <rdfs:comment>One Syntonic Comma is 21.51 cents. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DidymusComma">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/Comma"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DidymusComma">
+    <rdfs:label>Didymus Comma</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DidymusComma">
+    <rdfs:comment>The Didymus is equivalent to the Syntonic comma (21.51 cents).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/DidymusComma">
+    <owl:sameAs rdf:resource="http://purl.org/ontology/temperament/SyntonicComma"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Diaschisma">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/Comma"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Diaschisma">
+    <rdfs:label>Diaschisma</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Diaschisma">
+    <rdfs:comment>One Diaschisma is 19.55 cents. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Schisma">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/Comma"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Schisma">
+    <rdfs:label>Schisma</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/Schisma">
+    <rdfs:comment>One Schisma is 1.95 cents. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/A">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/A">
+    <rdfs:label>A</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/A">
+    <rdfs:comment>pitch class A</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/B">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/B">
+    <rdfs:label>B</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/B">
+    <rdfs:comment>pitch class B</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/C">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/C">
+    <rdfs:label>C</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/C">
+    <rdfs:comment>pitch class C</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/D">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/D">
+    <rdfs:label>D</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/D">
+    <rdfs:comment>pitch class D</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/E">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/E">
+    <rdfs:label>E</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/E">
+    <rdfs:comment>pitch class E</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/F">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/F">
+    <rdfs:label>F</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/F">
+    <rdfs:comment>pitch class F</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/G">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/G">
+    <rdfs:label>G</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/G">
+    <rdfs:comment>pitch class G</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Ab">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Ab">
+    <rdfs:label>Ab</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Ab">
+    <rdfs:comment>pitch class Ab</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Bb">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Bb">
+    <rdfs:label>Bb</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Bb">
+    <rdfs:comment>pitch class Bb</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Cb">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Cb">
+    <rdfs:label>Cb</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Cb">
+    <rdfs:comment>pitch class Cb</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Db">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Db">
+    <rdfs:label>Db</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Db">
+    <rdfs:comment>pitch class Db</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Eb">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Eb">
+    <rdfs:label>Eb</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Eb">
+    <rdfs:comment>pitch class Eb</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Fb">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Fb">
+    <rdfs:label>Fb</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Fb">
+    <rdfs:comment>pitch class Fb</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Gb">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Gb">
+    <rdfs:label>Gb</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Gb">
+    <rdfs:comment>pitch class Gb</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/As">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/As">
+    <rdfs:label>As</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/As">
+    <rdfs:comment>pitch class As</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Bs">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Bs">
+    <rdfs:label>Bs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Bs">
+    <rdfs:comment>pitch class Bs</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Cs">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Cs">
+    <rdfs:label>Cs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Cs">
+    <rdfs:comment>pitch class Cs</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Ds">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Ds">
+    <rdfs:label>Ds</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Ds">
+    <rdfs:comment>pitch class Ds</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Es">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Es">
+    <rdfs:label>Es</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Es">
+    <rdfs:comment>pitch class Es</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Fs">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Fs">
+    <rdfs:label>Fs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Fs">
+    <rdfs:comment>pitch class Fs</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Gs">
+    <rdf:type rdf:resource="http://purl.org/ontology/temperament/PitchClass"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Gs">
+    <rdfs:label>Gs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitchclass/Gs">
+    <rdfs:comment>pitch class Gs</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

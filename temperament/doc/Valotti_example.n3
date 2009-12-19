@@ -1,0 +1,83 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tm: <http://purl.org/ontology/temperament/> .
+@prefix pc: <http://purl.org/ontology/temperament/pitchclass/> .
+
+:ValottiTemperament a tm:WellTemperament;
+	tm:description :ValottiDescription1 ;
+	tm:description :ValottiDescription2 .
+
+
+# a compact descrition using the circle of fifths:
+
+:ValottiDescription1 a tm:CircleOfFifths;
+	tm:interval [
+		a tm:FifthInterval ;
+		tm:deviation [
+			a tm:IntervalDeviation ;
+			tm:comma tm:PythagoreanComma ; 
+			tm:value "-0.16667"^^xsd:flaot ;
+			rdfs:label "-1/6"
+			] ;
+		tm:lower pc:C ;
+		tm:upper pc:G ] ;
+	tm:interval [ # continues for all intervals 
+		] .
+	
+# or using a specific representaiton of the circle of fifths
+
+:ValottiDescription1 a tm:CircleOfFifths;
+	tm:interval :FifthCG ;
+	tm:interval :FifthGD ;
+	tm:interval :FifthDA ;
+	tm:interval :FifthAE ;
+	tm:interval :FifthEB ;
+	tm:interval :FifthBFs ;
+	tm:interval :FifthFsCs ;
+	tm:interval :FifthCsAf ;
+	tm:interval :FifthAfEf ;
+	tm:interval :FifthEfBf ;
+	tm:interval :FifthBfF ;
+	tm:interval :FifthFC .
+
+:FifthCG a tm:FifthInterval ;
+	tm:lower pc:C ;
+	tm:upper pc:G ;
+	tm:deviation [
+		a tm:IntervalDeviation ;
+		tm:comma to:PythagoreanComma ; 
+		tm:value "-0.1666666667"^^xsd:float ;
+		rdfs:label "-1/6" ] .		
+
+:FifthGD a tm:FifthInterval ;
+	tm:lower pc:G ;
+	tm:upper pc:D ;
+	tm:deviation [
+		a tm:IntervalDeviation ;
+		tm:comma to:PythagoreanComma ; 
+		tm:value "-0.1666666667"^^xsd:float ;
+		rdfs:label "-1/6" ] .		
+
+# .... the deviation (and the upper pitch class) 
+# could be omitted in this case:
+
+:FifthBF a tm:FifthInterval ;
+	tm:lower pc:B ;
+	tm:upper pc:F ;
+	tm:deviation [
+		a tm:IntervalDeviation ;
+		tm:value "0"^^xsd:float ;
+		rdfs:label "0" ] .		
+	
+# or using deviations from equal temperament
+
+:ValottiDescription2 a tm:DeviationsFromEqual;
+	tm:pitch_class_deviation [
+		a tm:PitchClassDeviation ;
+		tm:pitch_class pc:C ;
+		tm:value "5.9"^^xsd:float ] ;
+	tm:pitch_class_deviation [
+		a tm:PitchClassDeviation ;
+		tm:pitch_class pc:Cs ;
+		tm:value "0"^^xsd:float ] .

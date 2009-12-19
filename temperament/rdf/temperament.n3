@@ -1,0 +1,455 @@
+@base <http://purl.org/ontology/temperament/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tm: <http://purl.org/ontology/temperament/> .
+@prefix : <http://purl.org/ontology/temperament/> .
+@prefix pc: <http://purl.org/ontology/temperament/pitchclass/> .
+@prefix tm: <> .
+
+<http://purl.org/ontology/temperament/>
+    a owl:Ontology;
+    dc:title "The OMRAS2 Temperament Ontology";
+    owl:versionInfo "Draft Revision: 1.0";
+    dc:description """
+	This ontology can be used to give a detailed description 
+	of the tuning of an instrument.
+	""";
+	dc:date "$Date: 2009/11/18 13:54:19 $" .
+
+
+# Status of terms
+vs:term_status a owl:AnnotationProperty.
+
+###############################################
+# Part 1: Core terms defined in this ontology #
+###############################################
+
+tm:Temperament a owl:Class;
+	a rdfs:Class;
+	rdfs:label "Temperament";
+	rdfs:comment """A temperament specifies a system of 
+	instrument tuning.
+	Tempering is a way of altering the size of intervals, 
+	such that they no longer based on pure rational intervals.""";
+	vs:term_status "stable" .
+
+
+tm:RegularTemperament a owl:Class;
+	a rdfs:Class;
+	rdfs:subClassOf tm:Temperament;
+	rdfs:label "Regular Temperament";
+	rdfs:comment """Regular temperament is a class of temperaments 
+	where each interval is altered by the same amount.""";
+	vs:term_status "unstable" .
+
+
+tm:WellTemperament a owl:Class;
+	a rdfs:Class;
+	rdfs:subClassOf tm:Temperament;
+	rdfs:label "Well Temperament";
+	rdfs:comment """Well temperament represents a system of tuning 
+	where 5ths are tempered by irregular amounts, such that some 5ths 
+	are tempered by an equal amount, while others remain pure.""";
+	vs:term_status "unstable" .
+
+
+tm:MeantoneTemperament a owl:Class;
+	a rdfs:Class;
+	rdfs:subClassOf tm:Temperament;
+	rdfs:label "Meantone Temperament";
+	rdfs:comment """In a meantone temperament, each fifth is narrowed 
+	by the same amount relative to its width in Just Intonation. """;
+	vs:term_status "unstable" .
+
+
+tm:RestrictedTemperament a owl:Class;
+	a rdfs:Class;
+	rdfs:subClassOf tm:Temperament;
+	rdfs:label "Restricted Temperament";
+	rdfs:comment """In restricted temperaments 
+	playing some keys results in poor intonation. """;
+	vs:term_status "unstable" .
+
+
+tm:TemperamentDescription a owl:Class;
+	a rdfs:Class;
+	rdfs:label "Temperament Description";
+	rdfs:comment """
+	A super class of temperament descriptions using,
+	for example, deviation from equal temperament, 
+	or the circle of fifths.""";
+	vs:term_status "unstable" .
+
+#properties 
+
+tm:description
+    a rdf:Property, owl:ObjectProperty;
+    rdfs:label "temperament description";
+    rdfs:comment """ Associates a temperament with its detailed description.""";
+    rdfs:domain tm:Temperament;
+    rdfs:range tm:TemperamentDescription;
+    vs:term_status "unstable" .
+
+tm:constraint
+    a rdf:Property, owl:ObjectProperty;
+    rdfs:label "mathematical constraint";
+    rdfs:comment """A mathematical constrain on the temperament (This can be described in a named graph or and N3 graph literal).""";
+    rdfs:domain tm:TemperamentDescription;
+    vs:term_status "unstable" .
+
+
+###############################################
+# Part 2: Auxiliary parts required for temperament descriptions 	  #
+###############################################
+
+tm:Comma a owl:Class;
+	a rdfs:Class;
+	rdfs:label "Comma";
+	rdfs:comment """A comma is a very small interval between 
+	two enharmonic notes tuned in different ways. (Source: Wikipedia) """;
+	vs:term_status "stable" .
+
+tm:PitchClass a owl:Class;
+	a rdfs:Class;
+	rdfs:label "Pitch Class";
+	rdfs:comment """The set of all pitches that are a 
+	whole number of octaves apart.""";
+	vs:term_status "stable" .
+
+tm:Interval a owl:Class;
+	a rdfs:Class;
+	rdfs:label "Interval";
+	rdfs:comment """Describes the relationship between the 
+	pitches of two notes or pitch classes.""";
+	vs:term_status "stable" .
+	
+tm:PitchClassInterval a owl:Class;
+	a rdfs:Class;
+	rdfs:subClassOf tm:Interval;
+	rdfs:label "Pitch Class Interval";
+	rdfs:comment """Describes the relationship between two pitch classes.""";
+	vs:term_status "unstable" .
+
+
+tm:FifthInterval a rdf:Class ;
+	rdfs:subClassOf tm:PitchClassInterval ;
+	rdfs:label "Fifth Interval";
+	rdfs:comment """A fifth interval between notes, either 
+	pure or altered. In the case of a pure fifth it is a 
+	frequecy ratio of 3:2. We may use it to represent a 
+	specific interval on the circle of fifths, with a specific
+	deviation from a pure fifth. """;
+	vs:term_status "unstable" .
+
+tm:WolfInterval a rdf:Class ;
+	rdfs:subClassOf tm:Interval ;
+	rdfs:label "Wolf Interval";
+	rdfs:comment """An interval which is regarded as howling may be 
+	called a wolf interval. It is typically a wolf fifth in 
+	meantone temperament. """;
+	vs:term_status "unstable" .
+
+###############################################
+# Part 3: Detailed temperament description	  #
+###############################################
+
+#description classes
+
+tm:DeviationsFromEqual a owl:Class;
+	a rdfs:Class;
+	rdfs:subClassOf tm:TemperamentDescription;
+	rdfs:label "Deviation From Equal";
+	rdfs:comment """A type of temperament description which describes 
+	a tuning in terms of the deviation of each note (in cents) 
+	from the equal temperament.""";
+	vs:term_status "unstable" .
+
+tm:CircleOfFifths a owl:Class;
+	a rdfs:Class;
+	rdfs:subClassOf tm:TemperamentDescription;
+	rdfs:label "Circle Of Fifths";
+	rdfs:comment """We use the circle of fifth to describe a temperament.
+	Each alteration of a fifth can be expressed in a number of ways,
+	for example, we may express interval deviations in a particular
+	comma.""";
+	vs:term_status "unstable" .
+
+tm:IntervalDeviation a owl:Class;
+	a rdfs:Class;
+	rdfs:label "Deviation from pure interval";
+	rdfs:comment """Represents any type of alteration of a pure interval.""";
+	vs:term_status "unstable" .
+
+tm:PitchClassDeviation a owl:Class;
+	a rdfs:Class;
+	rdfs:label "Deviation in cents of a pitch class from its value in equal temperament.";
+	rdfs:comment """Deviation in cents of a pitch class from its value in equal temperament.""";
+	vs:term_status "unstable" .
+
+tm:DeviationFromFifth a owl:Class;
+	a rdfs:Class;
+	rdfs:subClassOf tm:IntervalDeviation;
+	rdfs:label "Deviation from pure fifth.";
+	rdfs:comment """Represent the deviation from a pure fifth interval.""";
+	vs:term_status "unstable" .
+
+# properties
+
+tm:intraval
+    a rdf:Property, owl:ObjectProperty;
+    rdfs:label "interval";
+    rdfs:comment """Associates a specific interval on the circle of fifths. """;
+    rdfs:domain tm:TemperamentDescription;
+    rdfs:range tm:Interval;
+    vs:term_status "unstable" .
+
+tm:deviation
+    a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
+    rdfs:label "deviation";
+    rdfs:comment """Links an interval with a particular deviation
+	from pure that characterises the interval.""";
+    rdfs:domain tm:Interval;
+    rdfs:range tm:IntervalDeviation;
+    vs:term_status "unstable" .
+
+tm:pitch_class_deviation
+    a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
+    rdfs:label "pitch_class_deviation";
+    rdfs:comment """The deviation of a particular pitch class in the described 
+	temperament from its equivalent in equal temperament.""";
+    rdfs:domain tm:DeviationsFromEqual;
+    rdfs:range tm:PitchClassDeviation;
+    vs:term_status "unstable" .
+
+tm:comma
+    a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
+    rdfs:label "comma";
+    rdfs:comment """Links an interval deviation with a type of comma. """;
+    rdfs:domain tm:IntervalDeviation;
+    rdfs:range tm:Comma;
+    vs:term_status "unstable" .
+
+tm:value 
+	a rdf:Property, owl:DatatypeProperty, owl:FunctionalProperty;
+    rdfs:label "deviation value";
+    rdfs:comment """Links an interval deviation to its float value (in cents). """;
+    rdfs:domain tm:IntervalDeviation, tm:PitchClassDeviation;
+	rdfs:range xsd:float;
+    vs:term_status "unstable" .
+
+# please refine the terminology here : 
+
+tm:lower
+	a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
+    rdfs:label "lower note of an interval";
+    rdfs:comment """Links an interval with its base note (or pitch calss). """;
+    rdfs:domain tm:Interval;
+	rdfs:range tm:PitchClass;
+    vs:term_status "unstable" .
+
+tm:upper
+	a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
+    rdfs:label "higher note of an interval";
+    rdfs:comment """Links an interval with its higher note (or pitch class). """;
+    rdfs:domain tm:Interval;
+	rdfs:range tm:PitchClass;
+    vs:term_status "unstable" .
+
+tm:pitch_class
+	a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
+    rdfs:label "pitch class";
+    rdfs:comment """Links a pitch class deviation with a particular individual of a pitch class. 
+	This can be used to express deviations from equal temperament.""";
+    rdfs:domain tm:PitchClassDeviation;
+	rdfs:range tm:PitchClass;
+    vs:term_status "unstable" .
+
+tm:frequency_ratio
+    a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
+	rdfs:label "Frequency ratio of the pictch classes in the interval";
+	rdfs:comment """The frequency ratio of the two pitch classes in the interval.""";
+	rdfs:domain tm:intarval;
+	vs:term_status "unstable" .
+	
+###############################################
+# Part 4: Individuals                		  #
+###############################################
+
+# some named temperaments
+
+tm:Valotti a tm:WellTemperament ;
+	rdfs:label "Valotti" .
+
+tm:Neidhardt a tm:WellTemperament ;
+	rdfs:label "Neidhardt" .
+
+tm:Bendeler a tm:WellTemperament ;
+	rdfs:label "Bendeler" .
+	
+tm:Stanhope a tm:WellTemperament ;
+    rdfs:label "Stanhope" .
+
+tm:KirnbergerIII a tm:WellTemperament ;
+	rdfs:label "KirnbergerIII" .
+	
+tm:YoungII a tm:WellTemperament ;
+    rdfs:label "YoungII" .
+
+tm:WerckmeisterIII a tm:WellTemperament ;
+ 	rdfs:label "WerckmeisterIII" .
+	
+tm:QuarterCommaMeantone a tm:MeantoneTemperament;
+	a tm:RegularTemperament ;
+	rdfs:label "QuarterCommaMeantone" .
+
+tm:FifthCommaMeantone a tm:MeantoneTemperament;
+	a tm:RegularTemperament ;
+	rdfs:label "FifthCommaMeantone" .
+
+tm:SixthCommaMeantone a tm:MeantoneTemperament;
+	a tm:RegularTemperament ;
+	rdfs:label "SixthCommaMeantone" .
+	
+
+
+# specific commas 
+	
+:PythagoreanComma a tm:Comma;
+	rdfs:label "Pythagorean Comma";
+	rdfs:comment """One Pythagorean Comma, the difference between
+	7 octaves and 12 pure fifths, is 23.5 cents. It is equivalent to the Ditonic comma.""" .
+
+:DitonicComma a tm:Comma;
+	rdfs:label "Ditonic Comma";
+	rdfs:comment "The Ditonic comma is equivalent to the Pythagorean comma." ;
+	owl:sameAs tm:PythagoreanComma .
+
+:SyntonicComma a tm:Comma;
+	rdfs:label "Syntonic Comma";
+	rdfs:comment """One Syntonic Comma is 21.51 cents. """ .
+
+:DidymusComma a tm:Comma;
+	rdfs:label "Didymus Comma";
+	rdfs:comment "The Didymus is equivalent to the Syntonic comma (21.51 cents)." ;
+	owl:sameAs tm:SyntonicComma .
+
+:Diaschisma a tm:Comma;
+	rdfs:label "Diaschisma";
+	rdfs:comment """One Diaschisma is 19.55 cents. """ .
+
+:Schisma a tm:Comma;
+	rdfs:label "Schisma";
+	rdfs:comment """One Schisma is 1.95 cents. """ .
+
+
+# individuals of pitch classes (e.g. to describe the circle of fifths) 
+
+pc:A
+    a tm:PitchClass;
+	rdfs:label "A" ;
+	rdfs:comment "pitch class A" .
+
+pc:B
+    a tm:PitchClass;
+	rdfs:label "B" ;
+	rdfs:comment "pitch class B" .
+
+pc:C
+    a tm:PitchClass;
+    rdfs:label "C" ;
+	rdfs:comment "pitch class C" .
+
+pc:D
+    a tm:PitchClass;
+    rdfs:label "D" ;
+	rdfs:comment "pitch class D" .
+
+pc:E
+    a tm:PitchClass;
+    rdfs:label "E" ;
+	rdfs:comment "pitch class E" .
+
+pc:F
+    a tm:PitchClass;
+    rdfs:label "F" ;
+	rdfs:comment "pitch class F" .
+
+pc:G
+    a tm:PitchClass;
+    rdfs:label "G" ;
+	rdfs:comment "pitch class G" .
+
+pc:Ab
+    a tm:PitchClass;
+	rdfs:label "Ab" ;
+	rdfs:comment "pitch class Ab" .
+
+pc:Bb
+    a tm:PitchClass;
+	rdfs:label "Bb" ;
+	rdfs:comment "pitch class Bb" .
+
+pc:Cb
+    a tm:PitchClass;
+    rdfs:label "Cb" ;
+	rdfs:comment "pitch class Cb" .
+
+pc:Db
+    a tm:PitchClass;
+    rdfs:label "Db" ;
+	rdfs:comment "pitch class Db" .
+
+pc:Eb
+    a tm:PitchClass;
+    rdfs:label "Eb" ;
+	rdfs:comment "pitch class Eb" .
+
+pc:Fb
+    a tm:PitchClass;
+    rdfs:label "Fb" ;
+	rdfs:comment "pitch class Fb" .
+
+pc:Gb
+    a tm:PitchClass;
+    rdfs:label "Gb" ;
+	rdfs:comment "pitch class Gb" .
+
+pc:As
+    a tm:PitchClass;
+	rdfs:label "As" ;
+	rdfs:comment "pitch class As" .
+
+pc:Bs
+    a tm:PitchClass;
+	rdfs:label "Bs" ;
+	rdfs:comment "pitch class Bs" .
+
+pc:Cs
+    a tm:PitchClass;
+    rdfs:label "Cs" ;
+	rdfs:comment "pitch class Cs" .
+
+pc:Ds
+    a tm:PitchClass;
+    rdfs:label "Ds" ;
+	rdfs:comment "pitch class Ds" .
+
+pc:Es
+    a tm:PitchClass;
+    rdfs:label "Es" ;
+	rdfs:comment "pitch class Es" .
+
+pc:Fs
+    a tm:PitchClass;
+    rdfs:label "Fs" ;
+	rdfs:comment "pitch class Fs" .
+
+pc:Gs
+    a tm:PitchClass;
+    rdfs:label "Gs" ;
+	rdfs:comment "pitch class Gs" .

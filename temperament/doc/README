@@ -1,0 +1,6 @@
+Use makehtml to generate the specification.
+
+Note that it is using a slightly hacked version of SpecGen5,
+so that instances are displayed without namespace prefixes
+uniformly, whether they are using the the ontology's prefix
+or not. Before the hack this was inconsistent. 
