@@ -163,7 +163,7 @@ tm:WolfInterval a rdf:Class ;
 tm:DeviationsFromEqual a owl:Class;
 	a rdfs:Class;
 	rdfs:subClassOf tm:TemperamentDescription;
-	rdfs:label "Deviation From Equal";
+	rdfs:label "Deviations From Equal";
 	rdfs:comment """A type of temperament description which describes 
 	a tuning in terms of the deviation of each note (in cents) 
 	from the equal temperament.""";
@@ -181,20 +181,20 @@ tm:CircleOfFifths a owl:Class;
 
 tm:IntervalDeviation a owl:Class;
 	a rdfs:Class;
-	rdfs:label "Deviation from pure interval";
+	rdfs:label "Interval Deviation (from pure interval)";
 	rdfs:comment """Represents any type of alteration of a pure interval.""";
 	vs:term_status "unstable" .
 
 tm:PitchClassDeviation a owl:Class;
 	a rdfs:Class;
-	rdfs:label "Deviation in cents of a pitch class from its value in equal temperament.";
+	rdfs:label "Pitch Class Deviation";
 	rdfs:comment """Deviation in cents of a pitch class from its value in equal temperament.""";
 	vs:term_status "unstable" .
 
 tm:DeviationFromFifth a owl:Class;
 	a rdfs:Class;
 	rdfs:subClassOf tm:IntervalDeviation;
-	rdfs:label "Deviation from pure fifth.";
+	rdfs:label "Deviation from Fifth";
 	rdfs:comment """Represent the deviation from a pure fifth interval.""";
 	vs:term_status "unstable" .
 
@@ -210,7 +210,7 @@ tm:intraval
 
 tm:deviation
     a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
-    rdfs:label "deviation";
+    rdfs:label "interval deviation";
     rdfs:comment """Links an interval with a particular deviation
 	from pure that characterises the interval.""";
     rdfs:domain tm:Interval;
@@ -219,7 +219,7 @@ tm:deviation
 
 tm:pitch_class_deviation
     a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
-    rdfs:label "pitch_class_deviation";
+    rdfs:label "pitch class deviation";
     rdfs:comment """The deviation of a particular pitch class in the described 
 	temperament from its equivalent in equal temperament.""";
     rdfs:domain tm:DeviationsFromEqual;
@@ -246,16 +246,16 @@ tm:value
 
 tm:lower
 	a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
-    rdfs:label "lower note of an interval";
-    rdfs:comment """Links an interval with its base note (or pitch calss). """;
+    rdfs:label "lower pitch class";
+    rdfs:comment """Links an interval a pitch calss which is lower on a scale.""";
     rdfs:domain tm:Interval;
 	rdfs:range tm:PitchClass;
     vs:term_status "unstable" .
 
 tm:upper
 	a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
-    rdfs:label "higher note of an interval";
-    rdfs:comment """Links an interval with its higher note (or pitch class). """;
+    rdfs:label "upper pitch class";
+    rdfs:comment """Links an interval with a pitch class which is higher on a scale compared to the other pitch class of this interval.""";
     rdfs:domain tm:Interval;
 	rdfs:range tm:PitchClass;
     vs:term_status "unstable" .
@@ -263,7 +263,7 @@ tm:upper
 tm:pitch_class
 	a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
     rdfs:label "pitch class";
-    rdfs:comment """Links a pitch class deviation with a particular individual of a pitch class. 
+    rdfs:comment """The pitch class of a particular pitch class deviation. 
 	This can be used to express deviations from equal temperament.""";
     rdfs:domain tm:PitchClassDeviation;
 	rdfs:range tm:PitchClass;
@@ -271,8 +271,9 @@ tm:pitch_class
 
 tm:frequency_ratio
     a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty;
-	rdfs:label "Frequency ratio of the pictch classes in the interval";
-	rdfs:comment """The frequency ratio of the two pitch classes in the interval.""";
+	rdfs:label "frequency ratio";
+	rdfs:comment """The frequency ratio of the two pitch classes in the interval.
+	This may be a single value or an expression (given for example in an N3 graph literal).""";
 	rdfs:domain tm:intarval;
 	vs:term_status "unstable" .
 	

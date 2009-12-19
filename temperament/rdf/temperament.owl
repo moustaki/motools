@@ -285,7 +285,7 @@
     <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/TemperamentDescription"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationsFromEqual">
-    <rdfs:label>Deviation From Equal</rdfs:label>
+    <rdfs:label>Deviations From Equal</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationsFromEqual">
     <rdfs:comment>A type of temperament description which describes 
@@ -323,7 +323,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/IntervalDeviation">
-    <rdfs:label>Deviation from pure interval</rdfs:label>
+    <rdfs:label>Interval Deviation (from pure interval)</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/IntervalDeviation">
     <rdfs:comment>Represents any type of alteration of a pure interval.</rdfs:comment>
@@ -338,7 +338,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassDeviation">
-    <rdfs:label>Deviation in cents of a pitch class from its value in equal temperament.</rdfs:label>
+    <rdfs:label>Pitch Class Deviation</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/PitchClassDeviation">
     <rdfs:comment>Deviation in cents of a pitch class from its value in equal temperament.</rdfs:comment>
@@ -356,7 +356,7 @@
     <rdfs:subClassOf rdf:resource="http://purl.org/ontology/temperament/IntervalDeviation"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationFromFifth">
-    <rdfs:label>Deviation from pure fifth.</rdfs:label>
+    <rdfs:label>Deviation from Fifth</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationFromFifth">
     <rdfs:comment>Represent the deviation from a pure fifth interval.</rdfs:comment>
@@ -395,7 +395,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
-    <rdfs:label>deviation</rdfs:label>
+    <rdfs:label>interval deviation</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">
     <rdfs:comment>Links an interval with a particular deviation
@@ -420,7 +420,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
-    <rdfs:label>pitch_class_deviation</rdfs:label>
+    <rdfs:label>pitch class deviation</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class_deviation">
     <rdfs:comment>The deviation of a particular pitch class in the described 
@@ -496,10 +496,10 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
-    <rdfs:label>lower note of an interval</rdfs:label>
+    <rdfs:label>lower pitch class</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
-    <rdfs:comment>Links an interval with its base note (or pitch calss). </rdfs:comment>
+    <rdfs:comment>Links an interval a pitch calss which is lower on a scale.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/lower">
     <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/Interval"/>
@@ -520,10 +520,10 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
-    <rdfs:label>higher note of an interval</rdfs:label>
+    <rdfs:label>upper pitch class</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
-    <rdfs:comment>Links an interval with its higher note (or pitch class). </rdfs:comment>
+    <rdfs:comment>Links an interval with a pitch class which is higher on a scale compared to the other pitch class of this interval.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/upper">
     <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/Interval"/>
@@ -547,7 +547,7 @@
     <rdfs:label>pitch class</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
-    <rdfs:comment>Links a pitch class deviation with a particular individual of a pitch class. 
+    <rdfs:comment>The pitch class of a particular pitch class deviation. 
 	This can be used to express deviations from equal temperament.</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/pitch_class">
@@ -569,10 +569,11 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
-    <rdfs:label>Frequency ratio of the pictch classes in the interval</rdfs:label>
+    <rdfs:label>frequency ratio</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
-    <rdfs:comment>The frequency ratio of the two pitch classes in the interval.</rdfs:comment>
+    <rdfs:comment>The frequency ratio of the two pitch classes in the interval.
+	This may be a single value or an expression (given for example in an N3 graph literal).</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/frequency_ratio">
     <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/intarval"/>

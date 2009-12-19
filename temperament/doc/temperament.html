@@ -270,7 +270,7 @@
 
 <div class="specterm" id="term_DeviationFromFifth">
 <h3>Class: tm:DeviationFromFifth</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/DeviationFromFifth">http://purl.org/ontology/temperament/DeviationFromFifth</a></p><p><em>Deviation from pure fifth.</em> - Represent the deviation from a pure fifth interval. </p>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/DeviationFromFifth">http://purl.org/ontology/temperament/DeviationFromFifth</a></p><p><em>Deviation from Fifth</em> - Represent the deviation from a pure fifth interval. </p>
 <dl><dt>sub-class-of:</dt><dd><a href="#term_IntervalDeviation" style="font-family: monospace;">tm:IntervalDeviation</a></dd></dl>
 <p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
 
@@ -280,7 +280,7 @@
 
 <div class="specterm" id="term_DeviationsFromEqual">
 <h3>Class: tm:DeviationsFromEqual</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/DeviationsFromEqual">http://purl.org/ontology/temperament/DeviationsFromEqual</a></p><p><em>Deviation From Equal</em> - A type of temperament description which describes 
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/DeviationsFromEqual">http://purl.org/ontology/temperament/DeviationsFromEqual</a></p><p><em>Deviations From Equal</em> - A type of temperament description which describes 
 	a tuning in terms of the deviation of each note (in cents) 
 	from the equal temperament. </p>
 <dl><dt>sub-class-of:</dt><dd><a href="#term_TemperamentDescription" style="font-family: monospace;">tm:TemperamentDescription</a></dd><dt>in-domain-of:</dt><dd><a href="#term_pitch_class_deviation" style="font-family: monospace;">tm:pitch_class_deviation</a></dd></dl>
@@ -303,7 +303,7 @@
 
 <div class="specterm" id="term_IntervalDeviation">
 <h3>Class: tm:IntervalDeviation</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/IntervalDeviation">http://purl.org/ontology/temperament/IntervalDeviation</a></p><p><em>Deviation from pure interval</em> - Represents any type of alteration of a pure interval. </p>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/IntervalDeviation">http://purl.org/ontology/temperament/IntervalDeviation</a></p><p><em>Interval Deviation (from pure interval)</em> - Represents any type of alteration of a pure interval. </p>
 <dl><dt>in-domain-of:</dt><dd><a href="#term_comma" style="font-family: monospace;">tm:comma</a></dd><dd><a href="#term_value" style="font-family: monospace;">tm:value</a></dd><dt>in-range-of:</dt><dd><a href="#term_deviation" style="font-family: monospace;">tm:deviation</a></dd></dl>
 <p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
 
@@ -335,7 +335,7 @@
 
 <div class="specterm" id="term_PitchClassDeviation">
 <h3>Class: tm:PitchClassDeviation</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/PitchClassDeviation">http://purl.org/ontology/temperament/PitchClassDeviation</a></p><p><em>Deviation in cents of a pitch class from its value in equal temperament.</em> - Deviation in cents of a pitch class from its value in equal temperament. </p>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/PitchClassDeviation">http://purl.org/ontology/temperament/PitchClassDeviation</a></p><p><em>Pitch Class Deviation</em> - Deviation in cents of a pitch class from its value in equal temperament. </p>
 <dl><dt>in-domain-of:</dt><dd><a href="#term_value" style="font-family: monospace;">tm:value</a></dd><dd><a href="#term_pitch_class" style="font-family: monospace;">tm:pitch_class</a></dd><dt>in-range-of:</dt><dd><a href="#term_pitch_class_deviation" style="font-family: monospace;">tm:pitch_class_deviation</a></dd></dl>
 <p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
 
@@ -448,7 +448,7 @@
 
 <div class="specterm" id="term_deviation">
 <h3>Property: tm:deviation</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/deviation">http://purl.org/ontology/temperament/deviation</a></p><p><em>deviation</em> - Links an interval with a particular deviation
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/deviation">http://purl.org/ontology/temperament/deviation</a></p><p><em>interval deviation</em> - Links an interval with a particular deviation
 	from pure that characterises the interval. </p>
 <dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
 <dt>Domain:</dt> <dd><a href="#term_Interval" style="font-family: monospace;">tm:Interval</a></dd><dt>Range:</dt> <dd><a href="#term_IntervalDeviation" style="font-family: monospace;">tm:IntervalDeviation</a></dd></dl>
@@ -460,7 +460,8 @@
 
 <div class="specterm" id="term_frequency_ratio">
 <h3>Property: tm:frequency_ratio</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/frequency_ratio">http://purl.org/ontology/temperament/frequency_ratio</a></p><p><em>Frequency ratio of the pictch classes in the interval</em> - The frequency ratio of the two pitch classes in the interval. </p>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/frequency_ratio">http://purl.org/ontology/temperament/frequency_ratio</a></p><p><em>frequency ratio</em> - The frequency ratio of the two pitch classes in the interval.
+	This may be a single value or an expression (given for example in an N3 graph literal). </p>
 <dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
 <dt>Domain:</dt> <dd><a href="#term_intarval" style="font-family: monospace;">tm:intarval</a></dd></dl>
 <p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
@@ -482,7 +483,7 @@
 
 <div class="specterm" id="term_lower">
 <h3>Property: tm:lower</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/lower">http://purl.org/ontology/temperament/lower</a></p><p><em>lower note of an interval</em> - Links an interval with its base note (or pitch calss).  </p>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/lower">http://purl.org/ontology/temperament/lower</a></p><p><em>lower pitch class</em> - Links an interval a pitch calss which is lower on a scale. </p>
 <dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
 <dt>Domain:</dt> <dd><a href="#term_Interval" style="font-family: monospace;">tm:Interval</a></dd><dt>Range:</dt> <dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
 <p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
@@ -493,7 +494,7 @@
 
 <div class="specterm" id="term_pitch_class">
 <h3>Property: tm:pitch_class</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitch_class">http://purl.org/ontology/temperament/pitch_class</a></p><p><em>pitch class</em> - Links a pitch class deviation with a particular individual of a pitch class. 
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitch_class">http://purl.org/ontology/temperament/pitch_class</a></p><p><em>pitch class</em> - The pitch class of a particular pitch class deviation. 
 	This can be used to express deviations from equal temperament. </p>
 <dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
 <dt>Domain:</dt> <dd><a href="#term_PitchClassDeviation" style="font-family: monospace;">tm:PitchClassDeviation</a></dd><dt>Range:</dt> <dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
@@ -505,7 +506,7 @@
 
 <div class="specterm" id="term_pitch_class_deviation">
 <h3>Property: tm:pitch_class_deviation</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitch_class_deviation">http://purl.org/ontology/temperament/pitch_class_deviation</a></p><p><em>pitch_class_deviation</em> - The deviation of a particular pitch class in the described 
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/pitch_class_deviation">http://purl.org/ontology/temperament/pitch_class_deviation</a></p><p><em>pitch class deviation</em> - The deviation of a particular pitch class in the described 
 	temperament from its equivalent in equal temperament. </p>
 <dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
 <dt>Domain:</dt> <dd><a href="#term_DeviationsFromEqual" style="font-family: monospace;">tm:DeviationsFromEqual</a></dd><dt>Range:</dt> <dd><a href="#term_PitchClassDeviation" style="font-family: monospace;">tm:PitchClassDeviation</a></dd></dl>
@@ -517,7 +518,7 @@
 
 <div class="specterm" id="term_upper">
 <h3>Property: tm:upper</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/upper">http://purl.org/ontology/temperament/upper</a></p><p><em>higher note of an interval</em> - Links an interval with its higher note (or pitch class).  </p>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/upper">http://purl.org/ontology/temperament/upper</a></p><p><em>upper pitch class</em> - Links an interval with a pitch class which is higher on a scale compared to the other pitch class of this interval. </p>
 <dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
 <dt>Domain:</dt> <dd><a href="#term_Interval" style="font-family: monospace;">tm:Interval</a></dd><dt>Range:</dt> <dd><a href="#term_PitchClass" style="font-family: monospace;">tm:PitchClass</a></dd></dl>
 <p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
@@ -957,4 +958,4 @@
 
 </html>
 
-<!-- specification regenerated by SpecGen5 at 13:58:57 12/19/09 GMT -->
+<!-- specification regenerated by SpecGen5 at 16:11:00 12/19/09 GMT -->
