@@ -364,25 +364,25 @@
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/DeviationFromFifth">
     <vs:term_status>unstable</vs:term_status>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/interval">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/interval">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/interval">
     <rdfs:label>interval</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/interval">
     <rdfs:comment>Associates a specific interval on the circle of fifths. </rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/interval">
     <rdfs:domain rdf:resource="http://purl.org/ontology/temperament/TemperamentDescription"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/interval">
     <rdfs:range rdf:resource="http://purl.org/ontology/temperament/Interval"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/ontology/temperament/intraval">
+  <rdf:Description rdf:about="http://purl.org/ontology/temperament/interval">
     <vs:term_status>unstable</vs:term_status>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/ontology/temperament/deviation">

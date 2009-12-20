@@ -182,7 +182,7 @@
 
     <!-- The list of classes and properties goes here -->
     <div style="padding: 1em; border: dotted; background-color: #ddd;"><p>Classes:  <a href="#term_CircleOfFifths">CircleOfFifths</a>,  <a href="#term_Comma">Comma</a>,  <a href="#term_DeviationFromFifth">DeviationFromFifth</a>,  <a href="#term_DeviationsFromEqual">DeviationsFromEqual</a>,  <a href="#term_Interval">Interval</a>,  <a href="#term_IntervalDeviation">IntervalDeviation</a>,  <a href="#term_MeantoneTemperament">MeantoneTemperament</a>,  <a href="#term_PitchClass">PitchClass</a>,  <a href="#term_PitchClassDeviation">PitchClassDeviation</a>,  <a href="#term_PitchClassInterval">PitchClassInterval</a>,  <a href="#term_RegularTemperament">RegularTemperament</a>,  <a href="#term_RestrictedTemperament">RestrictedTemperament</a>,  <a href="#term_Temperament">Temperament</a>,  <a href="#term_TemperamentDescription">TemperamentDescription</a>,  <a href="#term_WellTemperament">WellTemperament</a>, 
-</p><p>Properties:  <a href="#term_comma">comma</a>,  <a href="#term_constraint">constraint</a>,  <a href="#term_description">description</a>,  <a href="#term_deviation">deviation</a>,  <a href="#term_frequency_ratio">frequency_ratio</a>,  <a href="#term_intraval">intraval</a>,  <a href="#term_lower">lower</a>,  <a href="#term_pitch_class">pitch_class</a>,  <a href="#term_pitch_class_deviation">pitch_class_deviation</a>,  <a href="#term_upper">upper</a>,  <a href="#term_value">value</a>, 
+</p><p>Properties:  <a href="#term_comma">comma</a>,  <a href="#term_constraint">constraint</a>,  <a href="#term_description">description</a>,  <a href="#term_deviation">deviation</a>,  <a href="#term_frequency_ratio">frequency_ratio</a>,  <a href="#term_interval">interval</a>,  <a href="#term_lower">lower</a>,  <a href="#term_pitch_class">pitch_class</a>,  <a href="#term_pitch_class_deviation">pitch_class_deviation</a>,  <a href="#term_upper">upper</a>,  <a href="#term_value">value</a>, 
 </p><p>Instances:  <a href="#term_pitchclass_A">A</a>,  <a href="#term_pitchclass_Ab">Ab</a>,  <a href="#term_pitchclass_As">As</a>,  <a href="#term_pitchclass_B">B</a>,  <a href="#term_pitchclass_Bb">Bb</a>,  <a href="#term_Bendeler">Bendeler</a>,  <a href="#term_pitchclass_Bs">Bs</a>,  <a href="#term_pitchclass_C">C</a>,  <a href="#term_pitchclass_Cb">Cb</a>,  <a href="#term_pitchclass_Cs">Cs</a>,  <a href="#term_pitchclass_D">D</a>,  <a href="#term_pitchclass_Db">Db</a>,  <a href="#term_Diaschisma">Diaschisma</a>,  <a href="#term_DidymusComma">DidymusComma</a>,  <a href="#term_DitonicComma">DitonicComma</a>,  <a href="#term_pitchclass_Ds">Ds</a>,  <a href="#term_pitchclass_E">E</a>,  <a href="#term_pitchclass_Eb">Eb</a>,  <a href="#term_pitchclass_Es">Es</a>,  <a href="#term_pitchclass_F">F</a>,  <a href="#term_pitchclass_Fb">Fb</a>,  <a href="#term_FifthCommaMeantone">FifthCommaMeantone</a>,  <a href="#term_pitchclass_Fs">Fs</a>,  <a href="#term_pitchclass_G">G</a>,  <a href="#term_pitchclass_Gb">Gb</a>,  <a href="#term_pitchclass_Gs">Gs</a>,  <a href="#term_KirnbergerIII">KirnbergerIII</a>,  <a href="#term_Neidhardt">Neidhardt</a>,  <a href="#term_PythagoreanComma">PythagoreanComma</a>,  <a href="#term_QuarterCommaMeantone">QuarterCommaMeantone</a>,  <a href="#term_Schisma">Schisma</a>,  <a href="#term_SixthCommaMeantone">SixthCommaMeantone</a>,  <a href="#term_Stanhope">Stanhope</a>,  <a href="#term_SyntonicComma">SyntonicComma</a>,  <a href="#term_Valotti">Valotti</a>,  <a href="#term_WerckmeisterIII">WerckmeisterIII</a>,  <a href="#term_YoungII">YoungII</a>, 
 </p>
 </div>
@@ -294,7 +294,7 @@
 <h3>Class: tm:Interval</h3>
 <p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/Interval">http://purl.org/ontology/temperament/Interval</a></p><p><em>Interval</em> - Describes the relationship between the 
 	pitches of two notes or pitch classes. </p>
-<dl><dt>in-domain-of:</dt><dd><a href="#term_deviation" style="font-family: monospace;">tm:deviation</a></dd><dd><a href="#term_lower" style="font-family: monospace;">tm:lower</a></dd><dd><a href="#term_upper" style="font-family: monospace;">tm:upper</a></dd><dt>in-range-of:</dt><dd><a href="#term_intraval" style="font-family: monospace;">tm:intraval</a></dd></dl>
+<dl><dt>in-domain-of:</dt><dd><a href="#term_deviation" style="font-family: monospace;">tm:deviation</a></dd><dd><a href="#term_lower" style="font-family: monospace;">tm:lower</a></dd><dd><a href="#term_upper" style="font-family: monospace;">tm:upper</a></dd><dt>in-range-of:</dt><dd><a href="#term_interval" style="font-family: monospace;">tm:interval</a></dd></dl>
 <p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
 
 
@@ -394,7 +394,7 @@
 	A super class of temperament descriptions using,
 	for example, deviation from equal temperament, 
 	or the circle of fifths. </p>
-<dl><dt>in-domain-of:</dt><dd><a href="#term_constraint" style="font-family: monospace;">tm:constraint</a></dd><dd><a href="#term_intraval" style="font-family: monospace;">tm:intraval</a></dd><dt>in-range-of:</dt><dd><a href="#term_description" style="font-family: monospace;">tm:description</a></dd></dl>
+<dl><dt>in-domain-of:</dt><dd><a href="#term_constraint" style="font-family: monospace;">tm:constraint</a></dd><dd><a href="#term_interval" style="font-family: monospace;">tm:interval</a></dd><dt>in-range-of:</dt><dd><a href="#term_description" style="font-family: monospace;">tm:description</a></dd></dl>
 <p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
 
 
@@ -470,9 +470,9 @@
 
 </div>
 
-<div class="specterm" id="term_intraval">
-<h3>Property: tm:intraval</h3>
-<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/intraval">http://purl.org/ontology/temperament/intraval</a></p><p><em>interval</em> - Associates a specific interval on the circle of fifths.  </p>
+<div class="specterm" id="term_interval">
+<h3>Property: tm:interval</h3>
+<p style="font-family:monospace; font-size:0.em;">URI: <a href="http://purl.org/ontology/temperament/interval">http://purl.org/ontology/temperament/interval</a></p><p><em>interval</em> - Associates a specific interval on the circle of fifths.  </p>
 <dl><dt>OWL Type:</dt><dd>ObjectProperty</dd>
 <dt>Domain:</dt> <dd><a href="#term_TemperamentDescription" style="font-family: monospace;">tm:TemperamentDescription</a></dd><dt>Range:</dt> <dd><a href="#term_Interval" style="font-family: monospace;">tm:Interval</a></dd></dl>
 <p style="float: right; font-size: small;">[<a href="#sec-glance">back to top</a>]</p>
@@ -958,4 +958,4 @@
 
 </html>
 
-<!-- specification regenerated by SpecGen5 at 16:11:00 12/19/09 GMT -->
+<!-- specification regenerated by SpecGen5 at 19:25:08 12/20/09 GMT -->

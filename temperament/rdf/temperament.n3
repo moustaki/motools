@@ -200,7 +200,7 @@ tm:DeviationFromFifth a owl:Class;
 
 # properties
 
-tm:intraval
+tm:interval
     a rdf:Property, owl:ObjectProperty;
     rdfs:label "interval";
     rdfs:comment """Associates a specific interval on the circle of fifths. """;
