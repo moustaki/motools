@@ -64,7 +64,7 @@ event:Product a owl:Class;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:someValuesFrom event:Event;
-		owl:onProperty event:producedIn;
+		owl:onProperty event:produced_in;
 	]
 	.
 
@@ -74,10 +74,11 @@ event:Factor a owl:Class;
 		Everything used as a factor in an event
 		""";
 	vs:term_status "stable";
+    owl:disjointWith foaf:Agent;
 	owl:equivalentClass [
 		a owl:Restriction;
 		owl:someValuesFrom event:Event;
-		owl:onProperty event:isFactorOf;
+		owl:onProperty event:factor_of;
 		];
 	.
 
@@ -92,7 +93,7 @@ event:agent a owl:ObjectProperty;
 	rdfs:range foaf:Agent;
 	rdfs:domain event:Event;
 	owl:equivalentProperty event:hasAgent; #see verbs vs nouns discussion
-	owl:inverseOf event:isAgentIn;
+	owl:inverseOf event:agent_in;
 	.
 
 event:factor a owl:ObjectProperty;
@@ -103,7 +104,7 @@ event:factor a owl:ObjectProperty;
 		""";
 	rdfs:domain event:Event;
 	owl:equivalentProperty event:hasFactor;
-	owl:inverseOf event:isFactorOf;
+	owl:inverseOf event:factor_of;
 	.
 
 event:literal_factor a owl:DatatypeProperty;
@@ -126,7 +127,7 @@ event:product a owl:ObjectProperty;
 		""";
 	rdfs:domain event:Event;
 	owl:equivalentProperty event:hasProduct;
-	owl:inverseOf event:producedIn;
+	owl:inverseOf event:produced_in;
 	.
 
 event:sub_event a owl:ObjectProperty;
