@@ -4,7 +4,7 @@ Created on Jun 12, 2009
 @author: kurtjx
 '''
 
-import re
+import re,sys
 import time
 from datetime import date, timedelta
 from rdflib import ConjunctiveGraph, URIRef

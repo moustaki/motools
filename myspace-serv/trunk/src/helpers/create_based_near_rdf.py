@@ -9,7 +9,7 @@ create_based_near_rdf.py
 """
 
 from SPARQLWrapper import SPARQLWrapper2
-from SPARQLWrapper.sparqlexceptions import QueryBadFormed, EndPointNotFound
+from SPARQLWrapper.SPARQLExceptions import QueryBadFormed, EndPointNotFound
 import sys
 import logging
 from logging import debug, error, info

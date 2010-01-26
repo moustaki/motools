@@ -4,6 +4,7 @@ Created on Jun 10, 2009
 @author: kurtjx
 '''
 
+import sys
 import myspaceuris as uris
 from tryurl import try_open
 from rdflib import ConjunctiveGraph, URIRef, Namespace
