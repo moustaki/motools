@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>DBTune - Myspace RDF Service</title>
+
+<link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+
+<body>
+
+
+<a href="http://dbtune.org/"><h1 style="font-size: 250%;">DBTune.org</h1></a>
+
+<pre>
+	NOTICE: Our server is full - you may find that artists that dereference do <em>not</em> appear
+	in the endpoint.  We will re-enable caching into the endpoint when we get our new hardware setup :-)
+</pre>
+
+<div id="tagline">Myspace RDF Service</div>
+
+<h2><a name="disc" id="disc"></a>0. Disclaimer</h2>
+<p>
+This is a non-commercial site. The information contained in this site has been collected from several
+sources and its accuracy cannot be guaranteed.
+No copyright has been intentionally
+violated. If you feel a copyright has been violated please contact kurtjx at gmail immediately.
+This service is in no way affiliated or endorsed by Myspace.com.
+</p>
+<p>
+Please note this service may sometimes behave unexpectedly as Myspace makes changes to their page templates.
+Please contact kurtjx at gmail if you have any questions or notice any problems with this service.
+
+
+</p>
+
+<h2><a name="intro" id="intro"></a>1. Introduction</h2>
+
+<p>
+<!--<b>This service is down at the moment.</b> MySpace changed their
+HTML, so the scraping doesn't work as expected anymore.
+</p>-->
+
+<p>
+
+This service provides a live RDF representation of <a href="http://www.myspace.com/">Myspace</a> users.
+If the user is also an <i>artist</i>, then the corresponding tracks in the streaming audio cache are included in the RDF.
+Note that only the <i>top friends</i> of the target Myspace user are included in the RDF.
+
+</p>
+
+
+<p>
+This representations is designed using the <a href="http://musicontology.com/" target="_blank">
+Music Ontology</a>, <a href="http://xmlns.com/foaf/0.1/" target="_blank">FOAF</a>, and a small
+<a href="http://purl.org/ontology/myspace" target="_blank">Myspace Ontology</a>. PLEASE NOTE: not all the properties specified
+in the ontology are supported in the wrapper.  If there is functionality missing, you can help add it by
+joining the <a href="http://sourceforge.net/projects/motools/" target="_blank">MoTools</a> project.
+</p>
+
+<p>
+
+
+
+<h2><a name="use" id="use"></a>2. Using this service</h2>
+
+<p>
+Starting from a Myspace user name:
+<pre>
+http://myspace.com/&lt;user name&gt;
+</pre>
+Just get the following URI:
+<pre>
+
+http://dbtune.org/myspace/&lt;user name&gt;
+</pre>
+Alternatively, you can use the Myspace user id directly:
+<pre>
+http://dbtune.org/myspace/uid/&lt;userID&gt;
+</pre>
+
+</p>
+
+<p>For example, the following URI identifies a <a href="http://myspace.com/lesversaillaisesamoustache">band in MySpace</a>:
+<pre>
+
+http://dbtune.org/myspace/lesversaillaisesamoustache
+</pre>
+</p>
+
+
+<p>
+If you have a MySpace account, you can
+add the corresponding information to your <a href="http://xmlns.com/foaf/0.1/">FOAF profile</a>
+by adding the following statement in it:
+<pre>
+&lt;my URI&gt; owl:sameAs &lt;http://dbtune.org/myspace/&lt;user name&gt;
+
+</pre>
+</p>
+
+<h2><a name="SPARQL" id="SPARQL"></a>3. SPARQL Endpoint</h2>
+<p>
+This service caches wrapper results in a <a href="http://www.w3.org/TR/rdf-sparql-query/" target="_blank">
+SPARQL endpoint</a> powered by Open Link's <a href="http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/" target="_blank">
+Virtuoso</a> triple store.  Both the endpoint and a webinterface are accessible at <a href="http://virtuoso.dbtune.org/sparql"
+target="_blank">http://virtuoso.dbtune.org/sparql</a>.
+</p>
+<p>
+When possible, the endpoint includes links to <a href="http://musicbrainz.org/" target="_blank">Musicbrainz</a>
+ and <a href="http://www.bbc.co.uk/music/artists/" target="_blank">BBC Music artists</a>.  The linkage is performed
+ off-line using a modified version of <a href="http://motools.svn.sourceforge.net/viewvc/motools/gnatlib/" target="_blank">
+ GNATlib</a>.
+</p>
+<p>
+For music artists, links to the <a href="http://www.geonames.org/" target="_blank">Geonames</a> URI of the country specified on
+their Myspace page are provided.  The mapping of Myspace countries to Geonames URIs can be found in the
+<a href="static/countries_geonames.tsv" target="_blank">countries_geonames.tsv</a> file or in the code as a Python
+pickled dictionary.
+</p>
+<p>
+Here is an example query against the enpoint selecting all music artists from Hungary who specify their
+genre as Hip Hop.  The results are ordered by number of friends:
+<pre><code>
+PREFIX mysp:&lt;http://purl.org/ontology/myspace#&gt;
+PREFIX foaf:&lt;http://xmlns.com/foaf/0.1/&gt;
+PREFIX mo:&lt;http://purl.org/ontology/mo/&gt;
+
+SELECT ?name ?friends from &lt;http://dbtune.org/myspace/&gt;
+WHERE {?artist foaf:based_near &lt;http://sws.geonames.org/719819/&gt; ;
+ a mo:MusicArtist ;
+ foaf:name ?name ;
+ mysp:totalFriends ?friends ;
+ mysp:genreTag &lt;http://purl.org/ontology/myspace#Hip%20Hop&gt; .
+}
+ORDER BY DESC (?friends)
+</code></pre>
+</p>
+
+
+<h2><a name="code" id="code"></a>4. Code</h2>
+<p>
+As usual, <a href="http://motools.svn.sourceforge.net/viewvc/motools/myspace-serv/">all the code running this service</a>
+is open source and based
+on <a href="http://www.python.org">Python</a>, <a href="http://motools.svn.sourceforge.net/viewvc/motools/mopy/">MoPy</a>
+, <a href="http://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a>, and <a href="http://www.cherrypy.org/">CherryPy</a>.
+
+</p>
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3327144-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,12 @@
+this is the code for the Myspace wrapper service at
+	http://dbtune.org/myspace
+
+Virtuoso is used for storing info in a SPARQL endpoint
+MoPy is used to create the RDF
+BeautifulSoup is used in the page scraping
+probably some other dependencies i'm forgetting
+
+if for some reason you actually want to run this software yourself, contact
+kurtjx at gmail
+
+
