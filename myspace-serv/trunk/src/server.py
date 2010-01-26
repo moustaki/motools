@@ -22,31 +22,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 import cherrypy
-import os
-from myspace2rdf import MyspaceScrape, MyspaceException
-from myspace2html import Htmlify
+from myspace2rdf.myspace2rdf import MyspaceScrape, MyspaceException
+#from myspace2rdf.myspace2html import Htmlify
 from ConfigParser import ConfigParser, Error
 import sys
-from sparql4myspace import SparqlSpace
-from ODBC import ODBC
 
 config = ConfigParser()
 try:
     config.read('config')
-except:
-    print 'error, no config file\n  exting...'
+except Error:
+    print 'error, no config file\n you must cp default.config config and edit\n exting...'
     sys.exit(1)
 
-wtf = config.get('ODBC', 'sparql')
+wtf = config.get('sparql', 'enable')
 if wtf == 'True':
-    USE_SPARQL = True
+    SPARQL_ENABLED = True
 else:
-    USE_SPARQL = False
+    SPARQL_ENABLED = False
 #change to a blank string for local testing, no trailing '/'
 URL_BASE = config.get('urls', 'base')[1:-1] #"http://dbtune.org/myspace"
 
-
-VODBC = ODBC()
 
 class Myspace:
     @cherrypy.expose
@@ -77,43 +72,24 @@ class MyspaceUID:
         if uid.endswith('.rdf'):
             # serve the data
             cherrypy.response.headers['Content-Type'] = 'application/rdf+xml; charset=UTF-8;'
-            print USE_SPARQL
-            sparql_match = False
-            if USE_SPARQL:
-                #print "USING SPARQL"
-                # check sparql endpoint
-                connect = VODBC.connect()
-                cursor = connect.cursor()
-                ss = SparqlSpace('http://dbtune.org/myspace/uid/'+str(uid.rsplit('.rdf')[0]), cursor)
-                if ss.select():
-                    #print "FOUND SPARQL MATCH"
-                    sparql_match = True
-                    ret = ss.make_graph()
-                    cursor.close()
-                    connect.commit()
-                    connect.close()
-                    return ret
 
+            M = MyspaceScrape(uid=uid.rsplit('.rdf')[0])
+            M.run()
+            if SPARQL_ENABLED:
+                M.insert_sparql()
+            return M.serialize()
 
-            if not sparql_match:
-                M = MyspaceScrape(uid=uid.rsplit('.rdf')[0])
-                M.run()
-                if USE_SPARQL:
-                    M.insert_sparql(cursor)
-                    cursor.close()
-                    connect.commit()
-                    connect.close()
-                return M.serialize()
-
-        elif uid.endswith('.html'):
+        #elif uid.endswith('.html'):
             # serve the html - THIS NEVER HAPPENS AND PRY NEVER WILL :p
-            mh = Htmlify("http://dbtune.org/myspace/uid/"+uid.rsplit('.html')[0])
-            mh.parse_rdf()
-            mh.get_all()
-            return mh.html_head + mh.serialize_n3() + mh.get_available_as() +mh.html_tail
+            #mh = Htmlify("http://dbtune.org/myspace/uid/"+uid.rsplit('.html')[0])
+            #mh.parse_rdf()
+            #mh.get_all()
+            #return mh.html_head + mh.serialize_n3() + mh.get_available_as() +mh.html_tail
         else:
+            # we're always doing a re-direct to the rdf - html version never implemented
             raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+uid+'.rdf', 303)
 
+################ content neg - was never really used but works ###################
 #            # check accept header and do content negotiation
 #            accepts = cherrypy.request.headers['Accept']
 #            if accepts.find('application/rdf+xml') != -1:
@@ -124,22 +100,9 @@ class MyspaceUID:
 #                return "unknown content type - bad accept header from client"
 
 
+# setup the cherrypy applications
 root = Myspace()
 root.uid = MyspaceUID()
-
-#appconf = {'/': {'tools.proxy.on':True,}
-#           ,'/style.css': {'tools.staticfile.on': True,
-#                               'tools.staticfile.filename': os.path.join(os.path.abspath(''), 'static', 'style.css')}
-#           }
-#cherrypy.config.update({'server.socket_port': 1213,
-#                        'log.screen': True
-#                        ,'log.access_file': '/var/log/myspace/dbtune-myspace-access.log'
-#                        ,'log.error_file':'/var/log/myspace/dbtune-myspace-error.log'
-#                        ,'tools.caching.on': True   #use cherrypy automagik caching
-#                        ,'server.thread_pool':30
-#                        ,'server.socket_queue_size': 10
-#                        ,'tools.encode.on': True    #allows unicode not on by default
-#                        })
 
 cherrypy.quickstart(root, '/', 'config')
 

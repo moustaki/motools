@@ -8,17 +8,12 @@ import os
 # change to src directory
 os.chdir('../src')
 from myspace2rdf import MyspaceScrape
-import pyodbc
-from ODBC import ODBC
-import sys
-VODBC = ODBC()
 GRAPH = "http://insertsparql.test.graph"
 
 class InsertSparqlTest(unittest.TestCase):
 
     def setUp(self):
-        self.connect = VODBC.connect()
-        self.connect.execute('SPARQL CLEAR GRAPH <%s>' % GRAPH) 
+        
         print 'getting myspace data'
         self.short_url_artist = 'kurtisrandom'
         self.uid_artist = '30650288'

@@ -4,7 +4,6 @@ Created on Jul 2, 2009
 @author: kurtjx
 '''
 
-from ODBC import ODBC
 from gnatlib import metadatalookup, MbzLookupException
 from ConfigParser import ConfigParser, Error
 from rdflib import ConjunctiveGraph, Namespace, URIRef
@@ -22,7 +21,6 @@ URL_BASE = config.get('urls', 'base')[1:-1] #"http://dbtune.org/myspace"
 GRAPH = config.get('ODBC', 'graph')[1:-1]
 WRITE_PATH = config.get('ODBC', 'write_path')[1:-1]
 
-VODBC = ODBC()
 
 # set namespaces
 OWL = Namespace("http://www.w3.org/2002/07/owl#")
@@ -33,11 +31,11 @@ class FindSameAs(object):
     '''
 
 
-    def __init__(self, cursor):
+    def __init__(self):
         '''
         Constructor
         '''
-        self.cursor = cursor
+        pass
         
         
     def get_sameAs(self, limit=500, offset=0):
@@ -81,9 +79,7 @@ class FindSameAs(object):
         
 
 def main():
-    connect = VODBC.connect()
-    cursor = connect.cursor()
-    fsa = FindSameAs(cursor)
+    fsa = FindSameAs()
     limit = 500
     offset = 0
     while(True):

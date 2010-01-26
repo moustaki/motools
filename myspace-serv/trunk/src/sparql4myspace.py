@@ -4,11 +4,11 @@ Created on Jun 12, 2009
 @author: kurtjx
 '''
 
-import re,sys
-import time
+import sys
+#import time
 from datetime import date, timedelta
-from rdflib import ConjunctiveGraph, URIRef
-from ConfigParser import ConfigParser, Error
+#from rdflib import ConjunctiveGraph, URIRef
+from ConfigParser import ConfigParser#, Error
 import time
 
 

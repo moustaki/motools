@@ -366,27 +366,9 @@ class MyspaceScrape(object):
                 return True
         return False
 
-    def insert_sparql(self, cursor, graph=GRAPH):
-        '''DB.DBA.RDF_LOAD_RDFXML (file_to_string ('/usr/local/virtuoso-opensource/var/lib/virtuoso/db/vc-db-1.rdf'), '', 'http://mygraph.com');'''
-        self.serialize()
-        fname = str(self.uid)+'.rdf'
-        #print 'writing file'
-        fname = os.path.join(WRITE_PATH, fname)
-        self.graph.serialize(fname)
-        # do odbc insert, cp caching should make this cool right?
-        q = "DB.DBA.RDF_LOAD_RDFXML_MT (file_to_string('"+ fname+"'), 'junk', '"+graph+"')"
-        #print q
-        cursor.execute(q)
-        # assign a time stamp here
-        q = '''SPARQL define sql:log-enable 2 INSERT in graph <'''+graph+'''> {<%s> <http://purl.org/dc/terms/modified> "%s"^^xsd:dateTime}'''
-        uri = os.path.join(uris.dbtune,'uid/', str(self.uid))
-        tstamp = time.strftime('%Y-%m-%dT%H:%M:%S')
-        q = q % (uri, tstamp)
-        #print q
-        cursor.execute(q)
-        #cursor.commit()
-        os.remove(fname)
-
+    def insert_sparql(self):
+        pass
+    
     def serialize(self):
         self.mi.add(self.subject)
         graph = mopy.exportRDFGraph(self.mi)
