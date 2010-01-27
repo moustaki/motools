@@ -316,6 +316,11 @@ map:artist_dbpedia a d2rq:PropertyBridge;
 map:artist_dbpedia_tr a d2rq:TranslationTable;
 	d2rq:javaClass "WikipediaTranslator";
 	.
+map:artist_bbc a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:artist;
+    d2rq:property owl:sameAs;
+    d2rq:uriPattern "http://www.bbc.co.uk/music/artists/@@artist.gid@@#artist";
+    .
 map:artist_myspace a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
 	d2rq:property owl:sameAs;
