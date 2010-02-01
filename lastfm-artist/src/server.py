@@ -85,10 +85,11 @@ class MBIDServer:
 root = SWServer()
 root.mbid = MBIDServer()
 appconf = {'/': {'tools.proxy.on':True,}}
-cherrypy.config.update({'server.socket_port': 2059, 
+cherrypy.config.update({'server.socket_port': 1210,
+                        'server.socket_host': '192.168.122.144', 
                         'log.screen': True 
-                        ,'log.access_file': '/var/log/artist-last-fm-access.log' 
-                        ,'log.error_file':'/var/log/artist-last-fm-error.log'
+                        #,'log.access_file': '/var/log/artist-last-fm-access.log' 
+                        #,'log.error_file':'/var/log/artist-last-fm-error.log'
                         ,'server.thread_pool':30
                         ,'server.socket_queue_size': 10
                         ,'response.timeout': 100000000  # do we need this??
