@@ -1,2 +1,2 @@
-#!/bin/sh 
-cd src && exec python server.py
+#!/bin/sh
+cd /var/local/myspace-trunk/src/ && exec setuidgid cherrypy python server.py 2>&1 | multilog t s10000000 n1000 /var/log/myspace-service
