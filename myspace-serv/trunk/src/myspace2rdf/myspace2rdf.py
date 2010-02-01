@@ -4,10 +4,9 @@ Created on Jun 10, 2009
 @author: kurtjx
 '''
 
-import sys
 import myspaceuris as uris
 from tryurl import try_open
-from rdflib import ConjunctiveGraph, URIRef, Namespace
+from rdflib import URIRef, Namespace
 from scraping import scrapePage, scrapePageWhile
 import mopy
 import re
@@ -15,24 +14,11 @@ from urllib2 import quote
 from xml.dom import minidom
 import os
 from BeautifulSoup import BeautifulSoup as BS
-from ConfigParser import ConfigParser, Error
-import time
 import cPickle as pickle
+from triplestore import TripleStore
 
 FOAF = Namespace('http://xmlns.com/foaf/0.1/')
 
-config = ConfigParser()
-try:
-    config.read('config')
-except:
-    print 'error, no config file\n  exting...'
-    sys.exit(1)
-
-USE_SPARQL = config.get('ODBC', 'sparql')
-#change to a blank string for local testing, no trailing '/'
-URL_BASE = config.get('urls', 'base')[1:-1] #"http://dbtune.org/myspace"
-GRAPH = config.get('ODBC', 'graph')[1:-1]
-WRITE_PATH = config.get('ODBC', 'write_path')[1:-1]
 
 f = open('./helpers/countries', 'r')
 COUNTRIES = pickle.load(f)
@@ -367,7 +353,8 @@ class MyspaceScrape(object):
         return False
 
     def insert_sparql(self):
-        pass
+        store = TripleStore()
+        store.insert(self.serialize(), self.url)
     
     def serialize(self):
         self.mi.add(self.subject)

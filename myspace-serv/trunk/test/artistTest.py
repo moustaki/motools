@@ -7,7 +7,7 @@ import unittest
 import os
 # change to src directory
 os.chdir('../src')
-from myspace2rdf import MyspaceScrape
+from myspace2rdf.myspace2rdf import MyspaceScrape
 import mopy
 from rdflib import ConjunctiveGraph
 

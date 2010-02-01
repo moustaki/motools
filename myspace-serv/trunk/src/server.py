@@ -1,4 +1,4 @@
-#!/usr/bin/python2.4
+#!/usr/bin/env python
 '''
 Created on 15 May 2009
 
@@ -24,26 +24,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import cherrypy
 from myspace2rdf.myspace2rdf import MyspaceScrape, MyspaceException
 #from myspace2rdf.myspace2html import Htmlify
-from ConfigParser import ConfigParser, Error
-import sys
+from myspace2rdf.config import URL_BASE, SPARQL_ENABLED
 
-config = ConfigParser()
-try:
-    config.read('config')
-except Error:
-    print 'error, no config file\n you must cp default.config config and edit\n exting...'
-    sys.exit(1)
-
-wtf = config.get('sparql', 'enable')
-if wtf == 'True':
-    SPARQL_ENABLED = True
-else:
-    SPARQL_ENABLED = False
-#change to a blank string for local testing, no trailing '/'
-URL_BASE = config.get('urls', 'base')[1:-1] #"http://dbtune.org/myspace"
 
 
 class Myspace:
+    """application to serve up the index and redirect from user names"""
     @cherrypy.expose
     def index(self):
         f = open('static/index.html', 'r')
@@ -63,6 +49,7 @@ class Myspace:
             raise cherrypy.HTTPRedirect(URL_BASE+'/uid/'+M.uid, 303)
 
 class MyspaceUID:
+    """application to deal with /uid"""
     @cherrypy.expose
     def index(self):
         pass
