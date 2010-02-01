@@ -13,7 +13,7 @@ import sys
 config = ConfigParser()
 try:
     config.read('config')
-except:
+except Error:
     print 'error, no config file\n  exting...'
     sys.exit(1)
 

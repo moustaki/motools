@@ -205,7 +205,7 @@ class MyspaceScrape(object):
         # total friend count
         try:
             totfri = self.soup.find(property="myspace:friendCount").string
-        except AttributeError, err:
+        except AttributeError:
             totfri = '0'
         else:
             self.subject.totalFriends.set(int(totfri))
@@ -213,32 +213,32 @@ class MyspaceScrape(object):
     def get_stats_non_artist(self):
         try:
             gender = self.soup.find('span', 'gender').string
-        except AttributeError, err:
+        except AttributeError:
             pass
         else:
             self.subject.gender.set(str(gender).lower())
         try:
             country = self.soup.find('span', 'country-name').string
-        except AttributeError, err:
+        except AttributeError:
             pass
         else:
-            uri_country = mopy.geo.SpatialThing
+            #uri_country = mopy.geo.SpatialThing
             self.subject.country.set(str(unicode(country).encode('utf-8')))
         try:
             locality = self.soup.find('span', 'locality').string
-        except AttributeError, err:
+        except AttributeError:
             pass
         else:
             self.subject.locality.set(str(unicode(locality).encode('utf-8')))
         try:
             region = self.soup.find('span', 'region').string
-        except AttributeError, err:
+        except AttributeError:
             pass
         else:
             self.subject.region.set(str(unicode(region).encode('utf-8')))
         try:
             age = self.soup.find('span', 'age').string
-        except AttributeError, err:
+        except AttributeError:
             pass
         else:
             try:
@@ -247,7 +247,7 @@ class MyspaceScrape(object):
                 pass # probably means age set to private
         try:
             totfri = self.soup.find('span','count').string
-        except AttributeError, err:
+        except AttributeError:
             pass
         else:
             self.subject.totalFriends.set(int(totfri))
@@ -274,7 +274,7 @@ class MyspaceScrape(object):
         url = None
         try:
             url = self.soup.find('a', 'url').get('href')
-        except AttributeError, err:
+        except AttributeError:
             url = ''
         else:
             url = url.rsplit(uris.www_myspace)[1]

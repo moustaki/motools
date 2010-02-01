@@ -22,9 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 import cherrypy
-from myspace2rdf.myspace2rdf import MyspaceScrape, MyspaceException
+from myspace.myspace2rdf import MyspaceScrape, MyspaceException
 #from myspace2rdf.myspace2html import Htmlify
-from myspace2rdf.config import URL_BASE, SPARQL_ENABLED
+from myspace.config import URL_BASE, SPARQL_ENABLED
 
 
 

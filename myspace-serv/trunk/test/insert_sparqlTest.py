@@ -7,7 +7,7 @@ import unittest
 import os
 # change to src directory
 os.chdir('../src')
-from myspace2rdf import MyspaceScrape
+from myspace.myspace2rdf import MyspaceScrape
 GRAPH = "http://insertsparql.test.graph"
 
 class InsertSparqlTest(unittest.TestCase):

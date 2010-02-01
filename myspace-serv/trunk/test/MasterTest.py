@@ -7,7 +7,7 @@ import unittest
 import os
 # change to src directory
 os.chdir('../src')
-from myspace2rdf import Myspace
+from myspace.myspace2rdf import Myspace
 
 
 class MasterTest(unittest.TestCase):

@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 import logging
-from xml.dom import minidom as dom
+#from xml.dom import minidom as dom
 
 def scrapePage(page, patterns, termChar):
 	"""Scrape the page at sock for each pattern in "patterns" and return the identifier occurring after the
@@ -44,7 +44,6 @@ def scrapePageWhile(page, patterns, termChar):
 	  last pattern (which is assumed to be terminated by a double-quote symbol)"""
 	#if sock == None:
 	#	   return None;
-   
 	#page = sock.read()
 	#sock.close()
 	
