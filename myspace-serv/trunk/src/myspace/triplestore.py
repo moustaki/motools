@@ -17,10 +17,16 @@ class TripleStore:
         '''
         self.store = HTTP4Store(ENDPOINT)
         
-    def insert(self, content, graph, format="rdf/xml"):
+    def insert(self, content, graph, format="xml"):
         r = self.store.add_graph(uri=graph, content=content, content_type=format)
         if not (r.status == 201 or r.status == 200):
             raise TripleStoreInsertException(content)
+        
+    def query(self, query):
+        return self.store.sparql(query)
+    
+    def delete_graph(self, graph):
+        self.store.del_graph(graph)
 
 class TripleStoreInsertException(Exception):
     '''Insertion error: '''

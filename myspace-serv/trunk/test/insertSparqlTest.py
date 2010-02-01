@@ -8,7 +8,9 @@ import os
 # change to src directory
 os.chdir('../src')
 from myspace.myspace2rdf import MyspaceScrape
+from myspace.triplestore import TripleStore
 GRAPH = "http://insertsparql.test.graph"
+import rdflib
 
 class InsertSparqlTest(unittest.TestCase):
 
@@ -23,18 +25,19 @@ class InsertSparqlTest(unittest.TestCase):
     def test_insert_sparql(self):
         print 'inserting'
         #cursor = self.connect.cursor()
-        self.A.insert_sparql(self.connect, GRAPH)
+        self.A.insert_sparql()
         print 'checking insert'
-        res = self.connect.execute('''SPARQL SELECT ?same FROM <%s> WHERE { <http://dbtune.org/myspace/uid/30650288> <http://www.w3.org/2002/07/owl#sameAs> ?same } ''' % GRAPH)
-        same = res.next()[0]
-        assert 'http://dbtune.org/myspace/kurtisrandom' == same, 'wrong sameAs result: ' +str(same)
-        self.connect.commit() 
+        
+        res = TripleStore().query('''SELECT ?same WHERE { <http://dbtune.org/myspace/uid/30650288> <http://www.w3.org/2002/07/owl#sameAs> ?same . }  ''')
+        #print res
+        same = res[0]['same']
+        assert rdflib.URIRef('http://dbtune.org/myspace/kurtisrandom') == same, 'wrong sameAs result: ' +str(same)
+         
         #cursor.close()
         
         
     def tearDown(self):
-        self.connect.execute('SPARQL CLEAR GRAPH <%s>' % GRAPH)
-        self.connect.close() 
+        TripleStore().delete_graph(GRAPH)
         
 
 

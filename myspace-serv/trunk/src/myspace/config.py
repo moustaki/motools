@@ -30,6 +30,8 @@ except Error:
     raise MyspaceConfigError('sparql: enable')
 try:
     URL_BASE = config.get('urls', 'base')[1:-1]
+    if URL_BASE.endswith('/'):
+        URL_BASE=URL_BASE[:-1]
 except Error:
     raise MyspaceConfigError('urls: base')
 try:

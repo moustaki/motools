@@ -35,7 +35,7 @@ class NonArtistTest(unittest.TestCase):
         for row in graph.query('''SELECT ?age where { ?x <http://purl.org/ontology/myspace#age> ?age } '''):
             age = row[0]
             print age
-        assert int(age)==100, 'wrong age ' + str(age)
+        assert int(age)>98, 'wrong age ' + str(age)
         for row in graph.query('''SELECT ?gender where { ?x <http://xmlns.com/foaf/0.1/gender> ?gender . } '''):
             gender = row[0]
         assert gender == 'male' , 'wrong gender '+ str(gender)

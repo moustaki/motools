@@ -354,7 +354,9 @@ class MyspaceScrape(object):
 
     def insert_sparql(self):
         store = TripleStore()
-        store.insert(self.serialize(), self.url)
+        rdfxml =  self.serialize()
+        print rdfxml
+        store.insert(rdfxml, self.url)
     
     def serialize(self):
         self.mi.add(self.subject)
