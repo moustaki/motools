@@ -1,6 +1,6 @@
 # Saved by TopBraid on Wed Feb 03 15:46:33 CET 2010
 # baseURI: http://purl.org/ontology/mo/
-# imports: http://xmlns.com/foaf/spec/index.rdf
+# imports: http://xmlns.com/foaf/0.1/
 # imports: http://purl.org/NET/c4dm/timeline.owl
 # imports: http://xmlns.com/foaf/spec/index.rdf
 # imports: http://www.w3.org/2006/time
@@ -50,7 +50,7 @@ mo:   a owl:Ontology ;
       dc:title "The Music Ontology" ; 
       owl:imports 
 			<http://purl.org/NET/c4dm/keys.owl> ,
-			<http://xmlns.com/foaf/spec/index.rdf> ,
+			<http://xmlns.com/foaf/0.1/> ,
 			<http://purl.org/NET/c4dm/timeline.owl> ,
 			<http://www.w3.org/2006/time> ,
             <http://www.w3.org/2003/01/geo/wgs84_pos> ,
