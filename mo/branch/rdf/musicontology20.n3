@@ -1,10 +1,19 @@
 # Saved by TopBraid on Wed Feb 03 15:46:33 CET 2010
 # baseURI: http://purl.org/ontology/mo/
 # imports: http://xmlns.com/foaf/spec/index.rdf
-# imports: http://purl.org/NET/c4dm/event.owl
-# imports: http://motools.sourceforge.net/keys/keys.owl
 # imports: http://purl.org/NET/c4dm/timeline.owl
+# imports: http://xmlns.com/foaf/spec/index.rdf
+# imports: http://www.w3.org/2006/time
+# imports: http://purl.org/NET/c4dm/event.owl
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://purl.org/NET/c4dm/keys.owl
+# imports: http://www.w3.org/2003/01/geo/wgs84_pos
 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix keys: <http://purl.org/NET/c4dm/keys.owl#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix bio:     <http://purl.org/vocab/bio/0.1/> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms:  <http://purl.org/dc/terms/> .
@@ -27,12 +36,10 @@
 event:isAgentIn
       rdf:type owl:ObjectProperty .
 
-dc:   rdf:type owl:Ontology .
-
 dcterms:isReferencedBy
       rdf:type owl:ObjectProperty .
 
-mo:   rdf:type owl:Ontology ;
+mo:   a owl:Ontology ;
       dc:date "$Date: 2007/08/07 16:34:19 $" ;
       dc:description """
 		The Music Ontology Specification provides main concepts and 
@@ -40,8 +47,15 @@ mo:   rdf:type owl:Ontology ;
 		on the Semantic Web. This document contains a RDF description 
 		of the Music Ontology.
 	""" ;
-      dc:title "The Music Ontology" ;
-      owl:imports <http://motools.sourceforge.net/keys/keys.owl> , <http://xmlns.com/foaf/spec/index.rdf> , <http://purl.org/NET/c4dm/timeline.owl> , <http://purl.org/NET/c4dm/event.owl> ;
+      dc:title "The Music Ontology" ; 
+      owl:imports 
+			<http://purl.org/NET/c4dm/keys.owl> ,
+			<http://xmlns.com/foaf/spec/index.rdf> ,
+			<http://purl.org/NET/c4dm/timeline.owl> ,
+			<http://www.w3.org/2006/time> ,
+            <http://www.w3.org/2003/01/geo/wgs84_pos> ,
+            dc:,
+			<http://purl.org/NET/c4dm/event.owl> ;
       owl:versionInfo "Revision: 1.2" ;
       foaf:maker <http://moustaki.org/foaf.rdf#moustaki> , <http://www.talkdigger.com/foaf/fgiasson> .
 
