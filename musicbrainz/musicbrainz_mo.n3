@@ -627,7 +627,7 @@ map:album_translation a d2rq:PropertyBridge;
         .
 
 map:album_remixer a d2rq:PropertyBridge;
-	d2rq:belondsToClassMap map:album;
+	d2rq:belongsToClassMap map:album;
 	d2rq:property mbz:remixer;
 	d2rq:refersToClassMap map:artist;
 	d2rq:join "l_album_artist.link0 = album.id";
