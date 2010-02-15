@@ -228,7 +228,7 @@ rdf_list_member(Member,List) :-
 	rdf_list_member(Member,List2).
 deprecated(Old,New) :-
 	rdf(Old,vs:term_status,literal('deprecated')),
-	rdf(Old,owl:sameAs,New).
+	(rdf(Old,owl:sameAs,New) ; rdf(Old,owl:equivalentProperty,New)).
 
 
 /**
@@ -237,7 +237,7 @@ deprecated(Old,New) :-
 glance_html_desc(Desc) :-
 	((setof(C-CD,
 	Class^S1^NS^(
-		class(Class),rdf_global_id(NS:C,Class),\+deprecated(Class,D),
+		class(Class),rdf_global_id(NS:C,Class),\+deprecated(Class,D), NS = 'mo', 
 		sformat(S1,
 			'<a href="#term_~w">~w</a> | ',
 			[C,C]
@@ -249,7 +249,7 @@ glance_html_desc(Desc) :-
 	list_to_atom(ClassesLSR,Classes),
 	((setof(P-PD,
         Property^S2^NS^(
-                property(Property),rdf_global_id(NS:P,Property),\+deprecated(Property,D),
+                property(Property),rdf_global_id(NS:P,Property),\+deprecated(Property,D), NS = 'mo',
                 sformat(S2,
                         '<a href="#term_~w">~w</a> | \n',
                         [P,P]

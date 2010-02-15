@@ -30,7 +30,7 @@ output_level3('musicontology-level3.rdfs').
 split :- 
 	load,
 	core,
-	external,
+	%external,
 	level1,
 	level2,
 	level3.
@@ -61,7 +61,7 @@ core :-
 external :-
 	primary_ns(NS),
 	findall(rdf(S,P,O),
-		(rdf_db:rdf(A,rdfs:isDefinedBy,NS2),NS2\==NS,description(A,rdf(S,P,O))),
+		(rdf_db:rdf(A,B,C),\+(C=mo:_),description(C,rdf(S,P,O))),
 		TriplesExternal),
 	output_external(External),
 	open(External,write,ExternalStream),
