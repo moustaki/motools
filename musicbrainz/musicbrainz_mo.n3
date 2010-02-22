@@ -20,8 +20,7 @@
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "org.postgresql.Driver";
 	d2rq:jdbcDSN "jdbc:postgresql://localhost/musicbrainz";
-	d2rq:username "yvesr";
-	d2rq:password "yvesr";
+	d2rq:username "musicbrainz_user";
 	d2rq:resultSizeLimit "1000";
 	.
 
@@ -160,13 +159,6 @@ map:albummeta_discids a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:album;
 	d2rq:property vocab:albummeta_discids;
 	d2rq:column "albummeta.discids";
-	d2rq:join "album.id = albummeta.id";
-	d2rq:datatype xsd:int;
-	.
-map:albummeta_trmids a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
-	d2rq:property vocab:albummeta_trmids;
-	d2rq:column "albummeta.trmids";
 	d2rq:join "album.id = albummeta.id";
 	d2rq:datatype xsd:int;
 	.
@@ -316,11 +308,6 @@ map:artist_dbpedia a d2rq:PropertyBridge;
 map:artist_dbpedia_tr a d2rq:TranslationTable;
 	d2rq:javaClass "WikipediaTranslator";
 	.
-map:artist_bbc a d2rq:PropertyBridge;
-    d2rq:belongsToClassMap map:artist;
-    d2rq:property owl:sameAs;
-    d2rq:uriPattern "http://www.bbc.co.uk/music/artists/@@artist.gid@@#artist";
-    .
 map:artist_myspace a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
 	d2rq:property owl:sameAs;
@@ -333,6 +320,11 @@ map:artist_myspace a d2rq:PropertyBridge;
 map:artist_myspace_tr a d2rq:TranslationTable;
         d2rq:javaClass "MySpaceTranslator";
 	.
+map:artist_bbc a d2rq:PropertyBridge;
+    d2rq:belongsToClassMap map:artist;
+    d2rq:property owl:sameAs;
+    d2rq:uriPattern "http://www.bbc.co.uk/music/artists/@@artist.gid@@#artist";
+    .
 map:artist_member a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:artist;
 	d2rq:property foaf:member;
@@ -627,7 +619,7 @@ map:album_translation a d2rq:PropertyBridge;
         .
 
 map:album_remixer a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:album;
+	d2rq:belondsToClassMap map:album;
 	d2rq:property mbz:remixer;
 	d2rq:refersToClassMap map:artist;
 	d2rq:join "l_album_artist.link0 = album.id";
@@ -1707,11 +1699,6 @@ map:language_isocode_2 a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:language;
 	d2rq:property lingvoj:iso1;
 	d2rq:column "language.isocode_2";
-	.
-map:language_french_name a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:language;
-	d2rq:property dc:description;
-	d2rq:column "language.french_name";
 	.
 # FIXME: check this
 map:language_lingvoj a d2rq:PropertyBridge;
@@ -3382,148 +3369,6 @@ map:trackwords_trackid a d2rq:PropertyBridge;
 	d2rq:datatype xsd:int;
 	.
 
-# Table trm
-map:trm a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "trm/@@trm.id@@";
-	d2rq:class vocab:trm;
-	.
-map:trm__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm;
-	d2rq:property rdfs:label;
-	d2rq:pattern "trm #@@trm.id@@";
-	.
-map:trm_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm;
-	d2rq:property vocab:trm_id;
-	d2rq:column "trm.id";
-	d2rq:datatype xsd:int;
-	.
-map:trm_trm a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm;
-	d2rq:property vocab:trm_trm;
-	d2rq:column "trm.trm";
-	.
-map:trm_lookupcount a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm;
-	d2rq:property vocab:trm_lookupcount;
-	d2rq:column "trm.lookupcount";
-	d2rq:datatype xsd:int;
-	.
-map:trm_version a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm;
-	d2rq:property vocab:trm_version;
-	d2rq:column "trm.version";
-	d2rq:datatype xsd:int;
-	.
-
-# Table trm_stat
-map:trm_stat a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "trm_stat/@@trm_stat.id@@";
-	d2rq:class vocab:trm_stat;
-	.
-map:trm_stat__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm_stat;
-	d2rq:property rdfs:label;
-	d2rq:pattern "trm_stat #@@trm_stat.id@@";
-	.
-map:trm_stat_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm_stat;
-	d2rq:property vocab:trm_stat_id;
-	d2rq:column "trm_stat.id";
-	d2rq:datatype xsd:int;
-	.
-map:trm_stat_trm_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm_stat;
-	d2rq:property vocab:trm_stat_trm_id;
-	d2rq:column "trm_stat.trm_id";
-	d2rq:datatype xsd:int;
-	.
-map:trm_stat_month_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm_stat;
-	d2rq:property vocab:trm_stat_month_id;
-	d2rq:column "trm_stat.month_id";
-	d2rq:datatype xsd:int;
-	.
-map:trm_stat_lookupcount a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trm_stat;
-	d2rq:property vocab:trm_stat_lookupcount;
-	d2rq:column "trm_stat.lookupcount";
-	d2rq:datatype xsd:int;
-	.
-
-# Table trmjoin
-map:trmjoin a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "trmjoin/@@trmjoin.id@@";
-	d2rq:class vocab:trmjoin;
-	.
-map:trmjoin__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin;
-	d2rq:property rdfs:label;
-	d2rq:pattern "trmjoin #@@trmjoin.id@@";
-	.
-map:trmjoin_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin;
-	d2rq:property vocab:trmjoin_id;
-	d2rq:column "trmjoin.id";
-	d2rq:datatype xsd:int;
-	.
-map:trmjoin_trm a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin;
-	d2rq:property vocab:trmjoin_trm;
-	d2rq:column "trmjoin.trm";
-	d2rq:datatype xsd:int;
-	.
-map:trmjoin_track a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin;
-	d2rq:property vocab:trmjoin_track;
-	d2rq:column "trmjoin.track";
-	d2rq:datatype xsd:int;
-	.
-map:trmjoin_usecount a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin;
-	d2rq:property vocab:trmjoin_usecount;
-	d2rq:column "trmjoin.usecount";
-	d2rq:datatype xsd:int;
-	.
-
-# Table trmjoin_stat
-map:trmjoin_stat a d2rq:ClassMap;
-	d2rq:dataStorage map:database;
-	d2rq:uriPattern "trmjoin_stat/@@trmjoin_stat.id@@";
-	d2rq:class vocab:trmjoin_stat;
-	.
-map:trmjoin_stat__label a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin_stat;
-	d2rq:property rdfs:label;
-	d2rq:pattern "trmjoin_stat #@@trmjoin_stat.id@@";
-	.
-map:trmjoin_stat_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin_stat;
-	d2rq:property vocab:trmjoin_stat_id;
-	d2rq:column "trmjoin_stat.id";
-	d2rq:datatype xsd:int;
-	.
-map:trmjoin_stat_trmjoin_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin_stat;
-	d2rq:property vocab:trmjoin_stat_trmjoin_id;
-	d2rq:column "trmjoin_stat.trmjoin_id";
-	d2rq:datatype xsd:int;
-	.
-map:trmjoin_stat_month_id a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin_stat;
-	d2rq:property vocab:trmjoin_stat_month_id;
-	d2rq:column "trmjoin_stat.month_id";
-	d2rq:datatype xsd:int;
-	.
-map:trmjoin_stat_usecount a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:trmjoin_stat;
-	d2rq:property vocab:trmjoin_stat_usecount;
-	d2rq:column "trmjoin_stat.usecount";
-	d2rq:datatype xsd:int;
-	.
 
 # Table url
 map:url a d2rq:ClassMap;
