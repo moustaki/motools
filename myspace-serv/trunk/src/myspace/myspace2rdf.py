@@ -139,7 +139,10 @@ class MyspaceScrape(object):
                 friend = mopy.foaf.Person(uris.dbtune+'uid/' + str(friendUIDs[i]))
             else:
                 friend = mopy.foaf.Person(uris.dbtune+str(friendUIDs[i]))
-            friend.name.set(friendNames[i])
+            try:
+                friend.name.set(friendNames[i])
+            except IndexError:
+                pass
             try:
                 img = mopy.foaf.Image(friendPics[i])
                 friend.depiction.add(img)
@@ -355,7 +358,7 @@ class MyspaceScrape(object):
     def insert_sparql(self):
         store = TripleStore()
         rdfxml =  self.serialize()
-        print rdfxml
+        #print rdfxml
         store.insert(rdfxml, self.url)
     
     def serialize(self):

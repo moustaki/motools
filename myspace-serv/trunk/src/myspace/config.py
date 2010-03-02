@@ -26,6 +26,8 @@ except Error:
     raise MyspaceConfigMissingException('')
 try:
     SPARQL_ENABLED = config.get('sparql', 'enable')
+    if SPARQL_ENABLED=='True': SPARQL_ENABLED=True
+    else: SPARQL_ENABLED = False
 except Error:
     raise MyspaceConfigError('sparql: enable')
 try:
