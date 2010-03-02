@@ -63,7 +63,10 @@ class MyspaceUID:
             M = MyspaceScrape(uid=uid.rsplit('.rdf')[0])
             M.run()
             if SPARQL_ENABLED:
-                M.insert_sparql()
+                try:
+                    M.insert_sparql()
+                except Exception, err:
+                    print 'ERROR insert_sparql() failed'+err
             return M.serialize()
 
         #elif uid.endswith('.html'):

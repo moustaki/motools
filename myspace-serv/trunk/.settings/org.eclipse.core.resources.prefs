@@ -1,3 +1,4 @@
-#Mon Feb 01 12:37:33 GMT 2010
+#Wed Feb 24 16:52:15 CST 2010
 eclipse.preferences.version=1
-encoding//test/runTests.py=utf-8
+encoding//src/helpers/geonames_rdf.py=UTF-8
+encoding//test/runTests.py=UTF-8
