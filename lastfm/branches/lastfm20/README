@@ -1,0 +1,30 @@
+---+ Last.fm API to RDF converter
+
+This directory provides the Last.fm API to RDF converter. 
+It includes modules 
+	* to convert specific requests (currently):
+		* lastfm_friends.pl
+    		* lastfm_events.pl
+		* lastfm_scrobbles.pl
+	* general modules 
+		* to run the server
+			* run.pl
+			* server.pl
+		* to config the converter
+			* config.pl
+			* namespaces.pl 
+		* generic helper modules
+			* lastfm_utils.pl
+			* lastfm_api_query.pl
+			* log.pl
+
+Please set up a Last.fm API key and secret in config.pl	
+
+The converter makes heavy use of:
+	* The Music Ontology 		(<http://musicontology.com/>)
+	* Friend-of-a-Friend Ontology 	(<http://xmlns.com/foaf/0.1/>)
+	* Events Ontology 		(<http://purl.org/NET/c4dm/event.owl#>)
+
+@author		Yves Raimond,
+		Thomas Gängler
+@copyright	Yves Raimond, Thomas Gängler; 2006 - 2010
