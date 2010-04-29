@@ -1,0 +1,28 @@
+@prefix lfm: <http://purl.org/ontology/last-fm/>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+lfm:ScrobbleEvent 
+	rdfs:subClassOf event:Event;
+	rdfs:label "scrobble event";
+	rdfs:comment "An event corresponding to a scrobbling (see http://www.audioscrobbler.net)";
+	vs:term_status "testing";
+	.
+
+lfm:user 
+	rdfs:subPropertyOf event:agent;
+	rdfs:label "user";
+	rdfs:comment "Links an AudioScrobbler event to the corresponding LastFM user";
+	rdfs:domain lfm:ScrobbleEvent;
+	rdfs:range foaf:Person;
+	vs:term_status "testing";
+	.
+
+
+
+
