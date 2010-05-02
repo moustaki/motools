@@ -27,15 +27,13 @@ host('http://localhost:3060').
 %
 %	Set here your Last.fm API key.
  
-%lastfm_api_key('Your Last.fm API Key').
-lastfm_api_key('52907c4e32d45541408e91a52ed81558').
+lastfm_api_key('Your Last.fm API Key').
 
 %%	lastfm_api_secret(+LFM_API_SECRET) is det.
 %
 %	Set here your Last.fm secret.
  
-%lastfm_api_secret('Your Last.fm API Secret').
-lastfm_api_secret('c91a06ea6c51740124f204b9a2575a4b').
+lastfm_api_secret('Your Last.fm API Secret').
 
 %%	lastfm_api_host(+LFM_API_HOST) is det.
 %
