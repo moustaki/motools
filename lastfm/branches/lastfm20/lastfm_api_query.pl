@@ -1,15 +1,15 @@
 :- module(lastfm_api_query,
-		[ lastfm_api_query_rdf/4,		% +QueryParamsTemplate, +QueryParams, +RootNode, -Xml
+		[ lastfm_api_query_rdf/4,			% +QueryParamsTemplate, +QueryParams, +RootNode, -Xml
 		  crypt_api_method_signature/3,		% +SignatureTemplate, +SignatureTemplateList, -ApiSignatureEncrypted
-		  lastfm_auth/1				% -SessionKey
+		  lastfm_auth/1						% -SessionKey
 		]).
 
 :- use_module(library('http/http_open')).
 :- use_module(library('semweb/rdf_db')).
 :- use_module(library('www_browser')).
 
-:- use_module(namespaces).
-:- use_module(config).
+:- use_module(lastfm_namespaces).
+:- use_module(lastfm_config).
 :- use_module(log).
 
 /** <module> Last.fm API query

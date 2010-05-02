@@ -1,14 +1,16 @@
-:- module(server, 
-		[server/0	
+:- module(lastfm_server, 
+		[ server/0	
 		]).
 
 :- use_module(library('http/thread_httpd')).
+:- use_module(library('semweb/rdf_db')).
+
 :- use_module(log).
+
 :- use_module(lastfm_scrobbles).
 :- use_module(lastfm_friends).
 :- use_module(lastfm_events).
-:- use_module(library('semweb/rdf_db')).
-:- use_module(config).
+:- use_module(lastfm_config).
 
 /** <module> Last.fm API to RDF converter server
 

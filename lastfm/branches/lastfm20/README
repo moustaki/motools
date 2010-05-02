@@ -5,20 +5,21 @@ It includes modules
 	* to convert specific requests (currently):
 		* lastfm_friends.pl
     		* lastfm_events.pl
-		* lastfm_scrobbles.pl
+			* lastfm_scrobbles.pl
 	* general modules 
 		* to run the server
-			* run.pl
-			* server.pl
-		* to config the converter
-			* config.pl
-			* namespaces.pl 
+			* lastfm_run.pl
+			* lastfm_server.pl
+		* to configure the converter
+			* lastfm_config.pl
+			* lastfm_namespaces.pl 
 		* generic helper modules
 			* lastfm_utils.pl
 			* lastfm_api_query.pl
 			* log.pl
 
-Please set up a Last.fm API key and secret in config.pl	
+Please set up a Last.fm API key and secret in lastfm_config.pl.
+Please set the correct SWI-Prolog path in lastfm_run.pl.	
 
 The converter makes heavy use of:
 	* The Music Ontology 		(<http://musicontology.com/>)

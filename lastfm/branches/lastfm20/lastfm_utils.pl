@@ -5,7 +5,7 @@
 
 :- use_module(library('semweb/rdf_db')).
 
-:- use_module(namespaces).
+:- use_module(lastfm_namespaces).
 
 /** <module> Last.fm utils
 

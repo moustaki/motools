@@ -5,9 +5,9 @@
 :- use_module(library('http/http_open')).
 :- use_module(library('semweb/rdf_db')).
 
-:- use_module(namespaces).
+:- use_module(lastfm_namespaces).
 :- use_module(lastfm_api_query).
-:- use_module(config).
+:- use_module(lastfm_config).
 :- use_module(lastfm_utils).
 
 /** <module> Last.fm friends to RDF converter
@@ -15,7 +15,7 @@
 This module converts the friends graph of a Last.fm user to RDF.
 
 @author		Yves Raimond, 
-		Thomas Gängler
+			Thomas Gängler
 @version 	2.0  
 @copyright	Yves Raimond, Thomas Gängler; 2008 - 2010
 */
