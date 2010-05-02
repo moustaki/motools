@@ -143,29 +143,35 @@ artist_info(Artist,Headliner,EventUri,[
 %%	venue_info(+Event, +EventUri, -Triples)
 %
 %	Converts the venue of a Last.fm event to RDF triples.
-%
-%	@tbd 	Duplicate check (with Last.fm venue id)
+%	With duplicate check over Last.fm venue identifier.
 
-venue_info(Event,EventUri,[
-		rdf(EventUri,event:place,PlaceUri)
-	,	rdf(PlaceUri,rdf:type,wgs:'Point')
-	,	rdf(PlaceUri,dc:title,literal(VenueName))
-	,	rdf(PlaceUri,lfm:venue_id,literal(VenueID))
-	,	rdf(PlaceUri,foaf:primaryTopic,literal(LastFmVenueUrl))
-	,	Triples4]) :-	
+venue_info(Event,EventUri,VenueTriples) :-	
 	member(element(venue,_,Venue),Event),
 	member(element(id,_,[VenueID]),Venue),
-	member(element(name,_,[VenueName]),Venue),
-	rdf_bnode(PlaceUri),
-	member(element(location,_,Location),Venue),
-	location_info(Location,PlaceUri,LocationTriples),
-	member(element(url,_,[LastFmVenueUrl]),Venue),
-	venue_website(Venue,PlaceUri,VenueWebsiteTriples),
-	append(VenueWebsiteTriples,LocationTriples,Triples2),
-	venue_phonenumber(Venue,PlaceUri,VenuePhonenumberTriples),
-	append(VenuePhonenumberTriples,Triples2,Triples3),
-	lastfm_images(Venue,PlaceUri,['small','medium','large','extralarge','mega'],'Venue',['ov','image'],VenueImagesTriples),
-	append(VenueImagesTriples,Triples3,Triples4).
+	((clause(vid(VenueID,PlaceUri),Z),Z=true)
+		->
+			(VenueTriples = [rdf(EventUri,event:place,PlaceUri)])
+		;
+			(member(element(name,_,[VenueName]),Venue),
+			rdf_bnode(PlaceUri),
+			member(element(location,_,Location),Venue),
+			location_info(Location,PlaceUri,LocationTriples),
+			member(element(url,_,[LastFmVenueUrl]),Venue),
+			venue_website(Venue,PlaceUri,VenueWebsiteTriples),
+			append(VenueWebsiteTriples,LocationTriples,Triples2),
+			venue_phonenumber(Venue,PlaceUri,VenuePhonenumberTriples),
+			append(VenuePhonenumberTriples,Triples2,Triples3),
+			lastfm_images(Venue,PlaceUri,['small','medium','large','extralarge','mega'],'Venue',['ov','image'],VenueImagesTriples),
+			append(VenueImagesTriples,Triples3,Triples4),
+			VenueTriples = [
+					rdf(EventUri,event:place,PlaceUri)
+				,	rdf(PlaceUri,rdf:type,wgs:'Point')
+				,	rdf(PlaceUri,dc:title,literal(VenueName))
+				,	rdf(PlaceUri,lfm:venue_id,literal(VenueID))
+				,	rdf(PlaceUri,foaf:primaryTopic,literal(LastFmVenueUrl))
+				,	Triples4],
+			assertz(vid(VenueID,PlaceUri)))
+	).
 
 %%	location_info(+Location, +PlaceUri, -Triples)
 %
