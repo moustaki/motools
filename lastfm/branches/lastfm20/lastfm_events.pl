@@ -82,9 +82,10 @@ event_rdf(UserUri,Event,[
 		rdf(UserUri,lfm:recommendation,EventUri)
 	,	rdf(EventUri,dc:title,literal(Title))
 	,	rdf(EventUri,rdf:type,mo:'Performance')
+	,   rdf(EventUri,lfm:event_id,literal(EventID))
 	,	rdf(EventUri,foaf:primaryTopic,literal(LastFmEventUrl))
 	,	Triples7]) :-
-	member(element(id,_,_),Event),
+	member(element(id,_,[EventID]),Event),
 	member(element(title,_,[Title]),Event),
 	rdf_bnode(EventUri),
 	artists_info(Event,EventUri,ArtistTriples),
@@ -149,10 +150,11 @@ venue_info(Event,EventUri,[
 		rdf(EventUri,event:place,PlaceUri)
 	,	rdf(PlaceUri,rdf:type,wgs:'Point')
 	,	rdf(PlaceUri,dc:title,literal(VenueName))
+	,	rdf(PlaceUri,lfm:venue_id,literal(VenueID))
 	,	rdf(PlaceUri,foaf:primaryTopic,literal(LastFmVenueUrl))
 	,	Triples4]) :-	
 	member(element(venue,_,Venue),Event),
-	member(element(id,_,_),Venue),
+	member(element(id,_,[VenueID]),Venue),
 	member(element(name,_,[VenueName]),Venue),
 	rdf_bnode(PlaceUri),
 	member(element(location,_,Location),Venue),
