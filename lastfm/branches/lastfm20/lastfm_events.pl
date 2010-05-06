@@ -47,8 +47,7 @@ events_rdf(User,Triples) :-
 	lastfm_api_response_rootnode(LFMRRN),
 	%recommended_events_rdf(LFMM,LFMRRN,Xml),
 	lastfm_api_query_rdf('method=~w&user=~w',[LFMM,User],LFMRRN,Xml),
-	host(Host),
-	format(atom(UserUri),'~w/lfm-user/~w',[Host,User]),
+	create_local_uri(User, 'lfm-user', UserUri),
 	findall(Triples,
 		(member(element(event,_,Event),Xml),event_rdf(UserUri,Event,Triples)),
 		T),
@@ -78,35 +77,35 @@ recommended_events_rdf(LFMM,LFMRRN,Xml) :-
 %
 %	Converts a Last.fm events graph of a given user to RDF triples.
 
-event_rdf(UserUri,Event,[
-		rdf(UserUri,lfm:recommendation,EventUri)
-	,	rdf(EventUri,dc:title,literal(Title))
-	,	rdf(EventUri,rdf:type,mo:'Performance')
-	,   rdf(EventUri,lfm:event_id,literal(EventID))
-	,	rdf(EventUri,foaf:primaryTopic,LastFmEventUrl)
+event_rdf(UserUri, Event, [
+		rdf(UserUri, lfm:recommendation, EventUri)
+	,	rdf(EventUri, dc:title, literal(Title))
+	,	rdf(EventUri, rdf:type, mo:'Performance')
+	,   rdf(EventUri, lfm:event_id, literal(EventID))
+	,	rdf(EventUri, foaf:primaryTopic, LastFmEventUrl)
 	,	Triples7]) :-
-	member(element(id,_,[EventID]),Event),
-	member(element(title,_,[Title]),Event),
-	rdf_bnode(EventUri),
-	artists_info(Event,EventUri,ArtistTriples),
-	venue_info(Event,EventUri,VenueTriples),
-	append(VenueTriples,ArtistTriples,Triples2),
-	date_info(Event,EventUri,DateTriples),
-	append(DateTriples,Triples2,Triples3),
-	description_info(Event,EventUri,DescriptionTriples),
-	append(DescriptionTriples,Triples3,Triples4),
-	lastfm_images(Event,EventUri,['small','medium','large','extralarge'],'Event',['mo','image'],EventImagesTriples),
-	append(EventImagesTriples,Triples4,Triples5),
-	member(element(attendance,_,_),Event),
-	member(element(reviews,_,_),Event),
-	member(element(tag,_,_),Event),
-	member(element(url,_,[LastFmEventUrl]),Event),
-	website_info(Event,EventUri,WebsiteTriples),
-	append(WebsiteTriples,Triples5,Triples6),
-	member(element(tickets,_,_),Event),
-	member(element(cancelled,_,_),Event),
-	event_tags(Event,EventUri,EventTagsTriples),
-	append(EventTagsTriples,Triples6,Triples7).
+	member(element(id,_,[EventID]), Event),
+	member(element(title,_,[Title]), Event),
+	create_local_uri(EventID, 'lfm-event', EventUri),
+	artists_info(Event, EventUri, ArtistTriples),
+	venue_info(Event, EventUri, VenueTriples),
+	append(VenueTriples, ArtistTriples, Triples2),
+	date_info(Event, EventUri, DateTriples),
+	append(DateTriples, Triples2, Triples3),
+	description_info(Event, EventUri, DescriptionTriples),
+	append(DescriptionTriples, Triples3, Triples4),
+	lastfm_images(Event, EventUri, ['small','medium','large','extralarge'], 'Event', ['mo','image'], EventImagesTriples),
+	append(EventImagesTriples, Triples4, Triples5),
+	member(element(attendance,_,_), Event),
+	member(element(reviews,_,_), Event),
+	member(element(tag,_,_), Event),
+	member(element(url,_,[LastFmEventUrl]), Event),
+	website_info(Event, EventUri, WebsiteTriples),
+	append(WebsiteTriples, Triples5, Triples6),
+	member(element(tickets,_,_), Event),
+	member(element(cancelled,_,_), Event),
+	event_tags(Event, EventUri, EventTagsTriples),
+	append(EventTagsTriples, Triples6, Triples7).
 
 %%	artists_info(+Event, +EventUri, -Triples)
 %
@@ -145,32 +144,32 @@ artist_info(Artist,Headliner,EventUri,[
 %	Converts the venue of a Last.fm event to RDF triples.
 %	With duplicate check over Last.fm venue identifier.
 
-venue_info(Event,EventUri,VenueTriples) :-	
-	member(element(venue,_,Venue),Event),
-	member(element(id,_,[VenueID]),Venue),
-	((clause(vid(VenueID,PlaceUri),Z),Z=true)
+venue_info(Event, EventUri, VenueTriples) :-	
+	member(element(venue,_, Venue), Event),
+	member(element(id,_,[VenueID]), Venue),
+	((clause(vid(VenueID,PlaceUri), Z), Z = true)
 		->
-			(VenueTriples = [rdf(EventUri,event:place,PlaceUri)])
+			(VenueTriples = [rdf(EventUri, event:place, PlaceUri)])
 		;
-			(member(element(name,_,[VenueName]),Venue),
-			rdf_bnode(PlaceUri),
-			member(element(location,_,Location),Venue),
-			location_info(Location,PlaceUri,LocationTriples),
-			member(element(url,_,[LastFmVenueUrl]),Venue),
-			venue_website(Venue,PlaceUri,VenueWebsiteTriples),
-			append(VenueWebsiteTriples,LocationTriples,Triples2),
-			venue_phonenumber(Venue,PlaceUri,VenuePhonenumberTriples),
-			append(VenuePhonenumberTriples,Triples2,Triples3),
-			lastfm_images(Venue,PlaceUri,['small','medium','large','extralarge','mega'],'Venue',['ov','image'],VenueImagesTriples),
-			append(VenueImagesTriples,Triples3,Triples4),
+			(member(element(name,_,[VenueName]), Venue),
+			create_local_uri(VenueID, 'lfm-venue', PlaceUri),
+			member(element(location,_,Location), Venue),
+			location_info(Location, PlaceUri, LocationTriples),
+			member(element(url,_,[LastFmVenueUrl]), Venue),
+			venue_website(Venue, PlaceUri, VenueWebsiteTriples),
+			append(VenueWebsiteTriples, LocationTriples, Triples2),
+			venue_phonenumber(Venue, PlaceUri, VenuePhonenumberTriples),
+			append(VenuePhonenumberTriples, Triples2, Triples3),
+			lastfm_images(Venue, PlaceUri, ['small','medium','large','extralarge','mega'], 'Venue', ['ov','image'], VenueImagesTriples),
+			append(VenueImagesTriples, Triples3, Triples4),
 			VenueTriples = [
-					rdf(EventUri,event:place,PlaceUri)
-				,	rdf(PlaceUri,rdf:type,wgs:'Point')
-				,	rdf(PlaceUri,dc:title,literal(VenueName))
-				,	rdf(PlaceUri,lfm:venue_id,literal(VenueID))
-				,	rdf(PlaceUri,foaf:primaryTopic,literal(LastFmVenueUrl))
+					rdf(EventUri, event:place, PlaceUri)
+				,	rdf(PlaceUri, rdf:type, wgs:'Point')
+				,	rdf(PlaceUri, dc:title, literal(VenueName))
+				,	rdf(PlaceUri, lfm:venue_id, literal(VenueID))
+				,	rdf(PlaceUri, foaf:primaryTopic, LastFmVenueUrl)
 				,	Triples4],
-			assertz(vid(VenueID,PlaceUri)))
+			assertz(vid(VenueID, PlaceUri)))
 	).
 
 %%	location_info(+Location, +PlaceUri, -Triples)

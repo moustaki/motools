@@ -1,11 +1,13 @@
 :- module(lastfm_utils,
 	[ lastfm_images/6,		% +Source, +RdfNode, +Extents, +LabelPart, +ImageProperty, -Triples
-	  uts_to_date/2			% +UTS, -Date
+	  uts_to_date/2,		% +UTS, -Date
+	  create_local_uri/3	% +ID, +Context, -ContextUri
 	]).
 
 :- use_module(library('semweb/rdf_db')).
 
 :- use_module(lastfm_namespaces).
+:- use_module(lastfm_config).
 
 /** <module> Last.fm utils
 
@@ -64,3 +66,11 @@ uts_to_date(UTS,Date) :-
 	((atom_chars(Mi,MiC),length(MiC,1))->atom_chars(Mi2,['0'|MiC]);Mi2=Mi),
 	((atom_chars(S,SC),length(SC,1))->atom_chars(S2,['0'|SC]);S2=S),
 	format(atom(Date),'~w-~w-~wT~w:~w:~wZ',[Y,Mo2,D2,H2,Mi2,S2]).
+	
+%%	create_local_uri(+ID, +Context, -ContextUri)
+%
+%	Creates a local context ID URI.
+	
+create_local_uri(ID, Context, ContextUri) :-
+    host(Host),
+	format(atom(ContextUri), '~w/~w/~w', [Host, Context, ID]).

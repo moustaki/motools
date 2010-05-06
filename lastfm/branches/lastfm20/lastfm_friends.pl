@@ -44,13 +44,12 @@ friends_rdf(User,[
 	,	rdf(Account,foaf:isPrimaryTopicOf,LFMUserPage)
 	,	rdf(Account,foaf:accountServiceHomepage, LFMH)
 	,	rdf(Account,foaf:accountName,literal(User))|Triples]) :-
-	host(Host),
 	lastfm_host(LFMH),
 	lastfm_api_method(LFMM),
 	lastfm_api_response_rootnode(LFMRRN),
 	lastfm_api_query_rdf('method=~w&user=~w',[LFMM,User],LFMRRN,Xml),!,
 	format(atom(LFMUserPage),'~wuser/~w',[LFMH,User]),
-	format(atom(UserUri),'~w/lfm-user/~w',[Host,User]),
+	create_local_uri(User, 'lfm-user', UserUri),
 	findall(Triples,
 		(member(element(user,_,Friend),Xml),friend_rdf(UserUri,Friend,Triples)),
 		BT),
@@ -69,11 +68,10 @@ friend_rdf(UserUri,Friend,[
 	,	rdf(FriendAccount,foaf:isPrimaryTopicOf,LFMFriendPage)
 	,	rdf(FriendAccount,foaf:accountServiceHomepage,LFMH)
 	,	rdf(FriendAccount,foaf:accountName,literal(FriendName))|Triples]) :-
-	host(Host),
 	lastfm_host(LFMH),
 	member(element(name,_,[FriendName]),Friend),
 	rdf_bnode(FriendAccount),
-	format(atom(FriendUri),'~w/lfm-user/~w',[Host,FriendName]),
+	create_local_uri(FriendName, 'lfm-user', FriendUri),
 	friend_realname_info(Friend,FriendAccount,RealnameTriples),
 	lastfm_images(Friend,FriendAccount,['small','medium','large','extralarge'],'Friend',['foaf','img'],FriendImagesTriples),
 	append(RealnameTriples,FriendImagesTriples,Triples),

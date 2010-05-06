@@ -65,8 +65,7 @@ track_rdf(User,Track,[
 	rdf_bnode(EventUri),
 	date_info(Track,EventUri,DateTriples),
 	append(DateTriples,TrackMbidTriples,Triples),
-	host(Host),
-	format(atom(UserUri),'~w/lfm-user/~w',[Host,User]).
+	create_local_uri(User, 'lfm-user', UserUri).
  
 %%	track_mbid_info(+Track, +TrackUri, -ScrobbleDesc, -TrackTriples)
 %
@@ -80,7 +79,7 @@ track_mbid_info(Track, TrackUri, ScrobbleDesc, TrackTriples) :-
     		(TrackTriples = [],
     		clause(scrobbledesc(ID,ScrobbleDesc), Y), Y = true)
     	;
-    		(create_mbid_uri(ID, TrackUri),
+    		(create_local_uri(ID, 'mbid', TrackUri),
     		track_info(Track, TrackUri, ScrobbleDesc, TrackInfoTriples),
     		set_mbid_uri(ID, TrackUri, ScrobbleDesc, 'track', TrackInfoTriples, TrackTriples))
 	).
@@ -128,7 +127,7 @@ artist_mbid_info(Track,TrackUri,ScrobbleDesc,ArtistTriples) :-
     		(ArtistTriples = [rdf(TrackUri,foaf:maker,ArtistUri)],
     		clause(scrobbledesc(ID,ScrobbleDesc),Y),Y=true)
 		;
-			(create_mbid_uri(ID, ArtistUri),
+			(create_local_uri(ID, 'mbid', ArtistUri),
 			artist_info(Name,TrackUri,ArtistUri,ScrobbleDesc,ArtistInfoTriples),
 			set_mbid_uri(ID, ArtistUri, ScrobbleDesc, 'artist', ArtistInfoTriples, ArtistTriples))
 	).
@@ -174,7 +173,7 @@ album_mbid_info(Track, TrackUri, ScrobbleDesc, AlbumTriples) :-
 			(AlbumTriples = [rdf(AlbumUri, mo:track, TrackUri)],
 			clause(scrobbledesc(ID,ScrobbleDesc), Y), Y = true)
 		;
-			(create_mbid_uri(ID, AlbumUri),
+			(create_mbid_uri(ID, 'mbid', AlbumUri),
 			album_info(Title, TrackUri, AlbumUri, ScrobbleDesc, AlbumInfoTriples),
 			set_mbid_uri(ID, AlbumUri, ScrobbleDesc, 'record', AlbumInfoTriples, AlbumTriples))
 	).
@@ -241,11 +240,3 @@ set_mbid_uri(MBID, RdfNode, ScrobbleDesc, UriDesc, Triples, [
 	assertz(scrobbledesc(MBID, ScrobbleDesc)),
 	zitgist_host(ZGH),
 	format(atom(URI), '~wmusic/~w/~w', [ZGH, UriDesc, MBID]).
-
-%%	create_mbid_uri(+MBID, -MbidUri)
-%
-%	Creates a local MBID URI.
-	
-create_mbid_uri(MBID, MbidUri) :-
-    host(Host),
-	format(atom(MbidUri), '~w/mbid/~w', [Host, MBID]).
