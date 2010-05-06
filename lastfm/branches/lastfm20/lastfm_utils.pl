@@ -36,15 +36,13 @@ lastfm_images(Source,RdfNode,[],LabelPart,ImageProperty,[]) :-
 % 	Converts information from one Last.fm image to RDF triples.
 	
 lastfm_image(Source,RdfNode,Extent,LabelPart,ImageProperty,[
-		rdf(RdfNode,NS:Property,ImageUri)
-	,	rdf(ImageUri,rdf:type,foaf:'Image')
-	,	rdf(ImageUri,rdf:about,literal(Image))
-	,	rdf(ImageUri,terms:extent,literal(Extent))
-	,	rdf(ImageUri,rdfs:label,literal(ImageLabel))]) :-	
+		rdf(RdfNode,NS:Property,Image)
+	,	rdf(Image,rdf:type,foaf:'Image')
+	,	rdf(Image,terms:extent,literal(Extent))
+	,	rdf(Image,rdfs:label,literal(ImageLabel))]) :-	
 	member(element(image,[size=Extent],[Image]),Source),!,
 	format(atom(ImageLabel),'Last FM ~w Image: (~w)',[LabelPart,Extent]),
-	ImageProperty=[NS,Property],
-	rdf_bnode(ImageUri).
+	ImageProperty=[NS,Property].
 	
 lastfm_image(Source,RdfNode,Extent,LabelPart,ImageProperty,[]) :-	
 	member(element(image,[size=Extent],_),Source),

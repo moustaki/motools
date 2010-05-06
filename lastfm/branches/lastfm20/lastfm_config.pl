@@ -4,7 +4,8 @@
 		  lastfm_api_secret/1,		% +LFM_API_SECRET
 		  lastfm_api_host/1,		% +LFM_API_HOST
 		  lastfm_host/1,			% +LFM_HOST
-		  lastfm_api_sessionkey/1	% +LFM_API_SESSIONKEY
+		  lastfm_api_sessionkey/1,	% +LFM_API_SESSIONKEY
+		  zitgist_host/1			% +ZIGIST_HOST
 		]).
 
 /** <module> Last.fm API to RDF converter configuration
@@ -58,5 +59,11 @@ lastfm_api_sessionkey('A valid Session Key').
 %	Set here the default MusicBrainz host.
  
 musicbrainz_host('http://musicbrainz.org/').
+
+%%	zitgist_host(+ZITGIST_HOST) is det.
+%
+%	Set here the default Zigist host.
+
+zitgist_host('http://zitgist.com/').
 
 

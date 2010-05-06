@@ -65,23 +65,24 @@ track_rdf(User,Track,[
 	rdf_bnode(EventUri),
 	date_info(Track,EventUri,DateTriples),
 	append(DateTriples,TrackMbidTriples,Triples),
-	lastfm_host(Host),
-	format(atom(UserUri),'~wuser/~w',[Host,User]).
+	host(Host),
+	format(atom(UserUri),'~w/lfm-user/~w',[Host,User]).
  
 %%	track_mbid_info(+Track, +TrackUri, -ScrobbleDesc, -TrackTriples)
 %
 % 	Fetches the track title and MusicBrainz ID (mbid). Works when mbid is available.
 % 	With duplicate check.
  
-track_mbid_info(Track,TrackUri,ScrobbleDesc,TrackTriples) :-
-    member(element(mbid,_,[ID]),Track),ID\='',!,
-    ((clause(mbid(ID,TrackUri),Z),Z=true)
+track_mbid_info(Track, TrackUri, ScrobbleDesc, TrackTriples) :-
+    member(element(mbid,_,[ID]), Track), ID \= '', !,
+    ((clause(mbid(ID,TrackUri), Z), Z = true)
     	->
     		(TrackTriples = [],
-    		clause(scrobbledesc(ID,ScrobbleDesc),Y),Y=true)
+    		clause(scrobbledesc(ID,ScrobbleDesc), Y), Y = true)
     	;
-    		(track_info(Track,TrackUri,ScrobbleDesc,TrackInfoTriples),
-    		set_mbid_uri(ID,TrackUri,ScrobbleDesc,'http://zitgist.com/music/track/',TrackInfoTriples,TrackTriples))
+    		(create_mbid_uri(ID, TrackUri),
+    		track_info(Track, TrackUri, ScrobbleDesc, TrackInfoTriples),
+    		set_mbid_uri(ID, TrackUri, ScrobbleDesc, 'track', TrackInfoTriples, TrackTriples))
 	).
  
 %%	track_mbid_info(+Track, +TrackUri, -ScrobbleDesc, -TrackTriples)
@@ -89,31 +90,31 @@ track_mbid_info(Track,TrackUri,ScrobbleDesc,TrackTriples) :-
 % 	Fetches the track title (without mbid).
 % 	Without duplicate check.
  
-track_mbid_info(Track,TrackUri,ScrobbleDesc,TrackInfoTriples) :-
-	member(element(mbid,_,_),Track),
-	track_info(Track,TrackUri,ScrobbleDesc,TrackInfoTriples).
+track_mbid_info(Track, TrackUri, ScrobbleDesc, TrackInfoTriples) :-
+	member(element(mbid,_,_), Track),
+	rdf_bnode(TrackUri),
+	track_info(Track, TrackUri, ScrobbleDesc, TrackInfoTriples).
 
 %%	track_info(+Track, -TrackUri, -NewScrobbleDesc4, -Triples)
 %
 % 	Converts general track information to RDF triples.
    
-track_info(Track,TrackUri,NewScrobbleDesc4,[	
-		rdf(TrackUri,rdf:type,mo:'Track')
-	, 	rdf(TrackUri,dc:title,literal(Title))
-	,	rdf(TrackUri,foaf:primaryTopicOf,URL)|Triples3]) :-
-	rdf_bnode(TrackUri),
-	artist_mbid_info(Track,TrackUri,ScrobbleDesc,ArtistTriples),
-	write_scrobbledesc('Listened to',ScrobbleDesc,NewScrobbleDesc),
-	member(element(name,_,[Title]),Track),
-	format(atom(TitleDesc),' track "~w"',Title),
-	write_scrobbledesc(NewScrobbleDesc,TitleDesc,NewScrobbleDesc2),
-	album_mbid_info(Track,TrackUri,NewScrobbleDesc3,AlbumTriples),
-	append(AlbumTriples,ArtistTriples,Triples2),
-	write_scrobbledesc(NewScrobbleDesc2,NewScrobbleDesc3,NewScrobbleDesc4),
-	member(element(streamable,_,_),Track),
-	member(element(url,[],[URL]),Track),
-	lastfm_images(Track,TrackUri,['small','medium','large','extralarge'],'Track',['mo','image'],TrackImagesTriples),
-	append(TrackImagesTriples,Triples2,Triples3).
+track_info(Track, TrackUri, NewScrobbleDesc4, [	
+		rdf(TrackUri, rdf:type, mo:'Track')
+	, 	rdf(TrackUri, dc:title, literal(Title))
+	,	rdf(TrackUri, foaf:primaryTopicOf, URL) | Triples3]) :-
+	artist_mbid_info(Track, TrackUri, ScrobbleDesc, ArtistTriples),
+	write_scrobbledesc('Listened to', ScrobbleDesc, NewScrobbleDesc),
+	member(element(name,_,[Title]), Track),
+	format(atom(TitleDesc), ' track "~w"', Title),
+	write_scrobbledesc(NewScrobbleDesc, TitleDesc, NewScrobbleDesc2),
+	album_mbid_info(Track,TrackUri, NewScrobbleDesc3, AlbumTriples),
+	append(AlbumTriples, ArtistTriples, Triples2),
+	write_scrobbledesc(NewScrobbleDesc2, NewScrobbleDesc3, NewScrobbleDesc4),
+	member(element(streamable,_,_), Track),
+	member(element(url,[],[URL]), Track),
+	lastfm_images(Track, TrackUri, ['small','medium','large','extralarge'], 'Track', ['mo','image'], TrackImagesTriples),
+	append(TrackImagesTriples, Triples2, Triples3).
 
 %%	artist_mbid_info(+Track, +TrackUri, -ScrobbleDesc, -ArtistTriples)
 %
@@ -127,8 +128,9 @@ artist_mbid_info(Track,TrackUri,ScrobbleDesc,ArtistTriples) :-
     		(ArtistTriples = [rdf(TrackUri,foaf:maker,ArtistUri)],
     		clause(scrobbledesc(ID,ScrobbleDesc),Y),Y=true)
 		;
-			(artist_info(Name,TrackUri,ArtistUri,ScrobbleDesc,ArtistInfoTriples),
-			set_mbid_uri(ID,ArtistUri,ScrobbleDesc,'http://zitgist.com/music/artist/',ArtistInfoTriples,ArtistTriples))
+			(create_mbid_uri(ID, ArtistUri),
+			artist_info(Name,TrackUri,ArtistUri,ScrobbleDesc,ArtistInfoTriples),
+			set_mbid_uri(ID, ArtistUri, ScrobbleDesc, 'artist', ArtistInfoTriples, ArtistTriples))
 	).
  
 %%	artist_mbid_info(+Track, +TrackUri, -ScrobbleDesc, -ArtistTriples)
@@ -136,9 +138,10 @@ artist_mbid_info(Track,TrackUri,ScrobbleDesc,ArtistTriples) :-
 % 	Fetches the artist name (without mbid).
 % 	Without duplicate check.
  	
-artist_mbid_info(Track,TrackUri,ScrobbleDesc,ArtistTriples) :-
-	member(element(artist,_,[Name]),Track),!,
-	artist_info(Name,TrackUri,ArtistUri,ScrobbleDesc,ArtistTriples),
+artist_mbid_info(Track, TrackUri, ScrobbleDesc, ArtistTriples) :-
+	member(element(artist,_,[Name]), Track), !,
+	rdf_bnode(ArtistUri),
+	artist_info(Name, TrackUri, ArtistUri, ScrobbleDesc, ArtistTriples),
 	ArtistUri=ArtistUri.
    
 artist_mbid_info(Track,TrackUri,ScrobbleDesc,[]) :-
@@ -153,8 +156,10 @@ artist_mbid_info(Track,TrackUri,ScrobbleDesc,[]) :-
 artist_info(Name,TrackUri,ArtistUri,ScrobbleDesc,[
 		rdf(TrackUri,foaf:maker,ArtistUri)
 	,   rdf(ArtistUri,rdf:type,mo:'MusicArtist')
+	,	rdf(ArtistUri,foaf:homepage, Homepage)
 	,	rdf(ArtistUri,foaf:name,literal(Name))]) :-
-	rdf_bnode(ArtistUri),
+	lastfm_host(LFMH),
+	format(atom(Homepage), '~wmusic/~w', [LFMH, Name]),
 	format(atom(ScrobbleDesc),' "~w",',[Name]).
  
 %%	album_mbid_info(+Track, +TrackUri, -ScrobbleDesc, -AlbumTriples) 
@@ -162,15 +167,16 @@ artist_info(Name,TrackUri,ArtistUri,ScrobbleDesc,[
 %	Fetches the album title and MusicBrainz ID (mbid). Works when mbid is available.
 %	With duplicate check.
  
-album_mbid_info(Track,TrackUri,ScrobbleDesc,AlbumTriples) :-
-	member(element(album,[mbid=ID],[Title]),Track),ID\='',!,
-	((clause(mbid(ID,AlbumUri),Z),Z=true)
+album_mbid_info(Track, TrackUri, ScrobbleDesc, AlbumTriples) :-
+	member(element(album,[mbid=ID],[Title]), Track), ID \= '', !,
+	((clause(mbid(ID,AlbumUri), Z), Z = true)
 		->
-			(AlbumTriples = [rdf(AlbumUri,mo:track,TrackUri)],
-			clause(scrobbledesc(ID,ScrobbleDesc),Y),Y=true)
+			(AlbumTriples = [rdf(AlbumUri, mo:track, TrackUri)],
+			clause(scrobbledesc(ID,ScrobbleDesc), Y), Y = true)
 		;
-			(album_info(Title,TrackUri,AlbumUri,ScrobbleDesc,AlbumInfoTriples),
-			set_mbid_uri(ID,AlbumUri,ScrobbleDesc,'http://zitgist.com/music/record/',AlbumInfoTriples,AlbumTriples))
+			(create_mbid_uri(ID, AlbumUri),
+			album_info(Title, TrackUri, AlbumUri, ScrobbleDesc, AlbumInfoTriples),
+			set_mbid_uri(ID, AlbumUri, ScrobbleDesc, 'record', AlbumInfoTriples, AlbumTriples))
 	).
  
 %%	album_mbid_info(+Track, +TrackUri, -ScrobbleDesc, -AlbumTriples) 
@@ -178,10 +184,11 @@ album_mbid_info(Track,TrackUri,ScrobbleDesc,AlbumTriples) :-
 %	Fetches the album title (without mbid).
 %	Without duplicate check.
  
-album_mbid_info(Track,TrackUri,ScrobbleDesc,AlbumTriples) :-
-	member(element(album,_,[Title]),Track),!,
-	album_info(Title,TrackUri,AlbumUri,ScrobbleDesc,AlbumTriples),
-	AlbumUri=AlbumUri.
+album_mbid_info(Track, TrackUri, ScrobbleDesc, AlbumTriples) :-
+	member(element(album,_,[Title]), Track), !,
+	rdf_bnode(AlbumUri),
+	album_info(Title, TrackUri, AlbumUri, ScrobbleDesc, AlbumTriples),
+	AlbumUri = AlbumUri.
 
 album_mbid_info(Track,TrackUri,ScrobbleDesc,[]) :-
 	member(element(album,_,[]),Track),
@@ -197,7 +204,6 @@ album_info(Title,TrackUri,AlbumUri,ScrobbleDesc,[
 	,	rdf(AlbumUri,rdf:type,mo:'Record')
 	,	rdf(AlbumUri,rdfs:label,literal(Title))
 	,	rdf(AlbumUri,foaf:name,literal(Title))]) :-
-	rdf_bnode(AlbumUri),
 	format(atom(ScrobbleDesc),', record "~w"',Title).
 
 %%	date_info(+Track, +EventUri, -Triples)
@@ -228,7 +234,18 @@ write_scrobbledesc(NewScrobbleDesc,NewScrobbleDesc2,NewScrobbleDesc3) :-
 %
 % 	Converts the MBID of a track, artist or album to a dereferencable URI.
 	
-set_mbid_uri(MBID,RdfNode,ScrobbleDesc,UriDesc,Triples,[rdf(RdfNode,owl:sameAs,URI)|Triples]) :-
-	assertz(mbid(MBID,RdfNode)),
-	assertz(scrobbledesc(MBID,ScrobbleDesc)),
-	format(atom(URI),'~w~w',[UriDesc,MBID]).
+set_mbid_uri(MBID, RdfNode, ScrobbleDesc, UriDesc, Triples, [
+		rdf(RdfNode, owl:sameAs, URI)
+	,	rdf(RdfNode, mo:musicbrainz_guid, literal(MBID)) | Triples]) :-
+	assertz(mbid(MBID, RdfNode)),
+	assertz(scrobbledesc(MBID, ScrobbleDesc)),
+	zitgist_host(ZGH),
+	format(atom(URI), '~wmusic/~w/~w', [ZGH, UriDesc, MBID]).
+
+%%	create_mbid_uri(+MBID, -MbidUri)
+%
+%	Creates a local MBID URI.
+	
+create_mbid_uri(MBID, MbidUri) :-
+    host(Host),
+	format(atom(MbidUri), '~w/mbid/~w', [Host, MBID]).

@@ -27,7 +27,7 @@ This module converts the a Last.fm events graph of a Last.fm user to RDF.
 %	Defines the method for fetching events.
 %
 % 	@tbd 	Currently it fetches the events, which the user will attend
-%		a better solution is the recommended events method, which needs user authentification
+%			a better solution is the recommended events method, which needs user authentification
 
 %lastfm_api_method('user.getRecommendedEvents').
 lastfm_api_method('user.getEvents').
@@ -48,7 +48,7 @@ events_rdf(User,Triples) :-
 	%recommended_events_rdf(LFMM,LFMRRN,Xml),
 	lastfm_api_query_rdf('method=~w&user=~w',[LFMM,User],LFMRRN,Xml),
 	host(Host),
-	format(atom(UserUri),'~w/~w',[Host,User]),
+	format(atom(UserUri),'~w/lfm-user/~w',[Host,User]),
 	findall(Triples,
 		(member(element(event,_,Event),Xml),event_rdf(UserUri,Event,Triples)),
 		T),
@@ -83,7 +83,7 @@ event_rdf(UserUri,Event,[
 	,	rdf(EventUri,dc:title,literal(Title))
 	,	rdf(EventUri,rdf:type,mo:'Performance')
 	,   rdf(EventUri,lfm:event_id,literal(EventID))
-	,	rdf(EventUri,foaf:primaryTopic,literal(LastFmEventUrl))
+	,	rdf(EventUri,foaf:primaryTopic,LastFmEventUrl)
 	,	Triples7]) :-
 	member(element(id,_,[EventID]),Event),
 	member(element(title,_,[Title]),Event),
@@ -238,7 +238,7 @@ geo_info(Location,PlaceUri,[]) :-
 %
 %	Converts the venue website to RDF triples.
 
-venue_website(Venue,PlaceUri,[rdf(PlaceUri,foaf:homepage,literal(VenueWebsite))]) :-	
+venue_website(Venue,PlaceUri,[rdf(PlaceUri,foaf:homepage,VenueWebsite)]) :-	
 	member(element(website,_,[VenueWebsite]),Venue),!.
 
 venue_website(Venue,PlaceUri,[]) :-	
@@ -293,7 +293,7 @@ description_info(Event,EventUri,[]) :-
 %
 %	Converts the website of an event to RDF triples.
 
-website_info(Event,EventUri,[rdf(EventUri,foaf:homepage,literal(Page))]) :-	
+website_info(Event,EventUri,[rdf(EventUri,foaf:homepage,Page)]) :-	
 	member(element(website,_,[Page]),Event),!.
 
 website_info(Event,EventUri,[]) :-	
