@@ -209,7 +209,7 @@ album_info(Title,TrackUri,AlbumUri,ScrobbleDesc,[
 %
 %	Converts the scrobbling date to RDF triples.
 	
-date_info(Track,EventUri,[rdf(EventUri,dc:date,literal(type(xmls:dateTime,Date)))]) :-
+date_info(Track,EventUri,[rdf(EventUri,dc:date,literal(type(xmls:'dateTime', Date)))]) :-
 	member(element(date,[uts=UTS],_),Track),!,
 	uts_to_date(UTS,Date).
     

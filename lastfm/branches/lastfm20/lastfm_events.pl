@@ -222,12 +222,12 @@ location_info(Location,PlaceUri,Triples) :-
 %
 %	Converts the spatial information of a location to RDF triples.
 
-geo_info(Location,PlaceUri,[
-		rdf(PlaceUri,wgs:long,literal(Lat))
-	,	rdf(PlaceUri,wgs:lat,literal(Long))]) :-	
-	member(element('geo:point',_,GeoPoint),Location),!,
-	member(element('geo:lat',_,[Lat]),GeoPoint),
-	member(element('geo:long',_,[Long]),GeoPoint).
+geo_info(Location, PlaceUri, [
+		rdf(PlaceUri, wgs:long, literal(type(xmls:'float', Lat)))
+	,	rdf(PlaceUri, wgs:lat, literal(type(xmls:'float', Long)))]) :-	
+	member(element('geo:point' ,_, GeoPoint), Location),!,
+	member(element('geo:lat' ,_, [Lat]), GeoPoint),
+	member(element('geo:long' ,_, [Long]), GeoPoint).
 
 geo_info(Location,PlaceUri,[]) :-
 	Location=Location,
