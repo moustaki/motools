@@ -21,6 +21,7 @@
 # http://code.google.com/p/pylast/
 #
 # modifications by Kurt Jacobson 2009-04-01
+import os
 
 __name__ = 'pylast'
 __version__ = '0.3.2'
@@ -209,7 +210,7 @@ class _Request(object):
 		
 		data = []
 		for name in self.params.keys():
-			data.append('='.join((name, urllib.quote_plus(self.params[name]))))
+			data.append('='.join((name, urllib.quote_plus(self.params[name].encode('utf-8')))))
 		data = '&'.join(data)
 		
 		headers = {
@@ -3059,7 +3060,7 @@ class _ScrobblerRequest(object):
 
 		data = []
 		for name in self.params.keys():
-			value = urllib.quote_plus(self.params[name])
+			value = urllib.quote_plus(self.params[name].encode('utf-8'))
 			data.append('='.join((name, value)))
 		data = "&".join(data)
 		
