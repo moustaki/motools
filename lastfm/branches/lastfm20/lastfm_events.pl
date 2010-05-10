@@ -164,7 +164,7 @@ venue_info(Event, EventUri, VenueTriples) :-
 			append(VenueImagesTriples, Triples3, Triples4),
 			VenueTriples = [
 					rdf(EventUri, event:place, PlaceUri)
-				,	rdf(PlaceUri, rdf:type, wgs:'Point')
+				,	rdf(PlaceUri, rdf:type, wgs:'SpatialThing')
 				,	rdf(PlaceUri, dc:title, literal(VenueName))
 				,	rdf(PlaceUri, lfm:venue_id, literal(VenueID))
 				,	rdf(PlaceUri, foaf:primaryTopic, LastFmVenueUrl)
