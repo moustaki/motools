@@ -78,11 +78,13 @@ recommended_events_rdf(LFMM,LFMRRN,Xml) :-
 %	Converts a Last.fm events graph of a given user to RDF triples.
 
 event_rdf(UserUri, Event, [
-		rdf(UserUri, lfm:recommendation, EventUri)
+	%	rdf(UserUri, lfm:recommendation, EventUri)
+	%	for "a user attends an event"
+		rdf(UserUri, mo:listened, EventUri)
 	,	rdf(EventUri, dc:title, literal(Title))
 	,	rdf(EventUri, rdf:type, mo:'Performance')
 	,   rdf(EventUri, lfm:event_id, literal(EventID))
-	,	rdf(EventUri, foaf:primaryTopic, LastFmEventUrl)
+	,	rdf(EventUri, foaf:isPrimaryTopicOf, LastFmEventUrl)
 	,	Triples7]) :-
 	member(element(id,_,[EventID]), Event),
 	member(element(title,_,[Title]), Event),
@@ -147,91 +149,98 @@ artist_info(Artist,Headliner,EventUri,[
 venue_info(Event, EventUri, VenueTriples) :-	
 	member(element(venue,_, Venue), Event),
 	member(element(id,_,[VenueID]), Venue),
-	((clause(vid(VenueID,PlaceUri), Z), Z = true)
+	((clause(vid(VenueID, OrganizationUri), Z), Z = true)
 		->
-			(VenueTriples = [rdf(EventUri, event:place, PlaceUri)])
+			(VenueTriples = [rdf(EventUri, event:agent, OrganizationUri)])
 		;
 			(member(element(name,_,[VenueName]), Venue),
-			create_local_uri(VenueID, 'lfm-venue', PlaceUri),
+			create_local_uri(VenueID, 'lfm-venue', OrganizationUri),
 			member(element(location,_,Location), Venue),
-			location_info(Location, PlaceUri, LocationTriples),
+			location_info(Location, OrganizationUri, LocationTriples),
+			geo_info(Location, OrganizationUri, GeoTriples),
+			append(GeoTriples, LocationTriples, Triples2),
 			member(element(url,_,[LastFmVenueUrl]), Venue),
-			venue_website(Venue, PlaceUri, VenueWebsiteTriples),
-			append(VenueWebsiteTriples, LocationTriples, Triples2),
-			venue_phonenumber(Venue, PlaceUri, VenuePhonenumberTriples),
-			append(VenuePhonenumberTriples, Triples2, Triples3),
-			lastfm_images(Venue, PlaceUri, ['small','medium','large','extralarge','mega'], 'Venue', ['ov','image'], VenueImagesTriples),
-			append(VenueImagesTriples, Triples3, Triples4),
+			venue_website(Venue, OrganizationUri, VenueWebsiteTriples),
+			append(VenueWebsiteTriples, Triples2, Triples3),
+			venue_phonenumber(Venue, OrganizationUri, VenuePhonenumberTriples),
+			append(VenuePhonenumberTriples, Triples3, Triples4),
+			lastfm_images(Venue, OrganizationUri, ['small','medium','large','extralarge','mega'], 'Venue', ['ov','image'], VenueImagesTriples),
+			append(VenueImagesTriples, Triples4, Triples5),
 			VenueTriples = [
-					rdf(EventUri, event:place, PlaceUri)
-				,	rdf(PlaceUri, rdf:type, wgs:'SpatialThing')
-				,	rdf(PlaceUri, dc:title, literal(VenueName))
-				,	rdf(PlaceUri, lfm:venue_id, literal(VenueID))
-				,	rdf(PlaceUri, foaf:primaryTopic, LastFmVenueUrl)
-				,	Triples4],
-			assertz(vid(VenueID, PlaceUri)))
+		 			rdf(EventUri, event:agent, OrganizationUri)
+				,	rdf(OrganizationUri, rdf:type, foaf:'Organisation')
+				,	rdf(OrganizationUri, foaf:'name', literal(VenueName))
+				,	rdf(OrganizationUri, lfm:venue_id, literal(VenueID))
+				,	rdf(OrganizationUri, foaf:isPrimaryTopicOf, LastFmVenueUrl)
+				,	Triples5],
+			assertz(vid(VenueID, OrganizationUri)))
 	).
 
 %%	location_info(+Location, +PlaceUri, -Triples)
 %
 %	Converts the location of a venue to RDF triples.
 
-location_info(Location,PlaceUri,[ 
-		rdf(PlaceUri,foaf:based_near,AddressUri)
-	,	rdf(AddressUri,rdf:type,v:'Address')
-	,	rdf(AddressUri,v:locality,literal(City))
-	,	rdf(AddressUri,v:'country-name',literal(Country))
-	,	rdf(AddressUri,v:'street-address',literal(Street))
-	,	rdf(AddressUri,v:'postal-code',literal(PostalCode))|Triples]) :-	
-	member(element(city,_,[City]),Location),
-	member(element(country,_,[Country]),Location),
-	member(element(street,_,[Street]),Location),
-	member(element(postalcode,_,[PostalCode]),Location),!,
-	rdf_bnode(AddressUri),
-	geo_info(Location,PlaceUri,Triples).
+location_info(Location, OrganizationUri, [ 
+		rdf(AddressUri, v:locality, literal(City))
+	,	rdf(AddressUri, v:'country-name', literal(Country))
+	,	rdf(AddressUri, v:'street-address', literal(Street))
+	,	rdf(AddressUri, v:'postal-code', literal(PostalCode)) | Triples]) :-	
+	member(element(city,_,[City]), Location),
+	member(element(country,_,[Country]), Location),
+	member(element(street,_,[Street]), Location),
+	member(element(postalcode,_,[PostalCode]), Location),!,
+	location_main_info(OrganizationUri, AddressUri, Triples).
 
-location_info(Location,PlaceUri,[ 
-		rdf(PlaceUri,foaf:based_near,Address)
-	,	rdf(Address,rdf:type,v:'Address')
-	,	rdf(Address,v:locality,literal(City))
-	,	rdf(Address,v:'country-name',literal(Country))
-	,	rdf(Address,v:'postal-code',literal(PostalCode))|Triples]) :-	
-	member(element(city,_,[City]),Location),
-	member(element(country,_,[Country]),Location),
-	member(element(street,_,_),Location),
-	member(element(postalcode,_,[PostalCode]),Location),!,	
-	rdf_bnode(Address),
-	geo_info(Location,PlaceUri,Triples).
+location_info(Location, OrganizationUri, [ 
+		rdf(AddressUri, v:locality, literal(City))
+	,	rdf(AddressUri, v:'country-name', literal(Country))
+	,	rdf(AddressUri, v:'postal-code', literal(PostalCode)) | Triples]) :-	
+	member(element(city,_,[City]), Location),
+	member(element(country,_,[Country]), Location),
+	member(element(street,_,_), Location),
+	member(element(postalcode,_,[PostalCode]), Location),!,	
+	location_main_info(OrganizationUri, AddressUri, Triples).
 
-location_info(Location,PlaceUri,[ 
-		rdf(PlaceUri,foaf:based_near,Address)
-	,	rdf(Address,rdf:type,v:'Address')
-	,	rdf(Address,v:locality,literal(City))
-	,	rdf(Address,v:'country-name',literal(Country))|Triples]) :-	
+location_info(Location, OrganizationUri, [ 
+		rdf(AddressUri, v:locality, literal(City))
+	,	rdf(AddressUri, v:'country-name', literal(Country)) | Triples]) :-	
 	member(element(city,_,[City]),Location),!,
 	member(element(country,_,[Country]),Location),!,
-	member(element(street,_,_),Location),
-	member(element(postalcode,_,_),Location),
-	rdf_bnode(Address),
-	geo_info(Location,PlaceUri,Triples).
+	location_main_info(OrganizationUri, AddressUri, Triples). 
 	
-location_info(Location,PlaceUri,Triples) :-
-	geo_info(Location,PlaceUri,Triples).
+location_info(Location, OrganizationUri, []) :-
+	Location = Location,
+	OrganizationUri = OrganizationUri.
+
+%%	location_main_info(+OrganizationUri, -AddressUri, -Triples)
+%
+%	Creates the address node and links it.
+	
+location_main_info(OrganizationUri, AddressUri, [
+		rdf(OrganizationUri, ov:'businessCard', BusinessCardUri)
+	,	rdf(BusinessCardUri, rdf:type, v:'VCard')
+	,	rdf(BusinessCardUri, v:adr, AddressUri)
+	,	rdf(AddressUri, rdf:type, v:'Address')]) :-
+    rdf_bnode(BusinessCardUri),
+    rdf_bnode(AddressUri).
 
 %%	geo_info(+Location, +PlaceUri, -Triples)
 %
 %	Converts the spatial information of a location to RDF triples.
 
-geo_info(Location, PlaceUri, [
-		rdf(PlaceUri, wgs:long, literal(type(xmls:'float', Lat)))
+geo_info(Location, OrganizationUri, [
+	    rdf(OrganizationUri, wgs:'location', PlaceUri)
+	,	rdf(PlaceUri, rdf:type, wgs:'SpatialThing')
+	,	rdf(PlaceUri, wgs:long, literal(type(xmls:'float', Lat)))
 	,	rdf(PlaceUri, wgs:lat, literal(type(xmls:'float', Long)))]) :-	
 	member(element('geo:point' ,_, GeoPoint), Location),!,
 	member(element('geo:lat' ,_, [Lat]), GeoPoint),
-	member(element('geo:long' ,_, [Long]), GeoPoint).
+	member(element('geo:long' ,_, [Long]), GeoPoint),
+	rdf_bnode(PlaceUri).
 
-geo_info(Location,PlaceUri,[]) :-
-	Location=Location,
-	PlaceUri=PlaceUri.
+geo_info(Location,OrganizationUri,[]) :-
+	Location = Location,
+	OrganizationUri = OrganizationUri.
 
 %%	venue_website(+Venue, +PlaceUri, -Triples)
 %

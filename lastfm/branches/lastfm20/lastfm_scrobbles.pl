@@ -173,7 +173,7 @@ album_mbid_info(Track, TrackUri, ScrobbleDesc, AlbumTriples) :-
 			(AlbumTriples = [rdf(AlbumUri, mo:track, TrackUri)],
 			clause(scrobbledesc(ID,ScrobbleDesc), Y), Y = true)
 		;
-			(create_mbid_uri(ID, 'mbid', AlbumUri),
+			(create_local_uri(ID, 'mbid', AlbumUri),
 			album_info(Title, TrackUri, AlbumUri, ScrobbleDesc, AlbumInfoTriples),
 			set_mbid_uri(ID, AlbumUri, ScrobbleDesc, 'record', AlbumInfoTriples, AlbumTriples))
 	).
