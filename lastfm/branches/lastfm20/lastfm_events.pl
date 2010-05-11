@@ -164,7 +164,7 @@ venue_info(Event, EventUri, VenueTriples) :-
 			append(VenueWebsiteTriples, Triples2, Triples3),
 			venue_phonenumber(Venue, OrganizationUri, VenuePhonenumberTriples),
 			append(VenuePhonenumberTriples, Triples3, Triples4),
-			lastfm_images(Venue, OrganizationUri, ['small','medium','large','extralarge','mega'], 'Venue', ['ov','image'], VenueImagesTriples),
+			lastfm_images(Venue, OrganizationUri, ['small','medium','large','extralarge','mega'], 'Venue', ['foaf','depiction'], VenueImagesTriples),
 			append(VenueImagesTriples, Triples4, Triples5),
 			VenueTriples = [
 		 			rdf(EventUri, event:agent, OrganizationUri)
