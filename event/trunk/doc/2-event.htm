@@ -1,0 +1,48 @@
+<h2 id="event">The Event Model</h2>
+<p>
+This ontology deals with the notion of reified events. It defines one
+main <b>Event</b> concept. An event may have a location, a time, active
+agents, factors and products, as depicted below.
+</p>
+
+<div style="text-align: center; margin-top: 50px; margin-bottom: 50px"><img src="event.png"/></div>
+
+<p>
+For example, the following RDF/N3 code deals with an performance event, involving one performer and an instrument
+(the Santur) in London, the 15th of October 2007 at noon, and lasting an hour.
+</p>
+<div style="border: solid; border-width: 2px; border-color: grey; padding: 0 0 0 5px">
+<pre>
+@prefix event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;.
+@prefix mit: &lt;http://purl.org/ontology/mo/mit#&gt;.
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt;.
+@prefix tl: &lt;http://purl.org/NET/c4dm/timeline.owl#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+
+:performance 
+	a event:Event;
+	event:factor mit:Santur;
+	event:agent [
+		a foaf:Person;
+		foaf:name "P. H.";
+		];
+	event:place &lt;http://sws.geonames.org/2643744/&gt;;
+	event:time [
+		a tl:Interval;
+		tl:at "2007-10-15T12:00:00"^^xsd:dateTime;
+		tl:duration "PT1H"^^xsd:duration;
+		];
+	.
+</pre>
+</div>
+
+<p>
+This ontology defines two further concepts: <b>Product</b>, <b>Factor</b> and <b>Agent</b>. However, they are not
+covered in this documentation: they are not supposed to be used directly. They are <i>defined classes</i>: using this ontology, one can infer
+that ever person involved in an event is an <b>Agent</b>.
+</p>
+
+<hr/>
+
+
+
