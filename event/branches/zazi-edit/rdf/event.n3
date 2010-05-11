@@ -1,20 +1,26 @@
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix time: <http://www.w3.org/2006/time#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
-@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
+# Saved by TopBraid on Tue May 11 18:02:21 CEST 2010
+# baseURI: http://purl.org/NET/c4dm/event.owl
+# imports: http://www.w3.org/2006/time
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/2003/01/geo/wgs84_pos
+# imports: http://xmlns.com/foaf/0.1/
 
-# Ontology header
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix event:   <http://purl.org/NET/c4dm/event.owl#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:    <http://www.w3.org/2006/time#> .
+@prefix vs:      <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-<http://purl.org/NET/c4dm/event.owl> a owl:Ontology;
-	dc:title "The Event ontology";
-	owl:versionInfo "Revision: 1.01";
-	rdfs:label "The Event ontology";
-	dc:description """
+<http://purl.org/NET/c4dm/event.owl>
+      rdf:type owl:Ontology ;
+      rdfs:label "The Event ontology" ;
+      dc:date "$Date: 2010/05/11 18:00:00 $"^^xsd:string ;
+      dc:description """
 		This ontology deals with the notion of reified events---
 		events seen as first-class objects. It only defines one
 		concept: Event, which may have agents (actively
@@ -23,182 +29,186 @@
 
 		Regarding the ontological status of event tokens, they are seen
 		as the way cognitive agents classify space/time regions
-	""";
-	owl:imports <http://www.w3.org/2006/time> ;
-	foaf:maker <http://moustaki.org/foaf.rdf#moustaki> ;
-	dc:date "$Date: 2007/06/29 15:25:11 $";
-	.
+	""" ;
+      dc:title "The Event ontology" ;
+      owl:imports <http://www.w3.org/2003/01/geo/wgs84_pos> , <http://www.w3.org/2006/time> , foaf: , dc: ;
+      owl:versionInfo "Revision: 2.0"^^xsd:string ;
+      foaf:maker <http://moustaki.org/foaf.rdf#moustaki> .
 
-# Missing types (DL)
-<http://moustaki.org/foaf.rdf#moustaki> a foaf:Person.
-geo:SpatialThing a owl:Class.
-foaf:Person a owl:Class.
-foaf:Agent a owl:Class.
-<http://purl.org/NET/c4dm/event.owl> a owl:Thing. # Why do I have to write that???
-dc:date a owl:DatatypeProperty.
-dc:title a owl:DatatypeProperty.
-dc:description a owl:DatatypeProperty.
-foaf:maker a owl:ObjectProperty.
-
-# Status of terms
-vs:term_status a owl:AnnotationProperty.
-
-
-event:Event a owl:Class;
-	rdfs:label "Event";
-	rdfs:comment """
+event:Event
+      rdf:type owl:Class ;
+      rdfs:comment """
 		An arbitrary classification of a space/time region, by a 
 		cognitive agent. An event may have actively participating agents,
 		passive factors, products, and a location in space/time.
-		""";
-	vs:term_status "stable";
-	.
+		""" ;
+      rdfs:label "Event" ;
+      vs:term_status "stable" .
 
-# Some defined class, DL toys:-)
-event:Product a owl:Class;
-	rdfs:label "Product";
-	rdfs:comment """
-		Everything produced by an event
-		""";
-	vs:term_status "stable";
-	owl:equivalentClass [
-		a owl:Restriction;
-		owl:someValuesFrom event:Event;
-		owl:onProperty event:produced_in;
-	]
-	.
-
-event:Factor a owl:Class;
-	rdfs:label "Factor";
-	rdfs:comment """
+event:Factor
+      rdf:type owl:Class ;
+      rdfs:comment """
 		Everything used as a factor in an event
-		""";
-	vs:term_status "stable";
-    owl:disjointWith foaf:Agent;
-	owl:equivalentClass [
-		a owl:Restriction;
-		owl:someValuesFrom event:Event;
-		owl:onProperty event:factor_of;
-		];
-	.
+		""" ;
+      rdfs:label "Factor" ;
+      owl:disjointWith foaf:Agent ;
+      owl:equivalentClass
+              [ rdf:type owl:Restriction ;
+                owl:onProperty event:factor_of ;
+                owl:someValuesFrom event:Event
+              ] ;
+      vs:term_status "stable" .
 
-# Properties
+event:Product
+      rdf:type owl:Class ;
+      rdfs:comment """
+		Everything produced by an event
+		""" ;
+      rdfs:label "Product" ;
+      owl:equivalentClass
+              [ rdf:type owl:Restriction ;
+                owl:onProperty event:produced_in ;
+                owl:someValuesFrom event:Event
+              ] ;
+      vs:term_status "stable" .
 
-event:agent a owl:ObjectProperty;
-	vs:term_status "stable";
-	rdfs:label "agent";
-	rdfs:comment """
+event:agent
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment """
 		Relates an event to an active agent (a person, a computer, ... :-) )
-		""";
-	rdfs:range foaf:Agent;
-	rdfs:domain event:Event;
-	owl:equivalentProperty event:hasAgent; #see verbs vs nouns discussion
-	owl:inverseOf event:agent_in;
-	.
+		""" ;
+      rdfs:domain event:Event ;
+      rdfs:label "agent" ;
+      rdfs:range foaf:Agent ;
+      owl:equivalentProperty
+              event:hasAgent ;
+      owl:inverseOf event:agent_in ;
+      vs:term_status "stable" .
 
-event:factor a owl:ObjectProperty;
-	vs:term_status "stable";
-	rdfs:label "factor";
-	rdfs:comment """
+event:agent_in
+      rdf:type owl:ObjectProperty ;
+      vs:term_status "stable" .
+
+event:factor
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment """
 		Relates an event to a passive factor (a tool, an instrument, an abstract cause...)
-		""";
-	rdfs:domain event:Event;
-	owl:equivalentProperty event:hasFactor;
-	owl:inverseOf event:factor_of;
-	.
+		""" ;
+      rdfs:domain event:Event ;
+      rdfs:label "factor" ;
+      owl:equivalentProperty
+              event:hasFactor ;
+      owl:inverseOf event:factor_of ;
+      vs:term_status "stable" .
 
-event:literal_factor a owl:DatatypeProperty;
-	vs:term_status "stable";
-	rdfs:label "literal factor";
-	rdfs:comment """
+event:factor_of
+      rdf:type owl:ObjectProperty ;
+      vs:term_status "stable" .
+
+event:hasAgent
+      rdf:type owl:ObjectProperty ;
+      vs:term_status "deprecated" .
+
+event:hasFactor
+      rdf:type owl:ObjectProperty ;
+      vs:term_status "deprecated" .
+
+event:hasLiteralFactor
+      rdf:type owl:DatatypeProperty ;
+      vs:term_status "deprecated" .
+
+event:hasProduct
+      rdf:type owl:ObjectProperty ;
+      vs:term_status "deprecated" .
+
+event:hasSubEvent
+      rdf:type owl:ObjectProperty ;
+      vs:term_status "deprecated" .
+
+event:isAgentIn
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "agent in" ;
+      owl:equivalentProperty
+              event:agent_in ;
+      vs:term_status "deprecated" .
+
+event:isFactorOf
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "factor of" ;
+      owl:equivalentProperty
+              event:factor_of ;
+      vs:term_status "deprecated" .
+
+event:literal_factor
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment """
 		Relates an event to a factor which can be described as a literal. This property
 		should not be used as-is, but should be subsumed by other, more specific, properties
 		(like an hypothetic :weatherCelsius, linking an event to a temperature).
-		""";
-	rdfs:domain event:Event;
-	owl:equivalentProperty event:hasLiteralFactor;
-	.
+		""" ;
+      rdfs:domain event:Event ;
+      rdfs:label "literal factor" ;
+      owl:equivalentProperty
+              event:hasLiteralFactor ;
+      vs:term_status "stable" .
 
-event:product a owl:ObjectProperty;
-	vs:term_status "stable";
-	rdfs:label "product";
-	rdfs:comment """
+event:place
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdfs:comment """
+		Relates an event to a spatial object.
+		""" ;
+      rdfs:domain event:Event ;
+      rdfs:label "place" ;
+      rdfs:range geo:SpatialThing ;
+      vs:term_status "stable" .
+
+event:producedIn
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "produced in" ;
+      owl:equivalentProperty
+              event:produced_in ;
+      vs:term_status "deprecated" .
+
+event:produced_in
+      rdf:type owl:ObjectProperty ;
+      vs:term_status "stable" .
+
+event:product
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment """
 		Relates an event to something produced during the event---a sound, a pie, whatever...
-		""";
-	rdfs:domain event:Event;
-	owl:equivalentProperty event:hasProduct;
-	owl:inverseOf event:produced_in;
-	.
+		""" ;
+      rdfs:domain event:Event ;
+      rdfs:label "product" ;
+      owl:equivalentProperty
+              event:hasProduct ;
+      owl:inverseOf event:produced_in ;
+      vs:term_status "stable" .
 
-event:sub_event a owl:ObjectProperty;
-	vs:term_status "stable";
-	rdfs:label "sub-event";
-	rdfs:comment """
+event:sub_event
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment """
 		This property provides a way to split a complex event (for example, a performance involving several 
 		musicians) into simpler ones (one event per musician).
-		""";
-	rdfs:domain event:Event;
-	rdfs:range event:Event;
-	owl:equivalentProperty event:hasSubEvent;
-	.
+		""" ;
+      rdfs:domain event:Event ;
+      rdfs:label "sub-event" ;
+      rdfs:range event:Event ;
+      owl:equivalentProperty
+              event:hasSubEvent ;
+      vs:term_status "stable" .
 
-event:time a owl:FunctionalProperty;
-	a owl:ObjectProperty;
-	vs:term_status "stable";
-	rdfs:domain event:Event;
-	rdfs:range time:TemporalEntity;
-	rdfs:label "time";
-	rdfs:comment """
+event:time
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdfs:comment """
 		Relates an event to a time object, classifying a time region (either instantaneous or having an extent).
 		By using the Timeline ontology here, you can define event happening on a recorded track or on any 
 		media with a temporal extent.
-		""";
-	.
+		""" ;
+      rdfs:domain event:Event ;
+      rdfs:label "time" ;
+      rdfs:range time:TemporalEntity ;
+      vs:term_status "stable" .
 
-event:place a owl:FunctionalProperty;
-	a owl:ObjectProperty;
-	vs:term_status "stable";
-	rdfs:domain event:Event;
-	rdfs:range geo:SpatialThing;
-	rdfs:label "place";
-	rdfs:comment """
-		Relates an event to a spatial object.
-		""";
-	.
-
-# Inverses, additional stuff, etc.
-
-event:isAgentIn rdfs:label "agent in";
-	owl:equivalentProperty event:agent_in;
-	a owl:ObjectProperty;
-	vs:term_status "deprecated";
-	.
-
-event:isFactorOf rdfs:label "factor of";
-	owl:equivalentProperty event:factor_of;
-	a owl:ObjectProperty;
-	 vs:term_status "deprecated";
-	.
-
-event:producedIn rdfs:label "produced in";
-	owl:equivalentProperty event:produced_in;
-	a owl:ObjectProperty;
-	 vs:term_status "deprecated";
-	.
-
-event:hasFactor a owl:ObjectProperty;
-	vs:term_status "deprecated".
-event:hasAgent a owl:ObjectProperty;
-	vs:term_status "deprecated".
-event:hasProduct a owl:ObjectProperty;
-	vs:term_status "deprecated".
-event:hasLiteralFactor a owl:DatatypeProperty;
-	vs:term_status "deprecated".
-event:agent_in a owl:ObjectProperty;
-	vs:term_status "stable".
-event:factor_of a owl:ObjectProperty;
-	vs:term_status "stable".
-event:produced_in a owl:ObjectProperty;
-	vs:term_status "stable".
-event:hasSubEvent a owl:ObjectProperty;
-	vs:term_status "deprecated".
+vs:term_status
+      rdf:type owl:AnnotationProperty .

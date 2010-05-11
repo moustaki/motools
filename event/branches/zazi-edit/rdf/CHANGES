@@ -1,0 +1,25 @@
+Changes to Event Ontology:
+
+2010-05-11 18:00:
+
+- REMOVED: 	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/> from owl:Ontology definition
+- REMOVED: 	<foaf:Person rdf:about="http://moustaki.org/foaf.rdf#moustaki"/> => this should be define from the linked URI/URL
+- REMOVED:	<owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+			<owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+			<owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent"/>
+			<owl:DatatypeProperty rdf:about="../../dc/elements/1.1/date"/>
+			<owl:DatatypeProperty rdf:about="../../dc/elements/1.1/title"/>
+			<owl:DatatypeProperty rdf:about="../../dc/elements/1.1/description"/>
+			<owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/maker"/>
+			=> all these definitions are defined in their original ontology specification, so what about importing (owl:import) them, if you like to reuse them in this specification.
+		
+=======================================================================================================
+
+
+
+
+
+
+
+
+
