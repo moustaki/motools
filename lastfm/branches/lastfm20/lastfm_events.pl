@@ -85,6 +85,7 @@ event_rdf(UserUri, Event, [
 	,	rdf(EventUri, rdf:type, mo:'Performance')
 	,   rdf(EventUri, lfm:event_id, literal(EventID))
 	,	rdf(EventUri, foaf:isPrimaryTopicOf, LastFmEventUrl)
+	,	rdf(LastFmEventUrl, rdf:type, foaf:'Document')
 	,	Triples7]) :-
 	member(element(id,_,[EventID]), Event),
 	member(element(title,_,[Title]), Event),
@@ -172,6 +173,7 @@ venue_info(Event, EventUri, VenueTriples) :-
 				,	rdf(OrganizationUri, foaf:'name', literal(VenueName))
 				,	rdf(OrganizationUri, lfm:venue_id, literal(VenueID))
 				,	rdf(OrganizationUri, foaf:isPrimaryTopicOf, LastFmVenueUrl)
+				,	rdf(LastFmVenueUrl, rdf:type, foaf:'Document')
 				,	Triples5],
 			assertz(vid(VenueID, OrganizationUri)))
 	).
@@ -246,7 +248,9 @@ geo_info(Location,OrganizationUri,[]) :-
 %
 %	Converts the venue website to RDF triples.
 
-venue_website(Venue,PlaceUri,[rdf(PlaceUri,foaf:homepage,VenueWebsite)]) :-	
+venue_website(Venue,PlaceUri,[
+		rdf(PlaceUri,foaf:homepage,VenueWebsite)
+	,	rdf(VenueWebsite, rdf:type, foaf:'Document')]) :-	
 	member(element(website,_,[VenueWebsite]),Venue),!.
 
 venue_website(Venue,PlaceUri,[]) :-	
@@ -301,12 +305,14 @@ description_info(Event,EventUri,[]) :-
 %
 %	Converts the website of an event to RDF triples.
 
-website_info(Event,EventUri,[rdf(EventUri,foaf:homepage,Page)]) :-	
-	member(element(website,_,[Page]),Event),!.
+website_info(Event, EventUri, [
+		rdf(EventUri, foaf:homepage, Page)
+	,	rdf(Page, rdf:type, foaf:'Document')]) :-	
+	member(element(website, _, [Page]), Event), !.
 
-website_info(Event,EventUri,[]) :-	
-	member(element(website,_,_),Event),
-	EventUri=EventUri.
+website_info(Event, EventUri, []) :-	
+	member(element(website, _, _), Event),
+	EventUri = EventUri.
 
 %%	event_tags(+Event, +EventUri, -Triples)
 %

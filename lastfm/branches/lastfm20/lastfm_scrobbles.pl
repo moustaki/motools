@@ -101,7 +101,8 @@ track_mbid_info(Track, TrackUri, ScrobbleDesc, TrackInfoTriples) :-
 track_info(Track, TrackUri, NewScrobbleDesc4, [	
 		rdf(TrackUri, rdf:type, mo:'Track')
 	, 	rdf(TrackUri, dc:title, literal(Title))
-	,	rdf(TrackUri, foaf:primaryTopicOf, URL) | Triples3]) :-
+	,	rdf(TrackUri, foaf:isPrimaryTopicOf, URL) 
+	,	rdf(URL, rdf:type, foaf:'Document') | Triples3]) :-
 	artist_mbid_info(Track, TrackUri, ScrobbleDesc, ArtistTriples),
 	write_scrobbledesc('Listened to', ScrobbleDesc, NewScrobbleDesc),
 	member(element(name,_,[Title]), Track),
@@ -152,14 +153,15 @@ artist_mbid_info(Track,TrackUri,ScrobbleDesc,[]) :-
 %
 %	Converts general artist information to RDF triples.
     
-artist_info(Name,TrackUri,ArtistUri,ScrobbleDesc,[
-		rdf(TrackUri,foaf:maker,ArtistUri)
-	,   rdf(ArtistUri,rdf:type,mo:'MusicArtist')
-	,	rdf(ArtistUri,foaf:homepage, Homepage)
-	,	rdf(ArtistUri,foaf:name,literal(Name))]) :-
+artist_info(Name, TrackUri, ArtistUri, ScrobbleDesc, [
+		rdf(TrackUri, foaf:maker, ArtistUri)
+	,   rdf(ArtistUri, rdf:type, mo:'MusicArtist')
+	,	rdf(ArtistUri, foaf:homepage, Homepage)
+	,	rdf(Homepage, rdf:type, foaf:'Document')
+	,	rdf(ArtistUri, foaf:name, literal(Name))]) :-
 	lastfm_host(LFMH),
 	format(atom(Homepage), '~wmusic/~w', [LFMH, Name]),
-	format(atom(ScrobbleDesc),' "~w",',[Name]).
+	format(atom(ScrobbleDesc), ' "~w",', [Name]).
  
 %%	album_mbid_info(+Track, +TrackUri, -ScrobbleDesc, -AlbumTriples) 
 %
