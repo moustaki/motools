@@ -3274,9 +3274,9 @@ map:signal a d2rq:ClassMap;
 	d2rq:uriPattern "signal/@@track.gid@@";
 	d2rq:class mo:Signal;
 	.
-map:available_as a d2rq:PropertyBridge;
+map:published_as a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:signal;
-	d2rq:property mo:available_as;
+	d2rq:property mo:published_as;
 	d2rq:refersToClassMap map:track;
 	.
 map:signal__label a d2rq:PropertyBridge;
