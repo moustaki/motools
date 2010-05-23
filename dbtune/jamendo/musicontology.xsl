@@ -31,7 +31,7 @@
     <foaf:homepage rdf:resource="{url/text()}"/>
     <xsl:if test="location">
     <foaf:based_near>
-      <geo:Feature geo:name="{location/city/text()}" wgs:lat="{location/latitude/text()}" wgs:long="{location/longitude/text()}">
+      <geo:Feature rdfs:label="{location/city/text()}" geo:name="{location/city/text()}" wgs:lat="{location/latitude/text()}" wgs:long="{location/longitude/text()}">
         <xsl:if test="location/country">
         <geo:inCountry>
             <geo:Country rdf:about="http://www.geonames.org/countries/#{location/country/text()}" rdfs:label="{location/country/text()}" />
@@ -58,7 +58,7 @@
     <!-- <mo:license rdf:resource="{license_artwork/text()}"/> -->
     <xsl:for-each select="Tracks/track">
     <mo:track>
-        <mo:Track rdf:about="http://dbtune.org/jamendo/track/{id/text()}" dc:title="name/text()" mo:track_number="{numalbum/text()}">
+        <mo:Track rdf:about="http://dbtune.org/jamendo/track/{id/text()}" dc:title="{name/text()}" mo:track_number="{numalbum/text()}">
             <xsl:if test="string(mbgid)">
             <owl:sameAs rdf:resource="http://dbtune.org/musicbrainz/resource/track/{mbgid/text()}"/>
             <mo:musicbrainz rdf:resource="http://musicbrainz.org/track/{mbgid/text()}"/>
