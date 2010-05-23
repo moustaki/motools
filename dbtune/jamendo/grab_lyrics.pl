@@ -3,20 +3,19 @@
 :- use_module(library('http/json')).
 :- use_module(library(rdf_write)).
 
-:- rdf_load('jamendo_t').
+:- rdf_load('jamendo_t'), grab_lyrics, dump_lyrics.
 
 grab_lyrics :-
     setof(A, rdf(A, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://purl.org/ontology/mo/MusicArtist'), Set),!,
     split_set(Set, 50, Subset),
     track_ids(Subset, Ids),
     jamendo_query(Ids, Query),
-    write(Query),
     get_json(Query, List),
     create_rdf(List),
     fail.
 dump_lyrics :-
-    bagof(rdf(A,B,C), rdf(A,B,C,lyrics), RDF),
-    open('jamendo-lyrics.rdf', 'w', S),
+    bagof(rdf(A,B,C), (rdf(A,B,C,lyrics), C\==literal(@null)), RDF),
+    open('jamendo-lyrics.rdf', 'write', S),
     rdf_write_xml(S, RDF),
     close(S).
 
@@ -26,10 +25,10 @@ split_set(Set, Num, Subset) :-
     (Subset=Subset2; split_set(Rest, Num, Subset)).
 
 create_rdf([]).
-create_rdf([json([id=ID,text=@null])|T]) :-
+create_rdf([json([id=_,text='@null'])|T]) :-
     !,
     create_rdf(T).
-create_rdf([json([id=ID,text=''])|T]) :-
+create_rdf([json([id=_,text=''])|T]) :-
     !,
     create_rdf(T).
 create_rdf([json([id=ID,text=Text])|T]) :-
