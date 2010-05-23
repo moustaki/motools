@@ -16,7 +16,7 @@ grab_lyrics :-
     fail.
 grab_lyris :-
     !,
-    bagof(A, rdf(A,B,C,lyrics), RDF),
+    bagof(rdf(A,B,C), rdf(A,B,C,lyrics), RDF),
     open('jamendo-lyrics.rdf', 'w', S),
     rdf_write_xml(S, RDF),
     close(S).
