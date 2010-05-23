@@ -14,8 +14,7 @@ grab_lyrics :-
     get_json(Query, List),
     create_rdf(List),
     fail.
-grab_lyris :-
-    !,
+dump_lyrics :-
     bagof(rdf(A,B,C), rdf(A,B,C,lyrics), RDF),
     open('jamendo-lyrics.rdf', 'w', S),
     rdf_write_xml(S, RDF),
@@ -27,9 +26,17 @@ split_set(Set, Num, Subset) :-
     (Subset=Subset2; split_set(Rest, Num, Subset)).
 
 create_rdf([]).
+create_rdf([json([id=ID,text=@null])|T]) :-
+    !,
+    create_rdf(T).
+create_rdf([json([id=ID,text=''])|T]) :-
+    !,
+    create_rdf(T).
 create_rdf([json([id=ID,text=Text])|T]) :-
     atom_concat('http://dbtune.org/jamendo/track/', ID, Track),
-    rdf_assert(Track, 'http://purl.org/ontology/mo/lyrics', literal(Text), lyrics),
+    atom_concat('http://dbtune.org/jamendo/lyrics/', ID, Lyrics),
+    rdf_assert(Track, 'http://purl.org/ontology/mo/lyrics', Lyrics, lyrics), 
+    rdf_assert(Lyrics, 'http://purl.org/ontology/mo/text', literal(Text), lyrics),
     create_rdf(T).
 
 track_ids([], []) :- !.
