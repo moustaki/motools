@@ -185,7 +185,7 @@ class LastFMSession:
 			if self.similarArtists[idx][1] != None:
 				self.graph.add((node, OWL['sameAs'], rdflib.URIRef(BBC_PREFIX+self.similarArtists[idx][1])))
 				self.graph.add((node, OWL['sameAs'], rdflib.URIRef(DBTUNE_MBZ+self.similarArtists[idx][1])))
-				self.graph.add((node, MO['musicbrainz'], rdflib.Literal(self.similarArtists[idx][1])))
+				self.graph.add((node, MO['musicbrainz_guid'], rdflib.Literal(self.similarArtists[idx][1])))
 
 			# from artist nodes to similarity
 			#self.graph.add((node, MUSIM['object_of'], assList[idx]))
