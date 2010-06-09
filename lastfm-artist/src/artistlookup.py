@@ -145,7 +145,7 @@ class LastFMSession:
 		self.graph.add((aNode, rdflib.RDF.type, MO['MusicArtist']))
 		self.graph.add((aNode, FOAF['name'], rdflib.Literal(self.artistname)))
 		if self.mbid != None:
-			self.graph.add((aNode, MO['musicbrainz'], rdflib.Literal(self.mbid)))
+			self.graph.add((aNode, MO['musicbrainz_guid'], rdflib.Literal(self.mbid)))
 			self.graph.add((aNode, OWL['sameAs'], rdflib.URIRef(BBC_PREFIX+self.mbid)))
 			self.graph.add((aNode, OWL['sameAs'], rdflib.URIRef(DBTUNE_MBZ+self.mbid)))
 

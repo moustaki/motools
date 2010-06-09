@@ -42,7 +42,7 @@ import urllib
 from xml.dom import minidom
 import threading
 #import os
-#import time #@UnusedImport
+import time #@UnusedImport
 from logging import *
 
 STATUS_INVALID_SERVICE = 2
