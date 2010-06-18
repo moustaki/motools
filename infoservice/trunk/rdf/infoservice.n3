@@ -1,4 +1,4 @@
-# Saved by TopBraid on Fri Jun 18 19:41:36 CEST 2010
+# Saved by TopBraid on Fri Jun 18 21:19:33 CEST 2010
 # baseURI: http://purl.org/ontology/infoservice/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
 # imports: http://xmlns.com/foaf/0.1/
@@ -23,8 +23,8 @@ is:   rdf:type owl:Ontology ;
 		of the Information Service Ontology. This ontology is an extension of the FOAF Ontology.
 	""" ;
       dc:title "The Information Service Ontology" ;
-      owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns> , foaf: , dcterms: ;
-      owl:versionInfo "Revision: 0.1" ;
+      owl:imports dcterms: , foaf: , <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
+      owl:versionInfo "Revision: 0.2"^^xsd:string ;
       foaf:maker <http://foaf.me/zazi#me> .
 
 is:InfoService
@@ -35,12 +35,40 @@ is:InfoService
       rdfs:subClassOf owl:Thing ;
       vs:term_status "unstable"^^xsd:string .
 
+is:InfoServiceQuality
+      rdf:type owl:Class ;
+      rdfs:comment "This concept is for describing specific quality levels, e.g. good or bad or more detailed ones, of info services."^^xsd:string ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "info service quality"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      vs:term_status "testing"^^xsd:string .
+
+is:InfoServiceType
+      rdf:type owl:Class ;
+      rdfs:comment "This concept is for describing the different types of info services, e.g. expert, community or mixed."^^xsd:string ;
+      rdfs:isDefinedBy "ttp://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "info service type"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      vs:term_status "testing"^^xsd:string .
+
+is:bad
+      rdf:type is:InfoServiceQuality ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "This is currently third worst quality level from the info service quality scale."^^xsd:string ;
+      dc:title "bad"^^xsd:string .
+
 is:bbc
       rdf:type is:InfoService ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       dc:description "The largest broadcasting organization in the world."^^xsd:string ;
       dc:title "BBC"^^xsd:string ;
       foaf:homepage <http://www.bbc.co.uk/> .
+
+is:community
+      rdf:type is:InfoServiceType ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "This is the info service type for community driven info services."^^xsd:string ;
+      dc:title "community"^^xsd:string .
 
 is:discogs
       rdf:type is:InfoService ;
@@ -49,6 +77,12 @@ is:discogs
       dc:title "Discogs"^^xsd:string ;
       foaf:homepage <http://www.discogs.com/> .
 
+is:expert
+      rdf:type is:InfoServiceType ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "This is the info service type for expert driven info services."^^xsd:string ;
+      dc:title "expert"^^xsd:string .
+
 is:freebase
       rdf:type is:InfoService ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
@@ -56,17 +90,47 @@ is:freebase
       dc:title "Freebase"^^xsd:string ;
       foaf:homepage <http://www.freebase.com/> .
 
+is:good
+      rdf:type is:InfoServiceQuality ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "This is currently the second best quality level from the info service quality scale."^^xsd:string ;
+      dc:title "good"^^xsd:string .
+
 is:info_service
       rdf:type owl:ObjectProperty ;
       rdfs:comment "Associates the specific foaf:Document typed website link to the specific is:InfoService individual ."^^xsd:string ;
       rdfs:domain foaf:Document ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
-      rdfs:label "info_service"^^xsd:string ;
+      rdfs:label "has info service"^^xsd:string ;
       rdfs:range is:InfoService ;
       owl:InverseOf
               [ rdfs:label "is info service of"^^xsd:string
               ] ;
       vs:term_status "unstable"^^xsd:string .
+
+is:info_service_quality
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "With this property it is possible to associate a specific quality level to an is:InfoService instance"^^xsd:string ;
+      rdfs:domain is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "has info service quality"^^xsd:string ;
+      rdfs:range is:InfoServiceQuality ;
+      owl:InverseOf
+              [ rdfs:label "is info service quality of"^^xsd:string
+              ] ;
+      vs:term_status "testing"^^xsd:string .
+
+is:info_service_type
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "With this property it is possible to associate a specific info service type, e.g. expert, community or mixed, to an is:InfoService instance."^^xsd:string ;
+      rdfs:domain is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "has info service type"^^xsd:string ;
+      rdfs:range is:InfoServiceType ;
+      owl:InverseOf
+              [ rdfs:label "is info service type of"^^xsd:string
+              ] ;
+      vs:term_status "testing"^^xsd:string .
 
 is:lastfm
       rdf:type is:InfoService ;
@@ -75,12 +139,28 @@ is:lastfm
       dc:title "Last.fm"^^xsd:string ;
       foaf:homepage <http://last.fm/> .
 
+is:middle
+      rdf:type is:InfoServiceQuality ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "This is currently the third best quality level from the info service quality scale."^^xsd:string ;
+      dc:title "middle"^^xsd:string .
+
+is:mixed
+      rdf:type is:InfoServiceType ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "This is the info service type, where both parties - experts and a user community - share their knowledge to that info service."^^xsd:string ;
+      dc:title "mixed"^^xsd:string .
+
 is:musicbrainz
       rdf:type is:InfoService ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       dc:description "An open content music database"^^xsd:string ;
       dc:title "MusicBrainz"^^xsd:string ;
       dcterms:subject "<category:Acoustic_fingerprinting>"^^xsd:string , "<category:MusicBrainz>"^^xsd:string , "<category:Library_2.0>"^^xsd:string , "<category:Online_encyclopedias>"^^xsd:string , "<category:Online_music_and_lyrics_databases>"^^xsd:string , "<category:Free_websites>"^^xsd:string , "<category:Metadata_registry>"^^xsd:string ;
+      is:info_service_quality
+              is:good ;
+      is:info_service_type
+              is:mixed ;
       foaf:homepage <http://musicbrainz.org/> .
 
 is:pandora
@@ -96,6 +176,24 @@ is:spotify
       dc:description "A proprietary peer-to-peer  music streaming service."^^xsd:string ;
       dc:title "Spotify"^^xsd:string ;
       foaf:homepage <http://www.spotify.com/> .
+
+is:useless
+      rdf:type is:InfoServiceQuality ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "This is currently worst quality level from the info service quality scale."^^xsd:string ;
+      dc:title "useless"^^xsd:string .
+
+is:very_bad
+      rdf:type is:InfoServiceQuality ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "This is currently second worst quality level from the info service quality scale."^^xsd:string ;
+      dc:title "very bad"^^xsd:string .
+
+is:very_good
+      rdf:type is:InfoServiceQuality ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "This is currently the best quality level from the info service quality scale."^^xsd:string ;
+      dc:title "very good"^^xsd:string .
 
 is:wikipedia
       rdf:type is:InfoService ;

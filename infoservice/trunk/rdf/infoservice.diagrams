@@ -8,11 +8,37 @@
         <cd:height rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
         >30</cd:height>
         <cd:width rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >151</cd:width>
+        >198</cd:width>
         <cd:y rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >69</cd:y>
+        >97</cd:y>
         <cd:x rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >474</cd:x>
+        >909</cd:x>
+        <cd:class rdf:resource="http://purl.org/ontology/infoservice/InfoServiceQuality"/>
+      </cd:URINode>
+    </cd:nodes>
+    <cd:nodes>
+      <cd:URINode>
+        <cd:height rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >30</cd:height>
+        <cd:width rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >181</cd:width>
+        <cd:y rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >96</cd:y>
+        <cd:x rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >6</cd:x>
+        <cd:class rdf:resource="http://purl.org/ontology/infoservice/InfoServiceType"/>
+      </cd:URINode>
+    </cd:nodes>
+    <cd:nodes>
+      <cd:URINode>
+        <cd:height rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >66</cd:height>
+        <cd:width rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >324</cd:width>
+        <cd:y rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >78</cd:y>
+        <cd:x rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >374</cd:x>
         <cd:class rdf:resource="http://purl.org/ontology/infoservice/InfoService"/>
       </cd:URINode>
     </cd:nodes>
@@ -23,9 +49,9 @@
         <cd:width rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
         >254</cd:width>
         <cd:y rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >156</cd:y>
+        >195</cd:y>
         <cd:x rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >422</cd:x>
+        >410</cd:x>
         <cd:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
       </cd:URINode>
     </cd:nodes>
