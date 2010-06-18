@@ -1,0 +1,105 @@
+# Saved by TopBraid on Fri Jun 18 19:41:36 CEST 2010
+# baseURI: http://purl.org/ontology/infoservice/
+# imports: http://www.w3.org/2003/06/sw-vocab-status/ns
+# imports: http://xmlns.com/foaf/0.1/
+# imports: http://purl.org/dc/terms/
+
+@prefix category:  <http://dbpedia.org/resource/Category:> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix is:      <http://purl.org/ontology/infoservice/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vs:      <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+is:   rdf:type owl:Ontology ;
+      dc:date "$Date: 2010/06/18 17:27:19 $" ;
+      dc:description """
+		The Information Service Ontology Specification provides additional concepts and 
+		properties for describing different information services on the Semantic Web. This document contains a RDF description 
+		of the Information Service Ontology. This ontology is an extension of the FOAF Ontology.
+	""" ;
+      dc:title "The Information Service Ontology" ;
+      owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns> , foaf: , dcterms: ;
+      owl:versionInfo "Revision: 0.1" ;
+      foaf:maker <http://foaf.me/zazi#me> .
+
+is:InfoService
+      rdf:type owl:Class ;
+      rdfs:comment "This concept is for linking a specific concept, e.g. a foaf:Agent, a mo:Track or a mo:MusicArtist to a related website of a specific information service (modelled as individual of is:InfoService), e.g. Wikipedia, MySpace, MusicBrainz, Discogs, Last.fm, Pandora, BBC, ... . With this concept it is possible to describe info services more in detail, so that the client, which consumes that 'linked data' could choose, which source it likes to use by evaluating the description of the info service of that website link."^^xsd:string ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "information service"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      vs:term_status "unstable"^^xsd:string .
+
+is:bbc
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "The largest broadcasting organization in the world."^^xsd:string ;
+      dc:title "BBC"^^xsd:string ;
+      foaf:homepage <http://www.bbc.co.uk/> .
+
+is:discogs
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "A website  and database  of information about music recordings, and one of the largest online databases of electronic music releases and is believed to be the largest online database of releases on vinyl media."^^xsd:string ;
+      dc:title "Discogs"^^xsd:string ;
+      foaf:homepage <http://www.discogs.com/> .
+
+is:freebase
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "An online collection of structured data harvested from many sources."^^xsd:string ;
+      dc:title "Freebase"^^xsd:string ;
+      foaf:homepage <http://www.freebase.com/> .
+
+is:info_service
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Associates the specific foaf:Document typed website link to the specific is:InfoService individual ."^^xsd:string ;
+      rdfs:domain foaf:Document ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "info_service"^^xsd:string ;
+      rdfs:range is:InfoService ;
+      owl:InverseOf
+              [ rdfs:label "is info service of"^^xsd:string
+              ] ;
+      vs:term_status "unstable"^^xsd:string .
+
+is:lastfm
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "A popular Internet radio site for streaming music."^^xsd:string ;
+      dc:title "Last.fm"^^xsd:string ;
+      foaf:homepage <http://last.fm/> .
+
+is:musicbrainz
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "An open content music database"^^xsd:string ;
+      dc:title "MusicBrainz"^^xsd:string ;
+      dcterms:subject "<category:Acoustic_fingerprinting>"^^xsd:string , "<category:MusicBrainz>"^^xsd:string , "<category:Library_2.0>"^^xsd:string , "<category:Online_encyclopedias>"^^xsd:string , "<category:Online_music_and_lyrics_databases>"^^xsd:string , "<category:Free_websites>"^^xsd:string , "<category:Metadata_registry>"^^xsd:string ;
+      foaf:homepage <http://musicbrainz.org/> .
+
+is:pandora
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "An automated music recommendation service."^^xsd:string ;
+      dc:title "Pandora"^^xsd:string ;
+      foaf:homepage <http://www.pandora.com/> .
+
+is:spotify
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "A proprietary peer-to-peer  music streaming service."^^xsd:string ;
+      dc:title "Spotify"^^xsd:string ;
+      foaf:homepage <http://www.spotify.com/> .
+
+is:wikipedia
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "A free, web-based, collaborative, multilingual encyclopedia project."^^xsd:string ;
+      dc:title "Wikipedia"^^xsd:string ;
+      foaf:homepage <http://www.wikipedia.org/> .

@@ -1,0 +1,39 @@
+# Saved by TopBraid on Fri Jun 18 19:41:36 CEST 2010
+# baseURI: null
+
+@prefix composite:  <http://www.topbraid.org/2007/05/composite.owl#> .
+@prefix forms:   <http://www.topbraid.org/2007/01/forms.owl#> .
+@prefix inference:  <http://www.topbraid.org/2007/06/inference.owl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix visual:  <http://topbraid.org/visual#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+[]    rdf:type visual:Graph ;
+      rdfs:label "is:musicbrainz Graph" ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://musicbrainz.org/> ;
+                visual:height "19"^^xsd:int ;
+                visual:width "231"^^xsd:int ;
+                visual:x "358"^^xsd:int ;
+                visual:y "463"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://purl.org/ontology/infoservice/InfoService> ;
+                visual:height "94"^^xsd:int ;
+                visual:width "292"^^xsd:int ;
+                visual:x "327"^^xsd:int ;
+                visual:y "44"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://purl.org/ontology/infoservice/musicbrainz> ;
+                visual:height "208"^^xsd:int ;
+                visual:width "316"^^xsd:int ;
+                visual:x "315"^^xsd:int ;
+                visual:y "207"^^xsd:int
+              ] ;
+      visual:depicts <http://purl.org/ontology/infoservice/musicbrainz> .
