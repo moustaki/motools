@@ -1,7 +1,6 @@
-# Saved by TopBraid on Sun Jun 20 19:37:36 CEST 2010
+# Saved by TopBraid on Sun Jun 20 19:47:09 CEST 2010
 # baseURI: http://purl.org/ontology/infoservice/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
-# imports: http://xmlns.com/foaf/0.1/
 # imports: http://purl.org/dc/terms/
 
 @prefix category:  <http://dbpedia.org/resource/Category:> .
@@ -21,8 +20,8 @@ is:   rdf:type owl:Ontology ;
 for describing different information services, e.g. Wikipedia, MusicBrainz, Freebase or Discogs, on/ for 
 the Semantic Web. This document contains a RDF description of the Information Service Ontology."""^^xsd:string ;
       dc:title "The Information Service Ontology" ;
-      owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns> , foaf: , dcterms: ;
-      owl:versionInfo "Revision: 0.3"^^xsd:string ;
+      owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns> , dcterms: ;
+      owl:versionInfo "Revision: 0.4"^^xsd:string ;
       foaf:maker <http://foaf.me/zazi#me> .
 
 is:InfoService
