@@ -1,4 +1,4 @@
-# Saved by TopBraid on Sun Jun 20 11:23:08 CEST 2010
+# Saved by TopBraid on Sun Jun 20 19:37:36 CEST 2010
 # baseURI: http://purl.org/ontology/infoservice/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
 # imports: http://xmlns.com/foaf/0.1/
@@ -16,7 +16,7 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 is:   rdf:type owl:Ontology ;
-      dc:date "$Date: 2010/06/20 11:22:19 $"^^xsd:string ;
+      dc:date "$Date: 2010/06/20 19:37:19 $"^^xsd:string ;
       dc:description """The Information Service Ontology Specification provides basic concepts and properties 
 for describing different information services, e.g. Wikipedia, MusicBrainz, Freebase or Discogs, on/ for 
 the Semantic Web. This document contains a RDF description of the Information Service Ontology."""^^xsd:string ;
@@ -33,6 +33,14 @@ is:InfoService
       rdfs:subClassOf owl:Thing ;
       vs:term_status "unstable"^^xsd:string .
 
+is:InfoServiceContributorType
+      rdf:type owl:Class ;
+      rdfs:comment "This concept is for describing the different contributor types of info services, e.g. expert, community or mixed."^^xsd:string ;
+      rdfs:isDefinedBy "ttp://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "info service contributor type"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      vs:term_status "testing"^^xsd:string .
+
 is:InfoServiceQuality
       rdf:type owl:Class ;
       rdfs:comment "This concept is for describing specific quality levels, e.g. good or bad or more detailed ones, of info services. Please feel free to use this concept as hook for more complex and detailed information quality description modellings in sub ontologies. Futhermore, such info services ratings could be done by different info service rating agencies, so that the customer of such ratings could select its info service ratings agency of choice."^^xsd:string ;
@@ -43,11 +51,11 @@ is:InfoServiceQuality
 
 is:InfoServiceType
       rdf:type owl:Class ;
-      rdfs:comment "This concept is for describing the different types of info services, e.g. expert, community or mixed."^^xsd:string ;
-      rdfs:isDefinedBy "ttp://purl.org/ontology/infoservice/"^^xsd:string ;
-      rdfs:label "info service type"^^xsd:string ;
+      rdfs:comment "This concept is for describing the type of an info service, e.g. 'social network service', 'recommender service' or 'encyclopedia'."^^xsd:string ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "info service"^^xsd:string ;
       rdfs:subClassOf owl:Thing ;
-      vs:term_status "testing"^^xsd:string .
+      vs:term_status "unstable"^^xsd:string .
 
 is:bad
       rdf:type is:InfoServiceQuality ;
@@ -63,7 +71,7 @@ is:bbc
       foaf:homepage <http://www.bbc.co.uk/> .
 
 is:community
-      rdf:type is:InfoServiceType ;
+      rdf:type is:InfoServiceContributorType ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       dc:description "This is the info service type for community driven info services."^^xsd:string ;
       dc:title "community"^^xsd:string .
@@ -75,8 +83,20 @@ is:discogs
       dc:title "Discogs"^^xsd:string ;
       foaf:homepage <http://www.discogs.com/> .
 
-is:expert
+is:echonest
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "The Echo Nest provides a series of web based solutions for better search, recommendation and interactivity on the music web (including musicial fingerprinting)."^^xsd:string ;
+      dc:title "EchoNest"^^xsd:string .
+
+is:encyclopedia
       rdf:type is:InfoServiceType ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "An encyclopedia is a type of reference work, a compendium holding information from either all branches of knowledge or a particular branch of knowledge."^^xsd:string ;
+      dc:title "encyclopedia"^^xsd:string .
+
+is:expert
+      rdf:type is:InfoServiceContributorType ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       dc:description "This is the info service type for expert driven info services."^^xsd:string ;
       dc:title "expert"^^xsd:string .
@@ -106,6 +126,18 @@ is:info_service
               ] ;
       vs:term_status "unstable"^^xsd:string .
 
+is:info_service_contributor_type
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "With this property it is possible to associate a specific info service contributor type, e.g. expert, community or mixed, to an is:InfoService instance."^^xsd:string ;
+      rdfs:domain is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "has info service contributor type"^^xsd:string ;
+      rdfs:range is:InfoServiceContributorType ;
+      owl:InverseOf
+              [ rdfs:label "is info service contributor type of"^^xsd:string
+              ] ;
+      vs:term_status "testing"^^xsd:string .
+
 is:info_service_quality
       rdf:type owl:ObjectProperty ;
       rdfs:comment "With this property it is possible to associate a specific quality level to an is:InfoService instance"^^xsd:string ;
@@ -120,7 +152,7 @@ is:info_service_quality
 
 is:info_service_type
       rdf:type owl:ObjectProperty ;
-      rdfs:comment "With this property it is possible to associate a specific info service type, e.g. expert, community or mixed, to an is:InfoService instance."^^xsd:string ;
+      rdfs:comment "With this property it is possible to associate a specific info service type, e.g. 'social network service', 'recommender service' or 'encyclopedia', to an is:InfoService instance. This property could be used multiple times that means an is:InfoService instance could be of the info service type 'social network site' and 'recommender system'."^^xsd:string ;
       rdfs:domain is:InfoService ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       rdfs:label "has info service type"^^xsd:string ;
@@ -130,12 +162,30 @@ is:info_service_type
               ] ;
       vs:term_status "testing"^^xsd:string .
 
+is:knowledge_base
+      rdf:type is:InfoServiceType ;
+      rdfs:isDefinedBy ""^^xsd:string ;
+      dc:description "A knowledge base is a special kind of database for knowledge management, providing the means for the computerized collection, organization, and retrieval  of knowledge."^^xsd:string ;
+      dc:title "knowledge base"^^xsd:string .
+
 is:lastfm
       rdf:type is:InfoService ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       dc:description "A popular Internet radio site for streaming music."^^xsd:string ;
       dc:title "Last.fm"^^xsd:string ;
       foaf:homepage <http://last.fm/> .
+
+is:main_subject
+      rdf:type rdf:Property ;
+      rdfs:comment "This property is for defining the main subject of an is:InfoService instance that means this info service address mainly this concern."^^xsd:string ;
+      rdfs:domain is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      rdfs:label "main subject"^^xsd:string ;
+      rdfs:subPropertyOf dcterms:subject ;
+      owl:InverseOf
+              [ rdfs:label "is main subject of"^^xsd:string
+              ] ;
+      vs:term_status "testing"^^xsd:string .
 
 is:middle
       rdf:type is:InfoServiceQuality ;
@@ -144,7 +194,7 @@ is:middle
       dc:title "middle"^^xsd:string .
 
 is:mixed
-      rdf:type is:InfoServiceType ;
+      rdf:type is:InfoServiceContributorType ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       dc:description "This is the info service type, where both parties - experts and a user community - share their knowledge to that info service."^^xsd:string ;
       dc:title "mixed"^^xsd:string .
@@ -152,14 +202,24 @@ is:mixed
 is:musicbrainz
       rdf:type is:InfoService ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
-      dc:description "An open content music database"^^xsd:string ;
+      dc:description "An open content music database."^^xsd:string ;
       dc:title "MusicBrainz"^^xsd:string ;
       dcterms:subject "<category:Acoustic_fingerprinting>"^^xsd:string , "<category:MusicBrainz>"^^xsd:string , "<category:Library_2.0>"^^xsd:string , "<category:Online_encyclopedias>"^^xsd:string , "<category:Online_music_and_lyrics_databases>"^^xsd:string , "<category:Free_websites>"^^xsd:string , "<category:Metadata_registry>"^^xsd:string ;
+      is:info_service_contributor_type
+              is:mixed ;
       is:info_service_quality
               is:good ;
       is:info_service_type
-              is:mixed ;
+              is:knowledge_base , is:encyclopedia ;
+      is:main_subject "<category:Music>"^^xsd:string ;
       foaf:homepage <http://musicbrainz.org/> .
+
+is:myspace
+      rdf:type is:InfoService ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "A social networking website with a great pool of musician profiles."^^xsd:string ;
+      dc:title "MySpace"^^xsd:string ;
+      foaf:homepage <http://www.myspace.com/> .
 
 is:pandora
       rdf:type is:InfoService ;
@@ -167,6 +227,18 @@ is:pandora
       dc:description "An automated music recommendation service."^^xsd:string ;
       dc:title "Pandora"^^xsd:string ;
       foaf:homepage <http://www.pandora.com/> .
+
+is:recommender_service
+      rdf:type is:InfoServiceType ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "A recommender service forms or works from a specific type of information filtering system technique that attempts to recommend information items (films, television, video on demand, music, books, news, images, web pages, etc) that are likely to be of interest to the user."^^xsd:string ;
+      dc:title "recommender service"^^xsd:string .
+
+is:social_network_service
+      rdf:type is:InfoServiceType ;
+      rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
+      dc:description "A social network service focuses on building and reflecting of social networks or social relations among people, e.g., who share interests and/or activities. A social network service essentially consists of a representation of each user (often a profile), his/her social links, and a variety of additional services."^^xsd:string ;
+      dc:title "social network service"^^xsd:string .
 
 is:spotify
       rdf:type is:InfoService ;

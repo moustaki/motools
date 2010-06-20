@@ -10,9 +10,9 @@
         <cd:width rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
         >198</cd:width>
         <cd:y rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >97</cd:y>
+        >313</cd:y>
         <cd:x rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >909</cd:x>
+        >447</cd:x>
         <cd:class rdf:resource="http://purl.org/ontology/infoservice/InfoServiceQuality"/>
       </cd:URINode>
     </cd:nodes>
@@ -23,23 +23,23 @@
         <cd:width rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
         >181</cd:width>
         <cd:y rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >96</cd:y>
+        >313</cd:y>
         <cd:x rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >6</cd:x>
+        >125</cd:x>
         <cd:class rdf:resource="http://purl.org/ontology/infoservice/InfoServiceType"/>
       </cd:URINode>
     </cd:nodes>
     <cd:nodes>
       <cd:URINode>
         <cd:height rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >66</cd:height>
+        >30</cd:height>
         <cd:width rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >324</cd:width>
+        >254</cd:width>
         <cd:y rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >78</cd:y>
+        >310</cd:y>
         <cd:x rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >374</cd:x>
-        <cd:class rdf:resource="http://purl.org/ontology/infoservice/InfoService"/>
+        >783</cd:x>
+        <cd:class rdf:resource="http://purl.org/ontology/infoservice/InfoServiceContributorType"/>
       </cd:URINode>
     </cd:nodes>
     <cd:nodes>
@@ -47,12 +47,12 @@
         <cd:height rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
         >104</cd:height>
         <cd:width rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >254</cd:width>
+        >442</cd:width>
         <cd:y rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >195</cd:y>
+        >157</cd:y>
         <cd:x rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >410</cd:x>
-        <cd:class rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        >326</cd:x>
+        <cd:class rdf:resource="http://purl.org/ontology/infoservice/InfoService"/>
       </cd:URINode>
     </cd:nodes>
     <cd:selectedResource rdf:resource="http://purl.org/ontology/infoservice/InfoService"/>

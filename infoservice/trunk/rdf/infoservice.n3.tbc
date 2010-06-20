@@ -1,4 +1,4 @@
-# Saved by TopBraid on Sun Jun 20 11:23:08 CEST 2010
+# Saved by TopBraid on Sun Jun 20 19:37:36 CEST 2010
 # baseURI: null
 
 @prefix composite:  <http://www.topbraid.org/2007/05/composite.owl#> .
@@ -14,42 +14,58 @@
       rdfs:label "is:musicbrainz Graph" ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/infoservice/musicbrainz> ;
-                visual:height "208"^^xsd:int ;
-                visual:width "316"^^xsd:int ;
-                visual:x "491"^^xsd:int ;
-                visual:y "189"^^xsd:int
-              ] ;
-      visual:child
-              [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/infoservice/good> ;
-                visual:height "75"^^xsd:int ;
-                visual:width "292"^^xsd:int ;
-                visual:x "27"^^xsd:int ;
-                visual:y "254"^^xsd:int
-              ] ;
-      visual:child
-              [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/infoservice/mixed> ;
-                visual:height "75"^^xsd:int ;
-                visual:width "292"^^xsd:int ;
-                visual:x "997"^^xsd:int ;
-                visual:y "256"^^xsd:int
+                visual:depicts <http://musicbrainz.org/> ;
+                visual:height "19"^^xsd:int ;
+                visual:width "221"^^xsd:int ;
+                visual:x "905"^^xsd:int ;
+                visual:y "397"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
                 visual:depicts <http://purl.org/ontology/infoservice/InfoService> ;
                 visual:height "94"^^xsd:int ;
-                visual:width "292"^^xsd:int ;
-                visual:x "505"^^xsd:int ;
-                visual:y "20"^^xsd:int
+                visual:width "282"^^xsd:int ;
+                visual:x "486"^^xsd:int ;
+                visual:y "24"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://musicbrainz.org/> ;
-                visual:height "19"^^xsd:int ;
-                visual:width "231"^^xsd:int ;
-                visual:x "533"^^xsd:int ;
-                visual:y "474"^^xsd:int
+                visual:depicts <http://purl.org/ontology/infoservice/encyclopedia> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "282"^^xsd:int ;
+                visual:x "39"^^xsd:int ;
+                visual:y "537"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://purl.org/ontology/infoservice/musicbrainz> ;
+                visual:height "227"^^xsd:int ;
+                visual:width "306"^^xsd:int ;
+                visual:x "473"^^xsd:int ;
+                visual:y "223"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://purl.org/ontology/infoservice/mixed> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "282"^^xsd:int ;
+                visual:x "426"^^xsd:int ;
+                visual:y "539"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://purl.org/ontology/infoservice/knowledge_base> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "283"^^xsd:int ;
+                visual:x "38"^^xsd:int ;
+                visual:y "414"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://purl.org/ontology/infoservice/good> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "282"^^xsd:int ;
+                visual:x "845"^^xsd:int ;
+                visual:y "539"^^xsd:int
               ] ;
       visual:depicts <http://purl.org/ontology/infoservice/musicbrainz> .
