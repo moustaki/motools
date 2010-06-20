@@ -1,4 +1,4 @@
-# Saved by TopBraid on Sun Jun 20 11:15:00 CEST 2010
+# Saved by TopBraid on Sun Jun 20 11:23:08 CEST 2010
 # baseURI: http://purl.org/ontology/infoservice/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
 # imports: http://xmlns.com/foaf/0.1/
@@ -16,15 +16,13 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 is:   rdf:type owl:Ontology ;
-      dc:date "$Date: 2010/06/18 17:27:19 $" ;
-      dc:description """
-		The Information Service Ontology Specification provides additional concepts and 
-		properties for describing different information services on the Semantic Web. This document contains a RDF description 
-		of the Information Service Ontology. This ontology is an extension of the FOAF Ontology.
-	""" ;
+      dc:date "$Date: 2010/06/20 11:22:19 $"^^xsd:string ;
+      dc:description """The Information Service Ontology Specification provides basic concepts and properties 
+for describing different information services, e.g. Wikipedia, MusicBrainz, Freebase or Discogs, on/ for 
+the Semantic Web. This document contains a RDF description of the Information Service Ontology."""^^xsd:string ;
       dc:title "The Information Service Ontology" ;
       owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns> , foaf: , dcterms: ;
-      owl:versionInfo "Revision: 0.2"^^xsd:string ;
+      owl:versionInfo "Revision: 0.3"^^xsd:string ;
       foaf:maker <http://foaf.me/zazi#me> .
 
 is:InfoService
