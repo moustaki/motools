@@ -1,4 +1,4 @@
-# Saved by TopBraid on Fri Jun 18 21:19:33 CEST 2010
+# Saved by TopBraid on Sun Jun 20 11:15:00 CEST 2010
 # baseURI: http://purl.org/ontology/infoservice/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
 # imports: http://xmlns.com/foaf/0.1/
@@ -23,13 +23,13 @@ is:   rdf:type owl:Ontology ;
 		of the Information Service Ontology. This ontology is an extension of the FOAF Ontology.
 	""" ;
       dc:title "The Information Service Ontology" ;
-      owl:imports dcterms: , foaf: , <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
+      owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns> , foaf: , dcterms: ;
       owl:versionInfo "Revision: 0.2"^^xsd:string ;
       foaf:maker <http://foaf.me/zazi#me> .
 
 is:InfoService
       rdf:type owl:Class ;
-      rdfs:comment "This concept is for linking a specific concept, e.g. a foaf:Agent, a mo:Track or a mo:MusicArtist to a related website of a specific information service (modelled as individual of is:InfoService), e.g. Wikipedia, MySpace, MusicBrainz, Discogs, Last.fm, Pandora, BBC, ... . With this concept it is possible to describe info services more in detail, so that the client, which consumes that 'linked data' could choose, which source it likes to use by evaluating the description of the info service of that website link."^^xsd:string ;
+      rdfs:comment "A information service is a service, which provides data somehow. This concept is for linking a information of a specific concept instance (or at least website links or other data representations of this concept instance), e.g. a foaf:Agent, a mo:Track or a mo:MusicArtist to a related website of a specific information service (modelled as individual of is:InfoService), e.g. Wikipedia, MySpace, MusicBrainz, Discogs, Last.fm, Pandora, BBC, ... . With this concept it is possible to describe the underlying info services of that knowledge representation more in detail, so that the client, which consumes that 'linked data' could choose, which source it likes to use by evaluating the description of the info service of that website link or other data representation."^^xsd:string ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       rdfs:label "information service"^^xsd:string ;
       rdfs:subClassOf owl:Thing ;
@@ -37,7 +37,7 @@ is:InfoService
 
 is:InfoServiceQuality
       rdf:type owl:Class ;
-      rdfs:comment "This concept is for describing specific quality levels, e.g. good or bad or more detailed ones, of info services."^^xsd:string ;
+      rdfs:comment "This concept is for describing specific quality levels, e.g. good or bad or more detailed ones, of info services. Please feel free to use this concept as hook for more complex and detailed information quality description modellings in sub ontologies. Futhermore, such info services ratings could be done by different info service rating agencies, so that the customer of such ratings could select its info service ratings agency of choice."^^xsd:string ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       rdfs:label "info service quality"^^xsd:string ;
       rdfs:subClassOf owl:Thing ;
@@ -98,8 +98,8 @@ is:good
 
 is:info_service
       rdf:type owl:ObjectProperty ;
-      rdfs:comment "Associates the specific foaf:Document typed website link to the specific is:InfoService individual ."^^xsd:string ;
-      rdfs:domain foaf:Document ;
+      rdfs:comment "This property could be used to associate a specific foaf:Document typed website link to the specific is:InfoService individual. Furthermore, it could also applied on other represenations of data from an info service, e.g. semantic graphs."^^xsd:string ;
+      rdfs:domain owl:Thing ;
       rdfs:isDefinedBy "http://purl.org/ontology/infoservice/"^^xsd:string ;
       rdfs:label "has info service"^^xsd:string ;
       rdfs:range is:InfoService ;

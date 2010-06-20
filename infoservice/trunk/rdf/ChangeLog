@@ -1,6 +1,12 @@
 =========================
 Version 0.2 (June 2010)
 =========================
+ * MODIFIED: is:info_service domain to owl:Thing
+ * MODIFIED: some concept descriptions for clarification
+
+=========================
+Version 0.2 (June 2010)
+=========================
  * ADDED: is:InfoServiceQuality
  * ADDED: is:InfoServiceType
  * ADDED: is:info_service_quality

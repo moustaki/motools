@@ -1,0 +1,3 @@
+- enable multiple info service quality ratings, e.g. by using http://purl.org/stuff/rev#
+- add is:recommendation property
+- create examples, e.g. recommendations with a defined source, e.g. by using rdfs:isDefinedBy
