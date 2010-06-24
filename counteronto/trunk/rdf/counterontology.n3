@@ -1,4 +1,4 @@
-# Saved by TopBraid on Fri Jun 25 00:24:27 CEST 2010
+# Saved by TopBraid on Fri Jun 25 00:54:02 CEST 2010
 # baseURI: http://purl.org/ontology/co/
 # imports: http://purl.org/NET/c4dm/event.owl
 # imports: http://purl.org/dc/elements/1.1/
@@ -23,7 +23,7 @@ for describing a general counter concept and some important sub counters, e.g. a
 the Semantic Web. This document contains a RDF description of the Counter Ontology."""^^xsd:string ;
       dc:title "The Counter Ontology" ;
       owl:imports foaf: , dc: , dcterms: , <http://purl.org/NET/c4dm/event.owl> ;
-      owl:versionInfo "Revision: 0.1"^^xsd:string ;
+      owl:versionInfo "Revision: 0.2"^^xsd:string ;
       foaf:maker <http://foaf.me/zazi#me> , <http://moustaki.org/foaf.rdf#moustaki> , <http://foaf.me/intrz#me> .
 
 co:Counter
