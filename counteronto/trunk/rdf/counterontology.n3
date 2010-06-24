@@ -1,4 +1,4 @@
-# Saved by TopBraid on Thu Jun 24 19:47:34 CEST 2010
+# Saved by TopBraid on Fri Jun 25 00:24:27 CEST 2010
 # baseURI: http://purl.org/ontology/co/
 # imports: http://purl.org/NET/c4dm/event.owl
 # imports: http://purl.org/dc/elements/1.1/
@@ -32,6 +32,14 @@ co:Counter
       rdfs:isDefinedBy co: ;
       rdfs:label "Counter" ;
       vs:term_status "stable"^^xsd:string .
+
+co:ScrobbleEvent
+      rdfs:comment """An event corresponding to a scrobbling (counting an activity, which includes at least a specific object and 
+a specific agent), e.g. a track being played by someone, a video watched by someone, a book read by someone, ..."""^^xsd:string ;
+      rdfs:isDefinedBy co: ;
+      rdfs:label "Scrobble Event"^^xsd:string ;
+      rdfs:subClassOf event:Event ;
+      vs:term_status "unstable"^^xsd:string .
 
 co:count
       rdf:type owl:DatatypeProperty ;
