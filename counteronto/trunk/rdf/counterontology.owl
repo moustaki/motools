@@ -32,8 +32,9 @@ the Semantic Web. This document contains a RDF description of the Counter Ontolo
     <vs:term_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stable</vs:term_status>
   </owl:Class>
   <rdf:Description rdf:about="http://purl.org/ontology/co/ScrobbleEvent">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An event corresponding to a scrobbling (counting an activity, which includes at least a specific object and 
-a specific agent), e.g. a track being played by someone, a video watched by someone, a book read by someone, ...</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An event corresponding to a scrobbling (counting an activity, which includes at least a specific factor and 
+a specific agent), e.g. a track being played by someone, a video watched by someone, a book read by 
+someone, a sporting activity by someone, ...</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/co/"/>
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scrobble Event</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
