@@ -1,4 +1,4 @@
-# Saved by TopBraid on Fri Jun 25 01:03:43 CEST 2010
+# Saved by TopBraid on Sat Jun 26 15:37:40 CEST 2010
 # baseURI: http://purl.org/ontology/co/
 # imports: http://purl.org/NET/c4dm/event.owl
 # imports: http://purl.org/dc/elements/1.1/
@@ -17,62 +17,64 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 co:   rdf:type owl:Ontology ;
-      dc:date "$Date: 2010/06/24 17:48:19 $"^^xsd:string ;
+      dc:date "$Date: 2010/06/26 15:37:19 $"^^xsd:string ;
       dc:description """The Counter Ontology specification provides basic concepts and properties 
 for describing a general counter concept and some important sub counters, e.g. an event counter, on/ for 
-the Semantic Web. This document contains a RDF description of the Counter Ontology."""^^xsd:string ;
-      dc:title "The Counter Ontology" ;
+the Semantic Web. This document contains a RDF description of the Counter Ontology."""@en ;
+      dc:title "The Counter Ontology"@en ;
       owl:imports foaf: , dc: , dcterms: , <http://purl.org/NET/c4dm/event.owl> ;
-      owl:versionInfo "Revision: 0.2"^^xsd:string ;
+      owl:versionInfo "Revision: 0.3"@en ;
       foaf:maker <http://foaf.me/zazi#me> , <http://moustaki.org/foaf.rdf#moustaki> , <http://foaf.me/intrz#me> .
 
 co:Counter
       rdf:type owl:Class ;
-      rdfs:comment "Counter of a given object in a given media" ;
+      rdfs:comment "Counter of a given object in a given media"@en ;
       rdfs:isDefinedBy co: ;
-      rdfs:label "Counter" ;
-      vs:term_status "stable"^^xsd:string .
+      rdfs:label "Counter"@en ;
+      rdfs:subClassOf owl:Thing ;
+      vs:term_status "stable"@en .
 
 co:ScrobbleEvent
+      rdf:type owl:Class ;
       rdfs:comment """An event corresponding to a scrobbling (counting an activity, which includes at least a specific factor and 
 a specific agent), e.g. a track being played by someone, a video watched by someone, a book read by 
-someone, a sporting activity by someone, ..."""^^xsd:string ;
+someone, a sporting activity by someone, ..."""@en ;
       rdfs:isDefinedBy co: ;
-      rdfs:label "Scrobble Event"^^xsd:string ;
+      rdfs:label "Scrobble Event"@en ;
       rdfs:subClassOf event:Event ;
-      vs:term_status "unstable"^^xsd:string .
+      vs:term_status "unstable"@en .
 
 co:count
       rdf:type owl:DatatypeProperty ;
-      rdfs:comment "Links a counter resource to the actual count" ;
+      rdfs:comment "Links a counter resource to the actual count"@en ;
       rdfs:domain co:Counter ;
       rdfs:isDefinedBy co: ;
-      rdfs:label "count" ;
+      rdfs:label "count"@en ;
       rdfs:range xsd:int ;
-      vs:term_status "stable"^^xsd:string .
+      vs:term_status "stable"@en .
 
 co:counter
       rdf:type owl:ObjectProperty ;
-      rdfs:comment "Links an object to a counter resource. Please feel free to create further sub properties with more restricted domains."^^xsd:string ;
+      rdfs:comment "Links an object to a counter resource. Please feel free to create further sub properties with more restricted domains."@en ;
       rdfs:domain owl:Thing ;
       rdfs:isDefinedBy co: ;
-      rdfs:label "counter" ;
+      rdfs:label "counter"@en ;
       rdfs:range co:Counter ;
       owl:InverseOf
               [ rdf:type owl:ObjectProperty ;
-                rdfs:label "is counter of"^^xsd:string
+                rdfs:label "is counter of"@en
               ] ;
-      vs:term_status "stable"^^xsd:string .
+      vs:term_status "stable"@en .
 
 co:event_counter
       rdf:type owl:ObjectProperty ;
-      rdfs:comment "Links events to a counter resource, where they where counted in."^^xsd:string ;
+      rdfs:comment "Links events to a counter resource, where they where counted in."@en ;
       rdfs:domain event:Event ;
       rdfs:isDefinedBy co: ;
-      rdfs:label "event counter"^^xsd:string ;
+      rdfs:label "event counter"@en ;
       rdfs:subPropertyOf co:counter ;
       owl:InverseOf
               [ rdf:type owl:ObjectProperty ;
-                rdfs:label "is event counter of"^^xsd:string
+                rdfs:label "is event counter of"@en
               ] ;
-      vs:term_status "unstable"^^xsd:string .
+      vs:term_status "unstable"@en .

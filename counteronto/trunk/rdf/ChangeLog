@@ -1,4 +1,10 @@
 =========================
+Version 0.3 (June 2010)
+=========================
+ * MODIFIED: co:Counter rdfs:subClassOf owl:Thing (don't why that was missing)
+ * MODIFIED: all xsd:string typed literals to @en for language utilisation
+ 
+=========================
 Version 0.2 (June 2010)
 =========================
  * ADDED: co:ScrobbleEvent as general purpose scrobbling event
