@@ -1,4 +1,4 @@
-# Saved by TopBraid on Sun Jun 27 23:36:55 CEST 2010
+# Saved by TopBraid on Mon Jun 28 01:16:00 CEST 2010
 # baseURI: null
 
 @prefix composite:  <http://www.topbraid.org/2007/05/composite.owl#> .
@@ -12,10 +12,10 @@
 
 []    rdf:type inference:Configuration ;
       composite:child
-              [ rdf:type inference:SwiftOWLIMEngine ;
-                composite:index "0"^^xsd:int
-              ] ;
-      composite:child
               [ rdf:type inference:PelletEngine ;
                 composite:index "1"^^xsd:int
+              ] ;
+      composite:child
+              [ rdf:type inference:SwiftOWLIMEngine ;
+                composite:index "0"^^xsd:int
               ] .

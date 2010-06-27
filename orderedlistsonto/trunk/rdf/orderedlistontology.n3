@@ -1,4 +1,4 @@
-# Saved by TopBraid on Sun Jun 27 23:36:55 CEST 2010
+# Saved by TopBraid on Mon Jun 28 01:16:00 CEST 2010
 # baseURI: http://purl.org/ontology/olo/
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
@@ -16,13 +16,13 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 olo:  rdf:type owl:Ontology ;
-      dc:date "$Date: 2010/06/27 23:27:19 $"^^xsd:string ;
+      dc:date "$Date: 2010/06/28 01:15:19 $"^^xsd:string ;
       dc:description """The Ordered Lists Ontology Specification provides basic concepts and properties 
 for describing ordered lists as semantic graph. This document contains a RDF description of the Ordered Lists Ontology
 as proposed by Samer Abdallah."""@en ;
       dc:title "The Ordered Lists Ontology" ;
       owl:imports dcterms: , <http://www.w3.org/2003/06/sw-vocab-status/ns> , foaf: , dc: ;
-      owl:versionInfo "Revision: 0.1"@en ;
+      owl:versionInfo "Revision: 0.2"@en ;
       foaf:maker <http://foaf.me/zazi#me> .
 
 olo:OrderedList
@@ -47,7 +47,7 @@ olo:index
       rdfs:domain olo:Slot ;
       rdfs:isDefinedBy olo: ;
       rdfs:label "has index"@en ;
-      rdfs:range xsd:integer ;
+      rdfs:range xsd:positiveInteger ;
       vs:term_status "unstable"@en .
 
 olo:item
@@ -69,7 +69,7 @@ olo:length
       rdfs:domain olo:OrderedList ;
       rdfs:isDefinedBy olo: ;
       rdfs:label "has length"@en ;
-      rdfs:range xsd:integer ;
+      rdfs:range xsd:nonNegativeInteger ;
       vs:term_status "unstable"@en .
 
 olo:slot
