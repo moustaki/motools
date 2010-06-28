@@ -1,4 +1,4 @@
-# Saved by TopBraid on Mon Jun 28 13:14:15 CEST 2010
+# Saved by TopBraid on Mon Jun 28 13:46:43 CEST 2010
 # baseURI: http://purl.org/ontology/olo/
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
@@ -25,14 +25,6 @@ as proposed by Samer Abdallah."""@en ;
       owl:versionInfo "Revision: 0.2"@en ;
       foaf:maker <http://foaf.me/zazi#me> .
 
-olo:Number
-      rdf:type rdfs:Class ;
-      rdfs:comment "A number concept to enable number associations to other classes, especially unique ones."@en ;
-      rdfs:isDefinedBy olo: ;
-      rdfs:label "Number"@en ;
-      rdfs:subClassOf owl:Class ;
-      vs:term_status "testing"@en .
-
 olo:OrderedList
       rdf:type rdfs:Class ;
       rdfs:comment "An ordered list with a given length an indexed items."@en ;
@@ -55,8 +47,7 @@ olo:index
       rdfs:domain olo:Slot ;
       rdfs:isDefinedBy olo: ;
       rdfs:label "has index"@en ;
-      rdfs:range olo:Number ;
-      rdfs:subPropertyOf olo:number ;
+      rdfs:range xsd:positiveInteger ;
       owl:InverseOf
               [ rdf:type owl:ObjectProperty ;
                 rdfs:label "is index of"@en
@@ -84,8 +75,7 @@ olo:length
       rdfs:domain olo:OrderedList ;
       rdfs:isDefinedBy olo: ;
       rdfs:label "has length"@en ;
-      rdfs:range olo:Number ;
-      rdfs:subPropertyOf olo:number ;
+      rdfs:range xsd:positiveInteger ;
       owl:InverseOf
               [ rdf:type owl:ObjectProperty ;
                 rdfs:label "is length of"@en
@@ -106,15 +96,6 @@ olo:next
               ] ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
       vs:term_status "testing"@en .
-
-olo:number
-      rdf:type owl:FunctionalProperty ;
-      rdfs:comment "This property associates a number to a class."^^xsd:string ;
-      rdfs:domain owl:Class ;
-      rdfs:isDefinedBy olo: ;
-      rdfs:label "number"^^xsd:string ;
-      rdfs:range olo:Number ;
-      vs:term_status "testing"^^xsd:string .
 
 olo:slot
       rdf:type owl:ObjectProperty ;
