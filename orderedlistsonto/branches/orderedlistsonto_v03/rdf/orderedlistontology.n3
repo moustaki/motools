@@ -1,13 +1,9 @@
-# Saved by TopBraid on Mon Jun 28 18:24:04 CEST 2010
+# Saved by TopBraid on Mon Jun 28 20:31:22 CEST 2010
 # baseURI: http://purl.org/ontology/olo/
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
-# imports: http://xmlns.com/foaf/0.1/
-# imports: http://purl.org/dc/terms/
 
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
-@prefix dcterms:  <http://purl.org/dc/terms/> .
-@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix olo:     <http://purl.org/ontology/olo/> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -16,14 +12,14 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 olo:  rdf:type owl:Ontology ;
-      dc:date "$Date: 2010/06/28 12:53:19 $"^^xsd:string ;
+      dc:creator "Samer Abdallah"^^xsd:string , <http://foaf.me/zazi#me> ;
+      dc:date "2010-06-28T19:19:52+01:00"^^xsd:dateTime ;
       dc:description """The Ordered Lists Ontology Specification provides basic concepts and properties 
 for describing ordered lists as semantic graph. This document contains a RDF description of the Ordered Lists Ontology
 as proposed by Samer Abdallah."""@en ;
       dc:title "The Ordered Lists Ontology" ;
-      owl:imports dcterms: , <http://www.w3.org/2003/06/sw-vocab-status/ns> , foaf: , dc: ;
-      owl:versionInfo "Revision: 0.4"@en ;
-      foaf:maker <http://foaf.me/zazi#me> .
+      owl:imports dc: , <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
+      owl:versionInfo "Revision: 0.5"@en .
 
 olo:OrderedList
       rdf:type rdfs:Class ;
@@ -62,7 +58,6 @@ olo:item
       rdfs:domain olo:Slot ;
       rdfs:isDefinedBy olo: ;
       rdfs:label "has item"@en ;
-      rdfs:range owl:Class ;
       owl:InverseOf
               [ rdf:type owl:ObjectProperty ;
                 rdfs:label "is item of"@en

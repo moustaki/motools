@@ -1,7 +1,15 @@
 =========================
-Version 0.3 (June 2010)
+Version 0.4 (June 2010)
 =========================
- * MODIFIED:  olo:length - back to rdfs:range xsd:nonNegativeInteger.
+ * MODIFIED: olo:item - removed rdfs:range.
+ * MODIFIED: dc:date - used xsd:dateTime datatype.
+ * MODIFIED: changed foaf:maker to dc:creator.
+ * REMOVED: DCTerms and FOAF from owl:imports.
+  
+=========================
+Version 0.4 (June 2010)
+=========================
+ * MODIFIED: olo:length - back to rdfs:range xsd:nonNegativeInteger.
  * MODIFIED: olo:length + olo:index now with owl:someValuesFrom.
 
 =========================
