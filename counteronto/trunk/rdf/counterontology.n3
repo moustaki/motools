@@ -1,13 +1,10 @@
-# Saved by TopBraid on Sat Jun 26 15:37:40 CEST 2010
+# Saved by TopBraid on Mon Jun 28 19:15:18 CEST 2010
 # baseURI: http://purl.org/ontology/co/
 # imports: http://purl.org/NET/c4dm/event.owl
 # imports: http://purl.org/dc/elements/1.1/
-# imports: http://xmlns.com/foaf/0.1/
-# imports: http://purl.org/dc/terms/
 
 @prefix co:      <http://purl.org/ontology/co/> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
-@prefix dcterms:  <http://purl.org/dc/terms/> .
 @prefix event:   <http://purl.org/NET/c4dm/event.owl#> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
@@ -17,14 +14,14 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 co:   rdf:type owl:Ontology ;
-      dc:date "$Date: 2010/06/26 15:37:19 $"^^xsd:string ;
+      dc:creator <http://moustaki.org/foaf.rdf#moustaki> , <http://foaf.me/zazi#me> , <http://foaf.me/intrz#me> ;
+      dc:date "2010-06-28T17:49:52+01:00"^^xsd:dateTime ;
       dc:description """The Counter Ontology specification provides basic concepts and properties 
 for describing a general counter concept and some important sub counters, e.g. an event counter, on/ for 
 the Semantic Web. This document contains a RDF description of the Counter Ontology."""@en ;
       dc:title "The Counter Ontology"@en ;
-      owl:imports foaf: , dc: , dcterms: , <http://purl.org/NET/c4dm/event.owl> ;
-      owl:versionInfo "Revision: 0.3"@en ;
-      foaf:maker <http://foaf.me/zazi#me> , <http://moustaki.org/foaf.rdf#moustaki> , <http://foaf.me/intrz#me> .
+      owl:imports dc: , <http://purl.org/NET/c4dm/event.owl> ;
+      owl:versionInfo "Revision: 0.4"@en .
 
 co:Counter
       rdf:type owl:Class ;
@@ -50,7 +47,7 @@ co:count
       rdfs:domain co:Counter ;
       rdfs:isDefinedBy co: ;
       rdfs:label "count"@en ;
-      rdfs:range xsd:int ;
+      rdfs:range xsd:integer ;
       vs:term_status "stable"@en .
 
 co:counter
@@ -60,11 +57,17 @@ co:counter
       rdfs:isDefinedBy co: ;
       rdfs:label "counter"@en ;
       rdfs:range co:Counter ;
-      owl:InverseOf
-              [ rdf:type owl:ObjectProperty ;
-                rdfs:label "is counter of"@en
-              ] ;
       vs:term_status "stable"@en .
+
+co:counter_of
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Links a counter resource to an object. Please feel free to create further sub properties with more restricted domains."@en ;
+      rdfs:domain co:Counter ;
+      rdfs:isDefinedBy co: ;
+      rdfs:label "is counter of"@en ;
+      rdfs:range owl:Thing ;
+      owl:inverseOf co:counter ;
+      vs:term_status "testing"@en .
 
 co:event_counter
       rdf:type owl:ObjectProperty ;
@@ -73,8 +76,14 @@ co:event_counter
       rdfs:isDefinedBy co: ;
       rdfs:label "event counter"@en ;
       rdfs:subPropertyOf co:counter ;
-      owl:InverseOf
-              [ rdf:type owl:ObjectProperty ;
-                rdfs:label "is event counter of"@en
-              ] ;
       vs:term_status "unstable"@en .
+
+co:event_counter_of
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Links counter resources to related events."@en ;
+      rdfs:isDefinedBy co: ;
+      rdfs:label "event counter of"@en ;
+      rdfs:range event:Event ;
+      rdfs:subPropertyOf co:counter_of ;
+      owl:inverseOf co:event_counter ;
+      vs:term_status "testing"@en .

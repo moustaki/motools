@@ -1,4 +1,14 @@
 =========================
+Version 0.4 (June 2010)
+=========================
+ * MODIFIED: co:count rdfs:range to xsd:integer
+ * ADDED: co:counter_of as explicit inverse property of co:counter
+ * ADDED: co:event_counter as explicit inverse property of co:event_counter
+ * REMOVED: FOAF and DCTerms from owl:imports
+ * MODIFIED: dc:date datatype to xsd:dataTime
+ * MODIFIED: foaf:maker to dc:creator
+
+=========================
 Version 0.3 (June 2010)
 =========================
  * MODIFIED: co:Counter rdfs:subClassOf owl:Thing (don't why that was missing)
