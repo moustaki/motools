@@ -1,4 +1,4 @@
-# Saved by TopBraid on Mon Jun 28 01:16:00 CEST 2010
+# Saved by TopBraid on Mon Jun 28 13:14:15 CEST 2010
 # baseURI: http://purl.org/ontology/olo/
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
@@ -16,7 +16,7 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 olo:  rdf:type owl:Ontology ;
-      dc:date "$Date: 2010/06/28 01:15:19 $"^^xsd:string ;
+      dc:date "$Date: 2010/06/28 12:53:19 $"^^xsd:string ;
       dc:description """The Ordered Lists Ontology Specification provides basic concepts and properties 
 for describing ordered lists as semantic graph. This document contains a RDF description of the Ordered Lists Ontology
 as proposed by Samer Abdallah."""@en ;
@@ -24,6 +24,14 @@ as proposed by Samer Abdallah."""@en ;
       owl:imports dcterms: , <http://www.w3.org/2003/06/sw-vocab-status/ns> , foaf: , dc: ;
       owl:versionInfo "Revision: 0.2"@en ;
       foaf:maker <http://foaf.me/zazi#me> .
+
+olo:Number
+      rdf:type rdfs:Class ;
+      rdfs:comment "A number concept to enable number associations to other classes, especially unique ones."@en ;
+      rdfs:isDefinedBy olo: ;
+      rdfs:label "Number"@en ;
+      rdfs:subClassOf owl:Class ;
+      vs:term_status "testing"@en .
 
 olo:OrderedList
       rdf:type rdfs:Class ;
@@ -42,12 +50,18 @@ olo:Slot
       vs:term_status "unstable"@en .
 
 olo:index
-      rdf:type owl:DatatypeProperty ;
+      rdf:type owl:FunctionalProperty ;
       rdfs:comment "An index of a slot in an ordered list."@en ;
       rdfs:domain olo:Slot ;
       rdfs:isDefinedBy olo: ;
       rdfs:label "has index"@en ;
-      rdfs:range xsd:positiveInteger ;
+      rdfs:range olo:Number ;
+      rdfs:subPropertyOf olo:number ;
+      owl:InverseOf
+              [ rdf:type owl:ObjectProperty ;
+                rdfs:label "is index of"@en
+              ] ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
       vs:term_status "unstable"@en .
 
 olo:item
@@ -65,12 +79,42 @@ olo:item
       vs:term_status "unstable"@en .
 
 olo:length
+      rdf:type owl:FunctionalProperty ;
       rdfs:comment "The length of an ordered list."@en ;
       rdfs:domain olo:OrderedList ;
       rdfs:isDefinedBy olo: ;
       rdfs:label "has length"@en ;
-      rdfs:range xsd:nonNegativeInteger ;
+      rdfs:range olo:Number ;
+      rdfs:subPropertyOf olo:number ;
+      owl:InverseOf
+              [ rdf:type owl:ObjectProperty ;
+                rdfs:label "is length of"@en
+              ] ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
       vs:term_status "unstable"@en .
+
+olo:next
+      rdf:type owl:FunctionalProperty ;
+      rdfs:comment "Associates the next slot in an ordered list."@en ;
+      rdfs:domain olo:Slot ;
+      rdfs:isDefinedBy olo: ;
+      rdfs:label "has next"@en ;
+      rdfs:range olo:Slot ;
+      owl:InverseOf
+              [ rdf:type owl:InverseFunctionalProperty ;
+                rdfs:label "is next of"@en
+              ] ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      vs:term_status "testing"@en .
+
+olo:number
+      rdf:type owl:FunctionalProperty ;
+      rdfs:comment "This property associates a number to a class."^^xsd:string ;
+      rdfs:domain owl:Class ;
+      rdfs:isDefinedBy olo: ;
+      rdfs:label "number"^^xsd:string ;
+      rdfs:range olo:Number ;
+      vs:term_status "testing"^^xsd:string .
 
 olo:slot
       rdf:type owl:ObjectProperty ;
@@ -80,7 +124,7 @@ olo:slot
       rdfs:label "has slot"@en ;
       rdfs:range olo:Slot ;
       owl:InverseOf
-              [ rdf:type owl:ObjectProperty ;
+              [ rdf:type owl:FunctionalProperty ;
                 rdfs:label "is slot of"@en
               ] ;
       owl:someValuesFrom olo:Slot ;

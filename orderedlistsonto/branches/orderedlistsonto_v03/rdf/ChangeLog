@@ -1,4 +1,14 @@
 =========================
+Version 0.3 (June 2010)
+=========================
+ * ADDED: olo:next - to associate the next slot of a slot in an ordered list.
+ * ADDED: olo:Number - to enable number associations to classes, especially unique ones.
+ * ADDED: olo:number - to enable a number association to a class.
+ * MODIFIED: olo:length - to enable a single length association to an ordered list.
+ * MODIFIED: olo:index - to enable a single index association to a slot in an ordered list.
+ * MODIFIED: anonymous inverse property of olo:slot to rdfs:type owl:FunctionalProperty.
+
+=========================
 Version 0.2 (June 2010)
 =========================
  * MODIFIED: olo:index - rdfs:range to xsd:positiveInteger
