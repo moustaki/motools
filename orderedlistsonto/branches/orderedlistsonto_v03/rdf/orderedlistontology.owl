@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:olo="http://purl.org/ontology/olo/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://purl.org/ontology/olo/">
+    <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#string">$Date: 2010/06/28 01:15:19 $</dc:date>
+    <dc:description xml:lang="en">The Ordered Lists Ontology Specification provides basic concepts and properties 
+for describing ordered lists as semantic graph. This document contains a RDF description of the Ordered Lists Ontology
+as proposed by Samer Abdallah.</dc:description>
+    <dc:title>The Ordered Lists Ontology</dc:title>
+    <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns"/>
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:versionInfo xml:lang="en">Revision: 0.2</owl:versionInfo>
+    <foaf:maker rdf:resource="http://foaf.me/zazi#me"/>
+  </owl:Ontology>
+  <rdfs:Class rdf:about="http://purl.org/ontology/olo/OrderedList">
+    <rdfs:comment xml:lang="en">An ordered list with a given length an indexed items.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/olo/"/>
+    <rdfs:label xml:lang="en">Ordered List</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://purl.org/ontology/olo/Slot">
+    <rdfs:comment xml:lang="en">A slot in an ordered list with a fixed index.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/olo/"/>
+    <rdfs:label xml:lang="en">Slot</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdfs:Class>
+  <owl:DatatypeProperty rdf:about="http://purl.org/ontology/olo/index">
+    <rdfs:comment xml:lang="en">An index of a slot in an ordered list.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/olo/Slot"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/olo/"/>
+    <rdfs:label xml:lang="en">has index</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/olo/item">
+    <rdfs:comment xml:lang="en">An item of a slot in an ordered list.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/olo/Slot"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/olo/"/>
+    <rdfs:label xml:lang="en">has item</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:InverseOf>
+      <owl:ObjectProperty>
+        <rdfs:label xml:lang="en">is item of</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:InverseOf>
+    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </owl:ObjectProperty>
+  <rdf:Description rdf:about="http://purl.org/ontology/olo/length">
+    <rdfs:comment xml:lang="en">The length of an ordered list.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/olo/OrderedList"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/olo/"/>
+    <rdfs:label xml:lang="en">has length</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Description>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/olo/slot">
+    <rdfs:comment xml:lang="en">A slot in an ordered list.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/olo/OrderedList"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/olo/"/>
+    <rdfs:label xml:lang="en">has slot</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/ontology/olo/Slot"/>
+    <owl:InverseOf>
+      <owl:ObjectProperty>
+        <rdfs:label xml:lang="en">is slot of</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:InverseOf>
+    <owl:someValuesFrom rdf:resource="http://purl.org/ontology/olo/Slot"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </owl:ObjectProperty>
+</rdf:RDF>

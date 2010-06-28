@@ -1,0 +1,15 @@
+=========================
+Version 0.2 (June 2010)
+=========================
+ * MODIFIED: olo:index - rdfs:range to xsd:positiveInteger
+ * MODIFIED: olo:length - rdfs:range to nongativeInteger
+
+=========================
+Version 0.1 (June 2010)
+=========================
+ * ADDED: olo:OrderedList - a concept for ordered lists
+ * ADDED: olo:Slot - a slot in an ordered list
+ * ADDED: olo:slot - associates an ordered list to its slots
+ * ADDED: olo:length - the length of an ordered list
+ * ADDED: olo:index - an index of a slot in an ordered list
+ * ADDED: olo:item - an item of an slot in an ordered list
