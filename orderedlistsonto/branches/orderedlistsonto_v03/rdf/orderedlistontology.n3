@@ -1,4 +1,4 @@
-# Saved by TopBraid on Mon Jun 28 13:46:43 CEST 2010
+# Saved by TopBraid on Mon Jun 28 17:37:34 CEST 2010
 # baseURI: http://purl.org/ontology/olo/
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
@@ -53,6 +53,7 @@ olo:index
                 rdfs:label "is index of"@en
               ] ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:someValuesFrom xsd:positiveInteger ;
       vs:term_status "unstable"@en .
 
 olo:item
@@ -75,12 +76,13 @@ olo:length
       rdfs:domain olo:OrderedList ;
       rdfs:isDefinedBy olo: ;
       rdfs:label "has length"@en ;
-      rdfs:range xsd:positiveInteger ;
+      rdfs:range xsd:nonNegativeInteger ;
       owl:InverseOf
               [ rdf:type owl:ObjectProperty ;
                 rdfs:label "is length of"@en
               ] ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:someValuesFrom xsd:nonNegativeInteger ;
       vs:term_status "unstable"@en .
 
 olo:next
