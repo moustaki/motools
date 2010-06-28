@@ -1,4 +1,4 @@
-# Saved by TopBraid on Mon Jun 28 17:37:34 CEST 2010
+# Saved by TopBraid on Mon Jun 28 18:24:04 CEST 2010
 # baseURI: http://purl.org/ontology/olo/
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
@@ -22,7 +22,7 @@ for describing ordered lists as semantic graph. This document contains a RDF des
 as proposed by Samer Abdallah."""@en ;
       dc:title "The Ordered Lists Ontology" ;
       owl:imports dcterms: , <http://www.w3.org/2003/06/sw-vocab-status/ns> , foaf: , dc: ;
-      owl:versionInfo "Revision: 0.2"@en ;
+      owl:versionInfo "Revision: 0.4"@en ;
       foaf:maker <http://foaf.me/zazi#me> .
 
 olo:OrderedList

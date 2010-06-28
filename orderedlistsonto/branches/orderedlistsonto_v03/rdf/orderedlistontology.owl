@@ -19,7 +19,7 @@ as proposed by Samer Abdallah.</dc:description>
     <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
     <owl:imports rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns"/>
     <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
-    <owl:versionInfo xml:lang="en">Revision: 0.2</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">Revision: 0.4</owl:versionInfo>
     <foaf:maker rdf:resource="http://foaf.me/zazi#me"/>
   </owl:Ontology>
   <rdfs:Class rdf:about="http://purl.org/ontology/olo/OrderedList">
