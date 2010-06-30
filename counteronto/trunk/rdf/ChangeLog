@@ -1,4 +1,9 @@
 =========================
+Version 0.5.1 (June 2010)
+=========================
+ * MODIFIED: small typos at rdfs:labels
+
+=========================
 Version 0.5 (June 2010)
 =========================
  * CHANGED: base URI to http://purl.org/ontology/co/core#

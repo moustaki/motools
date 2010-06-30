@@ -20,7 +20,7 @@ the Semantic Web. This document contains a RDF description of the Counter Ontolo
     <dc:title xml:lang="en">The Counter Ontology</dc:title>
     <owl:imports rdf:resource="http://purl.org/NET/c4dm/event.owl"/>
     <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
-    <owl:versionInfo xml:lang="en">Revision: 0.5</owl:versionInfo>
+    <owl:versionInfo xml:lang="en">Revision: 0.5.1</owl:versionInfo>
   </owl:Ontology>
   <owl:Class rdf:about="http://purl.org/ontology/co/core#Counter">
     <rdfs:comment xml:lang="en">Counter of a given object in a given media</rdfs:comment>
@@ -55,7 +55,7 @@ someone, a sporting activity by someone, ...</rdfs:comment>
   <owl:ObjectProperty rdf:about="http://purl.org/ontology/co/core#counter">
     <rdfs:comment xml:lang="en">Links an object to a counter resource. Please feel free to create further sub properties with more restricted domains.</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/co/core#"/>
-    <rdfs:label xml:lang="en">counter</rdfs:label>
+    <rdfs:label xml:lang="en">has counter</rdfs:label>
     <rdfs:range rdf:resource="http://purl.org/ontology/co/core#Counter"/>
     <vs:term_status xml:lang="en">stable</vs:term_status>
   </owl:ObjectProperty>
@@ -72,7 +72,7 @@ someone, a sporting activity by someone, ...</rdfs:comment>
     <rdfs:comment xml:lang="en">Links events to a counter resource, where they where counted in.</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
     <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/co/core#"/>
-    <rdfs:label xml:lang="en">event counter</rdfs:label>
+    <rdfs:label xml:lang="en">has event counter</rdfs:label>
     <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/co/core#counter"/>
     <vs:term_status xml:lang="en">unstable</vs:term_status>
   </owl:ObjectProperty>

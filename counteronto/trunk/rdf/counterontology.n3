@@ -21,7 +21,7 @@ for describing a general counter concept and some important sub counters, e.g. a
 the Semantic Web. This document contains a RDF description of the Counter Ontology."""@en ;
       dc:title "The Counter Ontology"@en ;
       owl:imports dc: , <http://purl.org/NET/c4dm/event.owl> ;
-      owl:versionInfo "Revision: 0.5"@en .
+      owl:versionInfo "Revision: 0.5.1"@en .
 
 co:Counter
       rdf:type owl:Class ;
@@ -59,7 +59,7 @@ co:counter
       rdf:type owl:ObjectProperty ;
       rdfs:comment "Links an object to a counter resource. Please feel free to create further sub properties with more restricted domains."@en ;
       rdfs:isDefinedBy co: ;
-      rdfs:label "counter"@en ;
+      rdfs:label "has counter"@en ;
       rdfs:range co:Counter ;
       vs:term_status "stable"@en .
 
@@ -78,7 +78,7 @@ co:event_counter
       rdfs:comment "Links events to a counter resource, where they where counted in."@en ;
       rdfs:domain event:Event ;
       rdfs:isDefinedBy co: ;
-      rdfs:label "event counter"@en ;
+      rdfs:label "has event counter"@en ;
       rdfs:subPropertyOf co:counter ;
       vs:term_status "unstable"@en .
 
