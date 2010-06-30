@@ -1,9 +1,19 @@
 =========================
+Version 0.5 (June 2010)
+=========================
+ * CHANGED: base URI to http://purl.org/ontology/co/core#
+ * CHANGED: co:counter_of to co:object + removed its rdfs:range
+ * CHANGED: co:event_counter_of to co:event
+ * CHANGED: co:counter - removed its rdfs:domain
+ * ADDED: restriction on co:count - owl:cardinality "1"
+ * CHANGED: co:count from owl:DatatypeProperty to owl:FunctionalProperty
+
+=========================
 Version 0.4 (June 2010)
 =========================
  * MODIFIED: co:count rdfs:range to xsd:integer
  * ADDED: co:counter_of as explicit inverse property of co:counter
- * ADDED: co:event_counter as explicit inverse property of co:event_counter
+ * ADDED: co:event_counter_of as explicit inverse property of co:event_counter
  * REMOVED: FOAF and DCTerms from owl:imports
  * MODIFIED: dc:date datatype to xsd:dataTime
  * MODIFIED: foaf:maker to dc:creator
