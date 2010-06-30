@@ -1,10 +1,10 @@
 # Saved by TopBraid on Mon Jun 28 20:31:22 CEST 2010
-# baseURI: http://purl.org/ontology/olo/
+# baseURI: http://purl.org/ontology/olo/core#
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
 
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
-@prefix olo:     <http://purl.org/ontology/olo/> .
+@prefix olo:     <http://purl.org/ontology/olo/core#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
@@ -19,7 +19,7 @@ for describing ordered lists as semantic graph. This document contains a RDF des
 as proposed by Samer Abdallah."""@en ;
       dc:title "The Ordered Lists Ontology" ;
       owl:imports dc: , <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
-      owl:versionInfo "Revision: 0.5"@en .
+      owl:versionInfo "Revision: 0.5.1"@en .
 
 olo:OrderedList
       rdf:type rdfs:Class ;

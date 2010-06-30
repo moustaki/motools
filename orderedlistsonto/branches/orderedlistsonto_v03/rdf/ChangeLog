@@ -1,6 +1,11 @@
 =========================
 Version 0.5 (June 2010)
 =========================
+ * CHANGED: base URI to http://purl.org/ontology/olo/core#
+ 
+=========================
+Version 0.5 (June 2010)
+=========================
  * MODIFIED: olo:item - removed rdfs:range.
  * MODIFIED: dc:date - used xsd:dateTime datatype.
  * MODIFIED: changed foaf:maker to dc:creator.
