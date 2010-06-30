@@ -1,5 +1,5 @@
 =========================
-Version 0.4 (June 2010)
+Version 0.5 (June 2010)
 =========================
  * MODIFIED: olo:item - removed rdfs:range.
  * MODIFIED: dc:date - used xsd:dateTime datatype.
