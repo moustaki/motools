@@ -1,7 +1,12 @@
 =========================
-Version 0.5 (June 2010)
+Version 0.6 (June 2010)
 =========================
  * CHANGED: base URI to http://purl.org/ontology/olo/core#
+ * FIXED: bad typo of owl:inverseOf
+ * ADDED: olo:previous as explicit inverse property of olo:next
+ * ADDED: olo:ordered_list as explicit inverse property of olo:slot
+ * MODIFIED: correct setting of restrictions now (used owl:Restriction)
+ * REMOVED: owl:someValuesFrom from olo:length + olo:index
  
 =========================
 Version 0.5 (June 2010)

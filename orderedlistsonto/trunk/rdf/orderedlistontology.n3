@@ -1,4 +1,4 @@
-# Saved by TopBraid on Mon Jun 28 20:31:22 CEST 2010
+# Saved by TopBraid on Wed Jun 30 19:45:42 CEST 2010
 # baseURI: http://purl.org/ontology/olo/core#
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
@@ -19,7 +19,7 @@ for describing ordered lists as semantic graph. This document contains a RDF des
 as proposed by Samer Abdallah."""@en ;
       dc:title "The Ordered Lists Ontology" ;
       owl:imports dc: , <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
-      owl:versionInfo "Revision: 0.5.1"@en .
+      owl:versionInfo "Revision: 0.6"@en .
 
 olo:OrderedList
       rdf:type rdfs:Class ;
@@ -27,6 +27,11 @@ olo:OrderedList
       rdfs:isDefinedBy olo: ;
       rdfs:label "Ordered List"@en ;
       rdfs:subClassOf owl:Class ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty olo:length
+              ] ;
       vs:term_status "unstable"@en .
 
 olo:Slot
@@ -35,6 +40,31 @@ olo:Slot
       rdfs:isDefinedBy olo: ;
       rdfs:label "Slot"@en ;
       rdfs:subClassOf owl:Class ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty olo:index
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty olo:previous
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty olo:item
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty olo:ordered_list
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty olo:next
+              ] ;
       vs:term_status "unstable"@en .
 
 olo:index
@@ -44,12 +74,10 @@ olo:index
       rdfs:isDefinedBy olo: ;
       rdfs:label "has index"@en ;
       rdfs:range xsd:positiveInteger ;
-      owl:InverseOf
+      owl:inverseOf
               [ rdf:type owl:ObjectProperty ;
                 rdfs:label "is index of"@en
               ] ;
-      owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:someValuesFrom xsd:positiveInteger ;
       vs:term_status "unstable"@en .
 
 olo:item
@@ -58,11 +86,10 @@ olo:item
       rdfs:domain olo:Slot ;
       rdfs:isDefinedBy olo: ;
       rdfs:label "has item"@en ;
-      owl:InverseOf
+      owl:inverseOf
               [ rdf:type owl:ObjectProperty ;
                 rdfs:label "is item of"@en
               ] ;
-      owl:someValuesFrom owl:Class ;
       vs:term_status "unstable"@en .
 
 olo:length
@@ -72,12 +99,10 @@ olo:length
       rdfs:isDefinedBy olo: ;
       rdfs:label "has length"@en ;
       rdfs:range xsd:nonNegativeInteger ;
-      owl:InverseOf
+      owl:inverseOf
               [ rdf:type owl:ObjectProperty ;
                 rdfs:label "is length of"@en
               ] ;
-      owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:someValuesFrom xsd:nonNegativeInteger ;
       vs:term_status "unstable"@en .
 
 olo:next
@@ -87,11 +112,26 @@ olo:next
       rdfs:isDefinedBy olo: ;
       rdfs:label "has next"@en ;
       rdfs:range olo:Slot ;
-      owl:InverseOf
-              [ rdf:type owl:InverseFunctionalProperty ;
-                rdfs:label "is next of"@en
-              ] ;
-      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      vs:term_status "testing"@en .
+
+olo:ordered_list
+      rdf:type owl:FunctionalProperty ;
+      rdfs:comment "An ordered list of an slot."@en ;
+      rdfs:domain olo:Slot ;
+      rdfs:isDefinedBy olo: ;
+      rdfs:label "has ordered list"@en ;
+      rdfs:range olo:OrderedList ;
+      owl:inverseOf olo:slot ;
+      vs:term_status "testing"@en .
+
+olo:previous
+      rdf:type owl:InverseFunctionalProperty ;
+      rdfs:comment "Associates the previous slot in an ordered list"@en ;
+      rdfs:domain olo:Slot ;
+      rdfs:isDefinedBy olo: ;
+      rdfs:label "has previous"@en ;
+      rdfs:range olo:Slot ;
+      owl:inverseOf olo:next ;
       vs:term_status "testing"@en .
 
 olo:slot
@@ -101,9 +141,4 @@ olo:slot
       rdfs:isDefinedBy olo: ;
       rdfs:label "has slot"@en ;
       rdfs:range olo:Slot ;
-      owl:InverseOf
-              [ rdf:type owl:FunctionalProperty ;
-                rdfs:label "is slot of"@en
-              ] ;
-      owl:someValuesFrom olo:Slot ;
       vs:term_status "unstable"@en .
