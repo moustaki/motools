@@ -1,4 +1,4 @@
-# Saved by TopBraid on Wed Jun 30 19:45:42 CEST 2010
+# Saved by TopBraid on Wed Jun 30 23:48:26 CEST 2010
 # baseURI: http://purl.org/ontology/olo/core#
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://www.w3.org/2003/06/sw-vocab-status/ns
@@ -12,13 +12,13 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 olo:  rdf:type owl:Ontology ;
-      dc:creator "Samer Abdallah"^^xsd:string , <http://foaf.me/zazi#me> ;
+      dc:creator <http://foaf.me/zazi#me> , "Samer Abdallah"^^xsd:string ;
       dc:date "2010-06-28T19:19:52+01:00"^^xsd:dateTime ;
       dc:description """The Ordered Lists Ontology Specification provides basic concepts and properties 
 for describing ordered lists as semantic graph. This document contains a RDF description of the Ordered Lists Ontology
 as proposed by Samer Abdallah."""@en ;
       dc:title "The Ordered Lists Ontology" ;
-      owl:imports dc: , <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
+      owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns> , dc: ;
       owl:versionInfo "Revision: 0.6"@en .
 
 olo:OrderedList
@@ -42,8 +42,18 @@ olo:Slot
       rdfs:subClassOf owl:Class ;
       rdfs:subClassOf
               [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty olo:ordered_list
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
                 owl:cardinality "1"^^xsd:nonNegativeInteger ;
                 owl:onProperty olo:index
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty olo:next
               ] ;
       rdfs:subClassOf
               [ rdf:type owl:Restriction ;
@@ -54,16 +64,6 @@ olo:Slot
               [ rdf:type owl:Restriction ;
                 owl:minCardinality "1"^^xsd:nonNegativeInteger ;
                 owl:onProperty olo:item
-              ] ;
-      rdfs:subClassOf
-              [ rdf:type owl:Restriction ;
-                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-                owl:onProperty olo:ordered_list
-              ] ;
-      rdfs:subClassOf
-              [ rdf:type owl:Restriction ;
-                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-                owl:onProperty olo:next
               ] ;
       vs:term_status "unstable"@en .
 
