@@ -1,4 +1,9 @@
 =========================
+Version 0.5.2 (June 2010)
+=========================
+ * FIXED: wrong rdf:subPropertyOf definition of co:event
+
+=========================
 Version 0.5.1 (June 2010)
 =========================
  * MODIFIED: small typos at rdfs:labels

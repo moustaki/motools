@@ -1,4 +1,4 @@
-# Saved by TopBraid on Wed Jun 30 19:14:11 CEST 2010
+# Saved by TopBraid on Thu Jul 01 00:18:32 CEST 2010
 # baseURI: http://purl.org/ontology/co/core#
 # imports: http://purl.org/NET/c4dm/event.owl
 # imports: http://purl.org/dc/elements/1.1/
@@ -15,13 +15,13 @@
 
 co:   rdf:type owl:Ontology ;
       dc:creator <http://foaf.me/zazi#me> , <http://moustaki.org/foaf.rdf#moustaki> , <http://foaf.me/intrz#me> ;
-      dc:date "2010-06-30T18:12:52+01:00"^^xsd:dateTime ;
+      dc:date "2010-06-30T23:04:52+01:00"^^xsd:dateTime ;
       dc:description """The Counter Ontology specification provides basic concepts and properties 
 for describing a general counter concept and some important sub counters, e.g. an event counter, on/ for 
 the Semantic Web. This document contains a RDF description of the Counter Ontology."""@en ;
       dc:title "The Counter Ontology"@en ;
       owl:imports dc: , <http://purl.org/NET/c4dm/event.owl> ;
-      owl:versionInfo "Revision: 0.5.1"@en .
+      owl:versionInfo "Revision: 0.5.2"@en .
 
 co:Counter
       rdf:type owl:Class ;
@@ -69,7 +69,7 @@ co:event
       rdfs:isDefinedBy co: ;
       rdfs:label "has event"@en ;
       rdfs:range event:Event ;
-      rdfs:subPropertyOf co:counter_of ;
+      rdfs:subPropertyOf co:object ;
       owl:inverseOf co:event_counter ;
       vs:term_status "testing"@en .
 
