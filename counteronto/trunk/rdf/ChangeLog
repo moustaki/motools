@@ -1,4 +1,10 @@
 =========================
+Version 0.6 (July 2010)
+=========================
+ * ADDED: rdfs:Class to each owl:Class based concept
+ * ADDED: rdf:Property to each property
+
+=========================
 Version 0.5.2 (June 2010)
 =========================
  * FIXED: wrong rdf:subPropertyOf definition of co:event

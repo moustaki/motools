@@ -1,4 +1,4 @@
-# Saved by TopBraid on Thu Jul 01 00:18:32 CEST 2010
+# Saved by TopBraid on Fri Jul 09 20:05:45 CEST 2010
 # baseURI: null
 
 @prefix composite:  <http://www.topbraid.org/2007/05/composite.owl#> .
@@ -11,88 +11,64 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 []    rdf:type visual:Graph ;
-      rdfs:label "co:Counter Graph" ;
+      rdfs:label "co:ScrobbleEvent Graph" ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/core#event_counter> ;
-                visual:height "75"^^xsd:int ;
-                visual:width "275"^^xsd:int ;
-                visual:x "1174"^^xsd:int ;
-                visual:y "382"^^xsd:int
-              ] ;
-      visual:child
-              [ rdf:type visual:Box ;
-                visual:depicts xsd:integer ;
+                visual:depicts <http://purl.org/NET/c4dm/event.owl#place> ;
                 visual:height "19"^^xsd:int ;
-                visual:width "126"^^xsd:int ;
-                visual:x "234"^^xsd:int ;
-                visual:y "462"^^xsd:int
+                visual:width "129"^^xsd:int ;
+                visual:x "693"^^xsd:int ;
+                visual:y "265"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts owl:Thing ;
-                visual:height "56"^^xsd:int ;
-                visual:width "281"^^xsd:int ;
-                visual:x "949"^^xsd:int ;
-                visual:y "147"^^xsd:int
+                visual:depicts <http://purl.org/ontology/co/event_counter> ;
+                visual:height "19"^^xsd:int ;
+                visual:width "165"^^xsd:int ;
+                visual:x "222"^^xsd:int ;
+                visual:y "194"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/core#count> ;
-                visual:height "75"^^xsd:int ;
-                visual:width "276"^^xsd:int ;
-                visual:x "233"^^xsd:int ;
-                visual:y "317"^^xsd:int
+                visual:depicts <http://purl.org/NET/c4dm/event.owl#time> ;
+                visual:height "19"^^xsd:int ;
+                visual:width "124"^^xsd:int ;
+                visual:x "786"^^xsd:int ;
+                visual:y "186"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
                 visual:depicts <http://purl.org/NET/c4dm/event.owl#Event> ;
-                visual:height "75"^^xsd:int ;
-                visual:width "264"^^xsd:int ;
-                visual:x "1374"^^xsd:int ;
-                visual:y "239"^^xsd:int
+                visual:height "19"^^xsd:int ;
+                visual:width "131"^^xsd:int ;
+                visual:x "524"^^xsd:int ;
+                visual:y "149"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/core#counter> ;
-                visual:height "75"^^xsd:int ;
-                visual:width "272"^^xsd:int ;
-                visual:x "753"^^xsd:int ;
-                visual:y "382"^^xsd:int
+                visual:depicts <http://purl.org/NET/c4dm/event.owl#agent> ;
+                visual:height "19"^^xsd:int ;
+                visual:width "131"^^xsd:int ;
+                visual:x "371"^^xsd:int ;
+                visual:y "266"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/core#Counter> ;
-                visual:height "75"^^xsd:int ;
-                visual:width "277"^^xsd:int ;
-                visual:x "597"^^xsd:int ;
-                visual:y "245"^^xsd:int
+                visual:depicts <http://purl.org/ontology/co/ScrobbleEvent> ;
+                visual:height "19"^^xsd:int ;
+                visual:width "165"^^xsd:int ;
+                visual:x "507"^^xsd:int ;
+                visual:y "48"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts owl:Class ;
-                visual:height "56"^^xsd:int ;
-                visual:width "280"^^xsd:int ;
-                visual:x "950"^^xsd:int ;
-                visual:y "20"^^xsd:int
+                visual:depicts <http://purl.org/NET/c4dm/event.owl#factor> ;
+                visual:height "19"^^xsd:int ;
+                visual:width "132"^^xsd:int ;
+                visual:x "524"^^xsd:int ;
+                visual:y "328"^^xsd:int
               ] ;
-      visual:child
-              [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/core#event> ;
-                visual:height "75"^^xsd:int ;
-                visual:width "276"^^xsd:int ;
-                visual:x "1601"^^xsd:int ;
-                visual:y "507"^^xsd:int
-              ] ;
-      visual:child
-              [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/core#object> ;
-                visual:height "75"^^xsd:int ;
-                visual:width "276"^^xsd:int ;
-                visual:x "353"^^xsd:int ;
-                visual:y "507"^^xsd:int
-              ] ;
-      visual:depicts <http://purl.org/ontology/co/core#Counter> .
+      visual:depicts <http://purl.org/ontology/co/ScrobbleEvent> .
 
 []    rdf:type visual:Graph ;
       rdfs:label "co:Counter Graph" ;
@@ -106,11 +82,11 @@
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/count> ;
+                visual:depicts <http://purl.org/ontology/co/> ;
                 visual:height "19"^^xsd:int ;
-                visual:width "108"^^xsd:int ;
-                visual:x "709"^^xsd:int ;
-                visual:y "273"^^xsd:int
+                visual:width "68"^^xsd:int ;
+                visual:x "823"^^xsd:int ;
+                visual:y "86"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
@@ -122,11 +98,19 @@
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/> ;
+                visual:depicts <http://purl.org/ontology/co/counter> ;
                 visual:height "19"^^xsd:int ;
-                visual:width "68"^^xsd:int ;
-                visual:x "823"^^xsd:int ;
-                visual:y "86"^^xsd:int
+                visual:width "121"^^xsd:int ;
+                visual:x "422"^^xsd:int ;
+                visual:y "272"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://purl.org/ontology/co/count> ;
+                visual:height "19"^^xsd:int ;
+                visual:width "108"^^xsd:int ;
+                visual:x "709"^^xsd:int ;
+                visual:y "273"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
@@ -144,72 +128,88 @@
                 visual:x "553"^^xsd:int ;
                 visual:y "191"^^xsd:int
               ] ;
-      visual:child
-              [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/counter> ;
-                visual:height "19"^^xsd:int ;
-                visual:width "121"^^xsd:int ;
-                visual:x "422"^^xsd:int ;
-                visual:y "272"^^xsd:int
-              ] ;
       visual:depicts <http://purl.org/ontology/co/Counter> .
 
 []    rdf:type visual:Graph ;
-      rdfs:label "co:ScrobbleEvent Graph" ;
+      rdfs:label "co:Counter Graph" ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/NET/c4dm/event.owl#time> ;
-                visual:height "19"^^xsd:int ;
-                visual:width "124"^^xsd:int ;
-                visual:x "786"^^xsd:int ;
-                visual:y "186"^^xsd:int
+                visual:depicts owl:Class ;
+                visual:height "56"^^xsd:int ;
+                visual:width "280"^^xsd:int ;
+                visual:x "950"^^xsd:int ;
+                visual:y "20"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/NET/c4dm/event.owl#place> ;
-                visual:height "19"^^xsd:int ;
-                visual:width "129"^^xsd:int ;
-                visual:x "693"^^xsd:int ;
-                visual:y "265"^^xsd:int
+                visual:depicts <http://purl.org/ontology/co/core#object> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "276"^^xsd:int ;
+                visual:x "353"^^xsd:int ;
+                visual:y "507"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/NET/c4dm/event.owl#agent> ;
-                visual:height "19"^^xsd:int ;
-                visual:width "131"^^xsd:int ;
-                visual:x "371"^^xsd:int ;
-                visual:y "266"^^xsd:int
+                visual:depicts <http://purl.org/ontology/co/core#Counter> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "277"^^xsd:int ;
+                visual:x "597"^^xsd:int ;
+                visual:y "245"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/event_counter> ;
-                visual:height "19"^^xsd:int ;
-                visual:width "165"^^xsd:int ;
-                visual:x "222"^^xsd:int ;
-                visual:y "194"^^xsd:int
+                visual:depicts <http://purl.org/ontology/co/core#counter> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "272"^^xsd:int ;
+                visual:x "753"^^xsd:int ;
+                visual:y "382"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/NET/c4dm/event.owl#factor> ;
-                visual:height "19"^^xsd:int ;
-                visual:width "132"^^xsd:int ;
-                visual:x "524"^^xsd:int ;
-                visual:y "328"^^xsd:int
-              ] ;
-      visual:child
-              [ rdf:type visual:Box ;
-                visual:depicts <http://purl.org/ontology/co/ScrobbleEvent> ;
-                visual:height "19"^^xsd:int ;
-                visual:width "165"^^xsd:int ;
-                visual:x "507"^^xsd:int ;
-                visual:y "48"^^xsd:int
+                visual:depicts <http://purl.org/ontology/co/core#event> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "276"^^xsd:int ;
+                visual:x "1601"^^xsd:int ;
+                visual:y "507"^^xsd:int
               ] ;
       visual:child
               [ rdf:type visual:Box ;
                 visual:depicts <http://purl.org/NET/c4dm/event.owl#Event> ;
-                visual:height "19"^^xsd:int ;
-                visual:width "131"^^xsd:int ;
-                visual:x "524"^^xsd:int ;
-                visual:y "149"^^xsd:int
+                visual:height "75"^^xsd:int ;
+                visual:width "264"^^xsd:int ;
+                visual:x "1374"^^xsd:int ;
+                visual:y "239"^^xsd:int
               ] ;
-      visual:depicts <http://purl.org/ontology/co/ScrobbleEvent> .
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://purl.org/ontology/co/core#count> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "276"^^xsd:int ;
+                visual:x "233"^^xsd:int ;
+                visual:y "317"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts <http://purl.org/ontology/co/core#event_counter> ;
+                visual:height "75"^^xsd:int ;
+                visual:width "275"^^xsd:int ;
+                visual:x "1174"^^xsd:int ;
+                visual:y "382"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts owl:Thing ;
+                visual:height "56"^^xsd:int ;
+                visual:width "281"^^xsd:int ;
+                visual:x "949"^^xsd:int ;
+                visual:y "147"^^xsd:int
+              ] ;
+      visual:child
+              [ rdf:type visual:Box ;
+                visual:depicts xsd:integer ;
+                visual:height "19"^^xsd:int ;
+                visual:width "126"^^xsd:int ;
+                visual:x "234"^^xsd:int ;
+                visual:y "462"^^xsd:int
+              ] ;
+      visual:depicts <http://purl.org/ontology/co/core#Counter> .

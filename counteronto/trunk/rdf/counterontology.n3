@@ -1,7 +1,8 @@
-# Saved by TopBraid on Thu Jul 01 00:18:32 CEST 2010
+# Saved by TopBraid on Fri Jul 09 20:05:45 CEST 2010
 # baseURI: http://purl.org/ontology/co/core#
 # imports: http://purl.org/NET/c4dm/event.owl
 # imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/2003/06/sw-vocab-status/ns
 
 @prefix co:      <http://purl.org/ontology/co/core#> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
@@ -14,17 +15,17 @@
 
 co:   rdf:type owl:Ontology ;
       dc:creator <http://foaf.me/zazi#me> , <http://moustaki.org/foaf.rdf#moustaki> , <http://foaf.me/intrz#me> ;
-      dc:date "2010-06-30T23:04:52+01:00"^^xsd:dateTime ;
+      dc:date "2010-07-09T19:01:52+01:00"^^xsd:dateTime ;
       dc:description """The Counter Ontology specification provides basic concepts and properties 
 for describing a general counter concept and some important sub counters, e.g. an event counter, on/ for 
 the Semantic Web. This document contains a RDF description of the Counter Ontology."""@en ;
       dc:title "The Counter Ontology"@en ;
-      owl:imports dc: , <http://purl.org/NET/c4dm/event.owl> ;
-      owl:versionInfo "Revision: 0.5.2"@en .
+      owl:imports dc: , <http://purl.org/NET/c4dm/event.owl> , <http://www.w3.org/2003/06/sw-vocab-status/ns> ;
+      owl:versionInfo "0.6"^^xsd:string .
 
 co:Counter
-      rdf:type owl:Class ;
-      rdfs:comment "Counter of a given object in a given media"@en ;
+      rdf:type rdfs:Class , owl:Class ;
+      rdfs:comment "Counter of a given object/ given objects, which are related to that counter."@en ;
       rdfs:isDefinedBy co: ;
       rdfs:label "Counter"@en ;
       rdfs:subClassOf owl:Thing ;
@@ -36,7 +37,7 @@ co:Counter
       vs:term_status "stable"@en .
 
 co:ScrobbleEvent
-      rdf:type owl:Class ;
+      rdf:type rdfs:Class , owl:Class ;
       rdfs:comment """An event corresponding to a scrobbling (counting an activity, which includes at least a specific factor and 
 a specific agent), e.g. a track being played by someone, a video watched by someone, a book read by 
 someone, a sporting activity by someone, ..."""@en ;
@@ -46,7 +47,7 @@ someone, a sporting activity by someone, ..."""@en ;
       vs:term_status "unstable"@en .
 
 co:count
-      rdf:type owl:FunctionalProperty ;
+      rdf:type rdf:Property , owl:FunctionalProperty ;
       rdfs:comment "Links a counter resource to the actual count"@en ;
       rdfs:domain co:Counter ;
       rdfs:isDefinedBy co: ;
@@ -55,7 +56,7 @@ co:count
       vs:term_status "stable"@en .
 
 co:counter
-      rdf:type owl:ObjectProperty ;
+      rdf:type rdf:Property , owl:ObjectProperty ;
       rdfs:comment "Links an object to a counter resource. Please feel free to create further sub properties with more restricted domains."@en ;
       rdfs:isDefinedBy co: ;
       rdfs:label "has counter"@en ;
@@ -63,7 +64,7 @@ co:counter
       vs:term_status "stable"@en .
 
 co:event
-      rdf:type owl:ObjectProperty ;
+      rdf:type rdf:Property , owl:ObjectProperty ;
       rdfs:comment "Links counter resources to related events."@en ;
       rdfs:isDefinedBy co: ;
       rdfs:label "has event"@en ;
@@ -73,7 +74,7 @@ co:event
       vs:term_status "testing"@en .
 
 co:event_counter
-      rdf:type owl:ObjectProperty ;
+      rdf:type rdf:Property , owl:ObjectProperty ;
       rdfs:comment "Links events to a counter resource, where they where counted in."@en ;
       rdfs:domain event:Event ;
       rdfs:isDefinedBy co: ;
@@ -82,7 +83,7 @@ co:event_counter
       vs:term_status "unstable"@en .
 
 co:object
-      rdf:type owl:ObjectProperty ;
+      rdf:type rdf:Property , owl:ObjectProperty ;
       rdfs:comment "Links a counter resource to an object. Please feel free to create further sub properties with more restricted ranges."@en ;
       rdfs:domain co:Counter ;
       rdfs:isDefinedBy co: ;
