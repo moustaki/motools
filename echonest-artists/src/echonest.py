@@ -144,7 +144,7 @@ method_html = '''<html
     <link rel="alternate" type="application/rdf+xml" href="method.rdf" title="RDF/XML"/>
     <link rel="alternate" type="text/n3" href="method.ttl" title="Turtle"/>
     
-    <link rel="stylesheet" type="text/css" href="../css/rdfstyle.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/rdfstyle.css" media="screen" />
   </head>
   <body>
     <h1>about</h1>
