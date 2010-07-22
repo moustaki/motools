@@ -56,16 +56,15 @@ class RDFServer:
             
             elif urlpath.endswith('.html'):
                 cherrypy.response.headers['Content-Type'] = 'text/html'
-                mbid = urlpath.split('.html')[0]
-                return rdf2html(echonest.get_similar(mbid),mbid)
+                return echonest.method_html
             else:
                 accept = cherrypy.tools.accept.callable(['text/html', 'text/plain','application/rdf+xml','text/n3']) #@UndefinedVariable
                 if accept== 'text/html' or accept=='text/plain': 
-                    raise cherrypy.HTTPRedirect(settings.URI_BASE+'method'+urlpath+'.html')
+                    raise cherrypy.HTTPRedirect(settings.URI_BASE+urlpath+'.html')
                 elif accept == 'application/rdf+xml' : 
-                    raise cherrypy.HTTPRedirect(settings.URI_BASE+'method'+urlpath+'.rdf')
+                    raise cherrypy.HTTPRedirect(settings.URI_BASE+urlpath+'.rdf')
                 elif accept == 'text/n3' : 
-                    raise cherrypy.HTTPRedirect(settings.URI_BASE+'method'+urlpath+'.ttl')
+                    raise cherrypy.HTTPRedirect(settings.URI_BASE+urlpath+'.ttl')
         else:
             raise cherrypy.HTTPError(status=404, message="what you're looking for isn't here.")
         

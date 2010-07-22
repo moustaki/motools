@@ -115,7 +115,8 @@ def check_status(etree):
         return None
     else:
         return etree
-    
+
+label = 'Similarities between artists are determined by Echonest using some proprietary algorithm and retrieved from the Echonest API described at http://developer.echonest.com/docs/v4/artist.html#similar.' 
 ttl_method = '''
 @prefix meth: <%s> .
 @prefix sim: <http://purl.org/ontology/similarity/> .
@@ -124,10 +125,39 @@ ttl_method = '''
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 meth: a sim:AssociationMethod ;
-  rdfs:label "Similarities between artists are determined by Echonest using some proprietary algorithm and retrieved from the Echonest API described at http://developer.echonest.com/docs/v4/artist.html#similar."@en .
+  rdfs:label "%s"@en .
   
-'''% METHOD_URI
+'''% (METHOD_URI,label)
 
 method = RDF.Model()
 p = RDF.TurtleParser()
 p.parse_string_into_model(method, ttl_method, METHOD_URI)
+
+method_html = '''<html
+    version="XHTML+RDFa 1.0"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xml:lang="en">
+    
+  <head>
+    <title>Echonest Association Method</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="alternate" type="application/rdf+xml" href="method.rdf" title="RDF/XML"/>
+    <link rel="alternate" type="text/n3" href="method.ttl" title="Turtle"/>
+    
+    <link rel="stylesheet" type="text/css" href="../css/rdfstyle.css" media="screen" />
+  </head>
+  <body>
+    <h1>about</h1>
+  <h2>http://dbtune.org/artists/echonest/method</h2>
+  <p>view as <a href="method.rdf" title="RDF/XML">RDF/XML</a> or <a href="method.ttl" title="Turtle">Turtle</a></p>
+  <table>
+  <th>property</th><th>object</th>
+  <tr class="odd">
+  <td>rdf:type</td><td>sim:AssociationMethod</td>
+  </tr>
+  <tr class="odd">
+  <td>rdfs:label</td><td>%s</td>
+
+</body>
+</html>
+'''%label
