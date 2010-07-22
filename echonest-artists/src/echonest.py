@@ -115,4 +115,4 @@ meth: a sim:AssociationMethod ;
 
 method = RDF.Model()
 p = RDF.TurtleParser()
-p.parse_string_into_model(method, ttl_method)
+p.parse_string_into_model(method, ttl_method, METHOD_URI)
