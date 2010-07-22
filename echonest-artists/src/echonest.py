@@ -35,9 +35,14 @@ ttl_sim_tmpl = '''
   sim:distance "%(rank)s"^^xsd:integer ;
   sim:method <%(method)s> .
   
+'''.encode('utf-8')
+
+ttl_obj_tmpl = '''
 <%(objuri)s> foaf:name "%(obj_name)s" ;
-  a mo:MusicArtist .
-'''
+  a mo:MusicArtist .'''
+  
+ttl_obj_tmpl_err = '''
+<%(objuri)s> a mo:MusicArtist .'''
 
 def get_similar(mbid):
     params = {'id': 'musicbrainz:artist:'+mbid,
@@ -83,6 +88,16 @@ def get_similar(mbid):
         rank = str(atree.findtext('rank'))
         simuri = suburi+'#sim'+rank
         ttl+=ttl_sim_tmpl%locals()
+        
+        try:
+            l = locals()
+            for k,v in l.items():
+                if isinstance(v, unicode):
+                    l[k] = v.encode('utf-8')
+            ttl+=ttl_obj_tmpl%l
+        except UnicodeDecodeError:
+            ttl+=ttl_obj_tmpl_err%locals()
+            
     
     parser.parse_string_into_model(model, ttl.encode('utf-8'), suburi)
     return model

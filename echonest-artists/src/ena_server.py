@@ -110,6 +110,10 @@ home_config = {'/':
                 'tools.decode.on': True,
                 #'tools.caching.on': True
                 },
+                '/mbid':
+                { 'tools.encode.on': True,
+                  'tools.decode.on': True,
+                         },
                '/images':
                 {'tools.staticdir.on':True,
                  'tools.staticdir.dir': os.path.join(os.path.abspath(''), 'static','img'),
