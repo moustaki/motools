@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+    "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+
+<html
+	version="XHTML+RDFa 1.0"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sim="http://purl.org/ontology/similarity/"
+	xmlns:dc="http://purl.org/dc/terms/"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:mo="http://purl.org/ontology/mo/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xml:lang="en">
+	
+  <head>
+	<title>$title</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="alternate" type="application/rdf+xml" href="$rdfxml" title="RDF/XML"/>
+    <link rel="alternate" type="text/n3" href="$n3" title="Turtle"/>
+    
+    <link rel="stylesheet" type="text/css" href="/css/rdfstyle.css" media="screen" />
+  </head>
+  <body>
+  <div id="content">
+  <h1>about</h1>
+  <h2>$title</h2>
+  <p>view as <a href="$rdfxml" title="RDF/XML">RDF/XML</a> or <a href="$n3" title="Turtle">Turtle</a></p>
+
+  
+  
+  <table>
+  <th>similarity statements</th>
+  #set $even = False
+  #for $s_html, $p_html_dict in $sims.items():
+  #if $even:
+  <tr class="even">
+  #set $even = False
+  #else:
+  <tr class="odd">
+  #set $even = True
+  #end if
+  	<td>
+  		$s_html
+  	</td>
+  	<td><ul>
+  	#for $p_html, $o_html_list in $p_html_dict.items():
+  		<li>$p_html - 
+  		#for $o_html in $o_html_list:
+  			$o_html
+  		#end for
+  		</li>
+  		
+  	#end for
+  	</td></ul>
+  </tr>
+  #end for
+  
+  <th>artists' info</th>
+  #set $even = False
+  #for $s_html, $p_html_dict in $artists.items():
+  #if $even:
+  <tr class="even">
+  #set $even = False
+  #else:
+  <tr class="odd">
+  #set $even = True
+  #end if
+  	<td>
+  		$s_html
+  	</td>
+  	<td><ul>
+  	#for $p_html, $o_html_list in $p_html_dict.items():
+  		<li>$p_html  
+  		#for $o_html in $o_html_list:
+  			$o_html
+  		#end for
+  		</li>
+  		
+  	#end for
+  	</td></ul>
+  </tr>
+  #end for
+  </table>
+ 
+  </div>
+  </body>
+</html>

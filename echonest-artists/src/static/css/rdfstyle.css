@@ -1,0 +1,7 @@
+tr.even {background: #CCCCCC; }
+tr.odd {background: #DDDDDD; }
+body { font-family: sans-serif; font-size: 80%; margin: 0; padding: 1.2em 2em;  background: #fff; }
+#content {width: 960px; float: left; clear: left; padding: 0 3em;}
+th {background: #CCCCCC ; }
+table { border-collapse: collapse; clear: left; font-size: 100%; margin: 0 0 1em; width: 100%; }
+td {padding: 0 1em;}
