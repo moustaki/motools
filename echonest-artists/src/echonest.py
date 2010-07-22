@@ -79,7 +79,7 @@ def get_similar(mbid):
             else:
                 pass
         
-        obj_name = str(atree.findtext('name'))
+        obj_name = atree.findtext('name').encode('utf-8')
         rank = str(atree.findtext('rank'))
         simuri = suburi+'#sim'+rank
         ttl+=ttl_sim_tmpl%locals()
