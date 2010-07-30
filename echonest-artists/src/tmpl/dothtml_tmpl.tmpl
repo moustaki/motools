@@ -70,9 +70,10 @@
   	#for $p_html, $o_html_list in $p_html_dict.items():
   		<li>$p_html
   		$o_html_list[0]
-  		#if len($o_html_list)>1:  
+  		#if len($o_html_list)>1:
+  		,
   		#for $o_html in $o_html_list[1:-1]:
-  			, $o_html
+  			$o_html, 
   		#end for
   		$o_html_list[-1]
   		#end if
