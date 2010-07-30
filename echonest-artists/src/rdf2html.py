@@ -16,7 +16,10 @@ prefix_dict = {'http://purl.org/ontology/similarity/':'sim',
                'http://purl.org/ontology/mo/':'mo',
                'http://www.w3.org/1999/02/22-rdf-syntax-ns#':'rdf',
                'http://dbtune.org/artists/echonest/':'dben',
-               'http://xmlns.com/foaf/0.1/':'foaf'}
+               'http://xmlns.com/foaf/0.1/':'foaf',
+               'http://www.w3.org/2002/07/owl#':'owl',
+               'http://www.bbc.co.uk/music/artists/':'bbc',
+               'http://dbtune.org/musicbrainz/resource/artist/':'dbmbz'}
 
 query_sims = '''
 SELECT DISTINCT ?s ?p ?o WHERE {
