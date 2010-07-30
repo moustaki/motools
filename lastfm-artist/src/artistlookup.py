@@ -198,7 +198,7 @@ class LastFMSession:
 			self.graph.add((assList[idx], MUSIM['weight'], rdflib.Literal(self.similarArtists[idx][2])))
 
 			# add this is made by last.fm
-			self.graph.add((assList[idx], MUSIM['asserter'], lastfm))
+			#self.graph.add((assList[idx], MUSIM['asserter'], lastfm))
 
 			# let's add mo:similar_to while we're at it
 			self.graph.add((aNode, MO['similar_to'], node))

@@ -70,8 +70,6 @@ class MBIDServer:
         if urlpath.endswith('.rdf'):
             # actually do the lookup
             cherrypy.response.headers['Content-Type'] = 'application/rdf+xml'
-            #lses = artistlookup.LastFMSession()
-            #lses.authenticate()
             lses.getLastFMdata(urlpath.rsplit('.rdf')[0])
             return lses.createRDFGraph()
         else:
@@ -87,13 +85,15 @@ root.mbid = MBIDServer()
 appconf = {'/': {'tools.proxy.on':True,}}
 cherrypy.config.update({'server.socket_port': 1210,
                         'server.socket_host': '192.168.122.144', 
-                        'log.screen': True 
+                        'log.screen': True ,
+                        'tools.encode.on' : True ,
+                        'tools.decode.on' : True ,
                         #,'log.access_file': '/var/log/artist-last-fm-access.log' 
                         #,'log.error_file':'/var/log/artist-last-fm-error.log'
-                        ,'server.thread_pool':30
-                        ,'server.socket_queue_size': 10
-                        ,'response.timeout': 100000000  # do we need this??
-                        ,'request.timeout':  100000000
+                        'server.thread_pool':30 ,
+                        'server.socket_queue_size': 10 ,
+                        'response.timeout': 100000000 , # do we need this??
+                        'request.timeout':  100000000
                         })
 
 print cherrypy.config
