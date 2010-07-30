@@ -4,8 +4,8 @@ Created on Jul 20, 2010
 @author: kurtjx
 '''
 
-import RDF, uuid,cherrypy
-from pyechonest import artist, config
+import RDF, cherrypy
+from pyechonest import config
 import urllib
 import xml.dom.minidom as minidom
 try:
@@ -17,6 +17,11 @@ from settings import URI_BASE_MBID, METHOD_URI
 # kurtjx's api key hard coded, nice
 config.ECHO_NEST_API_KEY = 'NN5CXYTRMEXRFSPZZ'
 
+def get_bbc_uri(mbid):
+    return 'http://www.bbc.co.uk/music/artists/'+str(mbid)+'#artist'
+    
+def get_musicbrainz_uri(mbid):
+    return 'http://dbtune.org/musicbrainz/resource/artist/'+mbid
 
 
 ttl_prefix = '''
@@ -24,25 +29,29 @@ ttl_prefix = '''
 @prefix mo: <http://purl.org/ontology/mo/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
-<%(suburi)s> a mo:MusicArtist .
+<%(sub_uri)s> a mo:MusicArtist ;
+  owl:sameAs <%(sub_bbc)s>, <%(sub_mbz)s> .
 '''
 
 ttl_sim_tmpl = '''
-<%(simuri)s> a sim:Similarity ;
-  sim:subject <%(suburi)s> ;
-  sim:object <%(objuri)s> ;
+<%(sim_uri)s> a sim:Similarity ;
+  sim:subject <%(sub_uri)s> ;
+  sim:object <%(obj_uri)s> ;
   sim:distance "%(rank)s"^^xsd:integer ;
   sim:method <%(method)s> .
   
 '''.encode('utf-8')
 
 ttl_obj_tmpl = '''
-<%(objuri)s> foaf:name "%(obj_name)s" ;
-  a mo:MusicArtist .'''
+<%(obj_uri)s> foaf:name "%(obj_name)s" ;
+  owl:sameAs <%(obj_bbc)s> , <%(obj_mbz)s> ;
+  a mo:MusicArtist .'''.encode('utf-8')
   
 ttl_obj_tmpl_err = '''
-<%(objuri)s> a mo:MusicArtist .'''
+<%(obj_uri)s> a mo:MusicArtist ;
+  owl:sameAs <%(obj_bbc)s> , <%(obj_mbz)s> .'''
 
 def get_similar(mbid):
     params = {'id': 'musicbrainz:artist:'+mbid,
@@ -66,7 +75,9 @@ def get_similar(mbid):
     parser = RDF.TurtleParser()
     
     method = METHOD_URI
-    suburi = URI_BASE_MBID+mbid
+    sub_bbc = get_bbc_uri(mbid)
+    sub_uri = URI_BASE_MBID+mbid
+    sub_mbz = get_musicbrainz_uri(mbid)
     ttl = ttl_prefix % locals()
 
     dom = minidom.parseString(xml)
@@ -79,14 +90,15 @@ def get_similar(mbid):
         for id in ids:
             if id.attributes.has_key('type'):
                 obj_mbid = id.firstChild.toxml().split('musicbrainz:artist:')[1]
-                objuri = URI_BASE_MBID+obj_mbid
-                
+                obj_uri = URI_BASE_MBID+obj_mbid
+                obj_bbc = get_bbc_uri(obj_mbid)
+                obj_mbz = get_musicbrainz_uri(obj_mbid)
             else:
                 pass
         
         obj_name = atree.findtext('name').encode('utf-8')
         rank = str(atree.findtext('rank'))
-        simuri = suburi+'#sim'+rank
+        sim_uri = sub_uri+'#sim'+rank
         ttl+=ttl_sim_tmpl%locals()
         
         try:
@@ -99,7 +111,7 @@ def get_similar(mbid):
             ttl+=ttl_obj_tmpl_err%locals()
             
     
-    parser.parse_string_into_model(model, ttl.encode('utf-8'), suburi)
+    parser.parse_string_into_model(model, ttl.encode('utf-8'), sub_uri)
     return model
 
 

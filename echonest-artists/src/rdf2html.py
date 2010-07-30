@@ -5,7 +5,6 @@ Created on Jul 21, 2010
 '''
 
 import RDF
-from collections import defaultdict
 from dothtml_tmpl import dothtml_tmpl
 from settings import URI_BASE_MBID
 

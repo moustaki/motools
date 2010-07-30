@@ -21,7 +21,7 @@ Created on Jul 20, 2010
 import sys, os
 import cherrypy
 import RDF
-import echonest
+import echonest2rdf
 from rdf2html import rdf2html
 import settings
 
@@ -47,16 +47,16 @@ class RDFServer:
             if urlpath.endswith('.rdf'):
                 cherrypy.response.headers['Content-Type'] = 'application/rdf+xml'
                 ser = RDF.RDFXMLSerializer()
-                return ser.serialize_model_to_string(echonest.method, None)
+                return ser.serialize_model_to_string(echonest2rdf.method, None)
             
             elif urlpath.endswith('.ttl'):
                 cherrypy.response.headers['Content-Type'] = 'text/n3'
                 ser = RDF.TurtleSerializer()
-                return ser.serialize_model_to_string(echonest.method, None)
+                return ser.serialize_model_to_string(echonest2rdf.method, None)
             
             elif urlpath.endswith('.html'):
                 cherrypy.response.headers['Content-Type'] = 'text/html'
-                return echonest.method_html
+                return echonest2rdf.method_html
             else:
                 accept = cherrypy.tools.accept.callable(['text/html', 'text/plain','application/rdf+xml','text/n3']) #@UndefinedVariable
                 if accept== 'text/html' or accept=='text/plain': 
@@ -72,20 +72,20 @@ class RDFServer:
     def mbid(self, urlpath):
         if urlpath.endswith('.rdf'):
             cherrypy.response.headers['Content-Type'] = 'application/rdf+xml'
-            model = echonest.get_similar(urlpath.split('.rdf')[0])
+            model = echonest2rdf.get_similar(urlpath.split('.rdf')[0])
             ser = RDF.RDFXMLSerializer()
             return ser.serialize_model_to_string(model, None)
         
         elif urlpath.endswith('.ttl'):
             cherrypy.response.headers['Content-Type'] = 'text/n3'
-            model = echonest.get_similar(urlpath.split('.ttl')[0])
+            model = echonest2rdf.get_similar(urlpath.split('.ttl')[0])
             ser = RDF.TurtleSerializer()
             return ser.serialize_model_to_string(model, None)
         
         elif urlpath.endswith('.html'):
             cherrypy.response.headers['Content-Type'] = 'text/html'
             mbid = urlpath.split('.html')[0]
-            return rdf2html(echonest.get_similar(mbid),mbid)
+            return rdf2html(echonest2rdf.get_similar(mbid),mbid)
 
         
         else:
