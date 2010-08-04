@@ -5,7 +5,7 @@
 		  lastfm_api_host/1,		% +LFM_API_HOST
 		  lastfm_host/1,			% +LFM_HOST
 		  lastfm_api_sessionkey/1,	% +LFM_API_SESSIONKEY
-		  zitgist_host/1			% +ZIGIST_HOST
+		  dbtune_host/1				% +DBTUNE_HOST
 		]).
 
 /** <module> Last.fm API to RDF converter configuration
@@ -28,13 +28,13 @@ host('http://localhost:3060').
 %
 %	Set here your Last.fm API key.
  
-lastfm_api_key('Your Last.fm API Key').
+lastfm_api_key('52907c4e32d45541408e91a52ed81558').
 
 %%	lastfm_api_secret(+LFM_API_SECRET) is det.
 %
 %	Set here your Last.fm secret.
  
-lastfm_api_secret('Your Last.fm API Secret').
+lastfm_api_secret('c91a06ea6c51740124f204b9a2575a4b').
 
 %%	lastfm_api_host(+LFM_API_HOST) is det.
 %
@@ -60,10 +60,10 @@ lastfm_api_sessionkey('A valid Session Key').
  
 musicbrainz_host('http://musicbrainz.org/').
 
-%%	zitgist_host(+ZITGIST_HOST) is det.
+%%	dbtune_host(+DBTUNE_HOST) is det.
 %
-%	Set here the default Zigist host.
+%	Set here the default DBTune host.
 
-zitgist_host('http://zitgist.com/').
+dbtune_host('http://dbtune.org/').
 
 

@@ -48,6 +48,9 @@ events_rdf(User,Triples) :-
 	%recommended_events_rdf(LFMM,LFMRRN,Xml),
 	lastfm_api_query_rdf('method=~w&user=~w',[LFMM,User],LFMRRN,Xml),
 	create_local_uri(User, 'lfm-user', UserUri),
+	%	rdf_bnode(RecUri)
+	%,	rdf(RecUri, rec:recommender, isi:'lastfm')
+	%,	rdf(UserUri, rec:recommendation, RecUri)
 	findall(Triples,
 		(member(element(event,_,Event),Xml),event_rdf(UserUri,Event,Triples)),
 		T),
@@ -78,7 +81,7 @@ recommended_events_rdf(LFMM,LFMRRN,Xml) :-
 %	Converts a Last.fm events graph of a given user to RDF triples.
 
 event_rdf(UserUri, Event, [
-	%	rdf(UserUri, lfm:recommendation, EventUri)
+	%,	rdf(RecUri, rec:recommendation_object, EventUri)
 	%	for "a user attends an event"
 		rdf(UserUri, mo:listened, EventUri)
 	,	rdf(EventUri, dc:title, literal(Title))
@@ -86,6 +89,7 @@ event_rdf(UserUri, Event, [
 	,   rdf(EventUri, lfm:event_id, literal(EventID))
 	,	rdf(EventUri, foaf:isPrimaryTopicOf, LastFmEventUrl)
 	,	rdf(LastFmEventUrl, rdf:type, foaf:'Document')
+	,	rdf(LastFmEventUrl, is:info_service, isi:'lastfm')
 	,	Triples7]) :-
 	member(element(id,_,[EventID]), Event),
 	member(element(title,_,[Title]), Event),
@@ -174,6 +178,7 @@ venue_info(Event, EventUri, VenueTriples) :-
 				,	rdf(OrganizationUri, lfm:venue_id, literal(VenueID))
 				,	rdf(OrganizationUri, foaf:isPrimaryTopicOf, LastFmVenueUrl)
 				,	rdf(LastFmVenueUrl, rdf:type, foaf:'Document')
+				,	rdf(LastFmVenueUrl, is:info_service, isi:'lastfm')
 				,	Triples5],
 			assertz(vid(VenueID, OrganizationUri)))
 	).
@@ -233,8 +238,8 @@ location_main_info(OrganizationUri, AddressUri, [
 geo_info(Location, OrganizationUri, [
 	    rdf(OrganizationUri, wgs:'location', PlaceUri)
 	,	rdf(PlaceUri, rdf:type, wgs:'SpatialThing')
-	,	rdf(PlaceUri, wgs:long, literal(type(xmls:'float', Lat)))
-	,	rdf(PlaceUri, wgs:lat, literal(type(xmls:'float', Long)))]) :-	
+	,	rdf(PlaceUri, wgs:long, literal(type(xsd:'float', Lat)))
+	,	rdf(PlaceUri, wgs:lat, literal(type(xsd:'float', Long)))]) :-	
 	member(element('geo:point' ,_, GeoPoint), Location),!,
 	member(element('geo:lat' ,_, [Lat]), GeoPoint),
 	member(element('geo:long' ,_, [Long]), GeoPoint),
@@ -272,11 +277,11 @@ venue_phonenumber(Venue,PlaceUri,[]) :-
 %
 %	Converts the date information of an event to RDF triples
 %
-%	@tbd	format dates to xmls:dateTime
+%	@tbd	format dates to xsd:dateTime
 
 date_info(Event,EventUri,[ 
 		rdf(EventUri,event:time,TimeUri)
-	,	rdf(TimeUri,rdf:type,tl:'Interval')
+	,	rdf(TimeUri,rdf:type,tl:'UTInterval')
 	,	rdf(TimeUri,tl:start,literal(Start))
 	,	rdf(TimeUri,tl:end,literal(End))]) :-	
 	member(element(startDate,_,[Start]),Event),
@@ -285,7 +290,7 @@ date_info(Event,EventUri,[
 	
 date_info(Event,EventUri,[ 
 		rdf(EventUri,event:time,TimeUri)
-	,	rdf(TimeUri,rdf:type,tl:'Instant')
+	,	rdf(TimeUri,rdf:type,tl:'UTInterval')
 	,	rdf(TimeUri,tl:start,literal(Start))]) :-	
 	member(element(startDate,_,[Start]),Event),
 	rdf_bnode(TimeUri).
@@ -336,6 +341,8 @@ event_tags(Event,EventUri,[]) :-
 tag_info(Tag,EventUri,[
 		rdf(EventUri,tags:taggedWithTag,TagUri)
 	,	rdf(TagUri,rdf:type,tags:'Tag')
-	,	rdf(TagUri,tags:tagName,literal(Tag))]) :-
-	rdf_bnode(TagUri).
+	,	rdf(TagUri,tags:tagName,literal(Tag))
+	,	rdf(TagUri, is:info_service, isi:'lastfm')]) :-
+	lastfm_host(LFMH),
+	format(atom(TagUri),'~wtag/~w',[LFMH,Tag]).
 

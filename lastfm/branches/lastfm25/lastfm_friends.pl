@@ -38,13 +38,16 @@ lastfm_api_response_rootnode('friends').
 
 friends_rdf(User,[
 		rdf(UserUri,rdf:type,foaf:'Person')
-	,	rdf(UserUri,rdfs:label,literal(User))
+	,	rdf(UserUri,foaf:name,literal(User))
 	,	rdf(UserUri,foaf:holdsAccount,Account)
 	,	rdf(Account,rdf:type,foaf:'OnlineAccount')
 	,	rdf(Account,foaf:isPrimaryTopicOf,LFMUserPage)
 	,	rdf(LFMUserPage, rdf:type, foaf:'Document')
+	,	rdf(LFMUserPage, is:info_service, isi:'lastfm')
 	,	rdf(Account,foaf:accountServiceHomepage, LFMH)
+	,	rdf(Account,is:info_service, isi:'lastfm')
 	,	rdf(LFMH, rdf:type, foaf:'Document')
+	,	rdf(LFMH, is:info_service, isi:'lastfm')
 	,	rdf(Account,foaf:accountName,literal(User))|Triples]) :-
 	lastfm_host(LFMH),
 	lastfm_api_method(LFMM),
@@ -69,7 +72,9 @@ friend_rdf(UserUri,Friend,[
 	,	rdf(FriendAccount,rdf:type,foaf:'OnlineAccount')
 	,	rdf(FriendAccount,foaf:isPrimaryTopicOf,LFMFriendPage)
 	,	rdf(LFMFriendPage, rdf:type, foaf:'Document')
-	,	rdf(FriendAccount,foaf:accountServiceHomepage,LFMH)
+	,	rdf(LFMFriendPage, is:info_service, isi:'lastfm')
+	,	rdf(FriendAccount, foaf:homepage, LFMH)
+	,	rdf(FriendAccount, is:info_service, isi:'lastfm')
 	,	rdf(FriendAccount,foaf:accountName,literal(FriendName))|Triples]) :-
 	lastfm_host(LFMH),
 	member(element(name,_,[FriendName]),Friend),

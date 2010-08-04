@@ -40,8 +40,9 @@ lastfm_images(Source,RdfNode,[],LabelPart,ImageProperty,[]) :-
 lastfm_image(Source,RdfNode,Extent,LabelPart,ImageProperty,[
 		rdf(RdfNode,NS:Property,Image)
 	,	rdf(Image,rdf:type,foaf:'Image')
+	,	rdf(Image, is:info_service, isi:'lastfm')
 	,	rdf(Image,terms:extent,literal(Extent))
-	,	rdf(Image,rdfs:label,literal(ImageLabel))]) :-	
+	,	rdf(Image,dc:title,literal(ImageLabel))]) :-	
 	member(element(image,[size=Extent],[Image]),Source),!,
 	format(atom(ImageLabel),'Last FM ~w Image: (~w)',[LabelPart,Extent]),
 	ImageProperty=[NS,Property].
@@ -54,7 +55,7 @@ lastfm_image(Source,RdfNode,Extent,LabelPart,ImageProperty,[]) :-
 
 %%	uts_to_date(+UTS, -Date)
 %
-% 	Converts a UTS date information to xmls:dateTime conform date format.
+% 	Converts a UTS date information to xsd:dateTime conform date format.
 	
 uts_to_date(UTS,Date) :-
     atom_to_term(UTS,Time,[]),

@@ -1,4 +1,4 @@
-#! /usr/local/lib/pl-5.8.3/bin/x86_64-linux/pl -G64m -T64m -L32m -s
+#! /usr/local/lib/swipl-5.10.1/bin/x86_64-linux/swipl -G64m -T64m -L32m -s
 
 /** <module> Last.fm run
 

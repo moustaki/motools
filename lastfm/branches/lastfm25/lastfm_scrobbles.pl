@@ -57,10 +57,10 @@ tracks_rdf(User,Triples) :-
 % 	Converts all track information of a scrobbling event to RDF triples.
 
 track_rdf(User,Track,[
-		rdf(EventUri,rdf:type,lfm:'ScrobbleEvent')
-	,	rdf(EventUri,lfm:user,UserUri)
-	,	rdf(EventUri,lfm:track_played,TrackUri)
-	,	rdf(EventUri,rdfs:label,literal(ScrobbleDesc))|Triples]) :-
+		rdf(EventUri,rdf:type,co:'ScrobbleEvent')
+	,	rdf(EventUri,event:agent,UserUri)
+	,	rdf(EventUri,pbo:media_scrobble_object,TrackUri)
+	,	rdf(EventUri,dc:title,literal(ScrobbleDesc))|Triples]) :-
 	track_mbid_info(Track,TrackUri,ScrobbleDesc,TrackMbidTriples),
 	rdf_bnode(EventUri),
 	date_info(Track,EventUri,DateTriples),
@@ -102,7 +102,8 @@ track_info(Track, TrackUri, NewScrobbleDesc4, [
 		rdf(TrackUri, rdf:type, mo:'Track')
 	, 	rdf(TrackUri, dc:title, literal(Title))
 	,	rdf(TrackUri, foaf:isPrimaryTopicOf, URL) 
-	,	rdf(URL, rdf:type, foaf:'Document') | Triples3]) :-
+	,	rdf(URL, rdf:type, foaf:'Document')
+	,	rdf(URL, is:info_service, isi:'lastfm') | Triples3]) :-
 	artist_mbid_info(Track, TrackUri, ScrobbleDesc, ArtistTriples),
 	write_scrobbledesc('Listened to', ScrobbleDesc, NewScrobbleDesc),
 	member(element(name,_,[Title]), Track),
@@ -155,9 +156,10 @@ artist_mbid_info(Track,TrackUri,ScrobbleDesc,[]) :-
     
 artist_info(Name, TrackUri, ArtistUri, ScrobbleDesc, [
 		rdf(TrackUri, foaf:maker, ArtistUri)
-	,   rdf(ArtistUri, rdf:type, mo:'MusicArtist')
+	,	rdf(ArtistUri, rdf:type, mo:'MusicArtist')
 	,	rdf(ArtistUri, foaf:homepage, Homepage)
 	,	rdf(Homepage, rdf:type, foaf:'Document')
+	,	rdf(Homepage, is:info_service, isi:'lastfm')
 	,	rdf(ArtistUri, foaf:name, literal(Name))]) :-
 	lastfm_host(LFMH),
 	format(atom(Homepage), '~wmusic/~w', [LFMH, Name]),
@@ -203,7 +205,7 @@ album_mbid_info(Track,TrackUri,ScrobbleDesc,[]) :-
 album_info(Title,TrackUri,AlbumUri,ScrobbleDesc,[
 		rdf(AlbumUri,mo:track,TrackUri)
 	,	rdf(AlbumUri,rdf:type,mo:'Record')
-	,	rdf(AlbumUri,rdfs:label,literal(Title))
+	,	rdf(AlbumUri,dc:title,literal(Title))
 	,	rdf(AlbumUri,foaf:name,literal(Title))]) :-
 	format(atom(ScrobbleDesc),', record "~w"',Title).
 
@@ -211,10 +213,19 @@ album_info(Title,TrackUri,AlbumUri,ScrobbleDesc,[
 %
 %	Converts the scrobbling date to RDF triples.
 	
-date_info(Track,EventUri,[rdf(EventUri,dc:date,literal(type(xmls:'dateTime', Date)))]) :-
-	member(element(date,[uts=UTS],_),Track),!,
-	uts_to_date(UTS,Date).
-    
+date_info(Track, EventUri, [
+	,	rdf(EventTime, rdf:type, time:'Instant')
+	,	rdf(EventTime, time:inXSDDateTime, literal(type(xsd:'dateTime', Date)))]) :-
+	member(element(date,[uts=UTS],_),Track)
+		->
+			rdf_bnode(EventTime),
+			rdf(EventUri, event:time, EventTime),
+			uts_to_date(UTS,Date)
+		;
+			EventUri = EventUri.
+
+%%	might now be obsolete here ;)
+
 date_info(Track,EventUri,[]) :-
 	Track=Track,
 	EventUri=EventUri.
@@ -240,5 +251,5 @@ set_mbid_uri(MBID, RdfNode, ScrobbleDesc, UriDesc, Triples, [
 	,	rdf(RdfNode, mo:musicbrainz_guid, literal(MBID)) | Triples]) :-
 	assertz(mbid(MBID, RdfNode)),
 	assertz(scrobbledesc(MBID, ScrobbleDesc)),
-	zitgist_host(ZGH),
-	format(atom(URI), '~wmusic/~w/~w', [ZGH, UriDesc, MBID]).
+	dbtune_host(DBTH),
+	format(atom(URI), '~wmusicbrainz/resource/~w/~w', [DBTH, UriDesc, MBID]).
