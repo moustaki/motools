@@ -142,7 +142,7 @@ event:sub_event a owl:ObjectProperty;
 	owl:equivalentProperty event:hasSubEvent;
 	.
 
-event:time a owl:FunctionalProperty;
+event:time
 	a owl:ObjectProperty;
 	vs:term_status "stable";
 	rdfs:domain event:Event;
@@ -155,7 +155,7 @@ event:time a owl:FunctionalProperty;
 		""";
 	.
 
-event:place a owl:FunctionalProperty;
+event:place
 	a owl:ObjectProperty;
 	vs:term_status "stable";
 	rdfs:domain event:Event;
