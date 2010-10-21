@@ -61,10 +61,11 @@ def get_similar(mbid):
         if isinstance(v, unicode):
             params[k] = v.encode('utf-8')
     params = urllib.urlencode(params)
-    url = 'http://%s%s%s?%s' % (config.API_HOST, config.API_SELECTOR,
+    url = 'http://%s/%s/%s?%s' % (config.API_HOST, config.API_SELECTOR,
                                 'get_similar',params)
     for bucket in ['id:musicbrainz']:
         url+='&bucket='+bucket
+    print url
     f = urllib.urlopen(url)
     xml = f.read()
     tree = fromstring(xml)

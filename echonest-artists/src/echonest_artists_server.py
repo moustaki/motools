@@ -1,7 +1,7 @@
 '''
 Created on Jul 20, 2010
 
-@author: kurtjx
+@author: kurtjx, c4dm
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
