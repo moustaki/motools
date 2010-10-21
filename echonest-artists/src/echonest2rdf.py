@@ -5,6 +5,7 @@ Created on Jul 20, 2010
 '''
 
 import RDF, cherrypy
+from rdflib import Literal
 from pyechonest import config
 import urllib
 import xml.dom.minidom as minidom
@@ -45,7 +46,7 @@ ttl_sim_tmpl = '''
 '''.encode('utf-8')
 
 ttl_obj_tmpl = '''
-<%(obj_uri)s> foaf:name "%(obj_name)s" ;
+<%(obj_uri)s> foaf:name %(obj_name)s ;
   owl:sameAs <%(obj_bbc)s> , <%(obj_mbz)s> ;
   a mo:MusicArtist .'''.encode('utf-8')
   
@@ -96,7 +97,7 @@ def get_similar(mbid):
             else:
                 pass
         
-        obj_name = atree.findtext('name').encode('utf-8')
+        obj_name = Literal(atree.findtext('name').encode('utf-8')).n3()
         rank = str(atree.findtext('rank'))
         sim_uri = sub_uri+'#sim'+rank
         ttl+=ttl_sim_tmpl%locals()
@@ -110,7 +111,7 @@ def get_similar(mbid):
         except UnicodeDecodeError:
             ttl+=ttl_obj_tmpl_err%locals()
             
-    
+    print ttl
     parser.parse_string_into_model(model, ttl.encode('utf-8'), sub_uri)
     return model
 
