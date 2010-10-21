@@ -65,7 +65,6 @@ def get_similar(mbid):
                                 'get_similar',params)
     for bucket in ['id:musicbrainz']:
         url+='&bucket='+bucket
-    print url
     f = urllib.urlopen(url)
     xml = f.read()
     tree = fromstring(xml)
