@@ -18,7 +18,7 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 mo:   rdf:type owl:Ontology ;
-      dc:date "$Date: 2010/06/18 17:08:19 $"^^xsd:string ;
+      dc:date "$Date: 2010/06/18 17:08:19 $" ;
       dc:description """
         The Music Ontology Specification provides main concepts and 
         properties fo describing music (i.e. artists, albums and tracks) 
@@ -27,7 +27,7 @@ mo:   rdf:type owl:Ontology ;
     """ ;
       dc:title "The Music Ontology" ;
       owl:imports bio: , <http://purl.org/NET/c4dm/event.owl> , <http://purl.org/ontology/ao/core> , <http://www.w3.org/2006/time> , foaf: , dcterms: , <http://purl.org/NET/c4dm/keys.owl> , <http://purl.org/vocab/frbr/core> ;
-      owl:versionInfo "Revision: 2.1.5"^^xsd:string ;
+      owl:versionInfo "Revision: 2.1.5" ;
       foaf:maker <http://www.talkdigger.com/foaf/fgiasson> , <http://foaf.me/zazi#me> , <http://moustaki.org/foaf.rdf#moustaki> .
 
 mo:AnalogSignal
@@ -2435,7 +2435,7 @@ mo:sampled_version_of
 
 mo:sampler
       rdf:type owl:ObjectProperty ;
-      rdfs:comment "Used to relate the signal of a musical work to an artist who sampled it."^^xsd:string ;
+      rdfs:comment "Used to relate the signal of a musical work to an artist who sampled it." ;
       rdfs:isDefinedBy mo: ;
       rdfs:label "sampler" ;
       rdfs:subPropertyOf mo:interpreter ;
