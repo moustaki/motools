@@ -1269,6 +1269,26 @@ mo:group
       mo:level "1" ;
       vs:term_status "testing" .
 
+mo:activity_start
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "Relates an artist to a date at which its activity started" ;
+      rdfs:domain mo:MusicArtist ;
+      rdfs:range xsd:date ;
+      rdfs:isDefinedBy mo: ;
+      rdfs:label "activity start";
+      mo:level "1" ;
+      vs:term_status "testing" .
+
+mo:activity_end
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "Relates an artist to a date at which its activity ended" ;
+      rdfs:domain mo:MusicArtist ;
+      rdfs:range xsd:date ;
+      rdfs:isDefinedBy mo: ;
+      rdfs:label "activity end";
+      mo:level "1" ;
+      vs:term_status "testing" .
+
 mo:gtin
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "GTIN is a grouping term for EANs and UPCs. In common speech those are called barcodes although the barcodes are just a representation of those identifying numbers." ;
