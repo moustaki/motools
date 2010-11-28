@@ -35,7 +35,7 @@
     <owl:imports rdf:resource="../../vocab/frbr/core"/>
     <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
     <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
-    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Revision: 2.1.4</owl:versionInfo>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Revision: 2.1.5</owl:versionInfo>
     <foaf:maker rdf:resource="http://foaf.me/zazi#me"/>
     <foaf:maker rdf:resource="http://moustaki.org/foaf.rdf#moustaki"/>
     <foaf:maker rdf:resource="http://www.talkdigger.com/foaf/fgiasson"/>
