@@ -1753,6 +1753,15 @@ This is usually used to link to a Creative Commons licence.</rdfs:comment>
     <mo:level>1</mo:level>
     <rdfs:isDefinedBy rdf:resource=""/>
   </mo:ReleaseType>
+  <owl:ObjectProperty rdf:about="lyrics">
+    <mo:level>2</mo:level>
+    <rdfs:comment>Associates lyrics with a musical work</rdfs:comment>
+    <rdfs:domain rdf:resource="MusicalWork"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label>lyrics</rdfs:label>
+    <rdfs:range rdf:resource="Lyrics"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="mailorder">
     <mo:level>1</mo:level>
     <rdfs:comment>Used to link a musical work or the expression of a musical work to a website where people can buy a copy of the musical manifestation.</rdfs:comment>

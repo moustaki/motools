@@ -2532,6 +2532,16 @@ mo:tempo
       mo:level "2" ;
       vs:term_status "stable" .
 
+mo:lyrics
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Associates lyrics with a musical work" ;
+      rdfs:domain mo:MusicalWork ;
+      rdfs:range mo:Lyrics ;
+      rdfs:isDefinedBy mo: ;
+      rdfs:label "lyrics" ;
+      mo:level "2" ;
+      vs:term_status "testing" .
+
 mo:text
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "Associates lyrics with their text." ;
