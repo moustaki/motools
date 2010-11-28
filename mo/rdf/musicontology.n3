@@ -1116,6 +1116,15 @@ mo:encoding
       mo:level "1" ;
       vs:term_status "unstable" .
 
+mo:duration
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "The duration of a track or a signal in ms";
+    rdfs:domain [ rdf:type owl:Class ; owl:unionOf (mo:Track mo:Signal) ] ;
+    rdfs:isDefinedBy mo: ;
+    rdfs:range xsd:float ;
+    mo:level "1" ;
+    vs:term_status "testing" .
+
 mo:engineer
       rdf:type owl:ObjectProperty ;
       rdfs:comment "Relates a performance or a recording to the engineer involved" ;
