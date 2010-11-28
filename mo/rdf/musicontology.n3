@@ -1438,7 +1438,7 @@ mo:key
         Any of 24 major or minor diatonic scales that provide the tonal framework for a piece of music.""" ;
       rdfs:domain
               [ rdf:type owl:Class ;
-                owl:unionOf (mo:MusicalWork mo:Performance)
+                owl:unionOf (mo:MusicalWork mo:Performance mo:Signal)
               ] ;
       rdfs:isDefinedBy mo: ;
       rdfs:label "key" ;
@@ -2524,7 +2524,7 @@ mo:tempo
     """ ;
       rdfs:domain
               [ rdf:type owl:Class ;
-                owl:unionOf (mo:MusicalWork mo:Performance)
+                owl:unionOf (mo:MusicalWork mo:Performance mo:Signal)
               ] ;
       rdfs:isDefinedBy mo: ;
       rdfs:label "tempo" ;

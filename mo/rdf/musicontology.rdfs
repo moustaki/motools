@@ -1634,7 +1634,12 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
             <rdf:rest>
               <rdf:Description>
                 <rdf:first rdf:resource="Performance"/>
-                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:rest>
+                  <rdf:Description>
+                    <rdf:first rdf:resource="Signal"/>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  </rdf:Description>
+                </rdf:rest>
               </rdf:Description>
             </rdf:rest>
           </rdf:Description>
@@ -2915,7 +2920,12 @@ The review does not have to be open content, as long as it is accessible to the 
             <rdf:rest>
               <rdf:Description>
                 <rdf:first rdf:resource="Performance"/>
-                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:rest>
+                  <rdf:Description>
+                    <rdf:first rdf:resource="Signal"/>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  </rdf:Description>
+                </rdf:rest>
               </rdf:Description>
             </rdf:rest>
           </rdf:Description>
