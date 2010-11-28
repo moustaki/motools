@@ -18,7 +18,7 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 mo:   rdf:type owl:Ontology ;
-      dc:date "$Date: 2010/06/18 17:08:19 $" ;
+      dc:date "$Date: 2010/11/28 17:08:19 $" ;
       dc:description """
         The Music Ontology Specification provides main concepts and 
         properties fo describing music (i.e. artists, albums and tracks) 
