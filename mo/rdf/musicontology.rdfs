@@ -2083,6 +2083,15 @@ This means that the orignial musical expression were rearranged to create a new 
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
     <vs:term_status>stable</vs:term_status>
   </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="origin">
+    <mo:level>1</mo:level>
+    <rdfs:comment>Relates an artist to its geographic origin</rdfs:comment>
+    <rdfs:domain rdf:resource="MusicArtist"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label>origin</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:ObjectProperty>
   <owl:SymmetricProperty rdf:about="other_release_of">
     <mo:level>1</mo:level>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
