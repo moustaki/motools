@@ -1658,7 +1658,7 @@ The artist usually selected the tracks, chose their sequence, and slightly chang
       <owl:Class>
         <owl:unionOf>
           <rdf:Description>
-            <rdf:first rdf:resource="ReleaseEvent"/>
+            <rdf:first rdf:resource="Release"/>
             <rdf:rest>
               <rdf:Description>
                 <rdf:first rdf:resource="MusicArtist"/>

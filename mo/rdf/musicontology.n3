@@ -1451,7 +1451,7 @@ mo:label
       rdfs:comment "Associates a release event with the label releasing the record" ;
       rdfs:domain
               [ rdf:type owl:Class ;
-                owl:unionOf (mo:ReleaseEvent mo:MusicArtist)
+                owl:unionOf (mo:Release mo:MusicArtist)
               ] ;
       rdfs:isDefinedBy mo: ;
       rdfs:label "label" ;
