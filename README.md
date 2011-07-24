@@ -6,7 +6,7 @@ Introduction
 ------------
 This project holds Music Ontology tools and specifications, available from http://musicontology.com.
 
-The Music Ontology aims is a vocabulary for describing structured music-related data on the Web.
+The Music Ontology is a vocabulary for describing structured music-related data on the Web.
 
 Sub-projects
 -----------
