@@ -1269,6 +1269,16 @@ mo:group
       mo:level "1" ;
       vs:term_status "testing" .
 
+mo:artist
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Relates a membership event with the corresponding artist" ;
+      rdfs:domain mo:Membership ;
+      rdfs:isDefinedBy mo: ;
+      rdfs:label "artist" ;
+      rdfs:range foaf:Agent ;
+      mo:level "1" ;
+      vs:term_status "testing" .
+
 mo:activity_start
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "Relates an artist to a date at which its activity started" ;

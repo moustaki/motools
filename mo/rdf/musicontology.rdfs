@@ -758,6 +758,15 @@ work #1 J. S. Bach's The art of the fugue
     <owl:inverseOf rdf:resource="arranged_in"/>
     <vs:term_status>unstable</vs:term_status>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="artist">
+    <mo:level>1</mo:level>
+    <rdfs:comment>Relates a membership event with the corresponding artist</rdfs:comment>
+    <rdfs:domain rdf:resource="Membership"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label>artist</rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:ObjectProperty>
   <mo:ReleaseType rdf:about="audiobook">
     <dc:description>
         Book read by a narrator without music.
