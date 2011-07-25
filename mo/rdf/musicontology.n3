@@ -30,6 +30,17 @@ mo:   rdf:type owl:Ontology ;
       owl:versionInfo "Revision: 2.1.5" ;
       foaf:maker <http://www.talkdigger.com/foaf/fgiasson> , <http://foaf.me/zazi#me> , <http://moustaki.org/foaf.rdf#moustaki> .
 
+mo:Activity
+      rdf:type owl:Class ;
+      rdfs:comment """
+        An activity period, defining when an artist was musically active.
+    """ ;
+      rdfs:isDefinedBy mo: ;
+      rdfs:label "activity" ;
+      rdfs:subClassOf event:Event ;
+      mo:level "1" ;
+      vs:term_status "testing" .
+
 mo:AnalogSignal
       rdf:type owl:Class ;
       rdfs:comment """
@@ -1276,6 +1287,16 @@ mo:artist
       rdfs:isDefinedBy mo: ;
       rdfs:label "artist" ;
       rdfs:range foaf:Agent ;
+      mo:level "1" ;
+      vs:term_status "testing" .
+
+mo:activity_start
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "Relates an artist to an activity period" ;
+      rdfs:domain mo:MusicArtist ;
+      rdfs:range mo:Activity ;
+      rdfs:isDefinedBy mo: ;
+      rdfs:label "activity";
       mo:level "1" ;
       vs:term_status "testing" .
 
