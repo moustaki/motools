@@ -1290,7 +1290,7 @@ mo:artist
       mo:level "1" ;
       vs:term_status "testing" .
 
-mo:activity_start
+mo:activity
       rdf:type owl:DatatypeProperty ;
       rdfs:comment "Relates an artist to an activity period" ;
       rdfs:domain mo:MusicArtist ;

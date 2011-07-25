@@ -681,6 +681,15 @@ work #1 J. S. Bach's The art of the fugue
     <rdfs:subClassOf rdf:resource="Medium"/>
     <vs:term_status>unstable</vs:term_status>
   </owl:Class>
+  <owl:DatatypeProperty rdf:about="activity">
+    <mo:level>1</mo:level>
+    <rdfs:comment>Relates an artist to an activity period</rdfs:comment>
+    <rdfs:domain rdf:resource="MusicArtist"/>
+    <rdfs:isDefinedBy rdf:resource=""/>
+    <rdfs:label>activity</rdfs:label>
+    <rdfs:range rdf:resource="Activity"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="activity_end">
     <mo:level>1</mo:level>
     <rdfs:comment>Relates an artist to a date at which its activity ended</rdfs:comment>
@@ -692,14 +701,10 @@ work #1 J. S. Bach's The art of the fugue
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="activity_start">
     <mo:level>1</mo:level>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:comment>Relates an artist to a date at which its activity started</rdfs:comment>
-    <rdfs:comment>Relates an artist to an activity period</rdfs:comment>
     <rdfs:domain rdf:resource="MusicArtist"/>
     <rdfs:isDefinedBy rdf:resource=""/>
-    <rdfs:label>activity</rdfs:label>
     <rdfs:label>activity start</rdfs:label>
-    <rdfs:range rdf:resource="Activity"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     <vs:term_status>testing</vs:term_status>
   </owl:DatatypeProperty>
