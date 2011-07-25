@@ -681,7 +681,7 @@ work #1 J. S. Bach's The art of the fugue
     <rdfs:subClassOf rdf:resource="Medium"/>
     <vs:term_status>unstable</vs:term_status>
   </owl:Class>
-  <owl:DatatypeProperty rdf:about="activity">
+  <owl:ObjectProperty rdf:about="activity">
     <mo:level>1</mo:level>
     <rdfs:comment>Relates an artist to an activity period</rdfs:comment>
     <rdfs:domain rdf:resource="MusicArtist"/>
@@ -689,7 +689,7 @@ work #1 J. S. Bach's The art of the fugue
     <rdfs:label>activity</rdfs:label>
     <rdfs:range rdf:resource="Activity"/>
     <vs:term_status>testing</vs:term_status>
-  </owl:DatatypeProperty>
+  </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="activity_end">
     <mo:level>1</mo:level>
     <rdfs:comment>Relates an artist to a date at which its activity ended</rdfs:comment>

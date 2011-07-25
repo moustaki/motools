@@ -1291,7 +1291,7 @@ mo:artist
       vs:term_status "testing" .
 
 mo:activity
-      rdf:type owl:DatatypeProperty ;
+      rdf:type owl:ObjectProperty ;
       rdfs:comment "Relates an artist to an activity period" ;
       rdfs:domain mo:MusicArtist ;
       rdfs:range mo:Activity ;
