@@ -23,10 +23,6 @@ The Audio Features ontology, aiming at describing aspects of musical audio signa
 
 The Chord Ontology, aiming at describing musical chords.
 
-### counteronto/
-
-The Counter Ontology, aiming at describing e.g. Scrobbles.
-
 ### dbtune/
 
 The code running the dbtune.org web site and its datasets.
@@ -67,10 +63,6 @@ A release of GNAT as a Python library.
 
 Some random code from a hackday in 2009 - should probably be removed.
 
-### infoservice/
-
-The Information Service ontology.
-
 ### jamendo-mazzle/
 
 An instance of GNARQL configured for Jamendo data.
@@ -102,10 +94,6 @@ A set of configuration files and tools to make Musicbrainz data available throug
 ### myspace-serv/
 
 A service to make myspace available as Linked Data.
-
-### orderedlistonto/
-
-The Ordered List ontology.
 
 ### sandpit/
 
