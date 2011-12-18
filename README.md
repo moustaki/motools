@@ -2,6 +2,9 @@ Music Ontology tools and specifications
 =======================================
 
 
+**Attention**: motools has been moved to a new location at GitHub, see https://github.com/motools
+
+
 Introduction
 ------------
 This project holds Music Ontology tools and specifications, available from http://musicontology.com.
